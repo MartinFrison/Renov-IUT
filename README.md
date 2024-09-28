@@ -1,5 +1,7 @@
-# RenovIUT 
+# T3 - RenovIUT 
 
+- Nom du groupe : Coruscant
+- Membres du groupe : [Adrien AKGUL](https://git.unistra.fr/aakgul), [Yasmine CHETTATI](https://git.unistra.fr/ychettati), [Elena FRISON](https://git.unistra.fr/e.frison), [Martin FRISON](https://git.unistra.fr/martin.frison)
 
 ## Présentation du projet
 
@@ -8,26 +10,26 @@
 ### Installation et exécution
 
 
-## Objectifs pédagogiques
+## Cahier des charges
 
-### Objectifs pédagogiques avancés
+### Objectifs pédagogiques
 
-###  Références
+#### Objectifs pédagogiques avancés
 
-
-## Fonctionnalités
-
-### Simulation
-
-### Interface
-
-### Actions du joueur
-
-### Scénarios
+####  Références
 
 
-## Développement
+### Description des fonctionnalités
 
-### Contraintes
+#### Simulation
+
+#### Interface
+
+#### Actions du joueur
+
+#### Scénarios
+
+
+### Contraintes de développement
 
 ### Fonctionnalités et scénarios avancés
