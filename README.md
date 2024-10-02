@@ -6,9 +6,9 @@
 ## Présentation du projet
 Vous intervenez sur le campus de l'IUT Robert Schuman d'Illkirch, en qualité du directeur de l'établissement.
 
-Sur un mandat de 5 ans, vous devez renover les bâtiments et les infrastructures, [en gérant votre budget partagé entre les dépenses d'énergie, les salaires et les rénovations](#Missions) et [en répondant aux aléas qui se présentent](#Aléas). Comme [le budget](#Budget) est limité et que le temps passe vite, il va falloir faire des [choix](#Actions du joueur) !
+Sur un mandat de 5 ans, vous devez rénover les bâtiments et les infrastructures, [en gérant votre budget partagé entre les dépenses d'énergie, les salaires et les rénovations](#missions) et [en répondant aux aléas qui se présentent](#aléas). Comme [le budget](#budget) est limité et que le temps passe vite, il va falloir faire des [choix](#actions-du-joueur) !
 
-Votre objectif ultime est de vous faire [réélire](#Scénarios) à la fin du mandat. Pour ce faire, vous devrez maintenir de bonnes conditions de travail et veiller à la satisfaction des étudiants et des enseignants.
+Votre objectif ultime est de vous faire [réélire](#scénarios) à la fin du mandat. Pour ce faire, vous devrez maintenir de bonnes conditions de travail et veiller à la satisfaction des étudiants et des enseignants.
 
 ### Captures d'écran
 
