@@ -4,11 +4,8 @@
 - Membres du groupe : [Adrien AKGUL](https://git.unistra.fr/aakgul), [Yasmine CHETTATI](https://git.unistra.fr/ychettati), [Elena FRISON](https://git.unistra.fr/e.frison), [Martin FRISON](https://git.unistra.fr/martin.frison)
 
 ## Présentation du projet
-Vous intervenez sur le campus de l'IUT Robert Schuman d'Illkirch, en qualité du directeur de l'établissement.
 
-Sur un mandat de 5 ans, vous devez rénover les bâtiments et les infrastructures, [en gérant votre budget partagé entre les dépenses d'énergie, les salaires et les rénovations](#missions) et [en répondant aux aléas qui se présentent](#aléas). Comme [le budget](#budget) est limité et que le temps passe vite, il va falloir faire des [choix](#actions-du-joueur) !
-
-Votre objectif ultime est de vous faire [réélire](#scénarios) à la fin du mandat. Pour ce faire, vous devrez maintenir de bonnes conditions de travail et veiller à la satisfaction des étudiants et des enseignants.
+Vous incarnez le directeur de l'IUT Robert Schuman qui~~, souhaitant se faire réélire,~~ intervient sur le campus d'Illkirch pour assurer des réparations d'urgence - sans pour autant négliger les rénovations planifiées des bâtiments.
 
 ### Captures d'écran
 - Fenêtre principale
@@ -24,28 +21,46 @@ Votre objectif ultime est de vous faire [réélire](#scénarios) à la fin du ma
 
 ### Installation et exécution
 
+Pour lancer le jeu, il suffit de ... _SECTION À REMPLIR_
 
 ## Cahier des charges
 
 ### Objectifs pédagogiques
-
-En tant que _serious game_, RenovIUT ne se limite pas à vous divertir, mais a également des objectifs pédagogiques, à savoir :
+En tant que _[serious game](#jeux-sérieux)_, RenovIUT ne se limite pas à vous divertir, mais a également des objectifs pédagogiques, à savoir :
 
 - **_Comprendre_** le rôle du directeur de l'IUT, établissement à une administration relativement autonome, dans l'entretien et la rénovation de ses locaux, en adéquation avec ses engagements sociaux ;
 - **_Découvrir_** les bonnes pratiques de gestion du budget d'un IUT, alimenté de sources de financement certes multiples mais limitées, afin d'assurer les meilleurs conditions de travail possibles pour ses étudiants et son corps enseignant ;
 - **_Expérimenter_** la prise de décision en situation d'urgence, nécessitant une remise en question des priorités de l'établissement.
 
-#### Objectifs pédagogiques avancés
+### Objectifs pédagogiques avancés
+
+Sur un mandat de 5 ans, vous devez rénover les bâtiments et les infrastructures, [en gérant votre budget partagé entre les dépenses d'énergie, les salaires et les rénovations](#missions) et [en répondant aux aléas qui se présentent](#aléas). Comme [le budget](#budget) est limité et que le temps passe vite, il va falloir faire des [choix](#actions-du-joueur) !
+
+Votre objectif ultime est de vous faire [réélire](#scénarios) à la fin du mandat. Pour ce faire, vous devrez maintenir de bonnes conditions de travail et veiller à la satisfaction des étudiants et des enseignants.
+
+La problématique du jeu se construit autour de quatre éléments :
+
+1. **_Les infrastructures existantes_** qui doivent être entretenues voire, à moment donné, réparées.
+_À EXPLIQUER_
+
+2. **_Le budget_**, le pivot des activités, car aucune intervention sur le campus n'est possible sans financement.
+_À EXPLIQUER_
+
+3. **_Les parties prenantes_**, qui sont avant tout les étudiants, mais aussi les enseignants, les personnels, l'Eurométropole...
+_À EXPLIQUER_
+
+4. **_Les aléas_**, des imprévus suffisamment nombreux pour que vous soyez encore surpris en en devant confronter un !
+_À EXPLIQUER_
 
 ####  Références
-- **_Rénovations réalisées dans différents IUT_**
+###### Rénovations réalisées dans différents IUT :
 	- https://savoirs.unistra.fr/campus/les-locaux-du-departement-genie-civil-construction-durable-de-liut-robert-schuman-inaugures
 	- https://iutrs.unistra.fr/iut/historique
 	- https://www.univ-tln.fr/Projet-IUT-RENOV-premiere-etape-dans-la-renovation-du-campus.html
 	- https://iut-nancy-brabois.univ-lorraine.fr/renovation-energetique/
 	- https://fr.wikipedia.org/wiki/R%C3%A9novation_%C3%A9nerg%C3%A9tique
 
-- **_Jeux sérieux_** :
+###### Jeux sérieux :
 	- https://larevuedesmedias.ina.fr/les-serious-games-un-objet-en-construction
 	- https://fr.wikipedia.org/wiki/Jeu_s%C3%A9rieux
 	- http://serious.gameclassification.com/FR/index.html
