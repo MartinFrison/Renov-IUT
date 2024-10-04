@@ -25,7 +25,7 @@ Pour lancer le jeu, il suffit de ... _SECTION À REMPLIR_
 
 ## Cahier des charges
 
-### Objectifs pédagogiques principaux
+### Objectifs pédagogiques généraux
 En tant que _[serious game](#jeux-sérieux)_, RenovIUT ne se limite pas à vous divertir, mais a également des objectifs pédagogiques, à savoir :
 
 - **_Comprendre_** le rôle du directeur de l'IUT, établissement à une administration relativement autonome, dans l'entretien et la rénovation de ses locaux, en adéquation avec ses engagements sociaux ;
