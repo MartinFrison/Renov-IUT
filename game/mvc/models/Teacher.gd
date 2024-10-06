@@ -1,7 +1,5 @@
-# Teacher.gd
-extends RefCounted
-
 class_name Teacher
+extends RefCounted
 
 # Attributs
 var id: int
@@ -11,14 +9,15 @@ var mood: float # taux de satisfaction, entre 0 et 1
 # Constructeur
 # On présume que les enseignants de l'IUT Robert Schuman sont tous très motivés 
 # au moment d'intégrer l'établissement.
-func _init(department: String):  # dept1 est requis, depts peut accepter plusieurs départements
-	self.id = Global.teacher_list.size()  # Le premier numéro disponible correspond à la taille actuelle du tableau
+func _init(department: String):
+	self.id = Global.teacher_list.size()  # Le premier numéro disponible est la taille actuelle du tableau
 	self.dept = department
 	self.mood = randf_range(0.85, 1.0)
 	
 # Enregistreur
 # Ajoute un enseignant au tableau.
 func add_teacher(department) -> void:
+	assert(department in Global.dept_list, "Unknown department")
 	var new_teacher: Teacher = Teacher.new(department)
 	Global.teacher_list.append(new_teacher)
 
