@@ -43,6 +43,14 @@ func rm_student_by_dept(dept: String, nb: int) -> void:
 			while rm_count >= count:
 				Global.student_list.remove_at(i)
 				rm_count += 1
+				
+# À implémenter ici : 
+# func populate_year() -> void:
+# func populate_promo() -> void:
+# func evaluate() -> void:
+# func compute_nb(dept: String) -> void:
+# func avg_mood(dept: String) -> float:
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
