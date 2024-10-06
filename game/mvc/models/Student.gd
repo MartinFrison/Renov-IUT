@@ -1,8 +1,6 @@
 class_name Student
 extends RefCounted # ne nécessite pas d'interaction avec le moteur de scène
 
-var prev_id: int = -1 # dernier index de département utilisé ; initialisé à -1 (sans étudiants)
-
 # Attributs
 var id: int # dans une version ultérieure, on pourrait donner un nom à chaque étudiant
 var year: int # année d'étude, i.e. 1, 2 ou 3
