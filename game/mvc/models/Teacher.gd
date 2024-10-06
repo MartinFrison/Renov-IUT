@@ -14,15 +14,16 @@ func _init(department: String):
 	self.dept = department
 	self.mood = randf_range(0.85, 1.0)
 	
-# Enregistreur
-# Ajoute un enseignant au tableau.
-func add_teacher(department) -> void:
-	assert(department in Global.dept_list, "Unknown department")
-	var new_teacher: Teacher = Teacher.new(department)
-	Global.teacher_list.append(new_teacher)
+# Getters
+func get_id() -> int:
+	return self.id
 
-# Destructeur
-# Supprime un enseigant du tableau (par ID).
-func rm_teacher(i: int) -> void:
-	if i < Global.student_list.size() and i > 0:
-		Global.student_list.remove_at(i)
+func get_dept() -> String:
+	return self.dept
+
+func get_mood() -> float:
+	return self.mood
+
+# Setters
+func set_mood(coeff: float) -> void:
+	self.mood *= coeff
