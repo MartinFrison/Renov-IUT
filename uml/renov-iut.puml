@@ -1,0 +1,135 @@
+@startuml
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+hide enum methods
+
+class RenovIUTApp {
+    + {static} main( args:String[] )
+}
+
+package models {
+    class Building {
+
+    }
+
+    class Student {
+        - id : Integer
+        - year : Integer [1..3]
+        - dept : String
+        - mood : Real [0, 1]
+        - lvl : Real [0, 1]
+        + «Create» _init(dept : String)
+        + get_id() : Integer
+        + get_year() : Integer
+        + get_dept() : String
+        + get_mood() : Real
+        + get_lvl() : Real
+        + set_year(year : Integer)
+        + set_mood(coeff : Real)
+        + set_level(coeff : Real)
+    }
+
+    class Teacher {
+        - id : Integer
+        - dept : String
+        - mood : Real [0, 1]
+        + «Create» _init(dept : String)
+        + get_id() : Integer
+        + get_dept() : String
+        + get_mood() : Real
+        + set_mood(coeff : Real)
+    }
+
+    class Fund {
+
+    }
+}
+
+package controllers {
+    class Study {
+        + addStudent()
+        + rmStudent_by_id(i : Integer)
+        + rmStudent_by_dept(dept : String, nb : Integer)
+        + populate_year()
+        + populate_promo()
+        + compute_nb(dept : String)
+        + avg_mood(dept : String)
+        + evaluate()
+    }
+
+    class Teaching {
+        + addTeacher(dept : String)
+        + rmTeacher_by_id(i : Integer)
+        + rmTeacher_by_dept(dept : String, nb : Integer)
+        + populate()
+        + compute_nb(dept : String)
+        + avg_mood(dept : String)
+    }
+
+    class Renovation {
+
+    }
+
+    class Financing {
+
+    }
+    ' à compléter...
+
+}
+
+package views {
+    class BuildingView {
+
+    }
+
+    class Budget {
+
+    }
+
+    class Satisfaction {
+
+    }
+
+    package scenes {
+        class Start {
+
+        }
+
+        class Menu {
+
+        }
+
+        class GameOver {
+
+        }
+            ' à compléter...
+    }
+    'à compléter...
+}
+
+package utils {
+    class Global {
+        + dept_list : String [*]
+        + student_list : Student [*]
+        + teacher_list : Teacher [*]
+        + building_list : Building[*]
+        + funding_list : Fund[*]
+    }
+}
+
+RenovIUTApp ...> views
+'controllers ..> models
+views ....> models
+views .> controllers
+
+Study *--> "*\n students" Student
+Teaching *--> "*\n teachers" Teacher
+Renovation *--> "*\n buildings" Building
+Financing *--> "*\n funds" Fund
+Student ..> Global
+Teacher ..> Global
+Fund ..> Global
+Building ..> Global
+
+@enduml
