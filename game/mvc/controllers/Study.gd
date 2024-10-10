@@ -48,9 +48,26 @@ func rm_student_by_dept(dept: String, nb: int) -> void:
 # func populate_year() -> void:
 # func populate_promo() -> void:
 # func evaluate() -> void:
-# func compute_nb(dept: String) -> void:
-# func avg_mood(dept: String) -> float:
 
+
+# Renvoie le nombre d'étudiants pour tel département (passé en paramètre) 
+func compute_nb(dept: String) -> int:
+	var count: int = 0
+	for student in Global.student_list:
+		if student.dept == dept:
+			count += 1
+	return count
+
+# Calcule et renvoie la moyenne de la satisfaction des étudiants, par département
+func avg_mood(dept: String) -> float:
+	var sum: float = 0.0
+	for student in Global.student_list:
+		if student.dept == dept:
+			sum += student.mood
+	var nb: int = compute_nb(dept)
+	if nb == 0:
+		return 0.0
+	return sum / nb
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
