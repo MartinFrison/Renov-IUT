@@ -1,127 +1,176 @@
-@startuml
+@startuml RenovIUTApp
+
 skinparam style strictuml
 skinparam classAttributeIconSize 0
 skinparam classFontStyle Bold
 hide enum methods
 
-class RenovIUTApp {
+class RenovIUTApp 
+{
     + {static} main( args:String[] )
 }
 
-package models {
-    class Building {
+package models 
+{
+    package building
+    {
+        abstract class Building 
+        {
+            + _age : Integer
+            + getCode() : String
+        }
 
+        class IT
+        {
+            + <<create>>IT()
+        }
+
+        class Communication
+        {
+            + <<create>>Communication()
+        }
+
+        class Marketing
+        {
+            + <<create>>Marketing()
+        }
+
+        class Chemistry
+        {
+            + <<create>>Chemistry()
+        }
+
+        class Engineering
+        {
+            + <<create>>Engineering()
+        }
     }
 
-    class Student {
-        - id : Integer
-        - year : Integer [1..3]
-        - dept : String
-        - mood : Real [0, 1]
-        - lvl : Real [0, 1]
-        + «Create» _init(dept : String)
-        + get_id() : Integer
-        + get_year() : Integer
-        + get_dept() : String
-        + get_mood() : Real
-        + get_lvl() : Real
-        + set_year(year : Integer)
-        + set_mood(coeff : Real)
-        + set_level(coeff : Real)
+    class Student 
+    {
+        + addStudent(dept : String)
+        + rmStudent_by_id(id : Integer)
+        + get_id(id : Integer) : Integer
+        + get_year(id : Integer) : Integer
+        + get_dept(id : Integer) : String
+        + get_mood(id : Integer) : Real
+        + get_lvl(id : Integer) : Real
+        + set_year(id : Integer, year : Integer)
+        + set_mood(id : Integer, coeff : Real)
+        + set_level(id : Integer, coeff : Real)
+        + compute_nb_by_dept(dept : String) : Integer
+        + avg_mood_by_dept(dept : String) : Real
+        + rmStudent_by_dept(dept : String, nb : Integer)
+        + compute_nb() : Integer
+        + avg_mood() : Real
     }
 
-    class Teacher {
-        - id : Integer
-        - dept : String
-        - mood : Real [0, 1]
-        + «Create» _init(dept : String)
-        + get_id() : Integer
-        + get_dept() : String
-        + get_mood() : Real
-        + set_mood(coeff : Real)
+
+    class Teacher
+    {
+        + addTeacher(dept : String)
+        + rmTeacher(dept : String)
+        + get_id(id : Integer) : Integer    
+        + get_dept(id : Integer) : String
+        + get_mood(id : Integer) : Real
+        + set_mood(id : Integer, coeff : Real)
+        + compute_nb_by_dept(dept : String) : Integer
+        + avg_mood_by_dept(dept : String) : Real
+        + rmTeacher_by_dept(dept : String, nb : Integer)
+        + compute_nb() : Integer
+        + avg_mood() : Real
+    }
+
+
+    class StudentTableSQL
+    {
+        + _id : Integer <<PK>>
+        + _year : Integer [1..3]
+        + _dept : String
+        + _mood : Real [0, 1]
+        + _lvl : Real [0, 1]
+    }
+
+    class TeacherTableSQL
+    {
+        + _id : Integer <<PK>>
+        + _dept : String
+        + _mood : Real [0, 1]
     }
 
     class Fund {
-
     }
 }
 
-package controllers {
-    class Study {
-        + addStudent()
-        + rmStudent_by_id(i : Integer)
-        + rmStudent_by_dept(dept : String, nb : Integer)
+package controllers 
+{
+
+    class Study 
+    {
+        + evaluate()
         + populate_year()
         + populate_promo()
-        + compute_nb(dept : String)
-        + avg_mood(dept : String)
-        + evaluate()
     }
 
-    class Teaching {
+    class Teaching 
+    {
         + addTeacher(dept : String)
         + rmTeacher_by_id(i : Integer)
         + rmTeacher_by_dept(dept : String, nb : Integer)
         + populate()
-        + compute_nb(dept : String)
-        + avg_mood(dept : String)
     }
 
-    class Renovation {
-
+    class Renovation 
+    {
     }
 
-    class Financing {
-
+    class Financing 
+    {
     }
-    ' à compléter...
-
 }
 
 package views {
-    class BuildingView {
-
+    class BuildingView 
+    {
     }
 
-    class Budget {
-
+    class Budget 
+    {
     }
 
-    class Satisfaction {
-
+    class Satisfaction 
+    {
     }
 
-    package scenes {
+    package scenes 
+    {
         class Start {
-
         }
 
         class Menu {
-
         }
 
         class GameOver {
-
         }
-            ' à compléter...
     }
-    'à compléter...
 }
 
-package utils {
-    class Global {
+package utils 
+{
+    class Global 
+    {
         + dept_list : String [*]
         + student_list : Student [*]
         + teacher_list : Teacher [*]
-        + building_list : Building[*]
-        + funding_list : Fund[*]
+        + building_list : Building [*]
+        + funding_list : Fund [*]
     }
 }
 
 RenovIUTApp ...> views
-'controllers ..> models
-views ....> models
-views .> controllers
+controllers ..> models
+views ..> models
+views ..> controllers
 
 Study *--> "*\n students" Student
 Teaching *--> "*\n teachers" Teacher
@@ -129,7 +178,15 @@ Renovation *--> "*\n buildings" Building
 Financing *--> "*\n funds" Fund
 Student ..> Global
 Teacher ..> Global
+Student ..> StudentTableSQL
+Teacher ..> TeacherTableSQL
 Fund ..> Global
 Building ..> Global
+
+Building --|> IT
+Building --|> Communication
+Building --|> Marketing
+Building --|> Chemistry
+Building --|> Engineering
 
 @enduml
