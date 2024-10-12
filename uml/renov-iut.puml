@@ -48,39 +48,39 @@ package models
 
     class Student 
     {
-        + addStudent(dept : String)
-        + rmStudent_by_id(id : Integer)
-        + get_id(id : Integer) : Integer
-        + get_year(id : Integer) : Integer
-        + get_dept(id : Integer) : String
-        + get_mood(id : Integer) : Real
-        + get_lvl(id : Integer) : Real
-        + set_year(id : Integer, year : Integer)
-        + set_mood(id : Integer, coeff : Real)
-        + set_level(id : Integer, coeff : Real)
-        + compute_nb_by_dept(dept : String) : Integer
-        + avg_mood_by_dept(dept : String) : Real
-        + rmStudent_by_dept(dept : String, nb : Integer)
-        + compute_nb() : Integer
-        + avg_mood() : Real
+        + «Create» Student(dept : String)
+        + add_student(dept : String)
+        + get_id() : Integer
+        + get_year() : Integer
+        + get_dept() : String
+        + get_mood() : Real
+        + get_lvl() : Real
+        + set_year(year : Integer)
+        + set_mood(coeff : Real)
+        + set_level(coeff : Real)
     }
 
 
     class Teacher
     {
-        + addTeacher(dept : String)
-        + rmTeacher(dept : String)
-        + get_id(id : Integer) : Integer    
-        + get_dept(id : Integer) : String
-        + get_mood(id : Integer) : Real
-        + set_mood(id : Integer, coeff : Real)
-        + compute_nb_by_dept(dept : String) : Integer
-        + avg_mood_by_dept(dept : String) : Real
-        + rmTeacher_by_dept(dept : String, nb : Integer)
-        + compute_nb() : Integer
-        + avg_mood() : Real
+        + «Create» Teacher(dept : String)
+        + add_teacher(dept : String)
+        + get_id() : Integer
+        + get_dept() : String
+        + get_mood() : Real
+        + set_mood(coeff : Real)
     }
 
+    class Fund
+    {
+        + «Create» Fund(source : String, amount : Real, destination : String?)
+        + add_fund(source : String, amount : Real, destination : String?)
+        + get_id() : Integer
+        + get_source() : String
+        + get_amount() : Real
+        + get_destination() : String?
+        + set_destination() : String
+    }
 
     class StudentTableSQL
     {
@@ -98,50 +98,85 @@ package models
         + _mood : Real [0, 1]
     }
 
-    class Fund {
+    class FundTableSQL
+    {
+        + _id : Integer <<PK>>
+        + _amount : Real
+        + _source : String
+        + _destination : String?
     }
 }
 
-package controllers 
-{
+package controllers {
+    package school {
+        class Study
+        {
+            + rm_student_by_id(i : Integer)
+            + rm_student_by_dept(dept : String, nb : Integer)
+            + populate_year()
+            + populate_promo()
+            + compute_nb_by_dept(dept : String) : Integer
+            + avg_mood_by_dept(dept : String) : Real
+            + compute_nb() : Integer
+            + avg_mood() : Real
+            + evaluate()
+            + success_rate_by_dept(dept : String) : Real
+            + success_rate() : Real
+        }
 
-    class Study 
-    {
-        + evaluate()
-        + populate_year()
-        + populate_promo()
+        class Teaching
+        {
+            + rm_teacher_by_id(i : Integer)
+            + rm_teacher_by_dept(dept : String, nb : Integer)
+            + compute_nb_by_dept(dept : String) : Integer
+            + avg_mood_by_dept(dept : String) : Real
+            + compute_nb() : Integer
+            + avg_mood() : Real
+            + populate()
+        }
+    }
+    package management {
+        class Financing
+        {
+            + rm_fund_by_id(i : Integer)
+            + rm_fund_by_source(source : String)
+            + compute_amount_by_dept(dept : String) : Real
+            + compute_total() : Real
+        }
+
+        abstract class Renovation {
+
+        }
+
+        class Planned {
+
+        }
+
+        class Urgent {
+
+        }
     }
 
-    class Teaching 
+    class Election
     {
-        + addTeacher(dept : String)
-        + rmTeacher_by_id(i : Integer)
-        + rmTeacher_by_dept(dept : String, nb : Integer)
-        + populate()
-    }
 
-    class Renovation 
-    {
-    }
-
-    class Financing 
-    {
     }
 }
 
 package views {
-    class BuildingView 
-    {
-    }
+    package nodes {
+        class BuildingView
+        {
+        }
 
-    class Budget 
-    {
-    }
+        class Budget
+        {
+        }
 
-    class Satisfaction 
-    {
+        class Satisfaction
+        {
+        }
     }
-
     package scenes 
     {
         class Start {
@@ -155,33 +190,19 @@ package views {
     }
 }
 
-package utils 
-{
-    class Global 
-    {
-        + dept_list : String [*]
-        + student_list : Student [*]
-        + teacher_list : Teacher [*]
-        + building_list : Building [*]
-        + funding_list : Fund [*]
-    }
-}
-
 RenovIUTApp ...> views
-controllers ..> models
-views ..> models
-views ..> controllers
+'controllers ..> models - déjà reflété par les liens de composition
+'views ....> models
+'views ...> controllers
 
 Study *--> "*\n students" Student
 Teaching *--> "*\n teachers" Teacher
-Renovation *--> "*\n buildings" Building
+Renovation *---> "*\n buildings" Building
 Financing *--> "*\n funds" Fund
-Student ..> Global
-Teacher ..> Global
+
 Student ..> StudentTableSQL
 Teacher ..> TeacherTableSQL
-Fund ..> Global
-Building ..> Global
+Fund ..> FundTableSQL
 
 Building --|> IT
 Building --|> Communication
@@ -189,4 +210,16 @@ Building --|> Marketing
 Building --|> Chemistry
 Building --|> Engineering
 
+Renovation -|> Urgent
+Renovation -|> Planned
+
+Election ...> Study
+Election ...> Teaching
+Election ...> Financing
+
+BuildingView ...> Building
+Budget ...> Financing
+Satisfaction ...> school
+Menu ...> management
+GameOver ..> Election
 @enduml
