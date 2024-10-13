@@ -48,38 +48,53 @@ package models
 
     class Student 
     {
-        + «Create» Student(dept : String)
         + add_student(dept : String)
-        + get_id() : Integer
-        + get_year() : Integer
-        + get_dept() : String
-        + get_mood() : Real
-        + get_lvl() : Real
-        + set_year(year : Integer)
-        + set_mood(coeff : Real)
-        + set_level(coeff : Real)
+        + rm_student_by_id(i : Integer)
+        + rm_student_by_dept(dept : String, nb : Integer)
+        + get_id(i : Integer) : Integer
+        + get_year(i : Integer) : Integer
+        + get_dept(i : Integer) : String
+        + get_mood(i : Integer) : Real
+        + get_lvl(i : Integer) : Real
+        + set_year(i : Integer, year : Integer)
+        + set_mood(i : Integer, coeff : Real)
+        + set_level(i : Integer, coeff : Real)
+        + compute_nb_by_dept(dept : String) : Integer
+        + avg_mood_by_dept(dept : String) : Real
+        + compute_nb() : Integer
+        + avg_mood() : Real
+        + success_rate_by_dept(dept : String) : Real
+        + success_rate() : Real
     }
 
 
     class Teacher
     {
-        + «Create» Teacher(dept : String)
         + add_teacher(dept : String)
-        + get_id() : Integer
-        + get_dept() : String
-        + get_mood() : Real
-        + set_mood(coeff : Real)
+        + rm_teacher_by_id(i : Integer)
+        + rm_teacher_by_dept(dept : String, nb : Integer)
+        + get_id(i : Integer) : Integer
+        + get_dept(i : Integer) : String
+        + get_mood(i : Integer) : Real
+        + set_mood(i : Integer, coeff : Real)
+        + compute_nb_by_dept(dept : String) : Integer
+        + avg_mood_by_dept(dept : String) : Real
+        + compute_nb() : Integer
+        + avg_mood() : Real
     }
 
     class Fund
     {
-        + «Create» Fund(source : String, amount : Real, destination : String?)
         + add_fund(source : String, amount : Real, destination : String?)
-        + get_id() : Integer
-        + get_source() : String
-        + get_amount() : Real
-        + get_destination() : String?
-        + set_destination() : String
+        + get_id(i : Integer) : Integer
+        + get_source(i : Integer) : String
+        + get_amount(i : Integer) : Real
+        + get_destination(i : Integer) : String?
+        + set_destination(i : Integer, destination : String)
+        + rm_fund_by_id(i : Integer)
+        + rm_fund_by_source(source : String)
+        + compute_amount_by_dept(dept : String) : Real
+        + compute_total() : Real
     }
 
     class StudentTableSQL
@@ -111,37 +126,20 @@ package controllers {
     package school {
         class Study
         {
-            + rm_student_by_id(i : Integer)
-            + rm_student_by_dept(dept : String, nb : Integer)
             + populate_year()
             + populate_promo()
-            + compute_nb_by_dept(dept : String) : Integer
-            + avg_mood_by_dept(dept : String) : Real
-            + compute_nb() : Integer
-            + avg_mood() : Real
             + evaluate()
-            + success_rate_by_dept(dept : String) : Real
-            + success_rate() : Real
         }
 
         class Teaching
         {
-            + rm_teacher_by_id(i : Integer)
-            + rm_teacher_by_dept(dept : String, nb : Integer)
-            + compute_nb_by_dept(dept : String) : Integer
-            + avg_mood_by_dept(dept : String) : Real
-            + compute_nb() : Integer
-            + avg_mood() : Real
             + populate()
         }
     }
     package management {
         class Financing
         {
-            + rm_fund_by_id(i : Integer)
-            + rm_fund_by_source(source : String)
-            + compute_amount_by_dept(dept : String) : Real
-            + compute_total() : Real
+
         }
 
         abstract class Renovation {
@@ -195,10 +193,10 @@ RenovIUTApp ...> views
 'views ....> models
 'views ...> controllers
 
-Study *--> "*\n students" Student
-Teaching *--> "*\n teachers" Teacher
-Renovation *---> "*\n buildings" Building
-Financing *--> "*\n funds" Fund
+Study ..> Student
+Teaching ..> Teacher
+Renovation ...> Building
+Financing ..> Fund
 
 Student ..> StudentTableSQL
 Teacher ..> TeacherTableSQL
