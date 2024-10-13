@@ -173,6 +173,7 @@ package models
 
     'Class static manipuler les données des étudiants'
     class Student 
+<<<<<<< HEAD
     {      
         'selection par id'      
         + rm_student(i : Integer)
@@ -193,12 +194,32 @@ package models
         'selection global'
         + avg_mood() : Real
         + compute_nb() : Integer
+=======
+    {
+        + add_student(dept : String)
+        + rm_student_by_id(i : Integer)
+        + rm_student_by_dept(dept : String, nb : Integer)
+        + get_id(i : Integer) : Integer
+        + get_year(i : Integer) : Integer
+        + get_dept(i : Integer) : String
+        + get_mood(i : Integer) : Real
+        + get_lvl(i : Integer) : Real
+        + set_year(i : Integer, year : Integer)
+        + set_mood(i : Integer, coeff : Real)
+        + set_level(i : Integer, coeff : Real)
+        + compute_nb_by_dept(dept : String) : Integer
+        + avg_mood_by_dept(dept : String) : Real
+        + compute_nb() : Integer
+        + avg_mood() : Real
+        + success_rate_by_dept(dept : String) : Real
+>>>>>>> 1d8229582efa7ab7b5f01465ff1601bb28ec2cf0
         + success_rate() : Real
     }
 
     'Class static manipuler les données des proffesseurs'
     class Teacher
     {
+<<<<<<< HEAD
         'selection par id' 
         + rm_teacher(i : Integer)
         + add_teacher(dept : String)
@@ -211,19 +232,41 @@ package models
         + compute_nb_by_dept(dept : String) : Integer
         + avg_mood_by_dept(dept : String) : Real
         'selection global'
+=======
+        + add_teacher(dept : String)
+        + rm_teacher_by_id(i : Integer)
+        + rm_teacher_by_dept(dept : String, nb : Integer)
+        + get_id(i : Integer) : Integer
+        + get_dept(i : Integer) : String
+        + get_mood(i : Integer) : Real
+        + set_mood(i : Integer, coeff : Real)
+        + compute_nb_by_dept(dept : String) : Integer
+        + avg_mood_by_dept(dept : String) : Real
+>>>>>>> 1d8229582efa7ab7b5f01465ff1601bb28ec2cf0
         + compute_nb() : Integer
         + avg_mood() : Real
     }
 
     class Fund
     {
-        + «Create» Fund(source : String, amount : Real, destination : String?)
         + add_fund(source : String, amount : Real, destination : String?)
+<<<<<<< HEAD
         + get_id() : Integer
         + get_source() : String
         + get_amount() : Real
         + get_destination() : String
         + set_destination() : String
+=======
+        + get_id(i : Integer) : Integer
+        + get_source(i : Integer) : String
+        + get_amount(i : Integer) : Real
+        + get_destination(i : Integer) : String?
+        + set_destination(i : Integer, destination : String)
+        + rm_fund_by_id(i : Integer)
+        + rm_fund_by_source(source : String)
+        + compute_amount_by_dept(dept : String) : Real
+        + compute_total() : Real
+>>>>>>> 1d8229582efa7ab7b5f01465ff1601bb28ec2cf0
     }
 
     'Table SQL des étudiants'
@@ -250,7 +293,45 @@ package models
         + _id : Integer <<PK>>
         + _amount : Real
         + _source : String
+<<<<<<< HEAD
         + _destination : String
+=======
+        + _destination : String?
+    }
+}
+
+package controllers {
+    package school {
+        class Study
+        {
+            + populate_year()
+            + populate_promo()
+            + evaluate()
+        }
+
+        class Teaching
+        {
+            + populate()
+        }
+    }
+    package management {
+        class Financing
+        {
+
+        }
+
+        abstract class Renovation {
+
+        }
+
+        class Planned {
+
+        }
+
+        class Urgent {
+
+        }
+>>>>>>> 1d8229582efa7ab7b5f01465ff1601bb28ec2cf0
     }
 
     'Table SQL des notifications'
@@ -269,11 +350,18 @@ RenovIUTApp ...> views
 'views ....> models
 'views ...> controllers
 
+<<<<<<< HEAD
 'Les controllers Study et Teaching utilise Students et Teachers pour manipuler les données du modèle'
 Study ..> "*\n students" Student  
 Teaching ..> "*\n teachers" Teacher
 Renovation *---> "*\n buildings" Building
 Financing *--> "*\n funds" Fund
+=======
+Study ..> Student
+Teaching ..> Teacher
+Renovation ...> Building
+Financing ..> Fund
+>>>>>>> 1d8229582efa7ab7b5f01465ff1601bb28ec2cf0
 
 Student ..> StudentTableSQL
 Teacher ..> TeacherTableSQL
