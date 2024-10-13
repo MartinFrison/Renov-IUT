@@ -10,13 +10,138 @@ class RenovIUTApp
     + {static} main( args:String[] )
 }
 
+
+
+package views {
+    package nodes {
+        class BuildingView
+        {
+            - selectedBuilding : String
+            + show_option()
+            + hire_teacher()
+            + fire_teacher()
+            + turn_on_heating()
+            + turn_off_heating()
+            + hire_maintenance_agent()
+            + fire_maintenance_agent()
+            + start_renovation()
+        }
+
+        class Budget
+        {
+        }
+
+        class Satisfaction
+        {
+        }
+    }
+    package scenes 
+    {
+        class Start {
+        }
+
+        class Menu {
+        }
+
+        class GameOver {
+        }
+    }
+}
+
+
+
+
+
+
+package controllers 
+{
+    class TimeManagement
+    {
+        - _year : Integer
+        - _month : Integer
+        - _day : Integer
+        + <<Create>> TimeManagement()
+        + tick()
+        + random_event()
+        + get_season()
+        + end_year()
+        + start_election()
+        + pause(p : Bool)
+    }
+
+    package school 
+    {
+
+        'Class static pour gérer les étudiants'
+        class Study
+        {
+            + populate_year()
+            + populate_promo(dept : String, year : Integer)
+            + evaluate()
+            'test pour chaque étudiant s'il passe l'année
+            + next_year()
+        }
+
+        'Class static pour gérer les proffesseurs'
+        class Teaching
+        {
+            + hire_teacher(dept : String)
+            + fire_teacher(dept : String)
+            + populate()
+        }
+    }
+
+    package management {
+        class Financing
+        {
+            + rm_fund_by_id(i : Integer)
+            + rm_fund_by_source(source : String)
+            + compute_amount_by_dept(dept : String) : Real
+            + compute_total() : Real
+        }
+
+        abstract class Renovation {
+
+        }
+
+        class Planned {
+
+        }
+
+        class Urgent {
+
+        }
+    }
+
+    'class qui simule l'éléction et renvoie le détail du résultat '
+    class Election
+    {
+        + election_won() : Bool
+        + popularity_rate() : Real
+        + popularity_rate_by_dept(dept : String) : Real
+        + popularity_rate_teacher() : Real
+        + popularity_rate_teacher_by_dept(dept : String) : Real
+        + popularity_rate_student() : Real
+        + popularity_rate_student_by_dept(dept : String) : Real
+    }
+}
+
+
+
+
+
+
 package models 
 {
     package building
     {
         abstract class Building 
         {
-            + _age : Integer
+            - _age : Integer
+            - _isolation : Integer
+            - _place : Integer
+            - _heating : Bool
+            - _nbMaintenanceAgent : Integer
             + getCode() : String
         }
 
@@ -46,9 +171,11 @@ package models
         }
     }
 
+    'Class static manipuler les données des étudiants'
     class Student 
-    {
-        + «Create» Student(dept : String)
+    {      
+        'selection par id'      
+        + rm_student(i : Integer)
         + add_student(dept : String)
         + get_id() : Integer
         + get_year() : Integer
@@ -58,17 +185,34 @@ package models
         + set_year(year : Integer)
         + set_mood(coeff : Real)
         + set_level(coeff : Real)
+        'selection par departement'
+        + rm_student_by_dept(dept : String, nb : Integer)
+        + avg_mood_by_dept(dept : String) : Real
+        + success_rate_by_dept(dept : String) : Real
+        + compute_nb_by_dept(dept : String) : Integer
+        'selection global'
+        + avg_mood() : Real
+        + compute_nb() : Integer
+        + success_rate() : Real
     }
 
-
+    'Class static manipuler les données des proffesseurs'
     class Teacher
     {
-        + «Create» Teacher(dept : String)
+        'selection par id' 
+        + rm_teacher(i : Integer)
         + add_teacher(dept : String)
         + get_id() : Integer
         + get_dept() : String
         + get_mood() : Real
         + set_mood(coeff : Real)
+        'selection par departement'
+        + rm_teacher_by_dept(dept : String, nb : Integer)
+        + compute_nb_by_dept(dept : String) : Integer
+        + avg_mood_by_dept(dept : String) : Real
+        'selection global'
+        + compute_nb() : Integer
+        + avg_mood() : Real
     }
 
     class Fund
@@ -78,10 +222,11 @@ package models
         + get_id() : Integer
         + get_source() : String
         + get_amount() : Real
-        + get_destination() : String?
+        + get_destination() : String
         + set_destination() : String
     }
 
+    'Table SQL des étudiants'
     class StudentTableSQL
     {
         + _id : Integer <<PK>>
@@ -91,6 +236,7 @@ package models
         + _lvl : Real [0, 1]
     }
 
+    'Table SQL des proffesseurs'
     class TeacherTableSQL
     {
         + _id : Integer <<PK>>
@@ -98,105 +244,34 @@ package models
         + _mood : Real [0, 1]
     }
 
+    'Table SQL des financements'
     class FundTableSQL
     {
         + _id : Integer <<PK>>
         + _amount : Real
         + _source : String
-        + _destination : String?
-    }
-}
-
-package controllers {
-    package school {
-        class Study
-        {
-            + rm_student_by_id(i : Integer)
-            + rm_student_by_dept(dept : String, nb : Integer)
-            + populate_year()
-            + populate_promo()
-            + compute_nb_by_dept(dept : String) : Integer
-            + avg_mood_by_dept(dept : String) : Real
-            + compute_nb() : Integer
-            + avg_mood() : Real
-            + evaluate()
-            + success_rate_by_dept(dept : String) : Real
-            + success_rate() : Real
-        }
-
-        class Teaching
-        {
-            + rm_teacher_by_id(i : Integer)
-            + rm_teacher_by_dept(dept : String, nb : Integer)
-            + compute_nb_by_dept(dept : String) : Integer
-            + avg_mood_by_dept(dept : String) : Real
-            + compute_nb() : Integer
-            + avg_mood() : Real
-            + populate()
-        }
-    }
-    package management {
-        class Financing
-        {
-            + rm_fund_by_id(i : Integer)
-            + rm_fund_by_source(source : String)
-            + compute_amount_by_dept(dept : String) : Real
-            + compute_total() : Real
-        }
-
-        abstract class Renovation {
-
-        }
-
-        class Planned {
-
-        }
-
-        class Urgent {
-
-        }
+        + _destination : String
     }
 
-    class Election
+    'Table SQL des notifications'
+    class NotificationTableSQL
     {
-
+        + _id : Integer <<PK>>
+        + _message : String
     }
 }
 
-package views {
-    package nodes {
-        class BuildingView
-        {
-        }
 
-        class Budget
-        {
-        }
 
-        class Satisfaction
-        {
-        }
-    }
-    package scenes 
-    {
-        class Start {
-        }
-
-        class Menu {
-        }
-
-        class GameOver {
-        }
-    }
-}
 
 RenovIUTApp ...> views
 'controllers ..> models - déjà reflété par les liens de composition
 'views ....> models
 'views ...> controllers
 
-Study *--> "*\n students" Student
-Teaching *--> "*\n teachers" Teacher
+'Les controllers Study et Teaching utilise Students et Teachers pour manipuler les données du modèle'
+Study ..> "*\n students" Student  
+Teaching ..> "*\n teachers" Teacher
 Renovation *---> "*\n buildings" Building
 Financing *--> "*\n funds" Fund
 
@@ -204,14 +279,17 @@ Student ..> StudentTableSQL
 Teacher ..> TeacherTableSQL
 Fund ..> FundTableSQL
 
+'Il y a 5 département avec leur spécificités qui hérite de building'
 Building --|> IT
 Building --|> Communication
 Building --|> Marketing
 Building --|> Chemistry
 Building --|> Engineering
 
+
 Renovation -|> Urgent
 Renovation -|> Planned
+
 
 Election ...> Study
 Election ...> Teaching
