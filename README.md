@@ -8,16 +8,19 @@
 Vous incarnez le directeur de l'IUT Robert Schuman qui, souhaitant se faire réélire, intervient sur le campus d'Illkirch pour assurer des réparations d'urgence - sans pour autant négliger les rénovations planifiées des bâtiments.
 
 ### Captures d'écran
-- Fenêtre principale
-![Campus](visuels/captures/main_window.png)
+<p style="text-align: center;">![Campus](visuels/captures/main_window.png)</p>
 
-- Informations liées à un bâtiment
-![Bâtiment X](visuels/captures/building_info.png)
+<p style="text-align: center;"><small>Fig.1. Fenêtre principale</small></p>
 
-- Notifications
-![Mission](visuels/captures/mission.png)
+<p style="text-align: center;">![Bâtiment X](visuels/captures/building_info.png)</p>
+
+<p style="text-align: center;"><small>Fig.2. Informations liées à un bâtiment</small></p>
+
+<p style="text-align: center;">![Mission](visuels/captures/mission.png)
 ![Urgence](visuels/captures/urgent.png)
-![Bilan](visuels/captures/result.png)
+![Bilan](visuels/captures/result.png)</p>
+
+<p style="text-align: center;"><small>Fig.3-5. Notifications</small></p>
 
 ### Installation et exécution
 
@@ -96,6 +99,45 @@ La problématique du jeu se construit autour de quatre éléments :
 
 #### Scénarios
 
+<p style="text-align: center;"><img src="visuels/deroulement_du_jeu.jpg" alt="Déroulement du jeu" width="600" /></p>
+
+<p style="text-align: center;"><small>Fig.6. Schéma du déroulement du jeu</small></p>
+
+Une partie dure quelques minutes (sachant qu'il faut rajouter à sa durée nominale le temps que vous prenez pour faire vos choix).
+
+Le schéma ci-dessus résume les conditions de victoire. En effet, il faut remporter la majorité des voix d'enseignants et d'étudiants faisant partie du Conseil d'administration de l'IUT, pondérées par le nombre des uns et des autres. Les votes sont calculés par bâtiment.
+
+À noter que dans RenovIUT, il n'y a pas de second tour, pourtant possible dans la vraie vie dans certaines situations.
+
+Les résultats du vote résultent de plusieurs questionnements :
+
+- pour les étudiants :
+	- le taux de réussite _(s'il est trop bas, des étudiants partent et l'établissement change de carrure, et très probablement de président aussi)_.
+
+- pour tout le monde :
+	- de l'état des infrastructures _(personne n'a envie de travailler dans un bâtiment où il gèle en hiver et étouffe en été, sans matériel nécessaire ... ;)_
+	- du budget restant _(un établissement qui n'a plus de moyens se pose forcément des questions sur ces responsables ;)_
+	- de la satisfaction _(pas individualisée, c'est la moyenne par bâtiment puis la moyenne totale qui est prise en compte. En revanche, les étudiants peuvent être moins ou plus satisfaits que les enseignants, ces deux catégories n'étant pas forcément du même avis ;)_
+	- du nombre de diplômes obtenus pendant le mandat _(présumant que les compétences des diplômés sont de haut niveau - cf. le taux de réussite, c'est un facteur non négligeable.)_
+
+Nous proposons trois niveaux de difficulté :
+
+- **_facile_**
+
+	Est destiné aux débutants. Un tuto expliquant les commandes précède la partie. Les moyens de départ (état des bâtiments et des infrastructures, budget, satisfaction des étudiants et des enseignants) sont au maximum, alors que les aléas sont réduits : un défi par partie.
+
+- **_moyen_**
+
+	S'adresse à un joueur qui s'était déjà essayé au jeu. Ne fournit pas de tutoriel et permet de tester ses choix dans une situation un peu moins confortable, avec plusieurs aléas à la carte.
+
+- **_difficile_**
+
+	Les moyens initiaux sont bien limités - mais cela peut aussi arriver en dehors du jeu ! En outre, le niveau difficiel vous demande de réagir à plusieurs sollicitations urgentes au cours d'une partie.
+
+À l'issue d'une partie :
+
+- Soit vous êtes réélu, auquel cas vous gagnez, avec un score plus ou moins élevé ;
+- Soit vous n'êtes pas réélu : ne baissez pas les bras, n'hésitez pas à recommencer si cela vous a plu !
 
 ### Contraintes de développement
 
