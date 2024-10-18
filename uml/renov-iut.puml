@@ -5,299 +5,257 @@ skinparam classAttributeIconSize 0
 skinparam classFontStyle Bold
 hide enum methods
 
-class RenovIUTApp 
-{
-    + {static} main( args:String[] )
+class RenovIUTApp {
+    + {static} main(args: String[])
 }
 
-
-
-package views {
-    package nodes {
-        class BuildingView
-        {
-            - selectedBuilding : String
-            + show_option()
-            + hire_teacher()
-            + fire_teacher()
-            + turn_on_heating()
-            + turn_off_heating()
-            + hire_maintenance_agent()
-            + fire_maintenance_agent()
-            + start_renovation()
+package vues {
+    package noeuds {
+        class VueBatiment {
+            - batimentSelectionne: String
+            + afficher_options()
+            + recruter_professeur()
+            + licencier_professeur()
+            + allumer_chauffage()
+            + eteindre_chauffage()
+            + recruter_agent_maintenance()
+            + licencier_agent_maintenance()
+            + lancer_renovation()
         }
 
-        class Budget
-        {
+        class Budget {
+            + afficher_budget()
+            + ajuster_budget(difficulte: Difficulte)
         }
 
-        class Satisfaction
-        {
+        class Satisfaction {
+            + afficher_satisfaction()
+            + ajuster_satisfaction(difficulte: Difficulte)
         }
     }
-    package scenes 
-    {
-        class Start {
+
+    package scenes {
+        class Demarrage {
+            + afficher_ecran_demarrage()
         }
 
         class Menu {
+            + afficher_menu()
+            + commencer_jeu(difficulte: Difficulte)
+            + quitter_jeu()
         }
 
-        class GameOver {
+        class FinDeJeu {
+            + afficher_fin_de_jeu()
+            + redemarrer_jeu()
         }
     }
 }
 
-
-
-
-
-
-package controllers 
-{
-    class TimeManagement
-    {
-        - _year : Integer
-        - _month : Integer
-        - _day : Integer
-        + <<Create>> TimeManagement()
-        + tick()
-        + random_event()
-        + get_season()
-        + end_year()
-        + start_election()
+package controleurs {
+    class GestionTemps {
+        - annee : Integer
+        - mois : Integer
+        - jour : Integer
+        - difficulte : Difficulte
+        + <<Créer>> GestionTemps(difficulte: Difficulte)
+        + tic()
+        + evenement_aleatoire()
+        + obtenir_saison()
+        + fin_annee()
+        + lancer_election()
         + pause(p : Bool)
     }
 
-    package school 
-    {
-
-        'Class static pour gérer les étudiants'
-        class Study
-        {
-            + populate_year()
-            + populate_promo(dept : String, year : Integer)
-            + evaluate()
-            'test pour chaque étudiant s'il passe l'année
-            + next_year()
+    package etablissement {
+        class Enseignement {
+            + recruter_professeur(dept : String)
+            + licencier_professeur(dept : String)
+            + peupler()
         }
 
-        'Class static pour gérer les proffesseurs'
-        class Teaching
-        {
-            + hire_teacher(dept : String)
-            + fire_teacher(dept : String)
-            + populate()
+        class Etude {
+            + peupler_annee()
+            + peupler_promo(dept : String, annee : Integer)
+            + evaluer()
+            + annee_suivante()
         }
     }
 
-    package management {
-        class Financing
-        {
-            + rm_fund_by_id(i : Integer)
-            + rm_fund_by_source(source : String)
-            + compute_amount_by_dept(dept : String) : Real
-            + compute_total() : Real
+    package gestion {
+        class Financement {
+            + supprimer_fond_par_id(i : Integer)
+            + supprimer_fond_par_source(source : String)
+            + calculer_montant_par_dept(dept : String) : Real
+            + calculer_total() : Real
+            + ajuster_fonds(difficulte: Difficulte)
         }
 
         abstract class Renovation {
-
+            + planifier_renovation()
         }
 
-        class Planned {
-
+        class Planifiee {
+            + planifier_pour_annee_prochaine()
         }
 
-        class Urgent {
-
+        class Urgente {
+            + executer_renovation_urgente()
         }
     }
 
-    'class qui simule l'éléction et renvoie le détail du résultat '
-    class Election
-    {
-        + election_won() : Bool
-        + popularity_rate() : Real
-        + popularity_rate_by_dept(dept : String) : Real
-        + popularity_rate_teacher() : Real
-        + popularity_rate_teacher_by_dept(dept : String) : Real
-        + popularity_rate_student() : Real
-        + popularity_rate_student_by_dept(dept : String) : Real
+    class Election {
+        + election_gagnee() : Bool
+        + taux_popularite() : Real
+        + taux_popularite_par_dept(dept : String) : Real
+        + taux_popularite_professeur() : Real
+        + taux_popularite_professeur_par_dept(dept : String) : Real
+        + taux_popularite_etudiant() : Real
+        + taux_popularite_etudiant_par_dept(dept : String) : Real
     }
 }
 
-
-
-
-
-
-package models 
-{
-    package building
-    {
-        abstract class Building 
-        {
-            - _age : Integer
-            - _isolation : Integer
-            - _place : Integer
-            - _heating : Bool
-            - _nbMaintenanceAgent : Integer
-            + getCode() : String
+package modeles {
+    package batiment {
+        abstract class Batiment {
+            - age : Integer
+            - isolation : Integer
+            - surface : Integer
+            - chauffage : Bool
+            - nbAgentsMaintenance : Integer
+            + obtenir_code() : String
         }
 
-        class IT
-        {
-            + <<create>>IT()
+        class Informatique {
+            + <<créer>> Informatique()
+            + fonctionnalite_specifique_informatique()
         }
 
-        class Communication
-        {
-            + <<create>>Communication()
+        class Communication {
+            + <<créer>> Communication()
+            + fonctionnalite_specifique_communication()
         }
 
-        class Marketing
-        {
-            + <<create>>Marketing()
+        class Marketing {
+            + <<créer>> Marketing()
+            + fonctionnalite_specifique_marketing()
         }
 
-        class Chemistry
-        {
-            + <<create>>Chemistry()
+        class Chimie {
+            + <<créer>> Chimie()
+            + fonctionnalite_specifique_chimie()
         }
 
-        class Engineering
-        {
-            + <<create>>Engineering()
+        class Ingenierie {
+            + <<créer>> Ingenierie()
+            + fonctionnalite_specifique_ingenierie()
         }
     }
 
-    'Class static manipuler les données des étudiants'
-    class Student 
-    {      
-        'selection par id'      
-        + rm_student(i : Integer)
-        + add_student(dept : String)
-        + get_id() : Integer
-        + get_year() : Integer
-        + get_dept() : String
-        + get_mood() : Real
-        + get_lvl() : Real
-        + set_year(year : Integer)
-        + set_mood(coeff : Real)
-        + set_level(coeff : Real)
-        'selection par departement'
-        + rm_student_by_dept(dept : String, nb : Integer)
-        + avg_mood_by_dept(dept : String) : Real
-        + success_rate_by_dept(dept : String) : Real
-        + compute_nb_by_dept(dept : String) : Integer
-        'selection global'
-        + avg_mood() : Real
-        + compute_nb() : Integer
-        + success_rate() : Real
+    class Etudiant {
+        + supprimer_etudiant(i : Integer)
+        + ajouter_etudiant(dept : String)
+        + obtenir_id() : Integer
+        + obtenir_annee() : Integer
+        + obtenir_dept() : String
+        + obtenir_humeur() : Real
+        + obtenir_niveau() : Real
+        + definir_annee(annee : Integer)
+        + definir_humeur(coeff : Real)
+        + definir_niveau(coeff : Real)
+        + supprimer_etudiant_par_dept(dept : String, nb : Integer)
+        + humeur_moyenne_par_dept(dept : String) : Real
+        + taux_reussite_par_dept(dept : String) : Real
+        + humeur_moyenne() : Real
+        + calculer_nb() : Integer
+        + taux_reussite() : Real
     }
 
-    'Class static manipuler les données des proffesseurs'
-    class Teacher
-    {
-        'selection par id' 
-        + rm_teacher(i : Integer)
-        + add_teacher(dept : String)
-        + get_id() : Integer
-        + get_dept() : String
-        + get_mood() : Real
-        + set_mood(coeff : Real)
-        'selection par departement'
-        + rm_teacher_by_dept(dept : String, nb : Integer)
-        + compute_nb_by_dept(dept : String) : Integer
-        + avg_mood_by_dept(dept : String) : Real
-        'selection global'
-        + compute_nb() : Integer
-        + avg_mood() : Real
+    class Professeur {
+        + supprimer_professeur(i : Integer)
+        + ajouter_professeur(dept : String)
+        + obtenir_id(id: Integer) : Integer  # Modifié
+        + obtenir_dept(id: Integer) : String  # Modifié
+        + obtenir_humeur(id: Integer) : Real  # Modifié
+        + definir_humeur(coeff : Real)
+        + supprimer_professeur_par_dept(dept : String, nb : Integer)
+        + calculer_nb_par_dept(dept : String) : Integer
+        + humeur_moyenne_par_dept(dept : String) : Real
+        + calculer_nb() : Integer
+        + humeur_moyenne() : Real
     }
 
-    class Fund
-    {
-        + «Create» Fund(source : String, amount : Real, destination : String?)
-        + add_fund(source : String, amount : Real, destination : String?)
-        + get_id() : Integer
-        + get_source() : String
-        + get_amount() : Real
-        + get_destination() : String
-        + set_destination() : String
+    class Fond {
+        + <<Créer>> Fond(source : String, montant : Real, destination : String?)
+        + ajouter_fond(source : String, montant : Real, destination : String?)
+        + obtenir_id(id: Integer) : Integer  # Modifié
+        + obtenir_source(id: Integer) : String  # Modifié
+        + obtenir_montant(id: Integer) : Real  # Modifié
+        + obtenir_destination(id: Integer) : String  # Modifié
+        + definir_destination(dest : String)
     }
 
-    'Table SQL des étudiants'
-    class StudentTableSQL
-    {
-        + _id : Integer <<PK>>
-        + _year : Integer [1..3]
-        + _dept : String
-        + _mood : Real [0, 1]
-        + _lvl : Real [0, 1]
+    class TableEtudiantsSQL {
+        + id : Integer <<PK>>
+        + annee : Integer [1..3]
+        + dept : String
+        + humeur : Real [0, 1]
+        + niveau : Real [0, 1]
     }
 
-    'Table SQL des proffesseurs'
-    class TeacherTableSQL
-    {
-        + _id : Integer <<PK>>
-        + _dept : String
-        + _mood : Real [0, 1]
+    class TableProfesseursSQL {
+        + id : Integer <<PK>>
+        + dept : String
+        + humeur : Real [0, 1]
     }
 
-    'Table SQL des financements'
-    class FundTableSQL
-    {
-        + _id : Integer <<PK>>
-        + _amount : Real
-        + _source : String
-        + _destination : String
+    class TableFondsSQL {
+        + id : Integer <<PK>>
+        + montant : Real
+        + source : String
+        + destination : String
     }
 
-    'Table SQL des notifications'
-    class NotificationTableSQL
-    {
-        + _id : Integer <<PK>>
-        + _message : String
+    class TableNotificationsSQL {
+        + id : Integer <<PK>>
+        + message : String
     }
 }
 
+class Difficulte {
+    + niveau : String
+    + ajuster_budget(facteur : Real)
+    + ajuster_satisfaction(facteur : Real)
+    + ajuster_probabilite_evenement(facteur : Real)
+}
 
+RenovIUTApp ...> vues
+VueBatiment ...> Batiment
+Budget ...> Financement
+Satisfaction ...> Etude
+Menu ...> gestion
+FinDeJeu ..> Election
+Etude ..> Etudiant
+Enseignement ..> Professeur
+Financement ..> Fond
+Renovation *---> Batiment
+Etudiant ..> TableEtudiantsSQL
+Professeur ..> TableProfesseursSQL
+Fond ..> TableFondsSQL
 
+Batiment --|> Informatique
+Batiment --|> Communication
+Batiment --|> Marketing
+Batiment --|> Chimie
+Batiment --|> Ingenierie
 
-RenovIUTApp ...> views
-'controllers ..> models - déjà reflété par les liens de composition
-'views ....> models
-'views ...> controllers
+Renovation -|> Urgente
+Renovation -|> Planifiee
 
-'Les controllers Study et Teaching utilise Students et Teachers pour manipuler les données du modèle'
-Study ..> "*\n students" Student  
-Teaching ..> "*\n teachers" Teacher
-Renovation *---> "*\n buildings" Building
-Financing *--> "*\n funds" Fund
+GestionTemps ..> Difficulte
+Budget ..> Difficulte
+Satisfaction ..> Difficulte
+Financement ..> Difficulte
+Menu ..> Difficulte
 
-Student ..> StudentTableSQL
-Teacher ..> TeacherTableSQL
-Fund ..> FundTableSQL
-
-'Il y a 5 département avec leur spécificités qui hérite de building'
-Building --|> IT
-Building --|> Communication
-Building --|> Marketing
-Building --|> Chemistry
-Building --|> Engineering
-
-
-Renovation -|> Urgent
-Renovation -|> Planned
-
-
-Election ...> Study
-Election ...> Teaching
-Election ...> Financing
-
-BuildingView ...> Building
-Budget ...> Financing
-Satisfaction ...> school
-Menu ...> management
-GameOver ..> Election
 @enduml
