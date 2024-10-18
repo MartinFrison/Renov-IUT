@@ -120,6 +120,7 @@ package controleurs
 
         abstract class Evenement 
         {
+
             + planifier Evenement()
         }
 
@@ -148,6 +149,13 @@ package controleurs
 
 package modeles 
 {
+    class Challenge {
+      - time (jours : Integer)
+      - isReproductible (reproductible : Boolean)
+      - isCallingForAction (needsAction : Boolean)
+      - area (code : String)
+    }
+
     package batiment 
     {
         abstract class Batiment 
