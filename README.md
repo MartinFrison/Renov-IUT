@@ -1,7 +1,7 @@
 # T3 - RenovIUT
 
 - Nom du groupe : Coruscant
-- Membres du groupe : [Adrien AKGUL](https://git.unistra.fr/aakgul), [Yasmine CHETTATI](https://git.unistra.fr/ychettati), [Elena FRISON](https://git.unistra.fr/e.frison), [Martin FRISON](https://git.unistra.fr/martin.frison)
+- Membres du groupe : [Yasmine CHETTATI](https://git.unistra.fr/ychettati), [Elena FRISON](https://git.unistra.fr/e.frison), [Martin FRISON](https://git.unistra.fr/martin.frison)
 
 ## Présentation du projet
 
@@ -9,7 +9,7 @@ Vous incarnez le directeur de l'IUT Robert Schuman qui, souhaitant se faire ré�
 
 ### Captures d'écran
 - Fenêtre principale
-![Fenêtre principale](visuels/captures/main_window.png)
+![Campus](visuels/captures/main_window.png)
 
 - Informations liées à un bâtiment
 ![Bâtiment X](visuels/captures/building_info.png)
@@ -99,12 +99,14 @@ La problématique du jeu se construit autour de quatre éléments :
 
 ### Contraintes de développement
 
-Ce jeu a été développé avec le moteur Godot Engine.
+Ce jeu a été développé avec le moteur [Godot Engine](https://godotengine.org/).
 
-Le code est modularisé en suivant le modèle MVC :
+Le code est modularisé suivant le patron de conception [MVC](https://www.geeksforgeeks.org/mvc-design-pattern/), tout en respectant l'organisation d'un projet Godot :
 
-- Les vues et contrôleurs se trouvent dans le dossier `scènes`.
-- Le modèle est stocké dans le dossier `scripts`.
-
+- Les vues, les contrôleurs et les modèles se trouvent dans les répertoires dédiés `views/`, `controllers/` et `models/`, respectivement.
+- Les **_vues_** sont scindées en `scenes/` et `nodes/`.
+- Les **_contrôleurs_** assurent le traitement des données et le déroulement du jeu.
+- Les **_modèles_** sont indépendants et ne sont que consultés par les vues (i.e. l'interface utilisateur) et modifiés par les contrôleurs (i.e. la logique du jeu).
+- Les **_données_** sont stockées dans des tables SQL (_TeacherSQLTable_, _StudentSQLTable_, _FundSQLTable_ et _NotificationSQLTable_).
 
 ### Fonctionnalités et scénarios avancés
