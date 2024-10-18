@@ -5,14 +5,18 @@ skinparam classAttributeIconSize 0
 skinparam classFontStyle Bold
 hide enum methods
 
-class RenovIUTApp {
+class RenovIUTApp 
+{
     + {static} main(args: String[])
 }
 
-package vues {
-    package noeuds {
-        class VueBatiment {
-            - batimentSelectionne: String
+package vues 
+{
+    package noeuds 
+    {
+        class VueBatiment 
+        {
+            - batimentSelectionne : String
             + afficher_options()
             + recruter_professeur()
             + licencier_professeur()
@@ -20,40 +24,58 @@ package vues {
             + eteindre_chauffage()
             + recruter_agent_maintenance()
             + licencier_agent_maintenance()
-            + lancer_renovation()
+            + lancer Evenement()
+            + afficher_info_batiment()
         }
 
-        class Budget {
+        class Statistique
+        {
             + afficher_budget()
-            + ajuster_budget(difficulte: Difficulte)
+            + afficher_satisfaction()
+            + afficher_satisfaction_proffesseur()
+            + afficher_satisfaction_etudiant()
+            + afficher_taux_reussite()
         }
 
-        class Satisfaction {
-            + afficher_satisfaction()
-            + ajuster_satisfaction(difficulte: Difficulte)
+        class ChoixEvenement()
+        {
+            - choixListe : String[*]
+            - choixSelectionner : Integer
+            + <<create>> ChoixEvenement()
+            + definirChoix(choix : Integer)
+            + envoyerChoix(choix : Integer)
+            
         }
     }
 
-    package scenes {
-        class Demarrage {
+    package scenes 
+    {
+        class Demarrage 
+        {
             + afficher_ecran_demarrage()
+            + choix_difficulte()
+            + lancer_jeu()
         }
 
-        class Menu {
+        class Menu 
+        {
             + afficher_menu()
             + commencer_jeu(difficulte: Difficulte)
             + quitter_jeu()
         }
 
-        class FinDeJeu {
+        class FinDeJeu 
+        {
             + afficher_fin_de_jeu()
             + redemarrer_jeu()
         }
     }
 }
 
-package controleurs {
-    class GestionTemps {
+package controleurs 
+{
+    class GestionTemps 
+    {
         - annee : Integer
         - mois : Integer
         - jour : Integer
@@ -67,14 +89,17 @@ package controleurs {
         + pause(p : Bool)
     }
 
-    package etablissement {
-        class Enseignement {
+    package etablissement 
+    {
+        class Enseignement 
+        {
             + recruter_professeur(dept : String)
             + licencier_professeur(dept : String)
             + peupler()
         }
 
-        class Etude {
+        class Etude 
+        {
             + peupler_annee()
             + peupler_promo(dept : String, annee : Integer)
             + evaluer()
@@ -82,8 +107,10 @@ package controleurs {
         }
     }
 
-    package gestion {
-        class Financement {
+    package gestion 
+    {
+        class Financement 
+        {
             + supprimer_fond_par_id(i : Integer)
             + supprimer_fond_par_source(source : String)
             + calculer_montant_par_dept(dept : String) : Real
@@ -91,20 +118,24 @@ package controleurs {
             + ajuster_fonds(difficulte: Difficulte)
         }
 
-        abstract class Renovation {
-            + planifier_renovation()
+        abstract class Evenement 
+        {
+            + planifier Evenement()
         }
 
-        class Planifiee {
+        class Planifiee 
+        {
             + planifier_pour_annee_prochaine()
         }
 
-        class Urgente {
-            + executer_renovation_urgente()
+        class Urgente 
+        {
+            + executer Evenement_urgente()
         }
     }
 
-    class Election {
+    class Election 
+    {
         + election_gagnee() : Bool
         + taux_popularite() : Real
         + taux_popularite_par_dept(dept : String) : Real
@@ -115,9 +146,12 @@ package controleurs {
     }
 }
 
-package modeles {
-    package batiment {
-        abstract class Batiment {
+package modeles 
+{
+    package batiment 
+    {
+        abstract class Batiment 
+        {
             - age : Integer
             - isolation : Integer
             - surface : Integer
@@ -126,33 +160,39 @@ package modeles {
             + obtenir_code() : String
         }
 
-        class Informatique {
+        class Informatique 
+        {
             + <<créer>> Informatique()
             + fonctionnalite_specifique_informatique()
         }
 
-        class Communication {
+        class Communication 
+        {
             + <<créer>> Communication()
             + fonctionnalite_specifique_communication()
         }
 
-        class Marketing {
+        class Marketing 
+        {
             + <<créer>> Marketing()
             + fonctionnalite_specifique_marketing()
         }
 
-        class Chimie {
+        class Chimie 
+        {
             + <<créer>> Chimie()
             + fonctionnalite_specifique_chimie()
         }
 
-        class Ingenierie {
+        class Ingenierie 
+        {
             + <<créer>> Ingenierie()
             + fonctionnalite_specifique_ingenierie()
         }
     }
 
-    class Etudiant {
+    class Etudiant 
+    {
         + supprimer_etudiant(i : Integer)
         + ajouter_etudiant(dept : String)
         + obtenir_id() : Integer
@@ -171,7 +211,8 @@ package modeles {
         + taux_reussite() : Real
     }
 
-    class Professeur {
+    class Professeur 
+    {
         + supprimer_professeur(i : Integer)
         + ajouter_professeur(dept : String)
         + obtenir_id(id: Integer) : Integer  # Modifié
@@ -185,7 +226,8 @@ package modeles {
         + humeur_moyenne() : Real
     }
 
-    class Fond {
+    class Fond 
+    {
         + <<Créer>> Fond(source : String, montant : Real, destination : String?)
         + ajouter_fond(source : String, montant : Real, destination : String?)
         + obtenir_id(id: Integer) : Integer  # Modifié
@@ -195,7 +237,8 @@ package modeles {
         + definir_destination(dest : String)
     }
 
-    class TableEtudiantsSQL {
+    class TableEtudiantsSQL 
+    {
         + id : Integer <<PK>>
         + annee : Integer [1..3]
         + dept : String
@@ -203,58 +246,62 @@ package modeles {
         + niveau : Real [0, 1]
     }
 
-    class TableProfesseursSQL {
+    class TableProfesseursSQL 
+    {
         + id : Integer <<PK>>
         + dept : String
         + humeur : Real [0, 1]
     }
 
-    class TableFondsSQL {
+    class TableFondsSQL 
+    {
         + id : Integer <<PK>>
         + montant : Real
         + source : String
         + destination : String
     }
 
-    class TableNotificationsSQL {
+    class TableNotificationsSQL 
+    {
         + id : Integer <<PK>>
         + message : String
     }
 }
 
-class Difficulte {
+class Difficulte 
+{
     + niveau : String
+    + definir_niveau(niv : String)
     + ajuster_budget(facteur : Real)
     + ajuster_satisfaction(facteur : Real)
     + ajuster_probabilite_evenement(facteur : Real)
 }
 
+
+
+
 RenovIUTApp ...> vues
 VueBatiment ...> Batiment
-Budget ...> Financement
-Satisfaction ...> Etude
 Menu ...> gestion
 FinDeJeu ..> Election
 Etude ..> Etudiant
 Enseignement ..> Professeur
-Financement ..> Fond
-Renovation *---> Batiment
+Financement ..> Fond 
+Evenement *---> Batiment
 Etudiant ..> TableEtudiantsSQL
 Professeur ..> TableProfesseursSQL
 Fond ..> TableFondsSQL
+ChoixEvenement o--> Evenement
 
 Batiment --|> Informatique
 Batiment --|> Communication
 Batiment --|> Marketing
 Batiment --|> Chimie
 Batiment --|> Ingenierie
-
-Renovation -|> Urgente
-Renovation -|> Planifiee
+Evenement -|> Urgente 
+Evenement -|> Planifiee
 
 GestionTemps ..> Difficulte
-Budget ..> Difficulte
-Satisfaction ..> Difficulte
 Financement ..> Difficulte
 Menu ..> Difficulte
 
