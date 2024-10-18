@@ -5,312 +5,317 @@ skinparam classAttributeIconSize 0
 skinparam classFontStyle Bold
 hide enum methods
 
-class RenovIUTApp 
+class RenovIUTApp
 {
     + {static} main(args: String[])
 }
 
-package vues 
+package views
 {
-    package noeuds 
+    package nodes
     {
-        class VueBatiment 
+        class BuildingView
         {
-            - batimentSelectionne : String
-            + afficher_options()
-            + recruter_professeur()
-            + licencier_professeur()
-            + allumer_chauffage()
-            + eteindre_chauffage()
-            + recruter_agent_maintenance()
-            + licencier_agent_maintenance()
-            + lancer Evenement()
-            + afficher_info_batiment()
+            - selected : String
+            + view_options()
+            + hire_teachers()
+            + fire_teachers()
+            + heating_on()
+            + heating_off()
+            + hire_maintenance_agents()
+            + fire_maintenance_agents()
+            + launchAction()
+            + view_building_info()
         }
 
-        class Statistique
+        class Stats
         {
-            + afficher_budget()
-            + afficher_satisfaction()
-            + afficher_satisfaction_proffesseur()
-            + afficher_satisfaction_etudiant()
-            + afficher_taux_reussite()
+            + view_budget()
+            + view_satisfaction()
+            + view_teacher_satisfaction()
+            + view_student_satisfaction()
+            + view_student_success()
         }
 
-        class ChoixEvenement()
+        class Reaction
         {
-            - choixListe : String[*]
-            - choixSelectionner : Integer
-            + <<create>> ChoixEvenement()
-            + definirChoix(choix : Integer)
-            + envoyerChoix(choix : Integer)
-            
+            - reactions : String[*]
+            - selected : Integer
+            + <<create>> Reaction()
+            + define_reaction(selected : Integer)
+            + send_reaction(selected : Integer)
+
         }
     }
 
-    package scenes 
+    package scenes
     {
-        class Demarrage 
+        class Start
         {
-            + afficher_ecran_demarrage()
-            + choix_difficulte()
-            + lancer_jeu()
+            + view_start_screen()
+            + select_difficulty()
+            + launch_game()
         }
 
-        class Menu 
+        class Menu
         {
-            + afficher_menu()
-            + commencer_jeu(difficulte: Difficulte)
-            + quitter_jeu()
+            + view_menu()
+            + start(difficulty: Difficulty)
+            + quit()
         }
 
-        class FinDeJeu 
+        class GameOver
         {
-            + afficher_fin_de_jeu()
-            + redemarrer_jeu()
+            + view_gameover()
+            + replay()
         }
     }
 }
 
-package controleurs 
+package controllers
 {
-    class GestionTemps 
-    {
-        - annee : Integer
-        - mois : Integer
-        - jour : Integer
-        - difficulte : Difficulte
-        + <<Créer>> GestionTemps(difficulte: Difficulte)
-        + tic()
-        + evenement_aleatoire()
-        + obtenir_saison()
-        + fin_annee()
-        + lancer_election()
-        + pause(p : Bool)
+		package timeline {
+			class TimeManagement
+			{
+					- year : Integer
+					- month : Integer
+					- day : Integer
+					- difficulty : Difficulty
+					+ <<create>> TimeManagement(difficulty: Difficulty)
+					+ tick()
+					+ random_event()
+					+ get_season()
+					+ end_of_year()
+					+ launch_vote()
+					+ pause(p : Boolean)
+			}
+
+					class Vote
+			{
+					+ election_gagnee() : Boolean
+					+ popularity_rate() : Real
+					+ popularity_rate_per_dept(dept : String) : Real
+					+ popularity_rate_among_teachers() : Real
+					+ popularity_rate_among_teachers_per_dept(dept : String) : Real
+					+ popularity_rate_among_students() : Real
+					+ popularity_rate_among_students_per_dept(dept : String) : Real
+			}
     }
 
-    package etablissement 
+    package school
     {
-        class Enseignement 
+        class Teaching
         {
-            + recruter_professeur(dept : String)
-            + licencier_professeur(dept : String)
-            + peupler()
+            + hire_teachers(dept : String)
+            + fire_teachers(dept : String)
+            + populate()
         }
 
-        class Etude 
+        class Study
         {
-            + peupler_annee()
-            + peupler_promo(dept : String, annee : Integer)
-            + evaluer()
-            + annee_suivante()
-        }
-    }
-
-    package gestion 
-    {
-        class Financement 
-        {
-            + supprimer_fond_par_id(i : Integer)
-            + supprimer_fond_par_source(source : String)
-            + calculer_montant_par_dept(dept : String) : Real
-            + calculer_total() : Real
-            + ajuster_fonds(difficulte: Difficulte)
-        }
-
-        abstract class Evenement 
-        {
-
-            + planifier Evenement()
-        }
-
-        class Planifiee 
-        {
-            + planifier_pour_annee_prochaine()
-        }
-
-        class Urgente 
-        {
-            + executer Evenement_urgente()
+            + populate()
+            + populate_promo(dept : String, year : Integer)
+            + evaluate()
+            + next_year()
         }
     }
 
-    class Election 
+    package management
     {
-        + election_gagnee() : Bool
-        + taux_popularite() : Real
-        + taux_popularite_par_dept(dept : String) : Real
-        + taux_popularite_professeur() : Real
-        + taux_popularite_professeur_par_dept(dept : String) : Real
-        + taux_popularite_etudiant() : Real
-        + taux_popularite_etudiant_par_dept(dept : String) : Real
+        class Financing
+        {
+            + rm_fund_by_id(i : Integer)
+            + rm_fund_by_source(source : String)
+            + compute_amount_per_dept(dept : String) : Real
+            + compute_total() : Real
+            + adjust_funds(difficulty: Difficulty)
+        }
+
+        abstract class Action
+        {
+            + planify_action()
+        }
+
+        class Planified
+        {
+            + planify_for_next_year()
+        }
+
+        class Urgent
+        {
+            + respond_to_urgent()
+        }
     }
+
+		class Difficulty
+		{
+				+ difficulty_level : String
+				+ set_level(lvl : String)
+				+ adjust_budget(coeff : Real)
+				+ adjust_satisfaction(coeff : Real)
+				+ adjust_call_probability(call : coeff : Real)
+		}
 }
 
-package modeles 
+package models
 {
-    class Challenge {
-      - time (jours : Integer)
-      - isReproductible (reproductible : Boolean)
-      - isCallingForAction (needsAction : Boolean)
-      - area (code : String)
+		package human {
+				class Student
+				{
+						+ rm_student(id : Integer)
+						+ add_student(dept : String)
+						+ get_id(id : Integer) : Integer
+						+ get_year(id : Integer) : Integer
+						+ get_dept(id : Integer) : String
+						+ get_mood(id : Integer) : Real
+						+ get_level(id : Integer) : Real
+						+ set_year(id : Integer, year : Integer)
+						+ set_mood(id : Integer, coeff : Real)
+						+ set_level(id : Integer, coeff : Real)
+						+ rm_students_by_dept(dept : String, nb : Integer)
+						+ compute_nb_per_dept(dept : String) : Integer
+						+ avg_mood_per_dept(dept : String) : Real
+						+ success_rate_per_dept(dept : String) : Real
+						+ compute_nb() : Integer
+						+ avg_mood() : Real
+						+ success_rate() : Real
+				}
+
+				class Teacher
+				{
+						+ rm_teacher(id : Integer)
+						+ add_teacher(dept : String)
+						+ get_id(id : Integer) : Integer
+						+ get_dept(id : Integer) : String
+						+ get_mood(id : Integer) : Real
+						+ set_mood(id : Integer, coeff : Real)
+						+ rm_teachers_by_dept(dept : String, nb : Integer)
+						+ compute_nb_per_dept(dept : String) : Integer
+						+ avg_mood_per_dept(dept : String) : Real
+						+ compute_nb() : Integer
+						+ avg_mood() : Real
+				}
     }
 
-    package batiment 
-    {
-        abstract class Batiment 
+		package material {
+				abstract class Building
         {
             - age : Integer
             - isolation : Integer
             - surface : Integer
-            - chauffage : Bool
-            - nbAgentsMaintenance : Integer
-            + obtenir_code() : String
+            - heating : Boolean
+            - maintenance_agents_nb : Integer
+            + get_code() : String
         }
 
-        class Informatique 
+        class IT
         {
-            + <<créer>> Informatique()
-            + fonctionnalite_specifique_informatique()
+            + <<create>> IT()
+            + it_func()
         }
 
-        class Communication 
+        class Communication
         {
-            + <<créer>> Communication()
-            + fonctionnalite_specifique_communication()
+            + <<create>> Communication()
+            + communication_func()
         }
 
-        class Marketing 
+        class Marketing
         {
-            + <<créer>> Marketing()
-            + fonctionnalite_specifique_marketing()
+            + <<create>> Marketing()
+            + marketing_func()
         }
 
-        class Chimie 
+        class Chemistry
         {
-            + <<créer>> Chimie()
-            + fonctionnalite_specifique_chimie()
+            + <<create>> Chemistry()
+            + chemistry_func()
         }
 
-        class Ingenierie 
+        class Engineering
         {
-            + <<créer>> Ingenierie()
-            + fonctionnalite_specifique_ingenierie()
+            + <<create>> Engineering()
+            + engineering_func()
         }
+
+				class Fund
+				{
+						+ add_fund(source : String, amount : Real, destination : String?)
+						+ get_id(id : Integer) : Integer
+						+ get_source(id : Integer) : String
+						+ get_amount(id : Integer) : Real
+						+ get_destination(id : Integer) : String?
+						+ set_destination(dest : String)
+				}
+
+				class Call
+				{
+					- name : String
+					- time : Integer
+					- is_reproductible : Boolean
+					- needs_action : Boolean
+					- area : String
+				}
     }
 
-    class Etudiant 
-    {
-        + supprimer_etudiant(i : Integer)
-        + ajouter_etudiant(dept : String)
-        + obtenir_id() : Integer
-        + obtenir_annee() : Integer
-        + obtenir_dept() : String
-        + obtenir_humeur() : Real
-        + obtenir_niveau() : Real
-        + definir_annee(annee : Integer)
-        + definir_humeur(coeff : Real)
-        + definir_niveau(coeff : Real)
-        + supprimer_etudiant_par_dept(dept : String, nb : Integer)
-        + humeur_moyenne_par_dept(dept : String) : Real
-        + taux_reussite_par_dept(dept : String) : Real
-        + humeur_moyenne() : Real
-        + calculer_nb() : Integer
-        + taux_reussite() : Real
-    }
-
-    class Professeur 
-    {
-        + supprimer_professeur(i : Integer)
-        + ajouter_professeur(dept : String)
-        + obtenir_id(id: Integer) : Integer  # Modifié
-        + obtenir_dept(id: Integer) : String  # Modifié
-        + obtenir_humeur(id: Integer) : Real  # Modifié
-        + definir_humeur(coeff : Real)
-        + supprimer_professeur_par_dept(dept : String, nb : Integer)
-        + calculer_nb_par_dept(dept : String) : Integer
-        + humeur_moyenne_par_dept(dept : String) : Real
-        + calculer_nb() : Integer
-        + humeur_moyenne() : Real
-    }
-
-    class Fond 
-    {
-        + <<Créer>> Fond(source : String, montant : Real, destination : String?)
-        + ajouter_fond(source : String, montant : Real, destination : String?)
-        + obtenir_id(id: Integer) : Integer  # Modifié
-        + obtenir_source(id: Integer) : String  # Modifié
-        + obtenir_montant(id: Integer) : Real  # Modifié
-        + obtenir_destination(id: Integer) : String  # Modifié
-        + definir_destination(dest : String)
-    }
-
-    class TableEtudiantsSQL 
+    class StudentSQLTable
     {
         + id : Integer <<PK>>
-        + annee : Integer [1..3]
+        + year : Integer [1..3]
         + dept : String
-        + humeur : Real [0, 1]
-        + niveau : Real [0, 1]
+        + mood : Real [0, 1]
+        + level : Real [0, 1]
     }
 
-    class TableProfesseursSQL 
+    class TeacherSQLTable
     {
         + id : Integer <<PK>>
         + dept : String
-        + humeur : Real [0, 1]
+        + mood : Real [0, 1]
     }
 
-    class TableFondsSQL 
+    class FundSQLTable
     {
         + id : Integer <<PK>>
-        + montant : Real
+        + amount : Real
         + source : String
         + destination : String
     }
 
-    class TableNotificationsSQL 
+    class NotificationSQLTable
     {
         + id : Integer <<PK>>
         + message : String
     }
 }
 
-class Difficulte 
-{
-    + niveau : String
-    + definir_niveau(niv : String)
-    + ajuster_budget(facteur : Real)
-    + ajuster_satisfaction(facteur : Real)
-    + ajuster_probabilite_evenement(facteur : Real)
-}
 
 
+RenovIUTApp ...> views
+BuildingView ...> Building
+Stats ....> models
+GameOver ..> Vote
+Study ..> Student
+Teaching ..> Teacher
+Financing ..> Fund
+Action *---> Building
+Student ..> StudentSQLTable
+Teacher ..> TeacherSQLTable
+Fund ....> FundSQLTable
+Call ....> NotificationSQLTable
+Reaction o--> Action
 
+Building --|> IT
+Building --|> Communication
+Building --|> Marketing
+Building --|> Chemistry
+Building --|> Engineering
+Action -|> Urgent
+Action -|> Planified
+Action *--> Call
 
-RenovIUTApp ...> vues
-VueBatiment ...> Batiment
-Menu ...> gestion
-FinDeJeu ..> Election
-Etude ..> Etudiant
-Enseignement ..> Professeur
-Financement ..> Fond 
-Evenement *---> Batiment
-Etudiant ..> TableEtudiantsSQL
-Professeur ..> TableProfesseursSQL
-Fond ..> TableFondsSQL
-ChoixEvenement o--> Evenement
-
-Batiment --|> Informatique
-Batiment --|> Communication
-Batiment --|> Marketing
-Batiment --|> Chimie
-Batiment --|> Ingenierie
-Evenement -|> Urgente 
-Evenement -|> Planifiee
-
-GestionTemps ..> Difficulte
-Financement ..> Difficulte
-Menu ..> Difficulte
+TimeManagement ..> Difficulty
+Financing ..> Difficulty
+Menu ..> Difficulty
 
 @enduml
