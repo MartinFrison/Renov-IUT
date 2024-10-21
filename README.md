@@ -3,6 +3,8 @@
 - Nom du groupe : Coruscant
 - Membres du groupe : [Yasmine CHETTATI](https://git.unistra.fr/ychettati), [Elena FRISON](https://git.unistra.fr/e.frison), [Martin FRISON](https://git.unistra.fr/martin.frison)
 
+[Adrien AKGUL](https://git.unistra.fr/aakgul) a également contribué au projet à ses débuts.
+
 ## Présentation du projet
 
 Vous incarnez le directeur de l'IUT Robert Schuman qui, souhaitant se faire réélire, intervient sur le campus d'Illkirch pour assurer des réparations d'urgence - sans pour autant négliger les rénovations planifiées des bâtiments.
@@ -95,6 +97,41 @@ La problématique du jeu se construit autour de quatre éléments :
 
 #### Interface
 
+L'interface est constituée des éléments suivants :
+
+- Plan du campus d'Illkirch, vue du dessus
+
+- Affichage des informations complètes sur un bâtiment sélectionné avec un clic :
+	- nom du département qui l'occupe ;
+	- son âge
+	- sa superficie
+	- effectifs du corps enseignant et des étudiants ;
+	- le niveau de satisfaction des uns et des autres ;
+	- état des infrastructures :
+		- isolation
+		- chauffage
+		- nombre d'agents d'entretien qui y interviennent
+
+- Affichage du budget, simple montant (par bâtiment) ou composition détaillée (total du campus)
+
+- Notifications :
+	- missions courantes
+	- aléas auquels le joueur doit faire face :
+		- soit en prenant une décision via une fenêtre pop-up (choix multiple)
+		- soit en en assumant la conséquence inévitable
+
+- Affichage du bilan de l'année pour l'ensemble de l'IUT :
+	- satisfaction étudiante et professorale ;
+	- évolution du nombre d'étudiants et d'enseignants ;
+	- financements prévus pour l'année prochaine ;
+	- liste des rénovations planifiées accompagnées de leur coût
+
+- Bouton pour passer à l'année suivante
+
+- _Timeline_ pour désigner la progression dans le temps
+
+- À la fin du mandat, écran de fin de jeu affichant le score et le résultat des élections : le président a-t-il été réélu ?
+
 #### Actions du joueur
 
 #### Scénarios
@@ -152,3 +189,15 @@ Le code est modularisé suivant le patron de conception [MVC](https://www.geeksf
 - Les **_données_** sont stockées dans des tables SQL (_TeacherSQLTable_, _StudentSQLTable_, _FundSQLTable_ et _NotificationSQLTable_).
 
 ### Fonctionnalités et scénarios avancés
+
+Fonctionnalités implémentées :
+
+- a
+- b
+- c
+
+Fonctionnalités à implémenter :
+
+- a
+- b
+- c
