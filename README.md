@@ -112,19 +112,16 @@ Plusieurs paramètres décrivant le campus changent d'une année à l'autre :
 ##### Budget
 
 L'IUT Robert Schuman étant un établissement public, ses principales sources de financement sont des **_subventions publiques_**, provenant notamment de :
-
 - l'État ;
 - la région Grand Est ;
 - l'Eurométropole de Strasbourg ;
 - l'Université de Strasbourg (l'IUT en fait certes partie administrativement, mais cela reste deux entités distinctes).
 
 Des **_financements privés_** peuvent être tout aussi importants, à savoir des fonds :
-
 - issus de partenariats avec des entreprises ;
 - faisant objet de dons de particuliers, d'anciens élèves ou d'organisations qui souhaitent contribuer au développement de l'IUT.
 
 Viennent s'y rajouter quelques sources moins importantes, qui ne peuvent être que **_complémentaires_** :
-
 - frais de scolarité des étudiants (bien qu'ils soient faibles dans un État social qu'est la France) ;
 - utilisation d'infrastructures de l'IUT par d'autres organismes (par exemple, une école privée dont les élèves viennent manger au Resto U et utiliser l'aire de remise en forme, aménagée sur le campus).
 
@@ -132,18 +129,23 @@ Viennent s'y rajouter quelques sources moins importantes, qui ne peuvent être q
 
 Il est essentiel de prévoir un entretien régulier ainsi que des réparations et rénovations des bâtiments et des infrastructures de l'IUT pour garantir des conditions de travail et d'apprentissage optimales. À travers les _missions_ affichées sous forme de notifications, RenovIUT vous permet de découvrir différents types de travaux de routine :
 
-- Un **_entretien préventif_** permet de détecter et de résoudre rapidement les problèmes, évitant ainsi des pannes majeures et des coûts de réparation plus élevés :
-		- maintenance des systèmes de chauffage, ventilation et climatisation (CVC)
-		- inspection des installations électriques
-		- inspection de plomberie.
-- Les **_réparations_** peuvent concerner :
-		- revêtements de sol
-		- fenêtres et portes
-		- équipements endommagés
-- Quant aux **_rénovations_**, elles peuvent impliquer la modernisation de :
-		- salles de classe
-		- laboratoires
-		- espaces communs, pour répondre aux besoins pédagogiques contemporains et améliorer l'accessibilité.
+Un **_entretien préventif_** permet de détecter et de résoudre rapidement les problèmes, évitant ainsi des pannes majeures et des coûts de réparation plus élevés :
+
+- maintenance des systèmes de chauffage, ventilation et climatisation (CVC)
+- inspection des installations électriques
+- inspection de plomberie.
+
+Les **_réparations_** peuvent concerner :
+
+- revêtements de sol
+- fenêtres et portes
+- équipements endommagés
+
+Quant aux **_rénovations_**, elles peuvent impliquer la modernisation de :
+
+- salles de classe
+- laboratoires
+- espaces communs, pour répondre aux besoins pédagogiques contemporains et améliorer l'accessibilité.
 
 Comme les missions sont planifiées, elles sont affichées en anticipation, à la fin de l'année précédant celle des travaux.
 
@@ -156,16 +158,23 @@ Les aléas sont affichés sous forme d'alertes, à un moment fortuit pendant le 
 En voici quelques-uns, implémentés dans ce jeu :
 
 - D’ordre **_social_** :
-		- Le nombre d’étudiants arrivant chaque année à l’IUT est aléatoire, bien que compris dans une fourchette raisonnable ;
-		- Il est également fonction de l’évolution démographique ;
-		- Le nombre de départs fluctue autour de 50%, en fonction du niveau des étudiants.
+
+	- Le nombre d’étudiants arrivant chaque année à l’IUT est aléatoire, bien que compris dans une fourchette raisonnable ;
+	- Il est également fonction de l’évolution démographique ;
+	- Le nombre de départs fluctue autour de 50%, en fonction du niveau des étudiants.
+
 - D’ordre **_financier_** :
-		- Une ou plusieurs sources du budget peuvent se trouver réduites, surtout celles non-institutionnelles.
-		- Les coûts dépendent de l’inflation, dont on a des prévisions officielles mais qui peut aussi être volatile.
+
+	- Une ou plusieurs sources du budget peuvent se trouver réduites, surtout celles non-institutionnelles.
+	- Les coûts dépendent de l’inflation, dont on a des prévisions officielles mais qui peut aussi être volatile.
+
 - D’ordre **_juridique_** :
-		- Des changements dans la législation ou les normes de sécurité peuvent obliger les IUT à adapter leurs infrastructures.
+
+	- Des changements dans la législation ou les normes de sécurité peuvent obliger les IUT à adapter leurs infrastructures.
+
 - D’ordre **_personnel_** :
-    - De temps en temps, des étudiants mal intentionnés peuvent endommager voi-re détruire des équipements.
+
+	- De temps en temps, des étudiants mal intentionnés peuvent endommager voi-re détruire des équipements.
 
 Certains aléas sont poncluels, d'autres peuvent se reproduire, au grand dam du président - et de toutes les personnes travaillant ou étudiant sur le campus, évidemment.
 
