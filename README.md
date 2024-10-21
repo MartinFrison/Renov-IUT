@@ -1,7 +1,9 @@
 # T3 - RenovIUT
 
 - Nom du groupe : Coruscant
-- Membres du groupe : [Yasmine CHETTATI](https://git.unistra.fr/ychettati), [Elena FRISON](https://git.unistra.fr/e.frison), [Martin FRISON](https://git.unistra.fr/martin.frison).[Adrien AKGUL](https://git.unistra.fr/aakgul) a également contribué au projet à ses débuts.
+- Membres du groupe : [Yasmine CHETTATI](https://git.unistra.fr/ychettati), [Elena FRISON](https://git.unistra.fr/e.frison), [Martin FRISON](https://git.unistra.fr/martin.frison).
+
+	[Adrien AKGUL](https://git.unistra.fr/aakgul) a également contribué au projet à ses débuts.
 
 ## Présentation du projet
 
@@ -127,6 +129,23 @@ Viennent s'y rajouter quelques sources moins importantes, qui ne peuvent être q
 - utilisation d'infrastructures de l'IUT par d'autres organismes (par exemple, une école privée dont les élèves viennent manger au Resto U et utiliser l'aire de remise en forme, aménagée sur le campus).
 
 ##### Missions
+
+Il est essentiel de prévoir un entretien régulier ainsi que des réparations et rénovations des bâtiments et des infrastructures de l'IUT pour garantir des conditions de travail et d'apprentissage optimales. À travers les missions affichées sous forme de notifications, RenovIUT vous permet de découvrir différents types de travaux de routine :
+
+- Un **_entretien préventif_** permet de détecter et de résoudre rapidement les problèmes, évitant ainsi des pannes majeures et des coûts de réparation plus élevés :
+		- maintenance des systèmes de chauffage, ventilation et climatisation (CVC)
+		- inspection des installations électriques
+		- inspection de plomberie.
+- Les **_réparations_** peuvent concerner :
+		- revêtements de sol
+		- fenêtres et portes
+		- équipements endommagés
+- Quant aux **_rénovations_**, elles peuvent impliquer la modernisation de :
+		- salles de classe
+		- laboratoires
+		- espaces communs, pour répondre aux besoins pédagogiques contemporains et améliorer l'accessibilité.
+
+Comme les missions sont planifiées, elles sont affichées en anticipation, à la fin de l'année précédent celle des travaux.
 
 ##### Aléas
 
