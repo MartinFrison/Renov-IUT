@@ -130,7 +130,7 @@ Viennent s'y rajouter quelques sources moins importantes, qui ne peuvent être q
 
 ##### Missions
 
-Il est essentiel de prévoir un entretien régulier ainsi que des réparations et rénovations des bâtiments et des infrastructures de l'IUT pour garantir des conditions de travail et d'apprentissage optimales. À travers les missions affichées sous forme de notifications, RenovIUT vous permet de découvrir différents types de travaux de routine :
+Il est essentiel de prévoir un entretien régulier ainsi que des réparations et rénovations des bâtiments et des infrastructures de l'IUT pour garantir des conditions de travail et d'apprentissage optimales. À travers les _missions_ affichées sous forme de notifications, RenovIUT vous permet de découvrir différents types de travaux de routine :
 
 - Un **_entretien préventif_** permet de détecter et de résoudre rapidement les problèmes, évitant ainsi des pannes majeures et des coûts de réparation plus élevés :
 		- maintenance des systèmes de chauffage, ventilation et climatisation (CVC)
@@ -145,10 +145,36 @@ Il est essentiel de prévoir un entretien régulier ainsi que des réparations e
 		- laboratoires
 		- espaces communs, pour répondre aux besoins pédagogiques contemporains et améliorer l'accessibilité.
 
-Comme les missions sont planifiées, elles sont affichées en anticipation, à la fin de l'année précédent celle des travaux.
+Comme les missions sont planifiées, elles sont affichées en anticipation, à la fin de l'année précédant celle des travaux.
 
 ##### Aléas
 
+Opposés aux interventions planifiées, qui sont justifiées par l'usure des bâtiments, d'une part, et le besoin de modernisation, d'autre part, les _aléas_ sont des événements extraordinaires pouvant affecter le fonctionnement de l'IUT, notamment - dans notre modèle simplifié - la satisfaction des étudiants aussi bien que des enseignants.
+
+Les aléas sont affichés sous forme d'alertes, à un moment fortuit pendant le jeu.
+
+En voici quelques-uns, implémentés dans ce jeu :
+
+- D’ordre **_social_** :
+		- Le nombre d’étudiants arrivant chaque année à l’IUT est aléatoire, bien que compris dans une fourchette raisonnable ;
+		- Il est également fonction de l’évolution démographique ;
+		- Le nombre de départs fluctue autour de 50%, en fonction du niveau des étudiants.
+- D’ordre **_financier_** :
+		- Une ou plusieurs sources du budget peuvent se trouver réduites, surtout celles non-institutionnelles.
+		- Les coûts dépendent de l’inflation, dont on a des prévisions officielles mais qui peut aussi être volatile.
+- D’ordre **_juridique_** :
+		- Des changements dans la législation ou les normes de sécurité peuvent obliger les IUT à adapter leurs infrastructures.
+- D’ordre **_personnel_** :
+    - De temps en temps, des étudiants mal intentionnés peuvent endommager voi-re détruire des équipements.
+
+Certains aléas sont poncluels, d'autres peuvent se reproduire, au grand dam du président - et de toutes les personnes travaillant ou étudiant sur le campus, évidemment.
+
+Si on les classe dans une logique non thématique, mais événementielle, les aléas peuvent être divisés en deux catégories :
+
+- Événements qui ne vont probablement pas se reproduire ;
+- Événements reproductibles.
+
+Le nombre total d'aléas au cours d'une partie est défini en fonction du niveau de difficullté de la partie.
 
 #### Interface
 
