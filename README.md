@@ -134,13 +134,23 @@ L'interface est constituée des éléments suivants :
 
 #### Actions du joueur
 
+Le jeu consiste à répondre aux défis qui surgissent, attendus ou imprévus, en faisant des choix avisés quand on peut (il est à noter que dans certains cas de force majeure, aucune action n'est possible).
+
+Pour ce faire, le directeur _aka_ joueur peut, concrètement :
+
+- Valider toutes des rénovations planifiées ou seulement quelques-unes ;
+- Essayer d'obtenir des financements supplémentaires ;
+- Agrandir la surface utile - ou, au contraire, fermer certains locaux ;
+- Gérer le calendrier de chauffage ;
+- Décider d'une action spécifique ponctuelle, en choisissant dans une liste de choix proposés, généralement face à un aléa.
+
 #### Scénarios
+
+Pour rappeler que la gestion d'un établissement éducatif se fait souvent dans l'urgence, le _gameplay_ est extrêmement rapide : en une minute, le directeur de l'IUT que vous incarnez est censé réagir à toutes les sollicitations d'une année. Comme dans la vraie vie, il n'arrivera sans doute pas à répondre à toutes, les problèmes non résolus affectant les paramètres du jeu et souvent, diminuant vos chances d'être réélu.e.
 
 <p style="text-align: center;"><img src="visuels/deroulement_du_jeu.jpg" alt="Déroulement du jeu" width="600" /></p>
 
 <p style="text-align: center;"><small>Fig.6. Schéma du déroulement du jeu</small></p>
-
-Une partie dure quelques minutes (sachant qu'il faut rajouter à sa durée nominale le temps que vous prenez pour faire vos choix).
 
 Le schéma ci-dessus résume les conditions de victoire. En effet, il faut remporter la majorité des voix d'enseignants et d'étudiants faisant partie du Conseil d'administration de l'IUT, pondérées par le nombre des uns et des autres. Les votes sont calculés par bâtiment.
 
