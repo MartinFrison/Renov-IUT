@@ -1,9 +1,7 @@
 # T3 - RenovIUT
 
 - Nom du groupe : Coruscant
-- Membres du groupe : [Yasmine CHETTATI](https://git.unistra.fr/ychettati), [Elena FRISON](https://git.unistra.fr/e.frison), [Martin FRISON](https://git.unistra.fr/martin.frison)
-
-[Adrien AKGUL](https://git.unistra.fr/aakgul) a également contribué au projet à ses débuts.
+- Membres du groupe : [Yasmine CHETTATI](https://git.unistra.fr/ychettati), [Elena FRISON](https://git.unistra.fr/e.frison), [Martin FRISON](https://git.unistra.fr/martin.frison).[Adrien AKGUL](https://git.unistra.fr/aakgul) a également contribué au projet à ses débuts.
 
 ## Présentation du projet
 
@@ -110,6 +108,23 @@ Plusieurs paramètres décrivant le campus changent d'une année à l'autre :
 - **_Le taux de réussite_**. Ne concerne que les étudiants et dépend de la satisfaction de ces derniers, mais aussi de leur niveau (partie déterministe) et de la chance qu'ils auront eu, à l'Institut ou en dehors (partie aléatoire).
 
 ##### Budget
+
+L'IUT Robert Schuman étant un établissement public, ses principales sources de financement sont des **_subventions publiques_**, provenant notamment de :
+
+- l'État ;
+- la région Grand Est ;
+- l'Eurométropole de Strasbourg ;
+- l'Université de Strasbourg (l'IUT en fait certes partie administrativement, mais cela reste deux entités distinctes).
+
+Des **_financements privés_** peuvent être tout aussi importants, à savoir des fonds :
+
+- issus de partenariats avec des entreprises ;
+- faisant objet de dons de particuliers, d'anciens élèves ou d'organisations qui souhaitent contribuer au développement de l'IUT.
+
+Viennent s'y rajouter quelques sources moins importantes, qui ne peuvent être que **_complémentaires_** :
+
+- frais de scolarité des étudiants (bien qu'ils soient faibles dans un État social qu'est la France) ;
+- utilisation d'infrastructures de l'IUT par d'autres organismes (par exemple, une école privée dont les élèves viennent manger au Resto U et utiliser l'aire de remise en forme, aménagée sur le campus).
 
 ##### Missions
 
