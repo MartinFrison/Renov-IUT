@@ -88,6 +88,27 @@ La problématique du jeu se construit autour de quatre éléments :
 
 #### Simulation
 
+**_Le pas de la simulation est d'une année._**
+
+- Bien que l'IUT fonctionne avec le contrôle continu, la décision du jury concernant le passage de l'étudiant à l'année suivante ne se fait qu'à la fin de l'année.
+- Pour rappeler que la gestion d'un établissement éducatif se fait souvent dans l'urgence, le _gameplay_ est extrêmement rapide : en une minute, le directeur de l'IUT incarné par le joueur est censé réagir à toutes les sollicitations d'une année.
+- Comme dans la vraie vie, il n'arrivera sans doute pas à répondre à toutes, les problèmes non résolus affectant les paramètres du jeu et souvent, diminuant ses chances d'être réélu.e.
+
+**_À la fin de chaque année, le nombre d'étudiants et, par conséquent, celui d'enseignants est susceptible de changer._**
+
+- Des étudiants peuvent être exclus à cause de leurs mauvais résultats - qui sont fonction de leur niveau de départ, de leur sérieux et d'un peu de chance.
+- D'autres étudiants encore partiront de leur propre gré, parce qu'ils ne sont pas satisfaits de l'établissement (y compris des conditions de travail qu'il propose) ou pour des raisons personnelles (aléatoires).
+- Le nombre d'enseignants suit le nombre d'élèves : si les effectifs étudiants connaissent une baisse trop importante, quelques enseignants seront obligés de partir, et inversement, une surpopulation des étudiants entraîne des recrutements d'enseignants. À noter toutefois que, contrairement aux fluctuations annuelles du nombre d'étudiants, le nombre d'enseignants change par paliers, en fonction de quelques valeurs de seuil.
+
+**_À la fin de chaque année, différents calculs sont réalisés._**
+
+Plusieurs paramètres décrivant le campus changent d'une année à l'autre :
+
+- **_L'état des bâtiments_**. Résulte de leur âge, de leur état au début de l'année, ainsi que, bien entendu, des réparations qui auront été réalisées (moyennant un budget, et donc fonction de ce budget - mais aussi de la qualité de prestation fournie par l'entreprise qui réalise les travaux).
+- **_Le bugdet octroyé_**. Il dépend des financements obtenus (de différentes catégories), des besoins de l'Institut, des revendications syndicales, éventuellement des cas de force majeure... Il est demandé par le directeur, mais c'est le Conseil d'administration qui a le dernier mot.
+- **_Le taux de satisfaction_**. Il est calculé séparément parmi les étudiants et les enseignants, par bâtiment mais aussi pour l'ensemble des départements de l'IUT Robert Schuman ;
+- **_Le taux de réussite_**. Ne concerne que les étudiants et dépend de la satisfaction de ces derniers, mais aussi de leur niveau (partie déterministe) et de la chance qu'ils auront eu, à l'Institut ou en dehors (partie aléatoire).
+
 ##### Budget
 
 ##### Missions
@@ -139,14 +160,13 @@ Le jeu consiste à répondre aux défis qui surgissent, attendus ou imprévus, e
 Pour ce faire, le directeur _aka_ joueur peut, concrètement :
 
 - Valider toutes des rénovations planifiées ou seulement quelques-unes ;
+- Choisir l'entreprise qui effectuera les travaux ;
 - Essayer d'obtenir des financements supplémentaires ;
-- Agrandir la surface utile - ou, au contraire, fermer certains locaux ;
-- Gérer le calendrier de chauffage ;
+- Proposer au Conseil d'administration d'agrandir la surface utile - ou, au contraire, de fermer certains locaux ;
+- Ajuster le calendrier de chauffage ;
 - Décider d'une action spécifique ponctuelle, en choisissant dans une liste de choix proposés, généralement face à un aléa.
 
 #### Scénarios
-
-Pour rappeler que la gestion d'un établissement éducatif se fait souvent dans l'urgence, le _gameplay_ est extrêmement rapide : en une minute, le directeur de l'IUT que vous incarnez est censé réagir à toutes les sollicitations d'une année. Comme dans la vraie vie, il n'arrivera sans doute pas à répondre à toutes, les problèmes non résolus affectant les paramètres du jeu et souvent, diminuant vos chances d'être réélu.e.
 
 <p style="text-align: center;"><img src="visuels/deroulement_du_jeu.jpg" alt="Déroulement du jeu" width="600" /></p>
 
@@ -167,7 +187,7 @@ Les résultats du vote résultent de plusieurs questionnements :
 	- de la satisfaction _(pas individualisée, c'est la moyenne par bâtiment puis la moyenne totale qui est prise en compte. En revanche, les étudiants peuvent être moins ou plus satisfaits que les enseignants, ces deux catégories n'étant pas forcément du même avis ;)_
 	- du nombre de diplômes obtenus pendant le mandat _(présumant que les compétences des diplômés sont de haut niveau - cf. le taux de réussite, c'est un facteur non négligeable.)_
 
-Nous proposons trois niveaux de difficulté :
+Trois niveaux de difficulté sont proposés :
 
 - **_facile_**
 
