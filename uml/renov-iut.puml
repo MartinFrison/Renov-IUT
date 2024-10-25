@@ -250,11 +250,7 @@ package models
 
 				class Call
 				{
-					- name : String
-					- time : Integer
-					- is_reproductible : Boolean
-					- needs_action : Boolean
-					- area : String
+					'à coder
 				}
     }
 
@@ -286,6 +282,10 @@ package models
     {
         + id : Integer <<PK>>
         + message : String
+        + time : Integer
+        + is_reproductible : Boolean
+        + needs_action : Boolean
+        + area : String
     }
 }
 
