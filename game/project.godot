@@ -14,6 +14,6 @@ config/name="RenovIUT"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.png"
 
-[autoload]
+[editor_plugins]
 
-Global="*res://scripts/Global.gd"
+enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg")
