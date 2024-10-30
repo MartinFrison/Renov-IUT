@@ -1,0 +1,333 @@
+@startuml RenovIUTApp
+
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+hide enum methods
+
+class RenovIUTApp
+{
+    + {static} main(args: String[])
+}
+
+package views
+{
+    package nodes
+    {
+        class BuildingView
+        {
+            - selected : String
+            + view_options()
+            + hire_teachers()
+            + fire_teachers()
+            + heating_on()
+            + heating_off()
+            + hire_maintenance_agents()
+            + fire_maintenance_agents()
+            + launch_action()
+            + view_building_info()
+        }
+
+        class Stats
+        {
+            + view_budget()
+            + view_satisfaction()
+            + view_teacher_satisfaction()
+            + view_student_satisfaction()
+            + view_student_success()
+        }
+
+        class Reaction
+        {
+            - reactions : String[*]
+            - selected : Integer
+            + <<create>> Reaction()
+            + define_reaction(selected : Integer)
+            + send_reaction(selected : Integer)
+
+        }
+    }
+
+    package scenes
+    {
+        class Start
+        {
+            + view_start_screen()
+            + select_difficulty()
+            + launch_game()
+        }
+
+        class Menu
+        {
+            + view_menu()
+            + start(difficulty: Difficulty)
+            + quit()
+        }
+
+        class GameOver
+        {
+            + view_gameover()
+            + replay()
+        }
+    }
+}
+
+package controllers
+{
+		package timeline {
+			class TimeManagement
+			{
+					- year : Integer
+					- month : Integer
+					- day : Integer
+					- difficulty : Difficulty
+					+ <<create>> TimeManagement(difficulty: Difficulty)
+					+ tick()
+					+ random_event()
+					+ get_season()
+					+ end_of_year()
+					+ launch_vote()
+					+ pause(p : Boolean)
+			}
+
+					class Vote
+			{
+					+ election_gagnee() : Boolean
+					+ popularity_rate() : Real
+					+ popularity_rate_per_dept(dept : String) : Real
+					+ popularity_rate_among_teachers() : Real
+					+ popularity_rate_among_teachers_per_dept(dept : String) : Real
+					+ popularity_rate_among_students() : Real
+					+ popularity_rate_among_students_per_dept(dept : String) : Real
+			}
+    }
+
+    package school
+    {
+        class Teaching
+        {
+            + hire_teachers(dept : String)
+            + fire_teachers(dept : String)
+            + populate()
+        }
+
+        class Study
+        {
+            + populate()
+            + populate_promo(dept : String, year : Integer)
+            + evaluate()
+            + next_year()
+        }
+    }
+
+    package management
+    {
+        class Financing
+        {
+            + finance(dept : String)
+            + finance(dept : String, destination : String)
+            + finance(destination : String)
+            + update_budget()
+        }
+
+        abstract class Action
+        {
+            + planify_action()
+        }
+
+        class Planified
+        {
+            + planify_for_next_year()
+        }
+
+        class Urgent
+        {
+            + respond_to_urgent()
+        }
+    }
+
+		class Scenario
+		{
+				+ get_scenario() : Integer[0..2]
+				+ set_scenario(n : Integer[0..2])
+				+ adjust_budget(coeff : Real)
+				+ adjust_student_satisfaction(coeff : Real)
+				+ adjust_teacher_satisfaction(coeff : Real)
+				+ adjust_call_probability(call : Integer, coeff : Real)
+				+ adjust_dept_state(dept: String, coeff : Real)
+		}
+}
+
+package models
+{
+		package human {
+				class Student
+				{
+						+ rm_student(id : Integer)
+						+ add_student(dept : String)
+						+ get_id(id : Integer) : Integer
+						+ get_year(id : Integer) : Integer
+						+ get_dept(id : Integer) : String
+						+ get_mood(id : Integer) : Real
+						+ get_level(id : Integer) : Real
+						+ set_year(id : Integer, year : Integer)
+						+ set_mood(id : Integer, coeff : Real)
+						+ set_level(id : Integer, coeff : Real)
+						+ rm_students_by_dept(dept : String, nb : Integer)
+						+ compute_nb_per_dept(dept : String) : Integer
+						+ avg_mood_per_dept(dept : String) : Real
+						+ success_rate_per_dept(dept : String) : Real
+						+ compute_nb() : Integer
+						+ avg_mood() : Real
+						+ success_rate() : Real
+				}
+
+				class Teacher
+				{
+						+ rm_teacher(id : Integer)
+						+ add_teacher(dept : String)
+						+ get_id(id : Integer) : Integer
+						+ get_dept(id : Integer) : String
+						+ get_mood(id : Integer) : Real
+						+ set_mood(id : Integer, coeff : Real)
+						+ rm_teachers_by_dept(dept : String, nb : Integer)
+						+ compute_nb_per_dept(dept : String) : Integer
+						+ avg_mood_per_dept(dept : String) : Real
+						+ compute_nb() : Integer
+						+ avg_mood() : Real
+				}
+    }
+
+		package material {
+			abstract class Building
+			{
+				- age : Integer
+				- isolation : Integer
+				- surface : Integer
+				- heating : Boolean
+				- maintenance_agents_nb : Integer
+				+ get_code() : String
+			}
+
+			class IT
+			{
+				+ <<create>> IT()
+				+ it_func()
+			}
+
+			class Communication
+			{
+				+ <<create>> Communication()
+				+ communication_func()
+			}
+
+			class Marketing
+			{
+				+ <<create>> Marketing()
+				+ marketing_func()
+			}
+
+			class Chemistry
+			{
+				+ <<create>> Chemistry()
+				+ chemistry_func()
+			}
+
+			class Engineering
+			{
+				+ <<create>> Engineering()
+				+ engineering_func()
+			}
+
+			class Fund
+			{
+				+ add_fund(source : String, amount : Real, destination : String?)
+				+ rm_fund_by_id(i : Integer)
+			    + rm_fund_by_source(source : String)
+				+ get_id(id : Integer) : Integer
+				+ get_source(id : Integer) : String
+				+ get_amount(id : Integer) : Real
+				+ get_area(id : Integer) : String?
+				+ set_area(id : Integer, dest : String)
+				+ total() : Real
+				+ inflation_adjusted(inflation_rate : Real) : Real
+				+ check_availability(amount : Real) : Boolean
+				+ forecast_per_dept(dept : String) : Real
+				+ result_per_dept(dept : String) : Real
+			}
+
+			class Call
+			{
+				+ get_message(id : Integer) : String
+				+ get_duration(id : Integer) : Integer
+				+ get_if_reproductible(id : Integer) : Boolean
+				+ get_if_needs_action(id : Integer) : Boolean
+				+ get_area(id : Integer) : String
+				+ set_area(id : Integer, another_place : String)
+			}
+    }
+
+    class StudentSQLTable
+    {
+        + id : Integer <<PK>>
+        + year : Integer [1..3]
+        + dept : String
+        + mood : Real [0, 1]
+        + level : Real [0, 1]
+    }
+
+    class TeacherSQLTable
+    {
+        + id : Integer <<PK>>
+        + dept : String
+        + mood : Real [0, 1]
+    }
+
+    class FundSQLTable
+    {
+        + id : Integer <<PK>>
+        + amount : Real
+        + source : String
+        + area : String
+    }
+
+    class NotificationSQLTable
+    {
+        + id : Integer <<PK>>
+        + message : String
+        + duration : Integer
+        + is_reproductible : Boolean
+        + needs_action : Boolean
+        + area : String
+    }
+}
+
+
+RenovIUTApp ...> views
+BuildingView ...> Building
+Stats ....> models
+GameOver ..> Vote
+Study ..> Student
+Teaching ..> Teacher
+Financing ..> Fund
+Action *---> Building
+Student ..> StudentSQLTable
+Teacher ..> TeacherSQLTable
+Fund ....> FundSQLTable
+Call ....> NotificationSQLTable
+Reaction o--> Action
+
+Building --|> IT
+Building --|> Communication
+Building --|> Marketing
+Building --|> Chemistry
+Building --|> Engineering
+Action -|> Urgent
+Action -|> Planified
+Action *--> Call
+
+TimeManagement ..> Difficulty
+Financing ..> Difficulty
+Menu ..> Difficulty
+
+@enduml
