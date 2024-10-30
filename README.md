@@ -289,7 +289,7 @@ Il faut remporter la majorité des voix d'enseignants et d'étudiants faisant pa
 
 ### Contraintes de développement
 
-Ce jeu a été développé avec le moteur [Godot Engine](https://godotengine.org/).
+Ce jeu a été développé avec le moteur [Godot Engine 4](https://godotengine.org/).
 
 Le code est modularisé suivant le patron de conception [MVC](https://www.geeksforgeeks.org/mvc-design-pattern/), tout en respectant l'organisation d'un projet Godot :
 
