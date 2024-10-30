@@ -24,7 +24,7 @@ package views
             + heating_off()
             + hire_maintenance_agents()
             + fire_maintenance_agents()
-            + launchAction()
+            + launch_action()
             + view_building_info()
         }
 
@@ -124,11 +124,10 @@ package controllers
     {
         class Financing
         {
-            + rm_fund_by_id(i : Integer)
-            + rm_fund_by_source(source : String)
-            + compute_amount_per_dept(dept : String) : Real
-            + compute_total() : Real
-            + adjust_funds(difficulty: Difficulty)
+            + finance(dept : String)
+            + finance(dept : String, destination : String)
+            + finance(destination : String)
+            + update_budget()
         }
 
         abstract class Action
@@ -147,13 +146,15 @@ package controllers
         }
     }
 
-		class Difficulty
+		class Scenario
 		{
-				+ difficulty_level : String
-				+ set_level(lvl : String)
+				+ get_scenario() : Integer[0..2]
+				+ set_scenario(n : Integer[0..2])
 				+ adjust_budget(coeff : Real)
-				+ adjust_satisfaction(coeff : Real)
-				+ adjust_call_probability(call : coeff : Real)
+				+ adjust_student_satisfaction(coeff : Real)
+				+ adjust_teacher_satisfaction(coeff : Real)
+				+ adjust_call_probability(call : Integer, coeff : Real)
+				+ adjust_dept_state(dept: String, coeff : Real)
 		}
 }
 
@@ -198,60 +199,72 @@ package models
     }
 
 		package material {
-				abstract class Building
-        {
-            - age : Integer
-            - isolation : Integer
-            - surface : Integer
-            - heating : Boolean
-            - maintenance_agents_nb : Integer
-            + get_code() : String
-        }
+			abstract class Building
+			{
+				- age : Integer
+				- isolation : Integer
+				- surface : Integer
+				- heating : Boolean
+				- maintenance_agents_nb : Integer
+				+ get_code() : String
+			}
 
-        class IT
-        {
-            + <<create>> IT()
-            + it_func()
-        }
+			class IT
+			{
+				+ <<create>> IT()
+				+ it_func()
+			}
 
-        class Communication
-        {
-            + <<create>> Communication()
-            + communication_func()
-        }
+			class Communication
+			{
+				+ <<create>> Communication()
+				+ communication_func()
+			}
 
-        class Marketing
-        {
-            + <<create>> Marketing()
-            + marketing_func()
-        }
+			class Marketing
+			{
+				+ <<create>> Marketing()
+				+ marketing_func()
+			}
 
-        class Chemistry
-        {
-            + <<create>> Chemistry()
-            + chemistry_func()
-        }
+			class Chemistry
+			{
+				+ <<create>> Chemistry()
+				+ chemistry_func()
+			}
 
-        class Engineering
-        {
-            + <<create>> Engineering()
-            + engineering_func()
-        }
+			class Engineering
+			{
+				+ <<create>> Engineering()
+				+ engineering_func()
+			}
 
-				class Fund
-				{
-						+ add_fund(source : String, amount : Real, destination : String?)
-						+ get_id(id : Integer) : Integer
-						+ get_source(id : Integer) : String
-						+ get_amount(id : Integer) : Real
-						+ get_destination(id : Integer) : String?
-						+ set_destination(dest : String)
-				}
+			class Fund
+			{
+				+ add_fund(source : String, amount : Real, destination : String?)
+				+ rm_fund_by_id(i : Integer)
+			    + rm_fund_by_source(source : String)
+				+ get_id(id : Integer) : Integer
+				+ get_source(id : Integer) : String
+				+ get_amount(id : Integer) : Real
+				+ get_area(id : Integer) : String?
+				+ set_area(id : Integer, dest : String)
+				+ total() : Real
+				+ inflation_adjusted(inflation_rate : Real) : Real
+				+ check_availability(amount : Real) : Boolean
+				+ forecast_per_dept(dept : String) : Real
+				+ result_per_dept(dept : String) : Real
+			}
 
-				class Call
-				{
-					'à coder
-				}
+			class Call
+			{
+				+ get_message(id : Integer) : String
+				+ get_duration(id : Integer) : Integer
+				+ get_if_reproductible(id : Integer) : Boolean
+				+ get_if_needs_action(id : Integer) : Boolean
+				+ get_area(id : Integer) : String
+				+ set_area(id : Integer, another_place : String)
+			}
     }
 
     class StudentSQLTable
@@ -275,20 +288,19 @@ package models
         + id : Integer <<PK>>
         + amount : Real
         + source : String
-        + destination : String
+        + area : String
     }
 
     class NotificationSQLTable
     {
         + id : Integer <<PK>>
         + message : String
-        + time : Integer
+        + duration : Integer
         + is_reproductible : Boolean
         + needs_action : Boolean
         + area : String
     }
 }
-
 
 
 RenovIUTApp ...> views
