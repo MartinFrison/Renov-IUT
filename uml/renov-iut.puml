@@ -189,7 +189,9 @@ package models
 						+ get_id(id : Integer) : Integer
 						+ get_dept(id : Integer) : String
 						+ get_mood(id : Integer) : Real
+						+ get_is_fulltime(id : Integer) : Boolean
 						+ set_mood(id : Integer, coeff : Real)
+						+ set_fulltime(id : Integer, status : Boolean)
 						+ rm_teachers_by_dept(dept : String, nb : Integer)
 						+ compute_nb_per_dept(dept : String) : Integer
 						+ avg_mood_per_dept(dept : String) : Real
@@ -248,7 +250,9 @@ package models
 				+ get_source(id : Integer) : String
 				+ get_amount(id : Integer) : Real
 				+ get_area(id : Integer) : String?
+				+ get time(id : Integer) : Integer
 				+ set_area(id : Integer, dest : String)
+				+ set_time(id : Integer, time : Integer)
 				+ total() : Real
 				+ inflation_adjusted(inflation_rate : Real) : Real
 				+ check_availability(amount : Real) : Boolean
@@ -281,6 +285,7 @@ package models
         + id : Integer <<PK>>
         + dept : String
         + mood : Real [0, 1]
+        + full-time : Boolean
     }
 
     class FundSQLTable
@@ -289,6 +294,7 @@ package models
         + amount : Real
         + source : String
         + area : String
+        + time : Integer
     }
 
     class NotificationSQLTable
