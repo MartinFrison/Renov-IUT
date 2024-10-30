@@ -7,7 +7,7 @@
 
 ## Présentation du projet
 
-Vous incarnez le directeur de l'IUT Robert Schuman qui, souhaitant se faire réélire, intervient sur le campus d'Illkirch pour assurer des réparations d'urgence - sans pour autant négliger les rénovations planifiées des bâtiments.
+Vous incarnez le directeur de l'IUT Robert Schuman qui intervient sur le campus d'Illkirch pour assurer l'entretien et les rénovations des bâtiments et des infrastructures, tout en faisant face aux aléas du quotidien.
 
 ### Captures d'écran
 <p style="text-align: center;">![Campus](visuels/captures/main_window.png)</p>
@@ -39,9 +39,9 @@ En tant que _[serious game](#jeux-sérieux)_, RenovIUT ne se limite pas à vous 
 
 ### Objectifs pédagogiques avancés
 
-Sur un mandat de 5 ans, vous devez rénover les bâtiments et les infrastructures, [en gérant votre budget partagé entre les dépenses d'énergie, les salaires et les rénovations](#missions) et [en répondant aux aléas qui se présentent](#aléas). Comme [le budget](#budget) est limité et que le temps passe vite, il va falloir faire des [choix](#actions-du-joueur) !
+Sur un mandat de 5 ans ou sur un temps illimité selon le scénario, vous devez rénover les bâtiments et les infrastructures, [en gérant votre budget partagé entre les dépenses d'énergie, les salaires et les rénovations](#missions) et [en répondant aux aléas qui se présentent](#aléas). Comme [le budget](#budget) n'est pas extensible à l'infini, que le temps passe vite et que les intérêts de tout le monde ne sont pas forcément conciliables, il va falloir faire des [choix](#actions-du-joueur) !
 
-Votre objectif ultime est de vous faire [réélire](#scénarios) à la fin du mandat. Pour ce faire, vous devrez maintenir de bonnes conditions de travail et veiller à la satisfaction des étudiants et des enseignants.
+Votre objectif ultime est [soit](#scénarios) de gérer au mieux les ressources qui vous sont confiées, soit de vous faire réélire à la fin du mandat. Normalement, vous devrez maintenir de bonnes conditions de travail et veiller à la satisfaction des étudiants et des enseignants - sauf si vous trouvez une meilleure stratégie pour écraser les concurrents ! (En revanche, ce serait dommage si vous deviez faire sombrer l'établissement pour assouvir vos rêves de grandeur...)
 
 La problématique du jeu se construit autour de quatre éléments :
 
@@ -50,21 +50,25 @@ La problématique du jeu se construit autour de quatre éléments :
 	- Évaluer l'état actuel des bâtiments et des installations
 	- Concevoir un plan de rénovation
 	- Assurer la coordination des parties prenantes
+	- Choisir les prestataires
 
 2. **_Le budget_**, le pivot des activités, car aucune intervention sur le campus n'est possible sans financement.
 
 	- Élaborer un bugdet réaliste
 	- Rechercher des sources de financement multiples
 	- Assurer le suivi financier des projets
+	- Faire des choix quand les moyens sont réduits
 
 3. **_Les parties prenantes_**, qui sont avant tout les étudiants, mais aussi les enseignants, les personnels, l'Eurométropole...
 
 	- Assurer une communication transparente avec tous les acteurs et parties prenantes
 	- Veiller à la satisfaction des étudiants et des enseignants
 	- Mettre en place des mécanismes d'amélioration continue
+	- Savoir trancher si les intérêts des uns et des autres sont en conflit
 
-4. **_Les aléas_**, des imprévus suffisamment nombreux pour que vous soyez encore surpris en en devant confronter un !
+4. **_Les aléas_**, imprévus ou, au contraire, ordinaires (tel un prof en arrêt maladie...) mais extrêmement gênants.
 
+	- Anticiper au maximum
 	- Identifier les problèmes prioritaires
 	- Apporter des réponses rapides et adéquates
 	- Faire face aux cas de force majeure
@@ -92,7 +96,8 @@ La problématique du jeu se construit autour de quatre éléments :
 
 - Bien que l'IUT fonctionne avec le contrôle continu, la décision du jury concernant le passage de l'étudiant à l'année suivante ne se fait qu'à la fin de l'année.
 - Pour rappeler que la gestion d'un établissement éducatif se fait souvent dans l'urgence, le _gameplay_ est extrêmement rapide : en une minute, le directeur de l'IUT incarné par le joueur est censé réagir à toutes les sollicitations d'une année.
-- Comme dans la vraie vie, il n'arrivera sans doute pas à répondre à toutes, les problèmes non résolus affectant les paramètres du jeu et souvent, diminuant ses chances d'être réélu.e.
+- Comme dans la vraie vie, il n'arrivera sans doute pas à répondre à toutes, les problèmes non résolus aggravant la situation.
+- Également comme dans la vraie vie, on est bien obligé de choisir entre le mal et le pire, dans certaines situations.
 
 **_À la fin de chaque année, le nombre d'étudiants et, par conséquent, celui d'enseignants est susceptible de changer._**
 
@@ -133,7 +138,7 @@ Un **_entretien préventif_** permet de détecter et de résoudre rapidement les
 
 - maintenance des systèmes de chauffage, ventilation et climatisation (CVC)
 - inspection des installations électriques
-- inspection de plomberie.
+- inspection de plomberie
 
 Les **_réparations_** peuvent concerner :
 
@@ -161,29 +166,34 @@ En voici quelques-uns, implémentés dans ce jeu :
 
 	- Le nombre d’étudiants arrivant chaque année à l’IUT est aléatoire, bien que compris dans une fourchette raisonnable ;
 	- Il est également fonction de l’évolution démographique ;
-	- Le nombre de départs fluctue autour de 50%, en fonction du niveau des étudiants.
+	- Le nombre de départs fluctue autour de 50%, en fonction du niveau des étudiants ;
+	- Une grève d'étudiants et/ou d'enseignants peut avoir des conséquences importantes.
 
 - D’ordre **_financier_** :
 
-	- Une ou plusieurs sources du budget peuvent se trouver réduites, surtout celles non-institutionnelles.
-	- Les coûts dépendent de l’inflation, dont on a des prévisions officielles mais qui peut aussi être volatile.
+	- Une ou plusieurs sources du budget peuvent se trouver réduites, surtout celles non-institutionnelles ;
+	- Les coûts dépendent de l’inflation, dont on a des prévisions officielles mais qui peut aussi être volatile ;
+	- Le choix de privilégier les enseignants, les étudiants ou le matériel dans une situation où les moyens sont réduits aura des conséquences différentes.
 
 - D’ordre **_juridique_** :
 
-	- Des changements dans la législation ou les normes de sécurité peuvent obliger les IUT à adapter leurs infrastructures.
+	- Des changements dans la législation ou les normes de sécurité peuvent obliger les IUT à adapter leurs infrastructures ;
+	- Un élève se fait harceler à l'IUT, l'établissement réagit (ou pas !)
 
 - D’ordre **_personnel_** :
 
-	- De temps en temps, des étudiants mal intentionnés peuvent endommager voi-re détruire des équipements.
+	- De temps en temps, un enseignant peut tomber malade ;
+	- De temps en temps, un enseignant tout comme un élève peut faire un burn-out ;
+	- De temps en temps, des étudiants mal intentionnés peuvent endommager voire détruire des équipements.
 
-Certains aléas sont poncluels, d'autres peuvent se reproduire, au grand dam du président - et de toutes les personnes travaillant ou étudiant sur le campus, évidemment.
+Certains aléas sont poncluels, d'autres peuvent se reproduire, au grand dam du directeur - et de toutes les personnes travaillant ou étudiant sur le campus, évidemment.
 
 Si on les classe dans une logique non thématique, mais événementielle, les aléas peuvent être divisés en deux catégories :
 
 - Événements qui ne vont probablement pas se reproduire ;
 - Événements reproductibles.
 
-Le nombre total d'aléas au cours d'une partie est défini en fonction du niveau de difficullté de la partie.
+Le nombre total d'aléas au cours d'une partie est défini en fonction du niveau de difficullté de la partie, mais aussi du [scénario](#scénarios)
 
 #### Interface
 
@@ -220,60 +230,62 @@ L'interface est constituée des éléments suivants :
 
 - _Timeline_ pour désigner la progression dans le temps
 
-- À la fin du mandat, écran de fin de jeu affichant le score et le résultat des élections : le président a-t-il été réélu ?
+- Écran de fin de jeu affichant le score et une explication de la fin suivant le scénario choisi :
+	- Quel(s) problème(s) a-t-on réussi à régler ? Le(s)quel(s) rest(ent) à résoudre ?
+	- Quel est l'impact des interventions sur le bien-être des étudiants et des enseignants ? Comment se porte l'IUT, de manière générale ?
+	- A-t-on été réélu (et à quel prix) ?
 
 #### Actions du joueur
 
-Le jeu consiste à répondre aux défis qui surgissent, attendus ou imprévus, en faisant des choix avisés quand on peut (il est à noter que dans certains cas de force majeure, aucune action n'est possible).
+Le jeu consiste à répondre aux défis qui surgissent, attendus ou imprévus, en faisant des choix avisés quand on peut (il est à noter que dans certains cas, aucune action n'est possible).
 
 Pour ce faire, le directeur _aka_ joueur peut, concrètement :
 
 - Valider toutes des rénovations planifiées ou seulement quelques-unes ;
 - Choisir l'entreprise qui effectuera les travaux ;
 - Essayer d'obtenir des financements supplémentaires ;
+- Redistribuer les allocations du budget ;
 - Proposer au Conseil d'administration d'agrandir la surface utile - ou, au contraire, de fermer certains locaux ;
 - Ajuster le calendrier de chauffage ;
 - Décider d'une action spécifique ponctuelle, en choisissant dans une liste de choix proposés, généralement face à un aléa.
 
 #### Scénarios
 
-<p style="text-align: center;"><img src="visuels/deroulement_du_jeu.jpg" alt="Déroulement du jeu" width="600" /></p>
+Deux facteurs déterminent les choix d'un directeur :
 
-<p style="text-align: center;"><small>Fig.6. Schéma du déroulement du jeu</small></p>
+- la situation de départ à laquelle il est confronté et
+- l'objectif qu'il poursuit.
 
-Le schéma ci-dessus résume les conditions de victoire. En effet, il faut remporter la majorité des voix d'enseignants et d'étudiants faisant partie du Conseil d'administration de l'IUT, pondérées par le nombre des uns et des autres. Les votes sont calculés par bâtiment.
+Nous proposons trois scénarios qui varient ses deux données.
 
-À noter que dans RenovIUT, il n'y a pas de second tour, pourtant possible dans la vraie vie dans certaines situations.
+##### Scénario 1 : Renaissance de l'IUT
 
-Les résultats du vote résultent de plusieurs questionnements :
+Au départ, tous les paramètres sont entre moyens et bas. Le directeur va essayer de redresser la situation générale, tout en veillant à préserver la qualité de l'enseignement.
 
-- pour les étudiants :
-	- le taux de réussite _(s'il est trop bas, des étudiants partent et l'établissement change de carrure, et très probablement de président aussi)_.
+La partie a une durée illimitée : vous pouvez sortir à tout moment, le résultat sera calculé en fonction de vos acquis actuels.
 
-- pour tout le monde :
-	- de l'état des infrastructures _(personne n'a envie de travailler dans un bâtiment où il gèle en hiver et étouffe en été, sans matériel nécessaire ... ;)_
-	- du budget restant _(un établissement qui n'a plus de moyens se pose forcément des questions sur ces responsables ;)_
-	- de la satisfaction _(pas individualisée, c'est la moyenne par bâtiment puis la moyenne totale qui est prise en compte. En revanche, les étudiants peuvent être moins ou plus satisfaits que les enseignants, ces deux catégories n'étant pas forcément du même avis ;)_
-	- du nombre de diplômes obtenus pendant le mandat _(présumant que les compétences des diplômés sont de haut niveau - cf. le taux de réussite, c'est un facteur non négligeable.)_
+- Vous gagnez si vous atteignez 51% pour tous ces paramètres, avec un bonus pour ceux qui dépassent 65% voire 80% ;
+- Vous perdez si ne serait-ce qu'un est trop bas.
 
-Trois niveaux de difficulté sont proposés :
+##### Scénario 2 : Un département en détresse
 
-- **_facile_**
+Au départ, les bâtiments sur le campus vont bien et n'ont besoin que d'un entretien de routine, sauf un qui est dans un sale état (avec des étudiants mécontents mais avec un bon niveau, en tout cas pour l'instant). Attention, les moyens du directeur sont limités !
 
-	Est destiné aux débutants. Un tuto expliquant les commandes précède la partie. Les moyens de départ (état des bâtiments et des infrastructures, budget, satisfaction des étudiants et des enseignants) sont au maximum, alors que les aléas sont réduits : un défi par partie.
+La partie dure 5 ans.
 
-- **_moyen_**
+- Vous gagnez si le département à problèmes se porte mieux (le score dépendra du combien, mais il suffit, pour remporter la partie, que la situation ne se dégrade pas davantage);
+- Vous perdez si le département péréclite.
 
-	S'adresse à un joueur qui s'était déjà essayé au jeu. Ne fournit pas de tutoriel et permet de tester ses choix dans une situation un peu moins confortable, avec plusieurs aléas à la carte.
+##### Scénario 3 : Conquérir le Conseil
 
-- **_difficile_**
+Au départ, tous les paramètres sont à une valeur moyenne : l'IUT va bien, sans plus.
 
-	Les moyens initiaux sont bien limités - mais cela peut aussi arriver en dehors du jeu ! En outre, le niveau difficiel vous demande de réagir à plusieurs sollicitations urgentes au cours d'une partie.
+La partie dure 5 ans.
 
-À l'issue d'une partie :
+Il faut remporter la majorité des voix d'enseignants et d'étudiants faisant partie du Conseil d'administration de l'IUT, pondérées par le nombre des uns et des autres. Les votes sont calculés par bâtiment. À noter que dans RenovIUT, il n'y a pas de second tour, pourtant possible dans la vraie vie dans certaines situations.
 
-- Soit vous êtes réélu, auquel cas vous gagnez, avec un score plus ou moins élevé ;
-- Soit vous n'êtes pas réélu : ne baissez pas les bras, n'hésitez pas à recommencer si cela vous a plu !
+- Vous gagnez si vous être réélu, avec un score qui correspond au nombre de voix portées pour ;
+- Vous perdez si vous devez quitter votre poste de directeur. Mais ne désespérez pas, vous avez probablement tout fait pour le bien de l'établissement !
 
 ### Contraintes de développement
 
