@@ -30,13 +30,9 @@ func rm_students_by_dept(dept: String, nb: int) -> void:
 	var ids = Utils.db.get_entries(ids_query, [dt, nb])  # Récupérer les IDs avec une limite
 
 	# Supprimer les étudiants en fonction des IDs récupérés
-	var delete_query = "DELETE FROM Students WHERE id = ?"
-	
 	for id_entry in ids:
 		var id = id_entry["id"]  # Récupérer l'ID de l'étudiant
-		if !Utils.db.execute(delete_query, [id]):
-			print("Erreur de suppression de l'étudiant avec ID:", id)
-			return
+		rm_student_by_id(id)
 
 # Getters
 func get_year(id : int) -> int:
