@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4cp1gj8gn1ro"]
+
+[ext_resource type="Script" path="res://mvc/application/main.gd" id="1_lkrr3"]
+[ext_resource type="Texture2D" uid="uid://b570xim8pvoop" path="res://map_v1.png" id="2_4tq8c"]
+[ext_resource type="Texture2D" uid="uid://bgsmlpnpkqqfj" path="res://icon.png" id="2_m7bph"]
+
+[sub_resource type="FontVariation" id="FontVariation_a1dcv"]
+
+[sub_resource type="GDScript" id="GDScript_44k06"]
+script/source = "extends Label
+"
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_lkrr3")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(575, 323)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_4tq8c")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 95.0
+offset_top = 57.0
+offset_right = 324.0
+offset_bottom = 116.0
+theme_override_fonts/font = SubResource("FontVariation_a1dcv")
+theme_override_font_sizes/font_size = 30
+text = "Test"
+script = SubResource("GDScript_44k06")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(949, 478)
+scale = Vector2(0.513672, 0.464844)
+texture = ExtResource("2_m7bph")

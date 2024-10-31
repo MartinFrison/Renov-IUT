@@ -198,9 +198,28 @@ package models
 						+ compute_nb() : Integer
 						+ avg_mood() : Real
 				}
+
+                class StudentSQLTable
+                {
+                    + id : Integer <<PK>>
+                    + year : Integer [1..3]
+                    + dept : String
+                    + mood : Real [0, 1]
+                    + level : Real [0, 1]
+                }
+            
+                class TeacherSQLTable
+                {
+                    + id : Integer <<PK>>
+                    + dept : String
+                    + mood : Real [0, 1]
+                    + full-time : Boolean
+                }
+                
     }
 
-		package material {
+		package material 
+        {
 			abstract class Building
 			{
 				- age : Integer
@@ -208,7 +227,14 @@ package models
 				- surface : Integer
 				- heating : Boolean
 				- maintenance_agents_nb : Integer
-				+ get_code() : String
+                - code : String
+                + _init(age, isolation, surface, heating, maintenance_agents_nb, code)
+			    + get_code() : String
+                + get_age() : int
+                + get_isolation() : int
+                + get_surface() : int
+                + is_heating() : bool
+                + get_maintenance_agents_nb() : int
 			}
 
 			class IT
@@ -269,43 +295,63 @@ package models
 				+ get_area(id : Integer) : String
 				+ set_area(id : Integer, another_place : String)
 			}
+
+            class FundSQLTable
+            {
+                + id : Integer <<PK>>
+                + amount : Real
+                + source : String
+                + area : String
+                + time : Integer
+            }
+
+            class NotificationSQLTable
+            {
+                + id : Integer <<PK>>
+                + message : String
+                + duration : Integer
+                + is_reproductible : Boolean
+                + needs_action : Boolean
+                + area : String
+            }
+
+
+
+
+            class Event
+            {
+                + event_name(id : Integer) : String
+                + event_choice() : Array
+                + choice_concequences() : Array
+            }
+
+            'Table des evenements qui peuvent se produire'
+            class EventSQLTable
+            {
+                + id_event : Integer 
+                + name : String
+            }
+
+            'Pour chaque evenement il peu y avoir différent choix'
+            class choiceSQLTable
+            {
+                + id_event : Integer 
+                + id_choice : Integer
+                + description : String
+            }
+
+            'Chaque choix peut avoir une ou plusieurs conséquences'
+            class ConsequencesSQLTable
+            {
+                + id_choice : Integer
+                + id_consequences : Integer
+                + description : String
+            }
+
     }
 
-    class StudentSQLTable
-    {
-        + id : Integer <<PK>>
-        + year : Integer [1..3]
-        + dept : String
-        + mood : Real [0, 1]
-        + level : Real [0, 1]
-    }
-
-    class TeacherSQLTable
-    {
-        + id : Integer <<PK>>
-        + dept : String
-        + mood : Real [0, 1]
-        + full-time : Boolean
-    }
-
-    class FundSQLTable
-    {
-        + id : Integer <<PK>>
-        + amount : Real
-        + source : String
-        + area : String
-        + time : Integer
-    }
-
-    class NotificationSQLTable
-    {
-        + id : Integer <<PK>>
-        + message : String
-        + duration : Integer
-        + is_reproductible : Boolean
-        + needs_action : Boolean
-        + area : String
-    }
+    
+    
 }
 
 
