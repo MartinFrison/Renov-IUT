@@ -2,13 +2,6 @@
 class_name Student
 extends RefCounted # ne nécessite pas d'interaction avec le moteur de scène
 
-# Attributs
-var id: int # dans une version ultérieure, on pourrait donner un nom à chaque étudiant
-var year: int # année d'étude, i.e. 1, 2 ou 3
-var dept: String # département
-var mood: float # taux de satisfaction, entre 0 et 1
-var level: float # niveau académique, entre 0 et 1
-
 # Ajout et suppression
 func add_student(dept : String) -> void:
 	var query = "INSERT INTO Students (year, dept, mood, level) VALUES (?, ?, ?, ?)"

@@ -2,12 +2,6 @@
 class_name Teacher
 extends RefCounted # ne nécessite pas d'interaction avec le moteur de scène
 
-# Attributs
-var id: int # dans une version ultérieure, on pourrait donner un nom à chaque étudiant
-var dept: String # département
-var mood: float # taux de satisfaction, entre 0 et 1
-var full_time: bool # dans les effectifs si 'true', sinon vacataire
-
 # Ajout et suppression
 func add_teacher(dept : String, full_time : bool) -> void:
 	var query = "INSERT INTO Teachers (dept, mood, full_time) VALUES (?, ?, ?)"
