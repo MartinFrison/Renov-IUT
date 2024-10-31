@@ -1,7 +1,6 @@
-# Main.gd
-# Ceci est juste un test, pour prendre en main la gestion des BDD sur Godot 4.
-# Seront ajoutés des populate() etc.
-extends Node
+# Fund.gd
+class_name Fund
+extends RefCounted # ne nécessite pas d'interaction avec le moteur de scène
 
 func add_fund(source : String, amount : float, destination : String, time : int) -> void:
 	var query = "INSERT INTO Funds (amount, source, area, time) VALUES (?, ?, ?, ?)"
@@ -113,58 +112,3 @@ func forecast() -> float:
 		var fund_id = entry["id"]  # Récupérer l'ID du financement
 		adjusted_total += entry["amount"] * (1 + Utils.indexation_rate)  # Calculer en fonction de la constante
 	return adjusted_total
-
-func _ready():
-	if Utils.ok:
-		 # Tester ajout d'un fonds
-		print("Ajout de fonds...")
-		add_fund("Etat", 100.0, "Chimie", 2024) 
-		add_fund("région Grand-Est", 89.04, "Informatique", 2024) 
-		add_fund("Etat", 34.34, "Informatique", 2024)
-		add_fund("partenariat", 65.0, "Informatique", 2024)
-		add_fund("partenariat", 456.90, "Génie civil", 2024) 
-		add_fund("Eurométropole", 54.0, "Génie civil", 2024)
-		
-		# Tester récupérer le montant
-		print("Total des fonds : ", total())
-
-		# Tester obtenir un fonds par ID (vous devrez mettre un ID valide)
-		var fund_id = 190
-		print("Obtention de la source pour le financement ", fund_id, ": ", get_source(fund_id))
-		print("Montant pour le financement ", fund_id, ": ", get_amount(fund_id))
-
-		# Tester mise à jour de la destination
-		print("Mise à jour de la destination pour le financement ", fund_id)
-		var dt = "Information-Communication"
-		set_area(fund_id, dt)
-		print("Le financement ", fund_id, " va au département ", get_area(fund_id))
-
-		# Tester mise à jour du temps
-		print("Mise à jour du temps pour le financement ", fund_id)
-		set_time(fund_id, 2025)
-
-		# Tester suppression par ID
-		print("Suppression du fonds ID ", fund_id)
-		rm_fund_by_id(fund_id+1)
-
-		# Tester total par département
-		var dept = "Informatique"
-		print("Total par département ", dept, " : ", total_per_dept(dept))
-
-		# Tester ajustement de l'inflation
-		print("Ajustement des fonds en fonction de l'inflation...")
-		inflation_adjusted(0.05)
-		
-		# Tester la récupération des fonds après ajustement
-		print("Total par département ", dept, " : ", total_per_dept(dept))
-		
-		# Tester si le département dispose de 2000€
-		var amount = 2000
-		print("Le département ", dept, " dispose-t-il de ", amount, "€ ? ", check_availability(amount, dept))
-		
-		# Anticiper l'indexation des financements
-		print("Total espéré l'année prochaine : ", forecast())
-	
-	#Utils.db.clear_tables() # uniquement à la fin du jeu
-	Utils.db.close_db()
-	print("Fin du test.")
