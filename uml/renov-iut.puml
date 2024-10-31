@@ -10,6 +10,32 @@ class RenovIUTApp
     + {static} main(args: String[])
 }
 
+package global {
+    class DBManager
+    {
+    	+ db : SQLite
+    	+ db_path : String
+    	+ <<create>> DBManager(path : String)
+    	+ open_db() : Boolean
+    	+ close_db()
+    	+ execute(query : String, params : Array) : Boolean
+    	+ get_entries(query : String, params : Array) : Array
+    	+ clear_tables()
+    }
+
+    class Glob
+    {
+    	+ normal_inflation_rate : Real
+    	+ indexation_rate : Real
+    	+ db : DBManager
+    	+ ok : Boolean
+    	+ dept_string_to_index(dept : String) : Integer
+    	+ dept_index_to_string(index : Integer) : String
+    	+ source_string_to_index(dept : String) : Integer
+    	+ source_index_to_string(index : Integer) : String
+    }
+}
+
 package views
 {
     package nodes
@@ -53,14 +79,14 @@ package views
         class Start
         {
             + view_start_screen()
-            + select_difficulty()
+            + select_scenario()
             + launch_game()
         }
 
         class Menu
         {
             + view_menu()
-            + start(difficulty: Difficulty)
+            + start(scenario: Scenario)
             + quit()
         }
 
@@ -80,8 +106,8 @@ package controllers
 					- year : Integer
 					- month : Integer
 					- day : Integer
-					- difficulty : Difficulty
-					+ <<create>> TimeManagement(difficulty: Difficulty)
+					- scenario : Scenario
+					+ <<create>> TimeManagement(scenario: Scenario)
 					+ tick()
 					+ random_event()
 					+ get_season()
@@ -163,9 +189,9 @@ package models
 		package human {
 				class Student
 				{
-						+ rm_student(id : Integer)
 						+ add_student(dept : String)
-						+ get_id(id : Integer) : Integer
+						+ rm_student(id : Integer)
+						+ rm_students_by_dept(dept : String, nb : Integer)
 						+ get_year(id : Integer) : Integer
 						+ get_dept(id : Integer) : String
 						+ get_mood(id : Integer) : Real
@@ -173,29 +199,27 @@ package models
 						+ set_year(id : Integer, year : Integer)
 						+ set_mood(id : Integer, coeff : Real)
 						+ set_level(id : Integer, coeff : Real)
-						+ rm_students_by_dept(dept : String, nb : Integer)
-						+ compute_nb_per_dept(dept : String) : Integer
+						+ compute_nb_per_dept(dept : String) : Real
 						+ avg_mood_per_dept(dept : String) : Real
-						+ success_rate_per_dept(dept : String) : Real
-						+ compute_nb() : Integer
+						+ compute_nb() : Real
 						+ avg_mood() : Real
+						+ success_rate_per_dept(dept : String) : Real
 						+ success_rate() : Real
 				}
 
 				class Teacher
 				{
+						+ add_teacher(dept : String, full_time : Boolean)
 						+ rm_teacher(id : Integer)
-						+ add_teacher(dept : String)
-						+ get_id(id : Integer) : Integer
+						+ rm_teachers_by_dept(dept : String, nb : Integer)
 						+ get_dept(id : Integer) : String
 						+ get_mood(id : Integer) : Real
-						+ get_is_fulltime(id : Integer) : Boolean
+						+ get_if_fulltime(id : Integer) : Boolean
 						+ set_mood(id : Integer, coeff : Real)
 						+ set_fulltime(id : Integer, status : Boolean)
-						+ rm_teachers_by_dept(dept : String, nb : Integer)
-						+ compute_nb_per_dept(dept : String) : Integer
+						+ compute_nb_per_dept(dept : String) : Real
 						+ avg_mood_per_dept(dept : String) : Real
-						+ compute_nb() : Integer
+						+ compute_nb() : Real
 						+ avg_mood() : Real
 				}
     }
@@ -243,10 +267,9 @@ package models
 
 			class Fund
 			{
-				+ add_fund(source : String, amount : Real, destination : String?)
+				+ add_fund(source : String, amount : Real, destination : String?, time : Integer)
 				+ rm_fund_by_id(i : Integer)
 			    + rm_fund_by_source(source : String)
-				+ get_id(id : Integer) : Integer
 				+ get_source(id : Integer) : String
 				+ get_amount(id : Integer) : Real
 				+ get_area(id : Integer) : String?
@@ -254,10 +277,11 @@ package models
 				+ set_area(id : Integer, dest : String)
 				+ set_time(id : Integer, time : Integer)
 				+ total() : Real
-				+ inflation_adjusted(inflation_rate : Real) : Real
-				+ check_availability(amount : Real) : Boolean
-				+ forecast_per_dept(dept : String) : Real
-				+ result_per_dept(dept : String) : Real
+				+ total_per_dept(dept : String) : Real
+				+ inflation_adjusted(indexation_rate : Real)
+				+ normal_inflation_adjusted()
+				+ check_availability(amount : Real, dest : String) : Boolean
+				+ forecast() : Real
 			}
 
 			class Call
@@ -271,45 +295,58 @@ package models
 			}
     }
 
-    class StudentSQLTable
-    {
-        + id : Integer <<PK>>
-        + year : Integer [1..3]
-        + dept : String
-        + mood : Real [0, 1]
-        + level : Real [0, 1]
-    }
+        class Students
+        {
+            + id : Integer <<PK>>
+            + year : Integer [1..3]
+            + dept : String
+            + mood : Real [0, 1]
+            + level : Real [0, 1]
+        }
 
-    class TeacherSQLTable
-    {
-        + id : Integer <<PK>>
-        + dept : String
-        + mood : Real [0, 1]
-        + full-time : Boolean
-    }
+        class Teachers
+        {
+            + id : Integer <<PK>>
+            + dept : String
+            + mood : Real [0, 1]
+            + full-time : Boolean
+        }
 
-    class FundSQLTable
-    {
-        + id : Integer <<PK>>
-        + amount : Real
-        + source : String
-        + area : String
-        + time : Integer
-    }
+        class Funds
+        {
+            + id : Integer <<PK>>
+            + amount : Real
+            + source : String
+            + area : String
+            + time : Integer
+        }
 
-    class NotificationSQLTable
-    {
-        + id : Integer <<PK>>
-        + message : String
-        + duration : Integer
-        + is_reproductible : Boolean
-        + needs_action : Boolean
-        + area : String
-    }
+        class Notifications
+        {
+            + id : Integer <<PK>>
+            + message : String
+            + duration : Integer
+            + is_reproductible : Boolean
+            + needs_action : Boolean
+            + area : String
+        }
+
+        class Depts
+        {
+            + id : Integer <<PK>>
+            + name : String
+        }
+
+        class Sources
+        {
+            + id : Integer <<PK>>
+            + name : String
+        }
 }
 
 
 RenovIUTApp ...> views
+RenovIUTApp .> Glob
 BuildingView ...> Building
 Stats ....> models
 GameOver ..> Vote
@@ -317,10 +354,15 @@ Study ..> Student
 Teaching ..> Teacher
 Financing ..> Fund
 Action *---> Building
-Student ..> StudentSQLTable
-Teacher ..> TeacherSQLTable
-Fund ....> FundSQLTable
-Call ....> NotificationSQLTable
+Student ..> Students
+Teacher ..> Teachers
+Fund ....> Funds
+Call ....> Notifications
+Teachers ..> Depts
+Students ..> Depts
+Funds ..> Depts
+Notifications ..> Depts
+Funds ..> Sources
 Reaction o--> Action
 
 Building --|> IT
@@ -332,8 +374,10 @@ Action -|> Urgent
 Action -|> Planified
 Action *--> Call
 
-TimeManagement ..> Difficulty
-Financing ..> Difficulty
-Menu ..> Difficulty
+TimeManagement *--> Scenario
+Financing ..> Scenario
+Menu ..> Scenario
+
+Glob *--> DBManager
 
 @enduml
