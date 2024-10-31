@@ -2,8 +2,10 @@
 class_name DBManager
 extends Node
 
-var db: SQLite  # Instance de SQLite pour la base de données
+var db: SQLite = null  # Instance de SQLite pour la base de données
 var db_path: String  # Chemin de la base de données
+
+
 
 # Constructeur
 func _init(path: String):
@@ -91,6 +93,7 @@ func print_entries(query: String, params: Array = []) -> void:
 			print(" | ".join(values))  # Afficher les valeurs avec le séparateur
 	else:
 		print("Aucune entrée correspondante.")
+
 
 # Vider toutes les tables
 func clear_tables() -> void:

@@ -1,6 +1,7 @@
 # Main.gd
 # Ceci est juste un test, pour prendre en main la gestion des BDD sur Godot 4.
 # Seront ajoutés des populate() etc.
+class_name Exemple
 extends Node
 
 func add_fund(source : String, amount : float, destination : String, time : int) -> void:
@@ -114,7 +115,7 @@ func forecast() -> float:
 		adjusted_total += entry["amount"] * (1 + Utils.indexation_rate)  # Calculer en fonction de la constante
 	return adjusted_total
 
-func _ready():
+func _init():
 	if Utils.ok:
 		 # Tester ajout d'un fonds
 		print("Ajout de fonds...")
@@ -164,6 +165,7 @@ func _ready():
 		
 		# Anticiper l'indexation des financements
 		print("Total espéré l'année prochaine : ", forecast())
+	
 	
 	#Utils.db.clear_tables() # uniquement à la fin du jeu
 	Utils.db.close_db()

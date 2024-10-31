@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="RenovIUT"
-run/main_scene="res://MainExample.tscn"
+run/main_scene="res://mvc/views/Scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.png"
 
 [autoload]
 
-DBaseManager="*res://scripts/DBaseManager.gd"
-Utils="*res://scripts/Utils.gd"
+DBaseManager="*res://mvc/models/SQL/DBaseManager.gd"
+Utils="*res://mvc/models/SQL/Utils.gd"
 
 [editor_plugins]
 
