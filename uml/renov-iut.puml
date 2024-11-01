@@ -190,7 +190,7 @@ package controllers
 package models
 {
 		package human {
-				class Students
+				class Student
 				{
 						+ add_student(dept : String)
 						+ rm_student(id : Integer)
@@ -210,7 +210,7 @@ package models
 						+ success_rate() : Real
 				}
 
-				class Teachers
+				class Teacher
 				{
 						+ add_teacher(dept : String, full_time : Boolean)
 						+ rm_teacher(id : Integer)
@@ -393,8 +393,8 @@ RenovIUTApp .> Glob
 BuildingView ...> Building
 Stats ....> models
 GameOver ..> Vote
-Study ..> Students
-Teaching ..> Teachers
+Study ..> Student
+Teaching ..> Teacher
 Financing ..> Fund
 Action *---> Building
 
