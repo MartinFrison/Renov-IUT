@@ -167,6 +167,6 @@ func _init():
 		print("Total espéré l'année prochaine : ", forecast())
 	
 	
-	#Utils.db.clear_tables() # uniquement à la fin du jeu
+	Utils.db.clear_tables() # uniquement à la fin du jeu
 	Utils.db.close_db()
 	print("Fin du test.")

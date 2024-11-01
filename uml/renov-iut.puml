@@ -231,7 +231,7 @@ package models
                     + mood : Real [0, 1]
                     + level : Real [0, 1]
                 }
-            
+
                 class TeacherSQLTable
                 {
                     + id : Integer <<PK>>
@@ -239,10 +239,10 @@ package models
                     + mood : Real [0, 1]
                     + full-time : Boolean
                 }
-                
+
     }
 
-		package material 
+		package material
         {
 			abstract class Building
 			{
@@ -339,9 +339,6 @@ package models
                 + area : String
             }
 
-
-
-
             class Event
             {
                 + event_name(id : Integer) : String
@@ -352,14 +349,14 @@ package models
             'Table des evenements qui peuvent se produire'
             class EventSQLTable
             {
-                + id_event : Integer 
+                + id_event : Integer
                 + name : String
             }
 
             'Pour chaque evenement il peu y avoir différent choix'
-            class choiceSQLTable
+            class ChoiceSQLTable
             {
-                + id_event : Integer 
+                + id_event : Integer
                 + id_choice : Integer
                 + description : String
             }
@@ -372,13 +369,13 @@ package models
                 + description : String
             }
 
-            class Depts
+            class DeptSQLTable
             {
                 + id : Integer <<PK>>
                 + name : String
             }
 
-            class Sources
+            class SourceSQLTable
             {
                 + id : Integer <<PK>>
                 + name : String
@@ -397,15 +394,18 @@ Study ..> Student
 Teaching ..> Teacher
 Financing ..> Fund
 Action *---> Building
-Student ..> Students
-Teacher ..> Teachers
-Fund ....> Funds
-Call ....> Notifications
-Teachers ..> Depts
-Students ..> Depts
-Funds ..> Depts
-Notifications ..> Depts
-Funds ..> Sources
+Student ..> StudentSQLTable
+Teacher ..> TeacherSQLTable
+Fund ....> FundSQLTable
+Call ....> NotificationSQLTable
+TeacherSQLTable ..> DeptSQLTable
+StudentSQLTable ..> DeptSQLTable
+FundSQLTable ..> DeptSQLTable
+NotificationSQLTable ..> DeptSQLTable
+FundSQLTable ..> SourceSQLTable
+ConsequencesSQLTable ..> ChoiceSQLTable
+Event ..> EventSQLTable
+Event ..> ConsequencesSQLTable
 Reaction o--> Action
 
 Building --|> IT
@@ -416,6 +416,7 @@ Building --|> Engineering
 Action -|> Urgent
 Action -|> Planified
 Action *--> Call
+Action *--> Event
 
 TimeManagement *--> Scenario
 Financing ..> Scenario
@@ -424,3 +425,4 @@ Menu ..> Scenario
 Glob *--> DBManager
 
 @enduml
+
