@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://b4cp1gj8gn1ro"]
 
-[ext_resource type="Script" path="res://mvc/application/main.gd" id="1_lkrr3"]
-[ext_resource type="Texture2D" uid="uid://b570xim8pvoop" path="res://map_v1.png" id="2_4tq8c"]
-[ext_resource type="Texture2D" uid="uid://bgsmlpnpkqqfj" path="res://icon.png" id="2_m7bph"]
+[ext_resource type="Script" path="res://mvc/application/RenovIUTApp.gd" id="1_lkrr3"]
+[ext_resource type="Texture2D" uid="uid://qu3vlg5ct14" path="res://mvc/views/Image/map_v1.png" id="2_4tq8c"]
+[ext_resource type="Texture2D" uid="uid://1ex0ampj61gf" path="res://mvc/views/Image/icon.png" id="2_m7bph"]
 
 [sub_resource type="FontVariation" id="FontVariation_a1dcv"]
 

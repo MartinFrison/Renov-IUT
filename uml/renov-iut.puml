@@ -15,7 +15,7 @@ package global {
     {
     	+ db : SQLite
     	+ db_path : String
-    	+ <<create>> DBManager(path : String)
+    	+ _init DBManager(path : String)
     	+ open_db() : Boolean
     	+ close_db()
     	+ execute(query : String, params : Array) : Boolean
@@ -67,7 +67,7 @@ package views
         {
             - reactions : String[*]
             - selected : Integer
-            + <<create>> Reaction()
+            + _init Reaction()
             + define_reaction(selected : Integer)
             + send_reaction(selected : Integer)
 
@@ -103,28 +103,31 @@ package controllers
 		package timeline {
 			class TimeManagement
 			{
-					- year : Integer
-					- month : Integer
-					- day : Integer
-					- scenario : Scenario
-					+ <<create>> TimeManagement(scenario: Scenario)
-					+ tick()
-					+ random_event()
-					+ get_season()
-					+ end_of_year()
-					+ launch_vote()
-					+ pause(p : Boolean)
+				- year : Integer
+				- month : Integer
+				- day : Integer
+				+ _init(scenario: Scenario)
+				+ tick()
+                + wait(time : Real)
+                + incrementDay()
+				+ random_event()
+				+ get_season() : Integer
+                + end_of_month()
+				+ end_of_year()
+                + year_begin()
+				+ launch_vote()
+				+ pause(p : Boolean)
 			}
 
-					class Vote
+			class Vote
 			{
-					+ election_gagnee() : Boolean
-					+ popularity_rate() : Real
-					+ popularity_rate_per_dept(dept : String) : Real
-					+ popularity_rate_among_teachers() : Real
-					+ popularity_rate_among_teachers_per_dept(dept : String) : Real
-					+ popularity_rate_among_students() : Real
-					+ popularity_rate_among_students_per_dept(dept : String) : Real
+				+ election_gagnee() : Boolean
+				+ popularity_rate() : Real
+				+ popularity_rate_per_dept(dept : String) : Real
+				+ popularity_rate_among_teachers() : Real
+				+ popularity_rate_among_teachers_per_dept(dept : String) : Real
+				+ popularity_rate_among_students() : Real
+				+ popularity_rate_among_students_per_dept(dept : String) : Real
 			}
     }
 
@@ -187,7 +190,7 @@ package controllers
 package models
 {
 		package human {
-				class Student
+				class Students
 				{
 						+ add_student(dept : String)
 						+ rm_student(id : Integer)
@@ -207,7 +210,7 @@ package models
 						+ success_rate() : Real
 				}
 
-				class Teacher
+				class Teachers
 				{
 						+ add_teacher(dept : String, full_time : Boolean)
 						+ rm_teacher(id : Integer)
@@ -263,31 +266,31 @@ package models
 
 			class IT
 			{
-				+ <<create>> IT()
+				+ _init()
 				+ it_func()
 			}
 
 			class Communication
 			{
-				+ <<create>> Communication()
+				+ _init()
 				+ communication_func()
 			}
 
 			class Marketing
 			{
-				+ <<create>> Marketing()
+				+ _init()
 				+ marketing_func()
 			}
 
 			class Chemistry
 			{
-				+ <<create>> Chemistry()
+				+ _init()
 				+ chemistry_func()
 			}
 
 			class Engineering
 			{
-				+ <<create>> Engineering()
+				+ _init()
 				+ engineering_func()
 			}
 
@@ -393,14 +396,14 @@ RenovIUTApp .> Glob
 BuildingView ...> Building
 Stats ....> models
 GameOver ..> Vote
-Study ..> Student
-Teaching ..> Teacher
+Study ..> Students
+Teaching ..> Teachers
 Financing ..> Fund
 Action *---> Building
-Student ..> Students
-Teacher ..> Teachers
+Students ..> StudentSQLTable
+Teachers ..> TeacherSQLTable
 Fund ....> Funds
-Call ....> Notifications
+Call ....> NotificationSQLTable
 Teachers ..> Depts
 Students ..> Depts
 Funds ..> Depts

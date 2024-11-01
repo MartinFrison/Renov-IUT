@@ -1,3 +1,4 @@
+class_name RenovIUTApp
 extends Node
 
 
@@ -10,5 +11,11 @@ func _ready() -> void:
 	Utils.create_iut_db()
 	
 	Exemple.new()
+	
+	var scenario = Scenario.new()
+	var time = TimeManagement.new(scenario)
+	
+	add_child(time)
+	time.add_child(scenario)
 	
 	
