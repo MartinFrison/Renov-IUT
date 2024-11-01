@@ -12,10 +12,9 @@ func _ready() -> void:
 	
 	Exemple.new()
 	
-	var scenario = Scenario.new()
+	var scenario = ScenarioElection.new()
 	var time = TimeManagement.new(scenario)
 	
 	add_child(time)
-	time.add_child(scenario)
 	
 	

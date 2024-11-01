@@ -98,26 +98,47 @@ package views
     }
 }
 
+
+
+
+
 package controllers
 {
 		package timeline {
 			class TimeManagement
 			{
-				- year : Integer
-				- month : Integer
-				- day : Integer
 				+ _init(scenario: Scenario)
 				+ tick()
                 + wait(time : Real)
-                + incrementDay()
-				+ random_event()
-				+ get_season() : Integer
                 + end_of_month()
 				+ end_of_year()
                 + year_begin()
-				+ launch_vote()
 				+ pause(p : Boolean)
 			}
+
+            interface Scenario
+		    {
+            	+ {abstract} test_end_game_condition() : Boolean
+                + {abstract} end_game()
+				+ {abstract} random_event()
+                + {abstract} init_data()
+				+ get_scenario() : String
+				+ adjust_budget(coeff : Real)
+				+ adjust_student_satisfaction(coeff : Real)
+				+ adjust_teacher_satisfaction(coeff : Real)
+				+ adjust_call_probability(call : Integer, coeff : Real)
+				+ adjust_dept_state(dept: String, coeff : Real)
+		    }
+
+            class ScenarioElection
+            {
+
+            }
+
+            class ScenarioRenovation
+            {
+                
+            }
 
 			class Vote
 			{
@@ -150,7 +171,17 @@ package controllers
     }
 
     package management
-    {
+    {   
+        class BuildingManagement
+        {
+            + switchHeat(dept : String)
+            + fireAgent(dept : String)
+            + hireAgent(dept : String)
+            + lockDoor(dept : String)
+            + unlockDoor(dept : String)
+        }
+
+
         class Financing
         {
             + finance(dept : String)
@@ -174,124 +205,112 @@ package controllers
             + respond_to_urgent()
         }
     }
-
-		class Scenario
-		{
-				+ get_scenario() : Integer[0..2]
-				+ set_scenario(n : Integer[0..2])
-				+ adjust_budget(coeff : Real)
-				+ adjust_student_satisfaction(coeff : Real)
-				+ adjust_teacher_satisfaction(coeff : Real)
-				+ adjust_call_probability(call : Integer, coeff : Real)
-				+ adjust_dept_state(dept: String, coeff : Real)
-		}
 }
+
+
+
+
 
 package models
 {
-		package human {
-				class Students
-				{
-						+ add_student(dept : String)
-						+ rm_student(id : Integer)
-						+ rm_students_by_dept(dept : String, nb : Integer)
-						+ get_year(id : Integer) : Integer
-						+ get_dept(id : Integer) : String
-						+ get_mood(id : Integer) : Real
-						+ get_level(id : Integer) : Real
-						+ set_year(id : Integer, year : Integer)
-						+ set_mood(id : Integer, coeff : Real)
-						+ set_level(id : Integer, coeff : Real)
-						+ compute_nb_per_dept(dept : String) : Real
-						+ avg_mood_per_dept(dept : String) : Real
-						+ compute_nb() : Real
-						+ avg_mood() : Real
-						+ success_rate_per_dept(dept : String) : Real
-						+ success_rate() : Real
-				}
+    class global_data
+    { 
+        - {static} _year : Integer
+		- {static} _month : Integer
+		- {static} _day : Integer
+        - {static} _budget : Integer
+        + {static} setBudget(montant : Integer)
+        + {static} addBudget(montant : Integer)
+        + {static} getBudget() : Integer
+        + {static} setDate(day,month,year)
+        + {static} incrementDay()
+        + {static} isNewMonth() : Boolean
+        + {static} isEndofYear() : Boolean
+        + {static} isStartofYear() : Boolean
+        + {static} get_season() : Integer
+    }
 
-				class Teachers
-				{
-						+ add_teacher(dept : String, full_time : Boolean)
-						+ rm_teacher(id : Integer)
-						+ rm_teachers_by_dept(dept : String, nb : Integer)
-						+ get_dept(id : Integer) : String
-						+ get_mood(id : Integer) : Real
-						+ get_if_fulltime(id : Integer) : Boolean
-						+ set_mood(id : Integer, coeff : Real)
-						+ set_fulltime(id : Integer, status : Boolean)
-						+ compute_nb_per_dept(dept : String) : Real
-						+ avg_mood_per_dept(dept : String) : Real
-						+ compute_nb() : Real
-						+ avg_mood() : Real
-				}
-
-                class StudentSQLTable
-                {
-                    + id : Integer <<PK>>
-                    + year : Integer [1..3]
-                    + dept : String
-                    + mood : Real [0, 1]
-                    + level : Real [0, 1]
-                }
-
-                class TeacherSQLTable
-                {
-                    + id : Integer <<PK>>
-                    + dept : String
-                    + mood : Real [0, 1]
-                    + full-time : Boolean
-                }
+	package human {
+		class Students
+		{
+				+ add_student(dept : String)
+				+ rm_student(id : Integer)
+				+ rm_students_by_dept(dept : String, nb : Integer)
+				+ get_year(id : Integer) : Integer
+				+ get_dept(id : Integer) : String
+				+ get_mood(id : Integer) : Real
+				+ get_level(id : Integer) : Real
+				+ set_year(id : Integer, year : Integer)
+				+ set_mood(id : Integer, coeff : Real)
+				+ set_level(id : Integer, coeff : Real)
+				+ compute_nb_per_dept(dept : String) : Real
+				+ avg_mood_per_dept(dept : String) : Real
+				+ compute_nb() : Real
+				+ avg_mood() : Real
+				+ success_rate_per_dept(dept : String) : Real
+				+ success_rate() : Real
+		}
+		class Teachers
+		{
+				+ add_teacher(dept : String, full_time : Boolean)
+				+ rm_teacher(id : Integer)
+				+ rm_teachers_by_dept(dept : String, nb : Integer)
+				+ get_dept(id : Integer) : String
+				+ get_mood(id : Integer) : Real
+				+ get_if_fulltime(id : Integer) : Boolean
+				+ set_mood(id : Integer, coeff : Real)
+				+ set_fulltime(id : Integer, status : Boolean)
+				+ compute_nb_per_dept(dept : String) : Real
+				+ avg_mood_per_dept(dept : String) : Real
+				+ compute_nb() : Real
+				+ avg_mood() : Real
+		}
+        class StudentSQLTable
+        {
+            + id : Integer <<PK>>
+            + year : Integer [1..3]
+            + dept : String
+            + mood : Real [0, 1]
+            + level : Real [0, 1]
+        }
+        class TeacherSQLTable
+        {
+            + id : Integer <<PK>>
+            + dept : String
+            + mood : Real [0, 1]
+            + full-time : Boolean
+        }
 
     }
 
 		package material
         {
-			abstract class Building
+			class Building
 			{
-				- age : Integer
-				- isolation : Integer
-				- surface : Integer
-				- heating : Boolean
-				- maintenance_agents_nb : Integer
-                - code : String
-                + _init(age, isolation, surface, heating, maintenance_agents_nb, code)
+				- _age : Integer
+                - _doorLocked : Boolean
+				- _surface : Integer
+				- _heating : Boolean
+				- _maintenance_agents_nb : Integer
+                - _code : String
+                - _isolation : Integer[0..100]
+                - _inventory : integer[0..100]
+                + _init(age, isolation, surface, heating, maintenance_agents_nb, code, inventory)
 			    + get_code() : String
                 + get_age() : int
                 + get_isolation() : int
                 + get_surface() : int
                 + is_heating() : bool
-                + get_maintenance_agents_nb() : int
-			}
-
-			class IT
-			{
-				+ _init()
-				+ it_func()
-			}
-
-			class Communication
-			{
-				+ _init()
-				+ communication_func()
-			}
-
-			class Marketing
-			{
-				+ _init()
-				+ marketing_func()
-			}
-
-			class Chemistry
-			{
-				+ _init()
-				+ chemistry_func()
-			}
-
-			class Engineering
-			{
-				+ _init()
-				+ engineering_func()
+                + get_agents_nb() : int
+                + add_agent()
+                + rm_agent()
+                + setHeat(heat : Boolean)
+                + setIsolation(value : Integer)
+                + setInventory(value : Integer)
+                + addIsolation(value : Integer)
+                + addInventory(value : Integer)
+                + isDoorLocked() : Boolean
+                + setDoorLocked(locked : Boolean)
 			}
 
 			class Fund
@@ -388,18 +407,35 @@ package models
 }
 
 
+
+
+'Appli'
 RenovIUTApp ...> views
 RenovIUTApp .> Glob
+Glob *--> DBManager
+
+'Vue utilise modèle'
 BuildingView ...> Building
 Stats ....> models
+
+'Vue utilise controller'
 GameOver ..> Vote
+Reaction o--> Action
+Menu ..> Scenario
+
+'Controller utilse modèle'
 Study ..> Students
 Teaching ..> Teachers
 Financing ..> Fund
 Action *---> Building
+Action *--> Call
+Action *--> Event
+BuildingManagement ..> Building 
+TimeManagement ..> global_data
 
-Student ..> StudentSQLTable
-Teacher ..> TeacherSQLTable
+'Modèle utilise SQL'
+Students ..> StudentSQLTable
+Teachers ..> TeacherSQLTable
 Fund ....> FundSQLTable
 Call ....> NotificationSQLTable
 TeacherSQLTable ..> DeptSQLTable
@@ -410,23 +446,18 @@ FundSQLTable ..> SourceSQLTable
 ConsequencesSQLTable ..> ChoiceSQLTable
 Event ..> EventSQLTable
 Event ..> ConsequencesSQLTable
-Reaction o--> Action
 
-Building --|> IT
-Building --|> Communication
-Building --|> Marketing
-Building --|> Chemistry
-Building --|> Engineering
+'Heritage'
 Action -|> Urgent
 Action -|> Planified
-Action *--> Call
-Action *--> Event
+Scenario --|> ScenarioElection
+Scenario --|> ScenarioRenovation
 
+'Autre'
 TimeManagement *--> Scenario
 Financing ..> Scenario
-Menu ..> Scenario
 
-Glob *--> DBManager
+
 
 @enduml
 
