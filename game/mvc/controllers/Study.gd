@@ -1,7 +1,7 @@
 # Study.gd
 # Gère la masse estudiantine.
 class_name Study
-extends Node
+extends RefCounted
 
 const students_base_nb: Array = [88, 125, 30, 96, 112] # chiffres réels de 2024, tirés de ParcourSup, par département
 const fluct = 0.1 # fluctiation, pour la 1ère année
@@ -28,8 +28,8 @@ func populate_promo(dept : int, year : int) -> void:
 		_:
 			return
 	
-	var id = Student.get_all_ids()
-	for i in id:
+	var nb_students = ceil(students_base_nb[dept] * coeff)
+	for i in range(0, nb_students):
 		Student.add_student(Utils.dept_index_to_string(dept))
 	
 # Inscrit tous les étudiants (ceux qui viennent du bac, mais aussi ceux, moins nombreux, qui sont passés en 2e et en 3e année)
@@ -41,7 +41,7 @@ func populate() -> void:
 
 # Simule les examens basé uniquement sur la chance (certains scénarios peuvent appliquer des coefficients supplémentaires)
 func evaluate() -> void:
-	var total = Student.new().compute_nb()
+	var total = Student.compute_nb()
 	var luck = randf_range(0.0, 2.0*(1-exam_base_result)) # la chance peut soit se détourner de l'élève, soit lui permettre d'obtenir jusqu'à 20% (ici) de plus
 	var exam: float = randf_range(exam_base_result, exam_base_result + luck)
 	var id = Student.get_all_ids()
