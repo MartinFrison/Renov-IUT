@@ -1,5 +1,5 @@
 class_name Teaching
-extends RefCounted # ne nécessite pas d'interaction avec le moteur de scène
+extends RefCounted
 
 
 # Fonction pour embaucher un professeur dans un département spécifique

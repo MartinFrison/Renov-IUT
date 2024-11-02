@@ -1,7 +1,8 @@
 # Building.gd
 class_name Building
-extends Object
+extends RefCounted
 
+static var _buildingsDictionary = {}
 
 # Attributs privés
 var _age : int
@@ -24,6 +25,16 @@ func _init(age: int, isolation: int, surface: int, heating: bool, maintenance_ag
 	_maintenance_agents_nb = maintenance_agents_nb
 	_code = code
 	_inventory = clamp(inventory, 0, 100)  # Limite l'inventaire entre 0 et 100
+	_buildingsDictionary[code] = self
+
+
+static func get_building(code : String) -> Building:
+	if _buildingsDictionary.has(code):	
+		return _buildingsDictionary.get(code)
+	else:
+		return null
+
+
 
 # Getters
 func get_code() -> String:

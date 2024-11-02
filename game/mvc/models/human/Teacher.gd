@@ -1,6 +1,17 @@
 # Teacher.gd
 class_name Teacher
-extends RefCounted # ne nécessite pas d'interaction avec le moteur de scène
+extends Node
+
+
+# Fonction pour obtenir tous les IDs de la table TeacherSQLTable
+static func get_all_ids() -> Array:
+	var ids = []
+	var query = "SELECT id FROM Students"
+	var result = Utils.db.get_entries(query)
+
+	for r in result:
+		ids.append(r["id"])
+	return ids
 
 # Ajout et suppression
 static func add_teacher(dept : String, full_time : bool) -> void:

@@ -1,22 +1,34 @@
 # Student.gd
 class_name Student
-extends RefCounted # ne nécessite pas d'interaction avec le moteur de scène
+extends Node 
+
+# Fonction pour obtenir tous les IDs de la table StudentSQLTable
+static func get_all_ids() -> Array:
+	var ids = []
+	var query = "SELECT id FROM Students"
+	var result = Utils.db.get_entries(query)
+
+	for r in result:
+		ids.append(r["id"])
+	return ids
+
+
 
 # Ajout et suppression
-func add_student(dept : String) -> void:
+static func add_student(dept : String) -> void:
 	var query = "INSERT INTO Students (year, dept, mood, level) VALUES (?, ?, ?, ?)"
 	var dt = Utils.dept_string_to_index(dept)
 	if !Utils.db.execute(query, [1, dt, randf_range(0.7, 1.0), randf_range(0.5, 1.0)]):
 		print("Erreur d'ajout.")
 		return
 
-func rm_student_by_id(id : int) -> void:
+static func rm_student_by_id(id : int) -> void:
 	var query = "DELETE FROM Students WHERE id=?"
 	if !Utils.db.execute(query, [id]):
 		print("Erreur de suppression.")
 		return
 
-func rm_students_by_dept(dept: String, nb: int) -> void:
+static func rm_students_by_dept(dept: String, nb: int) -> void:
 	# Récupérer les IDs des étudiants dans le département spécifié
 	var ids_query = "SELECT id FROM Students WHERE dept = ? LIMIT ?"
 	var dt = Utils.dept_string_to_index(dept)
@@ -28,14 +40,14 @@ func rm_students_by_dept(dept: String, nb: int) -> void:
 		rm_student_by_id(id)
 
 # Getters
-func get_year(id : int) -> int:
+static func get_year(id : int) -> int:
 	var query = "SELECT year FROM Students WHERE id=?"
 	var result = Utils.db.get_entries(query, [id])
 	if result.size() > 0:
 		return result[0]["year"]
 	return -1
 
-func get_dept(id : int) -> String:
+static func get_dept(id : int) -> String:
 	var query = "SELECT dept FROM Students WHERE id=?"
 	var result = Utils.db.get_entries(query, [id])
 	if result.size() > 0:
@@ -43,14 +55,14 @@ func get_dept(id : int) -> String:
 		return Utils.dept_index_to_string(dept)
 	return ""
 
-func get_mood(id : int) -> float:
+static func get_mood(id : int) -> float:
 	var query = "SELECT mood FROM Students WHERE id=?"
 	var result = Utils.db.get_entries(query, [id])
 	if result.size() > 0:
 		return result[0]["mood"]
 	return -1.0
 
-func get_level(id : int) -> float:
+static func get_level(id : int) -> float:
 	var query = "SELECT level FROM Students WHERE id=?"
 	var result = Utils.db.get_entries(query, [id])
 	if result.size() > 0:
@@ -58,23 +70,23 @@ func get_level(id : int) -> float:
 	return -1.0
 
 # Setters
-func set_year(id : int, new_year: int) -> void:
+static func set_year(id : int, new_year: int) -> void:
 	var query = "UPDATE Students SET year=? WHERE id=?"
 	if !Utils.db.execute(query, [new_year, id]):
 		return
 
-func set_mood(id : int, coeff: float) -> void:
+static func set_mood(id : int, coeff: float) -> void:
 	var query = "UPDATE Students SET mood=mood*? WHERE id=?"
 	if !Utils.db.execute(query, [coeff, id]):
 		return
 
-func set_level(id : int, coeff: float) -> void:
+static func set_level(id : int, coeff: float) -> void:
 	var query = "UPDATE Students SET level=level*? WHERE id=?"
 	if !Utils.db.execute(query, [coeff, id]):
 		return
 
 # Stats
-func compute_nb_per_dept(dept : String) -> float:
+static func compute_nb_per_dept(dept : String) -> float:
 	var query = "SELECT count(*) AS nb FROM Students WHERE dept=?"
 	var dt = Utils.dept_string_to_index(dept)
 	var result = Utils.db.get_entries(query, [dt])
@@ -82,7 +94,7 @@ func compute_nb_per_dept(dept : String) -> float:
 		return result[0]["nb"]
 	return -1.0
 
-func avg_mood_per_dept(dept: String) -> float:
+static func avg_mood_per_dept(dept: String) -> float:
 	var query = "SELECT mood FROM Students WHERE dept = ?"
 	var dt = Utils.dept_string_to_index(dept)
 	var entries = Utils.db.get_entries(query, [dt])
@@ -97,14 +109,15 @@ func avg_mood_per_dept(dept: String) -> float:
 	else:
 		return 0.0
 
-func compute_nb() -> float:
+static func compute_nb() -> float:
 	var query = "SELECT count(*) AS nb FROM Students"
 	var result = Utils.db.get_entries(query)
+
 	if result.size() > 0:
 		return result[0]["nb"]
 	return -1.0
 
-func avg_mood() -> float:
+static func avg_mood() -> float:
 	var query = "SELECT mood FROM Students"
 	var entries = Utils.db.get_entries(query)
 	var mood_sum: float = 0.0
@@ -120,7 +133,7 @@ func avg_mood() -> float:
 	
 	return 1.0
 	
-func success_rate_per_dept(dept : String) -> float:
+static func success_rate_per_dept(dept : String) -> float:
 	var query = "SELECT level FROM Students WHERE dept = ?"
 	var dt = Utils.dept_string_to_index(dept)
 	var entries = Utils.db.get_entries(query, [dt])
@@ -136,7 +149,7 @@ func success_rate_per_dept(dept : String) -> float:
 	else:
 		return 0.0
 
-func success_rate() -> float:
+static func success_rate() -> float:
 	var query = "SELECT level FROM Students"
 	var entries = Utils.db.get_entries(query)
 	var success: float = 0.0

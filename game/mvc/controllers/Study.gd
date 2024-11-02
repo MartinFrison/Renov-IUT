@@ -1,7 +1,7 @@
 # Study.gd
 # Gère la masse estudiantine.
 class_name Study
-extends RefCounted
+extends Node
 
 const students_base_nb: Array = [88, 125, 30, 96, 112] # chiffres réels de 2024, tirés de ParcourSup, par département
 const fluct = 0.1 # fluctiation, pour la 1ère année
@@ -12,7 +12,6 @@ const exam_base_result = 0.8 # On estime qu'à l'examen, on est sur de récupér
 # À noter que cette fonction n'est utilisée qu'au début du jeu et calcule le nombre des 2e et des 3e année comme un pourcentage,
 # sans traiter leur niveau comme ce sera fait au cours du jeu.
 func populate_promo(dept : int, year : int) -> void:
-	var nb_students = 0
 	var coeff = 0.0
 	
 	match year:
@@ -29,10 +28,9 @@ func populate_promo(dept : int, year : int) -> void:
 		_:
 			return
 	
-	nb_students = ceil(students_base_nb[dept] * coeff)
-	for i in range(0, nb_students):
-		var s = Student.new()
-		s.add_student(Utils.dept_index_to_string(dept))
+	var id = Student.get_all_ids()
+	for i in id:
+		Student.add_student(Utils.dept_index_to_string(dept))
 	
 # Inscrit tous les étudiants (ceux qui viennent du bac, mais aussi ceux, moins nombreux, qui sont passés en 2e et en 3e année)
 func populate() -> void:
@@ -45,19 +43,19 @@ func evaluate() -> void:
 	var total = Student.new().compute_nb()
 	var luck = randf_range(0.0, 2.0*(1-exam_base_result)) # la chance peut soit se détourner de l'élève, soit lui permettre d'obtenir jusqu'à 20% (ici) de plus
 	var exam: float = randf_range(exam_base_result, exam_base_result + luck)
-	for student in range(0, total):
-		Student.new().set_level(student, exam)
+	var id = Student.get_all_ids()
+	for student in id:
+		Student.set_level(student, exam)
 
 # Simule un passage à l'année suivante, en promouvant ceux qui restent et en excluant ceux qui n'ont pas le niveau et/ou l'envie
 func next_year() -> void:
 	evaluate()
-	var total = Student.new().compute_nb()
-	for student in range(0, total):
-		var s = Student.new()
-		var mood = s.get_mood(student)
-		var level = s.get_level(student)
-		var year = s.get_year(student)
+	var id = Student.get_all_ids()
+	for student in id:
+		var mood = Student.get_mood(student)
+		var level = Student.get_level(student)
+		var year = Student.get_year(student)
 		if mood>0.5 and level>0.5 and year<3: # passage en année suivante
-			s.set_year(student, s.get_year(student)+1)
+			Student.set_year(student, Student.get_year(student)+1)
 		else: #exclusion, départ ou obtention du diplome
-			s.rm_student_by_id(student)
+			Student.rm_student_by_id(student)

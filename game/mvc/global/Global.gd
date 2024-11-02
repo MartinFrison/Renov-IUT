@@ -1,11 +1,10 @@
-# Utils.gd
-class_name Glob
+# Global.gd
+class_name Global
 extends Node
 
 # Connection globale
 var db = DBManager.new("res://data/iut_tables.db")
 var ok = db.open_db()
-
 
 # Variables globales
 var normal_inflation_rate = 0.057
@@ -104,11 +103,7 @@ func create_iut_db():
 		else:
 			print("Table créée avec succès.")
 
-	Utils.db.clear_tables()
-
-
-
-
+	db.clear_tables()
 
 
 

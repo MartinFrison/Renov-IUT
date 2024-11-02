@@ -9,9 +9,7 @@ func _ready() -> void:
 	label = label as Label
 	label.text = "Bonjour"
 	Utils.create_iut_db()
-	
 	Exemple.new()
-	
 	var scenario = ScenarioElection.new()
 	var time = TimeManagement.new(scenario)
 	
