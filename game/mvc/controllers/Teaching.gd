@@ -1,13 +1,14 @@
 class_name Teaching
 extends RefCounted # ne nécessite pas d'interaction avec le moteur de scène
 
+
 # Fonction pour embaucher un professeur dans un département spécifique
 func hire_teachers(dept: String):
 	#vérifie si il y a moins de 20 profs dans le batiments
 	if Teacher.compute_nb_per_dept(dept) >= 20:
 		print("Deja max de prof dans ce batiments")
 		return
-		
+
 	#vérifie si un prof est prêt à être recruté
 	if true:
 		print("Pas de prof disponible")

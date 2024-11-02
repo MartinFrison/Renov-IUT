@@ -61,4 +61,3 @@ func next_year() -> void:
 			s.set_year(student, s.get_year(student)+1)
 		else: #exclusion, départ ou obtention du diplome
 			s.rm_student_by_id(student)
-	
