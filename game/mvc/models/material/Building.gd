@@ -3,6 +3,7 @@ class_name Building
 extends RefCounted
 
 static var _buildingsDictionary = {}
+static var _codeList = []
 
 # Attributs privés
 var _age : int
@@ -26,6 +27,7 @@ func _init(age: int, isolation: int, surface: int, heating: bool, maintenance_ag
 	_code = code
 	_inventory = clamp(inventory, 0, 100)  # Limite l'inventaire entre 0 et 100
 	_buildingsDictionary[code] = self
+	_codeList.append(code)
 
 
 static func get_building(code : String) -> Building:

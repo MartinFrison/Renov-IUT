@@ -38,6 +38,7 @@ func populate() -> void:
 		for j in range(1,4): # l'année
 			populate_promo(i, j)
 
+
 # Simule les examens basé uniquement sur la chance (certains scénarios peuvent appliquer des coefficients supplémentaires)
 func evaluate() -> void:
 	var total = Student.new().compute_nb()

@@ -132,7 +132,7 @@ static func avg_mood() -> float:
 		return 0.0
 	
 	return 1.0
-	
+
 static func success_rate_per_dept(dept : String) -> float:
 	var query = "SELECT level FROM Students WHERE dept = ?"
 	var dt = Utils.dept_string_to_index(dept)
@@ -148,6 +148,7 @@ static func success_rate_per_dept(dept : String) -> float:
 		return round((success / count)* 100) / 100
 	else:
 		return 0.0
+
 
 static func success_rate() -> float:
 	var query = "SELECT level FROM Students"

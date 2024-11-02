@@ -143,13 +143,19 @@ package controllers
 
 			class Vote
 			{
-				+ election_gagnee() : Boolean
-				+ popularity_rate() : Real
-				+ popularity_rate_per_dept(dept : String) : Real
-				+ popularity_rate_among_teachers() : Real
-				+ popularity_rate_among_teachers_per_dept(dept : String) : Real
-				+ popularity_rate_among_students() : Real
-				+ popularity_rate_among_students_per_dept(dept : String) : Real
+                + {static} nb_voix_per_dept(dept: String) : int
+                + {static} nb_voix_teacher_per_dept(dept: String) : int
+                + {static} nb_voix_student_per_dept(dept: String) : int
+                + {static} nb_voix_teacher() : int
+                + {static} nb_voix_student() : int
+                + {static} nb_voix_total() : int
+				+ {static} election_gagnee() : Boolean
+				+ {static} popularity_rate() : Real
+				+ {static} popularity_rate_per_dept(dept : String) : Real
+				+ {static} popularity_rate_among_teachers() : Real
+				+ {static} popularity_rate_among_teachers_per_dept(dept : String) : Real
+				+ {static} popularity_rate_among_students() : Real
+				+ {static} popularity_rate_among_students_per_dept(dept : String) : Real
 			}
     }
 
@@ -157,17 +163,17 @@ package controllers
     {
         class Teaching
         {
-            + hire_teachers(dept : String)
-            + fire_teachers(dept : String)
-            + populate()
+            + {static} hire_teachers(dept : String)
+            + {static} fire_teachers(dept : String)
+            + {static} populate()
         }
 
         class Study
         {
-            + populate()
-            + populate_promo(dept : String, year : Integer)
-            + evaluate()
-            + next_year()
+            + {static} populate()
+            + {static} populate_promo(dept : String, year : Integer)
+            + {static} evaluate()
+            + {static} next_year()
         }
     }
 
@@ -205,6 +211,11 @@ package controllers
         {
             + respond_to_urgent()
         }
+    }
+
+    class EventManagement
+    {
+        
     }
 }
 
