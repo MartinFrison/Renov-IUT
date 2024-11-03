@@ -28,13 +28,13 @@ func populate_promo(dept : int, year : int) -> void:
 		_:
 			return
 	
-	var nb_students = ceil(students_base_nb[dept] * coeff)
+	var nb_students = ceil(students_base_nb[dept-1] * coeff)
 	for i in range(0, nb_students):
-		Student.add_student(Utils.dept_index_to_string(dept))
+		Student.add_student(Utils.dept_index_to_string(dept), year)
 	
 # Inscrit tous les étudiants (ceux qui viennent du bac, mais aussi ceux, moins nombreux, qui sont passés en 2e et en 3e année)
 func populate() -> void:
-	for i in range(0,5): # le département
+	for i in range(1,6): # le département
 		for j in range(1,4): # l'année
 			populate_promo(i, j)
 

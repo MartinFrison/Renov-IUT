@@ -15,10 +15,10 @@ static func get_all_ids() -> Array:
 
 
 # Ajout et suppression
-static func add_student(dept : String) -> void:
+static func add_student(dept : String, year : int) -> void:
 	var query = "INSERT INTO Students (year, dept, mood, level) VALUES (?, ?, ?, ?)"
 	var dt = Utils.dept_string_to_index(dept)
-	if !Utils.db.execute(query, [1, dt, randf_range(0.7, 1.0), randf_range(0.5, 1.0)]):
+	if !Utils.db.execute(query, [year, dt, randf_range(0.7, 1.0), randf_range(0.5, 1.0)]):
 		print("Erreur d'ajout.")
 		return
 

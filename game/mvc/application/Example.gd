@@ -6,7 +6,10 @@ extends Node
 
 func _init():
 	if Utils.ok:
-		print("")
+		var s = Study.new()
+		var t = Teaching.new()
+		s.populate()
+		t.populate()
 	
 	#Utils.db.clear_tables()
 	Utils.db.close_db()

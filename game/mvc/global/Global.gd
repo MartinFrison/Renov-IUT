@@ -103,7 +103,7 @@ func create_iut_db():
 		else:
 			print("Table créée avec succès.")
 
-	db.clear_tables()
+	#db.clear_tables()
 
 
 

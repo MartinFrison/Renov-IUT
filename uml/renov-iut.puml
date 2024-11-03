@@ -104,7 +104,7 @@ package views
 
 package controllers
 {
-		package timeline 
+		package timeline
         {
 			class TimeManagement
 			{
@@ -138,7 +138,7 @@ package controllers
 
             class ScenarioRenovation
             {
-                
+
             }
 
 			class Vote
@@ -178,7 +178,7 @@ package controllers
     }
 
     package management
-    {   
+    {
         class BuildingManagement
         {
             + {static} switchHeat(dept : String)
@@ -215,7 +215,7 @@ package controllers
 
     class EventManagement
     {
-        
+
     }
 }
 
@@ -226,7 +226,7 @@ package controllers
 package models
 {
     class global_data
-    { 
+    {
         - {static} _year : Integer
 		- {static} _month : Integer
 		- {static} _day : Integer
@@ -246,7 +246,7 @@ package models
 		class Students
 		{
                 + {static} get_all_ids() : Array
-				+ {static} add_student(dept : String)
+				+ {static} add_student(dept : String, year: Integer)
 				+ {static} rm_student(id : Integer)
 				+ {static} rm_students_by_dept(dept : String, nb : Integer)
 				+ {static} get_year(id : Integer) : Integer
@@ -444,7 +444,7 @@ Financing ..> Fund
 Action *---> Building
 Action *--> Call
 Action *--> Event
-BuildingManagement ..> Building 
+BuildingManagement ..> Building
 TimeManagement ..> global_data
 
 'Modèle utilise SQL'

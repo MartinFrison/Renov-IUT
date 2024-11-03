@@ -34,7 +34,7 @@ func fire_teachers(dept: String):
 # Fonction pour embaucher des enseignants au départ
 func populate():
 	var nb_teachers = 0
-	for i in range(0,5): # par département
-		nb_teachers = teachers_base_nb[i]
+	for i in range(1,6): # par département
+		nb_teachers = teachers_base_nb[i-1]
 		for j in range (0, nb_teachers):
 			Teacher.add_teacher(Utils.dept_index_to_string(i), true) # Au départ, on n'embauchera que des profs titulaires
