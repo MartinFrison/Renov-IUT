@@ -40,7 +40,7 @@ func create_iut_db():
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		amount REAL,
 		source TEXT,
-		area TEXT,
+		area INTEGER,
 		time INTEGER
 	);
 	"""
@@ -52,7 +52,7 @@ func create_iut_db():
 		duration INTEGER,
 		is_reproductible BOOLEAN,
 		needs_action BOOLEAN,
-		area TEXT
+		area INTEGER
 	);
 	"""
 
@@ -103,9 +103,7 @@ func create_iut_db():
 		else:
 			print("Table créée avec succès.")
 
-	#db.clear_tables()
-
-
+	db.clear_tables()
 
 
 
