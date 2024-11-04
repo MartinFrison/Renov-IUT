@@ -9,10 +9,11 @@ func _ready() -> void:
 	label = label as Label
 	label.text = "Bonjour"
 	Utils.create_iut_db()
+	
+	var illkirch = IUTFacade.new()
+	illkirch.populate_campus()
 	Exemple.new()
-	var scenario = ScenarioElection.new()
-	var time = TimeManagement.new(scenario)
 	
-	add_child(time)
-	
+	#Utils.db.clear_tables()
+	Utils.db.close_db()
 	

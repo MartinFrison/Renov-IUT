@@ -5,12 +5,8 @@ class_name Exemple
 extends Node
 
 func _init():
-	if Utils.ok:
-		var s = Study.new()
-		var t = Teaching.new()
-		s.populate()
-		t.populate()
+	print("Début du test.")
 	
-	#Utils.db.clear_tables()
-	Utils.db.close_db()
+	
+	
 	print("Fin du test.")

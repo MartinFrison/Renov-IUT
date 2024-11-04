@@ -124,7 +124,7 @@ func fill_notifications_from_csv(file_path : String):
 		var data = line.split(";")
 
 		if data.size() < 4:
-			print("Ligne incomplète : ", line)
+			#print("Ligne incomplète : ", line)
 			continue
 
 		var message = data[0].strip_edges()
@@ -133,11 +133,8 @@ func fill_notifications_from_csv(file_path : String):
 		var needs_action = data[3].strip_edges() == "1"
 
 		var query = "INSERT INTO Notifications (message, duration, is_reproductible, needs_action) VALUES (?, ?, ?, ?)"
-		if db.execute(query, [message, duration, is_reproductible, needs_action]):
-			print("Notification ajoutée : ", message)
-		else:
+		if !db.execute(query, [message, duration, is_reproductible, needs_action]):
 			print("Erreur lors de l'ajout de la notification.")
-
 	file.close()
 
 # Indexation : fonctions utilitaires
