@@ -9,9 +9,7 @@ var ok = db.open_db()
 # Variables globales
 var normal_inflation_rate = 0.057
 var indexation_rate = normal_inflation_rate - 0.01
-
-
-
+var csv_path : String = "res://data/urgencies.csv"
 
 func create_iut_db():
 	
@@ -98,18 +96,51 @@ func create_iut_db():
 	]
 
 	for query in queries:
-		if !db.db.query(query):
+		if !db.execute(query):
 			print("Erreur lors de la création de la table.")
 		else:
 			print("Table créée avec succès.")
 
-	db.clear_tables()
+	fill_notifications_from_csv(csv_path)
+	
+	# db.clear_tables()
+	
+# Remplit la table Notifications avec des événements contenus dans un fichier CSV
+func fill_notifications_from_csv(file_path : String):
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	
+	if !file:
+		print("Erreur lors de l'ouverture du fichier CSV.")
+		return
+	
+	# Lire la première ligne pour ignorer les en-têtes
+	file.get_line()
 
+	# Lire le contenu du fichier et insérer dans la base de données
+	while !file.eof_reached():
+		var line = file.get_line()
+		if line.begins_with("#"):
+			continue
+		var data = line.split(";")
 
+		if data.size() < 4:
+			print("Ligne incomplète : ", line)
+			continue
 
+		var message = data[0].strip_edges()
+		var duration = int(data[1].strip_edges())
+		var is_reproductible = data[2].strip_edges() == "1"
+		var needs_action = data[3].strip_edges() == "1"
 
+		var query = "INSERT INTO Notifications (message, duration, is_reproductible, needs_action) VALUES (?, ?, ?, ?)"
+		if db.execute(query, [message, duration, is_reproductible, needs_action]):
+			print("Notification ajoutée : ", message)
+		else:
+			print("Erreur lors de l'ajout de la notification.")
 
-# Fonctions utilitaires
+	file.close()
+
+# Indexation : fonctions utilitaires
 func dept_string_to_index(dept: String) -> int:
 	var query = "SELECT id FROM Depts WHERE lower(name) = lower(?)"
 	var result = db.get_entries(query, [dept])

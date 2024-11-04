@@ -1,9 +1,8 @@
+message; duration; is_reproductible; needs_action
 # La durée (celle des conséquences) est indiquée en jours.
 # La durée infinie est indiquée par 1 jour, car l'action est ponctuelle (reproduisible ou pas).
 # La durée de 365 correspond bien entendu à une année.
 # La colonne needs_action (booléen) correspond à la possibilité ou non d'y remédier.
-#
-message; duration; is_reproductible; needs_action
 #
 # Concernant les profs
 "M. Fix est en arrêt maladie"; 10; 1; 1
