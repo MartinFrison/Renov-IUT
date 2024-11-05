@@ -13,7 +13,7 @@ config_version=5
 config/name="RenovIUT"
 run/main_scene="res://mvc/views/Scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://mvc/views/Image/icon.png"
+config/icon="res://mvc/views/images/icons/icon.png"
 
 [autoload]
 

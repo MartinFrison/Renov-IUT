@@ -14,6 +14,6 @@ func _ready() -> void:
 	illkirch.populate_campus()
 	Exemple.new()
 	
-	#Utils.db.clear_tables()
+	Utils.db.clear_tables()
 	Utils.db.close_db()
 	
