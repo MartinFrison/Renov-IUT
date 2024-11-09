@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://b4cp1gj8gn1ro"]
 
 [ext_resource type="Script" path="res://mvc/application/RenovIUTApp.gd" id="1_lkrr3"]
-[ext_resource type="Texture2D" uid="uid://byicdrhjfjee7" path="res://mvc/views/images/backgrounds/map_v1.png" id="2_4tq8c"]
-[ext_resource type="Texture2D" uid="uid://bsd6sslodrbdm" path="res://mvc/views/images/icons/icon.png" id="2_m7bph"]
+[ext_resource type="Texture2D" uid="uid://2xmg0diiddjg" path="res://mvc/views/images/backgrounds/map_v1.png" id="2_4tq8c"]
+[ext_resource type="Texture2D" uid="uid://ckvrx44p41j4e" path="res://mvc/views/images/icons/app_icon.png" id="2_m7bph"]
 
 [sub_resource type="FontVariation" id="FontVariation_a1dcv"]
 
@@ -29,6 +29,6 @@ text = "Test"
 script = SubResource("GDScript_44k06")
 
 [node name="Icon2" type="Sprite2D" parent="."]
-position = Vector2(949, 478)
-scale = Vector2(0.513672, 0.464844)
+position = Vector2(1017.22, 522.938)
+scale = Vector2(1.35059, 1.18555)
 texture = ExtResource("2_m7bph")

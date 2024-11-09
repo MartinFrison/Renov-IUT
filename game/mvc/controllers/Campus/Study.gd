@@ -11,7 +11,7 @@ const exam_base_result = 0.8 # On estime qu'à l'examen, on est sur de récupér
 # Dans cette fonction, les départements sont numérotés plutot que d'etre nommés : c'est plus simple, on ne les affiche pas, de toute façon
 # À noter que cette fonction n'est utilisée qu'au début du jeu et calcule le nombre des 2e et des 3e année comme un pourcentage,
 # sans traiter leur niveau comme ce sera fait au cours du jeu.
-func populate_promo(dept : int, year : int) -> void:
+static func populate_promo(dept : int, year : int) -> void:
 	var coeff = 0.0
 	
 	match year:
@@ -33,14 +33,14 @@ func populate_promo(dept : int, year : int) -> void:
 		Student.add_student(Utils.dept_index_to_string(dept), year)
 	
 # Inscrit tous les étudiants (ceux qui viennent du bac, mais aussi ceux, moins nombreux, qui sont passés en 2e et en 3e année)
-func populate() -> void:
+static func populate() -> void:
 	for i in range(1,6): # le département
 		for j in range(1,4): # l'année
 			populate_promo(i, j)
 
 
 # Simule les examens basé uniquement sur la chance (certains scénarios peuvent appliquer des coefficients supplémentaires)
-func evaluate() -> void:
+static func evaluate() -> void:
 	var total = Student.compute_nb()
 	var luck = randf_range(0.0, 2.0*(1-exam_base_result)) # la chance peut soit se détourner de l'élève, soit lui permettre d'obtenir jusqu'à 20% (ici) de plus
 	var exam: float = randf_range(exam_base_result, exam_base_result + luck)
@@ -49,7 +49,7 @@ func evaluate() -> void:
 		Student.set_level(student, exam)
 
 # Simule un passage à l'année suivante, en promouvant ceux qui restent et en excluant ceux qui n'ont pas le niveau et/ou l'envie
-func next_year() -> void:
+static func next_year() -> void:
 	evaluate()
 	var id = Student.get_all_ids()
 	for student in id:

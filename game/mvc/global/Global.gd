@@ -59,6 +59,7 @@ func create_iut_db():
 	CREATE TABLE IF NOT EXISTS Events (
 		id_event INTEGER PRIMARY KEY AUTOINCREMENT,
 		name TEXT
+		description TEXT
 	);
 	"""
 

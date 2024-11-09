@@ -4,7 +4,7 @@ extends RefCounted
 const teachers_base_nb: Array = [21, 24, 18, 27, 18] # chiffres réels tirés du site officiel de l'IUT Robert Schuman
 
 # Fonction pour embaucher un professeur dans un département spécifique
-func hire_teachers(dept: String):
+static func hire_teachers(dept: String):
 	#vérifie si il y a moins de 30 profs dans le batiment
 	if Teacher.compute_nb_per_dept(dept) >= 30:
 		print("Deja max de prof dans ce batiment")
@@ -20,7 +20,7 @@ func hire_teachers(dept: String):
 
 
 # Fonction pour licencier un professeur dans un département spécifique
-func fire_teachers(dept: String):
+static func fire_teachers(dept: String):
 	#vérifie si il y a moins de 20 profs dans le batiments
 	if Teacher.compute_nb_per_dept(dept) <= 0:
 		print("Déja plus aucun prof dans le batiment (c'est la merde)")
@@ -32,7 +32,7 @@ func fire_teachers(dept: String):
 
 
 # Fonction pour embaucher des enseignants au départ
-func populate():
+static func populate():
 	var nb_teachers = 0
 	for i in range(1,6): # par département
 		nb_teachers = teachers_base_nb[i-1]

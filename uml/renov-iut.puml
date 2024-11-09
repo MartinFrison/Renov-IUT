@@ -215,7 +215,7 @@ package controllers
 
     class EventManagement
     {
-
+        + {static} call-event(id : Integer)
     }
 }
 
@@ -231,6 +231,7 @@ package models
 		- {static} _month : Integer
 		- {static} _day : Integer
         - {static} _budget : Integer
+        - {static} difficulty : Integer
         + {static} setBudget(montant : Integer)
         + {static} addBudget(montant : Integer)
         + {static} getBudget() : Integer
@@ -240,6 +241,7 @@ package models
         + {static} isEndofYear() : Boolean
         + {static} isStartofYear() : Boolean
         + {static} get_season() : Integer
+        + {static} get_difficulty() : Integer
     }
 
 	package human {
@@ -378,9 +380,10 @@ package models
 
             class Event
             {
-                + event_name(id : Integer) : String
-                + event_choice() : Array
-                + choice_concequences() : Array
+                + {static} event_name(id : Integer) : String
+                + {static} event_description(id : Integer) : String
+                + {static} event_choice() : Array
+                + {static} choice_concequences() : Array
             }
 
             'Table des evenements qui peuvent se produire'
@@ -388,6 +391,7 @@ package models
             {
                 + id_event : Integer
                 + name : String
+                + description : String
             }
 
             'Pour chaque evenement il peu y avoir différent choix'
@@ -417,6 +421,7 @@ package models
                 + id : Integer <<PK>>
                 + name : String
             }
+
     }
 }
 
@@ -457,7 +462,7 @@ StudentSQLTable ..> DeptSQLTable
 FundSQLTable ..> DeptSQLTable
 NotificationSQLTable ..> DeptSQLTable
 FundSQLTable ..> SourceSQLTable
-ConsequencesSQLTable ..> ChoiceSQLTable
+Event ..> ChoiceSQLTable
 Event ..> EventSQLTable
 Event ..> ConsequencesSQLTable
 

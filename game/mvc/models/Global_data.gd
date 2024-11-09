@@ -6,7 +6,7 @@ static var _year: int
 static var _month: int
 static var _day: int
 static var _budget: int
-
+static var _difficulty: int
 
 # Fonction pour définir le budget
 static func setBudget(montant : int) -> void:
@@ -66,3 +66,6 @@ static func get_season() -> int:
 		9, 10, 11:
 			return 2
 	return -1
+
+static func get_difficulty() -> int:
+	return _difficulty
