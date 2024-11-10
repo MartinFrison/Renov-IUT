@@ -1,6 +1,6 @@
 # IUTFacade.gd
 class_name IUTFacade
-extends Node
+extends RefCounted
 
 var scenario: Scenario
 var time: TimeManagement

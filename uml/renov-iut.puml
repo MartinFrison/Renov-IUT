@@ -117,13 +117,16 @@ package controllers
 				+ pause(p : Boolean)
 			}
 
-            interface Scenario
+            abstract class Scenario
 		    {
+                - name : String
+                + {abstract} _init()
             	+ {abstract} test_end_game_condition() : Boolean
                 + {abstract} end_game()
 				+ {abstract} random_event()
                 + {abstract} init_data()
-				+ get_scenario() : String
+				+ get_name() : String
+                
 				+ adjust_budget(coeff : Real)
 				+ adjust_student_satisfaction(coeff : Real)
 				+ adjust_teacher_satisfaction(coeff : Real)
@@ -213,10 +216,29 @@ package controllers
         }
     }
 
-    class EventManagement
+    abstract class Event 
     {
-        + {static} call-event(id : Integer)
+        - _question : bool
+        - _name : String
+        - _description : String
+        - _question_script : String
+        - _question_answer : Array[String] 
+        + _init()
+        + start_event() : void
+        + {abstract} react_to_answer(answer : String) : void
+        + get_question() : bool
+        + get_name() : String
+        + get_description() : String
+        + get_question_script() : String
+        + get_question_answer() : Array[String]
     }
+
+    class _question
+    {
+        + ask_question_event(_event : Event)
+    }
+
+
 }
 
 
@@ -225,7 +247,7 @@ package controllers
 
 package models
 {
-    class global_data
+    class globalData
     {
         - {static} _year : Integer
 		- {static} _month : Integer
@@ -378,37 +400,6 @@ package models
                 + area : String
             }
 
-            class Event
-            {
-                + {static} event_name(id : Integer) : String
-                + {static} event_description(id : Integer) : String
-                + {static} event_choice() : Array
-                + {static} choice_concequences() : Array
-            }
-
-            'Table des evenements qui peuvent se produire'
-            class EventSQLTable
-            {
-                + id_event : Integer
-                + name : String
-                + description : String
-            }
-
-            'Pour chaque evenement il peu y avoir différent choix'
-            class ChoiceSQLTable
-            {
-                + id_event : Integer
-                + id_choice : Integer
-                + description : String
-            }
-
-            'Chaque choix peut avoir une ou plusieurs conséquences'
-            class ConsequencesSQLTable
-            {
-                + id_choice : Integer
-                + id_consequences : Integer
-                + description : String
-            }
 
             class DeptSQLTable
             {

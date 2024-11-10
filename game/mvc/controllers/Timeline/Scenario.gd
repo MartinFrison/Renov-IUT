@@ -2,6 +2,12 @@
 class_name Scenario
 extends RefCounted
 
+var _name : String
+
+func _init() -> void:
+	pass
+	
+
 # Test si le jeu est fini
 func test_end_game_condition() -> bool:
 	push_error("test_end_game_condition() doit être implémentée.")

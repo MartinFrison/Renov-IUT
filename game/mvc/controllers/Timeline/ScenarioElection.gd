@@ -16,7 +16,7 @@ func end_game() -> void:
 func random_event() -> void:
 	print("à compléter")
 
-# Initialise le modèle en fonction du scénario
+# Initialise le modèle en fonction du scénario et de la difficulté
 func init_data() -> void:
 	print("à compléter")
 	# Age et état des batiments

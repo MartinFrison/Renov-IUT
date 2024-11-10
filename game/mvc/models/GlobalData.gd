@@ -1,4 +1,4 @@
-class_name Global_data
+class_name GlobalData
 extends Node
 
 # Attributs
