@@ -2,6 +2,12 @@
 class_name Scenario
 extends RefCounted
 
+var _name : String
+
+func _init() -> void:
+	init_data()
+	
+
 # Test si le jeu est fini
 func test_end_game_condition() -> bool:
 	push_error("test_end_game_condition() doit être implémentée.")
@@ -18,13 +24,20 @@ func random_event() -> void:
 # Initialise le modèle en fonction du scénario
 func init_data() -> void:
 	push_error("random_event() doit être implémentée.")
-	# Age et état des batiments
 	# satisfaction etudiante par batiment
 	# satisfaction prof par batiment
 	# reussite par batiment
 	# budget de base
 
 
+func init_building() -> void:
+	for i in 5:
+		var age = Utils.randint_in_range(5,50)
+		var isolation = int(Utils.randint_in_range(20,80) * GlobalData.adjust_dept_state())
+		var code = Utils.dept_index_to_string(i)
+		var inventory = int(Utils.randint_in_range(20,100) * GlobalData.adjust_dept_state())
+		Building.new(age,isolation,1000, false, 2, code, inventory)
+		
 
 # Obtenir le scénario actuel
 func get_scenario() -> String:

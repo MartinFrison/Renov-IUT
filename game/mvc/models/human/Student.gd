@@ -13,6 +13,16 @@ static func get_all_ids() -> Array:
 	return ids
 
 
+# Fonction pour obtenir tous les IDs de la table par departement
+static func get_dept_ids(dept : String) -> Array:
+	var ids = []
+	var query = "SELECT id FROM Students where dept= ? "
+	var result = Utils.db.get_entries(query, [dept])
+
+	for r in result:
+		ids.append(r["id"])
+	return ids
+
 
 # Ajout et suppression
 static func add_student(dept : String, year : int) -> void:
@@ -76,11 +86,13 @@ static func set_year(id : int, new_year: int) -> void:
 		return
 
 static func set_mood(id : int, coeff: float) -> void:
+	coeff = max(min(1,coeff),0)
 	var query = "UPDATE Students SET mood=mood*? WHERE id=?"
 	if !Utils.db.execute(query, [coeff, id]):
 		return
 
 static func set_level(id : int, coeff: float) -> void:
+	coeff = max(min(1,coeff),0)
 	var query = "UPDATE Students SET level=level*? WHERE id=?"
 	if !Utils.db.execute(query, [coeff, id]):
 		return

@@ -2,6 +2,11 @@ class_name ScenarioElection
 extends Scenario
 
 
+func _init() -> void:
+	_name = "Eléction"
+	init_data()
+	
+
 
 # Test si le jeu est fini
 func test_end_game_condition() -> bool:
@@ -16,15 +21,25 @@ func end_game() -> void:
 func random_event() -> void:
 	print("à compléter")
 
-# Initialise le modèle en fonction du scénario
+# Initialise le modèle en fonction du scénario et de la difficulté
 func init_data() -> void:
-	print("à compléter")
-	# Age et état des batiments
-	# satisfaction etudiante par batiment
-	# satisfaction prof par batiment
-	# reussite par batiment
+	var students = Student.get_all_ids()
+	var teachers = Teacher.get_all_ids()
+	# satisfaction etudiante
+	for i in students:
+		var mood = Utils.randfloat_in_square_range(GlobalData.adjust_satisfaction()*0.4,GlobalData.adjust_satisfaction()*1)
+		Student.set_mood(i,mood)
+	# satisfaction prof 
+	for i in teachers:
+		var mood =  Utils.randfloat_in_square_range(GlobalData.adjust_satisfaction()*0.4, GlobalData.adjust_satisfaction()*1)
+		Teacher.set_mood(i,mood)
+	# reussite 
+	for i in students:
+		var level =  Utils.randfloat_in_square_range(GlobalData.adjust_level()*0.4,GlobalData.adjust_level()*1)
+		Student.set_level(i,level)
 	# budget de base
-
+	var budget = GlobalData.adjust_budget_initial()
+	GlobalData.setBudget(budget)
 
 
 

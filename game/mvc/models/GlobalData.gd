@@ -1,4 +1,4 @@
-class_name Global_data
+class_name GlobalData
 extends Node
 
 # Attributs
@@ -6,7 +6,7 @@ static var _year: int
 static var _month: int
 static var _day: int
 static var _budget: int
-static var _difficulty: int
+static var _difficulty: int = 1
 
 # Fonction pour définir le budget
 static func setBudget(montant : int) -> void:
@@ -67,5 +67,67 @@ static func get_season() -> int:
 			return 2
 	return -1
 
+
 static func get_difficulty() -> int:
 	return _difficulty
+	
+static func set_difficulty(value : int) -> void:
+	if value<=3 and value>=1:
+		_difficulty = value
+
+
+# Ajuste le budget initial en fonction de la difficulté
+static func adjust_budget_initial() -> int:
+	match get_difficulty():
+		1:
+			return 1000000
+		2:
+			return 300000
+		3:
+			return 10000
+	return -1
+
+
+# Ajuste les fonds en fonction de la difficulté
+static func adjust_fund() -> float:
+	match get_difficulty():
+		1:
+			return 1
+		2:
+			return 0.95
+		3:
+			return 0.9
+	return -1
+
+# Ajuste la satisfaction en fonction de la difficulté
+static func adjust_satisfaction() -> float:
+	match get_difficulty():
+		1:
+			return 1
+		2:
+			return 0.95
+		3:
+			return 0.9
+	return -1
+
+# Ajuste le niveau en fonction de la difficulté
+static func adjust_level() -> float:
+	match get_difficulty():
+		1:
+			return 1
+		2:
+			return 0.95
+		3:
+			return 0.9
+	return -1
+
+# Ajuste l'état du département en fonction d'un coefficient et de la difficulté
+static func adjust_dept_state() -> float:
+	match get_difficulty():
+		1:
+			return 0.8
+		2:
+			return 0.6  
+		3:
+			return 0.3
+	return -1

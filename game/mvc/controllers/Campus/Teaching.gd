@@ -38,3 +38,17 @@ static func populate():
 		nb_teachers = teachers_base_nb[i-1]
 		for j in range (0, nb_teachers):
 			Teacher.add_teacher(Utils.dept_index_to_string(i), true) # Au départ, on n'embauchera que des profs titulaires
+
+
+
+static func drop_satisfaction_teacher(dept : String, value : float) -> void:
+	value = max(0, value)
+	var id = Teacher.get_dept_ids(dept)
+	for i in id:
+		Teacher.set_mood(i, Teacher.get_mood(i) - Utils.randfloat_in_square_range(value * 0.65 / GlobalData.adjust_satisfaction(), value * 1.35 / GlobalData.adjust_satisfaction()))
+
+static func boost_satisfaction_teacher(dept : String, value : float) -> void:
+	value = max(0, value)
+	var id = Teacher.get_dept_ids(dept)
+	for i in id:
+		Teacher.set_mood(i, Teacher.get_mood(i) + Utils.randfloat_in_square_range(value * 0.65 * GlobalData.adjust_satisfaction(), value * 1.35 * GlobalData.adjust_satisfaction()))

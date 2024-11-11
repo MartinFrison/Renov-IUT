@@ -54,36 +54,6 @@ func create_iut_db():
 	);
 	"""
 
-	# Requête pour créer la table EventSQLTable
-	var create_events_table_query = """
-	CREATE TABLE IF NOT EXISTS Events (
-		id_event INTEGER PRIMARY KEY AUTOINCREMENT,
-		name TEXT
-		description TEXT
-	);
-	"""
-
-	# Requête pour créer la table choiceSQLTable
-	var create_choices_table_query = """
-	CREATE TABLE IF NOT EXISTS Choices (
-		id_event INTEGER,
-		id_choice INTEGER,
-		description TEXT,
-		PRIMARY KEY(id_event, id_choice),
-		FOREIGN KEY(id_event) REFERENCES Events(id_event) ON DELETE CASCADE
-	);
-	"""
-
-	# Requête pour créer la table ConsequencesSQLTable
-	var create_consequences_table_query = """
-	CREATE TABLE IF NOT EXISTS Consequences (
-		id_choice INTEGER,
-		id_consequences INTEGER,
-		description TEXT,
-		PRIMARY KEY(id_choice, id_consequences),
-		FOREIGN KEY(id_choice) REFERENCES Choices(id_choice) ON DELETE CASCADE
-	);
-	"""
 
 	# Exécuter les requêtes de création de tables
 	var queries = [
@@ -91,9 +61,6 @@ func create_iut_db():
 		create_teachers_table_query,
 		create_funds_table_query,
 		create_notifications_table_query,
-		create_events_table_query,
-		create_choices_table_query,
-		create_consequences_table_query
 	]
 
 	for query in queries:
@@ -166,3 +133,21 @@ func source_index_to_string(index : int) -> String:
 	if result.size() > 0:
 		return result[0]["name"]
 	return ""
+
+
+
+
+
+func randint_in_range(min : int, max : int) -> int:
+	var rng = RandomNumberGenerator.new()
+	return rng.randi_range(min, max)
+	
+func randfloat_in_range(min : float, max : float) -> float:
+	var rng = RandomNumberGenerator.new()
+	var randfloat = rng.randf()  # Un nombre flottant entre 0.0 et 1.0
+	return randfloat * (max-min) + min
+
+func randfloat_in_square_range(min : float, max : float) -> float:
+	var rng = RandomNumberGenerator.new()
+	var randfloat = sqrt(rng.randf()*rng.randf())  # Un nombre flottant entre 0.0 et 1.0
+	return randfloat * (max-min) + min
