@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://caod86b7eg7v"]
+
+[ext_resource type="Script" path="res://mvc/views/Node2D/ChoixScenario.gd" id="1_m1i0s"]
+[ext_resource type="Texture2D" uid="uid://dik7hroye8l0o" path="res://mvc/views/images/backgrounds/menu_provisoire.png" id="2_wu6ol"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nk24h"]
+bg_color = Color(0, 0.143123, 0.276469, 1)
+
+[node name="PanelChoixScenario" type="Node2D"]
+script = ExtResource("1_m1i0s")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="MapV1" type="Sprite2D" parent="Node2D"]
+position = Vector2(569, 324)
+scale = Vector2(2.41004, 2.22837)
+texture = ExtResource("2_wu6ol")
+
+[node name="button_election" type="Button" parent="Node2D"]
+z_index = 1
+offset_left = 637.0
+offset_top = 191.0
+offset_right = 912.0
+offset_bottom = 277.0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_nk24h")
+text = "Scenario Election"
+
+[connection signal="pressed" from="Node2D/button_election" to="." method="_on_button_election_pressed"]
