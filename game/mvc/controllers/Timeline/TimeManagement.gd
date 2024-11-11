@@ -2,12 +2,12 @@ class_name TimeManagement
 extends Node
 
 var _scenario: Scenario
-var timer: Timer
+var _pause : bool
 
 
 # Le jeu commence le 1 septembre 2025
 func _init(scenario: Scenario) -> void:
-	Global_data.setDate(1,9,2025) # date de départ
+	GlobalData.setDate(1,9,2025) # date de départ
 	self._scenario = scenario  # Initialiser le scénario
 	year_begin()
 
@@ -17,14 +17,26 @@ func _ready() -> void:
 	tick()
 
 
-
+#Traitement du jeu jour par jour
 func tick():
 	while true:
 		await wait(1)
-		Global_data.incrementDay()
-		print("day: %s/%s/%s" % [Global_data._year, Global_data._month, Global_data._day])
-		if Global_data.isNewMonth():
+		if _pause:
+			break
+		
+		GlobalData.incrementDay()
+		if GlobalData.isNewMonth():
 			end_of_month()
+		
+		#possibilité d'évenement chaque jours
+		DailyEvent()
+		#traitement quotidient de la satisfaction
+		#traitement quotidient du niveau etudiant
+		
+		# A la fin de la journée on test si le jeu se finit
+		if _scenario.test_end_game_condition():
+			_scenario.end_game()
+			pause(true)
 
 
 
@@ -41,28 +53,42 @@ func end_of_month() -> void:
 	#salaire des profs
 	#salaire des agents d'entretien
 	
-	if Global_data.isEndofYear():
+	if GlobalData.isEndofYear():
 		end_of_year()
-	if Global_data.isStartofYear():
+	if GlobalData.isStartofYear():
 		year_begin()
 
 
 
 # Fin de l'année
 func end_of_year() -> void:
-	print("Fin de l'année ", Global_data._year)
+	print("Fin de l'année ", GlobalData._year)
 
 
 
 #rentrée qui signe le début de la nouvelle année
 func year_begin() -> void:
-	print("C'est la rentrée ", Global_data._year)
+	print("C'est la rentrée ", GlobalData._year)
 
 
 
 # Pause ou reprise de la gestion du temps
 func pause(p: bool) -> void:
-	if p:
-		print("Pause du timer")
+	_pause = p
+
+#calcule la proba quotidienne d'avoir un evenement et le lance si besoin
+func DailyEvent() -> bool:
+	var coeff_proba
+	if GlobalData._year <= 2026:
+		coeff_proba = 0.5
+	elif GlobalData._year <= 2028:
+		coeff_proba = 1
 	else:
-		print("Reprise du timer")
+		coeff_proba = 0.7
+	
+	var proba = GlobalData.adjust_event_proba() * coeff_proba
+	
+	if Utils.randfloat_in_range(0,1) > proba:
+		_scenario.random_event()
+		return true
+	return false

@@ -131,3 +131,14 @@ static func adjust_dept_state() -> float:
 		3:
 			return 0.3
 	return -1
+
+# Ajuste la frequence d'evenement
+static func adjust_event_proba() -> float:
+	match get_difficulty():
+		1:
+			return 0.01
+		2:
+			return 0.02 
+		3:
+			return 0.03
+	return -1

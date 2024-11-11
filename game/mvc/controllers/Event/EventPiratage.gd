@@ -1,14 +1,18 @@
 class_name EventPiratage
 extends Event
 
+var cout = 1
 
 func _init() -> void:
-	_question = GlobalData.getBudget()>1
 	_name = "Piratage"
 	_description = "Un piratage massif des données des étudiants à eu lieu, les étudiants sont mécontents !"
-	_question_script = "Voulez vous sécuriser les données ? (cout : X)"
+	_question_script = "Voulez vous sécuriser les données ? (cout : " + cout + ")"
 	_question_answer = ["NON", "OUI"]
-	start_event()
+
+
+func start_event() -> void:
+	_question = GlobalData.getBudget()>= cout
+	super.start_event()
 
 
 func react_to_answer(answer : String) -> void:

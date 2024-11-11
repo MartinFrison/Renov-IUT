@@ -9,17 +9,35 @@ func _init() -> void:
 
 
 # Test si le jeu est fini
+# Dans ce scénario il finit simplement au bout de 5 ans
 func test_end_game_condition() -> bool:
-	print("à compléter")
-	return false
+	return (GlobalData._year == 2030 and GlobalData._month == 9 and  GlobalData._day == 1)
+
 
 # Déclencher la fin du jeu
 func end_game() -> void:
 	print("à compléter")
 
-# Génère un événement aléatoire avec des probabilités dépendant du scénario
+
+# Génère un événement aléatoire avec des probabilités dépendant du scénario et d'autre condition
 func random_event() -> void:
-	print("à compléter")
+	var events_proba = []
+	events_proba[0] = 1
+	events_proba[1] = 1
+	
+	var sum_proba = 0
+	for i in events_proba.size():
+		sum_proba += events_proba[i]
+	
+	#Lance aléatoirement un event en respectant les proba de chaque event
+	var rand = Utils.randfloat_in_range(0,sum_proba);
+	var p = 0
+	for i in events_proba.size():
+		p += events_proba[i]
+		if rand <= p:
+			Event.create_event(i)
+			return
+
 
 # Initialise le modèle en fonction du scénario et de la difficulté
 func init_data() -> void:
