@@ -9,9 +9,10 @@ func _init() -> void:
 
 
 # Test si le jeu est fini
+# Dans ce scénario il finit simplement au bout de 5 ans
 func test_end_game_condition() -> bool:
-	print("à compléter")
-	return false
+	return (GlobalData._year == 2030 and GlobalData._month == 9 and  GlobalData._day == 1)
+
 
 # Déclencher la fin du jeu
 func end_game() -> void:

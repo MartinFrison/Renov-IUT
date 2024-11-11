@@ -2,7 +2,7 @@ class_name TimeManagement
 extends Node
 
 var _scenario: Scenario
-var timer: Timer
+var _pause : bool
 
 
 # Le jeu commence le 1 septembre 2025
@@ -17,18 +17,26 @@ func _ready() -> void:
 	tick()
 
 
+#Traitement du jeu jour par jour
 func tick():
 	while true:
 		await wait(1)
+		if _pause:
+			break
+		
 		GlobalData.incrementDay()
 		if GlobalData.isNewMonth():
 			end_of_month()
 		
 		#possibilité d'évenement chaque jours
+		DailyEvent()
+		#traitement quotidient de la satisfaction
+		#traitement quotidient du niveau etudiant
 		
-		#change quotidient de la satisfaction
-		#change quotidient du niveau
-		
+		# A la fin de la journée on test si le jeu se finit
+		if _scenario.test_end_game_condition():
+			_scenario.end_game()
+			pause(true)
 
 
 
@@ -66,11 +74,7 @@ func year_begin() -> void:
 
 # Pause ou reprise de la gestion du temps
 func pause(p: bool) -> void:
-	if p:
-		print("Pause du timer")
-	else:
-		print("Reprise du timer")
-
+	_pause = p
 
 #calcule la proba quotidienne d'avoir un evenement et le lance si besoin
 func DailyEvent() -> bool:
