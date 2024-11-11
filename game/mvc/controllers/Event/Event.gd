@@ -8,8 +8,17 @@ var _question_script : String
 var _question_answer : Array[String] = []
 
 
+static func create_event(id : int) -> Event:
+	match id:
+		0:
+			return EventPiratage.new()
+		1:
+			return null
+	return null
+
+
 func _init() -> void:
-	start_event()
+	pass
 	
 func start_event() -> void:
 	Question.ask_question_event(self)

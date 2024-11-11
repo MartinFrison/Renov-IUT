@@ -7,7 +7,7 @@ var timer: Timer
 
 # Le jeu commence le 1 septembre 2025
 func _init(scenario: Scenario) -> void:
-	Global_data.setDate(1,9,2025) # date de départ
+	GlobalData.setDate(1,9,2025) # date de départ
 	self._scenario = scenario  # Initialiser le scénario
 	year_begin()
 
@@ -17,14 +17,18 @@ func _ready() -> void:
 	tick()
 
 
-
 func tick():
 	while true:
 		await wait(1)
-		Global_data.incrementDay()
-		print("day: %s/%s/%s" % [Global_data._year, Global_data._month, Global_data._day])
-		if Global_data.isNewMonth():
+		GlobalData.incrementDay()
+		if GlobalData.isNewMonth():
 			end_of_month()
+		
+		#possibilité d'évenement chaque jours
+		
+		#change quotidient de la satisfaction
+		#change quotidient du niveau
+		
 
 
 
@@ -41,22 +45,22 @@ func end_of_month() -> void:
 	#salaire des profs
 	#salaire des agents d'entretien
 	
-	if Global_data.isEndofYear():
+	if GlobalData.isEndofYear():
 		end_of_year()
-	if Global_data.isStartofYear():
+	if GlobalData.isStartofYear():
 		year_begin()
 
 
 
 # Fin de l'année
 func end_of_year() -> void:
-	print("Fin de l'année ", Global_data._year)
+	print("Fin de l'année ", GlobalData._year)
 
 
 
 #rentrée qui signe le début de la nouvelle année
 func year_begin() -> void:
-	print("C'est la rentrée ", Global_data._year)
+	print("C'est la rentrée ", GlobalData._year)
 
 
 
@@ -66,3 +70,21 @@ func pause(p: bool) -> void:
 		print("Pause du timer")
 	else:
 		print("Reprise du timer")
+
+
+#calcule la proba quotidienne d'avoir un evenement et le lance si besoin
+func DailyEvent() -> bool:
+	var coeff_proba
+	if GlobalData._year <= 2026:
+		coeff_proba = 0.5
+	elif GlobalData._year <= 2028:
+		coeff_proba = 1
+	else:
+		coeff_proba = 0.7
+	
+	var proba = GlobalData.adjust_event_proba() * coeff_proba
+	
+	if Utils.randfloat_in_range(0,1) > proba:
+		_scenario.random_event()
+		return true
+	return false
