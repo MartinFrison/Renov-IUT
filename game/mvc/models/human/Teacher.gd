@@ -6,12 +6,24 @@ extends Node
 # Fonction pour obtenir tous les IDs de la table TeacherSQLTable
 static func get_all_ids() -> Array:
 	var ids = []
-	var query = "SELECT id FROM Students"
+	var query = "SELECT id FROM Teachers"
 	var result = Utils.db.get_entries(query)
 
 	for r in result:
 		ids.append(r["id"])
 	return ids
+
+# Fonction pour obtenir tous les IDs de la table par departement
+static func get_dept_ids(dept : String) -> Array:
+	var ids = []
+	var query = "SELECT id FROM Teachers where dept= ? "
+	var result = Utils.db.get_entries(query, [dept])
+
+	for r in result:
+		ids.append(r["id"])
+	return ids
+
+
 
 # Ajout et suppression
 static func add_teacher(dept : String, full_time : bool) -> void:
@@ -63,6 +75,7 @@ static func get_if_fulltime(id : int) -> bool:
 
 # Setters
 static func set_mood(id : int, coeff: float) -> void:
+	coeff = max(min(1,coeff),0)
 	var query = "UPDATE Teachers SET mood=mood*? WHERE id=?"
 	if !Utils.db.execute(query, [coeff, id]):
 		return

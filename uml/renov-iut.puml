@@ -125,8 +125,9 @@ package controllers
                 + {abstract} end_game()
 				+ {abstract} random_event()
                 + {abstract} init_data()
+                + init_building()
 				+ get_name() : String
-                
+
 				+ adjust_budget(coeff : Real)
 				+ adjust_student_satisfaction(coeff : Real)
 				+ adjust_teacher_satisfaction(coeff : Real)
@@ -169,6 +170,8 @@ package controllers
             + {static} hire_teachers(dept : String)
             + {static} fire_teachers(dept : String)
             + {static} populate()
+            + {static} boost_satisfaction_teacher(dept : String, value : float)
+            + {static} drop_satisfaction_teacher(dept : String, value : float)
         }
 
         class Study
@@ -177,6 +180,10 @@ package controllers
             + {static} populate_promo(dept : String, year : Integer)
             + {static} evaluate()
             + {static} next_year()
+            + {static} boost_satisfaction_student(dept : String, value : float)
+            + {static} drop_satisfaction_student(dept : String, value : float)
+            + {static} boost_level_student(dept : String, value : float)
+            + {static} drop_level_student(dept : String, value : float)
         }
     }
 
@@ -263,13 +270,22 @@ package models
         + {static} isEndofYear() : Boolean
         + {static} isStartofYear() : Boolean
         + {static} get_season() : Integer
+
         + {static} get_difficulty() : Integer
+        + {static} set_difficulty() : Integer
+        + {static} adjust_budget_initial() : Integer
+        + {static} adjust_fund() : Real
+		+ {static} adjust_satisfaction() : Real
+		+ {static} adjust_level() : Real
+		+ {static} adjust_dept_state() : Real
+
     }
 
 	package human {
 		class Students
 		{
                 + {static} get_all_ids() : Array
+                + {static} get_dept_ids() : Array
 				+ {static} add_student(dept : String, year: Integer)
 				+ {static} rm_student(id : Integer)
 				+ {static} rm_students_by_dept(dept : String, nb : Integer)
@@ -290,6 +306,7 @@ package models
 		class Teachers
 		{
                 + {static} get_all_ids() : Array
+                + {static} get_dept_ids() : Array
 				+ {static} add_teacher(dept : String, full_time : Boolean)
 				+ {static} rm_teacher(id : Integer)
 				+ {static} rm_teachers_by_dept(dept : String, nb : Integer)

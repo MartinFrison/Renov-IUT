@@ -60,3 +60,30 @@ static func next_year() -> void:
 			Student.set_year(student, Student.get_year(student)+1)
 		else: #exclusion, départ ou obtention du diplome
 			Student.rm_student_by_id(student)
+
+
+static func drop_satisfaction_student(dept : String, value : float) -> void:
+	value = max(0, value)
+	var id = Student.get_dept_ids(dept)
+	for i in id:
+		Student.set_mood(i, Student.get_mood(i) - Utils.randfloat_in_square_range(value * 0.65 / GlobalData.adjust_satisfaction(), value * 1.35 / GlobalData.adjust_satisfaction()))
+
+static func boost_satisfaction_student(dept : String, value : float) -> void:
+	value = max(0, value)
+	var id = Student.get_dept_ids(dept)
+	for i in id:
+		Student.set_mood(i, Student.get_mood(i) + Utils.randfloat_in_square_range(value * 0.65 * GlobalData.adjust_satisfaction(), value * 1.35 * GlobalData.adjust_satisfaction()))
+
+
+static func drop_level_student(dept : String, value : float) -> void:
+	value = max(0, value)
+	var id = Student.get_dept_ids(dept)
+	for i in id:
+		Student.set_level(i, Student.get_level(i) + Utils.randfloat_in_square_range(value * 0.65 / GlobalData.adjust_level(), value * 1.35 / GlobalData.adjust_level()))
+
+
+static func boost_level_student(dept : String, value : float) -> void:
+	value = max(0, value)
+	var id = Student.get_dept_ids(dept)
+	for i in id:
+		Student.set_level(i, Student.get_level(i) + Utils.randfloat_in_square_range(value * 0.65 * GlobalData.adjust_level(), value * 1.35 * GlobalData.adjust_level()))

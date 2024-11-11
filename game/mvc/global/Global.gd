@@ -133,3 +133,21 @@ func source_index_to_string(index : int) -> String:
 	if result.size() > 0:
 		return result[0]["name"]
 	return ""
+
+
+
+
+
+func randint_in_range(min : int, max : int) -> int:
+	var rng = RandomNumberGenerator.new()
+	return rng.randi_range(min, max)
+	
+func randfloat_in_range(min : float, max : float) -> float:
+	var rng = RandomNumberGenerator.new()
+	var randfloat = rng.randf()  # Un nombre flottant entre 0.0 et 1.0
+	return randfloat * (max-min) + min
+
+func randfloat_in_square_range(min : float, max : float) -> float:
+	var rng = RandomNumberGenerator.new()
+	var randfloat = sqrt(rng.randf()*rng.randf())  # Un nombre flottant entre 0.0 et 1.0
+	return randfloat * (max-min) + min
