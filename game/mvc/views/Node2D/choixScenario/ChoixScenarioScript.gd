@@ -1,18 +1,18 @@
-class_name ChoixScenario
+class_name ChoixScenarioScript_
 extends Node2D
 
 
 var _IUT : IUTFacade
 var _app : RenovIUTApp
+var scenario
 
 func init(iut : IUTFacade, app : RenovIUTApp) -> void:
 	_IUT = iut
 	_app = app
-	print("lolll")
+	_on_button_election_pressed()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("lolll")
 	pass # Replace with function body.
 
 
@@ -22,6 +22,15 @@ func _process(delta: float) -> void:
 
 
 func _on_button_election_pressed() -> void:
-	print("lolll")
-	_IUT.chooseScenario(0)
+	scenario = 0
+	var desc = get_node("menu/Description")
+	desc.text = ScenarioElection.get_description()
+
+func _on_button_renovation_pressed() -> void:
+	scenario = 1
+	var desc = get_node("menu/Description")
+	desc.text = ScenarioRenovation.get_description()
+
+func _on_suivant_pressed() -> void:
+	_IUT.chooseScenario(scenario)
 	_app.choiceDifficulty()

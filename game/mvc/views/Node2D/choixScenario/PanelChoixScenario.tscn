@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://caod86b7eg7v"]
+
+[ext_resource type="Script" path="res://mvc/views/Node2D/choixScenario/ChoixScenarioScript.gd" id="1_m1i0s"]
+[ext_resource type="Texture2D" uid="uid://dik7hroye8l0o" path="res://mvc/views/images/backgrounds/menu_provisoire.png" id="2_wu6ol"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nk24h"]
+bg_color = Color(0, 0.143123, 0.276469, 1)
+
+[node name="PanelChoixScenario" type="Node2D"]
+script = ExtResource("1_m1i0s")
+
+[node name="menu" type="Node2D" parent="."]
+
+[node name="MapV1" type="Sprite2D" parent="menu"]
+position = Vector2(569, 324)
+scale = Vector2(2.41004, 2.22837)
+texture = ExtResource("2_wu6ol")
+
+[node name="button_election" type="Button" parent="menu"]
+z_index = 1
+offset_left = 143.0
+offset_top = 167.0
+offset_right = 418.0
+offset_bottom = 253.0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_nk24h")
+text = "Scenario Election"
+
+[node name="button_renovation" type="Button" parent="menu"]
+z_index = 1
+offset_left = 142.0
+offset_top = 294.0
+offset_right = 417.0
+offset_bottom = 380.0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_nk24h")
+text = "Scenario Renovation"
+
+[node name="suivant" type="Button" parent="menu"]
+z_index = 1
+offset_left = 836.0
+offset_top = 512.0
+offset_right = 1084.0
+offset_bottom = 596.0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_nk24h")
+text = "Suivant"
+
+[node name="Description" type="Label" parent="menu"]
+z_index = 1
+offset_left = 502.0
+offset_top = 170.0
+offset_right = 996.0
+offset_bottom = 282.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "Description"
+autowrap_mode = 1
+
+[connection signal="pressed" from="menu/button_election" to="." method="_on_button_election_pressed"]
+[connection signal="pressed" from="menu/button_renovation" to="." method="_on_button_renovation_pressed"]
+[connection signal="pressed" from="menu/suivant" to="." method="_on_suivant_pressed"]

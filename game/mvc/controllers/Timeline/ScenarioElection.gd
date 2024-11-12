@@ -5,7 +5,9 @@ extends Scenario
 func _init() -> void:
 	_name = "Eléction"
 	init_data()
-	
+
+static func get_description() -> String:
+	return "Un scenario dans lequel votre but est d'être réélu au terme d'un mandat de 5 ans"
 
 
 # Test si le jeu est fini

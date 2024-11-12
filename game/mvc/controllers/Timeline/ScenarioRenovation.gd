@@ -1,7 +1,8 @@
 class_name ScenarioRenovation
 extends Scenario
 
-
+static func get_description() -> String:
+	return "Un scenario dans lequel votre but est de renover un batiment"
 
 # Test si le jeu est fini
 func test_end_game_condition() -> bool:
