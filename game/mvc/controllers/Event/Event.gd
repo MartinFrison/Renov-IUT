@@ -11,6 +11,7 @@ var _question_answer : Array[String] = []
 static func create_event(id : int) -> Event:
 	match id:
 		0:
+			print("bulle2")
 			return EventPiratage.new()
 		1:
 			return null
@@ -21,7 +22,11 @@ func _init() -> void:
 	pass
 	
 func start_event() -> void:
-	Question.ask_question_event(self)
+	print("bulle3")
+	if _question:
+		Question.ask_question(_question_script, _question_answer, Callable(self, "react_to_answer"))
+	else:
+		pass # Envoyer simplement un message ou une notif s'il n'y a pas de question
 
 
 func react_to_answer(answer : String) -> void:

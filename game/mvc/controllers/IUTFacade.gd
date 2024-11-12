@@ -1,6 +1,6 @@
 # IUTFacade.gd
 class_name IUTFacade
-extends RefCounted
+extends Node
 
 var scenario: Scenario
 var time: TimeManagement
@@ -19,3 +19,4 @@ func chooseDifficulty(value : int) -> void:
 
 func startGame() -> void:
 		time = TimeManagement.new(scenario)
+		add_child(time)

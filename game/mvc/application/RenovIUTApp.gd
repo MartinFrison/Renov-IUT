@@ -1,26 +1,30 @@
 class_name RenovIUTApp
 extends Node
 
+static var app : RenovIUTApp
 var scene
-var illkirch
+var illkirch : IUTFacade
 var panelChoixScenario : Node2D
 var panelChoixDifficulty : Node2D
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("start")
+	app = self
 	var label = get_tree().get_root().get_node("Node2D/Label")
 	label = label as Label
 	label.text = "Bonjour"
 	Utils.create_iut_db()
 	illkirch = IUTFacade.new()
+	add_child(illkirch)
 	
 	scene = load("res://mvc/views/Node2D/choixScenario/PanelChoixScenario.tscn")
 	panelChoixScenario = scene.instantiate()
 	add_child(panelChoixScenario)
 	if panelChoixScenario.has_method("init"):
 		panelChoixScenario.init(illkirch, self)
-
 
 func choiceDifficulty() -> void:
 	if panelChoixScenario:
@@ -42,6 +46,9 @@ func start_game() -> void:
 		panelChoixDifficulty.queue_free()  # Marquer le nœud pour suppression
 	else:
 		print("Le panel est déjà supprimé.")
+		
+	illkirch.startGame()
+
 
 func close_app() -> void:
 	Utils.db.clear_tables()
