@@ -2,7 +2,7 @@ class_name TimeManagement
 extends Node
 
 var _scenario: Scenario
-var _pause : bool
+static var _pause : bool
 
 
 # Le jeu commence le 1 septembre 2025
@@ -10,6 +10,7 @@ func _init(scenario: Scenario) -> void:
 	GlobalData.setDate(1,9,2025) # date de départ
 	self._scenario = scenario  # Initialiser le scénario
 	year_begin()
+	tick()
 
 
 
@@ -19,6 +20,7 @@ func _ready() -> void:
 
 #Traitement du jeu jour par jour
 func tick():
+	_scenario.random_event()
 	while true:
 		await wait(1)
 		if _pause:
@@ -41,7 +43,8 @@ func tick():
 
 
 func wait(seconds : float) -> void:
-	await get_tree().create_timer(seconds).timeout
+	var timer = RenovIUTApp.app.get_tree().create_timer(seconds)
+	await timer.timeout
 
 
 
@@ -73,7 +76,7 @@ func year_begin() -> void:
 
 
 # Pause ou reprise de la gestion du temps
-func pause(p: bool) -> void:
+static func pause(p: bool) -> void:
 	_pause = p
 
 #calcule la proba quotidienne d'avoir un evenement et le lance si besoin
@@ -88,7 +91,7 @@ func DailyEvent() -> bool:
 	
 	var proba = GlobalData.adjust_event_proba() * coeff_proba
 	
-	if Utils.randfloat_in_range(0,1) > proba:
+	if Utils.randfloat_in_range(0,1) < proba:
 		_scenario.random_event()
 		return true
 	return false

@@ -1,5 +1,5 @@
 class_name Event
-extends RefCounted
+extends Node
 
 var _question : bool
 var _name : String
@@ -21,7 +21,11 @@ func _init() -> void:
 	pass
 	
 func start_event() -> void:
-	Question.ask_question_event(self)
+	if _question:
+		var f ="react_to_answer"
+		Question.ask_question(_question_script, _question_answer,f, self)
+	else:
+		pass # Envoyer simplement un message ou une notif s'il n'y a pas de question
 
 
 func react_to_answer(answer : String) -> void:
@@ -32,7 +36,7 @@ func get_question() -> bool:
 	return _question
 
 # Retourne la valeur de _name
-func get_name() -> String:
+func get_name_() -> String:
 	return _name
 
 # Retourne la valeur de _description

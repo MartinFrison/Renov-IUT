@@ -5,7 +5,9 @@ extends Scenario
 func _init() -> void:
 	_name = "Eléction"
 	init_data()
-	
+
+static func get_description() -> String:
+	return "Un scenario dans lequel votre but est d'être réélu au terme d'un mandat de 5 ans"
 
 
 # Test si le jeu est fini
@@ -22,8 +24,8 @@ func end_game() -> void:
 # Génère un événement aléatoire avec des probabilités dépendant du scénario et d'autre condition
 func random_event() -> void:
 	var events_proba = []
-	events_proba[0] = 1
-	events_proba[1] = 1
+	events_proba.append(1)  # Proba de 1 pour l'event 0
+	events_proba.append(1)  # Proba de 1 pour l'event 1
 	
 	var sum_proba = 0
 	for i in events_proba.size():

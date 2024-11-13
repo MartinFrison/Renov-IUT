@@ -127,6 +127,7 @@ package controllers
                 + {abstract} init_data()
                 + init_building()
 				+ get_name() : String
+                + {abstract} {static} get_description() : String
 
 				+ adjust_budget(coeff : Real)
 				+ adjust_student_satisfaction(coeff : Real)
@@ -137,12 +138,12 @@ package controllers
 
             class ScenarioElection
             {
-
+             + {static} get_description() : String
             }
 
             class ScenarioRenovation
             {
-
+             + {static} get_description() : String
             }
 
 			class Vote

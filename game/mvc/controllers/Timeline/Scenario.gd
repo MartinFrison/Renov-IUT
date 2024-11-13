@@ -6,7 +6,10 @@ var _name : String
 
 func _init() -> void:
 	init_data()
-	
+
+static func get_description() -> String:
+	push_error("get_description() doit être implémentée.")
+	return ""
 
 # Test si le jeu est fini
 func test_end_game_condition() -> bool:
