@@ -16,6 +16,8 @@ static func setBudget(montant : int) -> void:
 # Fonction pour ajouter au budget
 static func addBudget(montant : int) -> void:
 	_budget += montant
+	ObserverGlobalData.notifyBudgetChanged()
+
 
 # Fonction pour obtenir le budget
 static func getBudget() -> int:

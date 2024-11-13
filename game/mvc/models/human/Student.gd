@@ -31,12 +31,16 @@ static func add_student(dept : String, year : int) -> void:
 	if !Utils.db.execute(query, [year, dt, randf_range(0.7, 1.0), randf_range(0.5, 1.0)]):
 		print("Erreur d'ajout.")
 		return
+	ObserverPopulation.notifyLevelChanged()
+	ObserverPopulation.notifySatisfactionChanged()
 
 static func rm_student_by_id(id : int) -> void:
 	var query = "DELETE FROM Students WHERE id=?"
 	if !Utils.db.execute(query, [id]):
 		print("Erreur de suppression.")
 		return
+	ObserverPopulation.notifyLevelChanged()
+	ObserverPopulation.notifySatisfactionChanged()
 
 static func rm_students_by_dept(dept: String, nb: int) -> void:
 	# Récupérer les IDs des étudiants dans le département spécifié
@@ -48,7 +52,7 @@ static func rm_students_by_dept(dept: String, nb: int) -> void:
 	for id_entry in ids:
 		var id = id_entry["id"]  # Récupérer l'ID de l'étudiant
 		rm_student_by_id(id)
-
+	
 # Getters
 static func get_year(id : int) -> int:
 	var query = "SELECT year FROM Students WHERE id=?"
@@ -90,12 +94,15 @@ static func set_mood(id : int, coeff: float) -> void:
 	var query = "UPDATE Students SET mood=mood*? WHERE id=?"
 	if !Utils.db.execute(query, [coeff, id]):
 		return
+	ObserverPopulation.notifyLevelChanged()
+	ObserverPopulation.notifySatisfactionChanged()
 
 static func set_level(id : int, coeff: float) -> void:
 	coeff = max(min(1,coeff),0)
 	var query = "UPDATE Students SET level=level*? WHERE id=?"
 	if !Utils.db.execute(query, [coeff, id]):
 		return
+	ObserverPopulation.notifyLevelChanged()
 
 # Stats
 static func compute_nb_per_dept(dept : String) -> float:
@@ -121,6 +128,23 @@ static func avg_mood_per_dept(dept: String) -> float:
 	else:
 		return 0.0
 
+
+static func avg_level_per_dept(dept: String) -> float:
+	var query = "SELECT level FROM Students WHERE dept = ?"
+	var dt = Utils.dept_string_to_index(dept)
+	var entries = Utils.db.get_entries(query, [dt])
+	var level_sum: float = 0.0
+	var count: int = entries.size()
+
+	for entry in entries:
+		level_sum += entry["level"]
+
+	if count > 0:
+		return round((level_sum / count)* 100) / 100
+	else:
+		return 0.0
+
+
 static func compute_nb() -> float:
 	var query = "SELECT count(*) AS nb FROM Students"
 	var result = Utils.db.get_entries(query)
@@ -144,6 +168,24 @@ static func avg_mood() -> float:
 		return 0.0
 	
 	return 1.0
+
+
+static func avg_level() -> float:
+	var query = "SELECT level FROM Students"
+	var entries = Utils.db.get_entries(query)
+	var level_sum: float = 0.0
+	var count: int = entries.size()
+
+	for entry in entries:
+		level_sum += entry["level"]
+
+	if count > 0:
+		return round((level_sum / count)* 100) / 100
+	else:
+		return 0.0
+	
+	return 1.0
+
 
 static func success_rate_per_dept(dept : String) -> float:
 	var query = "SELECT level FROM Students WHERE dept = ?"

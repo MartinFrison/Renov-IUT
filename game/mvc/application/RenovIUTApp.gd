@@ -15,7 +15,6 @@ func _ready() -> void:
 	app = self
 	var label = get_tree().get_root().get_node("Node2D/Label")
 	label = label as Label
-	label.text = "Bonjour"
 	Utils.create_iut_db()
 	illkirch = IUTFacade.new()
 	add_child(illkirch)

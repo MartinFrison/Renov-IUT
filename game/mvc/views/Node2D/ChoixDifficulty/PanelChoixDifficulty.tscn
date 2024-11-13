@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c8shhyyacm7rn"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/ChoixDifficulty/ChoixDifficultyScript.gd" id="1_qcsjs"]
-[ext_resource type="Texture2D" uid="uid://bds0cfhw5duym" path="res://mvc/views/images/backgrounds/menu.png" id="2_t4tuv"]
+[ext_resource type="Texture2D" uid="uid://bpdfvn1j0iyl8" path="res://mvc/views/images/backgrounds/menu.png" id="2_t4tuv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nk24h"]
 bg_color = Color(0, 0.143123, 0.276469, 1)

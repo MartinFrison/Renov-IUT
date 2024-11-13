@@ -14,8 +14,6 @@ Graphique:
 
 Code:
 
-- Affichage des bulles contenant un simple texte (pour le scenario, le tutoriel ect..)
-- Implementation des observers dans le models
 - Affichage des stats principale dans la vue (satisfaction, reussite, budget)
 
 
@@ -44,5 +42,8 @@ Code:
 
 
 - Gestion des fonds
+- Gestion des variables quotidienne et mensuel (cout, salaire ect..)
+
+
 - Ajout complet d'un eventuels troisième scénario
 - Ajout d'action spécifique à des batiments

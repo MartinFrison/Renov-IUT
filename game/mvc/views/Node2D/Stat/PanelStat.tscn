@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://lrmgb23vrj1e"]
+
+[ext_resource type="Script" path="res://mvc/views/Node2D/Stat/StatScript.gd" id="1_xycvu"]
+
+[node name="PanelStat" type="Node2D"]
+script = ExtResource("1_xycvu")
+
+[node name="mood" type="Label" parent="."]
+offset_left = 18.0
+offset_top = 12.0
+offset_right = 58.0
+offset_bottom = 35.0
+text = "Satisfaction"
+
+[node name="level" type="Label" parent="."]
+offset_left = 19.0
+offset_top = 40.0
+offset_right = 110.0
+offset_bottom = 63.0
+text = "Level
+"
+
+[node name="budget" type="Label" parent="."]
+offset_left = 19.0
+offset_top = 67.0
+offset_right = 110.0
+offset_bottom = 90.0
+text = "Budget"
