@@ -7,6 +7,7 @@ Graphique:
 - Style du panel de donnée et d'action des batiments
 - Style de l'historique des notifications
 - Style des affichages liés à la fin de chaque scénario
+- Ajout d'effet spéciaux
 
 
 
@@ -42,6 +43,6 @@ Code:
 - Affichage de la fin du jeu pour chaque scénario
 
 
-- Ajout complet d'un eventuels troisième scénario
 - Gestion des fonds
-
+- Ajout complet d'un eventuels troisième scénario
+- Ajout d'action spécifique à des batiments

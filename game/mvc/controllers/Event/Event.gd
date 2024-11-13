@@ -13,7 +13,7 @@ static func create_event(id : int) -> Event:
 		0:
 			return EventPiratage.new()
 		1:
-			return null
+			return EventLegislatif.new()
 	return null
 
 
@@ -23,9 +23,10 @@ func _init() -> void:
 func start_event() -> void:
 	if _question:
 		var f ="react_to_answer"
-		Question.ask_question(_question_script, _question_answer,f, self)
+		BulleGestion.ask_question(_description + "\n\n" + _question_script, _question_answer,f, self)
 	else:
-		pass # Envoyer simplement un message ou une notif s'il n'y a pas de question
+		BulleGestion.send_message(_description)
+		react_to_answer("default")
 
 
 func react_to_answer(answer : String) -> void:
