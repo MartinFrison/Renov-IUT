@@ -37,7 +37,7 @@ func create_question_button(text : String, id : int) -> void:
 
 	var panel = get_node("PanelReponse")
 	panel.add_child(button)
-	button.pressed.connect(Callable(_on_answer_pressed).bind(1))
+	button.pressed.connect(Callable(_on_answer_pressed).bind(id))
 
 
 func _on_answer_pressed(id : int) -> void:

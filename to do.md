@@ -1,6 +1,5 @@
 
 
-<<<<<<< HEAD
 Graphique:
 
 - Thème du choix de scénario & Thème choix difficulté
@@ -8,14 +7,13 @@ Graphique:
 - Style du panel de donnée et d'action des batiments
 - Style de l'historique des notifications
 - Style des affichages liés à la fin de chaque scénario
+- Ajout d'effet spéciaux
 
 
 
 
 Code:
 
-=======
->>>>>>> ca76786f7832dddce5eb83b7dd66d3b79a1a2336
 - Affichage des bulles contenant un simple texte (pour le scenario, le tutoriel ect..)
 - Implementation des observers dans le models
 - Affichage des stats principale dans la vue (satisfaction, reussite, budget)
@@ -45,6 +43,6 @@ Code:
 - Affichage de la fin du jeu pour chaque scénario
 
 
-- Ajout complet d'un eventuels troisième scénario
 - Gestion des fonds
-
+- Ajout complet d'un eventuels troisième scénario
+- Ajout d'action spécifique à des batiments

@@ -71,9 +71,11 @@ func setHeat(heat: bool) -> void:
 
 func setIsolation(value: int) -> void:
 	_isolation = clamp(value, 0, 100)  # Limite la valeur d'isolation entre 0 et 100
+	ObserverBuilding.notifyStateChanged()
 
 func setInventory(value: int) -> void:
 	_inventory = clamp(value, 0, 100)  # Limite la valeur d'inventaire entre 0 et 100
+	ObserverBuilding.notifyStateChanged()
 
 # Méthodes d'ajout
 func addIsolation(value: int) -> void:

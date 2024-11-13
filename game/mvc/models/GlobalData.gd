@@ -11,6 +11,7 @@ static var _difficulty: int = 1
 # Fonction pour définir le budget
 static func setBudget(montant : int) -> void:
 	_budget = montant
+	ObserverGlobalData.notifyBudgetChanged()
 
 # Fonction pour ajouter au budget
 static func addBudget(montant : int) -> void:
