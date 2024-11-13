@@ -2,21 +2,23 @@
 class_name IUTFacade
 extends Node
 
-var scenario: Scenario
-var time: TimeManagement
-
+var _scenario: Scenario
+var _time: TimeManagement
+var _id
 
 func chooseScenario(id : int) -> void:
-	match id:
-		0:
-			scenario = ScenarioElection.new()
-		1:
-			scenario = ScenarioRenovation.new()
+	_id = id
 
 func chooseDifficulty(value : int) -> void:
 	GlobalData.set_difficulty(value)
 
 
 func startGame() -> void:
-		time = TimeManagement.new(scenario)
-		add_child(time)
+		match _id:
+			0:
+				_scenario = ScenarioElection.new()
+			1:
+				_scenario = ScenarioRenovation.new()
+		
+		_time = TimeManagement.new(_scenario)
+		add_child(_time)

@@ -5,7 +5,9 @@ extends Node2D
 func _ready() -> void:
 	ObserverGlobalData.addObserver(self)
 	ObserverPopulation.addObserver(self)
-
+	notifyBudgetChanged()
+	notifyLevelChanged()
+	notifySatisfactionChanged()
 
 
 func notifyBudgetChanged() -> void:

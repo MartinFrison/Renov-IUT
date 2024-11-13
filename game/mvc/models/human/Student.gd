@@ -2,6 +2,7 @@
 class_name Student
 extends Node 
 
+
 # Fonction pour obtenir tous les IDs de la table StudentSQLTable
 static func get_all_ids() -> Array:
 	var ids = []
@@ -31,16 +32,13 @@ static func add_student(dept : String, year : int) -> void:
 	if !Utils.db.execute(query, [year, dt, randf_range(0.7, 1.0), randf_range(0.5, 1.0)]):
 		print("Erreur d'ajout.")
 		return
-	ObserverPopulation.notifyLevelChanged()
-	ObserverPopulation.notifySatisfactionChanged()
 
 static func rm_student_by_id(id : int) -> void:
 	var query = "DELETE FROM Students WHERE id=?"
 	if !Utils.db.execute(query, [id]):
 		print("Erreur de suppression.")
 		return
-	ObserverPopulation.notifyLevelChanged()
-	ObserverPopulation.notifySatisfactionChanged()
+
 
 static func rm_students_by_dept(dept: String, nb: int) -> void:
 	# Récupérer les IDs des étudiants dans le département spécifié
@@ -52,7 +50,8 @@ static func rm_students_by_dept(dept: String, nb: int) -> void:
 	for id_entry in ids:
 		var id = id_entry["id"]  # Récupérer l'ID de l'étudiant
 		rm_student_by_id(id)
-	
+
+
 # Getters
 static func get_year(id : int) -> int:
 	var query = "SELECT year FROM Students WHERE id=?"
@@ -94,7 +93,6 @@ static func set_mood(id : int, coeff: float) -> void:
 	var query = "UPDATE Students SET mood=mood*? WHERE id=?"
 	if !Utils.db.execute(query, [coeff, id]):
 		return
-	ObserverPopulation.notifyLevelChanged()
 	ObserverPopulation.notifySatisfactionChanged()
 
 static func set_level(id : int, coeff: float) -> void:

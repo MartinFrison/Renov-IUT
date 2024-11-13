@@ -12,6 +12,11 @@ var indexation_rate = normal_inflation_rate - 0.01
 var csv_path : String = "res://data/urgencies.csv"
 
 func create_iut_db():
+	var delete
+	delete = "DELETE FROM Students"
+	db.execute(delete)
+	delete = "DELETE FROM Teachers"
+	db.execute(delete)
 	
 	# Créer les tables si elles n'existent pas déjà
 	var create_students_table_query = """

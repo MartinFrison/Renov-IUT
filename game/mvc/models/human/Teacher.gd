@@ -32,16 +32,13 @@ static func add_teacher(dept : String, full_time : bool) -> void:
 	if !Utils.db.execute(query, [dt, randf_range(0.5, 0.7), full_time]): # les enseignants sont moins emballés que les élèves !
 		print("Erreur d'ajout.")
 		return
-	ObserverPopulation.notifyLevelChanged()
-	ObserverPopulation.notifySatisfactionChanged()
+
 
 static func rm_teacher_by_id(id : int) -> void:
 	var query = "DELETE FROM Teachers WHERE id=?"
 	if !Utils.db.execute(query, [id]):
 		print("Erreur de suppression.")
 		return
-	ObserverPopulation.notifyLevelChanged()
-	ObserverPopulation.notifySatisfactionChanged()
 
 static func rm_teachers_by_dept(dept: String, nb: int) -> void:
 	# Récupérer les IDs des profs dans le département spécifié

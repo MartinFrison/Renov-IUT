@@ -7,8 +7,6 @@ static var _pause : bool
 
 # Le jeu commence le 1 septembre 2025
 func _init(scenario: Scenario) -> void:
-	Study.populate()
-	Teaching.populate()
 	GlobalData.setDate(1,9,2025) # date de départ
 	self._scenario = scenario  # Initialiser le scénario
 	year_begin()

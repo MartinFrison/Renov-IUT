@@ -19,4 +19,4 @@ scale = Vector2(0.315928, 0.277322)
 texture = ExtResource("3_7kubs")
 
 [node name="PanelStat" parent="." instance=ExtResource("4_t3hyp")]
-position = Vector2(-1, 6)
+position = Vector2(8, 6)
