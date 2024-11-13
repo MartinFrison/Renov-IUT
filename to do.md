@@ -1,5 +1,6 @@
 
 
+<<<<<<< HEAD
 Graphique:
 
 - Thème du choix de scénario & Thème choix difficulté
@@ -13,6 +14,8 @@ Graphique:
 
 Code:
 
+=======
+>>>>>>> ca76786f7832dddce5eb83b7dd66d3b79a1a2336
 - Affichage des bulles contenant un simple texte (pour le scenario, le tutoriel ect..)
 - Implementation des observers dans le models
 - Affichage des stats principale dans la vue (satisfaction, reussite, budget)
