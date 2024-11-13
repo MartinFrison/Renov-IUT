@@ -17,6 +17,7 @@ func start_event() -> void:
 
 
 func react_to_answer(answer : String) -> void:
+	print("reponse au piratage")
 	if answer == _question_answer[0]:
 		GlobalData.addBudget(-1)
 	elif answer == _question_answer[1]:

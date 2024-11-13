@@ -1,13 +1,13 @@
 extends Node2D
 
 var _question : String
-var _fonctionReponse : Callable
+var _fonctionReponse : String
 var _reponse : Array[String]
 
+var _node : Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("bulle")
 	pass # Replace with function body.
 
 
@@ -16,8 +16,9 @@ func _process(delta: float) -> void:
 	pass
 
 
-func init(question : String, reponse : Array[String] ,fonction : Callable) -> void:
+func init(question : String, reponse : Array[String] ,fonction : String, node : Node) -> void:
 	_fonctionReponse = fonction
+	_node = node
 	_reponse = reponse
 	_question = question
 	var ques = get_node("Question")
@@ -40,5 +41,7 @@ func create_question_button(text : String, id : int) -> void:
 
 
 func _on_answer_pressed(id : int) -> void:
-	_fonctionReponse.call(id)
+	var c : Callable = Callable(_node, _fonctionReponse)
+	c.call(_reponse[id])
 	TimeManagement.pause(false)
+	queue_free()

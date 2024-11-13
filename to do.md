@@ -1,5 +1,18 @@
 
 
+Graphique:
+
+- Thème du choix de scénario & Thème choix difficulté
+- Style d'affichage des (satisfaction, reussite, budget)
+- Style du panel de donnée et d'action des batiments
+- Style de l'historique des notifications
+- Style des affichages liés à la fin de chaque scénario
+
+
+
+
+Code:
+
 - Affichage des bulles contenant un simple texte (pour le scenario, le tutoriel ect..)
 - Implementation des observers dans le models
 - Affichage des stats principale dans la vue (satisfaction, reussite, budget)
