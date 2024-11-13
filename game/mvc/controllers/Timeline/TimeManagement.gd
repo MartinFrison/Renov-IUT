@@ -10,7 +10,6 @@ func _init(scenario: Scenario) -> void:
 	GlobalData.setDate(1,9,2025) # date de départ
 	self._scenario = scenario  # Initialiser le scénario
 	year_begin()
-	tick()
 
 
 
@@ -20,7 +19,9 @@ func _ready() -> void:
 
 #Traitement du jeu jour par jour
 func tick():
+	await wait(1)
 	_scenario.random_event()
+
 	while true:
 		await wait(1)
 		if _pause:
@@ -52,7 +53,7 @@ func wait(seconds : float) -> void:
 #chaque fin de mois déclenche des actions comme les cout à rêgler
 func end_of_month() -> void:
 	print("Fin du mois")
-	#facture chauffage 
+	#facture chauffage
 	#salaire des profs
 	#salaire des agents d'entretien
 	

@@ -3,7 +3,7 @@ extends Scenario
 
 
 func _init() -> void:
-	_name = "Eléction"
+	_name = "Election"
 	init_data()
 
 static func get_description() -> String:

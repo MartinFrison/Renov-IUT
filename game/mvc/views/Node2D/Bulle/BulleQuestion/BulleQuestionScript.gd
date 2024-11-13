@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 
 
 func init(question : String, reponse : Array[String] ,fonction : String, node : Node) -> void:
+	TimeManagement.pause(true)
 	_fonctionReponse = fonction
 	_node = node
 	_reponse = reponse

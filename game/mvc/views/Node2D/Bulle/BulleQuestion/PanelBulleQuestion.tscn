@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://chu5wfl6tehla" path="res://mvc/views/images/icons/chemistry.png" id="2_a80s2"]
 
 [node name="BulleQuestion" type="Node2D"]
+position = Vector2(303, 292)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_uk552")
 
