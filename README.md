@@ -10,6 +10,12 @@
 Vous incarnez le directeur de l'IUT Robert Schuman qui intervient sur le campus d'Illkirch pour assurer l'entretien et les rénovations des bâtiments et des infrastructures, tout en faisant face aux aléas du quotidien.
 
 ### Captures d'écran
+
+Toutes les images utilisées sont libres de droits :
+- Images satellite Google Maps ;
+- [Banque de photos de l'IUT Robert Schuman](https://seafile.unistra.fr/d/03767a1835b7493b83a6/?p=%2FBelles%20photos%20(libre%20de%20droits&mode=list) ;
+- Dessinées par nous-mêmes, à base d'images libres trouvées sur Internet.
+
 <p style="text-align: center;">![Campus](visuels/captures/main_window.png)</p>
 
 <p style="text-align: center;"><small>Fig.1. Fenêtre principale</small></p>
