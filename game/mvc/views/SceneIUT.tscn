@@ -20,3 +20,12 @@ texture = ExtResource("3_7kubs")
 
 [node name="PanelStat" parent="." instance=ExtResource("4_t3hyp")]
 position = Vector2(8, 6)
+
+[node name="notif_button" type="Button" parent="."]
+offset_left = 1042.0
+offset_top = 23.0
+offset_right = 1114.0
+offset_bottom = 78.0
+text = "NOTIF"
+
+[connection signal="pressed" from="notif_button" to="." method="open_notif"]

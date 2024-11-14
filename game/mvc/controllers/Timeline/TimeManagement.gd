@@ -51,7 +51,8 @@ func wait(seconds : float) -> void:
 
 #chaque fin de mois déclenche des actions comme les cout à rêgler
 func end_of_month() -> void:
-	print("Fin du mois")
+	for i in 10:
+		BulleGestion.send_notif("Fin de mois %s%s"%[GlobalData._month, i], "C'est la fin du mois %s%s"%[GlobalData._month,i], 0)
 	#facture chauffage
 	#salaire des profs
 	#salaire des agents d'entretien
