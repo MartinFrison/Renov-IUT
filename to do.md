@@ -3,6 +3,7 @@
 Graphique:
 
 - Thème du choix de scénario & Thème choix difficulté
+- Style des bulle (message, notif et question)
 - Style d'affichage des (satisfaction, reussite, budget)
 - Style du panel de donnée et d'action des batiments
 - Style de l'historique des notifications
@@ -22,6 +23,7 @@ Code:
 - Appel des différent type de notifications dans le code
 
 
+- Optimisation de l'initialisation des donnée en début de jeu ()
 - Ajout de tout les évenements aléatoire
 - Definition des probabilité d'appels des events pour chaque scénario
 

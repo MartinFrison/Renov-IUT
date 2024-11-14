@@ -19,27 +19,26 @@ func _ready() -> void:
 
 #Traitement du jeu jour par jour
 func tick():
+	BulleGestion.send_notif("test notif AAA")
 	await wait(1)
 	_scenario.random_event()
-
+	
 	while true:
 		await wait(1)
-		if _pause:
-			break
-		
-		GlobalData.incrementDay()
-		if GlobalData.isNewMonth():
-			end_of_month()
-		
-		#possibilité d'évenement chaque jours
-		DailyEvent()
-		#traitement quotidient de la satisfaction
-		#traitement quotidient du niveau etudiant
-		
-		# A la fin de la journée on test si le jeu se finit
-		if _scenario.test_end_game_condition():
-			_scenario.end_game()
-			pause(true)
+		if !_pause:
+			GlobalData.incrementDay()
+			if GlobalData.isNewMonth():
+				end_of_month()
+			
+			#possibilité d'évenement chaque jours
+			DailyEvent()
+			#traitement quotidient de la satisfaction
+			#traitement quotidient du niveau etudiant
+			
+			# A la fin de la journée on test si le jeu se finit
+			if _scenario.test_end_game_condition():
+				_scenario.end_game()
+				pause(true)
 
 
 
