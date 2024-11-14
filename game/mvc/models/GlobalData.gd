@@ -71,6 +71,14 @@ static func get_season() -> int:
 	return -1
 
 
+
+# Fonction pour obtenir la date formatée (DD/MM/YYYY)
+static func get_date() -> String:
+	var day_str = "0" + str(_day) if _day < 10 else str(_day)
+	var month_str = "0" + str(_month) if _month < 10 else str(_month)
+	return "%s/%s/%d" % [day_str, month_str, _year]
+
+
 static func get_difficulty() -> int:
 	return _difficulty
 	

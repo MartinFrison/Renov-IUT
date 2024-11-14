@@ -4,7 +4,7 @@ Graphique:
 
 - Thème du choix de scénario & Thème choix difficulté
 - Style des bulle (message, notif et question)
-- Style d'affichage des (satisfaction, reussite, budget)
+- Style d'affichage des (satisfaction, reussite, budget) avec un style different pour chaque type de notif
 - Style du panel de donnée et d'action des batiments
 - Style de l'historique des notifications
 - Style des affichages liés à la fin de chaque scénario

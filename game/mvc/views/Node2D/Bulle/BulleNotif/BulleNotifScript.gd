@@ -1,6 +1,7 @@
 extends Node2D
 
 var _message : String
+var _objet : String
 var tick = 0
 
 func _ready() -> void:
@@ -12,11 +13,15 @@ func _process(delta: float) -> void:
 	tick += 1
 
 
-func init(message : String) -> void:
+func init(objet : String, message : String, type : int) -> void:
 	_message = message
 	var msg = get_node("Message")
 	msg.text = _message
 
+	_objet = objet
+	var obj = get_node("Objet")
+	obj.text = _objet
+	
 	# Créer un Timer
 	var timer = Timer.new()
 	timer.wait_time = 4.0  # Définit le temps d'attente à 2 secondes

@@ -415,6 +415,7 @@ package models
             {
                 + id : Integer <<PK>>
                 + message : String
+                + objet : String
                 + date : Date
                 + type : int
             }

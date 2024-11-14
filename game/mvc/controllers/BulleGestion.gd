@@ -20,11 +20,13 @@ static func send_message(message : String) -> void:
 		bulle.init(message)
 
 
-static func send_notif(message : String) -> void:
+static func send_notif(objet : String, message : String, type : int) -> void:
 
 	var scene = load("res://mvc/views/Node2D/Bulle/BulleNotif/PanelBulleNotif.tscn")
 	var bulle = scene.instantiate()
 	RenovIUTApp.app.add_child(bulle)
+	
+	Notification.add_notification(message,objet,GlobalData.get_date(), type )
 
 	if bulle.has_method("init"):
-		bulle.init(message)
+		bulle.init(objet, message, type)

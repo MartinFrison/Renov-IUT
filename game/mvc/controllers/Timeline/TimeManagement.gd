@@ -19,7 +19,7 @@ func _ready() -> void:
 
 #Traitement du jeu jour par jour
 func tick():
-	BulleGestion.send_notif("test notif AAA")
+	BulleGestion.send_notif("test", "test notif AAA", 0)
 	await wait(1)
 	_scenario.random_event()
 	
