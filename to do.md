@@ -8,17 +8,12 @@ Graphique:
 - Style de l'historique des notifications
 - Style des affichages liés à la fin de chaque scénario
 - Ajout d'effet spéciaux
+- Ajout des sons
 
 
 
 
 Code:
-
-- Affichage des stats principale dans la vue (satisfaction, reussite, budget)
-
-
-- Ajout de tout les évenements aléatoire
-- Definition des probabilité d'appels des events pour chaque scénario
 
 
 - Gestion des notifications (comment les appeler + la structure + le stoquage dans la table + les fonction de lecture de la table)
@@ -27,9 +22,14 @@ Code:
 - Appel des différent type de notifications dans le code
 
 
-- Panel d'affichage des donnée et actions par batiments
+- Ajout de tout les évenements aléatoire
+- Definition des probabilité d'appels des events pour chaque scénario
+
+
 - Gestion de l'ouverture des panels des batiments
+- Gestion des ouvriers
 - Ajout des actions de rénovation des batiments (état, isolation, + en bonus renouvelement materiel)
+- Panel d'affichage des donnée et actions par batiments
 
 
 - Ajout d'un tutoriel si la difficulté est facile
@@ -41,9 +41,14 @@ Code:
 - Affichage de la fin du jeu pour chaque scénario
 
 
+- Ajout complet d'un eventuels troisième scénario
 - Gestion des fonds
 - Gestion des variables quotidienne et mensuel (cout, salaire ect..)
-
-
-- Ajout complet d'un eventuels troisième scénario
 - Ajout d'action spécifique à des batiments
+
+
+
+
+
+
+

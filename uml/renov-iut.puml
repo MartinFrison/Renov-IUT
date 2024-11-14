@@ -391,15 +391,16 @@ package models
 				+ forecast() : Real
 			}
 
-			class Call
-			{
-				+ get_message(id : Integer) : String
-				+ get_duration(id : Integer) : Integer
-				+ get_if_reproductible(id : Integer) : Boolean
-				+ get_if_needs_action(id : Integer) : Boolean
-				+ get_area(id : Integer) : String
-				+ set_area(id : Integer, another_place : String)
-			}
+            class Notification 
+            {
+                + get_all_ids() : Array 
+                + get_message(id : Integer) : String
+                + get_date(id : Integer) : String
+                + get_type(id : Integer) : Integer
+                + add_notification(message : String, date : String, type : Integer) : void
+                + delete_notification_by_id(id : Integer) : void
+            }
+
 
             class FundSQLTable
             {
@@ -414,10 +415,8 @@ package models
             {
                 + id : Integer <<PK>>
                 + message : String
-                + duration : Integer
-                + is_reproductible : Boolean
-                + needs_action : Boolean
-                + area : String
+                + date : Date
+                + type : int
             }
 
 

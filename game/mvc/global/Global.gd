@@ -52,12 +52,11 @@ func create_iut_db():
 	CREATE TABLE IF NOT EXISTS Notifications (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		message TEXT,
-		duration INTEGER,
-		is_reproductible BOOLEAN,
-		needs_action BOOLEAN,
-		area INTEGER
+		date DATE,
+		type INTEGER
 	);
 	"""
+
 
 
 	# Exécuter les requêtes de création de tables
