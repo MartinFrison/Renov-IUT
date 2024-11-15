@@ -14,7 +14,8 @@ var _maintenance_agents_nb : int
 var _code : String
 var _isolation : int
 var _inventory : int
-
+var _ouvriers : int = 0  # Nombre d'ouvriers
+var _grevistes : int = 0  # Nombre de grévistes
 
 
 # Constructeur de la classe
@@ -30,12 +31,11 @@ func _init(age: int, isolation: int, surface: int, heating: bool, maintenance_ag
 	_codeList.append(code)
 
 
-static func get_building(code : String) -> Building:
-	if _buildingsDictionary.has(code):	
+static func get_building(code: String) -> Building:
+	if _buildingsDictionary.has(code):
 		return _buildingsDictionary.get(code)
 	else:
 		return null
-
 
 
 # Getters
@@ -57,6 +57,32 @@ func is_heating() -> bool:
 func get_agents_nb() -> int:
 	return _maintenance_agents_nb
 
+func get_ouvriers() -> int:
+	return _ouvriers
+
+func get_grevistes() -> int:
+	return _grevistes
+
+
+# Méthodes de gestion des ouvriers
+func add_ouvrier() -> void:
+	_ouvriers += 1
+
+func remove_ouvrier() -> void:
+	if _ouvriers > 0:
+		_ouvriers -= 1
+
+func convert_ouvriers_to_grevistes(n: int) -> void:
+	if n > 0 and _ouvriers >= n:
+		_ouvriers -= n
+		_grevistes += n
+
+func convert_grevistes_to_ouvriers(n: int) -> void:
+	if n > 0 and _grevistes >= n:
+		_grevistes -= n
+		_ouvriers += n
+
+
 # Méthodes de gestion des agents
 func add_agent() -> void:
 	_maintenance_agents_nb += 1
@@ -64,6 +90,7 @@ func add_agent() -> void:
 func rm_agent() -> void:
 	if _maintenance_agents_nb > 0:
 		_maintenance_agents_nb -= 1
+
 
 # Setters
 func setHeat(heat: bool) -> void:
@@ -76,6 +103,7 @@ func setIsolation(value: int) -> void:
 func setInventory(value: int) -> void:
 	_inventory = clamp(value, 0, 100)  # Limite la valeur d'inventaire entre 0 et 100
 	ObserverBuilding.notifyStateChanged()
+
 
 # Méthodes d'ajout
 func addIsolation(value: int) -> void:
