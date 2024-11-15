@@ -16,34 +16,24 @@ Graphique:
 
 Code:
 
-- Optimisation de l'initialisation des donnée en début de jeu ()
-- Ajout de tout les évenements aléatoire
-- Definition des probabilité d'appels des events pour chaque scénario
-
-
-- Gestion de l'ouverture des panels des batiments
-- Gestion des ouvriers
-- Ajout des actions de rénovation des batiments (état, isolation, + en bonus renouvelement materiel)
-- Panel d'affichage des donnée et actions par batiments
-
-
 - Ajout d'un tutoriel si la difficulté est facile
 - Condition de fin du scenario building (qui dépend de la difficulté)
 - Implementation d'etape intermediaire dans les scénarios
 
-
 - Controller de la fin du jeu pour chaque scénario
 - Affichage de la fin du jeu pour chaque scénario
 
+- Ajout de tout les évenements aléatoire
+- Definition des probabilité d'appels des events pour chaque scénario
+- Gestion des variables quotidienne et mensuel (cout, salaire ect..)
 
 - Ajout complet d'un eventuels troisième scénario
 - Gestion des fonds
-- Gestion des variables quotidienne et mensuel (cout, salaire ect..)
+
+- Création du menu (bouton quitter, option)
+- Création d'une file d'attente pour les notifs (pour quand yen a plusieur d'un coup)
+Création
 - Ajout d'action spécifique à des batiments
 
-
-
-
-
-
-
+- Ajout d'un historique de toutes les stats consultable notament en fin de partie
+- Rapport intelligent au joueur sur sa prestation

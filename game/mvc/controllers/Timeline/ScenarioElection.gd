@@ -66,7 +66,7 @@ func init_data() -> void:
 
 
 	# budget de base
-	var budget = GlobalData.adjust_budget_initial() * Utils.randfloat_in_square_range(0.85, 1.15)
+	var budget = GlobalData.adjust_budget_initial() * Utils.randfloat_in_square_range(0.8, 1.2)
 	GlobalData.setBudget(budget)
 	
 		

@@ -14,7 +14,6 @@ func _process(delta: float) -> void:
 
 func init(id : int) -> void:
 	code = Utils.dept_index_to_string(id)
-	print(code)
 	build = Building.get_building(code)
 	show_data()
 

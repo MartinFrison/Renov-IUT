@@ -34,6 +34,9 @@ func _init(age: int, isolation: int, surface: int, heating: bool, maintenance_ag
 	_code = code
 	_inventory = clamp(inventory, 0, 100)  # Limite l'inventaire entre 0 et 100
 	_buildingsDictionary[code] = self
+	_grevistes = 0
+	_budget = 0
+	_ouvriers = 0
 
 
 static func get_building(code: String) -> Building:
