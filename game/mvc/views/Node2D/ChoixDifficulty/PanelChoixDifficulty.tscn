@@ -13,46 +13,46 @@ script = ExtResource("1_qcsjs")
 script = ExtResource("1_qcsjs")
 
 [node name="MapV1" type="Sprite2D" parent="menu"]
-position = Vector2(569, 324)
-scale = Vector2(2.41004, 2.22837)
+position = Vector2(575.716, 270.5)
+scale = Vector2(1.12165, 1.10835)
 texture = ExtResource("2_t4tuv")
 
 [node name="easy" type="Button" parent="menu"]
 z_index = 1
-offset_left = 143.0
-offset_top = 167.0
-offset_right = 418.0
-offset_bottom = 253.0
+offset_left = 59.0
+offset_top = 55.0
+offset_right = 334.0
+offset_bottom = 144.0
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_nk24h")
 text = "Facile"
 
 [node name="medium" type="Button" parent="menu"]
 z_index = 1
-offset_left = 142.0
-offset_top = 294.0
-offset_right = 417.0
-offset_bottom = 380.0
+offset_left = 59.0
+offset_top = 166.0
+offset_right = 334.0
+offset_bottom = 252.0
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_nk24h")
 text = "Moyenne"
 
 [node name="suivant" type="Button" parent="menu"]
 z_index = 1
-offset_left = 836.0
-offset_top = 512.0
-offset_right = 1084.0
-offset_bottom = 596.0
+offset_left = 861.0
+offset_top = 532.0
+offset_right = 1109.0
+offset_bottom = 616.0
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_nk24h")
 text = "Suivant"
 
 [node name="Description" type="Label" parent="menu"]
 z_index = 1
-offset_left = 502.0
-offset_top = 170.0
-offset_right = 996.0
-offset_bottom = 282.0
+offset_left = 376.0
+offset_top = 57.0
+offset_right = 870.0
+offset_bottom = 139.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 22
 text = "Description"
@@ -60,10 +60,10 @@ autowrap_mode = 1
 
 [node name="hard" type="Button" parent="menu"]
 z_index = 1
-offset_left = 146.0
-offset_top = 426.0
-offset_right = 421.0
-offset_bottom = 512.0
+offset_left = 60.0
+offset_top = 275.0
+offset_right = 335.0
+offset_bottom = 361.0
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_nk24h")
 text = "Dificile"
