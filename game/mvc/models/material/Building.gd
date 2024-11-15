@@ -4,6 +4,8 @@ extends RefCounted
 
 static var _buildingsDictionary = {}
 static var _codeList = []
+static var _total_buildings_under_renovation : int = 0  # Nombre total de bâtiments en travaux
+
 
 # Attributs privés
 var _age : int
@@ -16,6 +18,8 @@ var _isolation : int
 var _inventory : int
 var _ouvriers : int = 0  # Nombre d'ouvriers
 var _grevistes : int = 0  # Nombre de grévistes
+var _is_insulation_underway : bool = false  # Indique si des travaux d'isolation sont en cours
+var _is_renovation_underway : bool = false  # Indique si des travaux de rénovation sont en cours
 
 
 # Constructeur de la classe
@@ -63,6 +67,15 @@ func get_ouvriers() -> int:
 func get_grevistes() -> int:
 	return _grevistes
 
+func is_insulation_underway() -> bool:
+	return _is_insulation_underway
+
+func is_renovation_underway() -> bool:
+	return _is_renovation_underway
+
+static func get_total_buildings_under_renovation() -> int:
+	return _total_buildings_under_renovation
+
 
 # Méthodes de gestion des ouvriers
 func add_ouvrier() -> void:
@@ -92,6 +105,36 @@ func rm_agent() -> void:
 		_maintenance_agents_nb -= 1
 
 
+# Méthodes de travaux
+func start_insulation_work() -> void:
+	if not _is_insulation_underway:
+		_is_insulation_underway = true
+		_total_buildings_under_renovation += 1
+
+func stop_insulation_work() -> void:
+	if _is_insulation_underway:
+		_is_insulation_underway = false
+		_total_buildings_under_renovation -= 1
+
+func start_renovation_work() -> void:
+	if not _is_renovation_underway:
+		_is_renovation_underway = true
+		_total_buildings_under_renovation += 1
+
+func stop_renovation_work() -> void:
+	if _is_renovation_underway:
+		_is_renovation_underway = false
+		_total_buildings_under_renovation -= 1
+
+
+# Incrémentation des valeurs
+func increment_inventory(n: int) -> void:
+	_inventory = clamp(_inventory + n, 0, 100)
+
+func increment_isolation(n: int) -> void:
+	_isolation = clamp(_isolation + n, 0, 100)
+
+
 # Setters
 func setHeat(heat: bool) -> void:
 	_heating = heat
@@ -105,9 +148,28 @@ func setInventory(value: int) -> void:
 	ObserverBuilding.notifyStateChanged()
 
 
+# Méthodes pour définir l'état des travaux
+func set_insulation_underway(underway: bool) -> void:
+	if underway and not _is_insulation_underway:
+		_is_insulation_underway = true
+		_total_buildings_under_renovation += 1
+	elif not underway and _is_insulation_underway:
+		_is_insulation_underway = false
+		_total_buildings_under_renovation -= 1
+
+func set_renovation_underway(underway: bool) -> void:
+	if underway and not _is_renovation_underway:
+		_is_renovation_underway = true
+		_total_buildings_under_renovation += 1
+	elif not underway and _is_renovation_underway:
+		_is_renovation_underway = false
+		_total_buildings_under_renovation -= 1
+
+
 # Méthodes d'ajout
 func addIsolation(value: int) -> void:
 	_isolation = clamp(_isolation + value, 0, 100)  # Limite la valeur d'isolation entre 0 et 100
+
 
 func addInventory(value: int) -> void:
 	_inventory = clamp(_inventory + value, 0, 100)  # Limite la valeur d'inventaire entre 0 et 100
