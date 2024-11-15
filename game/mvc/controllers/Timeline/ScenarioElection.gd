@@ -48,23 +48,22 @@ func init_data() -> void:
 	Teaching.populate()
 	
 	var students = Student.get_all_ids()
-	print(students.size()-1)
 	var teachers = Teacher.get_all_ids()
-	print(teachers.size()-1)
+
+
 	# satisfaction etudiante
 	for i in students:
 		var mood = Utils.randfloat_in_square_range(GlobalData.adjust_satisfaction()*0.4,GlobalData.adjust_satisfaction()*1)
 		Student.set_mood(i,mood)
+		var level =  Utils.randfloat_in_square_range(GlobalData.adjust_level()*0.4,GlobalData.adjust_level()*1)
+		Student.set_level(i,level)
 	# satisfaction prof 
 	print("mood prof")
 	for i in teachers:
 		var mood =  Utils.randfloat_in_square_range(GlobalData.adjust_satisfaction()*0.4, GlobalData.adjust_satisfaction()*1)
 		Teacher.set_mood(i,mood)
-	# reussite
-	print("level") 
-	for i in students:
-		var level =  Utils.randfloat_in_square_range(GlobalData.adjust_level()*0.4,GlobalData.adjust_level()*1)
-		Student.set_level(i,level)
+
+
 	# budget de base
 	var budget = GlobalData.adjust_budget_initial()
 	GlobalData.setBudget(budget)

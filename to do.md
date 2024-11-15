@@ -16,13 +16,6 @@ Graphique:
 
 Code:
 
-
-- Gestion des notifications (comment les appeler + la structure + le stoquage dans la table + les fonction de lecture de la table)
-- Affichage éclair des notifications
-- Panel d'affichage de l'historique des notifications + bouton pour l'ouvrir
-- Appel des différent type de notifications dans le code
-
-
 - Optimisation de l'initialisation des donnée en début de jeu ()
 - Ajout de tout les évenements aléatoire
 - Definition des probabilité d'appels des events pour chaque scénario
