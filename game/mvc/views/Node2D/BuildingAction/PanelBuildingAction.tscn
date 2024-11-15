@@ -1,0 +1,193 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsy32b2by7jp6"]
+
+[ext_resource type="Script" path="res://mvc/views/Node2D/BuildingAction/BuildingAction.gd" id="1_rgwm8"]
+[ext_resource type="Texture2D" uid="uid://c2gn71n87xx75" path="res://mvc/views/images/icons/engineering.png" id="2_wh184"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2tdad"]
+bg_color = Color(0.35908, 0.485076, 0.569212, 0.686275)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ec2k"]
+bg_color = Color(0.474293, 0.235136, 0.374775, 0.576471)
+
+[node name="PanelBuildingAction" type="Node2D"]
+z_index = 10
+position = Vector2(313, 27)
+script = ExtResource("1_rgwm8")
+
+[node name="PanelGlobal" type="Panel" parent="."]
+offset_left = 1.0
+offset_top = 4.0
+offset_right = 564.0
+offset_bottom = 556.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2tdad")
+
+[node name="PanelAction" type="Panel" parent="PanelGlobal"]
+offset_left = 44.0
+offset_top = 271.0
+offset_right = 523.0
+offset_bottom = 521.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ec2k")
+
+[node name="Button" type="Button" parent="PanelGlobal/PanelAction"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 25.0
+offset_right = 196.0
+offset_bottom = 56.0
+text = "engager prof"
+
+[node name="Button2" type="Button" parent="PanelGlobal/PanelAction"]
+offset_left = 276.0
+offset_top = 25.0
+offset_right = 444.0
+offset_bottom = 56.0
+text = "virer prof"
+
+[node name="Button3" type="Button" parent="PanelGlobal/PanelAction"]
+offset_left = 281.0
+offset_top = 189.0
+offset_right = 448.0
+offset_bottom = 220.0
+text = "isoler"
+
+[node name="Button4" type="Button" parent="PanelGlobal/PanelAction"]
+offset_left = 36.0
+offset_top = 189.0
+offset_right = 197.0
+offset_bottom = 220.0
+text = "renover"
+
+[node name="Button5" type="Button" parent="PanelGlobal/PanelAction"]
+offset_left = 35.0
+offset_top = 148.0
+offset_right = 165.0
+offset_bottom = 179.0
+text = "(dé)verrouiller porte"
+
+[node name="Button6" type="Button" parent="PanelGlobal/PanelAction"]
+offset_left = 277.0
+offset_top = 107.0
+offset_right = 446.0
+offset_bottom = 138.0
+text = "virer ouvrier"
+
+[node name="Button7" type="Button" parent="PanelGlobal/PanelAction"]
+offset_left = 34.0
+offset_top = 107.0
+offset_right = 196.0
+offset_bottom = 138.0
+text = "engager ouvrier"
+
+[node name="Button8" type="Button" parent="PanelGlobal/PanelAction"]
+offset_left = 278.0
+offset_top = 66.0
+offset_right = 445.0
+offset_bottom = 97.0
+text = "virer agent"
+
+[node name="Button9" type="Button" parent="PanelGlobal/PanelAction"]
+offset_left = 33.0
+offset_top = 66.0
+offset_right = 196.0
+offset_bottom = 97.0
+text = "engager agent"
+
+[node name="Button10" type="Button" parent="PanelGlobal/PanelAction"]
+offset_left = 280.0
+offset_top = 148.0
+offset_right = 447.0
+offset_bottom = 179.0
+text = "allumer chauffage"
+
+[node name="PanelStat" type="Panel" parent="PanelGlobal"]
+offset_left = 239.0
+offset_top = 32.0
+offset_right = 522.0
+offset_bottom = 247.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ec2k")
+
+[node name="mood_student" type="Label" parent="PanelGlobal/PanelStat"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 26.0
+offset_right = 214.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 12
+text = "- satisfaction etudiante"
+
+[node name="mood_teacher" type="Label" parent="PanelGlobal/PanelStat"]
+offset_left = 15.0
+offset_top = 45.0
+offset_right = 214.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 12
+text = "- satisfaction enseignante"
+
+[node name="level" type="Label" parent="PanelGlobal/PanelStat"]
+offset_left = 16.0
+offset_top = 62.0
+offset_right = 215.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 12
+text = "- niveau moyen"
+
+[node name="nb_student" type="Label" parent="PanelGlobal/PanelStat"]
+offset_left = 17.0
+offset_top = 79.0
+offset_right = 216.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 12
+text = "- nombre etudiant"
+
+[node name="nb_teacher" type="Label" parent="PanelGlobal/PanelStat"]
+offset_left = 18.0
+offset_top = 95.0
+offset_right = 217.0
+offset_bottom = 112.0
+theme_override_font_sizes/font_size = 12
+text = "- nombre prof"
+
+[node name="nb_agent" type="Label" parent="PanelGlobal/PanelStat"]
+offset_left = 18.0
+offset_top = 115.0
+offset_right = 217.0
+offset_bottom = 132.0
+theme_override_font_sizes/font_size = 12
+text = "- nombre agent d'entretien"
+
+[node name="nb_worker" type="Label" parent="PanelGlobal/PanelStat"]
+offset_left = 17.0
+offset_top = 134.0
+offset_right = 216.0
+offset_bottom = 151.0
+theme_override_font_sizes/font_size = 12
+text = "- nombre ouvrier"
+
+[node name="insulation" type="Label" parent="PanelGlobal/PanelStat"]
+offset_left = 17.0
+offset_top = 152.0
+offset_right = 216.0
+offset_bottom = 169.0
+theme_override_font_sizes/font_size = 12
+text = "- isolation"
+
+[node name="renovation" type="Label" parent="PanelGlobal/PanelStat"]
+offset_left = 18.0
+offset_top = 175.0
+offset_right = 217.0
+offset_bottom = 192.0
+theme_override_font_sizes/font_size = 12
+text = "- état des lieux"
+
+[node name="mood_teacher2" type="Label" parent="PanelGlobal/PanelStat"]
+offset_left = 15.0
+offset_top = 8.0
+offset_right = 214.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 12
+text = "- budget"
+
+[node name="Fond" type="Sprite2D" parent="PanelGlobal"]
+position = Vector2(129, 120)
+scale = Vector2(2.71874, 2.74219)
+texture = ExtResource("2_wh184")

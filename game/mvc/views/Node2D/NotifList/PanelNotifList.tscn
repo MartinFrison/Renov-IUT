@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dgfj00tg8hpgb" path="res://mvc/views/images/backgrounds/satellite_map_with_buildings.png" id="2_8m3x0"]
 
 [node name="PanelNotifList" type="Node2D"]
+z_index = 10
 script = ExtResource("1_dpasn")
 
 [node name="Icon" type="Sprite2D" parent="."]

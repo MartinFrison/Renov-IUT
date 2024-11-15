@@ -26,15 +26,17 @@ func advance_work(building: Building) -> void:
 	
 	# Mise à jour de l'isolation
 	if building._is_insulation_underway:
-		building.addIsolation(insulation_increment)
+		building.addIsolation(insulation_increment* Building.coeffTempsInsulation)
 		if building.get_isolation() >= 100:
 			building.set_insulation_underway(false)
 	
 	# Mise à jour de l'inventaire
 	if building._is_renovation_underway:
-		building.addInventory(renovation_increment)
+		building.addInventory(renovation_increment* Building.coeffTempsRenovation)
 		if building.get_inventory() >= 100:
 			building.set_renovation_underway(false)
+
+
 
 # Lancer des travaux d'isolation
 static func start_insulation(building: Building) -> bool:
@@ -48,7 +50,7 @@ static func start_insulation(building: Building) -> bool:
 	
 	# Vérification des bâtiments libres
 	var free_buildings = Building._buildingsDictionary.size() - Building._total_buildings_under_renovation
-	if not building._is_renovation_underway and free_buildings * 450 < 450:
+	if not building._is_renovation_underway and free_buildings * 450 < Student.compute_nb():
 		print("Pas assez de bâtiments libres pour commencer les travaux.")
 		return false
 	
@@ -70,7 +72,7 @@ static func start_renovation(building: Building) -> bool:
 	
 	# Vérification des bâtiments libres
 	var free_buildings = Building._buildingsDictionary.size() - Building._total_buildings_under_renovation
-	if not building._is_insulation_underway and free_buildings * 450 < 450:
+	if not building._is_insulation_underway and free_buildings * 450 < Student.compute_nb():
 		print("Pas assez de bâtiments libres pour commencer les travaux.")
 		return false
 	
@@ -79,6 +81,29 @@ static func start_renovation(building: Building) -> bool:
 	print("Travaux de rénovation lancés pour le bâtiment", building.get_code())
 	return true
 
+
+# Renvoyer un ouvrier pour le département donné
+static func fireWorker(dept: String) -> void:
+	if Building.get_building(dept) != null:
+		var building = Building.get_building(dept)
+		if building.get_ouvriers() > 0:
+			building.remove_ouvrier()
+			print("Ouvrier renvoyé pour le département", dept, ". Nombre d'ouvriers restants :", building.get_ouvriers())
+		else:
+			print("Aucun ouvrier disponible à renvoyer pour le département", dept)
+	else:
+		print("Aucun bâtiment trouvé pour le département", dept)
+
+
+
+# Embaucher un ouvrier pour le département donné
+static func hireWorker(dept: String) -> void:
+	if Building.get_building(dept) != null:
+		var building = Building.get_building(dept)
+		building.add_ouvrier()
+		print("Nouvel ouvrier embauché pour le département", dept, ". Nombre total d'ouvriers :", building.get_ouvriers())
+	else:
+		print("Aucun bâtiment trouvé pour le département", dept)
 
 
 
@@ -104,6 +129,7 @@ static func fireAgent(dept: String) -> void:
 	else:
 		print("Aucun bâtiment trouvé pour le département", dept)
 
+
 # Embaucher un agent de maintenance pour le département donné
 static func hireAgent(dept: String) -> void:
 	if Building.get_building(dept) != null:
@@ -112,6 +138,7 @@ static func hireAgent(dept: String) -> void:
 		print("Nouvel agent de maintenance embauché pour le département", dept, ". Nombre total d'agents :", building.get_agents_nb())
 	else:
 		print("Aucun bâtiment trouvé pour le département", dept)
+
 
 # Verrouiller la porte du bâtiment pour le département donné
 static func lockDoor(dept: String) -> void:

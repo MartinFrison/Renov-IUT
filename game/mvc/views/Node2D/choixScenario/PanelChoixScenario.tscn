@@ -7,6 +7,7 @@
 bg_color = Color(0, 0.143123, 0.276469, 1)
 
 [node name="PanelChoixScenario" type="Node2D"]
+z_index = 40
 script = ExtResource("1_m1i0s")
 
 [node name="menu" type="Node2D" parent="."]

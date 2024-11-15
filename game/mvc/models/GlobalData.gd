@@ -24,6 +24,12 @@ static func getBudget() -> int:
 	return _budget
 
 
+static func getTotalBudget() -> int:
+	var result = getBudget()
+	var builds = Building._buildingsDictionary
+	for b in builds:
+		result += b.get_budget()
+	return result;
 
 
 #definir la date

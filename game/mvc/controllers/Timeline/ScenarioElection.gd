@@ -67,6 +67,11 @@ func init_data() -> void:
 	# budget de base
 	var budget = GlobalData.adjust_budget_initial()
 	GlobalData.setBudget(budget)
+	
+	var builds = Building._buildingsDictionary
+	for b in builds:
+		b.add_budget(GlobalData.adjust_budget_initial()*0.2)
+		
 
 
 
