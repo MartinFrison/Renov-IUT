@@ -63,3 +63,12 @@ func open_notif() -> void:
 		scene = load("res://mvc/views/Node2D/NotifList/PanelNotifList.tscn")
 		var panelNotif = scene.instantiate()
 		add_child(panelNotif)
+
+
+
+func _on_it_building_pressed() -> void:
+	if !TimeManagement._pause:
+		scene = load("res://mvc/views/Node2D/BuildingAction/PanelBuildingAction.tscn")
+		var panelAction = scene.instantiate()
+		add_child(panelAction)
+		panelAction.init(1)

@@ -6,6 +6,7 @@ var _name : String
 
 func _init() -> void:
 	init_data()
+	init_building()
 
 static func get_description() -> String:
 	push_error("get_description() doit être implémentée.")
@@ -36,11 +37,16 @@ func init_data() -> void:
 func init_building() -> void:
 	for i in 5:
 		var age = Utils.randint_in_range(5,50)
+		# l'isolation et l'état est aléatoire et dépend de la difficulté
 		var isolation = int(Utils.randint_in_range(20,80) * GlobalData.adjust_dept_state())
-		var code = Utils.dept_index_to_string(i)
 		var inventory = int(Utils.randint_in_range(20,100) * GlobalData.adjust_dept_state())
-		Building.new(age,isolation,1000, false, 2, code, inventory)
 		
+		var code = Utils.dept_index_to_string(i)
+		var b = Building.new(age,isolation,1000, false, 2, code, inventory)
+		
+		# Definition d'un budget aléatoire qui dépend de la difficulté
+		b.add_budget(GlobalData.adjust_budget_initial()*0.2 * Utils.randfloat_in_square_range(0.5, 1.5))
+
 
 # Obtenir le scénario actuel
 func get_scenario() -> String:

@@ -5,7 +5,6 @@ const coeffTempsRenovation = 0.2
 const coeffTempsInsulation = 0.3
 
 static var _buildingsDictionary = {}
-static var _codeList = []
 static var _total_buildings_under_renovation : int = 0  # Nombre total de bâtiments en travaux
 
 
@@ -22,7 +21,7 @@ var _ouvriers : int = 0  # Nombre d'ouvriers
 var _grevistes : int = 0  # Nombre de grévistes
 var _is_insulation_underway : bool = false  # Indique si des travaux d'isolation sont en cours
 var _is_renovation_underway : bool = false  # Indique si des travaux de rénovation sont en cours
-var _budget : int = 500  # Budget initial, limité à 500 par défaut
+var _budget : int 
 
 
 # Constructeur de la classe
@@ -35,7 +34,6 @@ func _init(age: int, isolation: int, surface: int, heating: bool, maintenance_ag
 	_code = code
 	_inventory = clamp(inventory, 0, 100)  # Limite l'inventaire entre 0 et 100
 	_buildingsDictionary[code] = self
-	_codeList.append(code)
 
 
 static func get_building(code: String) -> Building:
@@ -55,6 +53,9 @@ func get_age() -> int:
 func get_isolation() -> int:
 	return _isolation
 
+func get_inventory() -> int:
+	return _inventory
+	
 func get_surface() -> int:
 	return _surface
 
@@ -204,5 +205,5 @@ func get_budget() -> int:
 	return _budget
 
 func add_budget(amount: int) -> void:
-	_budget = clamp(_budget + amount, 0, 1000)  # Limite le budget entre 0 et 1000
+	_budget = max(_budget + amount, 0) 
 	ObserverGlobalData.notifyBudgetChanged()

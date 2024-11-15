@@ -5,6 +5,7 @@ extends Scenario
 func _init() -> void:
 	_name = "Election"
 	init_data()
+	init_building()
 
 static func get_description() -> String:
 	return "Un scenario dans lequel votre but est d'être réélu au terme d'un mandat de 5 ans"
@@ -65,12 +66,9 @@ func init_data() -> void:
 
 
 	# budget de base
-	var budget = GlobalData.adjust_budget_initial()
+	var budget = GlobalData.adjust_budget_initial() * Utils.randfloat_in_square_range(0.85, 1.15)
 	GlobalData.setBudget(budget)
 	
-	var builds = Building._buildingsDictionary
-	for b in builds:
-		b.add_budget(GlobalData.adjust_budget_initial()*0.2)
 		
 
 

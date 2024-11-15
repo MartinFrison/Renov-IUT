@@ -144,16 +144,7 @@ static func hireAgent(dept: String) -> void:
 static func lockDoor(dept: String) -> void:
 	if Building.get_building(dept) != null:
 		var building = Building.get_building(dept)
-		building.setDoorLocked(true)
+		building.setDoorLocked(!building.isDoorLocked())
 		print("Porte verrouillée pour le département", dept)
-	else:
-		print("Aucun bâtiment trouvé pour le département", dept)
-
-# Déverrouiller la porte du bâtiment pour le département donné
-static func unlockDoor(dept: String) -> void:
-	if Building.get_building(dept) != null:
-		var building = Building.get_building(dept)
-		building.setDoorLocked(false)
-		print("Porte déverrouillée pour le département", dept)
 	else:
 		print("Aucun bâtiment trouvé pour le département", dept)
