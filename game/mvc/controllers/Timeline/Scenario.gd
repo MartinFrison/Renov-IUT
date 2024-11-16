@@ -1,6 +1,6 @@
 # Scenario.gd
 class_name Scenario
-extends RefCounted
+extends Node
 
 var _name : String
 

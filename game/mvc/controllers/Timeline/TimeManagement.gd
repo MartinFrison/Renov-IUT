@@ -39,6 +39,7 @@ func tick():
 			if _scenario.test_end_game_condition():
 				_scenario.end_game()
 				pause(true)
+				break
 
 
 

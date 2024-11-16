@@ -23,9 +23,9 @@ func _init() -> void:
 func start_event() -> void:
 	if _question:
 		var f ="react_to_answer"
-		BulleGestion.ask_question(_description + "\n\n" + _question_script, _question_answer,f, self)
+		await BulleGestion.ask_question(_description + "\n\n" + _question_script, _question_answer,f, self)
 	else:
-		BulleGestion.send_message(_description)
+		await BulleGestion.send_message(_description)
 		react_to_answer("default")
 
 

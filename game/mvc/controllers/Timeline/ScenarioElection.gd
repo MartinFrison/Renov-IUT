@@ -14,12 +14,20 @@ static func get_description() -> String:
 # Test si le jeu est fini
 # Dans ce scénario il finit simplement au bout de 5 ans
 func test_end_game_condition() -> bool:
-	return (GlobalData._year == 2030 and GlobalData._month == 9 and  GlobalData._day == 1)
+	return (GlobalData._year == 2025 and GlobalData._month == 9 and  GlobalData._day == 15)
 
 
 # Déclencher la fin du jeu
 func end_game() -> void:
-	print("à compléter")
+	print("fin du jeu")
+	await BulleGestion.send_message("C'est la fin de votre manda !")
+	await BulleGestion.send_message("Les représentants du conseil vont voté pour savoir si vous êtes réélu !")
+	
+	var scene = load("res://mvc/views/Node2D/FinJeu/PanelFinElection.tscn")
+	var bulle = scene.instantiate()
+	RenovIUTApp.app.add_child(bulle)
+	await bulle.tree_exited
+	
 
 
 

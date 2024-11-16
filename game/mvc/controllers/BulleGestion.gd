@@ -9,7 +9,7 @@ static func ask_question(question : String, reponse : Array[String] ,fonction : 
 	RenovIUTApp.app.add_child(bulle)
 	if bulle.has_method("init"):
 		bulle.init(question, reponse, fonction, node)
-		await bulle.tree_exited
+	await bulle.tree_exited
 
 static func send_message(message : String) -> void:
 
@@ -18,7 +18,7 @@ static func send_message(message : String) -> void:
 	RenovIUTApp.app.add_child(bulle)
 	if bulle.has_method("init"):
 		bulle.init(message)
-		await bulle.tree_exited
+	await bulle.tree_exited
 
 
 static func send_notif(objet : String, message : String, type : int) -> void:

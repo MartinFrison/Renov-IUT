@@ -1,0 +1,210 @@
+[gd_scene load_steps=2 format=3 uid="uid://df14ay6p0nv3j"]
+
+[ext_resource type="Script" path="res://mvc/views/Node2D/FinJeu/FinElectionScript.gd" id="1_oysjo"]
+
+[node name="PanelFinElection" type="Node2D"]
+z_index = 13
+script = ExtResource("1_oysjo")
+
+[node name="Vote" type="Panel" parent="."]
+offset_left = 67.0
+offset_top = 139.0
+offset_right = 871.0
+offset_bottom = 561.0
+
+[node name="dept1" type="Label" parent="Vote"]
+offset_left = 50.0
+offset_top = 100.0
+offset_right = 140.0
+offset_bottom = 140.0
+theme_override_font_sizes/font_size = 13
+text = "nom"
+autowrap_mode = 3
+
+[node name="dept2" type="Label" parent="Vote"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 150.0
+offset_right = 140.0
+offset_bottom = 190.0
+theme_override_font_sizes/font_size = 13
+text = "nom"
+autowrap_mode = 3
+
+[node name="dept3" type="Label" parent="Vote"]
+offset_left = 50.0
+offset_top = 200.0
+offset_right = 140.0
+offset_bottom = 240.0
+theme_override_font_sizes/font_size = 13
+text = "nom"
+autowrap_mode = 3
+
+[node name="dept4" type="Label" parent="Vote"]
+offset_left = 50.0
+offset_top = 250.0
+offset_right = 140.0
+offset_bottom = 290.0
+theme_override_font_sizes/font_size = 13
+text = "nom"
+autowrap_mode = 3
+
+[node name="dept5" type="Label" parent="Vote"]
+offset_left = 50.0
+offset_top = 300.0
+offset_right = 140.0
+offset_bottom = 340.0
+theme_override_font_sizes/font_size = 13
+text = "nom"
+autowrap_mode = 3
+
+[node name="teach_dept1" type="Label" parent="Vote"]
+offset_left = 180.0
+offset_top = 100.0
+offset_right = 270.0
+offset_bottom = 140.0
+text = "voix"
+
+[node name="teach_dept2" type="Label" parent="Vote"]
+offset_left = 180.0
+offset_top = 150.0
+offset_right = 270.0
+offset_bottom = 190.0
+text = "voix"
+
+[node name="teach_dept3" type="Label" parent="Vote"]
+offset_left = 180.0
+offset_top = 200.0
+offset_right = 270.0
+offset_bottom = 240.0
+text = "voix"
+
+[node name="teach_dept4" type="Label" parent="Vote"]
+offset_left = 180.0
+offset_top = 250.0
+offset_right = 270.0
+offset_bottom = 290.0
+text = "voix"
+
+[node name="teach_dept5" type="Label" parent="Vote"]
+offset_left = 180.0
+offset_top = 300.0
+offset_right = 270.0
+offset_bottom = 340.0
+text = "voix"
+
+[node name="total_dept1" type="Label" parent="Vote"]
+offset_left = 650.0
+offset_top = 100.0
+offset_right = 740.0
+offset_bottom = 140.0
+text = "voix"
+
+[node name="total_dept2" type="Label" parent="Vote"]
+offset_left = 650.0
+offset_top = 150.0
+offset_right = 740.0
+offset_bottom = 190.0
+text = "voix"
+
+[node name="total_dept3" type="Label" parent="Vote"]
+offset_left = 650.0
+offset_top = 200.0
+offset_right = 740.0
+offset_bottom = 240.0
+text = "voix"
+
+[node name="total_dept4" type="Label" parent="Vote"]
+offset_left = 650.0
+offset_top = 250.0
+offset_right = 740.0
+offset_bottom = 290.0
+text = "voix"
+
+[node name="total_dept5" type="Label" parent="Vote"]
+offset_left = 650.0
+offset_top = 300.0
+offset_right = 740.0
+offset_bottom = 340.0
+text = "voix"
+
+[node name="stud_dept1" type="Label" parent="Vote"]
+offset_left = 400.0
+offset_top = 100.0
+offset_right = 490.0
+offset_bottom = 140.0
+text = "voix"
+
+[node name="stud_dept2" type="Label" parent="Vote"]
+offset_left = 400.0
+offset_top = 150.0
+offset_right = 490.0
+offset_bottom = 190.0
+text = "voix"
+
+[node name="stud_dept3" type="Label" parent="Vote"]
+offset_left = 400.0
+offset_top = 200.0
+offset_right = 490.0
+offset_bottom = 240.0
+text = "voix"
+
+[node name="stud_dept4" type="Label" parent="Vote"]
+offset_left = 400.0
+offset_top = 250.0
+offset_right = 490.0
+offset_bottom = 290.0
+text = "voix"
+
+[node name="stud_dept5" type="Label" parent="Vote"]
+offset_left = 400.0
+offset_top = 300.0
+offset_right = 490.0
+offset_bottom = 340.0
+text = "voix"
+
+[node name="total_teach" type="Label" parent="Vote"]
+offset_left = 180.0
+offset_top = 350.0
+offset_right = 270.0
+offset_bottom = 390.0
+text = "teach"
+
+[node name="total_stud" type="Label" parent="Vote"]
+offset_left = 400.0
+offset_top = 350.0
+offset_right = 490.0
+offset_bottom = 390.0
+text = "stud
+"
+
+[node name="total" type="Label" parent="Vote"]
+offset_left = 650.0
+offset_top = 350.0
+offset_right = 740.0
+offset_bottom = 390.0
+theme_override_font_sizes/font_size = 20
+text = "total"
+
+[node name="teach" type="Label" parent="Vote"]
+offset_left = 170.0
+offset_top = 25.0
+offset_right = 370.0
+offset_bottom = 75.0
+text = "Vote des enseignants"
+
+[node name="stud" type="Label" parent="Vote"]
+offset_left = 370.0
+offset_top = 25.0
+offset_right = 570.0
+offset_bottom = 75.0
+text = "Vote des représentants étudiants"
+autowrap_mode = 2
+
+[node name="Resultat" type="Label" parent="."]
+offset_left = 68.0
+offset_top = 20.0
+offset_right = 743.0
+offset_bottom = 112.0
+theme_override_font_sizes/font_size = 35
+text = "Resultat"
