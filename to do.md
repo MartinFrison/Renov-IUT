@@ -33,6 +33,8 @@ Code:
 - Création du menu (bouton quitter, option)
 - Création d'une file d'attente pour les notifs (pour quand yen a plusieur d'un coup)
 Création
+- Ajout de tout les messages et notifs manquant dans le code
+
 - Ajout d'action spécifique à des batiments
 
 - Ajout d'un historique de toutes les stats consultable notament en fin de partie

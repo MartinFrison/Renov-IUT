@@ -1,7 +1,7 @@
 class_name EventPiratage
 extends Event
 
-var cout = 1000
+var cout = 800
 static var secure : bool = false
 
 func _init() -> void:
@@ -10,6 +10,10 @@ func _init() -> void:
 	_question_script = "Voulez vous sécuriser les données ? (cout : " + str(cout) + ")"
 	_question_answer = ["NON", "OUI"]
 	start_event()
+
+
+func event_precondition() -> bool:
+	return !secure
 
 
 func start_event() -> void:

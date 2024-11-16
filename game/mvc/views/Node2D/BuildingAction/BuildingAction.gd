@@ -23,6 +23,9 @@ func show_data() -> void:
 	node = get_node("name")
 	node.text = code
 	
+	node = get_node("PanelGlobal/PanelStat/pay")
+	node.text = "Salaire des enseigants : %s$" % [build.get_pay_teacher()]
+	
 	node = get_node("PanelGlobal/PanelStat/mood_student")
 	node.text = "Satisfaction étudiante : %s%%" % [int(Student.avg_mood_per_dept(code)*100)]
 	
@@ -147,3 +150,7 @@ func _on_heat_pressed() -> void:
 func _on_close_pressed() -> void:
 	TimeManagement.pause(false)
 	queue_free()
+
+
+func _on_increase_pay_pressed() -> void:
+	Teaching.increase_salary(code)

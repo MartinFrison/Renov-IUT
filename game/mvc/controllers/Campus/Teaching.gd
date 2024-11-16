@@ -52,3 +52,6 @@ static func boost_satisfaction_teacher(dept : String, value : float) -> void:
 	var id = Teacher.get_dept_ids(dept)
 	for i in id:
 		Teacher.set_mood(i, Teacher.get_mood(i) + Utils.randfloat_in_square_range(value * 0.65 * GlobalData.adjust_satisfaction(), value * 1.35 * GlobalData.adjust_satisfaction()))
+
+static func increase_salary(dept : String) -> void:
+	Building.get_building(dept).add_pay_teacher(800)

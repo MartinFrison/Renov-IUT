@@ -22,16 +22,21 @@ static func create_event(id : int) -> Event:
 func _init() -> void:
 	pass
 
+func event_precondition() -> bool:
+	return true
+
 #Quand un event est lancer
 func start_event() -> void:
-	# Soit il pose une question et attend la réponse
-	if _question:
-		var f ="react_to_answer"
-		await BulleGestion.ask_question(_description + "\n\n" + _question_script, _question_answer,f, self)
-	#  Soit il en informe juste le joueur puis appelle les concéquences
-	else:
-		await BulleGestion.send_message(_description, true)
-		react_to_answer("default")
+	# il vérifie si les conditions sont remplis sinon ne fait rien
+	if event_precondition():
+		# Soit il pose une question et attend la réponse
+		if _question:
+			var f ="react_to_answer"
+			await BulleGestion.ask_question(_description + "\n\n" + _question_script, _question_answer,f, self)
+		#  Soit il en informe juste le joueur puis appelle les concéquences
+		else:
+			await BulleGestion.send_message(_description, true)
+			react_to_answer("default")
 
 
 # Réaction à la réponse du joueur (concéquence) 
