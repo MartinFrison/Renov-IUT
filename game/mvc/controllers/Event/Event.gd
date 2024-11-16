@@ -17,20 +17,30 @@ static func create_event(id : int) -> Event:
 	return null
 
 
+
+
 func _init() -> void:
 	pass
-	
+
+#Quand un event est lancer
 func start_event() -> void:
+	# Soit il pose une question et attend la réponse
 	if _question:
 		var f ="react_to_answer"
 		await BulleGestion.ask_question(_description + "\n\n" + _question_script, _question_answer,f, self)
+	#  Soit il en informe juste le joueur puis appelle les concéquences
 	else:
-		await BulleGestion.send_message(_description)
+		await BulleGestion.send_message(_description, true)
 		react_to_answer("default")
 
 
+# Réaction à la réponse du joueur (concéquence) 
 func react_to_answer(answer : String) -> void:
 	pass
+
+
+
+
 
 # Retourne la valeur de _question
 func get_question() -> bool:

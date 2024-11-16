@@ -16,9 +16,6 @@ Graphique:
 
 Code:
 
-- Controller de la fin du jeu pour chaque scénario
-- Affichage de la fin du jeu pour chaque scénario
-- Implementation d'etape intermediaire dans les scénarios
 - Ajout d'un tutoriel si la difficulté est facile
 
 - Ajout de tout les évenements aléatoire

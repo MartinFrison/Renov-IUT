@@ -172,6 +172,9 @@ func set_renovation_underway(underway: bool) -> void:
 		_is_renovation_underway = false
 		_total_buildings_under_renovation -= 1
 
+#definir le budget
+func set_budget(value : int) -> void:
+	_budget = value
 
 # Méthodes d'ajout
 func addIsolation(value: int) -> void:

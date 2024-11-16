@@ -17,7 +17,7 @@ func _init() -> void:
 		msg = "Votre objectif est de rénover les batiments %s et %s" % [old_builds[0].get_code(),old_builds[1].get_code()]
 	else:
 		msg = "Votre objectif est de rénover le batiment %s" % [old_builds[0].get_code()]
-	await BulleGestion.send_message(msg)
+	await BulleGestion.send_message(msg, true)
 	
 
 
@@ -41,9 +41,9 @@ func test_end_game_condition() -> bool:
 func end_game() -> void:
 	print("fin du jeu")
 	if old_builds.size()>1:
-		await BulleGestion.send_message("Vous avez finit de rénovez les batiments en mauvais état")
+		await BulleGestion.send_message("Vous avez finit de rénovez les batiments en mauvais état", false)
 	else:
-		await BulleGestion.send_message("Vous avez finit de rénovez le batiment en mauvais état")
+		await BulleGestion.send_message("Vous avez finit de rénovez le batiment en mauvais état", false)
 
 
 	var scene = load("res://mvc/views/Node2D/FinJeu/PanelFinRenovation.tscn")
@@ -82,7 +82,7 @@ func mid_game() -> void:
 				b = true
 				break
 	if b:
-		await BulleGestion.send_message(msg)
+		await BulleGestion.send_message(msg, true)
 
 # Génère un événement aléatoire avec des probabilités dépendant du scénario et d'autre condition
 func random_event() -> void:

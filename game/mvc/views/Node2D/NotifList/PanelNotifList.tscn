@@ -18,6 +18,7 @@ offset_left = 659.0
 offset_top = 77.0
 offset_right = 1088.0
 offset_bottom = 287.0
+autowrap_mode = 3
 
 [node name="PanelNotif" type="Panel" parent="."]
 offset_left = 121.0

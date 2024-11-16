@@ -23,11 +23,7 @@ static func nb_voix_student_per_dept(dept: String) -> int:
 	return int(Student.compute_nb_per_dept(dept) / 160 + 0.49)
 
 static func nb_voix_per_dept(dept: String) -> int:
-	var n 	= 0
-	for i in 5:
-		var c = Utils.dept_index_to_string(i+1)
-		n += nb_voix_teacher_per_dept(c)
-		n += nb_voix_student_per_dept(c)
+	var n = nb_voix_teacher_per_dept(dept) + nb_voix_student_per_dept(dept)
 	return n
 
 static func nb_voix_teacher() -> int:

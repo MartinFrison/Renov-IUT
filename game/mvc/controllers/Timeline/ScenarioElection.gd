@@ -22,8 +22,8 @@ func test_end_game_condition() -> bool:
 # Déclencher la fin du jeu
 func end_game() -> void:
 	print("fin du jeu")
-	await BulleGestion.send_message("C'est la fin de votre manda !")
-	await BulleGestion.send_message("Les représentants du conseil vont voté pour savoir si vous êtes réélu !")
+	await BulleGestion.send_message("C'est la fin de votre manda !", false)
+	await BulleGestion.send_message("Les représentants du conseil vont voté pour savoir si vous êtes réélu !", false)
 	
 	var scene = load("res://mvc/views/Node2D/FinJeu/PanelFinElection.tscn")
 	var bulle = scene.instantiate()
@@ -40,7 +40,7 @@ func mid_game() -> void:
 			var sondage_etu = int(Vote.popularity_among_students()*100/Vote.nb_voix_student())
 			var sondage_prof = int(Vote.popularity_among_teachers()*100/Vote.nb_voix_teacher())
 			msg = "%s%s%% dans les intentions de vote des étudiants et %s%% de celles des enseignants" % [msg, sondage_etu, sondage_prof]
-			await BulleGestion.send_message(msg)
+			await BulleGestion.send_message(msg, true)
 			_progression +=1
 
 

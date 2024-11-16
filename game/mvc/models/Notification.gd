@@ -37,14 +37,15 @@ static func get_date(id: int) -> String:
 	return ""  # Retourne une chaîne vide si non trouvée
 
 # Fonction pour récupérer le type d'une notification par ID
-# 0 = (positif concernant les etudiants)
-# 1 = (negatif concernant les etudiants)
-# 2 = (positif concernant les profs)
-# 3 = (negatif concernant les profs)
-# 4 = (positif concernant le budget)
-# 5 = (negatif concernant le budget)
-# 6 = (positif concernant les batiments)
-# 7 = (negatif concernant les batiments)
+# 0 = message simple
+# 1 = (positif concernant les etudiants)
+# 2 = (negatif concernant les etudiants)
+# 3 = (positif concernant les profs)
+# 4 = (negatif concernant les profs)
+# 5 = (positif concernant le budget)
+# 6 = (negatif concernant le budget)
+# 7 = (positif concernant les batiments)
+# 8 = (negatif concernant les batiments)
 static func get_type(id: int) -> int:
 	var query = "SELECT type FROM Notifications WHERE id = ?"
 	var result = Utils.db.get_entries(query, [id])
