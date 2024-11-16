@@ -26,10 +26,10 @@ func init(question : String, reponse : Array[String] ,fonction : String, node : 
 	ques.text = _question
 	
 	for i in reponse.size():
-		create_question_button(reponse[i], i)
+		create_question_button(i)
 
 
-func create_question_button(text : String, id : int) -> void:
+func create_question_button(id : int) -> void:
 	# Créer un bouton
 	var button = Button.new()
 	button.text = _reponse[id]

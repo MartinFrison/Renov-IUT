@@ -11,7 +11,7 @@ static func hire_teachers(dept: String):
 		return
 
 	#vérifie si un prof est prêt à être recruté
-	if true:
+	if Teacher.avg_mood_per_dept(dept) < 0.6:
 		print("Pas de prof disponible")
 	
 	Teacher.add_teacher(dept,true)

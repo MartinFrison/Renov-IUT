@@ -12,7 +12,7 @@ func _ready() -> void:
 
 func notifyBudgetChanged() -> void:
 	var label = get_node("budget")
-	label.text = str(GlobalData.getBudget()) + "$"
+	label.text = str(GlobalData.getTotalBudget()) + "$"
 
 func notifyLevelChanged() -> void: 
 	var label = get_node("level")

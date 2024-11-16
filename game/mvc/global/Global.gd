@@ -13,9 +13,11 @@ var csv_path : String = "res://data/urgencies.csv"
 
 func create_iut_db():
 	var delete
-	delete = "DELETE FROM Students"
+	delete = "DROP TABLE IF EXISTS Students"
 	db.execute(delete)
-	delete = "DELETE FROM Teachers"
+	delete = "DROP TABLE IF EXISTS Teachers"
+	db.execute(delete)
+	delete = "DROP TABLE IF EXISTS Notifications;"
 	db.execute(delete)
 	
 	# Créer les tables si elles n'existent pas déjà
@@ -52,10 +54,9 @@ func create_iut_db():
 	CREATE TABLE IF NOT EXISTS Notifications (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		message TEXT,
-		duration INTEGER,
-		is_reproductible BOOLEAN,
-		needs_action BOOLEAN,
-		area INTEGER
+		object TEXT,
+		date TEXT,
+		type INTEGER
 	);
 	"""
 
@@ -80,6 +81,7 @@ func create_iut_db():
 	
 # Remplit la table Notifications avec des événements contenus dans un fichier CSV
 func fill_notifications_from_csv(file_path : String):
+	return
 	var file = FileAccess.open(file_path, FileAccess.READ)
 	
 	if !file:

@@ -19,27 +19,26 @@ func _ready() -> void:
 
 #Traitement du jeu jour par jour
 func tick():
+	BulleGestion.send_notif("test", "test notif AAA", 0)
 	await wait(1)
 	_scenario.random_event()
-
+	
 	while true:
 		await wait(1)
-		if _pause:
-			break
-		
-		GlobalData.incrementDay()
-		if GlobalData.isNewMonth():
-			end_of_month()
-		
-		#possibilité d'évenement chaque jours
-		DailyEvent()
-		#traitement quotidient de la satisfaction
-		#traitement quotidient du niveau etudiant
-		
-		# A la fin de la journée on test si le jeu se finit
-		if _scenario.test_end_game_condition():
-			_scenario.end_game()
-			pause(true)
+		if !_pause:
+			GlobalData.incrementDay()
+			if GlobalData.isNewMonth():
+				end_of_month()
+			
+			#possibilité d'évenement chaque jours
+			DailyEvent()
+			#traitement quotidient de la satisfaction
+			#traitement quotidient du niveau etudiant
+			
+			# A la fin de la journée on test si le jeu se finit
+			if _scenario.test_end_game_condition():
+				_scenario.end_game()
+				pause(true)
 
 
 
@@ -52,7 +51,8 @@ func wait(seconds : float) -> void:
 
 #chaque fin de mois déclenche des actions comme les cout à rêgler
 func end_of_month() -> void:
-	print("Fin du mois")
+	for i in 10:
+		BulleGestion.send_notif("Fin de mois %s%s"%[GlobalData._month, i], "C'est la fin du mois %s%s"%[GlobalData._month,i], 0)
 	#facture chauffage
 	#salaire des profs
 	#salaire des agents d'entretien

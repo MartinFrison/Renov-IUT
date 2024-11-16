@@ -29,7 +29,7 @@ static func get_dept_ids(dept : String) -> Array:
 static func add_teacher(dept : String, full_time : bool) -> void:
 	var query = "INSERT INTO Teachers (dept, mood, full_time) VALUES (?, ?, ?)"
 	var dt = Utils.dept_string_to_index(dept)
-	if !Utils.db.execute(query, [dt, randf_range(0.5, 0.7), full_time]): # les enseignants sont moins emballés que les élèves !
+	if !Utils.db.execute(query, [dt, randf_range(0.4, 0.6), full_time]): # les enseignants sont moins emballés que les élèves !
 		print("Erreur d'ajout.")
 		return
 

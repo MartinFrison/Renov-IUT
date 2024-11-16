@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://mvc/views/Node2D/Stat/StatScript.gd" id="1_xycvu"]
 
 [node name="PanelStat" type="Node2D"]
+z_index = 3
 script = ExtResource("1_xycvu")
 
 [node name="mood" type="Label" parent="."]

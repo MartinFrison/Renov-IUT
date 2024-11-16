@@ -25,6 +25,7 @@ func _ready() -> void:
 	if panelChoixScenario.has_method("init"):
 		panelChoixScenario.init(illkirch, self)
 
+
 func choiceDifficulty() -> void:
 	if panelChoixScenario:
 		print("On va supprimer le panel.")
@@ -49,6 +50,25 @@ func start_game() -> void:
 	illkirch.startGame()
 
 
+
+
+
 func close_app() -> void:
 	Utils.db.clear_tables()
 	Utils.db.close_db()
+
+
+func open_notif() -> void:
+	if !TimeManagement._pause:
+		scene = load("res://mvc/views/Node2D/NotifList/PanelNotifList.tscn")
+		var panelNotif = scene.instantiate()
+		add_child(panelNotif)
+
+
+
+func _on_it_building_pressed() -> void:
+	if !TimeManagement._pause:
+		scene = load("res://mvc/views/Node2D/BuildingAction/PanelBuildingAction.tscn")
+		var panelAction = scene.instantiate()
+		add_child(panelAction)
+		panelAction.init(1)
