@@ -28,12 +28,45 @@ offset_right = 1114.0
 offset_bottom = 78.0
 text = "NOTIF"
 
-[node name="IT_Building" type="Button" parent="."]
-offset_left = 373.0
-offset_top = 172.0
-offset_right = 466.0
-offset_bottom = 208.0
-text = "IT"
+[node name="genie_civil" type="Button" parent="."]
+offset_left = 748.0
+offset_top = 149.0
+offset_right = 841.0
+offset_bottom = 185.0
+text = "génie-civil"
+
+[node name="tech_co" type="Button" parent="."]
+offset_left = 479.0
+offset_top = 213.0
+offset_right = 610.0
+offset_bottom = 249.0
+text = "technique de co"
+
+[node name="info_com" type="Button" parent="."]
+offset_left = 307.0
+offset_top = 227.0
+offset_right = 400.0
+offset_bottom = 263.0
+text = "info-com"
+
+[node name="info" type="Button" parent="."]
+offset_left = 31.0
+offset_top = 290.0
+offset_right = 124.0
+offset_bottom = 326.0
+text = "informatique
+"
+
+[node name="chimie" type="Button" parent="."]
+offset_left = 660.0
+offset_top = 333.0
+offset_right = 753.0
+offset_bottom = 369.0
+text = "chimie"
 
 [connection signal="pressed" from="notif_button" to="." method="open_notif"]
-[connection signal="pressed" from="IT_Building" to="." method="_on_it_building_pressed"]
+[connection signal="pressed" from="genie_civil" to="." method="_on_genie_civil_pressed"]
+[connection signal="pressed" from="tech_co" to="." method="_on_tech_co_pressed"]
+[connection signal="pressed" from="info_com" to="." method="_on_info_com_pressed"]
+[connection signal="pressed" from="info" to="." method="_on_info_pressed"]
+[connection signal="pressed" from="chimie" to="." method="_on_chimie_pressed"]

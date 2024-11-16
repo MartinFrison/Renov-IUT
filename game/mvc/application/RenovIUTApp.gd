@@ -66,9 +66,25 @@ func open_notif() -> void:
 
 
 
-func _on_it_building_pressed() -> void:
+func open_building(id) -> void:
 	if !TimeManagement._pause:
 		scene = load("res://mvc/views/Node2D/BuildingAction/PanelBuildingAction.tscn")
 		var panelAction = scene.instantiate()
 		add_child(panelAction)
-		panelAction.init(1)
+		panelAction.init(id)
+
+
+func _on_info_pressed() -> void:
+	open_building(4)
+
+func _on_chimie_pressed() -> void:
+	open_building(1)
+
+func _on_info_com_pressed() -> void:
+	open_building(3)
+
+func _on_tech_co_pressed() -> void:
+	open_building(5)
+
+func _on_genie_civil_pressed() -> void:
+	open_building(2)

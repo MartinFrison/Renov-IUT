@@ -8,6 +8,10 @@ func _ready() -> void:
 	notifyBudgetChanged()
 	notifyLevelChanged()
 	notifySatisfactionChanged()
+	updateDate()
+
+func _process(delta: float) -> void:
+	updateDate()
 
 
 func notifyBudgetChanged() -> void:
@@ -20,5 +24,12 @@ func notifyLevelChanged() -> void:
 
 
 func notifySatisfactionChanged() -> void:
-	var label = get_node("mood")
-	label.text = str((Student.avg_mood()+Teacher.avg_mood())*50) + "%"
+	var label = get_node("mood_stud")
+	label.text = str(Student.avg_mood()*100) + "%"
+	label = get_node("mood_teach")
+	label.text = str(Teacher.avg_mood()*100) + "%"
+
+
+func updateDate() -> void: 
+	var label = get_node("date")
+	label.text = GlobalData.get_date()
