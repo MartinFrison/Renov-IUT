@@ -3,10 +3,11 @@ extends Node
 
 var _scenario: Scenario
 static var _pause : bool
-
+var _bill : Bill
 
 # Le jeu commence le 1 septembre 2025
 func _init(scenario: Scenario) -> void:
+	_bill = Bill.new()
 	GlobalData.setDate(1,9,2025) # date de départ
 	self._scenario = scenario  # Initialiser le scénario
 	year_begin()
@@ -33,6 +34,9 @@ func tick():
 			
 			#Possibilité d'évenement chaque jours
 			DailyEvent()
+			
+			#Mise à jour des facture quotidienne
+			_bill.add_daily_expense()
 			
 			#Avancement des travaux sur les batiments
 			for i in 5:
@@ -62,9 +66,8 @@ func wait(seconds : float) -> void:
 
 #chaque fin de mois déclenche des actions comme les cout à rêgler
 func end_of_month() -> void:
-	#facture chauffage
-	#salaire des profs
-	#salaire des agents d'entretien
+	# Reglement des factures mensuels
+	_bill.pay_bill()
 	
 	if GlobalData.isEndofYear():
 		end_of_year()
