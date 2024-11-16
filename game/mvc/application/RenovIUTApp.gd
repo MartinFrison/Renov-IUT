@@ -64,7 +64,10 @@ func open_notif() -> void:
 		var panelNotif = scene.instantiate()
 		add_child(panelNotif)
 
-
+func open_bankrupt() -> void:
+		scene = load("res://mvc/views/Node2D/FinJeu/PanelBankrupt.tscn")
+		var panelBankrupt = scene.instantiate()
+		add_child(panelBankrupt)
 
 func open_building(id) -> void:
 	if !TimeManagement._pause:

@@ -19,7 +19,7 @@ func start_event() -> void:
 func react_to_answer(answer : String) -> void:
 	print("reponse au piratage")
 	if answer == _question_answer[0]:
-		if Expense.try_expense_global(cout):
+		if await Expense.try_expense_global(cout):
 				secure = true
 				await BulleGestion.send_message("Les données ont été sécurisé", true)
 		else:

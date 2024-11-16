@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://di1xpsh3em6r6"]
+
+[ext_resource type="Script" path="res://mvc/views/Node2D/FinJeu/BankruptScript.gd" id="1_2muus"]
+[ext_resource type="Texture2D" uid="uid://bpdfvn1j0iyl8" path="res://mvc/views/images/backgrounds/menu.png" id="2_jply8"]
+
+[node name="PanelBankrupt" type="Node2D"]
+z_index = 40
+script = ExtResource("1_2muus")
+
+[node name="Menu" type="Sprite2D" parent="."]
+position = Vector2(719, 265)
+scale = Vector2(1.6748, 1.45351)
+texture = ExtResource("2_jply8")
+
+[node name="Label" type="Label" parent="."]
+z_index = 3
+offset_left = 211.0
+offset_top = 158.0
+offset_right = 946.0
+offset_bottom = 511.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "Vous avez été dechu de vos fonction de directeur par le conseil d'administration en raison de votre gestion absolument déplorable du budget et de la faillite que celle ci a engendré"
+autowrap_mode = 3

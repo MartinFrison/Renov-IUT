@@ -20,7 +20,9 @@ func _ready() -> void:
 #Traitement du jeu jour par jour
 func tick():
 	await wait(1)
-
+	
+	#Expense.expense_global(2500000)
+	
 	while true:
 		await wait(0.02)
 		# Si le jeu est en pause la boucle quotidienne n'est pas lu
