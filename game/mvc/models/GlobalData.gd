@@ -153,9 +153,9 @@ static func adjust_dept_state() -> float:
 static func adjust_event_proba() -> float:
 	match get_difficulty():
 		1:
-			return 0.01
+			return 0.6
 		2:
-			return 0.02 
+			return 0.8
 		3:
-			return 0.03
+			return 1
 	return -1

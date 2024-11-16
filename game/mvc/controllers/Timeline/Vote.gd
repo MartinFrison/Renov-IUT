@@ -92,7 +92,7 @@ static func popularity_among_teachers_per_dept(dept: String) -> int:
 	#l'opinion d'un prof dépend de sa satisfaction, un peu de celle des étudiants et du budget restant
 	var coeff = Teacher.avg_mood_per_dept(dept)*0.7
 	coeff += Student.avg_mood_per_dept(dept)*0.1
-	coeff += (GlobalData.getTotalBudget()/4000000)*0.2
+	coeff += (min(1,GlobalData.getTotalBudget()/3000000))*0.2 # Plafond de l'influence à 3 million de $
 	#calcule du taux de voix avec une fonction logistique
 	coeff = logistic_function(coeff)
 	#calcule du nombre de voix recu selon le coeff et le nb de votant

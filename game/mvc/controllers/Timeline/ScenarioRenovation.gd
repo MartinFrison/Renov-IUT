@@ -49,6 +49,12 @@ func end_game() -> void:
 	await bulle.tree_exited
 
 
+# Les actions du scénario qui ont lieu au cour de la partie
+func mid_game() -> void:
+	push_error("mid_game() doit être implémentée.")
+
+
+
 # Génère un événement aléatoire avec des probabilités dépendant du scénario et d'autre condition
 func random_event() -> void:
 	var events_proba = []

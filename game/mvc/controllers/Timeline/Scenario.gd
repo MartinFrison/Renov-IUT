@@ -3,9 +3,10 @@ class_name Scenario
 extends Node
 
 var _name : String
-
+var _progression : int
 
 func _init() -> void:
+	_progression = 0
 	init_building()
 	init_data()
 
@@ -29,6 +30,9 @@ func test_end_game_condition() -> bool:
 func end_game() -> void:
 	push_error("end_game() doit être implémentée.")
 
+# Les actions du scénario qui ont lieu au cour de la partie
+func mid_game() -> void:
+	push_error("mid_game() doit être implémentée.")
 
 # Génère un événement aléatoire avec des probabilités dépendant du scénario
 func random_event_call(events_proba) -> void:		

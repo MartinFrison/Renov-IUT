@@ -14,7 +14,7 @@ static func get_description() -> String:
 # Test si le jeu est fini
 # Dans ce scénario il finit simplement au bout de 5 ans
 func test_end_game_condition() -> bool:
-	return (GlobalData._year == 2025 and GlobalData._month == 9 and  GlobalData._day == 15)
+	return (GlobalData._year == 2030 and GlobalData._month == 9 and  GlobalData._day == 1)
 
 
 # Déclencher la fin du jeu
@@ -27,8 +27,19 @@ func end_game() -> void:
 	var bulle = scene.instantiate()
 	RenovIUTApp.app.add_child(bulle)
 	await bulle.tree_exited
-	
 
+
+# Les actions du scénario qui ont lieu au cour de la partie
+func mid_game() -> void:
+	if _progression < 2:
+		var year = 2028 if _progression == 0 else 2029
+		if (GlobalData._year == year and GlobalData._month == 9 and  GlobalData._day == 1):
+			var msg = "Il vous reste %s de manda à servir, les sondages vous donnent actuellement à " % ["deux années" if _progression == 0 else "une année"]
+			var sondage_etu = int(Vote.popularity_among_students()*100/Vote.nb_voix_student())
+			var sondage_prof = int(Vote.popularity_among_teachers()*100/Vote.nb_voix_teacher())
+			msg = "%s%s%% dans les intentions de vote des étudiants et %s%% de celles des enseignants" % [msg, sondage_etu, sondage_prof]
+			await BulleGestion.send_message(msg)
+			_progression +=1
 
 
 # Génère un événement aléatoire avec des probabilités dépendant du scénario et d'autre condition

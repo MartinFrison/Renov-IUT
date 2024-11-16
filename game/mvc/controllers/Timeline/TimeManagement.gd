@@ -22,7 +22,7 @@ func tick():
 	await wait(1)
 
 	while true:
-		await wait(1)
+		await wait(0.02)
 		# Si le jeu est en pause la boucle quotidienne n'est pas lu
 		if !_pause:
 			GlobalData.incrementDay()
@@ -42,7 +42,7 @@ func tick():
 			#traitement quotidient de la satisfaction
 			#traitement quotidient du niveau etudiant
 			
-			
+			_scenario.mid_game()
 			# A la fin de la journée on test si le jeu se finit
 			if _scenario.test_end_game_condition():
 				_scenario.end_game()
@@ -60,8 +60,7 @@ func wait(seconds : float) -> void:
 
 #chaque fin de mois déclenche des actions comme les cout à rêgler
 func end_of_month() -> void:
-	for i in 10:
-		BulleGestion.send_notif("Fin de mois %s%s"%[GlobalData._month, i], "C'est la fin du mois %s%s"%[GlobalData._month,i], 0)
+	BulleGestion.send_notif("Fin de mois %s"%[GlobalData._month], "C'est la fin du mois %s"%[GlobalData._month], 0)
 	#facture chauffage
 	#salaire des profs
 	#salaire des agents d'entretien
@@ -99,7 +98,8 @@ func DailyEvent() -> bool:
 	else:
 		coeff_proba = 0.7
 	
-	var proba = GlobalData.adjust_event_proba() * coeff_proba
+	#La proba final est compris entre environ 0.5% et 1.5% selon la difficulté et le moment
+	var proba = GlobalData.adjust_event_proba() * coeff_proba * 0.015
 	
 	if Utils.randfloat_in_range(0,1) < proba:
 		_scenario.random_event()
