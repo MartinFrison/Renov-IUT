@@ -4,8 +4,9 @@ extends RefCounted
 
 
 
+
 # Avance les travaux d'un bâtiment donné
-func advance_work(building: Building) -> void:
+static func advance_work(building: Building) -> void:
 	var workers = building.get_ouvriers()
 	if workers <= 0:
 		return  # Pas d'ouvriers, pas d'avancement possible

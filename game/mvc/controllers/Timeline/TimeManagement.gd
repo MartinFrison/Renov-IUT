@@ -19,21 +19,29 @@ func _ready() -> void:
 
 #Traitement du jeu jour par jour
 func tick():
-	BulleGestion.send_notif("test", "test notif AAA", 0)
 	await wait(1)
-	_scenario.random_event()
-	
+
 	while true:
 		await wait(1)
+		# Si le jeu est en pause la boucle quotidienne n'est pas lu
 		if !_pause:
 			GlobalData.incrementDay()
 			if GlobalData.isNewMonth():
 				end_of_month()
 			
-			#possibilité d'évenement chaque jours
+			#Possibilité d'évenement chaque jours
 			DailyEvent()
+			
+			#Avancement des travaux sur les batiments
+			for i in 5:
+				var c = Utils.dept_index_to_string(i+1)
+				var build = Building.get_building(Utils.dept_index_to_string(i+1))
+				BuildingManagement.advance_work(build)
+			
+			
 			#traitement quotidient de la satisfaction
 			#traitement quotidient du niveau etudiant
+			
 			
 			# A la fin de la journée on test si le jeu se finit
 			if _scenario.test_end_game_condition():

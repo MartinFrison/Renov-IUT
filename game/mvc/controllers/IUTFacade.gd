@@ -16,9 +16,9 @@ func chooseDifficulty(value : int) -> void:
 func startGame() -> void:
 		match _id:
 			0:
-				_scenario = ScenarioElection.new()
+				_scenario = await ScenarioElection.new()
 			1:
-				_scenario = ScenarioRenovation.new()
+				_scenario = await ScenarioRenovation.new()
 		
 		_time = TimeManagement.new(_scenario)
 		add_child(_time)

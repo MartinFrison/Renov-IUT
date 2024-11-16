@@ -112,6 +112,7 @@ func fill_notifications_from_csv(file_path : String):
 			print("Erreur lors de l'ajout de la notification.")
 	file.close()
 
+
 # Indexation : fonctions utilitaires
 func dept_string_to_index(dept: String) -> int:
 	var query = "SELECT id FROM Depts WHERE lower(name) = lower(?)"

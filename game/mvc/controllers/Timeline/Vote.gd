@@ -72,7 +72,7 @@ static func popularity_among_students() -> int:
 static func popularity_among_teachers() -> int:
 	var n 	= 0
 	for i in 5:
-		var c = Utils.dept_index_to_string(i+1)
+		var c = Utils.dept_index_to_string(1)
 		n += popularity_among_teachers_per_dept(c)
 	return n
 
