@@ -14,29 +14,33 @@ static func election_gagnee() -> bool:
 
 
 
+
 #Voix total qu'il est possible de récolter par catégorie
 static func nb_voix_teacher_per_dept(dept: String) -> int:
-	return 20 #valeur provisoire à modifier 
+	return int(Teacher.compute_nb_per_dept(dept) / 3)
 
 static func nb_voix_student_per_dept(dept: String) -> int:
-	return 10 #valeur provisoire à modifier 
+	return int(Student.compute_nb_per_dept(dept) / 200)
 
 static func nb_voix_per_dept(dept: String) -> int:
 	var n 	= 0
-	for c in Building._codeList:
+	for i in 5:
+		var c = Utils.dept_index_to_string(i+1)
 		n += nb_voix_teacher_per_dept(c)
 		n += nb_voix_student_per_dept(c)
 	return n
 
 static func nb_voix_teacher() -> int:
 	var n 	= 0
-	for c in Building._codeList:
+	for i in 5:
+		var c = Utils.dept_index_to_string(i+1)
 		n += nb_voix_teacher_per_dept(c)
 	return n
 
 static func nb_voix_student() -> int:
 	var n 	= 0
-	for c in Building._codeList:
+	for i in 5:
+		var c = Utils.dept_index_to_string(i+1)
 		n += nb_voix_student_per_dept(c)
 	return n
 
@@ -47,24 +51,32 @@ static func nb_voix_total() -> int:
 
 
 
-#Voix total effectivement gagner par catégorie
-# Méthode pour obtenir le taux de popularité général (étudiants + enseignants)
+
+# Voix gagnée effectivement gagner par catégorie
+
+# Voix gagnée Total
 static func popularity_rate() -> float:
 	var student_popularity = popularity_among_students()
 	var teacher_popularity = popularity_among_teachers()
-	
-	# Calcul du taux de popularité général, en prenant une moyenne pondérée (par exemple, 70 % étudiants et 30 % enseignants)
-	return (0.7 * student_popularity) + (0.3 * teacher_popularity)
+	return student_popularity + teacher_popularity
 
-# Popularité parmi les étudiants
+# Voix gagnée parmi les étudiants
 static func popularity_among_students() -> int:
-	return 0
+	var n 	= 0
+	for i in 5:
+		var c = Utils.dept_index_to_string(i+1)
+		n += popularity_among_students_per_dept(c)
+	return n
 
-# Popularité parmi les enseignants
+# Voix gagnée  parmi les enseignants
 static func popularity_among_teachers() -> int:
-	return 0
+	var n 	= 0
+	for i in 5:
+		var c = Utils.dept_index_to_string(i+1)
+		n += popularity_among_teachers_per_dept(c)
+	return n
 
-# Popularité parmi un département spécifique (étudiants + enseignants)
+# Voix gagnée  parmi un département spécifique (étudiants + enseignants)
 static func popularity_per_dept(dept: String) -> int:
 	var student = popularity_among_students_per_dept(dept)
 	var teacher = popularity_among_teachers_per_dept(dept)
@@ -72,12 +84,34 @@ static func popularity_per_dept(dept: String) -> int:
 
 
 
-# Popularité parmi les enseignants d'un département spécifique
-static func popularity_among_teachers_per_dept(dept: String) -> int:
-	#vote des professeurs dans un batiment
-	return 0.0
+# C'est ici que les voix se calcule réellement
+# Les fonction ci dessus ne font que des sommes de voix précompté dans ces fonction:
 
-# Popularité parmi les étudiants d'un département spécifique
+# Voix gagnée parmi les enseignants d'un département spécifique
+static func popularity_among_teachers_per_dept(dept: String) -> int:
+	#l'opinion d'un prof dépend de sa satisfaction, un peu de celle des étudiants et du budget restant
+	var coeff = Teacher.avg_mood_per_dept(dept)*0.7
+	coeff += Student.avg_mood_per_dept(dept)*0.1
+	coeff += (GlobalData.getTotalBudget()/4000000)*0.2
+	#calcule du taux de voix avec une fonction logistique
+	coeff = logistic_function(coeff)
+	#calcule du nombre de voix recu selon le coeff et le nb de votant
+	var n = int((nb_voix_teacher_per_dept(dept) * coeff)+0.49)
+	return n
+
+
+# Voix gagnée  parmi les étudiants d'un département spécifique
 static func popularity_among_students_per_dept(dept: String) -> int:
-	#vote des etudiants dans un batiment
-	return 0.0
+	#l'opinion des etudiants dépend de leurs satisfactions et de leur réussite
+	var coeff = Student.avg_mood_per_dept(dept)*0.7
+	coeff += Student.avg_level_per_dept(dept)*0.3
+	#calcule du taux de voix avec une fonction logistique
+	coeff = logistic_function(coeff)
+	#calcule du nombre de voix recu selon le coeff et le nb de votant
+	var n = int((nb_voix_student_per_dept(dept) * coeff)+0.49)
+	return n
+
+
+#Fonction logistique pour calculer le nombre de voie
+static func logistic_function(x: float, k: float = 10.0) -> float:
+	return exp(k * (x - 0.5)) / (1 + exp(k * (x - 0.5)))

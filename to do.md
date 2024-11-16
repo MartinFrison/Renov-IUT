@@ -16,16 +16,17 @@ Graphique:
 
 Code:
 
-- Ajout d'un tutoriel si la difficulté est facile
-- Condition de fin du scenario building (qui dépend de la difficulté)
-- Implementation d'etape intermediaire dans les scénarios
-
 - Controller de la fin du jeu pour chaque scénario
 - Affichage de la fin du jeu pour chaque scénario
+- Implementation d'etape intermediaire dans les scénarios
+- Ajout d'un tutoriel si la difficulté est facile
 
 - Ajout de tout les évenements aléatoire
 - Definition des probabilité d'appels des events pour chaque scénario
-- Gestion des variables quotidienne et mensuel (cout, salaire ect..)
+
+- Gestion des dépenses global et dépense par batiment
+- Gestion des salaires des profs (hausse, baisse, payement mensuel ect..)
+- Gestion des variables quotidienne et mensuel (cout chauffage, salaire ouvrier ect..)
 
 - Implementation des examens à difficulté variable
 - Ajout complet d'un eventuels troisième scénario
