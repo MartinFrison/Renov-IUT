@@ -13,7 +13,7 @@ Déroulement générale du jeu:
 Scénario:
 - Il y a 3 scénario
     - Le scénario de rénovation ou un batiment est en mauvais état de base et ou l'on doit complêtement le rénover
-        - Un batiment (ou 2 en mode difficile ) est choisis, sont état est mauvais de base 
+        - Un batiment (ou 2 en mode difficile) est choisis, sont état est mauvais de base 
         - Un message intermediaire est envoyer quand la rénovation ou l'isolation est finit
         - Quand les travaux sont finit un rapport montre au joueur le temps qu'il à prit et les concéquences de la rénovation
     - Le scénario d'éléction ou le but est d'être réélu au bout de 5 ans

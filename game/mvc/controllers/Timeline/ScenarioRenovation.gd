@@ -1,6 +1,9 @@
 class_name ScenarioRenovation
 extends Scenario
 
+# Liste des building à rénover
+var old_builds : Array[Building] = []
+
 
 func _init() -> void:
 	_name = "Renovation"
@@ -12,9 +15,15 @@ static func get_description() -> String:
 
 
 # Test si le jeu est fini
-# Dans ce scénario il finit simplement au bout de 5 ans
+# Ce scenario finit si les batiments à rénover sont terminer
 func test_end_game_condition() -> bool:
-	return (GlobalData._year == 2030 and GlobalData._month == 9 and  GlobalData._day == 1)
+	# On demande au moins un taux de 95% pour l'état des lieu et l'isolation de chaque batiment
+	for b in old_builds:
+		if b.get_isolation() < 95:
+			return false
+		elif b.get_inventory() < 95:
+			return false
+	return true
 
 
 # Déclencher la fin du jeu
@@ -34,7 +43,31 @@ func random_event() -> void:
 # Initialise le modèle en fonction du scénario et de la difficulté
 func init_data() -> void:
 	super.init_data()
-
+	# On choisis le/les batiments à rénover
+	var build1 = Utils.randint_in_range(1,5)
+	old_builds.append(Utils.dept_index_to_string(build1))
+	# Si la difficulté est élevé on rénove 2 batiment
+	if GlobalData.get_difficulty() == 3:
+		var build2 = Utils.randint_in_range(1,5)
+		if build2 == build1:
+			build2 += 1	
+			if build2 >= 6:
+				build2 = 1
+		old_builds.append(Utils.dept_index_to_string(build2))
+	
+	
+	# Dans ce scenario, en plus de l'initialisation classique
+	# on redefini les variable des batiments à renover
+	for b in old_builds:
+		# on reset les valeur
+		b.addInventory(-100)
+		b.addIsolation(-100)
+		# puis on réinitialise
+		# l'isolation et l'état est aléatoire et dépend de la difficulté
+		var isolation = int(Utils.randint_in_range(5,30) * GlobalData.adjust_dept_state())
+		var inventory = int(Utils.randint_in_range(5,30) * GlobalData.adjust_dept_state())
+		b.addInventory(isolation)
+		b.addIsolation(inventory)
 
 
 
