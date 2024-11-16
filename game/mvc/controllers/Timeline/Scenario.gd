@@ -3,10 +3,8 @@ class_name Scenario
 extends Node
 
 var _name : String
-var _progression : int
 
 func _init() -> void:
-	_progression = 0
 	init_building()
 	init_data()
 

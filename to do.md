@@ -26,7 +26,8 @@ Code:
 
 - Gestion des dépenses global et dépense par batiment
 - Gestion des salaires des profs (hausse, baisse, payement mensuel ect..)
-- Gestion des variables quotidienne et mensuel (cout chauffage, salaire ouvrier ect..)
+- Gestion des variables quotidienne et mensuel (cout chauffage, salaire ouvrier, salaire agent, usure des batiment ect..)
+- Gestion de la satisfaction et reussite au quotidien
 
 - Implementation des examens à difficulté variable
 - Ajout complet d'un eventuels troisième scénario
@@ -39,3 +40,4 @@ Création
 
 - Ajout d'un historique de toutes les stats consultable notament en fin de partie
 - Rapport intelligent au joueur sur sa prestation
+- Ajout d'un filtre de recherche des notifications

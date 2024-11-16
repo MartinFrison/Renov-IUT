@@ -1,8 +1,10 @@
 class_name ScenarioElection
 extends Scenario
 
+var _progression : int
 
 func _init() -> void:
+	_progression = 0
 	_name = "Election"
 	super._init()
 
