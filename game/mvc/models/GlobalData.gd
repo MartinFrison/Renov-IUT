@@ -7,6 +7,8 @@ static var _month: int
 static var _day: int
 static var _budget: int
 static var _difficulty: int = 1
+static var _pay_agent: int = 1800
+static var _pay_worker: int = 2300
 
 # Fonction pour définir le budget
 static func setBudget(montant : int) -> void:
@@ -31,6 +33,11 @@ static func getTotalBudget() -> int:
 		result += builds[b].get_budget()
 	return result;
 
+static func get_pay_agent() -> int:
+	return _pay_agent
+
+static func get_pay_worker() -> int:
+	return _pay_worker
 
 #definir la date
 static func setDate(day : int, month : int, year : int) -> void:

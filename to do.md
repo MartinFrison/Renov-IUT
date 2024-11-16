@@ -18,13 +18,15 @@ Code:
 
 - Ajout d'un tutoriel si la difficulté est facile
 
-- Ajout de tout les évenements aléatoire
-- Definition des probabilité d'appels des events pour chaque scénario
-
 - Gestion des dépenses global et dépense par batiment
 - Gestion des salaires des profs (hausse, baisse, payement mensuel ect..)
 - Gestion des variables quotidienne et mensuel (cout chauffage, salaire ouvrier, salaire agent, usure des batiment ect..)
 - Gestion de la satisfaction et reussite au quotidien
+
+- Gestion de la greve des ouvriers
+- Gestion de la greve des profs
+- Ajout de tout les autres évenements aléatoire
+- Definition des probabilité d'appels des events pour chaque scénario
 
 - Implementation des examens à difficulté variable
 - Ajout complet d'un eventuels troisième scénario

@@ -3,6 +3,7 @@ extends RefCounted
 
 const coeffTempsRenovation = 0.2
 const coeffTempsInsulation = 0.3
+const MonthlySquareMetersHeatingCost = 6 #6$ par metre carré par mois
 
 static var _buildingsDictionary = {}
 static var _total_buildings_under_renovation : int = 0  # Nombre total de bâtiments en travaux

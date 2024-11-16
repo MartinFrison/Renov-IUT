@@ -54,4 +54,8 @@ static func boost_satisfaction_teacher(dept : String, value : float) -> void:
 		Teacher.set_mood(i, Teacher.get_mood(i) + Utils.randfloat_in_square_range(value * 0.65 * GlobalData.adjust_satisfaction(), value * 1.35 * GlobalData.adjust_satisfaction()))
 
 static func increase_salary(dept : String) -> void:
-	Building.get_building(dept).add_pay_teacher(800)
+	var b = Building.get_building(dept)
+	if b.get_pay_teacher() >= 4400:
+		await BulleGestion.send_message("Le salaire des enseigants ne peut pas dépasser 4400$", false)
+	else:
+		b.add_pay_teacher(800)
