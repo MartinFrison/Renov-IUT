@@ -7,13 +7,24 @@ Déroulement générale du jeu:
     - Chaque jour des opérations du jeu affecte le budget, la satisfaction générale et la réussite des étudiants
     - En début d'année la nouvelle promo est remplis automatiquement en fonction de la difficulté des examens d'entrée
     - En fin d'année les examens ont lieux et selon le niveau des étudiant, leur satisfactions et la difficulté des examens il passe l'année, la redouble ou bien abandonne
-     
+
 
 
 Scénario:
-- Il y a 2 scénario
+- Il y a 3 scénario
     - Le scénario de rénovation ou un batiment est en mauvais état de base et ou l'on doit complêtement le rénover
+        - Un batiment (ou 2 en mode difficile ) est choisis, sont état est mauvais de base 
+        - Un message intermediaire est envoyer quand la rénovation ou l'isolation est finit
+        - Quand les travaux sont finit un rapport montre au joueur le temps qu'il à prit et les concéquences de la rénovation
     - Le scénario d'éléction ou le but est d'être réélu au bout de 5 ans
+        - 2 ans avant les éléctions le joueur recois un sondage d'intention de vote
+        - A la fin des 5 années l'éléctions à lieu et les votes dépendent de plusieurs facteur auquel sont attribué des coeffs
+        - Le joueur recoit un rapport avec les voix reçu dans une grille détaillé
+        - Le score est définit par le nombre de voix reçu
+    - Le scénario de prestige ou le but est d'avoir le plus de diplomé possible sur 5 ans
+        - Bonus : Avoir un/des prix nobel (Etudiant ayant réussit avec plus de 95%)
+- A la fin de chaque scénario le joueur peut consulter les statistiques détaillé de sa partie
+- Il recois également un rapport intelligent sur sa prestation qui lui dit ce qu'il a bien fait et mal fait
 
 
 
@@ -49,17 +60,24 @@ Action sur les batiments:
     - Il n'est possible de lancer les travaux que s'il reste assez de place dans les batiments libre pour tout les étudiants (450 place par batiment)
     - La vitesse de travaux est proportionelle au nombre d'ouvrier
     - Les ouvriers en grêve ne participe pas au travaux 
+- Définir la difficulté des examens d'entrée
+- Définir la difficulté des examens finaux
+
 
 
 Les batiments:
 
 
+
+
 Les étudiants:
     - Si la satisfaction d'un étudiants tombe sous les 20% il abandonne
-    - 
+
+
 
 Les professeurs:
     - Si la satisfaction d'un prof tombe sous les 20% il démissionne
+    - La satisfaction impact continuellement la réussite des étudiants
 
 
 Les évenement aléatoire:

@@ -27,6 +27,7 @@ Code:
 - Definition des probabilité d'appels des events pour chaque scénario
 - Gestion des variables quotidienne et mensuel (cout, salaire ect..)
 
+- Implementation des examens à difficulté variable
 - Ajout complet d'un eventuels troisième scénario
 - Gestion des fonds
 
