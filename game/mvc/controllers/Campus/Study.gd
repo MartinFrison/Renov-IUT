@@ -8,10 +8,10 @@ const fluct = 0.1 # fluctiation, pour la 1ère année
 const exam_base_result = 0.8 # On estime qu'à l'examen, on est sur de récupérer 80% de ses points de niveau courants (+ la chance)
 
 # Inscrit tous les étudiants d'une année donnée	(1, 2 ou 3).
-# Dans cette fonction, les départements sont numérotés plutot que d'etre nommés : c'est plus simple, on ne les affiche pas, de toute façon
 # À noter que cette fonction n'est utilisée qu'au début du jeu et calcule le nombre des 2e et des 3e année comme un pourcentage,
 # sans traiter leur niveau comme ce sera fait au cours du jeu.
-static func populate_promo(dept : int, year : int) -> void:
+# retourne le nb d'étudiant inscript
+static func populate_promo(dept : int, year : int) -> int:
 	var coeff = 0.0
 	
 	match year:
@@ -26,17 +26,37 @@ static func populate_promo(dept : int, year : int) -> void:
 			var coeff_2 = randf_range(0.45*coeff_1, 0.75*coeff_1)
 			coeff = randf_range(0.75*coeff_2, 1.0*coeff_2)
 		_:
-			return
+			return 0
 	
 	var nb_students = ceil(students_base_nb[dept-1] * coeff)
 	for i in range(0, nb_students):
 		Student.add_student(Utils.dept_index_to_string(dept), year)
-	
+	return nb_students
+
+
 # Inscrit tous les étudiants (ceux qui viennent du bac, mais aussi ceux, moins nombreux, qui sont passés en 2e et en 3e année)
 static func populate() -> void:
 	for i in range(1,6): # le département
 		for j in range(1,4): # l'année
 			populate_promo(i, j)
+
+
+# Inscrit tous les étudiants de première année (ceux qui viennent du bac)
+# Renvoie un rapport par notif
+static func populate_new_year() -> void:
+	var sum = 0
+	var n
+	var message_2 = ""
+	var message = "Les premières année sont arrivée ! \n
+	Ils sont au nombre de "
+	
+	for i in range(1,6): # le département
+			n = populate_promo(i, 1)
+			sum += n
+			message_2 += "- %s étudiants dans le département %s\n" % [n,Utils.dept_index_to_string(i)]
+	
+	message += str(sum) + "\n" + message_2
+	await BulleGestion.send_notif("Début d'année" + str(GlobalData._year), message, 0)
 
 
 # Simule les examens basé uniquement sur la chance (certains scénarios peuvent appliquer des coefficients supplémentaires)

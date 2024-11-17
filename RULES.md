@@ -8,6 +8,7 @@ Il complète donc le cahier des charges (_README.md_), sans pour autant en être
 
 - Des évênement aléatoires qui dépendent du scénario peuvent tomber chaque jour et ce, pour une durée variant d'un jour à la durée totale d'une partie.
 - Chaque jour, les opérations du jeu, dont des actions du joueur aussi bien que les événements automatiques, affectent le budget, la satisfaction générale et la réussite des étudiants.
+- Les enseignants comme les étudiants dont la satisfaction devient trop faible démissionnent.
 - En début d'année, la nouvelle promo est remplie automatiquement en fonction de la difficulté des examens d'entrée. Le niveau des étudiants est calculée aléatoirement dans une fourchette raisonnable.
 - En fin d'année, des examens ont lieu. Selon le niveau des étudiants, leur satisfaction et la difficulté des examens ils passent l'année, la redoublent ou bien abandonnent. Il va de soi que le départ normal au bout de trois ans, scellé par l'obtention du diplôme, est également géré par le jeu.
 

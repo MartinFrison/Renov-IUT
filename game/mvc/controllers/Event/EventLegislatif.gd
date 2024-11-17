@@ -8,6 +8,7 @@ func _init() -> void:
 	_description = "Un changement législatif à eu lieu ! Il a été voté que le budget aloué aux IUT allai baisser."
 	_question_script = ""
 	_question_answer = []
+	_question = false
 	start_event()
 
 

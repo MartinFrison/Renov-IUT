@@ -10,7 +10,6 @@ func _init(scenario: Scenario) -> void:
 	_bill = Bill.new()
 	GlobalData.setDate(1,9,2025) # date de départ
 	self._scenario = scenario  # Initialiser le scénario
-	year_begin()
 
 
 
@@ -80,13 +79,14 @@ func end_of_month() -> void:
 # Fin de l'année
 func end_of_year() -> void:
 	print("Fin de l'année ", GlobalData._year)
-
+	Study.evaluate()
 
 
 #rentrée qui signe le début de la nouvelle année
 func year_begin() -> void:
 	print("C'est la rentrée ", GlobalData._year)
-
+	# Arriver des premières années
+	Study.populate_new_year()
 
 
 # Pause ou reprise de la gestion du temps
