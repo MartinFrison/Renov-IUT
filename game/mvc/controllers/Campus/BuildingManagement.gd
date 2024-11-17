@@ -149,3 +149,11 @@ static func lockDoor(dept: String) -> void:
 		print("Porte verrouillée pour le département", dept)
 	else:
 		print("Aucun bâtiment trouvé pour le département", dept)
+
+# Détérioration quotidienne des batiments
+static func wear() -> void:
+	for i in range(1,6):
+		var code = Utils.dept_index_to_string(i)
+		var b = Building.get_building(code)
+		b.addInventory(-0.02) #soit environs 15 ans pour une détérioration total  
+		b.addIsolation(-0.015) #soit environs 20 ans pour une détérioration total  

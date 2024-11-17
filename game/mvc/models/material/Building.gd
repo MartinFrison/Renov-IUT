@@ -1,8 +1,8 @@
 class_name Building
 extends RefCounted
 
-const coeffTempsRenovation = 0.2
-const coeffTempsInsulation = 0.3
+const coeffTempsRenovation = 0.2 # Valeur d'une journée de travail ouvrière
+const coeffTempsInsulation = 0.3 # Valeur d'une journée de travail ouvrière
 const MonthlySquareMetersHeatingCost = 6 #6$ par metre carré par mois
 
 static var _buildingsDictionary = {}

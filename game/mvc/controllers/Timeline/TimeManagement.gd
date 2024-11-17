@@ -42,7 +42,8 @@ func tick():
 				var c = Utils.dept_index_to_string(i+1)
 				var build = Building.get_building(Utils.dept_index_to_string(i+1))
 				BuildingManagement.advance_work(build)
-			
+			#Détérioration quotidienne des batiments
+			BuildingManagement.wear()
 			
 			#traitement quotidient de la satisfaction
 			#traitement quotidient du niveau etudiant
