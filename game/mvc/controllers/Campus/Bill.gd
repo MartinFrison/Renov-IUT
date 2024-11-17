@@ -1,7 +1,7 @@
 class_name Bill
 extends Node
 
-# Cette classe enregistre toute les sommes du par l'iut à la fin du mois
+# Cette classe enregistre toute les sommes du par l'iut à la fin du trimestre
 
 var pay_teacher : Array[int] = [0,0,0,0,0,0]
 var nb_pay_teacher : int
@@ -46,7 +46,7 @@ func add_daily_expense() -> void:
 	nb_pay_agent = max(nb_pay_agent, sumAgent)
 
 
-# Fonction appelé a la fin du mois pour payer tout les dû
+# Fonction appelé a la fin du trimestrepour payer tout les dû
 func pay_bill() -> void:
 	var code
 	for i in 5:
@@ -59,21 +59,18 @@ func pay_bill() -> void:
 	reset_bill()
 
 
-# Envoie une notification avec le détail de la facture mensuel
+# Envoie une notification avec le détail de la facture trimestrielle
 func send_bill_detail() -> void:
 	# index du mois précédent
-	var m = GlobalData._month-1
-	if m<1:
-		m=12
-	
-	var msg = "Récapitulatif de vos facture du mois de " + Utils.get_month_name(m)
+	var m = GlobalData._month
+	var msg = "Récapitulatif de vos facture du mois de " + Utils.get_month_name(m) + " "  + str(GlobalData._year)
 	msg += "\nSalaire des enseignants: %s$ (%s enseignants payés)" % [sum_pay(pay_teacher), nb_pay_teacher]
-	msg += "\nSalaire des enseignants: %s$ (%s enseignants payés)" % [sum_pay(pay_worker), nb_pay_worker]
+	msg += "\nSalaire des ouvriers: %s$ (%s ouvriers payés)" % [sum_pay(pay_worker), nb_pay_worker]
 	msg += "\nSalaire des agents d'entretien: %s$ (%s agents d'entretien payés)" % [sum_pay(pay_agent), nb_pay_agent]
-	msg += "\nFacture de chauffage: %s$" % [sum_pay(pay_heating), nb_pay_teacher]
-	var objet = "Facture du mois de " + Utils.get_month_name(m)
+	msg += "\nFacture de chauffage: %s$" % [sum_pay(pay_heating)]
+	var objet = "Facture du mois de " + Utils.get_month_name(m) + " "  + str(GlobalData._year)
 	
-	print("Facture du mois de " + Utils.get_month_name(m))
+	print(objet)
 	BulleGestion.send_notif(objet,msg,1 )
 
 

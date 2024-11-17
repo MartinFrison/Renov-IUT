@@ -154,3 +154,4 @@ func _on_close_pressed() -> void:
 
 func _on_increase_pay_pressed() -> void:
 	Teaching.increase_salary(code)
+	show_data()

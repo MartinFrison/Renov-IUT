@@ -16,11 +16,14 @@ func _process(delta: float) -> void:
 func init(objet : String, message : String, type : int) -> void:
 	_message = message
 	var msg = get_node("Message")
-	msg.text = _message
-
+	if _message.length() > 75:
+		msg.text = _message.substr(0,75) + ".."
+	else:
+		msg.text = _message
+	
 	_objet = objet
 	var obj = get_node("Objet")
-	obj.text = _objet
+	obj.text = _objet.substr(0,35)
 	
 	# Créer un Timer
 	var timer = Timer.new()

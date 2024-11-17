@@ -144,7 +144,7 @@ func source_index_to_string(index : int) -> String:
 
 static func get_month_name(month: int) -> String:
 	# Tableau des mois
-	var months = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"]
+	var months = ["janvier", "fevrier", "mars", "avril", "mai", "juin","juillet", "aout", "septembre", "octobre", "novembre", "decembre"]
 	
 	# Vérifie si l'entrée est valide
 	if month >= 1 and month <= 12:

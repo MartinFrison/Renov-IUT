@@ -25,7 +25,7 @@ func tick():
 	#Expense.expense_global(2500000)
 	
 	while true:
-		await wait(0.02)
+		await wait(0.125)
 		# Si le jeu est en pause la boucle quotidienne n'est pas lu
 		if !_pause:
 			GlobalData.incrementDay()
@@ -66,8 +66,9 @@ func wait(seconds : float) -> void:
 
 #chaque fin de mois déclenche des actions comme les cout à rêgler
 func end_of_month() -> void:
-	# Reglement des factures mensuels
-	_bill.pay_bill()
+	# Reglement des factures trimestrielle
+	if GlobalData._month%3==0:
+		_bill.pay_bill()
 	
 	if GlobalData.isEndofYear():
 		end_of_year()
