@@ -59,3 +59,6 @@ static func increase_salary(dept : String) -> void:
 		await BulleGestion.send_message("Le salaire des enseigants ne peut pas dépasser 4400$", false)
 	else:
 		b.add_pay_teacher(800)
+
+static func teacher_resign() -> void:
+	Teacher.rm_teacher_by_mood(0.2);

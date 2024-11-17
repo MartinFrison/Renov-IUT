@@ -51,6 +51,14 @@ static func rm_teachers_by_dept(dept: String, nb: int) -> void:
 		var id = id_entry["id"]  # Récupérer l'ID du prof
 		rm_teacher_by_id(id)
 
+# Fonction pour supprimer les profs insatisfait
+static func rm_teacher_by_mood(mood : float) -> void:
+	var query = "DELETE FROM Teachers WHERE mood<?"
+	if !Utils.db.execute(query, [mood]):
+		print("Erreur de suppression.")
+		return
+
+
 # Getters
 static func get_dept(id : int) -> String:
 	var query = "SELECT dept FROM Teachers WHERE id=?"

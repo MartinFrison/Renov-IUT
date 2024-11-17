@@ -10,7 +10,7 @@ var nb_pay_agent : int
 var pay_worker : Array[int] = [0,0,0,0,0,0]
 var nb_pay_worker : int
 var pay_heating	: Array[int] = [0,0,0,0,0,0]
-
+var previous_bill : int
 
 
 func reset_bill() -> void:
@@ -49,12 +49,23 @@ func add_daily_expense() -> void:
 # Fonction appelé a la fin du trimestrepour payer tout les dû
 func pay_bill() -> void:
 	var code
+	var sum = 0
+	var bill
 	for i in 5:
 		code = Utils.dept_index_to_string(i+1)
-		Expense.expense_dept(pay_teacher[i+1], code)
-		Expense.expense_dept(pay_agent[i+1], code)
-		Expense.expense_dept(pay_worker[i+1], code)
-		Expense.expense_dept(pay_heating[i+1], code)
+		bill = pay_teacher[i+1]
+		sum += bill
+		Expense.expense_dept(bill, code)
+		bill = pay_agent[i+1]
+		sum += bill
+		Expense.expense_dept(bill, code)
+		bill = pay_worker[i+1]
+		sum += bill
+		Expense.expense_dept(bill, code)
+		bill = pay_heating[i+1]
+		sum += bill
+		Expense.expense_dept(bill, code)
+	previous_bill = sum
 	send_bill_detail()
 	reset_bill()
 
@@ -80,3 +91,7 @@ func sum_pay(table : Array[int]) -> int:
 	for i in table.size():
 		sum+= table[i]
 	return sum
+
+# Renvoie la somme des factures payé le trimestre précédant
+func get_previous_bill() -> int:
+	return previous_bill

@@ -68,7 +68,16 @@ func end_of_month() -> void:
 	# Reglement des factures trimestrielle
 	if GlobalData._month%3==0:
 		_bill.pay_bill()
+	elif GlobalData._month%3==1:
+		if _bill.get_previous_bill() >= GlobalData.getBudget():
+			BulleGestion.send_notif("Risque de faillite", "Attention les caisses sont presque vide, vous risquez la faillite !", 0)
 	
+	# Les professeurs et étudiant insatisfait démissionnent
+	Teaching.teacher_resign()
+	Study.student_resign()
+	
+	
+	# Appeler les actions de début et fin d'année
 	if GlobalData.isEndofYear():
 		end_of_year()
 	if GlobalData.isStartofYear():
