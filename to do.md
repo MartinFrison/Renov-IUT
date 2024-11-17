@@ -16,11 +16,12 @@ Graphique:
 
 
 Code:
-- Gestion des variables quotidienne et mensuel (usure des batiment, demission ect..)
-- Gestion de la satisfaction et reussite au quotidien
 - Implementation des examens à difficulté variable
-- Recapitulatif des examens d'entrée par notif 
+- Recapitulatif des examens d'entrée par notif
 - recap examens finaux par notif
+
+
+- Gestion de la satisfaction et reussite au quotidien
 
 
 - Gestion des fonds
