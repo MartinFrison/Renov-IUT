@@ -16,15 +16,16 @@ Graphique:
 
 
 Code:
-- Implementation des examens à difficulté variable
-- Recapitulatif des examens d'entrée par notif
-- recap examens finaux par notif
+- Implementation des examens à difficulté variable : martin
+- Recapitulatif des examens d'entrée par notif : martin
+- recap examens finaux par notif : martin
+- Gestion de la satisfaction et reussite au quotidien : martin
 
 
-- Gestion de la satisfaction et reussite au quotidien
+- Gestion des fonds : elena
+- Création du menu (bouton quitter, option) : yasmine
 
 
-- Gestion des fonds
 - Gestion de la greve des ouvriers
 - Gestion de la greve des profs
 - Ajout de tout les autres évenements aléatoire
@@ -33,7 +34,6 @@ Code:
 - Ajout d'un tutoriel si la difficulté est facile
 - Ajout d'un panel récapitulatif de stat détaillé
 
-- Création du menu (bouton quitter, option)
 - Ecran de chargement et optimisation si possible de celui ci 
 - Création d'une file d'attente pour les notifs (pour quand yen a plusieur d'un coup)
 Création
