@@ -23,6 +23,9 @@ var _is_insulation_underway : bool = false  # Indique si des travaux d'isolation
 var _is_renovation_underway : bool = false  # Indique si des travaux de rénovation sont en cours
 var _budget : int
 var _pay_teacher : int = 0  # Paiement pour les enseignants
+var _entry_exam : float = 1 # difficulté de l'exam d'entrée (0 à 1)
+var _end_exam : float = 1 # difficulté de l'exam de fin d'année (0 à 1)
+
 
 # Constructeur de la classe
 func _init(age: int, isolation: int, surface: int, heating: bool, maintenance_agents_nb: int, code: String, inventory: int) -> void:
@@ -96,6 +99,11 @@ static func get_total_buildings_under_renovation() -> int:
 func isDoorLocked() -> bool:
 	return _doorLocked
 
+func get_exam_entry() -> float:
+	return _entry_exam
+
+func get_exam_end() -> float:
+	return _end_exam
 
 
 
@@ -140,6 +148,14 @@ func set_budget(value : int) -> void:
 # Méthode pour définir l'état de verrouillage de la porte
 func setDoorLocked(locked: bool) -> void:
 	_doorLocked = locked
+
+func set_exam_entry(value :float) -> void:
+	_entry_exam = value
+
+func set_exam_end(value :float) -> void:
+	_end_exam = value
+
+
 
 
 	

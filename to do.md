@@ -16,12 +16,14 @@ Graphique:
 
 
 Code:
-- Implementation des examens à difficulté variable : martin
-- Recapitulatif des examens d'entrée par notif : martin
+
+3h10
 - recap examens finaux par notif : martin
+4h
 - Gestion de la satisfaction et reussite au quotidien : martin
 
 
+- Gestion de l'obtention des diplomes
 - Gestion des fonds : elena
 - Création du menu (bouton quitter, option) : yasmine
 
