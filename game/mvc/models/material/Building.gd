@@ -23,8 +23,8 @@ var _is_insulation_underway : bool = false  # Indique si des travaux d'isolation
 var _is_renovation_underway : bool = false  # Indique si des travaux de rénovation sont en cours
 var _budget : int
 var _pay_teacher : int = 0  # Paiement pour les enseignants
-var _entry_exam : float = 1 # difficulté de l'exam d'entrée (0 à 1)
-var _end_exam : float = 1 # difficulté de l'exam de fin d'année (0 à 1)
+var _entry_exam : float = 0 # difficulté de l'exam d'entrée (0 à 1)
+var _end_exam : float = 0.5 # difficulté de l'exam de fin d'année (0 à 1)
 
 
 # Constructeur de la classe

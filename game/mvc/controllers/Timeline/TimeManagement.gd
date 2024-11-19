@@ -89,7 +89,7 @@ func end_of_month() -> void:
 # Fin de l'année
 func end_of_year() -> void:
 	print("Fin de l'année ", GlobalData._year)
-	Study.evaluate()
+	Study.pass_next_year()
 
 
 #rentrée qui signe le début de la nouvelle année

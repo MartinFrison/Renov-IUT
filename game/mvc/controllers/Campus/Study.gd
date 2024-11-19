@@ -86,23 +86,22 @@ static func pass_dept_exam(dept : String) -> Array:
 	var success = 0 # nb d'année réussit
 	
 	for student in id:
-		
 		var level = Student.get_level(student)
 		var year = Student.get_year(student)
 		if level>coeff_exam and year<3: # passage en année suivante qui dépend de la difficulté de l'exam final
 			Student.set_year(student, Student.get_year(student)+1)
 			success += 1
-		elif level>(1-coeff_exam) and year>=3:
+		elif level> coeff_exam and year>=3:
 			#Obtention du diplome
 			graduate += 1
 			success += 1
 			Student.rm_student_by_id(student)
 			pass 
-		elif level> (1-coeff_exam)*0.7: # si l'étudiant a 70% du niveau requis il peut redoubler
+		elif level> coeff_exam*0.7: # si l'étudiant a 70% du niveau requis il peut redoubler
 			repeater += 1 # Ne rien faire, l'étudiant redouble simplement sont année
 		else: #exclusion si pas le niveau
 			Student.rm_student_by_id(student)
-		
+
 	return [count, success, repeater, graduate]
 	
 
@@ -124,16 +123,17 @@ static func pass_next_year() -> void:
 		global_result[2] += result[2]
 		global_result[3] += result[3]
 		msg += "\nDans le département %s sur %s étudiants:\n" % [code, result[0]]
-		msg += "   %s ont réussi leur années dont %s ont eu leur diplome\n" % [result[1],result[3]]
-		msg += "   %s ont redoubler et %s ont été exclus\n" % [result[2], result[0]-result[1]-result[2]]
+		msg += "%s année réussi, %s diplomé, " % [result[1],result[3]]
+		msg += "%s redoublant et %s exclusion\n" % [result[2], result[0]-result[1]-result[2]]
 	
 	
-	var msg2 = "C'est la fin d'année Les étudiants ont passée leur examens\n\n"
-	msg2 += "\nAu sein de l'IUT sur %s étudiants:\n" % [result[0]]
-	msg2 += "   %s ont réussi leur années dont %s ont eu leur diplome\n" % [result[1],result[3]]
-	msg2 += "   %s ont redoubler et %s ont été exclus\n" % [result[2], result[0]-result[1]-result[2]]
+	var msg2 = "C'est la fin d'année Les étudiants ont passée leur examens\n"
+	msg2 += "\nAu sein de l'IUT sur %s étudiants:\n" % [global_result[0]]
+	msg2 += "   %s ont réussi leur années dont %s ont eu leur diplome\n" % [global_result[1],global_result[3]]
+	msg2 += "   %s ont redoubler et %s ont été exclus\n" % [global_result[2], global_result[0]-global_result[1]-global_result[2]]
 	msg = msg2 + msg
 	BulleGestion.send_notif(obj,msg,0)
+
 
 
 

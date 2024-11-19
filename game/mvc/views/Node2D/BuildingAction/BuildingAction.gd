@@ -23,6 +23,12 @@ func show_data() -> void:
 	node = get_node("name")
 	node.text = code
 	
+	node = get_node("PanelGlobal/PanelStat/end_exam")
+	node.text = "Difficulté des examens de fin d'années : %s" % [int(build.get_exam_end()*100)]
+	
+	node = get_node("PanelGlobal/PanelStat/entry_exam")
+	node.text = "Difficulté des examens d'entrées: %s" % [int(build.get_exam_entry()*100)]
+	
 	node = get_node("PanelGlobal/PanelStat/pay")
 	node.text = "Salaire des enseigants : %s$" % [build.get_pay_teacher()]
 	
@@ -154,4 +160,21 @@ func _on_close_pressed() -> void:
 
 func _on_increase_pay_pressed() -> void:
 	Teaching.increase_salary(code)
+	show_data()
+
+
+func _on_add_exem_end_pressed() -> void:
+	BuildingManagement.rise_end_exam_difficulty(code)
+	show_data()
+
+func _on_sub_exam_end_pressed() -> void:
+	BuildingManagement.decrease_end_exam_difficulty(code)
+	show_data()
+
+func _on_add_exem_entry_pressed() -> void:
+	BuildingManagement.rise_entry_exam_difficulty(code)
+	show_data()
+
+func _on_sub_exam_entry_pressed() -> void:
+	BuildingManagement.decrease_entry_exam_difficulty(code)
 	show_data()

@@ -4,6 +4,35 @@ extends RefCounted
 
 
 
+# Jongle entre les valeur 0.3, 0.4, 0.5, 0.6 et 0.7 pour la difficulté des exams
+static func rise_end_exam_difficulty(dept : String) -> void:
+	var build = Building.get_building(dept)
+	var value = int(min(build.get_exam_end()+0.1, 0.7) *10 + 0.5)
+	value = float(value)/10
+	build.set_exam_end(value)
+
+# Jongle entre les valeur 0.3, 0.4, 0.5, 0.6 et 0.7 pour la difficulté des exams
+static func decrease_end_exam_difficulty(dept : String) -> void:
+	var build = Building.get_building(dept)
+	var value = int(max(build.get_exam_end()-0.1, 0.3) *10 + 0.5)
+	value = float(value)/10
+	build.set_exam_end(value)
+
+# Jongle entre les valeur 0 0.25 et 0.5 pour la difficulté des exams
+static func rise_entry_exam_difficulty(dept : String) -> void:
+	var build = Building.get_building(dept)
+	var value = int(min(build.get_exam_entry()+0.25, 0.5) *4 + 0.5)
+	value = float(value)/4
+	build.set_exam_entry(value)
+
+# Jongle entre les valeur 0 0.25 et 0.5 pour la difficulté des exams
+static func decrease_entry_exam_difficulty(dept : String) -> void:
+	var build = Building.get_building(dept)
+	var value = int(max(build.get_exam_entry()-0.25, 0) *4 + 0.5)
+	value = float(value)/4
+	build.set_exam_entry(value)
+
+
 
 # Avance les travaux d'un bâtiment donné
 static func advance_work(building: Building) -> void:

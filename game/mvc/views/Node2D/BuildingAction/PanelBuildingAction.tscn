@@ -18,8 +18,8 @@ script = ExtResource("1_rgwm8")
 [node name="PanelGlobal" type="Panel" parent="."]
 offset_left = 1.0
 offset_top = 4.0
-offset_right = 580.0
-offset_bottom = 592.0
+offset_right = 825.0
+offset_bottom = 672.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_2tdad")
 
 [node name="PanelAction" type="Panel" parent="PanelGlobal"]
@@ -27,7 +27,7 @@ layout_mode = 0
 offset_left = 45.0
 offset_top = 288.0
 offset_right = 541.0
-offset_bottom = 574.0
+offset_bottom = 648.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_5ec2k")
 
 [node name="hire_teacher" type="Button" parent="PanelGlobal/PanelAction"]
@@ -112,18 +112,50 @@ text = "allumer chauffage"
 
 [node name="increase_pay" type="Button" parent="PanelGlobal/PanelAction"]
 layout_mode = 0
-offset_left = 30.9231
-offset_top = 231.077
-offset_right = 479.923
-offset_bottom = 263.077
+offset_left = 26.3077
+offset_top = 303.385
+offset_right = 475.308
+offset_bottom = 335.385
 theme_override_font_sizes/font_size = 12
 text = "augmenter les salaire des enseignants (+800$)"
+
+[node name="add_exem_end" type="Button" parent="PanelGlobal/PanelAction"]
+offset_left = 280.154
+offset_top = 232.615
+offset_right = 480.154
+offset_bottom = 264.615
+text = "increase end exam difficulty
+"
+
+[node name="sub_exam_end" type="Button" parent="PanelGlobal/PanelAction"]
+offset_left = 27.8462
+offset_top = 232.615
+offset_right = 227.846
+offset_bottom = 264.615
+text = "decrease end exam difficulty
+"
+
+[node name="add_exem_entry" type="Button" parent="PanelGlobal/PanelAction"]
+offset_left = 281.692
+offset_top = 269.539
+offset_right = 511.692
+offset_bottom = 301.539
+text = "increase entry exam difficulty
+"
+
+[node name="sub_exam_entry" type="Button" parent="PanelGlobal/PanelAction"]
+offset_left = 17.0769
+offset_top = 271.077
+offset_right = 255.077
+offset_bottom = 303.077
+text = "decrease entry exam difficulty
+"
 
 [node name="PanelStat" type="Panel" parent="PanelGlobal"]
 layout_mode = 0
 offset_left = 240.0
 offset_top = 50.0
-offset_right = 539.0
+offset_right = 782.0
 offset_bottom = 274.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_5ec2k")
 
@@ -217,6 +249,22 @@ offset_bottom = 215.0
 theme_override_font_sizes/font_size = 12
 text = "- salaire prof"
 
+[node name="end_exam" type="Label" parent="PanelGlobal/PanelStat"]
+offset_left = 251.308
+offset_top = 36.7692
+offset_right = 451.308
+offset_bottom = 56.7692
+theme_override_font_sizes/font_size = 12
+text = "- end exam"
+
+[node name="entry_exam" type="Label" parent="PanelGlobal/PanelStat"]
+offset_left = 252.846
+offset_top = 62.9231
+offset_right = 452.846
+offset_bottom = 82.9231
+theme_override_font_sizes/font_size = 12
+text = "- entry exam"
+
 [node name="budget" type="Label" parent="PanelGlobal/PanelStat"]
 layout_mode = 0
 offset_left = 20.0
@@ -258,4 +306,8 @@ text = "Nom"
 [connection signal="pressed" from="PanelGlobal/PanelAction/hire_agent" to="." method="_on_hire_agent_pressed"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/heat" to="." method="_on_heat_pressed"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/increase_pay" to="." method="_on_increase_pay_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/add_exem_end" to="." method="_on_add_exem_end_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/sub_exam_end" to="." method="_on_sub_exam_end_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/add_exem_entry" to="." method="_on_add_exem_entry_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/sub_exam_entry" to="." method="_on_sub_exam_entry_pressed"]
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]

@@ -82,7 +82,6 @@ func adjust_student_satisfaction(liste) -> void:
 
 # Ajuster la satisfaction des enseignants en appliquant un coefficient
 func adjust_teacher_satisfaction(liste) -> void:
-	print("mood prof")
 	for i in liste:
 		var mood =  Utils.randfloat_in_square_range(GlobalData.adjust_satisfaction()*0.4, GlobalData.adjust_satisfaction()*1)
 		Teacher.set_mood(i,mood)

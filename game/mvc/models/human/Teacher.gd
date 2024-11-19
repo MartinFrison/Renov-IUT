@@ -16,8 +16,9 @@ static func get_all_ids() -> Array:
 # Fonction pour obtenir tous les IDs de la table par departement
 static func get_dept_ids(dept : String) -> Array:
 	var ids = []
+	var dt = Utils.dept_string_to_index(dept)
 	var query = "SELECT id FROM Teachers where dept= ? "
-	var result = Utils.db.get_entries(query, [dept])
+	var result = Utils.db.get_entries(query, [dt])
 
 	for r in result:
 		ids.append(r["id"])
