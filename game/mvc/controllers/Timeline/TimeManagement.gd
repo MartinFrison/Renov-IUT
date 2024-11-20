@@ -96,7 +96,7 @@ func end_of_year() -> void:
 func year_begin() -> void:
 	print("C'est la rentrée ", GlobalData._year)
 	# Arriver des premières années
-	Study.populate_new_year()
+	Study.populate_new_year(_scenario)
 
 
 # Pause ou reprise de la gestion du temps

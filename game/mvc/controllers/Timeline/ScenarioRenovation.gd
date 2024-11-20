@@ -133,15 +133,24 @@ func adjust_budget() -> void:
 	var budget = GlobalData.adjust_budget_initial() * Utils.randfloat_in_square_range(0.8, 1.2)
 	GlobalData.setBudget(budget)
 
+# Ajuster le level des étudiants en appliquant un coefficient
+# Celui ci dépend également du coeff de l'examen d'entrée
+func adjust_student_level(liste) -> void:
+	var coeff_exam = []
+	for i in range(1,6):
+		coeff_exam.append(Building.get_building(Utils.dept_index_to_string(i)).get_exam_entry())
+	for i in liste:
+		var dept = Student.get_dept(i)
+		var level =  Utils.randfloat_in_square_range(GlobalData.adjust_level()*0.4,GlobalData.adjust_level()*1)
+		# Ajuste le level selon la difficulté des exams d'entrée de son département
+		level += (1-level) * (1-coeff_exam[Utils.dept_string_to_index(dept)])
+		Student.set_level(i,level)
 
 # Ajuster la satisfaction des étudiants en appliquant un coefficient
 func adjust_student_satisfaction(liste) -> void:
 	for i in liste:
 		var mood = Utils.randfloat_in_square_range(GlobalData.adjust_satisfaction()*0.4,GlobalData.adjust_satisfaction()*1)
 		Student.set_mood(i,mood)
-		var level =  Utils.randfloat_in_square_range(GlobalData.adjust_level()*0.4,GlobalData.adjust_level()*1)
-		Student.set_level(i,level)
-
 
 # Ajuster la satisfaction des enseignants en appliquant un coefficient
 func adjust_teacher_satisfaction(liste) -> void:

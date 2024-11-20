@@ -59,6 +59,7 @@ func init_data() -> void:
 	Study.populate()
 	Teaching.populate()
 	
+	print("set mood & level")
 	var students = Student.get_all_ids()
 	var teachers = Teacher.get_all_ids()
 	
@@ -88,26 +89,26 @@ func init_building() -> void:
 
 # Ajuster le budget des batiment en appliquant un coefficient
 func adjust_budget_building(build : Building) -> void:
-	push_error("adjust_budget_building() doit être implémentée.")
+	print("adjust_budget_building() doit être implémentée.")
 
 
 # Ajuster le budget en appliquant un coefficient
 func adjust_budget() -> void:
-	push_error("adjust_budget() doit être implémentée.")
+	print("adjust_budget() doit être implémentée.")
+
+# Ajuster la satisfaction des enseignants en appliquant un coefficient
+# Le niveau initial des étudiants dépendra aussi du coeff d'examen d'entrée (plus il est dur plus le niveau est élevé
+func adjust_student_level(liste) -> void:
+	print("adjust_student_level() doit être implémentée.")
 
 # Ajuster la satisfaction des étudiants en appliquant un coefficient
 func adjust_student_satisfaction(liste) -> void:
-	push_error("adjust_student_satisfaction() doit être implémentée.")
+	print("adjust_student_satisfaction() doit être implémentée.")
 
 # Ajuster la satisfaction des enseignants en appliquant un coefficient
 func adjust_teacher_satisfaction(liste) -> void:
-	push_error("adjust_teacher_satisfaction() doit être implémentée.")
-
-# Ajuster la satisfaction des enseignants en appliquant un coefficient
-func adjust_student_level(liste) -> void:
-	push_error("adjust_student_level() doit être implémentée.")
-
+	print("adjust_teacher_satisfaction() doit être implémentée.")
 
 # Ajuster l'état d'un département en appliquant un coefficient
 func adjust_dept_state() -> void:
-	push_error("adjust_dept_state() doit être implémentée.")
+	print("adjust_dept_state() doit être implémentée.")

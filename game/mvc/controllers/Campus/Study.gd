@@ -46,7 +46,7 @@ static func populate() -> void:
 
 # Inscrit tous les étudiants de première année (ceux qui viennent du bac)
 # Renvoie un rapport par notif
-static func populate_new_year() -> void:
+static func populate_new_year(scenario : Scenario) -> void:
 	var sum = 0
 	var n
 	var message_2 = ""
@@ -57,6 +57,11 @@ static func populate_new_year() -> void:
 			n = populate_promo(i, 1)
 			sum += n
 			message_2 += "- %s étudiants dans le département %s\n" % [n,Utils.dept_index_to_string(i)]
+	
+	# Initialiser le level et le mood des nouveaux étudiant
+	var id = Student.get_all_ids()
+	scenario.adjust_student_level(id)
+	scenario.adjust_student_satisfaction(id)
 	
 	message += str(sum) + "\n" + message_2
 	await BulleGestion.send_notif("Début d'année" + str(GlobalData._year), message, 0)
