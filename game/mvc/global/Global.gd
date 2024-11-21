@@ -122,18 +122,37 @@ func dept_string_to_index(dept: String) -> int:
 	return -1
 
 func dept_index_to_string(index: int) -> String:
-	var query = "SELECT name FROM Depts WHERE id=?"
-	var result = db.get_entries(query, [index])
-	if result.size() > 0:
-		return result[0]["name"]
-	return ""
-	
-func source_string_to_index(source : String) -> int:
-	var query = "SELECT id FROM Sources WHERE lower(name) = lower(?)"
-	var result = db.get_entries(query, [source])
-	if result.size() > 0:
-		return result[0]["id"]
-	return -1
+	match index:
+		1:
+			return "Chimie"
+		2:
+			return "Génie Civil"
+		3:
+			return "Info Communication"
+		4:
+			return "Informatique"
+		5:
+			return "Technique de Commercialisation"
+		_:
+			return "Inconnu"  # Gestion des cas non définis
+
+
+func source_string_to_index(source: String) -> int:
+	match source:
+		"Chimie":
+			return 1
+		"Génie Civil":
+			return 2
+		"Info Communication":
+			return 3
+		"Informatique":
+			return 4
+		"Technique de Commercialisation":
+			return 5
+		_:
+			return -1  # Gestion des cas non définis
+
+
 	
 func source_index_to_string(index : int) -> String:
 	var query = "SELECT name FROM Sources WHERE id=?"
@@ -168,3 +187,20 @@ func randfloat_in_square_range(min : float, max : float) -> float:
 	var rng = RandomNumberGenerator.new()
 	var randfloat = sqrt(rng.randf()*rng.randf())  # Un nombre flottant entre 0.0 et 1.0
 	return randfloat * (max-min) + min
+
+
+
+# Indexation : fonctions utilitaires
+func dept_string_to_index2(dept: String) -> int:
+	var query = "SELECT id FROM Depts WHERE lower(name) = lower(?)"
+	var result = db.get_entries(query, [dept])
+	if result.size() > 0:
+		return result[0]["id"] 
+	return -1
+
+func dept_index_to_string2(index: int) -> String:
+	var query = "SELECT name FROM Depts WHERE id=?"
+	var result = db.get_entries(query, [index])
+	if result.size() > 0:
+		return result[0]["name"]
+	return ""

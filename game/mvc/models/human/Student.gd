@@ -74,7 +74,7 @@ static func get_dept(id : int) -> String:
 	var result = Utils.db.get_entries(query, [id])
 	if result.size() > 0:
 		var dept = result[0]["dept"]
-		return Utils.dept_index_to_string(dept)
+		return Utils.dept_index_to_string(int(dept))
 	return ""
 
 static func get_mood(id : int) -> float:

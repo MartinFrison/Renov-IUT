@@ -140,16 +140,45 @@ static func pass_next_year() -> void:
 	BulleGestion.send_notif(obj,msg,0)
 
 
+# Ajuster le niveau etudiant d'un departement selon le nb de profs et leur mood
+static func teacher_adjust_level(day: int) -> void:
+	const coeff = 1
+	for i in range(1,6):
+		var code = Utils.dept_index_to_string(i)
+		# s'il n'y a pas de prof on prend une valeur arbitraire
+		var ratioStudentTeacher = min(Student.compute_nb_per_dept(code)/Teacher.compute_nb_per_dept(code), Student.compute_nb_per_dept(code)*3)
+		# Formule de l'ajustement selon le ratio prof-etudiant et le mood des profs
+		var value : float = ((Teacher.avg_mood_per_dept(code)-0.5)+((1/ratioStudentTeacher)-0.1))/360 
+		if value > 0:
+			Study.boost_level_student(code, value * day)
+		else:
+			Study.drop_level_student(code, value * day)
+
+
+# Ajuster le mood etudiant selon si les portes des salles sont ouverte ou fermez
+static func door_adjust_mood(day : int) -> void:
+	for i in range(1,6):
+		var code = Utils.dept_index_to_string(i)
+		var build = Building.get_building(code)
+		var value = 0.05/360
+		
+		if build.isDoorLocked():
+			Study.boost_level_student(code, value * day)
+		else:
+			Study.drop_level_student(code, value * day)
 
 
 
-static func drop_satisfaction_student(dept : String, value : float) -> void:
+
+# Ajustement des stats des étudiants 
+
+static func drop_mood_student(dept : String, value : float) -> void:
 	value = max(0, value)
 	var id = Student.get_dept_ids(dept)
 	for i in id:
 		Student.set_mood(i, Student.get_mood(i) - Utils.randfloat_in_square_range(value * 0.65 / GlobalData.adjust_satisfaction(), value * 1.35 / GlobalData.adjust_satisfaction()))
 
-static func boost_satisfaction_student(dept : String, value : float) -> void:
+static func boost_mood_student(dept : String, value : float) -> void:
 	value = max(0, value)
 	var id = Student.get_dept_ids(dept)
 	for i in id:

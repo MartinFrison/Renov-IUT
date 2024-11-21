@@ -41,13 +41,13 @@ static func populate():
 
 
 
-static func drop_satisfaction_teacher(dept : String, value : float) -> void:
+static func drop_mood_teacher(dept : String, value : float) -> void:
 	value = max(0, value)
 	var id = Teacher.get_dept_ids(dept)
 	for i in id:
 		Teacher.set_mood(i, Teacher.get_mood(i) - Utils.randfloat_in_square_range(value * 0.65 / GlobalData.adjust_satisfaction(), value * 1.35 / GlobalData.adjust_satisfaction()))
 
-static func boost_satisfaction_teacher(dept : String, value : float) -> void:
+static func boost_mood_teacher(dept : String, value : float) -> void:
 	value = max(0, value)
 	var id = Teacher.get_dept_ids(dept)
 	for i in id:

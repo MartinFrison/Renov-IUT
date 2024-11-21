@@ -16,15 +16,13 @@ Graphique:
 
 
 Code:
-
-
-- Gestion de la satisfaction et reussite au quotidien : martin
+- Optimisation global : martin
 
 - Gestion des fonds : elena
 - Création du menu (bouton quitter, option) : yasmine
 
-
-- Gestion de la greve des ouvriers
+- Condition d'embauche : martin
+- Gestion de la greve des ouvriers : martin
 - Gestion de la greve des profs
 - Ajout de tout les autres évenements aléatoire
 - Definition des probabilité d'appels des events pour chaque scénario
@@ -33,6 +31,7 @@ Code:
 - Ajout d'un panel récapitulatif de stat détaillé
 
 - Ecran de chargement et optimisation si possible de celui ci 
+- Ajout de conseil dans l'écran de chargement
 - Création d'une file d'attente pour les notifs (pour quand yen a plusieur d'un coup)
 Création
 
@@ -43,6 +42,7 @@ Détail:
 - Affichage du cout quand le joueur s'apprête a allumer le chauffage ou embaucher quelqu'un
 - Ajustement de la taille de l'interface en grand écrans
 - Ajouter des conditions au licensiment (soit un dédommagement soit une limite mensuels)
+- Notification si les etudiant on trop chaud ou trop froid (precise les bâtiments concerné)
 
 
 Bonus:

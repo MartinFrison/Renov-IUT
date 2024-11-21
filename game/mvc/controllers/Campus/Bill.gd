@@ -38,8 +38,11 @@ func add_daily_expense() -> void:
 		pay_agent[i+1] += (b.get_agents_nb() * GlobalData.get_pay_agent())/30
 		pay_worker[i+1] += (b.get_ouvriers() * GlobalData.get_pay_worker())/30
 		
+		# Facture de chauffage (cout en fonction de l'isolation)
 		if b.is_heating():
-			pay_heating[i+1] += Building.MonthlySquareMetersHeatingCost * b.get_surface() / 30
+			var heat_cost = Building.MonthlySquareMetersHeatingCost * b.get_surface() / 30
+			heat_cost = heat_cost*(1 + b.get_isolation()/25) # Entre 20% et 100% du prix selon l'isolation
+			pay_heating[i+1] += heat_cost
 	
 	nb_pay_teacher = max(nb_pay_teacher, Teacher.compute_nb())
 	nb_pay_worker = max(nb_pay_worker, sumWorker)

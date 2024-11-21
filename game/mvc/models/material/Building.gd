@@ -3,7 +3,8 @@ extends RefCounted
 
 const coeffTempsRenovation = 0.2 # Valeur d'une journée de travail ouvrière
 const coeffTempsInsulation = 0.3 # Valeur d'une journée de travail ouvrière
-const MonthlySquareMetersHeatingCost = 6 #6$ par metre carré par mois
+const MonthlySquareMetersHeatingCost = 12 #12$ par metre carré par mois en cas d'isolation 
+#complètement inexsistante
 
 static var _buildingsDictionary = {}
 static var _total_buildings_under_renovation : int = 0  # Nombre total de bâtiments en travaux
