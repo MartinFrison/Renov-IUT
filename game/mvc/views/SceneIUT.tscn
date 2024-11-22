@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4cp1gj8gn1ro"]
+[gd_scene load_steps=12 format=3 uid="uid://b4cp1gj8gn1ro"]
 
 [ext_resource type="Script" path="res://mvc/application/RenovIUTApp.gd" id="1_drlro"]
 [ext_resource type="Texture2D" uid="uid://dgfj00tg8hpgb" path="res://mvc/views/images/backgrounds/satellite_map_with_buildings.png" id="2_rlkk2"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://be30kt5ep5ra7" path="res://mvc/views/Node3D/IUT_V2.fbx" id="5_rwqkf"]
 [ext_resource type="PackedScene" uid="uid://dxufw4uqxthik" path="res://mvc/views/Node3D/Tree1.fbx" id="6_l4lhr"]
 [ext_resource type="Script" path="res://mvc/views/Node3D/tree.gd" id="7_yrqt0"]
+[ext_resource type="Script" path="res://mvc/views/menu.gd" id="8_tpp7l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1hwps"]
 sky_top_color = Color(0.719709, 0.848666, 1, 1)
@@ -132,9 +133,36 @@ transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 238.153, -0.5, -63.875)
 [node name="Tree7" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -88.343, -0.5, 11.738)
 
+[node name="menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1007.0
+offset_top = 562.0
+offset_right = 1047.0
+offset_bottom = 602.0
+script = ExtResource("8_tpp7l")
+
+[node name="PopupPanel" type="PopupPanel" parent="menu"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menu/PopupPanel"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Quitter" type="Button" parent="menu/PopupPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="FermerMenu" type="Button" parent="menu/PopupPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="OuvrirPanel" type="Button" parent="menu/PopupPanel/VBoxContainer"]
+layout_mode = 2
+
 [connection signal="pressed" from="notif_button" to="." method="open_notif"]
 [connection signal="pressed" from="genie_civil" to="." method="_on_genie_civil_pressed"]
 [connection signal="pressed" from="tech_co" to="." method="_on_tech_co_pressed"]
 [connection signal="pressed" from="info_com" to="." method="_on_info_com_pressed"]
 [connection signal="pressed" from="info" to="." method="_on_info_pressed"]
 [connection signal="pressed" from="chimie" to="." method="_on_chimie_pressed"]
+[connection signal="pressed" from="menu/PopupPanel/VBoxContainer/Quitter" to="menu" method="_on_QuitterButton_pressed"]
+[connection signal="pressed" from="menu/PopupPanel/VBoxContainer/FermerMenu" to="menu" method="_on_FermerMenuButton_pressed"]
+[connection signal="pressed" from="menu/PopupPanel/VBoxContainer/OuvrirPanel" to="menu" method="_on_OuvrirPanelButton_pressed"]
