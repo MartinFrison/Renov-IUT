@@ -1,14 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4cp1gj8gn1ro"]
+[gd_scene load_steps=11 format=3 uid="uid://b4cp1gj8gn1ro"]
 
 [ext_resource type="Script" path="res://mvc/application/RenovIUTApp.gd" id="1_drlro"]
 [ext_resource type="Texture2D" uid="uid://dgfj00tg8hpgb" path="res://mvc/views/images/backgrounds/satellite_map_with_buildings.png" id="2_rlkk2"]
 [ext_resource type="Texture2D" uid="uid://ckvrx44p41j4e" path="res://mvc/views/images/icons/app_icon.png" id="3_7kubs"]
 [ext_resource type="PackedScene" uid="uid://lrmgb23vrj1e" path="res://mvc/views/Node2D/Stat/PanelStat.tscn" id="4_t3hyp"]
+[ext_resource type="PackedScene" uid="uid://be30kt5ep5ra7" path="res://mvc/views/Node3D/IUT_V2.fbx" id="5_rwqkf"]
+[ext_resource type="PackedScene" uid="uid://dxufw4uqxthik" path="res://mvc/views/Node3D/Tree1.fbx" id="6_l4lhr"]
+[ext_resource type="Script" path="res://mvc/views/Node3D/tree.gd" id="7_yrqt0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1hwps"]
+sky_top_color = Color(0.719709, 0.848666, 1, 1)
+sky_horizon_color = Color(0.929927, 0.962166, 1, 1)
+sky_energy_multiplier = 8.0
+ground_bottom_color = Color(1, 1, 1, 1)
+ground_horizon_color = Color(0.929927, 0.962166, 1, 1)
+
+[sub_resource type="Sky" id="Sky_tjqfn"]
+sky_material = SubResource("ProceduralSkyMaterial_1hwps")
+
+[sub_resource type="Environment" id="Environment_6245k"]
+background_mode = 2
+sky = SubResource("Sky_tjqfn")
+sky_custom_fov = 48.2
+tonemap_mode = 2
+ssao_enabled = true
+glow_enabled = true
 
 [node name="IUT" type="Node2D"]
 script = ExtResource("1_drlro")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6245k")
+
 [node name="Icon" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(575, 323)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_rlkk2")
@@ -29,40 +54,83 @@ offset_bottom = 78.0
 text = "NOTIF"
 
 [node name="genie_civil" type="Button" parent="."]
-offset_left = 748.0
-offset_top = 149.0
-offset_right = 841.0
-offset_bottom = 185.0
+offset_left = 879.0
+offset_top = 158.0
+offset_right = 972.0
+offset_bottom = 194.0
 text = "génie-civil"
 
 [node name="tech_co" type="Button" parent="."]
-offset_left = 479.0
-offset_top = 213.0
-offset_right = 610.0
-offset_bottom = 249.0
+offset_left = 585.0
+offset_top = 184.0
+offset_right = 716.0
+offset_bottom = 220.0
 text = "technique de co"
 
 [node name="info_com" type="Button" parent="."]
-offset_left = 307.0
-offset_top = 227.0
-offset_right = 400.0
-offset_bottom = 263.0
+offset_left = 460.0
+offset_top = 185.0
+offset_right = 553.0
+offset_bottom = 221.0
 text = "info-com"
 
 [node name="info" type="Button" parent="."]
-offset_left = 31.0
-offset_top = 290.0
-offset_right = 124.0
-offset_bottom = 326.0
+offset_left = 161.0
+offset_top = 275.0
+offset_right = 271.0
+offset_bottom = 311.0
 text = "informatique
 "
 
 [node name="chimie" type="Button" parent="."]
-offset_left = 660.0
-offset_top = 333.0
-offset_right = 753.0
-offset_bottom = 369.0
+offset_left = 771.0
+offset_top = 303.0
+offset_right = 864.0
+offset_bottom = 339.0
 text = "chimie"
+
+[node name="Vue3D" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Vue3D"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -22.3575, 71.1333, 95.1148)
+fov = 90.0
+near = 0.1
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Vue3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.4014, 10260.8, -390.54)
+light_energy = 0.0
+light_indirect_energy = 13.981
+light_volumetric_fog_energy = 7.189
+light_angular_distance = 83.21
+directional_shadow_split_1 = 0.128
+directional_shadow_fade_start = 1.0
+directional_shadow_max_distance = 1.0
+directional_shadow_pancake_size = 1.0
+sky_mode = 2
+
+[node name="IUT_V2" parent="Vue3D" instance=ExtResource("5_rwqkf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.019, 0)
+
+[node name="ListeTree" type="Node3D" parent="Vue3D"]
+script = ExtResource("7_yrqt0")
+
+[node name="Tree2" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(38.6262, 0, 0, 0, 38.6262, 0, 0, 0, 38.6262, 1691.95, -2.71211, -465.028)
+
+[node name="Tree3" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -114.743, -0.5, -12.229)
+
+[node name="Tree6" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -105.204, -0.5, 32.509)
+
+[node name="Tree4" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -76.159, -0.5, 36.584)
+
+[node name="Tree5" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 238.153, -0.5, -63.875)
+
+[node name="Tree7" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -88.343, -0.5, 11.738)
 
 [connection signal="pressed" from="notif_button" to="." method="open_notif"]
 [connection signal="pressed" from="genie_civil" to="." method="_on_genie_civil_pressed"]

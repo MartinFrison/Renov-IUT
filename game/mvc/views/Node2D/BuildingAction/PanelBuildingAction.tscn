@@ -120,6 +120,7 @@ theme_override_font_sizes/font_size = 12
 text = "augmenter les salaire des enseignants (+800$)"
 
 [node name="add_exem_end" type="Button" parent="PanelGlobal/PanelAction"]
+layout_mode = 0
 offset_left = 280.154
 offset_top = 232.615
 offset_right = 480.154
@@ -128,6 +129,7 @@ text = "increase end exam difficulty
 "
 
 [node name="sub_exam_end" type="Button" parent="PanelGlobal/PanelAction"]
+layout_mode = 0
 offset_left = 27.8462
 offset_top = 232.615
 offset_right = 227.846
@@ -136,6 +138,7 @@ text = "decrease end exam difficulty
 "
 
 [node name="add_exem_entry" type="Button" parent="PanelGlobal/PanelAction"]
+layout_mode = 0
 offset_left = 281.692
 offset_top = 269.539
 offset_right = 511.692
@@ -144,6 +147,7 @@ text = "increase entry exam difficulty
 "
 
 [node name="sub_exam_entry" type="Button" parent="PanelGlobal/PanelAction"]
+layout_mode = 0
 offset_left = 17.0769
 offset_top = 271.077
 offset_right = 255.077
@@ -250,6 +254,7 @@ theme_override_font_sizes/font_size = 12
 text = "- salaire prof"
 
 [node name="end_exam" type="Label" parent="PanelGlobal/PanelStat"]
+layout_mode = 0
 offset_left = 251.308
 offset_top = 36.7692
 offset_right = 451.308
@@ -258,6 +263,7 @@ theme_override_font_sizes/font_size = 12
 text = "- end exam"
 
 [node name="entry_exam" type="Label" parent="PanelGlobal/PanelStat"]
+layout_mode = 0
 offset_left = 252.846
 offset_top = 62.9231
 offset_right = 452.846
@@ -280,10 +286,10 @@ scale = Vector2(2.71874, 2.74219)
 texture = ExtResource("2_wh184")
 
 [node name="close" type="Button" parent="."]
-offset_left = 538.0
-offset_top = 22.0
-offset_right = 566.0
-offset_bottom = 42.0
+offset_left = 774.0
+offset_top = 12.0
+offset_right = 816.0
+offset_bottom = 41.0
 theme_override_font_sizes/font_size = 8
 text = "close"
 

@@ -13,8 +13,8 @@ script = ExtResource("1_m1i0s")
 [node name="menu" type="Node2D" parent="."]
 
 [node name="MapV1" type="Sprite2D" parent="menu"]
-position = Vector2(913.062, 576.41)
-scale = Vector2(1.12595, 1.10542)
+position = Vector2(915.437, 576.41)
+scale = Vector2(1.12888, 1.10542)
 texture = ExtResource("2_wu6ol")
 offset = Vector2(-298.901, -275.833)
 

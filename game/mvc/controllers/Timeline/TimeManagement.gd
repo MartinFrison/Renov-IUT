@@ -45,12 +45,12 @@ func tick():
 			#Détérioration quotidienne des batiments
 			BuildingManagement.wear()
 			
-			# On calcule que tout les 5 jours pour optimiser
-			if GlobalData._day % 5 == 0:
+			# On calcule que tout les 30 jours pour optimiser
+			if GlobalData._day == 0:
 				#Traitement quotidient de la satisfaction
-				daily_mood_update(5)
+				daily_mood_update(30)
 				#Traitement quotidient du niveau etudiant
-				daily_level_update(5)
+				daily_level_update(30)
 			
 			#Test des étapes intermediare du scenario
 			_scenario.mid_game()

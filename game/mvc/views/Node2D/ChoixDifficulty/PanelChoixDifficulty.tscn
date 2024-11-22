@@ -14,8 +14,8 @@ script = ExtResource("1_qcsjs")
 script = ExtResource("1_qcsjs")
 
 [node name="MapV1" type="Sprite2D" parent="menu"]
-position = Vector2(575.716, 270.5)
-scale = Vector2(1.12165, 1.10835)
+position = Vector2(579.216, 270.5)
+scale = Vector2(1.12849, 1.10835)
 texture = ExtResource("2_t4tuv")
 
 [node name="easy" type="Button" parent="menu"]
