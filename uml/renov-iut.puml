@@ -8,18 +8,18 @@ hide enum methods
 package application {
 	class RenovIUTApp
 	{
-		+ _ready()
+		- _ready()
 		+ choiceDifficulty()
 		+ startGame()
 		+ close_app()
 		+ open_notif()
 		+ open_bankrupt()
 		+ open_building(id : Integer)
-		+ _on_info_pressed()
-		+ _on_chimie_pressed()
-		+ _on_info_com_pressed()
-		+ _on_tech_co_pressed()
-		+ _on_genie_civil_pressed()
+		- _on_info_pressed()
+		- _on_chimie_pressed()
+		- _on_info_com_pressed()
+		- _on_tech_co_pressed()
+		- _on_genie_civil_pressed()
 	}
 }
 
@@ -28,11 +28,11 @@ package global {
     {
     	+ db : SQLite
     	+ db_path : String
-    	+ _init DBManager(path : String)
+    	- _init DBManager(path : String)
     	+ open_db() : Boolean
     	+ close_db()
-    	+ execute(query : String, params : Array) : Boolean
-    	+ get_entries(query : String, params : Array) : Array
+    	+ execute(query : String, params : String[*]) : Boolean
+    	+ get_entries(query : String, params : String[*]) : [*]
     	+ clear_tables()
     }
 
@@ -51,91 +51,182 @@ package global {
     	+ source_index_to_string(index : Integer) : String
     	+ {static} get_month_name(month : Integer) : String
 		+ randint_in_range(min : Integer, max : Integer) : Integer
-		+ randfloat_in_range(min : Float, max : Float) : Float
-		+ randfloat_in_square_range(min : Float, max : Float) : Float
+		+ randfloat_in_range(min : Real, max : Real) : Real
+		+ randfloat_in_square_range(min : Real, max : Real) : Real
     }
 }
 
-package views
-{
-	package observer {
+package observer {
 		class ObserverBuilding {
-
+			+ {static} observer : [*]
+			+ {static} addObserver(0)
+			+ {static} notifyStateChanged()
 		}
 
 		class ObserverGlobalData {
-
-
+			+ {static} observer : [*]
+			+ {static} addObserver(0)
+			+ {static} notifyBudgetChanged()
 		}
 
 		class ObserverPopulation {
+			+ {static} observer : [*]
+			+ {static} addObserver(0)
+			+ {static} notifyLevelChanged()
+			+ {static} notifySatisfactionChanged()
+		}
+}
 
+package views {
+	package node2D {
+		class BuildingAction {
+			+ code : String
+			+ build : Building
+			- _ready()
+			- _process(delta : Real)
+			+ init(id : Integer)
+			+ show_data()
+			- _on_hire_teacher_pressed()
+			- _on_fire_teacher_pressed()
+			- _on_insule_pressed()
+			- _on_renove_pressed()
+			- _on_lock_pressed()
+			- _on_fire_worker_pressed()
+			- _on_fire_agent_pressed()
+			- _on_hire_worker_pressed()
+			- _on_hire_agent_pressed()
+			- _on_heat_pressed()
+			- _on_close_pressed()
+			- _on_increase_pay_pressed()
+			- _on_add_exem_end_pressed()
+			- _on_sub_exam_end_pressed()
+			- _on_add_exem_entry_pressed()
+			- _on_sub_exam_entry_pressed()
+		}
+
+		package bulle {
+			class BulleMessageScript {
+				- _message : String
+				- _ready()
+				- _process(delta : Real)
+				+ init(message : String)
+				- _input(event : InputEvent)
+				+ enter()
+			}
+
+			class BulleNotifScript {
+				- _message : String
+				- _object : String
+				+ tick : Integer
+				- _ready()
+				- _process(delta : Real)
+				+ init(objet : String, message : String, type : Integer)
+			}
+
+			class BulleQuestionScript {
+				- _question : String
+				- _fonctionResponse : String
+				- _reponse : String [*]
+				- _node : Node
+				- _ready()
+				- _process(delta : Real)
+				+ init(question : String, reponse : String[*] ,fonction : String, node : Node)
+				+ create_question_button(id : Integer)
+				- _on_answer_pressed(id : Integer)
+			}
+		}
+
+		package choix {
+			class ChoixDifficultyScript {
+				- _IUT : IUTFacade
+				- _app : RenovIUTApp
+				+ difficulty : Integer
+				+ init(iut : IUTFacade, app : RenovIUTApp)
+				- _ready()
+				- _process(delta : Real)
+				- _on_easy_pressed()
+				- _on_medium_pressed()
+				- _on_hard_pressed()
+				- _on_suivant_pressed()
+			}
+
+			class ChoixScenarioScript {
+				- _IUT : IUTFacade
+				- _app : RenovIUTApp
+				+ scenario : Integer
+				+ init(iut : IUTFacade, app : RenovIUTApp)
+				- _ready()
+				- _process(delta : Real)
+				- _on_button_election_pressed()
+				- _on_button_renovation_pressed()
+				- _on_suivant_pressed()
+			}
+		}
+    }
+
+	package node3D {
+		class Tree {
+			+ {static} trunc_path : String
+			+ {static} material_path : String
+			+ {static} texture_path : String
+			+ {static} mask_path : String
+			+ _ready()
+			+ apply_material_to_mesh_instances(node: Node3D, material: Material, trunc: Material)
 		}
 	}
 
-    package nodes
-    {
-        class BuildingView
-        {
-            - selected : String
-            + view_options()
-            + hire_teachers()
-            + fire_teachers()
-            + heating_on()
-            + heating_off()
-            + hire_maintenance_agents()
-            + fire_maintenance_agents()
-            + launch_action()
-            + view_building_info()
-        }
+	package fin_jeu {
+		class BankruptScript {
+			- _ready()
+			- _process(delta : Real)
+		}
 
-        class Stats
-        {
-            + view_budget()
-            + view_satisfaction()
-            + view_teacher_satisfaction()
-            + view_student_satisfaction()
-            + view_student_success()
-        }
+		class FinElectionScript {
+			- _ready()
+			- _process(delta : Real)
+			+ show_result()
+		}
 
-        class Reaction
-        {
-            - reactions : String[*]
-            - selected : Integer
-            + _init Reaction()
-            + define_reaction(selected : Integer)
-            + send_reaction(selected : Integer)
+		class FinRenovationScript {
+			- _ready()
+			- _process(delta : Real)
+			+ show_result()
+		}
+	}
 
-        }
-    }
+	package notif_list {
+		class NotifListScript {
+			+ notif : [*]
+			+ page : Integer
+			+ {static} page_size : Integer
+			+ buttons : Button[*]
+			- _ready()
+			+ open_page()
+			+ create_question_button(text : String, id : Integer, n : Integer)
+			- _on_next_pressed()
+			- _on_last_pressed()
+			+ notif_pressed(id : Integer)
+			- _on_close_pressed()
+		}
+	}
 
-    package scenes
-    {
-        class Start
-        {
-            + view_start_screen()
-            + select_scenario()
-            + launch_game()
-        }
+	package stat {
+		class StatScript {
+			- _ready()
+			- _process()
+			+ notifyBudgetChanged()
+			+ notifyLevelChanged()
+			+ notifySatisfactionChanged()
+			+ updateDate()
+		}
+	}
 
-        class Menu
-        {
-            + view_menu()
-            + start(scenario: Scenario)
-            + quit()
-        }
-
-        class GameOver
-        {
-            + view_gameover()
-            + replay()
-        }
-    }
+	class Menu {
+		+ _on_QuitterButton_pressed()
+		+ _on_FermerMenuButton_pressed()
+		+ _on_OuvrirPanelButton_pressed()
+	}
 }
-
-
-
-
 
 package controllers
 {
@@ -206,8 +297,8 @@ package controllers
             + {static} hire_teachers(dept : String)
             + {static} fire_teachers(dept : String)
             + {static} populate()
-            + {static} boost_satisfaction_teacher(dept : String, value : float)
-            + {static} drop_satisfaction_teacher(dept : String, value : float)
+            + {static} boost_satisfaction_teacher(dept : String, value : Real)
+            + {static} drop_satisfaction_teacher(dept : String, value : Real)
         }
 
         class Study
@@ -216,10 +307,10 @@ package controllers
             + {static} populate_promo(dept : String, year : Integer)
             + {static} evaluate()
             + {static} next_year()
-            + {static} boost_satisfaction_student(dept : String, value : float)
-            + {static} drop_satisfaction_student(dept : String, value : float)
-            + {static} boost_level_student(dept : String, value : float)
-            + {static} drop_level_student(dept : String, value : float)
+            + {static} boost_satisfaction_student(dept : String, value : Real)
+            + {static} drop_satisfaction_student(dept : String, value : Real)
+            + {static} boost_level_student(dept : String, value : Real)
+            + {static} drop_level_student(dept : String, value : Real)
         }
     }
 
