@@ -5,9 +5,22 @@ skinparam classAttributeIconSize 0
 skinparam classFontStyle Bold
 hide enum methods
 
-class RenovIUTApp
-{
-    + {static} main(args: String[])
+package application {
+	class RenovIUTApp
+	{
+		+ _ready()
+		+ choiceDifficulty()
+		+ startGame()
+		+ close_app()
+		+ open_notif()
+		+ open_bankrupt()
+		+ open_building(id : Integer)
+		+ _on_info_pressed()
+		+ _on_chimie_pressed()
+		+ _on_info_com_pressed()
+		+ _on_tech_co_pressed()
+		+ _on_genie_civil_pressed()
+	}
 }
 
 package global {
@@ -25,19 +38,41 @@ package global {
 
     class Glob
     {
+		+ {static} db : DBManager
+    	+ {static} ok : Boolean
     	+ {static} normal_inflation_rate : Real
     	+ {static} indexation_rate : Real
-    	+ {static} db : DBManager
-    	+ {static} ok : Boolean
-    	+ {static} dept_string_to_index(dept : String) : Integer
-    	+ {static} dept_index_to_string(index : Integer) : String
-    	+ {static} source_string_to_index(dept : String) : Integer
-    	+ {static} source_index_to_string(index : Integer) : String
+    	+ {static} csv_path : String
+    	+ create_iut_db()
+    	+ fill_notifications_from_csv(file_path : String)
+    	+ dept_string_to_index(dept : String) : Integer
+    	+ dept_index_to_string(index : Integer) : String
+    	+ source_string_to_index(dept : String) : Integer
+    	+ source_index_to_string(index : Integer) : String
+    	+ {static} get_month_name(month : Integer) : String
+		+ randint_in_range(min : Integer, max : Integer) : Integer
+		+ randfloat_in_range(min : Float, max : Float) : Float
+		+ randfloat_in_square_range(min : Float, max : Float) : Float
     }
 }
 
 package views
 {
+	package observer {
+		class ObserverBuilding {
+
+		}
+
+		class ObserverGlobalData {
+
+
+		}
+
+		class ObserverPopulation {
+
+		}
+	}
+
     package nodes
     {
         class BuildingView
@@ -224,13 +259,13 @@ package controllers
         }
     }
 
-    abstract class Event 
+    abstract class Event
     {
         - _question : bool
         - _name : String
         - _description : String
         - _question_script : String
-        - _question_answer : Array[String] 
+        - _question_answer : Array[String]
         + {static} create_event(id : Event) : Event
         + _init()
         + start_event() : void
@@ -391,9 +426,9 @@ package models
 				+ forecast() : Real
 			}
 
-            class Notification 
+            class Notification
             {
-                + get_all_ids() : Array 
+                + get_all_ids() : Array
                 + get_message(id : Integer) : String
                 + get_date(id : Integer) : String
                 + get_type(id : Integer) : Integer
