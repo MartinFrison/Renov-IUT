@@ -6,6 +6,7 @@ var _IUT : IUTFacade
 var _app : RenovIUTApp
 var scenario
 
+
 func init(iut : IUTFacade, app : RenovIUTApp) -> void:
 	_IUT = iut
 	_app = app
@@ -13,7 +14,8 @@ func init(iut : IUTFacade, app : RenovIUTApp) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	
+	$audioSonore.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

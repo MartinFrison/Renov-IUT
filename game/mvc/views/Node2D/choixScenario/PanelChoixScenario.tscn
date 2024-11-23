@@ -61,6 +61,8 @@ text = "Description"
 autowrap_mode = 3
 text_overrun_behavior = 3
 
+[node name="audioSonore" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="pressed" from="menu/button_election" to="." method="_on_button_election_pressed"]
 [connection signal="pressed" from="menu/button_renovation" to="." method="_on_button_renovation_pressed"]
 [connection signal="pressed" from="menu/suivant" to="." method="_on_suivant_pressed"]
