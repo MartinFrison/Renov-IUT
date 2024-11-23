@@ -1,53 +1,73 @@
 
+Autre:
+- Mise à jours de l'UML : Elena
+- Ajout des son
 
-Graphique:
 
-- Style du panel de choix de scénario & difficulté
-- Style des bulle (message et question)
-- Style des notifs selon le type (à faire plutot à la fin)
+
+
+Graphique 2D:
+
+- Style du panel de choix de scénario & difficulté (avec fusion des deux en un seul) : Elena
+- Style des bulle (message et notif selon leur type) : Elena
+- Style de l'historique des notifications : Elena
+
 - Style d'affichage des stats global (satisfaction, reussite, budget, date..)
 - Style du panel de donnée et d'action des batiments
-- Style de l'historique des notifications
-- Style des panels de fin de chaque scénario (vote,renovation, faillite..)
 - Style du panel avec les stats détaillées
-- Ajout d'effet spéciaux
-- Ajout des sons
+- Style des panels de fin de chaque scénario (vote,renovation, faillite..)
+- Ajout d'effet spéciaux 2D
+
+
+
+
+
+Graphique 3D:
+- Ajout du parc de street : Martin
+- Ajout de la neige en hivert : Martin
+- Ajout des échaffaudage de construction : Martin
+- Ajout des bonnomes animés (vert, orange et rouge) : Martin
+
+
 
 
 
 Code:
-- Optimisation global : martin
 
-- Gestion des fonds : elena
-- Création du menu (bouton quitter, option) : yasmine
+- Gestion des fonds : Elena
+- Création du menu (bouton quitter, option) : Yasmine
 
-- Condition d'embauche : martin
-- Gestion de la greve des ouvriers : martin
-- Gestion de la greve des profs
-- Ajout de tout les autres évenements aléatoire
-- Definition des probabilité d'appels des events pour chaque scénario
+- Fusion de la rénovation et isolation : Martin
+- Fusion des agents d'entretien et des ouvriers : Martin
+- Adaptation du code à un pas trimestriels : Martin
+- Condition d'embauche : Martin
+- Optimisation global : Martin
 
+
+- Gestion des grandes vacances
+- Ajout de quelque évenements aléatoire simple
 - Ajout d'un tutoriel si la difficulté est facile
 - Ajout d'un panel récapitulatif de stat détaillé
+- Ecran de chargement avec des conseil 
+- Création d'une file d'attente pour les notifs (pour quand il y en a plusieur d'un coup)
 
-- Ecran de chargement et optimisation si possible de celui ci 
-- Ajout de conseil dans l'écran de chargement
-- Création d'une file d'attente pour les notifs (pour quand yen a plusieur d'un coup)
-Création
+
+
 
 
 Détail:
 - Ajout de tout les messages et notifs manquant dans le code et definition de leur type
-- Definition de la surface de chaque batiment et affichage de celle ci
 - Affichage du cout quand le joueur s'apprête a allumer le chauffage ou embaucher quelqu'un
 - Ajustement de la taille de l'interface en grand écrans
 - Ajouter des conditions au licensiment (soit un dédommagement soit une limite mensuels)
 - Notification si les etudiant on trop chaud ou trop froid (precise les bâtiments concerné)
 
 
+
+
+
 Bonus:
-- Ajout complet d'un troisième scénario
-- Ajout d'action spécifique à des batiments (par ex info)
+- Ajout complet d'un troisième scénario sur l'élitisme
 - Ajout d'un historique de toutes les stats consultable notament en fin de partie
 - Rapport intelligent au joueur sur sa prestation
 - Ajout d'un filtre de recherche des notifications
