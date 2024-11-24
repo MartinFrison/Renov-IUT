@@ -1,11 +1,30 @@
+<<<<<<< HEAD
 [gd_scene load_steps=5 format=3 uid="uid://caod86b7eg7v"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/choixScenario/ChoixScenarioScript.gd" id="1_m1i0s"]
 [ext_resource type="Texture2D" uid="uid://bpdfvn1j0iyl8" path="res://mvc/views/images/backgrounds/menu.png" id="2_wu6ol"]
 [ext_resource type="AudioStream" uid="uid://byrpoot0d551b" path="res://winning-218995.mp3" id="3_pkuhm"]
+=======
+[gd_scene load_steps=6 format=3 uid="uid://caod86b7eg7v"]
+
+[ext_resource type="Script" path="res://mvc/views/Node2D/choixScenario/ChoixScenarioScript.gd" id="1_m1i0s"]
+[ext_resource type="Texture2D" uid="uid://dw3prma6xre2g" path="res://mvc/views/images/backgrounds/menu_v2.png" id="2_ibg5x"]
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_71p1g"]
+>>>>>>> elena
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nk24h"]
 bg_color = Color(0, 0.143123, 0.276469, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujemv"]
+content_margin_left = 7.0
+content_margin_top = 4.0
+bg_color = Color(0.294118, 0.317647, 0.301961, 0.737255)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
 
 [node name="PanelChoixScenario" type="Node2D"]
 z_index = 40
@@ -14,50 +33,51 @@ script = ExtResource("1_m1i0s")
 [node name="menu" type="Node2D" parent="."]
 
 [node name="MapV1" type="Sprite2D" parent="menu"]
-position = Vector2(915.437, 576.41)
-scale = Vector2(1.12888, 1.10542)
-texture = ExtResource("2_wu6ol")
+position = Vector2(914.157, 571.364)
+scale = Vector2(1.1255, 1.12799)
+texture = ExtResource("2_ibg5x")
 offset = Vector2(-298.901, -275.833)
 
 [node name="button_election" type="Button" parent="menu"]
 z_index = 1
-offset_left = 55.0
-offset_top = 55.0
-offset_right = 335.0
-offset_bottom = 141.0
+offset_left = 463.0
+offset_top = 81.0
+offset_right = 729.0
+offset_bottom = 167.0
 theme_override_font_sizes/font_size = 25
+theme_override_icons/icon = SubResource("Texture2DRD_71p1g")
 theme_override_styles/normal = SubResource("StyleBoxFlat_nk24h")
-text = "Scenario Election"
-metadata/_edit_use_anchors_ = true
+text = "Me faire réélire"
 
 [node name="button_renovation" type="Button" parent="menu"]
 z_index = 1
-offset_left = 54.0
-offset_top = 166.0
-offset_right = 334.0
-offset_bottom = 252.0
+offset_left = 463.0
+offset_top = 176.0
+offset_right = 728.0
+offset_bottom = 265.0
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_nk24h")
-text = "Scenario Renovation"
+text = "Rénover le campus"
 
 [node name="suivant" type="Button" parent="menu"]
 z_index = 1
-offset_left = 860.0
-offset_top = 528.0
-offset_right = 1108.0
-offset_bottom = 612.0
-theme_override_font_sizes/font_size = 25
+offset_left = 946.0
+offset_top = 588.0
+offset_right = 1133.0
+offset_bottom = 630.0
+theme_override_font_sizes/font_size = 23
 theme_override_styles/normal = SubResource("StyleBoxFlat_nk24h")
 text = "Suivant"
 
 [node name="Description" type="Label" parent="menu"]
 z_index = 1
-offset_left = 366.0
-offset_top = 66.0
-offset_right = 998.0
-offset_bottom = 138.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 22
+offset_left = 771.0
+offset_top = 115.0
+offset_right = 937.0
+offset_bottom = 243.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_ujemv")
 text = "Description"
 autowrap_mode = 3
 text_overrun_behavior = 3

@@ -5,12 +5,12 @@ var _progression : int
 
 func _init() -> void:
 	_progression = 0
-	_name = "Election"
+	_name = "Élection"
 	super._init()
 
 
 static func get_description() -> String:
-	return "Un scenario dans lequel votre but est d'être réélu au terme d'un mandat de 5 ans"
+	return "Votre objectif est d'être réélu au terme d'un mandat de 5 ans."
 
 
 # Test si le jeu est fini
@@ -22,8 +22,8 @@ func test_end_game_condition() -> bool:
 # Déclencher la fin du jeu
 func end_game() -> void:
 	print("fin du jeu")
-	await BulleGestion.send_message("C'est la fin de votre manda !", false)
-	await BulleGestion.send_message("Les représentants du conseil vont voté pour savoir si vous êtes réélu !", false)
+	await BulleGestion.send_message("C'est la fin de votre mandat !", false)
+	await BulleGestion.send_message("Les représentants du conseil vont voter pour savoir si vous êtes réélu !", false)
 	
 	var scene = load("res://mvc/views/Node2D/FinJeu/PanelFinElection.tscn")
 	var bulle = scene.instantiate()
@@ -36,7 +36,7 @@ func mid_game() -> void:
 	if _progression < 2:
 		var year = 2028 if _progression == 0 else 2029
 		if (GlobalData._year == year and GlobalData._month == 9 and  GlobalData._day == 1):
-			var msg = "Il vous reste %s de manda à servir, les sondages vous donnent actuellement à " % ["deux années" if _progression == 0 else "une année"]
+			var msg = "Il vous reste %s de mandat à servir, les sondages vous donnent actuellement à " % ["deux années" if _progression == 0 else "une année"]
 			var sondage_etu = int(Vote.popularity_among_students()*100/Vote.nb_voix_student())
 			var sondage_prof = int(Vote.popularity_among_teachers()*100/Vote.nb_voix_teacher())
 			msg = "%s%s%% dans les intentions de vote des étudiants et %s%% de celles des enseignants" % [msg, sondage_etu, sondage_prof]

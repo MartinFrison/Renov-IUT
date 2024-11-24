@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgcvgxgw8vljb"
-path="res://.godot/imported/notifications.png-839a182532f381fdb043a6786775d6bd.ctex"
+uid="uid://de12watoi8dps"
+path="res://.godot/imported/scenario_button.png-fbbf05a87e2246e4a4ada6dbf2a7a44f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mvc/views/images/backgrounds/notifications.png"
-dest_files=["res://.godot/imported/notifications.png-839a182532f381fdb043a6786775d6bd.ctex"]
+source_file="res://mvc/views/images/buttons/scenario_button.png"
+dest_files=["res://.godot/imported/scenario_button.png-fbbf05a87e2246e4a4ada6dbf2a7a44f.ctex"]
 
 [params]
 
