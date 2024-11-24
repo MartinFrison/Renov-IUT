@@ -9,20 +9,20 @@ var _progression : Array[bool]
 func _init() -> void:
 	for i in 8:
 		_progression.append(false)
-	_name = "Renovation"
+	_name = "Rénovation"
 	super._init()
 	
 	var msg
 	if old_builds.size() > 1:
-		msg = "Votre objectif est de rénover les batiments %s et %s" % [old_builds[0].get_code(),old_builds[1].get_code()]
+		msg = "Votre objectif est de rénover les bâtiments %s et %s" % [old_builds[0].get_code(),old_builds[1].get_code()]
 	else:
-		msg = "Votre objectif est de rénover le batiment %s" % [old_builds[0].get_code()]
+		msg = "Votre objectif est de rénover le bâtiment %s" % [old_builds[0].get_code()]
 	await BulleGestion.send_message(msg, true)
 	
 
 
 static func get_description() -> String:
-	return "Un scenario dans lequel votre but est de renover un batiment"
+	return "Votre objectif est de rénover un ou plusieurs bâtiments."
 
 
 # Test si le jeu est fini
