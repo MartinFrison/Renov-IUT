@@ -13,7 +13,6 @@ func _process(delta: float) -> void:
 
 
 func init(message : String) -> void:
-	TimeManagement.pause(true)
 	_message = message
 	var ques = get_node("Message")
 	ques.text = _message
@@ -26,5 +25,4 @@ func _input(event):
 
 
 func enter() -> void:
-	TimeManagement.pause(false)
 	queue_free()

@@ -57,6 +57,10 @@ static func incrementDay() -> void:
 		_year += 1
 
 
+#Avance de un trimestre
+static func incrementTrimestre() -> void:
+	_month += 3
+
 #Renvoie vrai si c'est le premier du mois
 static func isNewMonth() -> bool:
 	return _day==1

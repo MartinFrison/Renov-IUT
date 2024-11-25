@@ -2,7 +2,6 @@ class_name TimeManagement
 extends Node
 
 var _scenario: Scenario
-static var _pause : bool
 var _bill : Bill
 
 # Le jeu commence le 1 septembre 2025
@@ -23,42 +22,55 @@ func tick():
 	
 	#Expense.expense_global(2500000)
 	
+	# Fait la boucle de toutes les actions d'un trimestre
 	while true:
-		await wait(0.6)
-		# Si le jeu est en pause la boucle quotidienne n'est pas lu
-		if !_pause:
-			GlobalData.incrementDay()
-			if GlobalData.isNewMonth():
-				end_of_month()
+		await wait(20)
+		GlobalData.incrementTrimestre()
+
+		# Appelle des évenements
+		Event()
+		
+		
+		#Avancement des travaux sur les batiments
+		for i in 5:
+			var c = Utils.dept_index_to_string(i+1)
+			var build = Building.get_building(Utils.dept_index_to_string(i+1))
+			BuildingManagement.advance_work(build)
+		#Détérioration trimestriels des batiments
+		BuildingManagement.wear()
+		
+		#Traitement de la satisfaction
+		mood_update(90)
+		#Traitement du niveau etudiant
+		level_update(90)
+		
+		#Test des étapes intermediare du scenario
+		_scenario.mid_game()
+
+
+		# Reglement des factures trimestrielle
+		_bill.add_daily_expense(90)
+		_bill.pay_bill()
+		# On prévient le joueur s'il risque la faillite
+		if _bill.get_previous_bill() >= GlobalData.getBudget():
+			BulleGestion.send_notif("Risque de faillite", "Attention les caisses sont presque vide, vous risquez la faillite !", 0)
+		
+	
+		# Les professeurs et étudiant insatisfait démissionnent
+		Teaching.teacher_resign()
+		Study.student_resign()
 			
-			#Possibilité d'évenement chaque jours
-			DailyEvent()
-			
-			#Mise à jour des facture quotidienne
-			_bill.add_daily_expense()
-			
-			#Avancement des travaux sur les batiments
-			for i in 5:
-				var c = Utils.dept_index_to_string(i+1)
-				var build = Building.get_building(Utils.dept_index_to_string(i+1))
-				BuildingManagement.advance_work(build)
-			#Détérioration quotidienne des batiments
-			BuildingManagement.wear()
-			
-			# On calcule que tout les 30 jours pour optimiser
-			if GlobalData._day == 0:
-				#Traitement quotidient de la satisfaction
-				daily_mood_update(30)
-				#Traitement quotidient du niveau etudiant
-				daily_level_update(30)
-			
-			#Test des étapes intermediare du scenario
-			_scenario.mid_game()
-			# A la fin de la journée on test si le jeu se finit
-			if _scenario.test_end_game_condition():
-				_scenario.end_game()
-				pause(true)
-				break
+		# Appeler les actions de début et fin d'année
+		if GlobalData.isEndofYear():
+			end_of_year()
+		if GlobalData.isStartofYear():
+			year_begin()
+		
+		
+		# A la fin du trimestre on test si le jeu se finit
+		if _scenario.test_end_game_condition():
+			_scenario.end_game()
+			break
 
 
 
@@ -67,27 +79,6 @@ func wait(seconds : float) -> void:
 	await timer.timeout
 
 
-
-
-#chaque fin de mois déclenche des actions comme les cout à rêgler
-func end_of_month() -> void:
-	# Reglement des factures trimestrielle
-	if GlobalData._month%3==0:
-		_bill.pay_bill()
-	elif GlobalData._month%3==1:
-		if _bill.get_previous_bill() >= GlobalData.getBudget():
-			BulleGestion.send_notif("Risque de faillite", "Attention les caisses sont presque vide, vous risquez la faillite !", 0)
-	
-	# Les professeurs et étudiant insatisfait démissionnent
-	Teaching.teacher_resign()
-	Study.student_resign()
-	
-	
-	# Appeler les actions de début et fin d'année
-	if GlobalData.isEndofYear():
-		end_of_year()
-	if GlobalData.isStartofYear():
-		year_begin()
 
 
 
@@ -104,30 +95,20 @@ func year_begin() -> void:
 	Study.populate_new_year(_scenario)
 
 
-# Pause ou reprise de la gestion du temps
-static func pause(p: bool) -> void:
-	_pause = p
 
-#calcule la proba quotidienne d'avoir un evenement et le lance si besoin
-func DailyEvent() -> bool:
-	var coeff_proba
+# Lance les events du trimestre
+func Event() -> bool:
 	if GlobalData._year <= 2026:
-		coeff_proba = 0.5
+		pass
 	elif GlobalData._year <= 2028:
-		coeff_proba = 1
+		pass
 	else:
-		coeff_proba = 0.7
+		pass
 	
-	#La proba final est compris entre environ 0.5% et 1.5% selon la difficulté et le moment
-	var proba = GlobalData.adjust_event_proba() * coeff_proba * 0.015
-	
-	if Utils.randfloat_in_range(0,1) < proba:
-		_scenario.random_event()
-		return true
 	return false
 
 
-func daily_mood_update(day : int) -> void:
+func mood_update(day : int) -> void:
 	# chauffage
 	heat_adjust_mood(day)
 	# propreté (dépend des agents d'entretien si les portes sont bloqué)
@@ -136,7 +117,7 @@ func daily_mood_update(day : int) -> void:
 	# porte bloquer
 	Study.door_adjust_mood(day)
 
-func daily_level_update(day) -> void:
+func level_update(day) -> void:
 	# Ajustement selon le nombre de prof et leur moods
 	Study.teacher_adjust_level(day)
 

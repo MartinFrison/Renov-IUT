@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-[gd_scene load_steps=5 format=3 uid="uid://caod86b7eg7v"]
-
-[ext_resource type="Script" path="res://mvc/views/Node2D/choixScenario/ChoixScenarioScript.gd" id="1_m1i0s"]
-[ext_resource type="Texture2D" uid="uid://bpdfvn1j0iyl8" path="res://mvc/views/images/backgrounds/menu.png" id="2_wu6ol"]
-[ext_resource type="AudioStream" uid="uid://byrpoot0d551b" path="res://winning-218995.mp3" id="3_pkuhm"]
-=======
-[gd_scene load_steps=6 format=3 uid="uid://caod86b7eg7v"]
+[gd_scene load_steps=6 format=3 uid="uid://crx1f60onch8t"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/choixScenario/ChoixScenarioScript.gd" id="1_m1i0s"]
 [ext_resource type="Texture2D" uid="uid://dw3prma6xre2g" path="res://mvc/views/images/backgrounds/menu_v2.png" id="2_ibg5x"]
 
 [sub_resource type="Texture2DRD" id="Texture2DRD_71p1g"]
->>>>>>> elena
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nk24h"]
 bg_color = Color(0, 0.143123, 0.276469, 1)
@@ -81,9 +73,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ujemv")
 text = "Description"
 autowrap_mode = 3
 text_overrun_behavior = 3
-
-[node name="audioSonore" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_pkuhm")
 
 [connection signal="pressed" from="menu/button_election" to="." method="_on_button_election_pressed"]
 [connection signal="pressed" from="menu/button_renovation" to="." method="_on_button_renovation_pressed"]

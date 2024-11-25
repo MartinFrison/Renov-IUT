@@ -10,7 +10,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	TimeManagement.pause(true)
+	pass
 
 func init(id : int) -> void:
 	code = Utils.dept_index_to_string(id)
@@ -154,7 +154,6 @@ func _on_heat_pressed() -> void:
 
 
 func _on_close_pressed() -> void:
-	TimeManagement.pause(false)
 	queue_free()
 
 

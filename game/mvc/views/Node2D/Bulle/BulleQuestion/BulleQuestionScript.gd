@@ -17,7 +17,6 @@ func _process(delta: float) -> void:
 
 
 func init(question : String, reponse : Array[String] ,fonction : String, node : Node) -> void:
-	TimeManagement.pause(true)
 	_fonctionReponse = fonction
 	_node = node
 	_reponse = reponse
@@ -44,5 +43,4 @@ func create_question_button(id : int) -> void:
 func _on_answer_pressed(id : int) -> void:
 	var c : Callable = Callable(_node, _fonctionReponse)
 	c.call(_reponse[id])
-	TimeManagement.pause(false)
 	queue_free()
