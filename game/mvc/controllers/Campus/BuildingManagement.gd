@@ -42,23 +42,10 @@ static func advance_work(building: Building) -> void:
 	
 	# Calcul de l'avancement par type de travaux
 	var progress_per_worker = workers
-	var insulation_increment = 0
 	var renovation_increment = 0
 	
-	if building._is_insulation_underway and building._is_renovation_underway:
-		# Les deux types de travaux sont en cours, progression divisée par 2
-		insulation_increment = progress_per_worker / 2
-		renovation_increment = progress_per_worker / 2
-	elif building._is_insulation_underway:
-		insulation_increment = progress_per_worker
-	elif building._is_renovation_underway:
+	if building._is_renovation_underway:
 		renovation_increment = progress_per_worker
-	
-	# Mise à jour de l'isolation
-	if building._is_insulation_underway:
-		building.addIsolation(insulation_increment* Building.coeffTempsInsulation)
-		if building.get_isolation() >= 100:
-			building.set_insulation_underway(false)
 	
 	# Mise à jour de l'inventaire
 	if building._is_renovation_underway:
@@ -67,28 +54,6 @@ static func advance_work(building: Building) -> void:
 			building.set_renovation_underway(false)
 
 
-
-# Lancer des travaux d'isolation
-static func start_insulation(building: Building) -> bool:
-	if building.get_ouvriers() <= 0:
-		print("Impossible de commencer les travaux : pas d'ouvriers disponibles.")
-		return false  # Pas d'ouvriers, pas de travaux
-	
-	if building._is_insulation_underway:
-		print("Travaux d'isolation déjà en cours pour le bâtiment", building.get_code())
-		return false  # Travaux déjà en cours
-	
-	# Vérification des bâtiments libres
-	var free_buildings = Building._buildingsDictionary.size() - Building._total_buildings_under_renovation
-	if not building._is_renovation_underway and free_buildings * 450 < Student.compute_nb():
-		print("Pas assez de bâtiments libres pour commencer les travaux.")
-		return false
-	
-	# Démarrer les travaux d'isolation
-	building.set_insulation_underway(true)
-	
-	print("Travaux d'isolation lancés pour le bâtiment", building.get_code())
-	return true
 
 # Lancer des travaux de rénovation
 static func start_renovation(building: Building) -> bool:
@@ -102,7 +67,7 @@ static func start_renovation(building: Building) -> bool:
 	
 	# Vérification des bâtiments libres
 	var free_buildings = Building._buildingsDictionary.size() - Building._total_buildings_under_renovation
-	if not building._is_insulation_underway and free_buildings * 450 < Student.compute_nb():
+	if free_buildings * 450 < Student.compute_nb():
 		print("Pas assez de bâtiments libres pour commencer les travaux.")
 		return false
 	
@@ -185,4 +150,3 @@ static func wear() -> void:
 		var code = Utils.dept_index_to_string(i)
 		var b = Building.get_building(code)
 		b.addInventory(-0.02 * 90) #soit environs 15 ans pour une détérioration total  
-		b.addIsolation(-0.015 * 90) #soit environs 20 ans pour une détérioration total  

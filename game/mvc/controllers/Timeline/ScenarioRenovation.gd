@@ -112,13 +112,9 @@ func init_data() -> void:
 	for b in old_builds:
 		# on reset les valeur
 		b.addInventory(-100)
-		b.addIsolation(-100)
-		# puis on réinitialise
 		# l'isolation et l'état est aléatoire et dépend de la difficulté
-		var isolation = int(Utils.randint_in_range(5,30) * GlobalData.adjust_dept_state())
 		var inventory = int(Utils.randint_in_range(5,30) * GlobalData.adjust_dept_state())
-		b.addInventory(isolation)
-		b.addIsolation(inventory)
+		b.addInventory(inventory)
 
 
 

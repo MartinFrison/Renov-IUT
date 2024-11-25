@@ -59,10 +59,9 @@ func close_app() -> void:
 
 
 func open_notif() -> void:
-	if !TimeManagement._pause:
-		scene = load("res://mvc/views/Node2D/NotifList/PanelNotifList.tscn")
-		var panelNotif = scene.instantiate()
-		add_child(panelNotif)
+	scene = load("res://mvc/views/Node2D/NotifList/PanelNotifList.tscn")
+	var panelNotif = scene.instantiate()
+	add_child(panelNotif)
 
 func open_bankrupt() -> void:
 		scene = load("res://mvc/views/Node2D/FinJeu/PanelBankrupt.tscn")
@@ -70,11 +69,10 @@ func open_bankrupt() -> void:
 		add_child(panelBankrupt)
 
 func open_building(id) -> void:
-	if !TimeManagement._pause:
-		scene = load("res://mvc/views/Node2D/BuildingAction/PanelBuildingAction.tscn")
-		var panelAction = scene.instantiate()
-		add_child(panelAction)
-		panelAction.init(id)
+	scene = load("res://mvc/views/Node2D/BuildingAction/PanelBuildingAction.tscn")
+	var panelAction = scene.instantiate()
+	add_child(panelAction)
+	panelAction.init(id)
 
 
 func _on_info_pressed() -> void:

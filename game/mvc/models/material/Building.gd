@@ -16,11 +16,9 @@ var _surface : int
 var _heating : bool
 var _maintenance_agents_nb : int
 var _code : String
-var _isolation : float
 var _inventory : float
 var _ouvriers : int = 0  # Nombre d'ouvriers
 var _grevistes : int = 0  # Nombre de grévistes
-var _is_insulation_underway : bool = false  # Indique si des travaux d'isolation sont en cours
 var _is_renovation_underway : bool = false  # Indique si des travaux de rénovation sont en cours
 var _budget : int
 var _pay_teacher : int = 0  # Paiement pour les enseignants
@@ -29,9 +27,8 @@ var _end_exam : float = 0.5 # difficulté de l'exam de fin d'année (0 à 1)
 
 
 # Constructeur de la classe
-func _init(age: int, isolation: int, surface: int, heating: bool, maintenance_agents_nb: int, code: String, inventory: int) -> void:
+func _init(age: int, surface: int, heating: bool, maintenance_agents_nb: int, code: String, inventory: int) -> void:
 	_age = age
-	_isolation = clamp(isolation, 0, 100)  # Limite l'isolation entre 0 et 100
 	_surface = surface
 	_heating = heating
 	_maintenance_agents_nb = maintenance_agents_nb
@@ -66,9 +63,6 @@ func get_budget() -> int:
 func get_age() -> int:
 	return _age
 
-func get_isolation() -> float:
-	return _isolation
-
 func get_inventory() -> float:
 	return _inventory
 	
@@ -86,9 +80,6 @@ func get_ouvriers() -> int:
 
 func get_grevistes() -> int:
 	return _grevistes
-
-func is_insulation_underway() -> bool:
-	return _is_insulation_underway
 
 func is_renovation_underway() -> bool:
 	return _is_renovation_underway
@@ -117,22 +108,10 @@ func set_pay_teacher(amount: int) -> void:
 func setHeat(heat: bool) -> void:
 	_heating = heat
 
-func setIsolation(value: float) -> void:
-	_isolation = clamp(value, 0, 100)  # Limite la valeur d'isolation entre 0 et 100
-	ObserverBuilding.notifyStateChanged()
-
 func setInventory(value: float) -> void:
 	_inventory = clamp(value, 0, 100)  # Limite la valeur d'inventaire entre 0 et 100
 	ObserverBuilding.notifyStateChanged()
 
-# Méthodes pour définir l'état des travaux
-func set_insulation_underway(underway: bool) -> void:
-	if underway and not _is_insulation_underway:
-		_is_insulation_underway = true
-		_total_buildings_under_renovation += 1
-	elif not underway and _is_insulation_underway:
-		_is_insulation_underway = false
-		_total_buildings_under_renovation -= 1
 
 func set_renovation_underway(underway: bool) -> void:
 	if underway and not _is_renovation_underway:
@@ -180,9 +159,6 @@ func rm_agent() -> void:
 	if _maintenance_agents_nb > 0:
 		_maintenance_agents_nb -= 1
 
-func addIsolation(value: int) -> void:
-	_isolation = clamp(_isolation + value, 0, 100)  # Limite la valeur d'isolation entre 0 et 100
-
 func addInventory(value: int) -> void:
 	_inventory = clamp(_inventory + value, 0, 100)  # Limite la valeur d'inventaire entre 0 et 100
 
@@ -198,16 +174,6 @@ func add_budget(amount: int) -> void:
 
 
 # Méthodes de travaux
-func start_insulation_work() -> void:
-	if not _is_insulation_underway:
-		_is_insulation_underway = true
-		_total_buildings_under_renovation += 1
-
-func stop_insulation_work() -> void:
-	if _is_insulation_underway:
-		_is_insulation_underway = false
-		_total_buildings_under_renovation -= 1
-
 func start_renovation_work() -> void:
 	if not _is_renovation_underway:
 		_is_renovation_underway = true
@@ -232,11 +198,6 @@ func convert_grevistes_to_ouvriers(n: int) -> void:
 
 
 
-# Temps estimer pour finir d'isoler le batiment en jour
-func estimated_insulation_worktime() -> int:
-	return (100-_isolation)/ (_ouvriers * coeffTempsInsulation)
-
-
 # Temps estimer pour finir de renover le batiment en jour
 func estimated_renovation_worktime() -> int:
-	return (100-_isolation)/ (_ouvriers * coeffTempsRenovation)
+	return (100-_inventory)/ (_ouvriers * coeffTempsRenovation)

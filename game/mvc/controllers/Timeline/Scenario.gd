@@ -79,7 +79,7 @@ func init_building() -> void:
 		var inventory = int(Utils.randint_in_range(20,100) * GlobalData.adjust_dept_state())
 		
 		var code = Utils.dept_index_to_string(i+1)
-		var b = Building.new(age,isolation,1000, false, 2, code, inventory)	
+		var b = Building.new(age,1000, false, 2, code, inventory)	
 		adjust_budget_building(b)
 		b.set_pay_teacher(2800)
 

@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvivp061m4t76"]
+
+[ext_resource type="Script" path="res://mvc/views/Node2D/ChoixDifficulty/ChoixDifficultyScript.gd" id="1_qcsjs"]
+[ext_resource type="Texture2D" uid="uid://dw3prma6xre2g" path="res://mvc/views/images/backgrounds/menu_v2.png" id="2_ptrd0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nk24h"]
+bg_color = Color(0, 0.143123, 0.276469, 1)
+
+[node name="PanelChoixScenario" type="Node2D"]
+z_index = 40
+script = ExtResource("1_qcsjs")
+
+[node name="menu" type="Node2D" parent="."]
+script = ExtResource("1_qcsjs")
+
+[node name="MapV1" type="Sprite2D" parent="menu"]
+position = Vector2(572, 265)
+scale = Vector2(1.12849, 1.10835)
+texture = ExtResource("2_ptrd0")
+
+[node name="easy" type="Button" parent="menu"]
+z_index = 1
+offset_left = 815.0
+offset_top = 13.0
+offset_right = 1090.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_nk24h")
+text = "Facile"
+
+[node name="medium" type="Button" parent="menu"]
+z_index = 1
+offset_left = 825.0
+offset_top = 138.0
+offset_right = 1100.0
+offset_bottom = 224.0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_nk24h")
+text = "Moyenne"
+
+[node name="suivant" type="Button" parent="menu"]
+z_index = 1
+offset_left = 827.0
+offset_top = 518.0
+offset_right = 1103.0
+offset_bottom = 602.0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_nk24h")
+text = "Suivant"
+
+[node name="Description" type="Label" parent="menu"]
+z_index = 1
+offset_left = 376.0
+offset_top = 57.0
+offset_right = 870.0
+offset_bottom = 139.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "Description"
+autowrap_mode = 1
+
+[node name="hard" type="Button" parent="menu"]
+z_index = 1
+offset_left = 822.0
+offset_top = 257.0
+offset_right = 1103.0
+offset_bottom = 343.0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_nk24h")
+text = "Dificile"
+
+[connection signal="pressed" from="menu/easy" to="." method="_on_easy_pressed"]
+[connection signal="pressed" from="menu/medium" to="." method="_on_medium_pressed"]
+[connection signal="pressed" from="menu/suivant" to="." method="_on_suivant_pressed"]
+[connection signal="pressed" from="menu/hard" to="." method="_on_hard_pressed"]
