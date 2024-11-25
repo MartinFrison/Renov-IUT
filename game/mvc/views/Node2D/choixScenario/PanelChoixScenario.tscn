@@ -59,7 +59,7 @@ offset_right = 1133.0
 offset_bottom = 630.0
 theme_override_font_sizes/font_size = 23
 theme_override_styles/normal = SubResource("StyleBoxFlat_nk24h")
-text = "Suivant"
+text = "Commencer"
 
 [node name="Description" type="Label" parent="menu"]
 z_index = 1
@@ -74,6 +74,30 @@ text = "Description"
 autowrap_mode = 3
 text_overrun_behavior = 3
 
+[node name="button_mode_standart" type="Button" parent="menu"]
+z_index = 1
+offset_left = 106.0
+offset_top = 174.0
+offset_right = 372.0
+offset_bottom = 260.0
+theme_override_font_sizes/font_size = 25
+theme_override_icons/icon = SubResource("Texture2DRD_71p1g")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nk24h")
+text = "Mode standart"
+
+[node name="button_mode_tuto" type="Button" parent="menu"]
+z_index = 1
+offset_left = 106.0
+offset_top = 67.0
+offset_right = 372.0
+offset_bottom = 153.0
+theme_override_font_sizes/font_size = 25
+theme_override_icons/icon = SubResource("Texture2DRD_71p1g")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nk24h")
+text = "Mode tutoriel"
+
 [connection signal="pressed" from="menu/button_election" to="." method="_on_button_election_pressed"]
 [connection signal="pressed" from="menu/button_renovation" to="." method="_on_button_renovation_pressed"]
 [connection signal="pressed" from="menu/suivant" to="." method="_on_suivant_pressed"]
+[connection signal="pressed" from="menu/button_mode_standart" to="." method="_on_button_mode_standart_pressed"]
+[connection signal="pressed" from="menu/button_mode_tuto" to="." method="_on_button_mode_tuto_pressed"]
