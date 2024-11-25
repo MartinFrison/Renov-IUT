@@ -111,8 +111,6 @@ func Event() -> bool:
 func mood_update(day : int) -> void:
 	# chauffage
 	heat_adjust_mood(day)
-	# propreté (dépend des agents d'entretien si les portes sont bloqué)
-	cleanliness_adjust_mood(day)
 	inventory_adjust_mood(day)
 	# porte bloquer
 	Study.door_adjust_mood(day)
@@ -141,26 +139,6 @@ static func heat_adjust_mood(day : int) -> void:
 			Study.boost_mood_student(code, value*day)
 
 
-
-# Ajuster le mood selon si les lieux sont propre ou non
-# La propreté dépend du nombre d'agent d'entretien et des si les portes sont bloqué
-static func cleanliness_adjust_mood(day : int) -> void:
-	for i in range(1,6):
-		var code = Utils.dept_index_to_string(i)
-		var build = Building.get_building(code)
-		#Formule 
-			#On suppose qu'il faut deux fois moins d'agent d'entretient
-			# si les portes des salles sont verrouiller car moins de salubrité
-		var agent_effect = build.get_agents_nb()*2 if build.isDoorLocked() else build.get_agents_nb()
-		var ratio = min((Student.compute_nb_per_dept(code) / agent_effect), Student.compute_nb_per_dept(code)*3)
-		var value = (-(ratio-200)) / (200*5*360)
-		
-		if value > 0:
-			Study.drop_mood_student(code, value*day)
-			Teaching.boost_mood_teacher(code, value*day)
-		else:
-			Study.boost_mood_student(code, value*day)
-			Teaching.boost_mood_teacher(code, value*day)
 
 # Ajuster le mood selon l'état des lieux des batiments
 static func inventory_adjust_mood(day : int) -> void:

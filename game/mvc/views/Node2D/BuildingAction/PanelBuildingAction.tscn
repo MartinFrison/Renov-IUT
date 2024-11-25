@@ -78,22 +78,6 @@ offset_right = 230.0
 offset_bottom = 139.0
 text = "engager ouvrier"
 
-[node name="fire_agent" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 0
-offset_left = 280.0
-offset_top = 66.0
-offset_right = 480.0
-offset_bottom = 98.0
-text = "virer agent"
-
-[node name="hire_agent" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 0
-offset_left = 30.0
-offset_top = 66.0
-offset_right = 230.0
-offset_bottom = 98.0
-text = "engager agent"
-
 [node name="heat" type="Button" parent="PanelGlobal/PanelAction"]
 layout_mode = 0
 offset_left = 280.0
@@ -290,8 +274,6 @@ text = "Nom"
 [connection signal="pressed" from="PanelGlobal/PanelAction/lock" to="." method="_on_lock_pressed"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/fire_worker" to="." method="_on_fire_worker_pressed"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/hire_worker" to="." method="_on_hire_worker_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/fire_agent" to="." method="_on_fire_agent_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/hire_agent" to="." method="_on_hire_agent_pressed"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/heat" to="." method="_on_heat_pressed"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/increase_pay" to="." method="_on_increase_pay_pressed"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/add_exem_end" to="." method="_on_add_exem_end_pressed"]

@@ -14,7 +14,6 @@ var _age : int
 var _doorLocked : bool
 var _surface : int
 var _heating : bool
-var _maintenance_agents_nb : int
 var _code : String
 var _inventory : float
 var _ouvriers : int = 0  # Nombre d'ouvriers
@@ -27,11 +26,10 @@ var _end_exam : float = 0.5 # difficulté de l'exam de fin d'année (0 à 1)
 
 
 # Constructeur de la classe
-func _init(age: int, surface: int, heating: bool, maintenance_agents_nb: int, code: String, inventory: int) -> void:
+func _init(age: int, surface: int, heating: bool, code: String, inventory: int) -> void:
 	_age = age
 	_surface = surface
 	_heating = heating
-	_maintenance_agents_nb = maintenance_agents_nb
 	_code = code
 	_inventory = clamp(inventory, 0, 100)  # Limite l'inventaire entre 0 et 100
 	_buildingsDictionary[code] = self
@@ -71,9 +69,6 @@ func get_surface() -> int:
 
 func is_heating() -> bool:
 	return _heating
-
-func get_agents_nb() -> int:
-	return _maintenance_agents_nb
 
 func get_ouvriers() -> int:
 	return _ouvriers
@@ -151,13 +146,6 @@ func add_ouvrier() -> void:
 func remove_ouvrier() -> void:
 	if _ouvriers > 0:
 		_ouvriers -= 1
-
-func add_agent() -> void:
-	_maintenance_agents_nb += 1
-
-func rm_agent() -> void:
-	if _maintenance_agents_nb > 0:
-		_maintenance_agents_nb -= 1
 
 func addInventory(value: int) -> void:
 	_inventory = clamp(_inventory + value, 0, 100)  # Limite la valeur d'inventaire entre 0 et 100

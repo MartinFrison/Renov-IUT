@@ -47,9 +47,6 @@ func show_data() -> void:
 	node = get_node("PanelGlobal/PanelStat/nb_teacher")
 	node.text = "Nombre d'enseignants : %s" % [Teacher.compute_nb_per_dept(code)]
 	
-	node = get_node("PanelGlobal/PanelStat/nb_agent")
-	node.text = "Nombre d'agents d'entretiens : %s" % [build.get_agents_nb()]
-	
 	node = get_node("PanelGlobal/PanelStat/nb_worker")
 	node.text = "Nombre d'ouvriers : %s" % [build.get_ouvriers()]
 	
@@ -116,16 +113,6 @@ func _on_fire_worker_pressed() -> void:
 
 func _on_hire_worker_pressed() -> void:
 	BuildingManagement.hireWorker(code)
-	show_data()
-
-
-func _on_fire_agent_pressed() -> void:
-	BuildingManagement.fireAgent(code)
-	show_data()
-
-
-func _on_hire_agent_pressed() -> void:
-	BuildingManagement.hireAgent(code)
 	show_data()
 
 

@@ -30,9 +30,7 @@ static func get_description() -> String:
 func test_end_game_condition() -> bool:
 	# On demande au moins un taux de 95% pour l'état des lieu et l'isolation de chaque batiment
 	for b in old_builds:
-		if b.get_isolation() < 95:
-			return false
-		elif b.get_inventory() < 95:
+		if b.get_inventory() < 95:
 			return false
 	return true
 
@@ -57,18 +55,6 @@ func mid_game() -> void:
 	var b = false
 	var msg
 	for i in old_builds.size():
-		if old_builds[i].get_isolation() >= 100:
-			if !_progression[1+i*4]:
-				_progression[1+i*4] = true
-				msg = "L'isolation du batiment %s est terminé !" % [old_builds[i].get_code()]
-				b = true
-				break
-		if old_builds[i].get_isolation() >= 50:
-			if !_progression[0+i*4]:
-				_progression[0+i*4] = true
-				msg = "L'isolation du batiment %s avance bien ! Continuer ainsi" % [old_builds[i].get_code()]
-				b = true
-				break
 		if old_builds[i].get_inventory() >= 100:
 			if !_progression[3+i*4]:
 				_progression[3+i*4] = true

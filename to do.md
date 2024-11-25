@@ -39,7 +39,8 @@ Code:
 
 - Fusion de la rénovation et isolation : Martin
 - Fusion des agents d'entretien et des ouvriers : Martin
-- Fusion choix panel
+- Fusion choix panel : Martin
+
 - Adaptation du code à un pas trimestriels : Martin
 - Condition d'embauche : Martin
 - Optimisation global : Martin
