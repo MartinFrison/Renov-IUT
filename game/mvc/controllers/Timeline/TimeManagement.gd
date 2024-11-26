@@ -13,6 +13,9 @@ func _init(scenario: Scenario) -> void:
 
 
 func _ready() -> void:
+	await RenovIUTApp.app.get_tree().create_timer(2).timeout
+	BulleGestion.send_notif("AAA","aaaaa",0)
+	BulleGestion.send_notif("BBB","bbbbb",0)
 	pass
 
 

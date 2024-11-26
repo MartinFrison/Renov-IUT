@@ -38,17 +38,15 @@ Code:
 - Création du menu (bouton quitter, option) : Yasmine
 
 
-
+- Création d'une file d'attente pour les notifs (pour quand il y en a plusieur d'un coup) : Martin
 - Gestion des grandes vacances : Martin
 - Ajuster la satisfaction des profs selon le salaire : Martin
-- Ecran de chargement avec des conseil
+- Ecran de chargement avec des conseil : Martin
 
-
+ 
 - Ajout de quelque évenements aléatoire simple
 - Ajout d'un tutoriel si la difficulté est facile
 - Ajout d'un panel récapitulatif de stat détaillé
-- Création d'une file d'attente pour les notifs (pour quand il y en a plusieur d'un coup)
-
 
 
 

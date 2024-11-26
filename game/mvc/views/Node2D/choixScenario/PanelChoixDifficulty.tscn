@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvivp061m4t76"]
+[gd_scene load_steps=4 format=3 uid="uid://bumtodlv6xmi2"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/ChoixDifficulty/ChoixDifficultyScript.gd" id="1_qcsjs"]
 [ext_resource type="Texture2D" uid="uid://dw3prma6xre2g" path="res://mvc/views/images/backgrounds/menu_v2.png" id="2_ptrd0"]

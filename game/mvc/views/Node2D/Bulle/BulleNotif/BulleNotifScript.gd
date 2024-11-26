@@ -6,15 +6,17 @@ var tick = 0
 
 func _ready() -> void:
 	self.position = Vector2(450, 0)
-
+	delete()
 	while true:
 		var y_vector = -(abs(tick-50)) * (tick-50)/550
 		self.position += Vector2(0, y_vector)
 		tick += 1
-		await get_tree().create_timer(0.03).timeout
+		await get_tree().create_timer(0.02).timeout
 
 
-
+func delete() -> void:
+	await RenovIUTApp.app.get_tree().create_timer(3).timeout
+	queue_free()
 
 
 func init(objet : String, message : String, type : int) -> void:

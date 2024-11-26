@@ -86,7 +86,7 @@ static func get_if_fulltime(id : int) -> bool:
 # Setters
 static func set_mood(id : int, coeff: float) -> void:
 	coeff = max(min(1,coeff),0)
-	var query = "UPDATE Teachers SET mood=mood*? WHERE id=?"
+	var query = "UPDATE Teachers SET mood=? WHERE id=?"
 	if !Utils.db.execute(query, [coeff, id]):
 		return
 
