@@ -17,7 +17,6 @@ var _heating : bool
 var _code : String
 var _inventory : float
 var _ouvriers : int = 0  # Nombre d'ouvriers
-var _grevistes : int = 0  # Nombre de grévistes
 var _is_renovation_underway : bool = false  # Indique si des travaux de rénovation sont en cours
 var _budget : int
 var _pay_teacher : int = 0  # Paiement pour les enseignants
@@ -33,7 +32,6 @@ func _init(age: int, surface: int, heating: bool, code: String, inventory: int) 
 	_code = code
 	_inventory = clamp(inventory, 0, 100)  # Limite l'inventaire entre 0 et 100
 	_buildingsDictionary[code] = self
-	_grevistes = 0
 	_budget = 0
 	_ouvriers = 0
 	_pay_teacher = 0  # Initialisation à 0
@@ -72,9 +70,6 @@ func is_heating() -> bool:
 
 func get_ouvriers() -> int:
 	return _ouvriers
-
-func get_grevistes() -> int:
-	return _grevistes
 
 func is_renovation_underway() -> bool:
 	return _is_renovation_underway
@@ -152,8 +147,6 @@ func addInventory(value: int) -> void:
 
 func add_budget(amount: int) -> void:
 	_budget = max(_budget + amount, 0) 
-	ObserverGlobalData.notifyBudgetChanged()
-
 
 
 
@@ -171,16 +164,6 @@ func stop_renovation_work() -> void:
 	if _is_renovation_underway:
 		_is_renovation_underway = false
 		_total_buildings_under_renovation -= 1
-
-func convert_ouvriers_to_grevistes(n: int) -> void:
-	if n > 0 and _ouvriers >= n:
-		_ouvriers -= n
-		_grevistes += n
-
-func convert_grevistes_to_ouvriers(n: int) -> void:
-	if n > 0 and _grevistes >= n:
-		_grevistes -= n
-		_ouvriers += n
 
 
 

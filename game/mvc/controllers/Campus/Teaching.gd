@@ -3,6 +3,7 @@ extends RefCounted
 
 const teachers_base_nb: Array = [21, 24, 18, 27, 18] # chiffres réels tirés du site officiel de l'IUT Robert Schuman
 
+
 # Fonction pour embaucher un professeur dans un département spécifique
 static func hire_teachers(dept: String):
 	#vérifie si il y a moins de 30 profs dans le batiment
@@ -13,9 +14,9 @@ static func hire_teachers(dept: String):
 	#vérifie si un prof est prêt à être recruté
 	if Teacher.avg_mood_per_dept(dept) < 0.6:
 		print("Pas de prof disponible")
-	
-	Teacher.add_teacher(dept,true)
-	print("Embauche d'un professeurs pour le département %s" % dept)
+	else:
+		Teacher.add_teacher(dept,true)
+		print("Embauche d'un professeurs pour le département %s" % dept)
 
 
 
@@ -36,10 +37,11 @@ static func populate():
 	var nb_teachers = 0
 	for i in range(1,6): # par département
 		nb_teachers = teachers_base_nb[i-1]
+		print(i)
+		print(Teacher.compute_nb())
 		for j in range (0, nb_teachers):
 			Teacher.add_teacher(Utils.dept_index_to_string(i), true) # Au départ, on n'embauchera que des profs titulaires
-
-
+		print(Teacher.compute_nb())
 
 static func drop_mood_teacher(dept : String, value : float) -> void:
 	value = max(0, value)

@@ -89,7 +89,7 @@ static func set_mood(id : int, coeff: float) -> void:
 	var query = "UPDATE Teachers SET mood=mood*? WHERE id=?"
 	if !Utils.db.execute(query, [coeff, id]):
 		return
-	ObserverPopulation.notifySatisfactionChanged()
+
 
 static func set_fulltime(id : int, fulltime: bool) -> void:
 	var query = "UPDATE Teachers SET full_time=? WHERE id=?"

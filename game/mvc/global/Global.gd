@@ -114,12 +114,13 @@ func fill_notifications_from_csv(file_path : String):
 
 
 # Indexation : fonctions utilitaires
-func dept_string_to_index(dept: String) -> int:
-	var query = "SELECT id FROM Depts WHERE lower(name) = lower(?)"
-	var result = db.get_entries(query, [dept])
-	if result.size() > 0:
-		return result[0]["id"] 
-	return -1
+#func dept_string_to_index(dept: String) -> int:
+#	var query = "SELECT id FROM Depts WHERE lower(name) = lower(?)"
+#	var result = db.get_entries(query, [dept])
+#	if result.size() > 0:
+#		return result[0]["id"] 
+#	return -1
+
 
 func dept_index_to_string(index: int) -> String:
 	match index:
@@ -137,7 +138,7 @@ func dept_index_to_string(index: int) -> String:
 			return "Inconnu"  # Gestion des cas non définis
 
 
-func source_string_to_index(source: String) -> int:
+func dept_string_to_index(source: String) -> int:
 	match source:
 		"Chimie":
 			return 1
@@ -154,12 +155,26 @@ func source_string_to_index(source: String) -> int:
 
 
 	
+	
+	
+	
+	
+	
+	
 func source_index_to_string(index : int) -> String:
 	var query = "SELECT name FROM Sources WHERE id=?"
 	var result = db.get_entries(query, [index])
 	if result.size() > 0:
 		return result[0]["name"]
 	return ""
+
+
+func source_string_to_index(code : String) -> int:
+	var query = "SELECT id FROM Sources WHERE name=?"
+	var result = db.get_entries(query, [code])
+	if result.size() > 0:
+		return result[0]["id"]
+	return -1
 
 static func get_month_name(month: int) -> String:
 	# Tableau des mois

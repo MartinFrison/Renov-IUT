@@ -6,12 +6,19 @@ func _ready() -> void:
 	ObserverGlobalData.addObserver(self)
 	ObserverPopulation.addObserver(self)
 	notifyBudgetChanged()
-	notifyLevelChanged()
-	notifySatisfactionChanged()
-	updateDate()
+	notifyDateChanged()
+	while true:
+		notifyLevelChanged()
+		notifySatisfactionChanged()
+		await wait(1)
 
-func _process(delta: float) -> void:
-	updateDate()
+
+
+func wait(seconds : float) -> void:
+	var timer = get_tree().create_timer(seconds)
+	await timer.timeout
+
+
 
 
 func notifyBudgetChanged() -> void:
@@ -30,6 +37,6 @@ func notifySatisfactionChanged() -> void:
 	label.text = str(Teacher.avg_mood()*100) + "%"
 
 
-func updateDate() -> void: 
+func notifyDateChanged() -> void: 
 	var label = get_node("date")
 	label.text = GlobalData.get_date()
