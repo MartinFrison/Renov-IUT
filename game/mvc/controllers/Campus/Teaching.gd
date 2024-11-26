@@ -64,3 +64,23 @@ static func increase_salary(dept : String) -> void:
 
 static func teacher_resign() -> void:
 	Teacher.rm_teacher_by_mood(0.2);
+
+
+
+
+
+# Ajuster la satisfaction selon le salaire
+static func pay_adjust_mood(day: int) -> void:
+	for i in range(1,6):
+		var value = 0
+		var code = Utils.dept_index_to_string(i)
+		if Building.get_building(code).get_pay_teacher() >= 4400:
+			value = 0.2
+		elif Building.get_building(code).get_pay_teacher() >= 3600:
+			value = 0.1
+		
+		value = value /360 
+		if value > 0:
+			Study.boost_level_student(code, value * day)
+		else:
+			Study.drop_level_student(code, value * day)

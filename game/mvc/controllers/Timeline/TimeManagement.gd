@@ -13,9 +13,6 @@ func _init(scenario: Scenario) -> void:
 
 
 func _ready() -> void:
-	await RenovIUTApp.app.get_tree().create_timer(2).timeout
-	BulleGestion.send_notif("AAA","aaaaa",0)
-	BulleGestion.send_notif("BBB","bbbbb",0)
 	pass
 
 
@@ -96,13 +93,16 @@ func Event() -> bool:
 	return false
 
 
+# Ajuste la satisfaction selon divers critères
 func mood_update(day : int) -> void:
 	# chauffage
 	heat_adjust_mood(day)
 	inventory_adjust_mood(day)
 	# porte bloquer
 	Study.door_adjust_mood(day)
+	#Selon le salaire des profs
 
+# Ajuste le niveau etudiant selon divers critères
 func level_update(day) -> void:
 	# Ajustement selon le nombre de prof et leur moods
 	Study.teacher_adjust_level(day)
