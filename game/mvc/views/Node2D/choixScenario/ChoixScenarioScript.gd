@@ -5,19 +5,18 @@ extends Node2D
 var _IUT : IUTFacade
 var _app : RenovIUTApp
 var scenario
-var difficulty
+var difficulty = 2
 
 func init(iut : IUTFacade, app : RenovIUTApp) -> void:
 	_IUT = iut
 	_app = app
-	_on_button_mode_tuto_pressed()
+	_on_switch_tuto_option_toggled(false)
 	_on_button_election_pressed()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#$audioSonore.play()
 	pass
-
 
 
 func _on_button_election_pressed() -> void:
@@ -30,18 +29,9 @@ func _on_button_renovation_pressed() -> void:
 	var desc = get_node("menu/Description")
 	desc.text = ScenarioRenovation.get_description()
 
-func _on_button_mode_tuto_pressed() -> void:
-	difficulty = 1
-	var desc = get_node("menu/Description")
-	desc.text = "Vous êtes en stage, relax :-) Chez nous, vous êtes accompagné."
-
-
-func _on_button_mode_standart_pressed() -> void:
-	difficulty = 2
-	var desc = get_node("menu/Description")
-	desc.text = "Rien ne va à l'IUT... La balle est dans votre camp, M. le Directeur !"
-
-
 func _on_suivant_pressed() -> void:
-	_IUT.chooseMode(scenario, difficulty)
+	_IUT.chooseMode(scenario, difficulty) # Par défaut, c'est le mode standard / défi qui est lancé
 	_app.startGame()
+
+func _on_switch_tuto_option_toggled(toggled_on: bool) -> void:
+	difficulty = 1 # Choisir le mode de jeu simplifié, avec tuto

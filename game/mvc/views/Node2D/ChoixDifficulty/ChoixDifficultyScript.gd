@@ -4,7 +4,7 @@ extends Node2D
 
 var _IUT : IUTFacade
 var _app : RenovIUTApp
-var difficulty
+var difficulty = 2 # Par défaut, on met la difficulté défi (cf. choix du scénario)
 
 
 func init(iut : IUTFacade, app : RenovIUTApp) -> void:
