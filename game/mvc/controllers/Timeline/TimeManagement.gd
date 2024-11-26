@@ -101,12 +101,13 @@ func mood_update(day : int) -> void:
 	# porte bloquer
 	Study.door_adjust_mood(day)
 	#Selon le salaire des profs
+	Teaching.pay_adjust_mood(day)
 
 # Ajuste le niveau etudiant selon divers critères
 func level_update(day) -> void:
 	# Ajustement selon le nombre de prof et leur moods
 	Study.teacher_adjust_level(day)
-
+	
 
 
 
