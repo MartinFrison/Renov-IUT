@@ -2,4 +2,4 @@
 .godot/
 /android/
 
-game/data/iut_tables.db
+data/iut_tables.db
