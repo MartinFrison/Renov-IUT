@@ -37,21 +37,15 @@ Code:
 - Gestion des fonds : Elena
 - Création du menu (bouton quitter, option) : Yasmine
 
-- Fusion de la rénovation et isolation : Martin
-- Fusion des agents d'entretien et des ouvriers : Martin
-- Adaptation du code à un pas trimestriels : Martin
-- Condition d'embauche : Martin
-- Optimisation global : Martin
 
+- Ajuster la satisfaction des profs selon le salaire : Martin
+- Gestion des grandes vacances : Martin
 
-- Gestion des grandes vacances
+ 
 - Ajout de quelque évenements aléatoire simple
 - Ajout d'un tutoriel si la difficulté est facile
 - Ajout d'un panel récapitulatif de stat détaillé
-- Ecran de chargement avec des conseil 
-- Création d'une file d'attente pour les notifs (pour quand il y en a plusieur d'un coup)
-
-
+- Gestion de l'attractivité
 
 
 

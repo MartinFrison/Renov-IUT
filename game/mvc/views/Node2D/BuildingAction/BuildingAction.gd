@@ -10,7 +10,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	TimeManagement.pause(true)
+	pass
 
 func init(id : int) -> void:
 	code = Utils.dept_index_to_string(id)
@@ -47,30 +47,14 @@ func show_data() -> void:
 	node = get_node("PanelGlobal/PanelStat/nb_teacher")
 	node.text = "Nombre d'enseignants : %s" % [Teacher.compute_nb_per_dept(code)]
 	
-	node = get_node("PanelGlobal/PanelStat/nb_agent")
-	node.text = "Nombre d'agents d'entretiens : %s" % [build.get_agents_nb()]
-	
 	node = get_node("PanelGlobal/PanelStat/nb_worker")
 	node.text = "Nombre d'ouvriers : %s" % [build.get_ouvriers()]
 	
-	node = get_node("PanelGlobal/PanelStat/insulation")
-	var n = build.get_isolation()
-	if n < 25:
-		n = "Déplorable"
-	elif n < 50:
-		n = "Mauvaise"
-	elif n < 75:
-		n = "Bonne"
-	else:
-		n = "Très bonne"
+
 	
-	var w = ""
-	if build.is_insulation_underway():
-		w = "(en travaux)"
-	node.text = "Isolation du batiment : %s %s" % [n, w]
 	
 	node = get_node("PanelGlobal/PanelStat/renovation")
-	n = build.get_inventory()
+	var n = build.get_inventory()
 	if n < 25:
 		n = "Déplorable"
 	elif n < 50:
@@ -80,7 +64,7 @@ func show_data() -> void:
 	else:
 		n = "Très bon"
 	
-	w = ""
+	var w = ""
 	if build.is_renovation_underway():
 		w = "(en travaux)"
 	node.text = "Etat du batiment : %s %s" % [n, w]
@@ -112,11 +96,6 @@ func _on_fire_teacher_pressed() -> void:
 	show_data()
 
 
-func _on_insule_pressed() -> void:
-	BuildingManagement.start_insulation(build)
-	show_data()
-
-
 func _on_renove_pressed() -> void:
 	BuildingManagement.start_renovation(build)
 	show_data()
@@ -137,16 +116,6 @@ func _on_hire_worker_pressed() -> void:
 	show_data()
 
 
-func _on_fire_agent_pressed() -> void:
-	BuildingManagement.fireAgent(code)
-	show_data()
-
-
-func _on_hire_agent_pressed() -> void:
-	BuildingManagement.hireAgent(code)
-	show_data()
-
-
 func _on_heat_pressed() -> void:
 	BuildingManagement.switchHeat(code)
 	show_data()
@@ -154,7 +123,6 @@ func _on_heat_pressed() -> void:
 
 
 func _on_close_pressed() -> void:
-	TimeManagement.pause(false)
 	queue_free()
 
 

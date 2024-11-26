@@ -10,4 +10,10 @@ static func notifyBudgetChanged() -> void:
 	for o in Observer:
 		if o.has_method("notifyBudgetChanged"):
 			var c : Callable = Callable(o, "notifyBudgetChanged")
-			#c.call()
+			c.call()
+
+static func notifyDateChanged() -> void:
+	for o in Observer:
+		if o.has_method("notifyDateChanged"):
+			var c : Callable = Callable(o, "notifyDateChanged")
+			c.call()

@@ -9,7 +9,6 @@ var buttons : Array[Button]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	z_index = 2
-	TimeManagement.pause(true)
 	notif = Notification.get_all_ids()
 	page = 0	
 	open_page()
@@ -57,5 +56,4 @@ func notif_pressed(id : int) -> void:
 
 
 func _on_close_pressed() -> void:
-	TimeManagement.pause(false)
 	queue_free()

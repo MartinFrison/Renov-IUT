@@ -6,11 +6,10 @@ var _scenario: Scenario
 var _time: TimeManagement
 var _id
 
-func chooseScenario(id : int) -> void:
-	_id = id
 
-func chooseDifficulty(value : int) -> void:
-	GlobalData.set_difficulty(value)
+func chooseMode(scenario : int, difficulty) -> void:
+	_id = scenario
+	GlobalData.set_difficulty(difficulty)
 
 
 func startGame() -> void:

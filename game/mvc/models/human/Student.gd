@@ -99,17 +99,15 @@ static func set_year(id : int, new_year: int) -> void:
 
 static func set_mood(id : int, coeff: float) -> void:
 	coeff = max(min(1,coeff),0)
-	var query = "UPDATE Students SET mood=mood*? WHERE id=?"
+	var query = "UPDATE Students SET mood=? WHERE id=?"
 	if !Utils.db.execute(query, [coeff, id]):
 		return
-	ObserverPopulation.notifySatisfactionChanged()
 
 static func set_level(id : int, coeff: float) -> void:
 	coeff = max(min(1,coeff),0)
-	var query = "UPDATE Students SET level=level*? WHERE id=?"
+	var query = "UPDATE Students SET level=? WHERE id=?"
 	if !Utils.db.execute(query, [coeff, id]):
 		return
-	ObserverPopulation.notifyLevelChanged()
 
 # Stats
 static func compute_nb_per_dept(dept : String) -> float:

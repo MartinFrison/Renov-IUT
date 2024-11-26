@@ -30,9 +30,7 @@ static func get_description() -> String:
 func test_end_game_condition() -> bool:
 	# On demande au moins un taux de 95% pour l'état des lieu et l'isolation de chaque batiment
 	for b in old_builds:
-		if b.get_isolation() < 95:
-			return false
-		elif b.get_inventory() < 95:
+		if b.get_inventory() < 95:
 			return false
 	return true
 
@@ -57,18 +55,6 @@ func mid_game() -> void:
 	var b = false
 	var msg
 	for i in old_builds.size():
-		if old_builds[i].get_isolation() >= 100:
-			if !_progression[1+i*4]:
-				_progression[1+i*4] = true
-				msg = "L'isolation du batiment %s est terminé !" % [old_builds[i].get_code()]
-				b = true
-				break
-		if old_builds[i].get_isolation() >= 50:
-			if !_progression[0+i*4]:
-				_progression[0+i*4] = true
-				msg = "L'isolation du batiment %s avance bien ! Continuer ainsi" % [old_builds[i].get_code()]
-				b = true
-				break
 		if old_builds[i].get_inventory() >= 100:
 			if !_progression[3+i*4]:
 				_progression[3+i*4] = true
@@ -112,13 +98,9 @@ func init_data() -> void:
 	for b in old_builds:
 		# on reset les valeur
 		b.addInventory(-100)
-		b.addIsolation(-100)
-		# puis on réinitialise
 		# l'isolation et l'état est aléatoire et dépend de la difficulté
-		var isolation = int(Utils.randint_in_range(5,30) * GlobalData.adjust_dept_state())
 		var inventory = int(Utils.randint_in_range(5,30) * GlobalData.adjust_dept_state())
-		b.addInventory(isolation)
-		b.addIsolation(inventory)
+		b.addInventory(inventory)
 
 
 
@@ -143,7 +125,7 @@ func adjust_student_level(liste) -> void:
 		var dept = Student.get_dept(i)
 		var level =  Utils.randfloat_in_square_range(GlobalData.adjust_level()*0.4,GlobalData.adjust_level()*1)
 		# Ajuste le level selon la difficulté des exams d'entrée de son département
-		level += (1-level) * (1-coeff_exam[Utils.dept_string_to_index(dept)])
+		level += (1-level) * ((1-coeff_exam[Utils.dept_string_to_index(dept)])*0.4)
 		Student.set_level(i,level)
 
 # Ajuster la satisfaction des étudiants en appliquant un coefficient

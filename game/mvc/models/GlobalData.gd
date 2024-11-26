@@ -55,7 +55,15 @@ static func incrementDay() -> void:
 	if _month > 12:
 		_month = 1
 		_year += 1
+	ObserverGlobalData.notifyDateChanged()
 
+#Avance de un trimestre
+static func incrementTrimestre() -> void:
+	_month += 3
+	if _month > 12:
+		_month = _month-12
+		_year += 1
+	ObserverGlobalData.notifyDateChanged()
 
 #Renvoie vrai si c'est le premier du mois
 static func isNewMonth() -> bool:
@@ -63,7 +71,7 @@ static func isNewMonth() -> bool:
 
 #Renvoie vrai si c'est la fin d'année
 static func isEndofYear() -> bool:
-	return _month==7	
+	return _month==6
 
 #Renvoie vrai si c'est la fin d'année
 static func isStartofYear() -> bool:

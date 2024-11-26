@@ -51,5 +51,4 @@ static func try_expense_dept(amount : int, dept : String) -> bool:
 
 # Fonction appeler si on est en faillite 
 static func bankrupt() -> void:
-	TimeManagement.pause(true)
 	RenovIUTApp.app.open_bankrupt()

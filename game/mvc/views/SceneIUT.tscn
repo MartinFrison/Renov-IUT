@@ -90,6 +90,13 @@ offset_right = 864.0
 offset_bottom = 339.0
 text = "chimie"
 
+[node name="Next" type="Button" parent="."]
+offset_left = 864.0
+offset_top = 523.0
+offset_right = 957.0
+offset_bottom = 559.0
+text = "Next"
+
 [node name="Vue3D" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Vue3D"]
@@ -165,6 +172,7 @@ layout_mode = 2
 [connection signal="pressed" from="info_com" to="." method="_on_info_com_pressed"]
 [connection signal="pressed" from="info" to="." method="_on_info_pressed"]
 [connection signal="pressed" from="chimie" to="." method="_on_chimie_pressed"]
+[connection signal="pressed" from="Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="menu/PopupPanel/VBoxContainer/Quitter" to="menu" method="_on_QuitterButton_pressed"]
 [connection signal="pressed" from="menu/PopupPanel/VBoxContainer/FermerMenu" to="menu" method="_on_FermerMenuButton_pressed"]
 [connection signal="pressed" from="menu/PopupPanel/VBoxContainer/OuvrirPanel" to="menu" method="_on_OuvrirPanelButton_pressed"]

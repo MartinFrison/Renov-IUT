@@ -5,7 +5,6 @@ static var app : RenovIUTApp
 var scene
 var illkirch : IUTFacade
 var panelChoixScenario : Node2D
-var panelChoixDifficulty : Node2D
 
 
 
@@ -26,24 +25,13 @@ func _ready() -> void:
 		panelChoixScenario.init(illkirch, self)
 
 
-func choiceDifficulty() -> void:
+
+
+
+func startGame() -> void:
 	if panelChoixScenario:
 		print("On va supprimer le panel.")
 		panelChoixScenario.queue_free()  # Marquer le nœud pour suppression
-	else:
-		print("Le panel est déjà supprimé.")
-		
-	scene = load("res://mvc/views/Node2D/choixDifficulty/PanelChoixDifficulty.tscn")
-	panelChoixDifficulty = scene.instantiate()
-	add_child(panelChoixDifficulty)
-	if panelChoixDifficulty.has_method("init"):
-		panelChoixDifficulty.init(illkirch, self)
-
-
-func start_game() -> void:
-	if panelChoixScenario:
-		print("On va supprimer le panel.")
-		panelChoixDifficulty.queue_free()  # Marquer le nœud pour suppression
 	else:
 		print("Le panel est déjà supprimé.")
 		
@@ -59,10 +47,9 @@ func close_app() -> void:
 
 
 func open_notif() -> void:
-	if !TimeManagement._pause:
-		scene = load("res://mvc/views/Node2D/NotifList/PanelNotifList.tscn")
-		var panelNotif = scene.instantiate()
-		add_child(panelNotif)
+	scene = load("res://mvc/views/Node2D/NotifList/PanelNotifList.tscn")
+	var panelNotif = scene.instantiate()
+	add_child(panelNotif)
 
 func open_bankrupt() -> void:
 		scene = load("res://mvc/views/Node2D/FinJeu/PanelBankrupt.tscn")
@@ -70,11 +57,10 @@ func open_bankrupt() -> void:
 		add_child(panelBankrupt)
 
 func open_building(id) -> void:
-	if !TimeManagement._pause:
-		scene = load("res://mvc/views/Node2D/BuildingAction/PanelBuildingAction.tscn")
-		var panelAction = scene.instantiate()
-		add_child(panelAction)
-		panelAction.init(id)
+	scene = load("res://mvc/views/Node2D/BuildingAction/PanelBuildingAction.tscn")
+	var panelAction = scene.instantiate()
+	add_child(panelAction)
+	panelAction.init(id)
 
 
 func _on_info_pressed() -> void:
@@ -91,3 +77,7 @@ func _on_tech_co_pressed() -> void:
 
 func _on_genie_civil_pressed() -> void:
 	open_building(2)
+
+
+func _on_next_pressed() -> void:
+	illkirch._time.next_Trimestre()
