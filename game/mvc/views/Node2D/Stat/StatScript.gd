@@ -10,13 +10,8 @@ func _ready() -> void:
 	while true:
 		notifyLevelChanged()
 		notifySatisfactionChanged()
-		await wait(1)
+		await get_tree().create_timer(1).timeout
 
-
-
-func wait(seconds : float) -> void:
-	var timer = get_tree().create_timer(seconds)
-	await timer.timeout
 
 
 

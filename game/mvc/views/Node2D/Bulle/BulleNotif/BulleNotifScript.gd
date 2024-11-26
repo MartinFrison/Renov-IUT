@@ -7,10 +7,14 @@ var tick = 0
 func _ready() -> void:
 	self.position = Vector2(450, 0)
 
-func _process(delta: float) -> void:
-	var y_vector = -(abs(tick-50)) * (tick-50)/550
-	self.position += Vector2(0, y_vector)
-	tick += 1
+	while true:
+		var y_vector = -(abs(tick-50)) * (tick-50)/550
+		self.position += Vector2(0, y_vector)
+		tick += 1
+		await get_tree().create_timer(0.03).timeout
+
+
+
 
 
 func init(objet : String, message : String, type : int) -> void:

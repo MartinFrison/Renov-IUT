@@ -77,3 +77,7 @@ func _on_tech_co_pressed() -> void:
 
 func _on_genie_civil_pressed() -> void:
 	open_building(2)
+
+
+func _on_next_pressed() -> void:
+	illkirch._time.next_Trimestre()

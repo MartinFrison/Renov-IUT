@@ -13,70 +13,55 @@ func _init(scenario: Scenario) -> void:
 
 
 func _ready() -> void:
-	tick()
+	pass
 
 
-#Traitement du jeu jour par jour
-func tick():
-	await wait(1)
+
+# Execute toutes les actions d'un trimestre
+func next_Trimestre():
+	GlobalData.incrementTrimestre()
+
+	# Appelle des évenements
+	Event()
 	
-	#Expense.expense_global(2500000)
+	#Avancement des travaux sur les batiments
+	for i in 5:
+		var c = Utils.dept_index_to_string(i+1)
+		var build = Building.get_building(Utils.dept_index_to_string(i+1))
+		BuildingManagement.advance_work(build)
+	#Détérioration trimestriels des batiments
+	BuildingManagement.wear()
 	
-	# Fait la boucle de toutes les actions d'un trimestre
-	while true:
-		await wait(20)
-		GlobalData.incrementTrimestre()
-
-		# Appelle des évenements
-		Event()
-		
-		
-		#Avancement des travaux sur les batiments
-		for i in 5:
-			var c = Utils.dept_index_to_string(i+1)
-			var build = Building.get_building(Utils.dept_index_to_string(i+1))
-			BuildingManagement.advance_work(build)
-		#Détérioration trimestriels des batiments
-		BuildingManagement.wear()
-		
-		#Traitement de la satisfaction
-		mood_update(90)
-		#Traitement du niveau etudiant
-		level_update(90)
-		
-		#Test des étapes intermediare du scenario
-		_scenario.mid_game()
-
-
-		# Reglement des factures trimestrielle
-		_bill.add_daily_expense(90)
-		_bill.pay_bill()
-		# On prévient le joueur s'il risque la faillite
-		if _bill.get_previous_bill() >= GlobalData.getBudget():
-			BulleGestion.send_notif("Risque de faillite", "Attention les caisses sont presque vide, vous risquez la faillite !", 0)
-		
+	#Traitement de la satisfaction
+	mood_update(90)
+	#Traitement du niveau etudiant
+	level_update(90)
 	
-		# Les professeurs et étudiant insatisfait démissionnent
-		Teaching.teacher_resign()
-		Study.student_resign()
-			
-		# Appeler les actions de début et fin d'année
-		if GlobalData.isEndofYear():
-			end_of_year()
-		if GlobalData.isStartofYear():
-			year_begin()
+	#Test des étapes intermediare du scenario
+	_scenario.mid_game()
+
+	# Reglement des factures trimestrielle
+	_bill.add_daily_expense(90)
+	_bill.pay_bill()
+	# On prévient le joueur s'il risque la faillite
+	if _bill.get_previous_bill() >= GlobalData.getBudget():
+		BulleGestion.send_notif("Risque de faillite", "Attention les caisses sont presque vide, vous risquez la faillite !", 0)
+	
+	# Les professeurs et étudiant insatisfait démissionnent
+	Teaching.teacher_resign()
+	Study.student_resign()
 		
-		
-		# A la fin du trimestre on test si le jeu se finit
-		if _scenario.test_end_game_condition():
-			_scenario.end_game()
-			break
+	# Appeler les actions de début et fin d'année
+	if GlobalData.isEndofYear():
+		end_of_year()
+	if GlobalData.isStartofYear():
+		year_begin()
+	
+	# A la fin du trimestre on test si le jeu se finit
+	if _scenario.test_end_game_condition():
+		_scenario.end_game()
 
 
-
-func wait(seconds : float) -> void:
-	var timer = RenovIUTApp.app.get_tree().create_timer(seconds)
-	await timer.timeout
 
 
 
