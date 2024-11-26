@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://be30kt5ep5ra7" path="res://mvc/views/Node3D/IUT_V2.fbx" id="5_rwqkf"]
 [ext_resource type="PackedScene" uid="uid://dxufw4uqxthik" path="res://mvc/views/Node3D/Tree1.fbx" id="6_l4lhr"]
 [ext_resource type="Script" path="res://mvc/views/Node3D/tree.gd" id="7_yrqt0"]
-[ext_resource type="Script" path="res://mvc/views/menu.gd" id="8_tpp7l"]
+[ext_resource type="Script" path="res://mvc/views/Menu.gd" id="8_tpp7l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1hwps"]
 sky_top_color = Color(0.719709, 0.848666, 1, 1)

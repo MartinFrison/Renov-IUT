@@ -33,13 +33,13 @@ func _on_button_renovation_pressed() -> void:
 func _on_button_mode_tuto_pressed() -> void:
 	difficulty = 1
 	var desc = get_node("menu/Description")
-	desc.text = "Facile"
+	desc.text = "Vous êtes en stage, relax :-) Chez nous, vous êtes accompagné."
 
 
 func _on_button_mode_standart_pressed() -> void:
 	difficulty = 2
 	var desc = get_node("menu/Description")
-	desc.text = "Moyen"
+	desc.text = "Rien ne va à l'IUT... La balle est dans votre camp, M. le Directeur !"
 
 
 func _on_suivant_pressed() -> void:
