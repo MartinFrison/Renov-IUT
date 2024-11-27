@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://do3d013tlyehy"]
+
+[resource]
+resource_name = "porte_poulis"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.85561, 0.85561, 0.85561, 1)
+emission_enabled = true

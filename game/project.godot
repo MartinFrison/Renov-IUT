@@ -23,3 +23,7 @@ Utils="*res://mvc/global/Global.gd"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false

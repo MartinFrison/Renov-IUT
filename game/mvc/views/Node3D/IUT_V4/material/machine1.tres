@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bbplvicmc48rm"]
+
+[resource]
+resource_name = "machine1"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.412153, 0.412152, 0.412152, 1)
+metallic = 0.26
+metallic_specular = 0.56
+emission_enabled = true

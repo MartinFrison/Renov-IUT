@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://83a251i1osi1"]
+
+[resource]
+resource_name = "porte_vitre"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.706066, 0.906332, 0.687317, 1)
+emission_enabled = true

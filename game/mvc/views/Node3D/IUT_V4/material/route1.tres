@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b5yu8lcp45cn0"]
+
+[ext_resource type="Texture2D" uid="uid://gpnop0ekgokx" path="res://mvc/views/Node3D/IUT_V4/Asphalt015_1K-JPG/Asphalt015_1K-JPG_Color.jpg" id="1_kwl4w"]
+
+[resource]
+resource_name = "route1"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.716296, 0.716296, 0.716296, 1)
+albedo_texture = ExtResource("1_kwl4w")
+emission_enabled = true

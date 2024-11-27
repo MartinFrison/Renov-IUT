@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://dgfj00tg8hpgb" path="res://mvc/views/images/backgrounds/satellite_map_with_buildings.png" id="2_rlkk2"]
 [ext_resource type="Texture2D" uid="uid://ckvrx44p41j4e" path="res://mvc/views/images/icons/app_icon.png" id="3_7kubs"]
 [ext_resource type="PackedScene" uid="uid://lrmgb23vrj1e" path="res://mvc/views/Node2D/Stat/PanelStat.tscn" id="4_t3hyp"]
-[ext_resource type="PackedScene" uid="uid://be30kt5ep5ra7" path="res://mvc/views/Node3D/IUT_V2.fbx" id="5_rwqkf"]
-[ext_resource type="PackedScene" uid="uid://dxufw4uqxthik" path="res://mvc/views/Node3D/Tree1.fbx" id="6_l4lhr"]
-[ext_resource type="Script" path="res://mvc/views/Node3D/tree.gd" id="7_yrqt0"]
+[ext_resource type="PackedScene" uid="uid://dxufw4uqxthik" path="res://mvc/views/Node3D/tree/Tree1.fbx" id="6_l4lhr"]
+[ext_resource type="Script" path="res://mvc/views/Node3D/tree/tree.gd" id="7_yrqt0"]
+[ext_resource type="PackedScene" uid="uid://s1o3hmegslfi" path="res://mvc/views/Node3D/IUT_V4/IUT_V4.fbx" id="8_l87e4"]
 [ext_resource type="Script" path="res://mvc/views/Menu.gd" id="8_tpp7l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1hwps"]
@@ -116,29 +116,69 @@ directional_shadow_max_distance = 1.0
 directional_shadow_pancake_size = 1.0
 sky_mode = 2
 
-[node name="IUT_V2" parent="Vue3D" instance=ExtResource("5_rwqkf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.019, 0)
-
 [node name="ListeTree" type="Node3D" parent="Vue3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.47258, -6.28577, 0)
 script = ExtResource("7_yrqt0")
+
+[node name="Tree20" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 32.6969, -0.719935, 57.6663)
+
+[node name="Tree19" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 52.8503, -1.10953, 60.6561)
+
+[node name="Tree15" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 63.7781, -1.1842, -60.0058)
+
+[node name="Tree18" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 71.0781, -1.00936, -8.08937)
+
+[node name="Tree16" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 62.631, -0.895663, -32.6746)
+
+[node name="Tree17" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 35.4245, -1.1842, -54.8615)
+
+[node name="Tree12" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -156.372, -0.84777, -59.3991)
+
+[node name="Tree13" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -81.3026, -0.847759, -60.6941)
+
+[node name="Tree14" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -120.048, -0.84777, -61.2016)
+
+[node name="Tree9" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -161.833, -2, -23.0044)
+
+[node name="Tree10" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -161.96, -2, -1.53739)
+
+[node name="Tree11" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -161.601, -2, 19.1209)
 
 [node name="Tree2" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
 transform = Transform3D(38.6262, 0, 0, 0, 38.6262, 0, 0, 0, 38.6262, 1691.95, -2.71211, -465.028)
 
 [node name="Tree3" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -114.743, -0.5, -12.229)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -111.051, -0.5, -12.229)
 
 [node name="Tree6" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -105.204, -0.5, 32.509)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -105.204, -0.5, 43.177)
 
 [node name="Tree4" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -76.159, -0.5, 36.584)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -76.159, -0.5, 45.8909)
 
 [node name="Tree5" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 238.153, -0.5, -63.875)
 
+[node name="Tree8" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 84.403, -2, 35.4296)
+
 [node name="Tree7" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -88.343, -0.5, 11.738)
+
+[node name="IUT_V4" parent="Vue3D" instance=ExtResource("8_l87e4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9789, -6.54798, 5.45319)
 
 [node name="menu" type="Control" parent="."]
 layout_mode = 3

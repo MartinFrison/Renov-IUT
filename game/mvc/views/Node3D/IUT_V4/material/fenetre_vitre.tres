@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://erl0y5ap8w8f"]
+
+[resource]
+resource_name = "fenetre_vitre"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.921569, 1, 0.996078, 0)
+emission_enabled = true

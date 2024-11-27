@@ -4,6 +4,8 @@ extends Node
 var _scenario: Scenario
 var _bill : Bill
 
+
+
 # Le jeu commence le 1 septembre 2025
 func _init(scenario: Scenario) -> void:
 	_bill = Bill.new()

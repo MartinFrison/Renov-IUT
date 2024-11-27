@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://clewvb4fhj80t"]
+
+[ext_resource type="Texture2D" uid="uid://cdeqpwnppgj6j" path="res://mvc/views/Node3D/IUT_V4/Plaster002_1K-JPG/Plaster002_1K-JPG_NormalDX.jpg" id="1_1ooj1"]
+[ext_resource type="Texture2D" uid="uid://ckgogplr5817k" path="res://mvc/views/Node3D/IUT_V4/Plaster002_1K-JPG/Plaster002_1K-JPG_Color.jpg" id="1_rc5ya"]
+
+[resource]
+resource_name = "mur4"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.621524, 0.621524, 0.621524, 1)
+albedo_texture = ExtResource("1_rc5ya")
+emission_enabled = true
+normal_enabled = true
+normal_scale = 0.0
+normal_texture = ExtResource("1_1ooj1")
