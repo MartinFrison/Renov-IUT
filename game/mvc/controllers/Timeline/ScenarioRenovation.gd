@@ -125,8 +125,9 @@ func adjust_student_level(liste) -> void:
 		var dept = Student.get_dept(i)
 		var level =  Utils.randfloat_in_square_range(GlobalData.adjust_level()*0.4,GlobalData.adjust_level()*1)
 		# Ajuste le level selon la difficulté des exams d'entrée de son département
-		level += (1-level) * ((1-coeff_exam[Utils.dept_string_to_index(dept)])*0.4)
+		level += (1-level) * ((1-coeff_exam[Utils.dept_string_to_index(dept)-1])*0.4)
 		Student.set_level(i,level)
+
 
 # Ajuster la satisfaction des étudiants en appliquant un coefficient
 func adjust_student_satisfaction(liste) -> void:

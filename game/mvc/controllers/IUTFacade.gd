@@ -22,3 +22,4 @@ func startGame() -> void:
 		_time = TimeManagement.new(_scenario)
 		add_child(_time)
 		add_child(_scenario)
+		RenovIUTApp.app.game_loaded()
