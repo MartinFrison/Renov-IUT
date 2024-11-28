@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dpy4lacic7vam"]
+
+[ext_resource type="Texture2D" uid="uid://gpnop0ekgokx" path="res://mvc/views/Node3D/IUT_V4/Asphalt015_1K-JPG/Asphalt015_1K-JPG_Color.jpg" id="1_dih8u"]
+
+[resource]
+resource_name = "brique_chantier"
+vertex_color_use_as_albedo = true
+albedo_color = Color(1.5, 0.7, 0.28, 1)
+albedo_texture = ExtResource("1_dih8u")
+emission_enabled = true
