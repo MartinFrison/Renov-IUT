@@ -32,7 +32,7 @@ func next_Trimestre():
 		var build = Building.get_building(Utils.dept_index_to_string(i+1))
 		BuildingManagement.advance_work(build, 90)
 	#Détérioration trimestriels des batiments
-	BuildingManagement.wear()
+	BuildingManagement.wear(90)
 	
 	#Traitement de la satisfaction
 	mood_update(90)
