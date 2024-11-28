@@ -11,9 +11,8 @@ var panelChoixScenario : Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("start")
+	
 	app = self
-	var label = get_tree().get_root().get_node("Node2D/Label")
-	label = label as Label
 	Utils.create_iut_db()
 	illkirch = IUTFacade.new()
 	add_child(illkirch)
@@ -25,6 +24,12 @@ func _ready() -> void:
 		panelChoixScenario.init(illkirch, self)
 
 
+
+
+
+#Fonction appelé une fois que le jeu est chargé pour que les actions n'engendre pas de bug
+func game_loaded() -> void:
+	open_building(1)
 
 
 
@@ -56,27 +61,11 @@ func open_bankrupt() -> void:
 		var panelBankrupt = scene.instantiate()
 		add_child(panelBankrupt)
 
+
 func open_building(id) -> void:
-	scene = load("res://mvc/views/Node2D/BuildingAction/PanelBuildingAction.tscn")
-	var panelAction = scene.instantiate()
-	add_child(panelAction)
+	var panelAction = get_tree().get_current_scene().get_node("BuildingAction")
 	panelAction.init(id)
 
-
-func _on_info_pressed() -> void:
-	open_building(4)
-
-func _on_chimie_pressed() -> void:
-	open_building(1)
-
-func _on_info_com_pressed() -> void:
-	open_building(3)
-
-func _on_tech_co_pressed() -> void:
-	open_building(5)
-
-func _on_genie_civil_pressed() -> void:
-	open_building(2)
 
 
 func _on_next_pressed() -> void:

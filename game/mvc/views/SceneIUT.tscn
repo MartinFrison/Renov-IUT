@@ -1,12 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4cp1gj8gn1ro"]
+[gd_scene load_steps=17 format=3 uid="uid://b4cp1gj8gn1ro"]
 
 [ext_resource type="Script" path="res://mvc/application/RenovIUTApp.gd" id="1_drlro"]
-[ext_resource type="Texture2D" uid="uid://dgfj00tg8hpgb" path="res://mvc/views/images/backgrounds/satellite_map_with_buildings.png" id="2_rlkk2"]
-[ext_resource type="Texture2D" uid="uid://ckvrx44p41j4e" path="res://mvc/views/images/icons/app_icon.png" id="3_7kubs"]
 [ext_resource type="PackedScene" uid="uid://lrmgb23vrj1e" path="res://mvc/views/Node2D/Stat/PanelStat.tscn" id="4_t3hyp"]
-[ext_resource type="PackedScene" uid="uid://be30kt5ep5ra7" path="res://mvc/views/Node3D/IUT_V2.fbx" id="5_rwqkf"]
-[ext_resource type="PackedScene" uid="uid://dxufw4uqxthik" path="res://mvc/views/Node3D/Tree1.fbx" id="6_l4lhr"]
-[ext_resource type="Script" path="res://mvc/views/Node3D/tree.gd" id="7_yrqt0"]
+[ext_resource type="Script" path="res://mvc/views/Node3D/camera_3d.gd" id="5_h3jqx"]
+[ext_resource type="PackedScene" uid="uid://dxufw4uqxthik" path="res://mvc/views/Node3D/tree/Tree1.fbx" id="6_l4lhr"]
+[ext_resource type="Script" path="res://mvc/views/Node3D/tree/tree.gd" id="7_yrqt0"]
+[ext_resource type="PackedScene" uid="uid://s1o3hmegslfi" path="res://mvc/views/Node3D/IUT_V4/IUT_V4.fbx" id="8_l87e4"]
+[ext_resource type="PackedScene" uid="uid://dsy32b2by7jp6" path="res://mvc/views/Node2D/BuildingAction/PanelBuildingAction.tscn" id="8_lduu6"]
 [ext_resource type="Script" path="res://mvc/views/Menu.gd" id="8_tpp7l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1hwps"]
@@ -27,82 +27,55 @@ tonemap_mode = 2
 ssao_enabled = true
 glow_enabled = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_y0mrx"]
+resource_local_to_scene = true
+size = Vector3(1.14622, 0.850098, 0.957343)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lpfy3"]
+size = Vector3(1, 1, 0.948853)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n6oxw"]
+size = Vector3(1.07019, 1.13184, 0.98877)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_angns"]
+size = Vector3(0.653564, 1, 1.77466)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_26cy1"]
+size = Vector3(1.1521, 1, 1.92261)
+
 [node name="IUT" type="Node2D"]
 script = ExtResource("1_drlro")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6245k")
 
-[node name="Icon" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(575, 323)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_rlkk2")
-
-[node name="Icon2" type="Sprite2D" parent="."]
-position = Vector2(1069, 539)
-scale = Vector2(0.315928, 0.277322)
-texture = ExtResource("3_7kubs")
-
 [node name="PanelStat" parent="." instance=ExtResource("4_t3hyp")]
-position = Vector2(8, 6)
+position = Vector2(550, 25)
 
 [node name="notif_button" type="Button" parent="."]
-offset_left = 1042.0
-offset_top = 23.0
-offset_right = 1114.0
-offset_bottom = 78.0
+offset_left = 27.0
+offset_top = 218.0
+offset_right = 99.0
+offset_bottom = 273.0
 text = "NOTIF"
 
-[node name="genie_civil" type="Button" parent="."]
-offset_left = 879.0
-offset_top = 158.0
-offset_right = 972.0
-offset_bottom = 194.0
-text = "génie-civil"
-
-[node name="tech_co" type="Button" parent="."]
-offset_left = 585.0
-offset_top = 184.0
-offset_right = 716.0
-offset_bottom = 220.0
-text = "technique de co"
-
-[node name="info_com" type="Button" parent="."]
-offset_left = 460.0
-offset_top = 185.0
-offset_right = 553.0
-offset_bottom = 221.0
-text = "info-com"
-
-[node name="info" type="Button" parent="."]
-offset_left = 161.0
-offset_top = 275.0
-offset_right = 271.0
-offset_bottom = 311.0
-text = "informatique
-"
-
-[node name="chimie" type="Button" parent="."]
-offset_left = 771.0
-offset_top = 303.0
-offset_right = 864.0
-offset_bottom = 339.0
-text = "chimie"
-
 [node name="Next" type="Button" parent="."]
-offset_left = 864.0
-offset_top = 523.0
-offset_right = 957.0
-offset_bottom = 559.0
+offset_left = 18.0
+offset_top = 288.0
+offset_right = 111.0
+offset_bottom = 324.0
 text = "Next"
 
 [node name="Vue3D" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Vue3D"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -22.3575, 71.1333, 95.1148)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 45.8901, 63.2057, 97.4257)
 fov = 90.0
 near = 0.1
+script = ExtResource("5_h3jqx")
+
+[node name="RayCast3D" type="RayCast3D" parent="Vue3D/Camera3D"]
+target_position = Vector3(0, 0, -500)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Vue3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.4014, 10260.8, -390.54)
@@ -116,29 +89,101 @@ directional_shadow_max_distance = 1.0
 directional_shadow_pancake_size = 1.0
 sky_mode = 2
 
-[node name="IUT_V2" parent="Vue3D" instance=ExtResource("5_rwqkf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.019, 0)
-
 [node name="ListeTree" type="Node3D" parent="Vue3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.47258, -6.28577, 0)
 script = ExtResource("7_yrqt0")
 
-[node name="Tree2" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
-transform = Transform3D(38.6262, 0, 0, 0, 38.6262, 0, 0, 0, 38.6262, 1691.95, -2.71211, -465.028)
+[node name="Tree20" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 32.6969, -0.719935, 57.6663)
+
+[node name="Tree19" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 52.8503, -1.10953, 60.6561)
+
+[node name="Tree15" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 63.7781, -1.1842, -60.0058)
+
+[node name="Tree18" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 71.0781, -1.00936, -8.08937)
+
+[node name="Tree16" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 62.631, -0.895663, -32.6746)
+
+[node name="Tree17" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 35.4245, -1.1842, -54.8615)
+
+[node name="Tree12" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -156.372, -0.84777, -59.3991)
+
+[node name="Tree13" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -81.3026, -0.847759, -60.6941)
+
+[node name="Tree14" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -120.048, -0.84777, -61.2016)
+
+[node name="Tree9" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -161.833, -2, -23.0044)
+
+[node name="Tree10" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -161.96, -2, -1.53739)
+
+[node name="Tree11" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -161.601, -2, 19.1209)
 
 [node name="Tree3" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -114.743, -0.5, -12.229)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -111.051, -0.5, -12.229)
 
 [node name="Tree6" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -105.204, -0.5, 32.509)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -105.204, -0.5, 43.177)
 
 [node name="Tree4" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -76.159, -0.5, 36.584)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -76.159, -0.5, 45.8909)
 
 [node name="Tree5" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 238.153, -0.5, -63.875)
 
+[node name="Tree8" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 84.403, -2, 35.4296)
+
 [node name="Tree7" parent="Vue3D/ListeTree" instance=ExtResource("6_l4lhr")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -88.343, -0.5, 11.738)
+
+[node name="IUT_V4" parent="Vue3D" instance=ExtResource("8_l87e4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9789, -6.54798, 5.45319)
+
+[node name="colision4" type="StaticBody3D" parent="Vue3D/IUT_V4"]
+transform = Transform3D(14.9635, 0, -1.04635, 0, 15, 0, 1.04635, 0, 14.9635, -137.282, 22.3328, -3.91633)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vue3D/IUT_V4/colision4"]
+transform = Transform3D(1.49996, 0, 7.15256e-07, 0, 2, 0, -4.09782e-07, 0, 3.9999, -0.0324736, -1.05615, -0.330963)
+shape = SubResource("BoxShape3D_y0mrx")
+
+[node name="colision5" type="StaticBody3D" parent="Vue3D/IUT_V4"]
+transform = Transform3D(0.78504, 0, 14.9794, 0, 15, 0, -14.9794, 0, 0.78504, 2.20843, 357.325, -31.815)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vue3D/IUT_V4/colision5"]
+transform = Transform3D(2.3, 0, 1.10269e-06, 0, 2.5, 0, -4.69387e-07, 0, 5, -0.0236669, -23.2606, -0.300453)
+shape = SubResource("BoxShape3D_lpfy3")
+
+[node name="colision3" type="StaticBody3D" parent="Vue3D/IUT_V4"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -71.0261, 68.5208, -24.1091)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vue3D/IUT_V4/colision3"]
+transform = Transform3D(3.99999, 0, 7.25622e-07, 0, 1.3, 0, -8.29282e-07, 0, 3.5, -0.0948887, -4.24362, -0.0541664)
+shape = SubResource("BoxShape3D_n6oxw")
+
+[node name="colision1" type="StaticBody3D" parent="Vue3D/IUT_V4"]
+transform = Transform3D(1.04635, 0, 14.9635, 0, 15, 0, -14.9635, 0, 1.04635, 62.553, 2.39046, 11.0485)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vue3D/IUT_V4/colision1"]
+transform = Transform3D(2.99999, 0, -1.49012e-07, 0, 1.79995, 0, 1.49012e-07, 0, 2.99999, -0.386147, 0.598262, 0.106078)
+shape = SubResource("BoxShape3D_angns")
+
+[node name="colision2" type="StaticBody3D" parent="Vue3D/IUT_V4"]
+transform = Transform3D(0.78504, 0, 14.9794, 0, 15, 0, -14.9794, 0, 0.78504, 94.6167, 9.07241, -56.6335)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vue3D/IUT_V4/colision2"]
+transform = Transform3D(4, 0, 6.85453e-07, 0, 1.5, 0, -8.04663e-07, 0, 3.5, 0.391312, 0.0269642, 1.64651)
+shape = SubResource("BoxShape3D_26cy1")
 
 [node name="menu" type="Control" parent="."]
 layout_mode = 3
@@ -166,12 +211,10 @@ layout_mode = 2
 [node name="OuvrirPanel" type="Button" parent="menu/PopupPanel/VBoxContainer"]
 layout_mode = 2
 
+[node name="BuildingAction" parent="." instance=ExtResource("8_lduu6")]
+position = Vector2(0, 0)
+
 [connection signal="pressed" from="notif_button" to="." method="open_notif"]
-[connection signal="pressed" from="genie_civil" to="." method="_on_genie_civil_pressed"]
-[connection signal="pressed" from="tech_co" to="." method="_on_tech_co_pressed"]
-[connection signal="pressed" from="info_com" to="." method="_on_info_com_pressed"]
-[connection signal="pressed" from="info" to="." method="_on_info_pressed"]
-[connection signal="pressed" from="chimie" to="." method="_on_chimie_pressed"]
 [connection signal="pressed" from="Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="menu/PopupPanel/VBoxContainer/Quitter" to="menu" method="_on_QuitterButton_pressed"]
 [connection signal="pressed" from="menu/PopupPanel/VBoxContainer/FermerMenu" to="menu" method="_on_FermerMenuButton_pressed"]

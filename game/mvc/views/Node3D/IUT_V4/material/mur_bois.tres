@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://btgkcpmxtvyy5"]
+
+[ext_resource type="Texture2D" uid="uid://cdrysps1gog5k" path="res://mvc/views/Node3D/IUT_V4/Wood050_1K-JPG/Wood050_1K-JPG_Color.jpg" id="1_n13am"]
+[ext_resource type="Texture2D" uid="uid://cwtg0y8pr7f6j" path="res://mvc/views/Node3D/IUT_V4/Wood050_1K-JPG/Wood050_1K-JPG_NormalDX.jpg" id="2_ugfx5"]
+
+[resource]
+resource_name = "mur_bois"
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 1)
+albedo_texture = ExtResource("1_n13am")
+emission_enabled = true
+normal_enabled = true
+normal_scale = 0.0
+normal_texture = ExtResource("2_ugfx5")

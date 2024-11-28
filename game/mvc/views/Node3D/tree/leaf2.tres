@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dula2rme0a5v7"]
+
+[ext_resource type="Texture2D" uid="uid://u4sgms5j0ig3" path="res://mvc/views/Node3D/tree/Leaf1.png" id="1_mq4w5"]
+
+[resource]
+depth_draw_mode = 1
+no_depth_test = true
+albedo_color = Color(0.4, 0.9, 0, 1)
+albedo_texture = ExtResource("1_mq4w5")

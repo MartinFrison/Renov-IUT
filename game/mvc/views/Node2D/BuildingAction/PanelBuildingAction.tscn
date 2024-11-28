@@ -4,30 +4,30 @@
 [ext_resource type="Texture2D" uid="uid://c2gn71n87xx75" path="res://mvc/views/images/icons/engineering.png" id="2_wh184"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2tdad"]
-bg_color = Color(0.35908, 0.485076, 0.569212, 0.686275)
+bg_color = Color(0.359, 0.485, 0.569, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ec2k"]
 bg_color = Color(0.474293, 0.235136, 0.374775, 0.576471)
 
 [node name="PanelBuildingAction" type="Node2D"]
 z_index = 10
-position = Vector2(397, 161)
+position = Vector2(-5.99997, 2.00002)
 scale = Vector2(0.65, 0.65)
 script = ExtResource("1_rgwm8")
 
 [node name="PanelGlobal" type="Panel" parent="."]
-offset_left = 1.0
-offset_top = 4.0
-offset_right = 825.0
-offset_bottom = 672.0
+offset_left = 1223.0
+offset_top = -9.0
+offset_right = 1781.0
+offset_bottom = 997.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_2tdad")
 
 [node name="PanelAction" type="Panel" parent="PanelGlobal"]
 layout_mode = 0
-offset_left = 45.0
-offset_top = 288.0
-offset_right = 541.0
-offset_bottom = 648.0
+offset_left = 11.8463
+offset_top = 293.769
+offset_right = 557.846
+offset_bottom = 653.769
 theme_override_styles/panel = SubResource("StyleBoxFlat_5ec2k")
 
 [node name="hire_teacher" type="Button" parent="PanelGlobal/PanelAction"]
@@ -133,10 +133,10 @@ text = "decrease entry exam difficulty
 
 [node name="PanelStat" type="Panel" parent="PanelGlobal"]
 layout_mode = 0
-offset_left = 240.0
-offset_top = 50.0
-offset_right = 782.0
-offset_bottom = 274.0
+offset_left = 206.846
+offset_top = 55.7693
+offset_right = 560.846
+offset_bottom = 279.769
 theme_override_styles/panel = SubResource("StyleBoxFlat_5ec2k")
 
 [node name="mood_student" type="Label" parent="PanelGlobal/PanelStat"]
@@ -247,26 +247,18 @@ offset_bottom = 28.0
 theme_override_font_sizes/font_size = 12
 text = "- budget"
 
-[node name="icon" type="Sprite2D" parent="PanelGlobal"]
-position = Vector2(130, 138)
-scale = Vector2(2.71874, 2.74219)
-texture = ExtResource("2_wh184")
-
-[node name="close" type="Button" parent="."]
-offset_left = 774.0
-offset_top = 12.0
-offset_right = 816.0
-offset_bottom = 41.0
-theme_override_font_sizes/font_size = 8
-text = "close"
-
-[node name="name" type="Label" parent="."]
-offset_left = 44.6153
-offset_top = 13.8461
-offset_right = 243.615
-offset_bottom = 41.8461
+[node name="name" type="Label" parent="PanelGlobal"]
+offset_left = 10.4616
+offset_top = 15.6154
+offset_right = 209.461
+offset_bottom = 43.6154
 theme_override_font_sizes/font_size = 20
 text = "Nom"
+
+[node name="icon" type="Sprite2D" parent="PanelGlobal"]
+position = Vector2(102.769, 160.231)
+scale = Vector2(2.71874, 2.74219)
+texture = ExtResource("2_wh184")
 
 [connection signal="pressed" from="PanelGlobal/PanelAction/hire_teacher" to="." method="_on_hire_teacher_pressed"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/fire_teacher" to="." method="_on_fire_teacher_pressed"]
@@ -280,4 +272,3 @@ text = "Nom"
 [connection signal="pressed" from="PanelGlobal/PanelAction/sub_exam_end" to="." method="_on_sub_exam_end_pressed"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/add_exem_entry" to="." method="_on_add_exem_entry_pressed"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/sub_exam_entry" to="." method="_on_sub_exam_entry_pressed"]
-[connection signal="pressed" from="close" to="." method="_on_close_pressed"]

@@ -20,7 +20,7 @@ func init(id : int) -> void:
 
 func show_data() -> void:
 	var node
-	node = get_node("name")
+	node = get_node("PanelGlobal/name")
 	node.text = code
 	
 	node = get_node("PanelGlobal/PanelStat/end_exam")

@@ -1,0 +1,212 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://s1o3hmegslfi"
+path="res://.godot/imported/IUT_V4.fbx-a3caf91add5b7cfe6f46768dc49a28ca.scn"
+
+[deps]
+
+source_file="res://mvc/views/Node3D/IUT_V4/IUT_V4.fbx"
+dest_files=["res://.godot/imported/IUT_V4.fbx-a3caf91add5b7cfe6f46768dc49a28ca.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=true
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"aaaa.001": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/aaaa.001.tres"
+},
+"cadre_fenetre2": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/cadre_fenetre2.tres"
+},
+"fenetre_vitre": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/fenetre_vitre.tres"
+},
+"grande_route": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/grande_route.tres"
+},
+"herbe": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/herbe.tres"
+},
+"lumiere": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/lumiere.tres"
+},
+"machine1": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/machine1.tres"
+},
+"machine2": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/machine2.tres"
+},
+"metal_bleu_clair": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/metal_bleu_clair.tres"
+},
+"metal_gris": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/metal_gris.tres"
+},
+"metal_noir": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/metal_noir.tres"
+},
+"mur": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/mur.tres"
+},
+"mur10": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/mur10.tres"
+},
+"mur2": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/mur2.tres"
+},
+"mur3": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/mur3.tres"
+},
+"mur4": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/mur4.tres"
+},
+"mur6": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/mur6.tres"
+},
+"mur7": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/mur7.tres"
+},
+"mur8": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/mur8.tres"
+},
+"mur9": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/mur9.tres"
+},
+"mur_bois": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/mur_bois.tres"
+},
+"pancarte1": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/pancarte1.tres"
+},
+"plastic_blanc": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/plastic_blanc.tres"
+},
+"poignet_porte": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/poignet_porte.tres"
+},
+"porte": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/porte.tres"
+},
+"porte_poulis": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/porte_poulis.tres"
+},
+"porte_vitre": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/porte_vitre.tres"
+},
+"poubelle1": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/poubelle1.tres"
+},
+"poubelle2": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/poubelle2.tres"
+},
+"poubelle3": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/poubelle3.tres"
+},
+"route1": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/route1.tres"
+},
+"sol_parc1": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/sol_parc1.tres"
+},
+"terre": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/terre.tres"
+},
+"terre_sableuse": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/terre_sableuse.tres"
+},
+"toit1": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/toit1.tres"
+},
+"toit2": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/toit2.tres"
+},
+"toit3": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/toit3.tres"
+},
+"toit4": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/toit4.tres"
+},
+"toit5": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/toit5.tres"
+},
+"toit6": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/toit6.tres"
+},
+"tuyau": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/tuyau.tres"
+},
+"tuyau_blanc": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/tuyau_blanc.tres"
+},
+"vitre": {
+"use_external/enabled": true,
+"use_external/path": "res://mvc/views/Node3D/IUT_V4/material/vitre.tres"
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
