@@ -24,6 +24,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_2tdad")
 
 [node name="name" type="Label" parent="PanelGlobal"]
 z_index = 10
+layout_mode = 0
 offset_left = 15.0
 offset_top = 12.0
 offset_right = 211.0

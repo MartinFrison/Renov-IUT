@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b4cp1gj8gn1ro"]
+[gd_scene load_steps=24 format=3 uid="uid://b4cp1gj8gn1ro"]
 
 [ext_resource type="Script" path="res://mvc/application/RenovIUTApp.gd" id="1_drlro"]
 [ext_resource type="PackedScene" uid="uid://lrmgb23vrj1e" path="res://mvc/views/Node2D/Stat/PanelStat.tscn" id="4_t3hyp"]
@@ -9,7 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://dsy32b2by7jp6" path="res://mvc/views/Node2D/BuildingAction/PanelBuildingAction.tscn" id="8_lduu6"]
 [ext_resource type="Script" path="res://mvc/views/Menu.gd" id="8_tpp7l"]
 [ext_resource type="PackedScene" uid="uid://bbbk1nj8yyd2d" path="res://mvc/views/Node3D/Travaux/Echaffaudage.fbx" id="9_m6s2a"]
+[ext_resource type="Script" path="res://mvc/views/Node3D/character/bonhommes.gd" id="9_sgm20"]
 [ext_resource type="PackedScene" uid="uid://w8im31gg6ge2" path="res://mvc/views/Node3D/Travaux/Grue.fbx" id="10_3udih"]
+[ext_resource type="PackedScene" uid="uid://uo855peg7ssy" path="res://mvc/views/Node3D/character/bonhomme.fbx" id="11_mah3o"]
+[ext_resource type="Script" path="res://mvc/views/Node3D/character/bonhomme.gd" id="12_vnvx5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1hwps"]
 sky_top_color = Color(0.719709, 0.848666, 1, 1)
@@ -332,6 +335,49 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0746164, 9.87982, -0.03174
 
 [node name="Echaffaudage5" parent="Vue3D/Travaux/Travaux5/Echaffaudage5/Echaffaudage7/Echaffaudage6" instance=ExtResource("9_m6s2a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8566, 0, 0)
+
+[node name="Bonhommes" type="Node3D" parent="Vue3D"]
+script = ExtResource("9_sgm20")
+
+[node name="bonhomme1" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -3.15671, -6.32335, 34.3189)
+script = ExtResource("12_vnvx5")
+
+[node name="bonhomme2" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -72.5249, -6.72647, 32.9355)
+script = ExtResource("12_vnvx5")
+
+[node name="bonhomme3" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -35.7037, -6.41338, 33.8002)
+script = ExtResource("12_vnvx5")
+
+[node name="bonhomme4" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -108.886, -6.41035, 31.2072)
+script = ExtResource("12_vnvx5")
+
+[node name="bonhomme5" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
+transform = Transform3D(-0.494975, 0, 0.494975, 0, 0.7, 0, -0.494975, 0, -0.494975, 25.6313, -6.09422, 18.4771)
+script = ExtResource("12_vnvx5")
+
+[node name="bonhomme6" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -36.0934, -6.37912, -46.2849)
+script = ExtResource("12_vnvx5")
+
+[node name="bonhomme7" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
+transform = Transform3D(0.697799, 0, 0.0554721, 0, 0.7, 0, -0.0554721, 0, 0.697799, -119.668, -6.45025, -12.7425)
+script = ExtResource("12_vnvx5")
+
+[node name="bonhomme8" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
+transform = Transform3D(0.694782, 0, -0.0853085, 0, 0.7, 0, 0.0853085, 0, 0.694782, 58.9887, -6.37837, -51.6363)
+script = ExtResource("12_vnvx5")
+
+[node name="bonhomme9" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
+transform = Transform3D(-3.0598e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.0598e-08, -145.35, -6.44444, -40.3754)
+script = ExtResource("12_vnvx5")
+
+[node name="bonhomme10" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
+transform = Transform3D(-0.7, 0, 1.05697e-07, 0, 0.7, 0, -1.05697e-07, 0, -0.7, 57.6783, -6.2402, -13.5208)
+script = ExtResource("12_vnvx5")
 
 [node name="menu" type="Control" parent="."]
 layout_mode = 3
