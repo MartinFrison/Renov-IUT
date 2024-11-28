@@ -44,7 +44,7 @@ static func setDate(day : int, month : int, year : int) -> void:
 	_day = day
 	_month = month
 	_year = year
-	
+	ObserverGlobalData.notifyDateChanged()
 
 #Passe au jour suivant
 static func incrementDay() -> void:

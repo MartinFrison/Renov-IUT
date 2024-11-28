@@ -79,6 +79,7 @@ text = "Next"
 [node name="Vue3D" type="Node3D" parent="."]
 
 [node name="Camera_root" type="Node3D" parent="Vue3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.88827, 0, -14.2294)
 script = ExtResource("3_et11y")
 
 [node name="Camera3D" type="Camera3D" parent="Vue3D/Camera_root"]
@@ -364,23 +365,23 @@ transform = Transform3D(-0.494975, 0, 0.494975, 0, 0.7, 0, -0.494975, 0, -0.4949
 script = ExtResource("12_vnvx5")
 
 [node name="bonhomme6" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -36.0934, -6.37912, -46.2849)
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -38.483, -6.37912, -64.1719)
 script = ExtResource("12_vnvx5")
 
 [node name="bonhomme7" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
-transform = Transform3D(0.697799, 0, 0.0554721, 0, 0.7, 0, -0.0554721, 0, 0.697799, -119.668, -6.45025, -12.7425)
+transform = Transform3D(-3.0598e-08, 0, 0.700001, 0, 0.7, 0, -0.700001, 0, -3.0598e-08, -96.7837, -6.45025, -47.9454)
 script = ExtResource("12_vnvx5")
 
 [node name="bonhomme8" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
-transform = Transform3D(0.694782, 0, -0.0853085, 0, 0.7, 0, 0.0853085, 0, 0.694782, 58.9887, -6.37837, -51.6363)
+transform = Transform3D(0.694782, 0, -0.0853085, 0, 0.7, 0, 0.0853085, 0, 0.694782, 57.8391, -6.37837, -51.6363)
 script = ExtResource("12_vnvx5")
 
 [node name="bonhomme9" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
-transform = Transform3D(-3.0598e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.0598e-08, -145.35, -6.44444, -40.3754)
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -145.35, -6.44444, -40.3754)
 script = ExtResource("12_vnvx5")
 
 [node name="bonhomme10" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
-transform = Transform3D(-0.7, 0, 1.05697e-07, 0, 0.7, 0, -1.05697e-07, 0, -0.7, 57.6783, -6.2402, -13.5208)
+transform = Transform3D(-0.7, 0, 1.05697e-07, 0, 0.7, 0, -1.05697e-07, 0, -0.7, 58.5337, -6.2402, -13.5208)
 script = ExtResource("12_vnvx5")
 
 [node name="menu" type="Control" parent="."]

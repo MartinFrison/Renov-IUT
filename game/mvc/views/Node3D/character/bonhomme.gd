@@ -9,6 +9,8 @@ func _ready() -> void:
 	var x = Utils.randint_in_range(0,190)
 	translate(Vector3(0, 0, 0.1*x))
 	
+	await get_tree().create_timer(Utils.randfloat_in_range(0.1,0.3)).timeout
+	
 	while true:
 		translate(Vector3(0, 0, 0.1))
 		await get_tree().create_timer(0.02).timeout
