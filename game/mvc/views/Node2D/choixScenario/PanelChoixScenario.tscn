@@ -34,12 +34,14 @@ z_index = 40
 script = ExtResource("1_m1i0s")
 
 [node name="menu" type="Node2D" parent="."]
+metadata/_edit_group_ = true
 
 [node name="MapV1" type="Sprite2D" parent="menu"]
-position = Vector2(914.157, 571.364)
-scale = Vector2(1.1255, 1.12799)
+position = Vector2(913.223, 580.397)
+scale = Vector2(1.12988, 1.14261)
 texture = ExtResource("2_ibg5x")
 offset = Vector2(-298.901, -275.833)
+metadata/_edit_lock_ = true
 
 [node name="button_election" type="Button" parent="menu"]
 z_index = 1

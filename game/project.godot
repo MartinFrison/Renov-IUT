@@ -20,6 +20,11 @@ config/icon="res://mvc/views/images/icons/app_icon.png"
 DBaseManager="*res://mvc/global/DBaseManager.gd"
 Utils="*res://mvc/global/Global.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg")

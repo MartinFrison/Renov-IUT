@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://di1xpsh3em6r6"]
+[gd_scene load_steps=2 format=3 uid="uid://di1xpsh3em6r6"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/FinJeu/BankruptScript.gd" id="1_2muus"]
-[ext_resource type="Texture2D" uid="uid://bpdfvn1j0iyl8" path="res://mvc/views/images/backgrounds/menu.png" id="2_jply8"]
 
 [node name="PanelBankrupt" type="Node2D"]
 z_index = 40
@@ -10,7 +9,6 @@ script = ExtResource("1_2muus")
 [node name="Menu" type="Sprite2D" parent="."]
 position = Vector2(719, 265)
 scale = Vector2(1.6748, 1.45351)
-texture = ExtResource("2_jply8")
 
 [node name="Label" type="Label" parent="."]
 z_index = 3

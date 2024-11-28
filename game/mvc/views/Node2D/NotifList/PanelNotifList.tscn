@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://m8jboytjpyf7"]
+[gd_scene load_steps=2 format=3 uid="uid://m8jboytjpyf7"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/NotifList/NotifListScript.gd" id="1_dpasn"]
-[ext_resource type="Texture2D" uid="uid://dgfj00tg8hpgb" path="res://mvc/views/images/backgrounds/satellite_map_with_buildings.png" id="2_8m3x0"]
 
 [node name="PanelNotifList" type="Node2D"]
 z_index = 10
@@ -11,7 +10,6 @@ script = ExtResource("1_dpasn")
 z_index = -1
 position = Vector2(575, 323)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_8m3x0")
 
 [node name="Text" type="Label" parent="."]
 offset_left = 659.0
@@ -46,7 +44,6 @@ offset_left = 1096.0
 offset_top = -2.0
 offset_right = 1154.0
 offset_bottom = 41.0
-text = "Close"
 
 [connection signal="pressed" from="next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="last" to="." method="_on_last_pressed"]
