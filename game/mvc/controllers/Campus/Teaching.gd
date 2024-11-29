@@ -47,13 +47,13 @@ static func drop_mood_teacher(dept : String, value : float) -> void:
 	value = max(0, value)
 	var id = Teacher.get_dept_ids(dept)
 	for i in id:
-		Teacher.set_mood(i, Teacher.get_mood(i) - Utils.randfloat_in_square_range(value * 0.65 / GlobalData.adjust_satisfaction(), value * 1.35 / GlobalData.adjust_satisfaction()))
+		Teacher.set_mood(i, Teacher.get_mood(i) - Utils.randfloat_in_range(value * 0.65 / GlobalData.adjust_satisfaction(), value * 1.35 / GlobalData.adjust_satisfaction()))
 
 static func boost_mood_teacher(dept : String, value : float) -> void:
 	value = max(0, value)
 	var id = Teacher.get_dept_ids(dept)
 	for i in id:
-		Teacher.set_mood(i, Teacher.get_mood(i) + Utils.randfloat_in_square_range(value * 0.65 * GlobalData.adjust_satisfaction(), value * 1.35 * GlobalData.adjust_satisfaction()))
+		Teacher.set_mood(i, Teacher.get_mood(i) + Utils.randfloat_in_range(value * 0.65 * GlobalData.adjust_satisfaction(), value * 1.35 * GlobalData.adjust_satisfaction()))
 
 static func increase_salary(dept : String) -> void:
 	var b = Building.get_building(dept)

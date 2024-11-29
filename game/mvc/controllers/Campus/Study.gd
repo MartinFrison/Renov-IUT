@@ -143,16 +143,24 @@ static func pass_next_year() -> void:
 # Ajuster le niveau etudiant d'un departement selon le nb de profs et leur mood
 static func teacher_adjust_level(day: int) -> void:
 	const coeff = 1
+	var ratioStudentTeacher = 0
 	for i in range(1,6):
 		var code = Utils.dept_index_to_string(i)
 		# s'il n'y a pas de prof on prend une valeur arbitraire
-		var ratioStudentTeacher = min(Student.compute_nb_per_dept(code)/Teacher.compute_nb_per_dept(code), Student.compute_nb_per_dept(code)*3)
+		if Teacher.compute_nb_per_dept(code) <= 0:
+			ratioStudentTeacher = Student.compute_nb_per_dept(code)*3
+		else:
+			ratioStudentTeacher = Student.compute_nb_per_dept(code)/Teacher.compute_nb_per_dept(code)
 		# Formule de l'ajustement selon le ratio prof-etudiant et le mood des profs
-		var value : float = ((Teacher.avg_mood_per_dept(code)-0.5)+((1/ratioStudentTeacher)-0.1))/360 
+		var value : float = ((Teacher.avg_mood_per_dept(code)-0.5)+((1/ratioStudentTeacher)-0.1)*5)/360 
 		if value > 0:
+			print(Utils.dept_index_to_string(i))
+			print(value)
 			Study.boost_level_student(code, value * day)
 		else:
-			Study.drop_level_student(code, value * day)
+			print(Utils.dept_index_to_string(i))
+			print(value)
+			Study.drop_level_student(code, -value * day)
 
 
 # Ajuster le mood etudiant selon si les portes des salles sont ouverte ou fermez
@@ -176,27 +184,28 @@ static func drop_mood_student(dept : String, value : float) -> void:
 	value = max(0, value)
 	var id = Student.get_dept_ids(dept)
 	for i in id:
-		Student.set_mood(i, Student.get_mood(i) - Utils.randfloat_in_square_range(value * 0.65 / GlobalData.adjust_satisfaction(), value * 1.35 / GlobalData.adjust_satisfaction()))
+		Student.set_mood(i, Student.get_mood(i) - Utils.randfloat_in_range(value * 0.65 / GlobalData.adjust_satisfaction(), value * 1.35 / GlobalData.adjust_satisfaction()))
 
 static func boost_mood_student(dept : String, value : float) -> void:
 	value = max(0, value)
 	var id = Student.get_dept_ids(dept)
 	for i in id:
-		Student.set_mood(i, Student.get_mood(i) + Utils.randfloat_in_square_range(value * 0.65 * GlobalData.adjust_satisfaction(), value * 1.35 * GlobalData.adjust_satisfaction()))
+		Student.set_mood(i, Student.get_mood(i) + Utils.randfloat_in_range(value * 0.65 * GlobalData.adjust_satisfaction(), value * 1.35 * GlobalData.adjust_satisfaction()))
 
 
 static func drop_level_student(dept : String, value : float) -> void:
-	value = max(0, value)
+	value = value#max(0, value)
 	var id = Student.get_dept_ids(dept)
 	for i in id:
-		Student.set_level(i, Student.get_level(i) + Utils.randfloat_in_square_range(value * 0.65 / GlobalData.adjust_level(), value * 1.35 / GlobalData.adjust_level()))
+		value = Utils.randfloat_in_range(value * 0.65 / GlobalData.adjust_level(), value * 1.35 / GlobalData.adjust_level())
+		Student.set_level(i, Student.get_level(i) - value)
 
 
 static func boost_level_student(dept : String, value : float) -> void:
 	value = max(0, value)
 	var id = Student.get_dept_ids(dept)
 	for i in id:
-		Student.set_level(i, Student.get_level(i) + Utils.randfloat_in_square_range(value * 0.65 * GlobalData.adjust_level(), value * 1.35 * GlobalData.adjust_level()))
+		Student.set_level(i, Student.get_level(i) + Utils.randfloat_in_range(value * 0.65 * GlobalData.adjust_level(), value * 1.35 * GlobalData.adjust_level()))
 
 static func student_resign() -> void:
 	Student.rm_student_by_mood(0.2)

@@ -137,9 +137,9 @@ static func adjust_satisfaction() -> float:
 		1:
 			return 1
 		2:
-			return 0.95
-		3:
 			return 0.9
+		3:
+			return 0.8
 	return -1
 
 # Ajuste le niveau en fonction de la difficulté
@@ -148,9 +148,9 @@ static func adjust_level() -> float:
 		1:
 			return 1
 		2:
-			return 0.95
-		3:
 			return 0.9
+		3:
+			return 0.8
 	return -1
 
 # Ajuste l'état du département en fonction d'un coefficient et de la difficulté
