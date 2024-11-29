@@ -22,8 +22,6 @@ Graphique 2D:
 
 
 Graphique 3D:
-- Ajout des saisons (neige en hivert, couleur des arbres ect) : Martin
-- Gestion des mouvements de camera : Martin
 - Ajout des fissures de batiment : Martin
 
 

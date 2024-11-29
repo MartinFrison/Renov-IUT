@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://b4cp1gj8gn1ro"]
 
-[ext_resource type="Script" path="res://mvc/application/RenovIUTApp.gd" id="1_drlro"]
+[ext_resource type="Script" path="res://mvc/views/RenovIUTApp.gd" id="1_drlro"]
 [ext_resource type="Script" path="res://mvc/views/Node3D/camera_root.gd" id="3_et11y"]
 [ext_resource type="PackedScene" uid="uid://lrmgb23vrj1e" path="res://mvc/views/Node2D/Stat/PanelStat.tscn" id="4_t3hyp"]
 [ext_resource type="Script" path="res://mvc/views/Node3D/camera_3d.gd" id="5_h3jqx"]
@@ -8,12 +8,12 @@
 [ext_resource type="Script" path="res://mvc/views/Node3D/tree/tree.gd" id="7_yrqt0"]
 [ext_resource type="PackedScene" uid="uid://s1o3hmegslfi" path="res://mvc/views/Node3D/IUT_V4/IUT_V4.fbx" id="8_l87e4"]
 [ext_resource type="PackedScene" uid="uid://dsy32b2by7jp6" path="res://mvc/views/Node2D/BuildingAction/PanelBuildingAction.tscn" id="8_lduu6"]
-[ext_resource type="Script" path="res://mvc/views/Menu.gd" id="8_tpp7l"]
 [ext_resource type="PackedScene" uid="uid://bbbk1nj8yyd2d" path="res://mvc/views/Node3D/Travaux/Echaffaudage.fbx" id="9_m6s2a"]
 [ext_resource type="Script" path="res://mvc/views/Node3D/character/bonhommes.gd" id="9_sgm20"]
 [ext_resource type="PackedScene" uid="uid://w8im31gg6ge2" path="res://mvc/views/Node3D/Travaux/Grue.fbx" id="10_3udih"]
 [ext_resource type="PackedScene" uid="uid://uo855peg7ssy" path="res://mvc/views/Node3D/character/bonhomme.fbx" id="11_mah3o"]
 [ext_resource type="Script" path="res://mvc/views/Node3D/character/bonhomme.gd" id="12_vnvx5"]
+[ext_resource type="Script" path="res://mvc/views/Node2D/Menu/Menu.gd" id="13_hhh64"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1hwps"]
 sky_top_color = Color(0.719709, 0.848666, 1, 1)
@@ -391,7 +391,7 @@ offset_left = 1007.0
 offset_top = 562.0
 offset_right = 1047.0
 offset_bottom = 602.0
-script = ExtResource("8_tpp7l")
+script = ExtResource("13_hhh64")
 
 [node name="PopupPanel" type="PopupPanel" parent="menu"]
 

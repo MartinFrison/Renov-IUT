@@ -12,15 +12,18 @@ var loaded = false
 func _ready() -> void:
 	print("start")
 	
+	#Masquer tout les travaux au début
 	for i in range (1,6):
 		building_work(i, false)
 	
-	
+	#Créer la base de donnée
 	app = self
 	Utils.create_iut_db()
 	illkirch = IUTFacade.new()
 	add_child(illkirch)
+	ObserverGlobalData.addObserver(self)
 	
+	#Affichage du panel de choix du scénario et du mode 
 	scene = load("res://mvc/views/Node2D/choixScenario/PanelChoixScenario.tscn")
 	panelChoixScenario = scene.instantiate()
 	add_child(panelChoixScenario)
@@ -28,14 +31,6 @@ func _ready() -> void:
 		panelChoixScenario.init(illkirch, self)
 
 
-
-
-
-#Fonction appelé une fois que le jeu est chargé pour que les actions n'engendre pas de bug
-func game_loaded() -> void:
-	loaded = true
-	open_building(1)
-	print("Game loaded")
 
 #Lance le jeu avec le scénario et mode de jeu choisie
 func startGame() -> void:
@@ -48,10 +43,28 @@ func startGame() -> void:
 	illkirch.startGame()
 
 
+
+#Fonction appelé une fois que le jeu est chargé pour que les actions n'engendre pas de bug
+func game_loaded() -> void:
+	loaded = true
+	open_building(1)
+	print("Game loaded")
+
+
+# Passer au trimestre suivant à la demande du joueur
+func _on_next_pressed() -> void:
+	illkirch._time.next_Trimestre()
+
+
 # Ferme l'appli
 func close_app() -> void:
 	Utils.db.clear_tables()
 	Utils.db.close_db()
+
+
+
+
+
 
 
 # Affiche une notification
@@ -73,10 +86,6 @@ func open_building(id) -> void:
 		panelAction.init(id)
 
 
-# Passer au trimestre suivant à la demande du joueur
-func _on_next_pressed() -> void:
-	illkirch._time.next_Trimestre()
-
 
 # Affiche/Masque les travaux d'un batiment
 func building_work(id : int, visible : bool) -> void:
@@ -84,3 +93,15 @@ func building_work(id : int, visible : bool) -> void:
 	var work_build = get_tree().get_current_scene().get_node(path)
 	work_build = work_build as Node3D
 	work_build.visible = visible
+
+
+#Réagir quand la date change pour mettre de la neige en hivert
+func notifyDateChanged() -> void:
+	var herbe = load("res://mvc/views/Node3D/IUT_V4/material/herbe.tres") as StandardMaterial3D
+	var snow = load("res://mvc/views/Node3D/IUT_V4/material/snow.tres") as StandardMaterial3D
+	var plane = get_tree().get_current_scene().get_node("Vue3D/IUT_V4/herbe")
+	plane = plane as MeshInstance3D
+	if GlobalData._month >= 12 or GlobalData._month <= 2:
+		plane.material_override = snow
+	else:
+		plane.material_override = herbe

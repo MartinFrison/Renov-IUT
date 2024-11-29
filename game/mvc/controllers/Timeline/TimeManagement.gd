@@ -123,7 +123,7 @@ static func heat_adjust_mood(day : int) -> void:
 		if build.is_heating() and GlobalData._month >= 7 and GlobalData._month<=9:
 			Study.drop_mood_student(code, value*day)
 		#trop froid
-		elif !build.is_heating() and (GlobalData._month >= 1 or GlobalData._month<=3):
+		elif !build.is_heating() and (GlobalData._month >= 1 or GlobalData._month<=4):
 			Study.drop_mood_student(code, value*day)
 		else:
 			value = (0.03 / 360)

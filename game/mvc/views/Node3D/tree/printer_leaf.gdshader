@@ -21,6 +21,6 @@ void fragment() {
     }
 
     // Applique la couleur de la texture et l'alpha modifié
-    ALBEDO = vec3(1, 0.3, 0.7)*0.7;//texColor.rgb;
+    ALBEDO = vec3(1, 0.45, 0.75)*0.8;//texColor.rgb;
     ALPHA = texColor.a;
 }
