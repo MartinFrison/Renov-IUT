@@ -122,7 +122,7 @@ func fill_notifications_from_csv(file_path : String):
 #	return -1
 
 
-func dept_index_to_string(index: int) -> String:
+static func dept_index_to_string(index: int) -> String:
 	match index:
 		1:
 			return "Chimie"
