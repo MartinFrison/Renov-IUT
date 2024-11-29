@@ -6,7 +6,7 @@
 [resource]
 resource_name = "mur4"
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.621524, 0.621524, 0.621524, 1)
+albedo_color = Color(0.702422, 0.702422, 0.702422, 1)
 albedo_texture = ExtResource("1_rc5ya")
 emission_enabled = true
 normal_enabled = true
