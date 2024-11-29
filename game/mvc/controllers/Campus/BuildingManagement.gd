@@ -34,8 +34,8 @@ static func decrease_entry_exam_difficulty(dept : String) -> void:
 
 
 
-# Avance les travaux d'un bâtiment donné
-static func advance_work(building: Building) -> void:
+# Avance les travaux d'un bâtiment donné pour un nb de jours donnée
+static func advance_work(building: Building, day : int) -> void:
 	var workers = building.get_ouvriers()
 	if workers <= 0:
 		return  # Pas d'ouvriers, pas d'avancement possible
@@ -49,9 +49,10 @@ static func advance_work(building: Building) -> void:
 	
 	# Mise à jour de l'inventaire
 	if building._is_renovation_underway:
-		building.addInventory(renovation_increment* Building.coeffTempsRenovation)
+		building.addInventory(renovation_increment* Building.coeffTempsRenovation* day)
 		if building.get_inventory() >= 100:
 			building.set_renovation_underway(false)
+			RenovIUTApp.app.building_work(Utils.dept_string_to_index(building.get_code()), false)
 
 
 
@@ -73,6 +74,7 @@ static func start_renovation(building: Building) -> bool:
 	
 	# Démarrer les travaux de rénovation
 	building.set_renovation_underway(true)
+	RenovIUTApp.app.building_work(Utils.dept_string_to_index(building.get_code()), true)
 	print("Travaux de rénovation lancés pour le bâtiment", building.get_code())
 	return true
 
@@ -145,8 +147,8 @@ static func lockDoor(dept: String) -> void:
 		print("Aucun bâtiment trouvé pour le département", dept)
 
 # Détérioration trimestriel des batiments
-static func wear() -> void:
+static func wear(day : int) -> void:
 	for i in range(1,6):
 		var code = Utils.dept_index_to_string(i)
 		var b = Building.get_building(code)
-		b.addInventory(-0.02 * 90) #soit environs 15 ans pour une détérioration total  
+		b.addInventory(-0.02 * day) #soit environs 15 ans pour une détérioration total  

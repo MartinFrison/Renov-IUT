@@ -1,13 +1,19 @@
-[gd_scene load_steps=17 format=3 uid="uid://b4cp1gj8gn1ro"]
+[gd_scene load_steps=25 format=3 uid="uid://b4cp1gj8gn1ro"]
 
-[ext_resource type="Script" path="res://mvc/application/RenovIUTApp.gd" id="1_drlro"]
+[ext_resource type="Script" path="res://mvc/views/RenovIUTApp.gd" id="1_drlro"]
+[ext_resource type="Script" path="res://mvc/views/Node3D/camera_root.gd" id="3_et11y"]
 [ext_resource type="PackedScene" uid="uid://lrmgb23vrj1e" path="res://mvc/views/Node2D/Stat/PanelStat.tscn" id="4_t3hyp"]
 [ext_resource type="Script" path="res://mvc/views/Node3D/camera_3d.gd" id="5_h3jqx"]
 [ext_resource type="PackedScene" uid="uid://dxufw4uqxthik" path="res://mvc/views/Node3D/tree/Tree1.fbx" id="6_l4lhr"]
 [ext_resource type="Script" path="res://mvc/views/Node3D/tree/tree.gd" id="7_yrqt0"]
 [ext_resource type="PackedScene" uid="uid://s1o3hmegslfi" path="res://mvc/views/Node3D/IUT_V4/IUT_V4.fbx" id="8_l87e4"]
 [ext_resource type="PackedScene" uid="uid://dsy32b2by7jp6" path="res://mvc/views/Node2D/BuildingAction/PanelBuildingAction.tscn" id="8_lduu6"]
-[ext_resource type="Script" path="res://mvc/views/Menu.gd" id="8_tpp7l"]
+[ext_resource type="PackedScene" uid="uid://bbbk1nj8yyd2d" path="res://mvc/views/Node3D/Travaux/Echaffaudage.fbx" id="9_m6s2a"]
+[ext_resource type="Script" path="res://mvc/views/Node3D/character/bonhommes.gd" id="9_sgm20"]
+[ext_resource type="PackedScene" uid="uid://w8im31gg6ge2" path="res://mvc/views/Node3D/Travaux/Grue.fbx" id="10_3udih"]
+[ext_resource type="PackedScene" uid="uid://uo855peg7ssy" path="res://mvc/views/Node3D/character/bonhomme.fbx" id="11_mah3o"]
+[ext_resource type="Script" path="res://mvc/views/Node3D/character/bonhomme.gd" id="12_vnvx5"]
+[ext_resource type="Script" path="res://mvc/views/Node2D/Menu/Menu.gd" id="13_hhh64"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1hwps"]
 sky_top_color = Color(0.719709, 0.848666, 1, 1)
@@ -26,6 +32,10 @@ sky_custom_fov = 48.2
 tonemap_mode = 2
 ssao_enabled = true
 glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nrmeu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rck6k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y0mrx"]
 resource_local_to_scene = true
@@ -68,14 +78,31 @@ text = "Next"
 
 [node name="Vue3D" type="Node3D" parent="."]
 
-[node name="Camera3D" type="Camera3D" parent="Vue3D"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 45.8901, 63.2057, 97.4257)
+[node name="Camera_root" type="Node3D" parent="Vue3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.88827, 0, -14.2294)
+script = ExtResource("3_et11y")
+
+[node name="Camera3D" type="Camera3D" parent="Vue3D/Camera_root"]
+transform = Transform3D(0.976338, 0.152913, -0.152913, 0, 0.707107, 0.707107, 0.216252, -0.690375, 0.690375, -9.07894, 63.2057, 99.5831)
 fov = 90.0
 near = 0.1
 script = ExtResource("5_h3jqx")
 
-[node name="RayCast3D" type="RayCast3D" parent="Vue3D/Camera3D"]
+[node name="RayCast3D" type="RayCast3D" parent="Vue3D/Camera_root/Camera3D"]
 target_position = Vector3(0, 0, -500)
+
+[node name="colision_null" type="StaticBody3D" parent="Vue3D/Camera_root/Camera3D"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vue3D/Camera_root/Camera3D/colision_null"]
+transform = Transform3D(5, -1.19209e-07, 2.51457e-08, 5.96046e-08, 10, 1.86265e-08, -1.13249e-06, -5.24521e-06, 0.1, 3.82424, 1.93194, -1.93194)
+visible = false
+shape = SubResource("BoxShape3D_nrmeu")
+
+[node name="cube" type="MeshInstance3D" parent="Vue3D/Camera_root/Camera3D/colision_null/CollisionShape3D"]
+transform = Transform3D(1, 1.19209e-07, -2.37953e-07, -4.47035e-08, 1, -1.19209e-07, 9.53674e-07, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_rck6k")
+skeleton = NodePath("../..")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Vue3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.4014, 10260.8, -390.54)
@@ -185,6 +212,178 @@ transform = Transform3D(0.78504, 0, 14.9794, 0, 15, 0, -14.9794, 0, 0.78504, 94.
 transform = Transform3D(4, 0, 6.85453e-07, 0, 1.5, 0, -8.04663e-07, 0, 3.5, 0.391312, 0.0269642, 1.64651)
 shape = SubResource("BoxShape3D_26cy1")
 
+[node name="Travaux" type="Node3D" parent="Vue3D"]
+
+[node name="Travaux1" type="Node3D" parent="Vue3D/Travaux"]
+
+[node name="Grue" parent="Vue3D/Travaux/Travaux1" instance=ExtResource("10_3udih")]
+transform = Transform3D(-0.939382, 0, 0.342873, 0, 1, 0, -0.342873, 0, -0.939382, 28.6665, -7.98041, 30.311)
+
+[node name="Echaffaudage7" parent="Vue3D/Travaux/Travaux1" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(0.996894, 0, -0.0788074, 0, 1, 0, 0.0788074, 0, 0.996894, 50.1761, -7.00236, 36.3938)
+
+[node name="Echaffaudage5" parent="Vue3D/Travaux/Travaux1/Echaffaudage7" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8566, 0, 0)
+
+[node name="Echaffaudage6" parent="Vue3D/Travaux/Travaux1/Echaffaudage7" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0746164, 9.87982, -0.0317459)
+
+[node name="Echaffaudage5" parent="Vue3D/Travaux/Travaux1/Echaffaudage7/Echaffaudage6" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8566, 0, 0)
+
+[node name="Echaffaudage7" parent="Vue3D/Travaux/Travaux1/Echaffaudage7" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(0.999069, 0, 0.043236, 0, 1, 0, -0.043236, 0, 0.999069, -2.27372, 0.0625691, -28.3167)
+
+[node name="Echaffaudage5" parent="Vue3D/Travaux/Travaux1/Echaffaudage7/Echaffaudage7" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8566, 0, 0)
+
+[node name="Echaffaudage6" parent="Vue3D/Travaux/Travaux1/Echaffaudage7/Echaffaudage7" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0746164, 9.87982, -0.0317459)
+
+[node name="Echaffaudage5" parent="Vue3D/Travaux/Travaux1/Echaffaudage7/Echaffaudage7/Echaffaudage6" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8566, 0, 0)
+
+[node name="Echaffaudage5" parent="Vue3D/Travaux/Travaux1" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(-0.998723, 0, 0.0505581, 0, 1, 0, -0.0505581, 0, -0.998723, 93.1907, -7.06102, -21.6664)
+
+[node name="Travaux2" type="Node3D" parent="Vue3D/Travaux"]
+
+[node name="Grue" parent="Vue3D/Travaux/Travaux2" instance=ExtResource("10_3udih")]
+transform = Transform3D(0.967709, 0, -0.252069, 0, 1.12, 0, 0.252069, 0, 0.967709, 115.802, -7.12178, -43.3869)
+
+[node name="Echaffaudage5" parent="Vue3D/Travaux/Travaux2" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(-0.998723, 0, 0.0505581, 0, 1, 0, -0.0505581, 0, -0.998723, 93.1907, -7.06102, -21.6664)
+
+[node name="Echaffaudage5" parent="Vue3D/Travaux/Travaux2/Echaffaudage5" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(-0.999857, 0, 0.0169987, 0, 1, 0, -0.0169987, 0, -0.999857, -0.726288, 0.179097, 71.7565)
+
+[node name="Echaffaudage7" parent="Vue3D/Travaux/Travaux2" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(0.0448923, 0, 0.998994, 0, 1, 0, -0.998994, 0, 0.0448923, 110.351, -7.12074, -51.1278)
+
+[node name="Echaffaudage8" parent="Vue3D/Travaux/Travaux2" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(-0.0562223, 0, -0.99842, 0, 1, 0, 0.99842, 0, -0.0562223, 80.5292, -7.0013, -55.4727)
+
+[node name="Echaffaudage6" parent="Vue3D/Travaux/Travaux2" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(-0.0562223, 0, -0.99842, 0, 1, 0, 0.99842, 0, -0.0562223, 82.1025, -6.94159, -80.504)
+
+[node name="Travaux3" type="Node3D" parent="Vue3D/Travaux"]
+
+[node name="Echaffaudage4" parent="Vue3D/Travaux/Travaux3" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.0595, -7.18062, 5.33232)
+
+[node name="Echaffaudage6" parent="Vue3D/Travaux/Travaux3/Echaffaudage4" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.2273, -7.59296, 4.45228)
+
+[node name="Echaffaudage4" parent="Vue3D/Travaux/Travaux3/Echaffaudage4" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1678, -0.412341, -0.880042)
+
+[node name="Echaffaudage5" parent="Vue3D/Travaux/Travaux3/Echaffaudage4" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5246, -0.0597234, -52.8663)
+
+[node name="Echaffaudage5" parent="Vue3D/Travaux/Travaux3/Echaffaudage4/Echaffaudage5" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0802, -0.0597157, 0.163509)
+
+[node name="Echaffaudage6" parent="Vue3D/Travaux/Travaux3/Echaffaudage4/Echaffaudage5" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(-0.00277502, 0, -0.999997, 0, 1, 0, 0.999997, 0, -0.00277502, -16.4602, -0.0597234, 12.0508)
+
+[node name="Echaffaudage5" parent="Vue3D/Travaux/Travaux3/Echaffaudage4/Echaffaudage5/Echaffaudage6" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0802, -0.0597157, 0.163509)
+
+[node name="Grue" parent="Vue3D/Travaux/Travaux3" instance=ExtResource("10_3udih")]
+transform = Transform3D(-0.618669, 0, -0.785652, 0, 1, 0, 0.785652, 0, -0.618669, -61.6176, -7.61018, 12.7358)
+
+[node name="Travaux4" type="Node3D" parent="Vue3D/Travaux"]
+
+[node name="Echaffaudage3" parent="Vue3D/Travaux/Travaux4" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(0.0697565, 0, 0.997564, 0, 1, 0, -0.997564, 0, 0.0697565, -137.393, -7.47916, -18.4834)
+
+[node name="Echaffaudage4" parent="Vue3D/Travaux/Travaux4" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(0.0697565, 0, 0.997564, 0, 1, 0, -0.997564, 0, 0.0697565, -138.967, -7.63037, 6.71004)
+
+[node name="Echaffaudage" parent="Vue3D/Travaux/Travaux4" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(0.0697565, 0, 0.997564, 0, 1, 0, -0.997564, 0, 0.0697565, -112.288, -7.41168, 8.20751)
+
+[node name="Grue" parent="Vue3D/Travaux/Travaux4" instance=ExtResource("10_3udih")]
+transform = Transform3D(0.991894, 0, -0.127065, 0, 1, 0, 0.127065, 0, 0.991894, -101.988, -7.07246, 10.9123)
+
+[node name="Echaffaudage2" parent="Vue3D/Travaux/Travaux4" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(0.0697565, 0, 0.997564, 0, 1, 0, -0.997564, 0, 0.0697565, -110.855, -7.5629, -16.9627)
+
+[node name="Travaux5" type="Node3D" parent="Vue3D/Travaux"]
+
+[node name="Grue" parent="Vue3D/Travaux/Travaux5" instance=ExtResource("10_3udih")]
+transform = Transform3D(-0.680969, 0, -1.10738, 0, 1.6, 0, 1.10738, 0, -0.680969, 10.6301, -8.26125, 2.79834)
+
+[node name="Echaffaudage6" parent="Vue3D/Travaux/Travaux5" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.7537, -7.35978, -47.207)
+
+[node name="Echaffaudage5" parent="Vue3D/Travaux/Travaux5" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.95953, -7.35978, -47.207)
+
+[node name="Echaffaudage5" parent="Vue3D/Travaux/Travaux5/Echaffaudage5" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8566, 0, 0)
+
+[node name="Echaffaudage6" parent="Vue3D/Travaux/Travaux5/Echaffaudage5" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0746164, 9.87982, -0.0317459)
+
+[node name="Echaffaudage5" parent="Vue3D/Travaux/Travaux5/Echaffaudage5/Echaffaudage6" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8566, 0, 0)
+
+[node name="Echaffaudage7" parent="Vue3D/Travaux/Travaux5/Echaffaudage5" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(0.999224, 0, -0.0394343, 0, 1, 0, 0.0394343, 0, 0.999224, 1.68241, 0.2395, 39.2354)
+
+[node name="Echaffaudage5" parent="Vue3D/Travaux/Travaux5/Echaffaudage5/Echaffaudage7" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8566, 0, 0)
+
+[node name="Echaffaudage6" parent="Vue3D/Travaux/Travaux5/Echaffaudage5/Echaffaudage7" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0746164, 9.87982, -0.0317459)
+
+[node name="Echaffaudage5" parent="Vue3D/Travaux/Travaux5/Echaffaudage5/Echaffaudage7/Echaffaudage6" instance=ExtResource("9_m6s2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8566, 0, 0)
+
+[node name="Bonhommes" type="Node3D" parent="Vue3D"]
+script = ExtResource("9_sgm20")
+
+[node name="bonhomme1" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -3.15671, -6.32335, 34.3189)
+script = ExtResource("12_vnvx5")
+
+[node name="bonhomme2" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -72.5249, -6.72647, 32.9355)
+script = ExtResource("12_vnvx5")
+
+[node name="bonhomme3" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -35.7037, -6.41338, 33.8002)
+script = ExtResource("12_vnvx5")
+
+[node name="bonhomme4" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -108.886, -6.41035, 31.2072)
+script = ExtResource("12_vnvx5")
+
+[node name="bonhomme5" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
+transform = Transform3D(-0.494975, 0, 0.494975, 0, 0.7, 0, -0.494975, 0, -0.494975, 25.6313, -6.09422, 18.4771)
+script = ExtResource("12_vnvx5")
+
+[node name="bonhomme6" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -38.483, -6.37912, -64.1719)
+script = ExtResource("12_vnvx5")
+
+[node name="bonhomme7" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
+transform = Transform3D(-3.0598e-08, 0, 0.700001, 0, 0.7, 0, -0.700001, 0, -3.0598e-08, -96.7837, -6.45025, -47.9454)
+script = ExtResource("12_vnvx5")
+
+[node name="bonhomme8" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
+transform = Transform3D(0.694782, 0, -0.0853085, 0, 0.7, 0, 0.0853085, 0, 0.694782, 57.8391, -6.37837, -51.6363)
+script = ExtResource("12_vnvx5")
+
+[node name="bonhomme9" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, -145.35, -6.44444, -40.3754)
+script = ExtResource("12_vnvx5")
+
+[node name="bonhomme10" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
+transform = Transform3D(-0.7, 0, 1.05697e-07, 0, 0.7, 0, -1.05697e-07, 0, -0.7, 58.5337, -6.2402, -13.5208)
+script = ExtResource("12_vnvx5")
+
 [node name="menu" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -192,7 +391,7 @@ offset_left = 1007.0
 offset_top = 562.0
 offset_right = 1047.0
 offset_bottom = 602.0
-script = ExtResource("8_tpp7l")
+script = ExtResource("13_hhh64")
 
 [node name="PopupPanel" type="PopupPanel" parent="menu"]
 

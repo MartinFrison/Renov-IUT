@@ -1,6 +1,7 @@
 
 Autre:
 - Mise à jours de l'UML : Elena
+- Mettre à jours le cahier des charges
 - Ajout des son
 
 
@@ -8,7 +9,6 @@ Autre:
 
 Graphique 2D:
 
-- Style du panel de choix de scénario & difficulté (avec fusion des deux en un seul) : Elena
 - Style des bulle (message et notif selon leur type) : Elena
 - Style de l'historique des notifications : Elena
 
@@ -22,40 +22,26 @@ Graphique 2D:
 
 
 
-Graphique 3D:
-- Ajout du parc de street : Martin
-- Ajout de la neige en hivert : Martin
-- Ajout des échaffaudage de construction : Martin
-- Ajout des bonnomes animés (vert, orange et rouge) : Martin
-
-
-
-
-
 Code:
 
 - Gestion des fonds : Elena
 - Création du menu (bouton quitter, option) : Yasmine
 
-
-- Ajuster la satisfaction des profs selon le salaire : Martin
 - Gestion des grandes vacances : Martin
+- Ajout d'un panel récapitulatif de stat détaillé : Martin
 
- 
 - Ajout de quelque évenements aléatoire simple
 - Ajout d'un tutoriel si la difficulté est facile
-- Ajout d'un panel récapitulatif de stat détaillé
 - Gestion de l'attractivité
 
 
 
+
 Détail:
-- Ajout de tout les messages et notifs manquant dans le code et definition de leur type
+- Ajout de tout les messages et notifs manquant dans le code et definition de leur type (chauffage ect..)
 - Affichage du cout quand le joueur s'apprête a allumer le chauffage ou embaucher quelqu'un
 - Ajustement de la taille de l'interface en grand écrans
 - Ajouter des conditions au licensiment (soit un dédommagement soit une limite mensuels)
-- Notification si les etudiant on trop chaud ou trop froid (precise les bâtiments concerné)
-
 
 
 

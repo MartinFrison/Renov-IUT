@@ -11,6 +11,9 @@ func _init(scenario: Scenario) -> void:
 	_bill = Bill.new()
 	GlobalData.setDate(1,9,2025) # date de départ
 	self._scenario = scenario  # Initialiser le scénario
+	ObserverPopulation.notifySatisfactionChanged()
+	ObserverPopulation.notifyLevelChanged()
+	ObserverBuilding.notifyStateChanged()
 
 
 
@@ -30,14 +33,17 @@ func next_Trimestre():
 	for i in 5:
 		var c = Utils.dept_index_to_string(i+1)
 		var build = Building.get_building(Utils.dept_index_to_string(i+1))
-		BuildingManagement.advance_work(build)
+		BuildingManagement.advance_work(build, 90)
 	#Détérioration trimestriels des batiments
-	BuildingManagement.wear()
+	BuildingManagement.wear(90)
+	ObserverBuilding.notifyStateChanged()
 	
 	#Traitement de la satisfaction
 	mood_update(90)
 	#Traitement du niveau etudiant
 	level_update(90)
+	ObserverPopulation.notifyLevelChanged()
+	ObserverPopulation.notifySatisfactionChanged()
 	
 	#Test des étapes intermediare du scenario
 	_scenario.mid_game()
@@ -120,10 +126,10 @@ static func heat_adjust_mood(day : int) -> void:
 		var build = Building.get_building(code)
 		var value = (0.08 / 360)
 		#trop chaud
-		if build.is_heating() and GlobalData._month >= 6 and GlobalData._month<=7:
+		if build.is_heating() and GlobalData._month >= 7 and GlobalData._month<=9:
 			Study.drop_mood_student(code, value*day)
 		#trop froid
-		elif !build.is_heating() and (GlobalData._month >= 11 or GlobalData._month<=2):
+		elif !build.is_heating() and (GlobalData._month >= 1 or GlobalData._month<=4):
 			Study.drop_mood_student(code, value*day)
 		else:
 			value = (0.03 / 360)

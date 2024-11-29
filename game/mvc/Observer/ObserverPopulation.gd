@@ -10,11 +10,11 @@ static func notifyLevelChanged() -> void:
 	for o in Observer:
 		if o.has_method("notifyLevelChanged"):
 			var c : Callable = Callable(o, "notifyLevelChanged")
-			#c.call()
+			c.call()
 
 
 static func notifySatisfactionChanged() -> void:
 	for o in Observer:
 		if o.has_method("notifySatisfactionChanged"):
 			var c : Callable = Callable(o, "notifySatisfactionChanged")
-			#c.call()
+			c.call()
