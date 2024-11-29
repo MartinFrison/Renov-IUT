@@ -118,9 +118,11 @@ func notifyStateChanged() -> void:
 	_building[4] = get_tree().current_scene.get_node("Vue3D/IUT_V4/bat_info") as MeshInstance3D
 	_building[5] = get_tree().current_scene.get_node("Vue3D/IUT_V4/Batiment_infocom") as MeshInstance3D
 	for i in range(1, 6):
-		var crack_intensity = 1
+		var build = Building.get_building(Utils.dept_index_to_string(i))
+		var crack_intensity = int((100-build.get_inventory())/25)
+		crack_intensity = ((float(crack_intensity))/4)**2
 		var mesh3D = _building[i]
-		var crack = ResourceLoader.load("res://mvc/views/Node3D/IUT_V4/Plaster002_1K-JPG/Plaster002_1K-JPG_Displacement.jpg") as Texture2D
+		var crack = ResourceLoader.load("res://mvc/views/Node3D/IUT_V4/crack.webp") as Texture2D
 		
 		if mesh3D is MeshInstance3D:  # Vérifiez que le node est bien un MeshInstance3D
 			var mesh = mesh3D.mesh

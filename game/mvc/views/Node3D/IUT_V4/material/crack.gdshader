@@ -15,8 +15,10 @@ void fragment()
     vec4 texColor = texture(texture, UV);      // Couleur de la texture principale (Albedo)
     vec4 crackColor = texture(crack, UV);      // Texture de fissures en noir et blanc
     
-    // Applique les fissures à la texture principale
-    vec3 albedo = mix(texColor.rgb, vec3(0.0), 1.0 - crackColor.r * crack_intensity);
+	// Applique les fissures à la texture principale
+	crackColor.r = max(crackColor.r, (1.0-crack_intensity)); // Réduit l'intensité des fissures
+	vec3 albedo = texColor.rgb * crackColor.r; // Applique uniquement la composante en niveaux de gris des fissures
+
     
     // Charge les autres propriétés du matériau
     vec3 normal = texture(normal_map, UV).rgb * 2.0 - 1.0; // Convertit en espace tangent
