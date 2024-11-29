@@ -22,12 +22,6 @@ Graphique 2D:
 
 
 
-Graphique 3D:
-- Ajout des fissures de batiment : Martin
-
-
-
-
 Code:
 
 - Gestion des fonds : Elena
@@ -35,7 +29,6 @@ Code:
 
 - Gestion des grandes vacances : Martin
 - Ajout d'un panel récapitulatif de stat détaillé : Martin
-- Gestion de la proportion de bonhomme content selon la satisfaction : Martin
 
 - Ajout de quelque évenements aléatoire simple
 - Ajout d'un tutoriel si la difficulté est facile

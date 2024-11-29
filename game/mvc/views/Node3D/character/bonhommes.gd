@@ -3,10 +3,21 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	ObserverPopulation.addObserver(self)
+	
+
+
+# Quand la satisfaction change, on reset la couleur des bonhomme selon la satisfaction
+# de facon aléatoire
+func notifySatisfactionChanged() -> void:
+	var mood_global = Student.avg_mood() * 0.8 + Teacher.avg_mood() *0.2
+	
 	for child in get_children():
 		if child is Node3D:
-			content(child)
-
+			if Utils.randfloat_in_range(0,1) <= mood_global:
+				content(child)
+			else:
+				facher(child)
 
 
 
@@ -14,9 +25,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
-
-
+# Rend un bonhomme facher
 func facher(bonhomme : Node3D) -> void:
 	var red = load("res://mvc/views/Node3D/character/bonome_rouge.tres") as StandardMaterial3D
 	bonhomme = bonhomme as Bonhomme
@@ -28,6 +37,7 @@ func facher(bonhomme : Node3D) -> void:
 					mesh.material_override = red
 
 
+# Rend un bonhomme content
 func content(bonhomme : Node3D) -> void:
 	var green = load("res://mvc/views/Node3D/character/bonome_vert.tres") as StandardMaterial3D
 	bonhomme = bonhomme as Bonhomme

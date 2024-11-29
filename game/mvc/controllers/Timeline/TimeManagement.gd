@@ -11,6 +11,9 @@ func _init(scenario: Scenario) -> void:
 	_bill = Bill.new()
 	GlobalData.setDate(1,9,2025) # date de départ
 	self._scenario = scenario  # Initialiser le scénario
+	ObserverPopulation.notifySatisfactionChanged()
+	ObserverPopulation.notifyLevelChanged()
+	ObserverBuilding.notifyStateChanged()
 
 
 
@@ -39,6 +42,8 @@ func next_Trimestre():
 	mood_update(90)
 	#Traitement du niveau etudiant
 	level_update(90)
+	ObserverPopulation.notifyLevelChanged()
+	ObserverPopulation.notifySatisfactionChanged()
 	
 	#Test des étapes intermediare du scenario
 	_scenario.mid_game()
