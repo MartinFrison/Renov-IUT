@@ -90,15 +90,29 @@ static func get_season() -> int:
 		9, 10, 11:
 			return 2
 	return -1
+	
+# Récupère l'année
+static func get_year_to_str() -> String:
+	return str(_year)
 
-
+# Affich la saison en toute lettres
+static func get_season_text() -> String:
+	match _month:
+		1, 2, 12:
+			return "en hiver"
+		3, 4, 5:
+			return "au printemps"
+		6, 7, 8:
+			return "en été"
+		9, 10, 11:
+			return "en automne"
+	return ""
 
 # Fonction pour obtenir la date formatée (DD/MM/YYYY)
 static func get_date() -> String:
 	var day_str = "0" + str(_day) if _day < 10 else str(_day)
 	var month_str = "0" + str(_month) if _month < 10 else str(_month)
 	return "%s/%s/%d" % [day_str, month_str, _year]
-
 
 static func get_difficulty() -> int:
 	return _difficulty

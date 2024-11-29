@@ -16,10 +16,10 @@ scale = Vector2(0.65, 0.65)
 script = ExtResource("1_rgwm8")
 
 [node name="PanelGlobal" type="Panel" parent="."]
-offset_left = 1223.0
-offset_top = -9.0
-offset_right = 1781.0
-offset_bottom = 997.0
+offset_left = 1231.0
+offset_top = -2.0
+offset_right = 1789.0
+offset_bottom = 986.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_2tdad")
 
 [node name="name" type="Label" parent="PanelGlobal"]

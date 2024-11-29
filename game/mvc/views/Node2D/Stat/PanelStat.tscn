@@ -13,41 +13,43 @@ scale = Vector2(0.606771, 0.602546)
 texture = ExtResource("2_uuv2q")
 
 [node name="date" type="Label" parent="."]
-offset_left = 991.0
-offset_top = 25.0
-offset_right = 1091.0
-offset_bottom = 55.0
+offset_left = 930.0
+offset_top = 33.0
+offset_right = 1131.0
+offset_bottom = 69.0
 text = "Date"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="mood_teach" type="Label" parent="."]
-offset_left = 483.0
-offset_top = 47.0
-offset_right = 574.0
-offset_bottom = 72.0
+offset_left = 470.0
+offset_top = 56.0
+offset_right = 561.0
+offset_bottom = 81.0
 text = "Satisfaction"
+horizontal_alignment = 1
 
 [node name="mood_stud" type="Label" parent="."]
-offset_left = 572.0
-offset_top = 47.0
-offset_right = 672.0
-offset_bottom = 72.0
+offset_left = 614.0
+offset_top = 57.0
+offset_right = 714.0
+offset_bottom = 82.0
 text = "Satisfaction"
+horizontal_alignment = 1
 
 [node name="level" type="Label" parent="."]
-offset_left = 293.0
-offset_top = 26.0
-offset_right = 393.0
-offset_bottom = 51.0
+offset_left = 738.0
+offset_top = 28.0
+offset_right = 913.0
+offset_bottom = 53.0
 text = "Level
 "
 horizontal_alignment = 1
 
 [node name="budget" type="Label" parent="."]
-offset_left = 62.0
+offset_left = 12.0
 offset_top = 40.0
-offset_right = 162.0
+offset_right = 210.0
 offset_bottom = 65.0
 text = "Budget"
 horizontal_alignment = 1

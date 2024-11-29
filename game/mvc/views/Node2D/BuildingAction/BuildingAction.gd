@@ -24,10 +24,10 @@ func show_data() -> void:
 	node.text = code
 	
 	node = get_node("PanelGlobal/PanelStat/end_exam")
-	node.text = "Difficulté des examens de fin d'années : %s" % [int(build.get_exam_end()*100)]
+	node.text = "Difficulté des examens de fin d'année : %s" % [int(build.get_exam_end()*100)]
 	
 	node = get_node("PanelGlobal/PanelStat/entry_exam")
-	node.text = "Difficulté des examens d'entrées: %s" % [int(build.get_exam_entry()*100)]
+	node.text = "Difficulté des examens d'entrée : %s" % [int(build.get_exam_entry()*100)]
 	
 	node = get_node("PanelGlobal/PanelStat/pay")
 	node.text = "Salaire des enseigants : %s$" % [build.get_pay_teacher()]
@@ -80,7 +80,7 @@ func show_data() -> void:
 		
 	node = get_node("PanelGlobal/PanelAction/heat")
 	if build.is_heating():	
-		node.text = "Eteindre le chauffage"
+		node.text = "Éteindre le chauffage"
 	else:
 		node.text = "Allumer le chauffage"
 	
