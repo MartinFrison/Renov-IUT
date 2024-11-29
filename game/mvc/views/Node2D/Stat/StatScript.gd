@@ -12,13 +12,19 @@ func _ready() -> void:
 		notifySatisfactionChanged()
 		await get_tree().create_timer(1).timeout
 
-
-
-
+func formatBudget(number: int) -> String:
+	var number_str = str(number)
+	var formatted_number = ""
+	var length = number_str.length()
+	for i in range(length):
+		formatted_number += number_str[length - 1 - i]
+		if (i + 1) % 3 == 0 and i + 1 != length:
+			formatted_number += " "
+	return formatted_number.reverse()
 
 func notifyBudgetChanged() -> void:
 	var label = get_node("budget")
-	label.text = str(GlobalData.getTotalBudget()) + " €"
+	label.text = formatBudget(GlobalData.getTotalBudget()) + " €"
 
 func notifyLevelChanged() -> void: 
 	var label = get_node("level")

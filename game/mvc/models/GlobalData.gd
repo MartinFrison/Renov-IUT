@@ -25,7 +25,6 @@ static func addBudget(montant : int) -> void:
 static func getBudget() -> int:
 	return _budget
 
-
 static func getTotalBudget() -> int:
 	var result = getBudget()
 	var builds = Building._buildingsDictionary

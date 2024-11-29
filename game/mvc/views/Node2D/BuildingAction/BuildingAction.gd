@@ -67,8 +67,8 @@ func show_data() -> void:
 	var w = ""
 	if build.is_renovation_underway():
 		w = "(en travaux)"
-	node.text = "Etat du batiment : %s %s" % [n, w]
-	
+	node.text = "État du bâtiment : %s %s" % [n, w]
+
 	node = get_node("PanelGlobal/PanelStat/budget")
 	node.text = "Budget : %s$" % [build.get_budget()]
 
