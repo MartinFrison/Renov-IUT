@@ -36,7 +36,6 @@ func handle_3d_click(event: InputEventMouseButton):
 	var result = space_state.intersect_ray(query)
 	
 	if result:
-		print("Clique détecté sur : ", result.collider.name)
 		for i in range(1, 6):
 			if "colision" + str(i) == result.collider.name:
 				RenovIUTApp.app.open_building(i)

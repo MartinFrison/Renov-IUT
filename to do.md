@@ -1,6 +1,7 @@
 
 Autre:
 - Mise à jours de l'UML : Elena
+- Mettre à jours le cahier des charges
 - Ajout des son
 
 

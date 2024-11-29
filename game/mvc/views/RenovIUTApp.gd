@@ -22,6 +22,7 @@ func _ready() -> void:
 	illkirch = IUTFacade.new()
 	add_child(illkirch)
 	ObserverGlobalData.addObserver(self)
+	ObserverBuilding.addObserver(self)
 	
 	#Affichage du panel de choix du scénario et du mode 
 	scene = load("res://mvc/views/Node2D/choixScenario/PanelChoixScenario.tscn")
@@ -105,3 +106,55 @@ func notifyDateChanged() -> void:
 		plane.material_override = snow
 	else:
 		plane.material_override = herbe
+
+
+
+#Réagir au changement détat des batiments
+func notifyStateChanged() -> void:
+	var _building : Array[MeshInstance3D] = [null, null, null, null, null, null]
+	_building[1] = get_tree().current_scene.get_node("Vue3D/IUT_V4/batiment_chimie") as MeshInstance3D
+	_building[2] = get_tree().current_scene.get_node("Vue3D/IUT_V4/batiment_genie_civil") as MeshInstance3D
+	_building[3] = get_tree().current_scene.get_node("Vue3D/IUT_V4/Batiment_Administration") as MeshInstance3D
+	_building[4] = get_tree().current_scene.get_node("Vue3D/IUT_V4/bat_info") as MeshInstance3D
+	_building[5] = get_tree().current_scene.get_node("Vue3D/IUT_V4/Batiment_infocom") as MeshInstance3D
+	for i in range(1, 6):
+		var crack_intensity = 1
+		var mesh3D = _building[i]
+		var crack = ResourceLoader.load("res://mvc/views/Node3D/IUT_V4/Plaster002_1K-JPG/Plaster002_1K-JPG_Displacement.jpg") as Texture2D
+		
+		if mesh3D is MeshInstance3D:  # Vérifiez que le node est bien un MeshInstance3D
+			var mesh = mesh3D.mesh
+			 
+			if mesh and mesh is ArrayMesh:  # Assurez-vous que le mesh est un ArrayMesh
+				for material_index in mesh.get_surface_count():
+					var material = mesh.surface_get_material(material_index)
+					if material and material.resource_name.begins_with("mur"):  # Vérifie si le nom commence par "mur"
+						if material is ShaderMaterial:
+							# Si le matériau utilise déjà le shader, on ajuste uniquement l'intensité
+							material.set_shader_parameter("crack_intensity", crack_intensity)
+							material.set_shader_parameter("crack", crack)
+						else:
+							# Remplace le matériau par un ShaderMaterial si ce n'est pas déjà le cas
+							var new_material = ShaderMaterial.new()
+							var shader = load("res://mvc/views/Node3D/IUT_V4/material/crack.gdshader")
+							new_material.shader = shader
+							new_material.set_shader_parameter("crack_intensity", crack_intensity)
+							new_material.set_shader_parameter("crack", crack)
+							
+							
+							# Transfert des propriétés du matériau existant
+							if material is StandardMaterial3D:
+								new_material.set_shader_parameter("albedo", material.albedo_color)
+								new_material.set_shader_parameter("roughness", material.roughness)
+								new_material.set_shader_parameter("metallic", material.metallic)
+								if material.normal_texture:
+									new_material.set_shader_parameter("normal_map", material.normal_texture)
+								if material.roughness_texture:
+									new_material.set_shader_parameter("roughness_map", material.roughness_texture)
+								if material.metallic_texture:
+									new_material.set_shader_parameter("metallic_map", material.metallic_texture)
+							
+							# Remplace le matériau sur la surface
+							mesh.surface_set_material(material_index, new_material)
+
+		

@@ -33,6 +33,7 @@ func next_Trimestre():
 		BuildingManagement.advance_work(build, 90)
 	#Détérioration trimestriels des batiments
 	BuildingManagement.wear(90)
+	ObserverBuilding.notifyStateChanged()
 	
 	#Traitement de la satisfaction
 	mood_update(90)
