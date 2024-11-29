@@ -1,6 +1,7 @@
 
 Autre:
-- Mise à jours de l'UML : Elena
+- Mise à jours de l'UML : Elena 
+- Relire tous les messages qui s'affichent pendant le jeu : Elena
 - Mettre à jours le cahier des charges
 - Ajout des son
 
@@ -10,11 +11,7 @@ Autre:
 Graphique 2D:
 
 - Style des bulle (message et notif selon leur type) : Elena
-- Style de l'historique des notifications : Elena
-
-- Style d'affichage des stats global (satisfaction, reussite, budget, date..)
 - Style du panel de donnée et d'action des batiments
-- Style du panel avec les stats détaillées
 - Style des panels de fin de chaque scénario (vote,renovation, faillite..)
 - Ajout d'effet spéciaux 2D
 
@@ -26,10 +23,8 @@ Code:
 
 - Gestion des fonds : Elena
 - Création du menu (bouton quitter, option) : Yasmine
-
 - Gestion des grandes vacances : Martin
 - Ajout d'un panel récapitulatif de stat détaillé : Martin
-
 - Ajout de quelque évenements aléatoire simple
 - Ajout d'un tutoriel si la difficulté est facile
 - Gestion de l'attractivité
@@ -60,7 +55,6 @@ Fin de projet:
 - Test du jeu pour ajuster toutes les constantes du code qui influe sur la difficulté et la cohérence 
 de la simulation (ajustement de la satisfaction, de la réussite , des fonds, de la frequence des events ect...)
 - Test pour rechercher les abus du système (pas des bugs) possible par le joueur pour les corrigés 
-- Revu des textes afficher au joueur ainsi que des fautes de francais
 - Test du jeu pour détécter et corriger tout les bugs
 - Compilation et mise en ligne du jeu
 - Test de la version compiler sur différentes machines pour s'assurer que celle ci ne pose aucun problème
