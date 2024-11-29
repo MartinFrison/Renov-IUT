@@ -200,8 +200,9 @@ func randfloat_in_range(min : float, max : float) -> float:
 
 func randfloat_in_square_range(min : float, max : float) -> float:
 	var rng = RandomNumberGenerator.new()
-	var randfloat = sqrt(rng.randf()*rng.randf())  # Un nombre flottant entre 0.0 et 1.0
-	return randfloat * (max-min) + min
+	var randfloat = (rng.randf()*rng.randf())**0.5  # Un nombre flottant entre 0.0 et 1.0
+	var res = randfloat * (max-min) + min
+	return res
 
 
 

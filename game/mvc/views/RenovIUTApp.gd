@@ -130,11 +130,12 @@ func notifyStateChanged() -> void:
 			if mesh and mesh is ArrayMesh:  # Assurez-vous que le mesh est un ArrayMesh
 				for material_index in mesh.get_surface_count():
 					var material = mesh.surface_get_material(material_index)
+					var name = material.resource_name
 					if material is ShaderMaterial:
 						# Si le matériau utilise déjà le shader, on ajuste uniquement l'intensité
 						material.set_shader_parameter("crack_intensity", crack_intensity)
 						material.set_shader_parameter("crack", crack)
-					elif material and material.resource_name.begins_with("mur"):  # Vérifie si le nom commence par "mur"
+					elif material and name.begins_with("mur"):
 						# Remplace le matériau par un ShaderMaterial si ce n'est pas déjà le cas
 						var new_material = ShaderMaterial.new()
 						var shader = load("res://mvc/views/Node3D/IUT_V4/material/crack.gdshader")
@@ -144,6 +145,7 @@ func notifyStateChanged() -> void:
 							
 						# Transfert des propriétés du matériau existant
 						if material is StandardMaterial3D:
+							new_material.set_shader_parameter("color", material.albedo_color)
 							new_material.set_shader_parameter("albedo", material.albedo_color)
 							new_material.set_shader_parameter("roughness", material.roughness)
 							new_material.set_shader_parameter("metallic", material.metallic)

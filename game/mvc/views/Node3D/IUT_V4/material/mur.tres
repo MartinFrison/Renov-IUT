@@ -6,7 +6,7 @@
 [resource]
 resource_name = "mur"
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.355777, 0.418052, 0.502665, 1)
+albedo_color = Color(0.527095, 0.594331, 0.685804, 1)
 albedo_texture = ExtResource("1_asjlb")
 emission_enabled = true
 normal_enabled = true
