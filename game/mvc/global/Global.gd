@@ -138,7 +138,7 @@ static func dept_index_to_string(index: int) -> String:
 			return "Inconnu"  # Gestion des cas non définis
 
 
-func dept_string_to_index(source: String) -> int:
+static func dept_string_to_index(source: String) -> int:
 	match source:
 		"Chimie":
 			return 1

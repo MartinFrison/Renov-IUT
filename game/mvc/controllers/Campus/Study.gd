@@ -11,7 +11,7 @@ const exam_base_result = 0.8 # On estime qu'à l'examen, on est sur de récupér
 # Inscrit tous les étudiants d'une année donnée	(1, 2 ou 3).
 # À noter que cette fonction n'est utilisée qu'au début du jeu et calcule le nombre des 2e et des 3e année comme un pourcentage,
 # sans traiter leur niveau comme ce sera fait au cours du jeu.
-# retourne le nb d'étudiant inscript
+# retourne le nb d'étudiant inscrits
 static func populate_promo(dept : int, year : int) -> int:
 	var coeff = 0.0
 	var code = Utils.dept_index_to_string(dept)
