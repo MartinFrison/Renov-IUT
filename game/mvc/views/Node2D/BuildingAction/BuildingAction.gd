@@ -23,37 +23,37 @@ func show_data() -> void:
 	node = get_node("PanelGlobal/name")
 	node.text = code
 	
-	node = get_node("PanelGlobal/PanelStat/end_exam")
+	node = get_node("PanelGlobal/PanelStat/GridContainer/end_exam")
 	node.text = "Difficulté des examens finaux : %s" % [int(build.get_exam_end()*100)]
 	
-	node = get_node("PanelGlobal/PanelStat/entry_exam")
+	node = get_node("PanelGlobal/PanelStat/GridContainer/entry_exam")
 	node.text = "Difficulté des examens d'entrée : %s" % [int(build.get_exam_entry()*100)]
 	
-	node = get_node("PanelGlobal/PanelStat/pay")
+	node = get_node("PanelGlobal/PanelStat/GridContainer/pay")
 	node.text = "Salaire des enseigants : %s$" % [build.get_pay_teacher()]
 	
-	node = get_node("PanelGlobal/PanelStat/mood_student")
+	node = get_node("PanelGlobal/PanelStat/GridContainer/mood_student")
 	node.text = "Satisfaction étudiante : %s%%" % [int(Student.avg_mood_per_dept(code)*100)]
 	
-	node = get_node("PanelGlobal/PanelStat/mood_teacher")
+	node = get_node("PanelGlobal/PanelStat/GridContainer/mood_teacher")
 	node.text = "Satisfaction enseignante : %s%%" % [int(Teacher.avg_mood_per_dept(code)*100)]
 	
-	node = get_node("PanelGlobal/PanelStat/level")
+	node = get_node("PanelGlobal/PanelStat/GridContainer/level")
 	node.text = "Niveau étudiant moyen : %s%%" % [int(Student.avg_level_per_dept(code)*100)]
 	
-	node = get_node("PanelGlobal/PanelStat/nb_student")
+	node = get_node("PanelGlobal/PanelStat/GridContainer/nb_student")
 	node.text = "Nombre d'étudiants : %s" % [Student.compute_nb_per_dept(code)]
 	
-	node = get_node("PanelGlobal/PanelStat/nb_teacher")
+	node = get_node("PanelGlobal/PanelStat/GridContainer/nb_teacher")
 	node.text = "Nombre d'enseignants : %s" % [Teacher.compute_nb_per_dept(code)]
 	
-	node = get_node("PanelGlobal/PanelStat/nb_worker")
+	node = get_node("PanelGlobal/PanelStat/GridContainer/nb_worker")
 	node.text = "Nombre d'ouvriers : %s" % [build.get_ouvriers()]
 	
 
 	
 	
-	node = get_node("PanelGlobal/PanelStat/renovation")
+	node = get_node("PanelGlobal/PanelStat/GridContainer/renovation")
 	var n = build.get_inventory()
 	if n < 25:
 		n = "Déplorable"
@@ -69,20 +69,20 @@ func show_data() -> void:
 		w = "(en travaux)"
 	node.text = "État du bâtiment : %s %s" % [n, w]
 
-	node = get_node("PanelGlobal/PanelStat/budget")
+	node = get_node("PanelGlobal/PanelStat/GridContainer/budget")
 	node.text = "Budget : %s €" % [GlobalData.formatBudget(build.get_budget())]
 
-	node = get_node("PanelGlobal/PanelAction/lock")
+	node = get_node("PanelGlobal/PanelAction/GridContainer/lock")
 	if build.isDoorLocked():	
-		node.text = "Débloquer les portes"
-	#else:
-	#	node.text = "Bloquer les portes"
+		node.text = "débloquer les portes"
+	else:
+		node.text = "bloquer les portes"
 		
-	node = get_node("PanelGlobal/PanelAction/heat")
+	node = get_node("PanelGlobal/PanelAction/GridContainer/heat")
 	if build.is_heating():	
-		node.text = "Éteindre le chauffage"
-	#else:
-	#	node.text = "Allumer le chauffage"
+		node.text = "éteindre le chauffage"
+	else:
+		node.text = "allumer le chauffage"
 	
 
 
