@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bte0n114pu03p"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/Bulle/BulleMessage/BulleMessageScript.gd" id="1_gu0nf"]
-[ext_resource type="Texture2D" uid="uid://chu5wfl6tehla" path="res://mvc/views/images/icons/chemistry.png" id="2_blbi2"]
+[ext_resource type="Texture2D" uid="uid://cuqov8ocig8nv" path="res://mvc/views/images/interface/layers/notificationVerboseBubble.png" id="2_be4j0"]
 
 [node name="BulleMessage" type="Node2D"]
 z_index = 15
@@ -10,9 +10,9 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("1_gu0nf")
 
 [node name="Fond" type="Sprite2D" parent="."]
-position = Vector2(572.5, 164.5)
-scale = Vector2(17.9531, 5.23438)
-texture = ExtResource("2_blbi2")
+position = Vector2(575, 157)
+scale = Vector2(2.76963, 0.752631)
+texture = ExtResource("2_be4j0")
 
 [node name="Message" type="Label" parent="."]
 offset_left = 92.0
