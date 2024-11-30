@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsy32b2by7jp6"]
+[gd_scene load_steps=7 format=3 uid="uid://dsy32b2by7jp6"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/BuildingAction/BuildingAction.gd" id="1_rgwm8"]
+[ext_resource type="Texture2D" uid="uid://2m7kvd7nwoe1" path="res://mvc/views/images/interface/layers/buildingInfoPanel.png" id="2_061kg"]
 [ext_resource type="Texture2D" uid="uid://c2gn71n87xx75" path="res://mvc/views/images/icons/engineering.png" id="2_wh184"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2tdad"]
-bg_color = Color(0.359, 0.485, 0.569, 1)
+bg_color = Color(0.360784, 0.486275, 0.568627, 0)
+
+[sub_resource type="Theme" id="Theme_h8q8o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ec2k"]
-bg_color = Color(0.474293, 0.235136, 0.374775, 0.576471)
+bg_color = Color(0.294118, 0.329412, 0.278431, 0.815686)
 
 [node name="PanelBuildingAction" type="Node2D"]
 z_index = 10
@@ -22,255 +25,208 @@ offset_right = 1789.0
 offset_bottom = 986.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_2tdad")
 
+[node name="TextureRect" type="TextureRect" parent="PanelGlobal"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.185
+anchor_top = -0.003
+offset_left = -156.77
+offset_top = -126.036
+offset_right = 552.0
+offset_bottom = 995.0
+theme = SubResource("Theme_h8q8o")
+texture = ExtResource("2_061kg")
+
 [node name="name" type="Label" parent="PanelGlobal"]
 z_index = 10
 layout_mode = 0
-offset_left = 15.0
-offset_top = 12.0
-offset_right = 211.0
-offset_bottom = 60.0
+offset_left = 195.0
+offset_top = 33.0
+offset_right = 549.0
+offset_bottom = 73.0
 theme_override_font_sizes/font_size = 20
 text = "Nom"
+horizontal_alignment = 1
 
 [node name="PanelAction" type="Panel" parent="PanelGlobal"]
 layout_mode = 0
-offset_left = 11.8463
-offset_top = 293.769
-offset_right = 557.846
-offset_bottom = 653.769
+offset_left = 215.154
+offset_top = 406.615
+offset_right = 530.154
+offset_bottom = 941.615
 theme_override_styles/panel = SubResource("StyleBoxFlat_5ec2k")
 
-[node name="hire_teacher" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 0
-offset_left = 30.0
-offset_top = 25.0
-offset_right = 230.0
-offset_bottom = 57.0
-text = "engager prof"
+[node name="GridContainer" type="GridContainer" parent="PanelGlobal/PanelAction"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.073
+anchor_top = 0.041
+anchor_right = 0.073
+anchor_bottom = 0.041
+offset_left = -1.45652
+offset_top = 1.14189
+offset_right = 268.543
+offset_bottom = 494.142
+grow_horizontal = 2
+grow_vertical = 2
+localize_numeral_system = false
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 11
 
-[node name="fire_teacher" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 0
-offset_left = 280.0
-offset_top = 25.0
-offset_right = 480.0
-offset_bottom = 57.0
-text = "virer prof"
+[node name="renove" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "faire des travaux"
 
-[node name="renove" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 0
-offset_left = 30.0
-offset_top = 189.0
-offset_right = 230.0
-offset_bottom = 221.0
-text = "renover"
+[node name="hire_teacher" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "embaucher un enseignant"
 
-[node name="lock" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 0
-offset_left = 30.0
-offset_top = 148.0
-offset_right = 230.0
-offset_bottom = 180.0
-text = "(dé)verrouiller porte"
+[node name="hire_worker" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "embaucher un ouvrier"
 
-[node name="fire_worker" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 0
-offset_left = 280.0
-offset_top = 107.0
-offset_right = 480.0
-offset_bottom = 139.0
-text = "virer ouvrier"
+[node name="increase_pay" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "   augmenter les salaires (+800 €)   "
 
-[node name="hire_worker" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 0
-offset_left = 30.0
-offset_top = 107.0
-offset_right = 230.0
-offset_bottom = 139.0
-text = "engager ouvrier"
+[node name="fire_teacher" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "faire partir un enseignant"
 
-[node name="heat" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 0
-offset_left = 280.0
-offset_top = 148.0
-offset_right = 480.0
-offset_bottom = 180.0
-text = "allumer chauffage"
+[node name="fire_worker" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "licencier un ouvrier"
 
-[node name="increase_pay" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 0
-offset_left = 26.3077
-offset_top = 303.385
-offset_right = 475.308
-offset_bottom = 335.385
-theme_override_font_sizes/font_size = 12
-text = "augmenter les salaire des enseignants (+800$)"
+[node name="lock" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "(dé)verrouiller une porte"
 
-[node name="add_exem_end" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 0
-offset_left = 280.154
-offset_top = 232.615
-offset_right = 480.154
-offset_bottom = 264.615
-text = "increase end exam difficulty
+[node name="heat" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "allumer le chauffage"
+
+[node name="add_exem_end" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "fin d'année plus sélective
 "
 
-[node name="sub_exam_end" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 0
-offset_left = 27.8462
-offset_top = 232.615
-offset_right = 227.846
-offset_bottom = 264.615
-text = "decrease end exam difficulty
+[node name="sub_exam_end" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "fin d'année plus relâchée"
+
+[node name="add_exem_entry" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "concours d'entrée plus dur
 "
 
-[node name="add_exem_entry" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 0
-offset_left = 281.692
-offset_top = 269.539
-offset_right = 511.692
-offset_bottom = 301.539
-text = "increase entry exam difficulty
-"
-
-[node name="sub_exam_entry" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 0
-offset_left = 17.0769
-offset_top = 271.077
-offset_right = 255.077
-offset_bottom = 303.077
-text = "decrease entry exam difficulty
-"
+[node name="sub_exam_entry" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "épreuves d'entrée plus faciles"
 
 [node name="PanelStat" type="Panel" parent="PanelGlobal"]
 layout_mode = 0
-offset_left = 206.846
-offset_top = 55.7693
-offset_right = 560.846
-offset_bottom = 279.769
+offset_left = 297.0
+offset_top = 73.0
+offset_right = 532.0
+offset_bottom = 384.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_5ec2k")
 
-[node name="mood_student" type="Label" parent="PanelGlobal/PanelStat"]
+[node name="GridContainer" type="GridContainer" parent="PanelGlobal/PanelStat"]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 26.0
-offset_right = 220.0
-offset_bottom = 46.0
-theme_override_font_sizes/font_size = 12
-text = "- satisfaction etudiante"
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 223.0
+offset_bottom = 298.0
+theme_override_constants/v_separation = 7
 
-[node name="mood_teacher" type="Label" parent="PanelGlobal/PanelStat"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 45.0
-offset_right = 220.0
-offset_bottom = 65.0
-theme_override_font_sizes/font_size = 12
-text = "- satisfaction enseignante"
-
-[node name="level" type="Label" parent="PanelGlobal/PanelStat"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 62.0
-offset_right = 220.0
-offset_bottom = 82.0
-theme_override_font_sizes/font_size = 12
-text = "- niveau moyen"
-
-[node name="nb_student" type="Label" parent="PanelGlobal/PanelStat"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 79.0
-offset_right = 220.0
-offset_bottom = 99.0
-theme_override_font_sizes/font_size = 12
-text = "- nombre etudiant"
-
-[node name="nb_teacher" type="Label" parent="PanelGlobal/PanelStat"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 95.0
-offset_right = 220.0
-offset_bottom = 115.0
-theme_override_font_sizes/font_size = 12
-text = "- nombre prof"
-
-[node name="nb_agent" type="Label" parent="PanelGlobal/PanelStat"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 115.0
-offset_right = 220.0
-offset_bottom = 135.0
-theme_override_font_sizes/font_size = 12
-text = "- nombre agent d'entretien"
-
-[node name="nb_worker" type="Label" parent="PanelGlobal/PanelStat"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 134.0
-offset_right = 220.0
-offset_bottom = 154.0
-theme_override_font_sizes/font_size = 12
-text = "- nombre ouvrier"
-
-[node name="renovation" type="Label" parent="PanelGlobal/PanelStat"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 172.154
-offset_right = 220.0
-offset_bottom = 192.154
-theme_override_font_sizes/font_size = 12
-text = "- état des lieux"
-
-[node name="pay" type="Label" parent="PanelGlobal/PanelStat"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 195.0
-offset_right = 220.0
-offset_bottom = 215.0
-theme_override_font_sizes/font_size = 12
-text = "- salaire prof"
-
-[node name="end_exam" type="Label" parent="PanelGlobal/PanelStat"]
-layout_mode = 0
-offset_left = 251.308
-offset_top = 36.7692
-offset_right = 451.308
-offset_bottom = 56.7692
-theme_override_font_sizes/font_size = 12
-text = "- end exam"
-
-[node name="entry_exam" type="Label" parent="PanelGlobal/PanelStat"]
-layout_mode = 0
-offset_left = 252.846
-offset_top = 62.9231
-offset_right = 452.846
-offset_bottom = 82.9231
-theme_override_font_sizes/font_size = 12
-text = "- entry exam"
-
-[node name="budget" type="Label" parent="PanelGlobal/PanelStat"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 8.0
-offset_right = 220.0
-offset_bottom = 28.0
+[node name="budget" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "- budget"
 
+[node name="renovation" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "- état des lieux"
+
+[node name="nb_student" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "- nombre etudiant"
+
+[node name="mood_student" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "- satisfaction etudiante"
+
+[node name="level" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "- niveau moyen"
+
+[node name="nb_teacher" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "- nombre prof"
+
+[node name="mood_teacher" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "- satisfaction enseignante"
+
+[node name="pay" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "- salaire prof"
+
+[node name="nb_agent" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "- nombre agent d'entretien"
+
+[node name="nb_worker" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "- nombre ouvrier"
+
+[node name="end_exam" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "- end exam"
+
+[node name="entry_exam" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "- entry exam"
+
 [node name="icon" type="Sprite2D" parent="PanelGlobal"]
-position = Vector2(102.769, 160.231)
-scale = Vector2(2.71874, 2.74219)
+position = Vector2(244.385, 106.615)
+scale = Vector2(1.0293, 1.0616)
 texture = ExtResource("2_wh184")
 
-[connection signal="pressed" from="PanelGlobal/PanelAction/hire_teacher" to="." method="_on_hire_teacher_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/fire_teacher" to="." method="_on_fire_teacher_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/renove" to="." method="_on_renove_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/lock" to="." method="_on_lock_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/fire_worker" to="." method="_on_fire_worker_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/hire_worker" to="." method="_on_hire_worker_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/heat" to="." method="_on_heat_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/increase_pay" to="." method="_on_increase_pay_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/add_exem_end" to="." method="_on_add_exem_end_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/sub_exam_end" to="." method="_on_sub_exam_end_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/add_exem_entry" to="." method="_on_add_exem_entry_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/sub_exam_entry" to="." method="_on_sub_exam_entry_pressed"]
+[node name="Sprite2D" type="Sprite2D" parent="PanelGlobal"]
+
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/renove" to="." method="_on_renove_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/hire_teacher" to="." method="_on_hire_teacher_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/hire_worker" to="." method="_on_hire_worker_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/increase_pay" to="." method="_on_increase_pay_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/fire_teacher" to="." method="_on_fire_teacher_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/fire_worker" to="." method="_on_fire_worker_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/lock" to="." method="_on_lock_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/heat" to="." method="_on_heat_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/add_exem_end" to="." method="_on_add_exem_end_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/sub_exam_end" to="." method="_on_sub_exam_end_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/add_exem_entry" to="." method="_on_add_exem_entry_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/sub_exam_entry" to="." method="_on_sub_exam_entry_pressed"]

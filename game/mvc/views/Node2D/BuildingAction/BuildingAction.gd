@@ -24,7 +24,7 @@ func show_data() -> void:
 	node.text = code
 	
 	node = get_node("PanelGlobal/PanelStat/end_exam")
-	node.text = "Difficulté des examens de fin d'année : %s" % [int(build.get_exam_end()*100)]
+	node.text = "Difficulté des examens finaux : %s" % [int(build.get_exam_end()*100)]
 	
 	node = get_node("PanelGlobal/PanelStat/entry_exam")
 	node.text = "Difficulté des examens d'entrée : %s" % [int(build.get_exam_entry()*100)]
@@ -70,19 +70,19 @@ func show_data() -> void:
 	node.text = "État du bâtiment : %s %s" % [n, w]
 
 	node = get_node("PanelGlobal/PanelStat/budget")
-	node.text = "Budget : %s$" % [build.get_budget()]
+	node.text = "Budget : %s €" % [GlobalData.formatBudget(build.get_budget())]
 
 	node = get_node("PanelGlobal/PanelAction/lock")
 	if build.isDoorLocked():	
 		node.text = "Débloquer les portes"
-	else:
-		node.text = "Bloquer les portes"
+	#else:
+	#	node.text = "Bloquer les portes"
 		
 	node = get_node("PanelGlobal/PanelAction/heat")
 	if build.is_heating():	
 		node.text = "Éteindre le chauffage"
-	else:
-		node.text = "Allumer le chauffage"
+	#else:
+	#	node.text = "Allumer le chauffage"
 	
 
 

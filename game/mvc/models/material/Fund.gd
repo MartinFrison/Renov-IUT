@@ -14,7 +14,6 @@ static func add_fund(source : String, amount : float, destination : String, time
 static func add_fund_unspecified(source : String, amount : float, time : int) -> void:
 	var query = "INSERT INTO Funds (amount, source, time) VALUES (?, ?, ?)"
 	var src = Utils.source_string_to_index(source)
-	var dt = Utils.dept_string_to_index(destination)
 	
 	if !Utils.db.execute(query, [amount, src, time]):
 		print("Erreur d'ajout.")

@@ -127,13 +127,13 @@ static func dept_index_to_string(index: int) -> String:
 		1:
 			return "Chimie"
 		2:
-			return "Génie Civil"
+			return "Génie civil"
 		3:
-			return "Info Communication"
+			return "Information-Communication"
 		4:
 			return "Informatique"
 		5:
-			return "Technique de Commercialisation"
+			return "Techniques de commercialisation"
 		_:
 			return "Inconnu"  # Gestion des cas non définis
 
@@ -142,13 +142,13 @@ static func dept_string_to_index(source: String) -> int:
 	match source:
 		"Chimie":
 			return 1
-		"Génie Civil":
+		"Génie civil":
 			return 2
-		"Info Communication":
+		"Information-Communication":
 			return 3
 		"Informatique":
 			return 4
-		"Technique de Commercialisation":
+		"Techniques de commercialisation":
 			return 5
 		_:
 			return -1  # Gestion des cas non définis

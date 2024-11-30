@@ -1,16 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://lrmgb23vrj1e"]
+[gd_scene load_steps=4 format=3 uid="uid://lrmgb23vrj1e"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/Stat/StatScript.gd" id="1_xycvu"]
 [ext_resource type="Texture2D" uid="uid://cbr5b4avm6g3d" path="res://mvc/views/images/interface/layers/globalInfoBar.png" id="2_uuv2q"]
+[ext_resource type="Script" path="res://mvc/views/Node2D/Stat/texture_rect.gd" id="3_2oib4"]
 
 [node name="PanelStat" type="Node2D"]
 z_index = 3
 script = ExtResource("1_xycvu")
 
-[node name="stats_bar" type="Sprite2D" parent="."]
-position = Vector2(570.5, 320.375)
-scale = Vector2(0.606771, 0.602546)
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1156.0
+offset_bottom = 645.0
 texture = ExtResource("2_uuv2q")
+expand_mode = 1
+script = ExtResource("3_2oib4")
 
 [node name="date" type="Label" parent="."]
 offset_left = 930.0
@@ -28,6 +31,7 @@ offset_right = 561.0
 offset_bottom = 81.0
 text = "Satisfaction"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="mood_stud" type="Label" parent="."]
 offset_left = 614.0
@@ -36,6 +40,7 @@ offset_right = 714.0
 offset_bottom = 82.0
 text = "Satisfaction"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="level" type="Label" parent="."]
 offset_left = 738.0
@@ -45,6 +50,7 @@ offset_bottom = 53.0
 text = "Level
 "
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="budget" type="Label" parent="."]
 offset_left = 12.0
@@ -53,3 +59,4 @@ offset_right = 210.0
 offset_bottom = 65.0
 text = "Budget"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true

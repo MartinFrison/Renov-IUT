@@ -187,3 +187,14 @@ static func adjust_event_proba() -> float:
 		3:
 			return 1
 	return -1
+
+# Permet d'afficher le budget dans un joli format
+static func formatBudget(number: int) -> String:
+	var number_str = str(number)
+	var formatted_number = ""
+	var length = number_str.length()
+	for i in range(length):
+		formatted_number += number_str[length - 1 - i]
+		if (i + 1) % 3 == 0 and i + 1 != length:
+			formatted_number += " "
+	return formatted_number.reverse()
