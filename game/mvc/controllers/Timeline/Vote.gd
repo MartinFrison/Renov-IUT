@@ -13,7 +13,7 @@ static func election_gagnee() -> bool:
 
 
 
-#Voix total qu'il est possible de récolter par catégorie
+#Voix totales qu'il est possible de récolter par catégorie
 # Environ 1 prof sur 2.7 peut voter
 static func nb_voix_teacher_per_dept(dept: String) -> int:
 	return int(Teacher.compute_nb_per_dept(dept) / 2.7 + 0.49)

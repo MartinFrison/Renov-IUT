@@ -5,7 +5,7 @@ static var _effetActif : int = 0
 
 func _init() -> void:
 	_name = "Changement législatif"
-	_description = "Un changement législatif à eu lieu ! Il a été voté que le budget aloué aux IUT allai baisser."
+	_description = "Un changement législatif a eu lieu ! Il a été voté que le budget alloué aux IUT allait baisser."
 	_question_script = ""
 	_question_answer = []
 	_question = false

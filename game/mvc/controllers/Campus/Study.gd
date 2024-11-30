@@ -50,13 +50,13 @@ static func populate_new_year(scenario : Scenario) -> void:
 	var sum = 0
 	var n
 	var message_2 = ""
-	var message = "Les premières année sont arrivée ! \n
+	var message = "Les première année sont arrivée ! \n
 	Ils sont au nombre de "
 	
 	for i in range(1,6): # le département
 			n = populate_promo(i, 1)
 			sum += n
-			message_2 += "- %s étudiants dans le département %s\n" % [n,Utils.dept_index_to_string(i)]
+			message_2 += "- %s étudiants dans le département %s.\n" % [n,Utils.dept_index_to_string(i)]
 	
 	# Initialiser le level et le mood des nouveaux étudiant
 	var id = Student.get_all_ids()
@@ -64,7 +64,7 @@ static func populate_new_year(scenario : Scenario) -> void:
 	scenario.adjust_student_satisfaction(id)
 	
 	message += str(sum) + "\n" + message_2
-	await BulleGestion.send_notif("Début d'année" + str(GlobalData._year), message, 0)
+	await BulleGestion.send_notif("Début d'année " + str(GlobalData._year), message, 0)
 
 
 # Simule les examens basé uniquement sur la chance (certains scénarios peuvent appliquer des coefficients supplémentaires)
@@ -127,15 +127,15 @@ static func pass_next_year() -> void:
 		global_result[1] += result[1]
 		global_result[2] += result[2]
 		global_result[3] += result[3]
-		msg += "\nDans le département %s sur %s étudiants:\n" % [code, result[0]]
-		msg += "%s année réussi, %s diplomé, " % [result[1],result[3]]
-		msg += "%s redoublant et %s exclusion\n" % [result[2], result[0]-result[1]-result[2]]
+		msg += "\nDans le département %s sur %s étudiants :\n" % [code, result[0]]
+		msg += "%s année réussie, %s diplomés, " % [result[1],result[3]]
+		msg += "%s redoublants et %s exclusions\n" % [result[2], result[0]-result[1]-result[2]]
 	
 	
-	var msg2 = "C'est la fin d'année Les étudiants ont passée leur examens\n"
-	msg2 += "\nAu sein de l'IUT sur %s étudiants:\n" % [global_result[0]]
-	msg2 += "   %s ont réussi leur années dont %s ont eu leur diplome\n" % [global_result[1],global_result[3]]
-	msg2 += "   %s ont redoubler et %s ont été exclus\n" % [global_result[2], global_result[0]-global_result[1]-global_result[2]]
+	var msg2 = "C'est la fin d'année. Les étudiants ont passée leur examens.\n"
+	msg2 += "\nAu sein de l'IUT, sur %s étudiants :\n" % [global_result[0]]
+	msg2 += "   %s ont réussi leur année, dont %s ont eu leur diplome.\n" % [global_result[1],global_result[3]]
+	msg2 += "   %s ont redoublé et %s ont été exclus.\n" % [global_result[2], global_result[0]-global_result[1]-global_result[2]]
 	msg = msg2 + msg
 	BulleGestion.send_notif(obj,msg,0)
 

@@ -10,7 +10,7 @@ func _init() -> void:
 
 
 static func get_description() -> String:
-	return "Votre objectif est d'être réélu au terme d'un mandat de 5 ans."
+	return "Votre objectif est d'être réélu(e) au terme d'un mandat de 5 ans."
 
 
 # Test si le jeu est fini
@@ -23,7 +23,7 @@ func test_end_game_condition() -> bool:
 func end_game() -> void:
 	print("fin du jeu")
 	await BulleGestion.send_message("C'est la fin de votre mandat !", false)
-	await BulleGestion.send_message("Les représentants du conseil vont voter pour savoir si vous êtes réélu !", false)
+	await BulleGestion.send_message("Les représentants du conseil vont voter pour - ou contre vous !", false)
 	
 	var scene = load("res://mvc/views/Node2D/FinJeu/PanelFinElection.tscn")
 	var bulle = scene.instantiate()

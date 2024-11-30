@@ -53,7 +53,7 @@ func next_Trimestre():
 	_bill.pay_bill()
 	# On prévient le joueur s'il risque la faillite
 	if _bill.get_previous_bill() >= GlobalData.getBudget():
-		BulleGestion.send_notif("Risque de faillite", "Attention les caisses sont presque vide, vous risquez la faillite !", 0)
+		BulleGestion.send_notif("Risque de faillite.", "Attention : les caisses sont presque vides, vous risquez la faillite !", 0)
 	
 	# Les professeurs et étudiant insatisfait démissionnent
 	Teaching.teacher_resign()
@@ -77,13 +77,13 @@ func next_Trimestre():
 
 # Fin de l'année
 func end_of_year() -> void:
-	print("Fin de l'année ", GlobalData._year)
+	print("Fin de l'année. ", GlobalData._year)
 	Study.pass_next_year()
 
 
 #rentrée qui signe le début de la nouvelle année
 func year_begin() -> void:
-	print("C'est la rentrée ", GlobalData._year)
+	print("C'est la rentrée. ", GlobalData._year)
 	# Arriver des premières années
 	Study.populate_new_year(_scenario)
 

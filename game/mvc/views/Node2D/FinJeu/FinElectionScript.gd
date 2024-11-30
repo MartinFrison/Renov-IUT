@@ -17,7 +17,7 @@ func show_result() -> void:
 	node = "Resultat"
 	node = get_node(node)
 	if Vote.election_gagnee():
-		node.text = "Vous avez remportez les éléctions ! Félicitation !"
+		node.text = "Vous avez remporté les éléctions ! Félicitations (ou pas)!"
 	else:
 		node.text = "Vous avez perdu les éléctions. Dommage.."
 	

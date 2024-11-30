@@ -63,7 +63,7 @@ static func start_renovation(building: Building) -> bool:
 		return false  # Pas d'ouvriers, pas de travaux
 	
 	if building._is_renovation_underway:
-		print("Travaux de rénovation déjà en cours pour le bâtiment", building.get_code())
+		print("Travaux de rénovation déjà en cours pour le bâtiment " , building.get_code(), ".")
 		return false  # Travaux déjà en cours
 	
 	# Vérification des bâtiments libres
@@ -75,7 +75,7 @@ static func start_renovation(building: Building) -> bool:
 	# Démarrer les travaux de rénovation
 	building.set_renovation_underway(true)
 	RenovIUTApp.app.building_work(Utils.dept_string_to_index(building.get_code()), true)
-	print("Travaux de rénovation lancés pour le bâtiment", building.get_code())
+	print("Travaux de rénovation lancés pour le bâtiment ", building.get_code(), ".")
 	return true
 
 
@@ -85,11 +85,11 @@ static func fireWorker(dept: String) -> void:
 		var building = Building.get_building(dept)
 		if building.get_ouvriers() > 0:
 			building.remove_ouvrier()
-			print("Ouvrier renvoyé pour le département", dept, ". Nombre d'ouvriers restants :", building.get_ouvriers())
+			print("Ouvrier renvoyé pour le département ", dept, ". Nombre d'ouvriers restants : ", building.get_ouvriers(), ".")
 		else:
-			print("Aucun ouvrier disponible à renvoyer pour le département", dept)
+			print("Aucun ouvrier disponible à renvoyer pour le département ", dept, ".")
 	else:
-		print("Aucun bâtiment trouvé pour le département", dept)
+		print("Aucun bâtiment trouvé pour le département ", dept, ".")
 
 
 

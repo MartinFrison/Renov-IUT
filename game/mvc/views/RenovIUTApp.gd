@@ -39,7 +39,7 @@ func startGame() -> void:
 		print("On va supprimer le panel.")
 		panelChoixScenario.queue_free()  # Marquer le nœud pour suppression
 	else:
-		print("Le panel est déjà supprimé.")
+		print("Le panel a déjà été supprimé.")
 		
 	illkirch.startGame()
 

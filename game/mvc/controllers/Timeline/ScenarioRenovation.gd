@@ -14,9 +14,9 @@ func _init() -> void:
 	
 	var msg
 	if old_builds.size() > 1:
-		msg = "Votre objectif est de rénover les bâtiments %s et %s" % [old_builds[0].get_code(),old_builds[1].get_code()]
+		msg = "Votre objectif est de rénover les bâtiments %s et %s." % [old_builds[0].get_code(),old_builds[1].get_code()]
 	else:
-		msg = "Votre objectif est de rénover le bâtiment %s" % [old_builds[0].get_code()]
+		msg = "Votre objectif est de rénover le bâtiment %s." % [old_builds[0].get_code()]
 	await BulleGestion.send_message(msg, true)
 	
 
@@ -39,9 +39,9 @@ func test_end_game_condition() -> bool:
 func end_game() -> void:
 	print("fin du jeu")
 	if old_builds.size()>1:
-		await BulleGestion.send_message("Vous avez finit de rénovez les batiments en mauvais état", false)
+		await BulleGestion.send_message("Vous avez fini de rénover les bâtiments qui étaient en mauvais état.", false)
 	else:
-		await BulleGestion.send_message("Vous avez finit de rénovez le batiment en mauvais état", false)
+		await BulleGestion.send_message("Vous avez fini de rénover le bâtiment en mauvais état.", false)
 
 
 	var scene = load("res://mvc/views/Node2D/FinJeu/PanelFinRenovation.tscn")
@@ -58,13 +58,13 @@ func mid_game() -> void:
 		if old_builds[i].get_inventory() >= 100:
 			if !_progression[3+i*4]:
 				_progression[3+i*4] = true
-				msg = "La rénovation du batiment %s est terminé !" % [old_builds[i].get_code()]
+				msg = "La rénovation du bâtiment %s est terminée !" % [old_builds[i].get_code()]
 				b = true
 				break
 		if old_builds[i].get_inventory() >= 50:
 			if !_progression[2+i*4]:
 				_progression[2+i*4] = true
-				msg = "La rénovation du batiment %s avance bien ! Continuer ainsi" % [old_builds[i].get_code()]
+				msg = "La rénovation du bâtiment %s avance bien ! Continuez ainsi." % [old_builds[i].get_code()]
 				b = true
 				break
 	if b:

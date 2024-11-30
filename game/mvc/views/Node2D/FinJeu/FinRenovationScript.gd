@@ -16,4 +16,4 @@ func show_result() -> void:
 	
 	node = "Message"
 	node = get_node(node)
-	node.text = "Vous avez finit la rénovation des batiments félicitation ! \nCela vous a prit %s mois et %s jours" % [(GlobalData._year-2025)*12, GlobalData._day]
+	node.text = "Vous avez fini la rénovation des batiments, félicitations ! \nCela vous a pris %s mois et %s jours." % [(GlobalData._year-2025)*12, GlobalData._day]

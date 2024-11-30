@@ -27,7 +27,7 @@ static func expense_dept(amount : int, dept : String) -> void:
 # Essai de dépenser de l'argent, renvoie false si dépense impossible
 static func try_expense_global(amount : int) -> bool:
 	if GlobalData.getBudget() < amount: 
-		await BulleGestion.send_message("Vous n'avez pas les fonds pour cette opération", false)
+		await BulleGestion.send_message("Vous n'avez pas assez de moyens pour cette opération.", false)
 		return false
 	else:
 		GlobalData.addBudget(-amount)
@@ -36,7 +36,7 @@ static func try_expense_global(amount : int) -> bool:
 # Si la dépense est par département ce sont les fonds du département qui sont consommé en premier
 static func try_expense_dept(amount : int, dept : String) -> bool:
 	if Building.get_building(dept).get_budget() + GlobalData.getBudget() < amount:
-		await BulleGestion.send_message("Vous n'avez pas les fonds pour cette opération", false)
+		await BulleGestion.send_message("Vous n'avez pas assez de moyens pour cette opération.", false)
 		return false
 	else:
 		if Building.get_building(dept).get_budget() >= amount:
