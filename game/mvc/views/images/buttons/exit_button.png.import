@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhy0y51kmutg"
-path="res://.godot/imported/notificationButton.png-22a36626f5aaa69addea6903cc133513.ctex"
+uid="uid://d15chp85138su"
+path="res://.godot/imported/exit_button.png-bd4c6eb3dc48d8cbe62791d102e0cc5d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mvc/views/images/interface/layers/notificationButton.png"
-dest_files=["res://.godot/imported/notificationButton.png-22a36626f5aaa69addea6903cc133513.ctex"]
+source_file="res://mvc/views/images/buttons/exit_button.png"
+dest_files=["res://.godot/imported/exit_button.png-bd4c6eb3dc48d8cbe62791d102e0cc5d.ctex"]
 
 [params]
 

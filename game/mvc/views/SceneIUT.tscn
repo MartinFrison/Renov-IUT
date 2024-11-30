@@ -1,7 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://b4cp1gj8gn1ro"]
+[gd_scene load_steps=27 format=3 uid="uid://b4cp1gj8gn1ro"]
 
 [ext_resource type="Script" path="res://mvc/views/RenovIUTApp.gd" id="1_drlro"]
+[ext_resource type="Texture2D" uid="uid://b8bjiydhyyapq" path="res://mvc/views/images/buttons/notification_button.png" id="3_4oyj6"]
 [ext_resource type="Script" path="res://mvc/views/Node3D/camera_root.gd" id="3_et11y"]
+[ext_resource type="Texture2D" uid="uid://d15chp85138su" path="res://mvc/views/images/buttons/exit_button.png" id="4_ii2ul"]
 [ext_resource type="PackedScene" uid="uid://lrmgb23vrj1e" path="res://mvc/views/Node2D/Stat/PanelStat.tscn" id="4_t3hyp"]
 [ext_resource type="Script" path="res://mvc/views/Node3D/camera_3d.gd" id="5_h3jqx"]
 [ext_resource type="PackedScene" uid="uid://dxufw4uqxthik" path="res://mvc/views/Node3D/tree/Tree1.fbx" id="6_l4lhr"]
@@ -65,16 +67,23 @@ position = Vector2(1, 5)
 [node name="notif_button" type="Button" parent="."]
 offset_left = 27.0
 offset_top = 218.0
-offset_right = 99.0
-offset_bottom = 273.0
-text = "NOTIF"
+offset_right = 93.0
+offset_bottom = 285.0
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+icon = ExtResource("3_4oyj6")
+flat = true
+expand_icon = true
 
 [node name="Next" type="Button" parent="."]
 offset_left = 18.0
 offset_top = 288.0
-offset_right = 111.0
-offset_bottom = 324.0
-text = "Next"
+offset_right = 125.0
+offset_bottom = 331.0
+mouse_default_cursor_shape = 2
+icon = ExtResource("4_ii2ul")
+flat = true
+expand_icon = true
 
 [node name="Vue3D" type="Node3D" parent="."]
 
@@ -411,7 +420,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="BuildingAction" parent="." instance=ExtResource("8_lduu6")]
-position = Vector2(-6, 96)
+position = Vector2(-44, 94)
 
 [connection signal="pressed" from="notif_button" to="." method="open_notif"]
 [connection signal="pressed" from="Next" to="." method="_on_next_pressed"]
