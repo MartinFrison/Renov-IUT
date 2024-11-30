@@ -1,17 +1,15 @@
 
 Autre:
-- Mise à jours de l'UML : Elena 
-- Relire tous les messages qui s'affichent pendant le jeu : Elena
+- Mise à jours de l'UML : Elena, Yasmine 
 - Mettre à jours le cahier des charges
 - Ajout des son
-
+- Ne pas oublier d'ajouter la grille d'évaluation à la fin !
 
 
 
 Graphique 2D:
 
 - Style des bulle (message et notif selon leur type) : Elena
-- Style du panel de donnée et d'action des batiments
 - Style des panels de fin de chaque scénario (vote,renovation, faillite..)
 - Ajout d'effet spéciaux 2D
 
