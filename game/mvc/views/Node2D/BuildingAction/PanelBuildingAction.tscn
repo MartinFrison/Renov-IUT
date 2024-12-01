@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/BuildingAction/BuildingAction.gd" id="1_rgwm8"]
 [ext_resource type="Texture2D" uid="uid://2m7kvd7nwoe1" path="res://mvc/views/images/interface/layers/buildingInfoPanel.png" id="2_061kg"]
-[ext_resource type="Texture2D" uid="uid://c2gn71n87xx75" path="res://mvc/views/images/icons/engineering.png" id="2_wh184"]
+[ext_resource type="Texture2D" uid="uid://chu5wfl6tehla" path="res://mvc/views/images/icons/chemistry.png" id="3_g0kju"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2tdad"]
 bg_color = Color(0.360784, 0.486275, 0.568627, 0)
@@ -52,6 +52,7 @@ offset_top = 498.461
 offset_right = 1770.38
 offset_bottom = 969.461
 theme_override_styles/panel = SubResource("StyleBoxFlat_5ec2k")
+metadata/_edit_use_anchors_ = true
 
 [node name="GridContainer" type="GridContainer" parent="PanelGlobal/PanelAction"]
 layout_mode = 1
@@ -139,6 +140,7 @@ offset_top = 212.308
 offset_right = 1768.85
 offset_bottom = 485.308
 theme_override_styles/panel = SubResource("StyleBoxFlat_5ec2k")
+metadata/_edit_use_anchors_ = true
 
 [node name="GridContainer" type="GridContainer" parent="PanelGlobal/PanelStat"]
 layout_mode = 0
@@ -211,7 +213,7 @@ text = "- entry exam"
 [node name="icon" type="Sprite2D" parent="PanelGlobal"]
 position = Vector2(1484.62, 249.231)
 scale = Vector2(1.0293, 1.0616)
-texture = ExtResource("2_wh184")
+texture = ExtResource("3_g0kju")
 
 [node name="Sprite2D" type="Sprite2D" parent="PanelGlobal"]
 

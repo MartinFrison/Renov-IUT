@@ -11,17 +11,19 @@ script = ExtResource("1_xycvu")
 layout_direction = 2
 anchors_preset = 10
 anchor_right = 1.0
+offset_left = -2.0
 offset_right = 1158.0
 offset_bottom = 103.0
+grow_horizontal = 2
 size_flags_stretch_ratio = 1.1
 texture = ExtResource("2_uuv2q")
 expand_mode = 3
 stretch_mode = 6
 
 [node name="date" type="Label" parent="."]
-offset_left = 930.0
+offset_left = 935.0
 offset_top = 33.0
-offset_right = 1131.0
+offset_right = 1135.0
 offset_bottom = 69.0
 text = "Date"
 horizontal_alignment = 1
@@ -30,7 +32,7 @@ vertical_alignment = 1
 [node name="mood_teach" type="Label" parent="."]
 offset_left = 470.0
 offset_top = 56.0
-offset_right = 565.0
+offset_right = 577.0
 offset_bottom = 81.0
 text = "Satisfaction"
 horizontal_alignment = 1
@@ -38,16 +40,16 @@ horizontal_alignment = 1
 [node name="mood_stud" type="Label" parent="."]
 offset_left = 614.0
 offset_top = 57.0
-offset_right = 718.0
+offset_right = 722.0
 offset_bottom = 82.0
 text = "Satisfaction"
 horizontal_alignment = 1
 
 [node name="level" type="Label" parent="."]
-offset_left = 749.0
-offset_top = 28.0
+offset_left = 747.0
+offset_top = 34.0
 offset_right = 917.0
-offset_bottom = 53.0
+offset_bottom = 59.0
 text = "Level
 "
 horizontal_alignment = 1
