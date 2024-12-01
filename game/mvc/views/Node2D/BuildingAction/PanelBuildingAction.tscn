@@ -35,22 +35,22 @@ horizontal_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="PanelGlobal"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -2.185
-anchor_top = -0.003
-offset_left = 1426.0
-offset_right = 1795.0
-offset_bottom = 995.0
-grow_horizontal = 0
-grow_vertical = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1423.0
+offset_top = -8.0
+offset_right = 1800.0
+offset_bottom = 1001.0
 theme = SubResource("Theme_h8q8o")
 texture = ExtResource("2_061kg")
 
 [node name="PanelAction" type="Panel" parent="PanelGlobal"]
 layout_mode = 0
-offset_left = 1449.0
-offset_top = 495.0
-offset_right = 1764.0
-offset_bottom = 966.0
+offset_left = 1455.38
+offset_top = 498.461
+offset_right = 1770.38
+offset_bottom = 969.461
 theme_override_styles/panel = SubResource("StyleBoxFlat_5ec2k")
 
 [node name="GridContainer" type="GridContainer" parent="PanelGlobal/PanelAction"]
@@ -134,18 +134,18 @@ text = "épreuves d'entrée plus faciles"
 
 [node name="PanelStat" type="Panel" parent="PanelGlobal"]
 layout_mode = 0
-offset_left = 1527.69
-offset_top = 207.692
-offset_right = 1762.69
-offset_bottom = 480.692
+offset_left = 1533.85
+offset_top = 212.308
+offset_right = 1768.85
+offset_bottom = 485.308
 theme_override_styles/panel = SubResource("StyleBoxFlat_5ec2k")
 
 [node name="GridContainer" type="GridContainer" parent="PanelGlobal/PanelStat"]
 layout_mode = 0
-offset_left = 12.3077
-offset_top = 12.3077
-offset_right = 223.308
-offset_bottom = 298.308
+offset_left = 18.0
+offset_top = 12.0
+offset_right = 211.0
+offset_bottom = 260.0
 theme_override_constants/v_separation = 4
 
 [node name="budget" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
@@ -209,7 +209,7 @@ theme_override_font_sizes/font_size = 12
 text = "- entry exam"
 
 [node name="icon" type="Sprite2D" parent="PanelGlobal"]
-position = Vector2(1481.54, 246.154)
+position = Vector2(1484.62, 249.231)
 scale = Vector2(1.0293, 1.0616)
 texture = ExtResource("2_wh184")
 
