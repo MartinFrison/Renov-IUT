@@ -62,7 +62,6 @@ script = ExtResource("1_drlro")
 environment = SubResource("Environment_6245k")
 
 [node name="PanelStat" parent="." instance=ExtResource("4_t3hyp")]
-position = Vector2(1, 5)
 
 [node name="notif_button" type="Button" parent="."]
 offset_left = 27.0
@@ -420,7 +419,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="BuildingAction" parent="." instance=ExtResource("8_lduu6")]
-position = Vector2(-44, 94)
+position = Vector2(-13, 173)
 
 [connection signal="pressed" from="notif_button" to="." method="open_notif"]
 [connection signal="pressed" from="Next" to="." method="_on_next_pressed"]
