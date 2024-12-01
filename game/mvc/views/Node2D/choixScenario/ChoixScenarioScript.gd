@@ -11,7 +11,9 @@ func init(iut : IUTFacade, app : RenovIUTApp) -> void:
 	_IUT = iut
 	_app = app
 	_on_switch_tuto_option_toggled(false)
-	_on_button_election_pressed()
+	#_on_button_election_pressed()
+	var desc = get_node("menu/Description")
+	desc.text = "Bienvenue, Monsieur le Directeur ! Quels sont vos projets ?"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
