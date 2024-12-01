@@ -16,7 +16,7 @@ offset_bottom = 103.0
 grow_horizontal = 2
 size_flags_horizontal = 8
 texture = ExtResource("2_uuv2q")
-expand_mode = 1
+expand_mode = 3
 
 [node name="date" type="Label" parent="."]
 offset_left = 930.0
