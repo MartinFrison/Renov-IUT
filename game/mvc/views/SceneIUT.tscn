@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b4cp1gj8gn1ro"]
+[gd_scene load_steps=30 format=3 uid="uid://b4cp1gj8gn1ro"]
 
 [ext_resource type="Script" path="res://mvc/views/RenovIUTApp.gd" id="1_drlro"]
 [ext_resource type="Texture2D" uid="uid://b8bjiydhyyapq" path="res://mvc/views/images/buttons/notification_button.png" id="3_4oyj6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cr7m0b2q1nax" path="res://mvc/views/images/buttons/next_button.png" id="4_hlv26"]
 [ext_resource type="PackedScene" uid="uid://lrmgb23vrj1e" path="res://mvc/views/Node2D/Stat/PanelStat.tscn" id="4_t3hyp"]
 [ext_resource type="Script" path="res://mvc/views/Node3D/camera_3d.gd" id="5_h3jqx"]
+[ext_resource type="Texture2D" uid="uid://d15chp85138su" path="res://mvc/views/images/buttons/exit_button.png" id="5_t216u"]
 [ext_resource type="PackedScene" uid="uid://dxufw4uqxthik" path="res://mvc/views/Node3D/tree/Tree1.fbx" id="6_l4lhr"]
 [ext_resource type="Script" path="res://mvc/views/Node3D/tree/tree.gd" id="7_yrqt0"]
 [ext_resource type="PackedScene" uid="uid://s1o3hmegslfi" path="res://mvc/views/Node3D/IUT_V4/IUT_V4.fbx" id="8_l87e4"]
@@ -34,6 +35,20 @@ sky_custom_fov = 48.2
 tonemap_mode = 2
 ssao_enabled = true
 glow_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxkxi"]
+bg_color = Color(0.294118, 0.329412, 0.278431, 0.784314)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6rpc"]
+bg_color = Color(0.294118, 0.329412, 0.278431, 0.784314)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nrmeu"]
 
@@ -81,17 +96,24 @@ offset_top = 178.0
 offset_right = 233.0
 offset_bottom = 221.0
 mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_xxkxi")
 text = "Trois mois après..."
 icon = ExtResource("4_hlv26")
 icon_alignment = 2
 expand_icon = true
 
 [node name="Quitter" type="Button" parent="."]
-offset_left = 38.0
-offset_top = 231.0
-offset_right = 105.0
-offset_bottom = 268.0
-text = "Je pars"
+anchors_preset = -1
+offset_left = 42.0
+offset_top = 572.0
+offset_right = 94.0
+offset_bottom = 629.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_q6rpc")
+icon = ExtResource("5_t216u")
+expand_icon = true
 
 [node name="Vue3D" type="Node3D" parent="."]
 
