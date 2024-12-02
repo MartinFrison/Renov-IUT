@@ -23,6 +23,14 @@ func show_data() -> void:
 	node = get_node("PanelGlobal/name")
 	node.text = code
 	
+	var image = get_node("PanelGlobal/icon")
+	var texture_path = "res://mvc/views/images/icons/" + code + ".png"
+	var texture = load(texture_path)
+	if texture:
+		image.texture = texture
+	else:
+		print("Erreur lors du chargement de la texture :", texture_path)
+	
 	node = get_node("PanelGlobal/PanelStat/GridContainer/end_exam")
 	node.text = "Difficulté des examens finaux : %s" % [int(build.get_exam_end()*100)]
 	
