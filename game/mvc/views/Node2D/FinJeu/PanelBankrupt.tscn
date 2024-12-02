@@ -18,5 +18,5 @@ offset_right = 946.0
 offset_bottom = 511.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 35
-text = "Vous avez été dechu de vos fonction de directeur par le conseil d'administration en raison de votre gestion absolument déplorable du budget et de la faillite que celle ci a engendré"
+text = "Vous avez été dechu(e) de vos fonctions de directeur par le Conseil d'administration en raison d'un gestion absolument déplorable du budget et de la faillite que celle-ci a engendrée. Du moins, c'est la raison officielle..."
 autowrap_mode = 3
