@@ -80,14 +80,15 @@ expand_icon = true
 
 [node name="Description" type="Label" parent="menu"]
 z_index = 1
-offset_left = 285.0
+offset_left = -13.0
 offset_top = 303.0
-offset_right = 1162.0
+offset_right = 1213.0
 offset_bottom = 345.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_ujemv")
 text = "Description"
+horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 3
