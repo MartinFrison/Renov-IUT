@@ -1,7 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://bte0n114pu03p"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/Bulle/BulleMessage/BulleMessageScript.gd" id="1_gu0nf"]
-[ext_resource type="Texture2D" uid="uid://cuqov8ocig8nv" path="res://mvc/views/images/interface/layers/notificationVerboseBubble.png" id="2_be4j0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2r81c"]
+bg_color = Color(0.294118, 0.317647, 0.301961, 0.780392)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
 
 [node name="BulleMessage" type="Node2D"]
 z_index = 15
@@ -9,17 +20,15 @@ position = Vector2(291, 438)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_gu0nf")
 
-[node name="Fond" type="Sprite2D" parent="."]
-position = Vector2(575, 157)
-scale = Vector2(2.76963, 0.752631)
-texture = ExtResource("2_be4j0")
-
 [node name="Message" type="Label" parent="."]
-offset_left = 92.0
-offset_top = 44.0
-offset_right = 1068.0
-offset_bottom = 269.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
+offset_left = -62.0
+offset_top = 228.0
+offset_right = 898.0
+offset_bottom = 381.0
+theme_override_colors/font_color = Color(0.486275, 0.741176, 0.980392, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_2r81c")
 text = "Question"
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3

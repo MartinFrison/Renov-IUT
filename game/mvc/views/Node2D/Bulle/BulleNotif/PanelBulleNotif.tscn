@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6fkgh7e56u4c"]
+[gd_scene load_steps=4 format=3 uid="uid://b6fkgh7e56u4c"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/Bulle/BulleNotif/BulleNotifScript.gd" id="1_18qjn"]
-[ext_resource type="Texture2D" uid="uid://chu5wfl6tehla" path="res://mvc/views/images/icons/chemistry.png" id="2_8f8w6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cjl02"]
+bg_color = Color(0.486275, 0.741176, 0.980392, 0.74902)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_meqfk"]
+bg_color = Color(0.486275, 0.741176, 0.980392, 0.584314)
 
 [node name="BulleNotif" type="Node2D"]
 z_index = 20
@@ -9,27 +18,24 @@ position = Vector2(450, -100)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_18qjn")
 
-[node name="Fond" type="Sprite2D" parent="."]
-position = Vector2(337, 85.4999)
-scale = Vector2(10.5937, 2.76563)
-texture = ExtResource("2_8f8w6")
-
 [node name="Message" type="Label" parent="."]
-offset_left = 24.0
-offset_top = 56.0
-offset_right = 630.0
-offset_bottom = 162.0
+offset_left = -26.0
+offset_top = 684.0
+offset_right = 580.0
+offset_bottom = 996.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_cjl02")
 text = "TEXT"
 autowrap_mode = 3
 
 [node name="Objet" type="Label" parent="."]
-offset_left = 26.0
-offset_top = 2.0
-offset_right = 526.0
-offset_bottom = 46.0
+offset_left = -24.0
+offset_top = 574.0
+offset_right = 576.0
+offset_bottom = 642.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_meqfk")
 text = "texte"
 autowrap_mode = 1
