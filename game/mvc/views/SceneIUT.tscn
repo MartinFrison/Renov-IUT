@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://mvc/views/RenovIUTApp.gd" id="1_drlro"]
 [ext_resource type="Texture2D" uid="uid://b8bjiydhyyapq" path="res://mvc/views/images/buttons/notification_button.png" id="3_4oyj6"]
+[ext_resource type="Texture2D" uid="uid://djjecyhdmbwp8" path="res://mvc/views/images/buttons/start_button.png" id="3_bqdem"]
 [ext_resource type="Script" path="res://mvc/views/Node3D/camera_root.gd" id="3_et11y"]
-[ext_resource type="Texture2D" uid="uid://cr7m0b2q1nax" path="res://mvc/views/images/buttons/next_button.png" id="4_hlv26"]
 [ext_resource type="PackedScene" uid="uid://lrmgb23vrj1e" path="res://mvc/views/Node2D/Stat/PanelStat.tscn" id="4_t3hyp"]
 [ext_resource type="Script" path="res://mvc/views/Node3D/camera_3d.gd" id="5_h3jqx"]
 [ext_resource type="Texture2D" uid="uid://d15chp85138su" path="res://mvc/views/images/buttons/exit_button.png" id="5_t216u"]
@@ -79,6 +79,17 @@ environment = SubResource("Environment_6245k")
 [node name="PanelStat" parent="." instance=ExtResource("4_t3hyp")]
 z_index = 11
 
+[node name="Next" type="Button" parent="PanelStat"]
+offset_left = 1093.0
+offset_top = 38.0
+offset_right = 1125.0
+offset_bottom = 65.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_xxkxi")
+icon = ExtResource("3_bqdem")
+icon_alignment = 2
+expand_icon = true
+
 [node name="notif_button" type="Button" parent="."]
 offset_left = 20.0
 offset_top = 105.0
@@ -88,18 +99,6 @@ size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 icon = ExtResource("3_4oyj6")
 flat = true
-expand_icon = true
-
-[node name="Next" type="Button" parent="."]
-offset_left = 29.0
-offset_top = 190.0
-offset_right = 224.0
-offset_bottom = 233.0
-mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_xxkxi")
-text = "Trois mois après..."
-icon = ExtResource("4_hlv26")
-icon_alignment = 2
 expand_icon = true
 
 [node name="Quitter" type="Button" parent="."]
@@ -448,8 +447,8 @@ layout_mode = 2
 [node name="BuildingAction" parent="." instance=ExtResource("8_lduu6")]
 position = Vector2(-17, -3)
 
+[connection signal="pressed" from="PanelStat/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="notif_button" to="." method="open_notif"]
-[connection signal="pressed" from="Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="Quitter" to="menu" method="_on_QuitterButton_pressed"]
 [connection signal="pressed" from="menu/PopupPanel/VBoxContainer/FermerMenu" to="menu" method="_on_FermerMenuButton_pressed"]
 [connection signal="pressed" from="menu/PopupPanel/VBoxContainer/OuvrirPanel" to="menu" method="_on_OuvrirPanelButton_pressed"]
