@@ -32,6 +32,7 @@ func create_question_button(text : String, id : int, n) -> void:
 	button.text = text
 	button.size = Vector2(250, 42)
 	button.position = Vector2(15, n * 60 + 10)
+	
 
 	var panel = get_node("PanelNotif")
 	panel.add_child(button)
@@ -52,7 +53,10 @@ func _on_last_pressed() -> void:
 
 func notif_pressed(id : int) -> void:
 	var message = get_node("Text")
+	message.visible = true
 	message.text = "%s: \n\n%s" % [Notification.get_object(id), Notification.get_message(id)]
+	await get_tree().create_timer(5.0).timeout
+	message.visible = false
 
 
 func _on_close_pressed() -> void:
