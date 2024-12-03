@@ -36,6 +36,7 @@ func _on_suivant_pressed() -> void:
 		var desc = get_node("menu/Description")
 		desc.text = "Décidez-vous."
 	else:
+		Input.set_custom_mouse_cursor(null, Input.CURSOR_ARROW) # pour une raison mystérieuse, ne marche pas (priorité ?)
 		_IUT.chooseMode(scenario, difficulty) # Par défaut, c'est le mode standard / défi qui est lancé
 		_app.startGame()
 
