@@ -24,13 +24,16 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_2tdad")
 [node name="name" type="Label" parent="PanelGlobal"]
 z_index = 10
 layout_mode = 0
-offset_left = 1433.85
-offset_top = 173.846
-offset_right = 1787.85
-offset_bottom = 213.846
-theme_override_font_sizes/font_size = 20
+offset_left = 1449.23
+offset_top = 169.231
+offset_right = 1769.23
+offset_bottom = 218.231
+theme_override_constants/line_spacing = -7
+theme_override_font_sizes/font_size = 22
 text = "Nom"
 horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="PanelGlobal"]
 layout_mode = 1
@@ -38,19 +41,19 @@ anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1423.0
-offset_top = -8.0
-offset_right = 1800.0
-offset_bottom = 1001.0
+offset_left = 1424.62
+offset_top = -3.07695
+offset_right = 1801.62
+offset_bottom = 1005.92
 theme = SubResource("Theme_h8q8o")
 texture = ExtResource("2_061kg")
 
 [node name="PanelAction" type="Panel" parent="PanelGlobal"]
 layout_mode = 0
-offset_left = 1455.38
-offset_top = 498.461
-offset_right = 1770.38
-offset_bottom = 969.461
+offset_left = 1455.61
+offset_top = 510.692
+offset_right = 1770.61
+offset_bottom = 981.692
 theme_override_styles/panel = SubResource("StyleBoxFlat_5ec2k")
 metadata/_edit_use_anchors_ = true
 
@@ -61,10 +64,10 @@ anchor_left = 0.073
 anchor_top = 0.041
 anchor_right = 0.073
 anchor_bottom = 0.041
-offset_left = -1.45652
-offset_top = 1.14189
-offset_right = 268.543
-offset_bottom = 494.142
+offset_left = -1.995
+offset_top = 0.688999
+offset_right = 270.005
+offset_bottom = 438.689
 grow_horizontal = 2
 grow_vertical = 2
 localize_numeral_system = false
@@ -135,10 +138,10 @@ text = "épreuves d'entrée plus faciles"
 
 [node name="PanelStat" type="Panel" parent="PanelGlobal"]
 layout_mode = 0
-offset_left = 1533.85
-offset_top = 212.308
-offset_right = 1768.85
-offset_bottom = 485.308
+offset_left = 1534.08
+offset_top = 224.539
+offset_right = 1769.08
+offset_bottom = 497.539
 theme_override_styles/panel = SubResource("StyleBoxFlat_5ec2k")
 metadata/_edit_use_anchors_ = true
 
@@ -211,7 +214,7 @@ theme_override_font_sizes/font_size = 12
 text = "- entry exam"
 
 [node name="icon" type="Sprite2D" parent="PanelGlobal"]
-position = Vector2(1484.62, 249.231)
+position = Vector2(1484.85, 261.462)
 scale = Vector2(1.0293, 1.0616)
 texture = ExtResource("3_g0kju")
 

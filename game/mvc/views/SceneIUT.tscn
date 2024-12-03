@@ -103,7 +103,6 @@ icon_alignment = 2
 expand_icon = true
 
 [node name="Quitter" type="Button" parent="."]
-anchors_preset = -1
 offset_left = 42.0
 offset_top = 572.0
 offset_right = 94.0
