@@ -18,7 +18,7 @@ func notifyBudgetChanged() -> void:
 
 func notifyLevelChanged() -> void: 
 	var label = get_node("level")
-	label.text = str(Student.avg_level()*100) + " %"
+	label.text = str(Student.avg_level()*20) + "/20"
 
 
 func notifySatisfactionChanged() -> void:
