@@ -80,10 +80,10 @@ environment = SubResource("Environment_6245k")
 z_index = 11
 
 [node name="notif_button" type="Button" parent="."]
-offset_left = 35.0
-offset_top = 106.0
+offset_left = 20.0
+offset_top = 105.0
 offset_right = 101.0
-offset_bottom = 173.0
+offset_bottom = 187.0
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 icon = ExtResource("3_4oyj6")
@@ -91,10 +91,10 @@ flat = true
 expand_icon = true
 
 [node name="Next" type="Button" parent="."]
-offset_left = 38.0
-offset_top = 178.0
-offset_right = 233.0
-offset_bottom = 221.0
+offset_left = 29.0
+offset_top = 190.0
+offset_right = 224.0
+offset_bottom = 233.0
 mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_xxkxi")
 text = "Trois mois après..."
@@ -103,10 +103,10 @@ icon_alignment = 2
 expand_icon = true
 
 [node name="Quitter" type="Button" parent="."]
-offset_left = 42.0
-offset_top = 572.0
-offset_right = 94.0
-offset_bottom = 629.0
+offset_left = 26.0
+offset_top = 571.0
+offset_right = 78.0
+offset_bottom = 628.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_default_cursor_shape = 2
