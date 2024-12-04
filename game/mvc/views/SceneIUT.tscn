@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b4cp1gj8gn1ro"]
+[gd_scene load_steps=29 format=3 uid="uid://b4cp1gj8gn1ro"]
 
 [ext_resource type="Script" path="res://mvc/views/RenovIUTApp.gd" id="1_drlro"]
 [ext_resource type="Texture2D" uid="uid://b8bjiydhyyapq" path="res://mvc/views/images/buttons/notification_button.png" id="3_4oyj6"]
@@ -36,13 +36,6 @@ tonemap_mode = 2
 ssao_enabled = true
 glow_enabled = true
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxkxi"]
-bg_color = Color(0.294118, 0.329412, 0.278431, 0.784314)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6rpc"]
 bg_color = Color(0.294118, 0.329412, 0.278431, 0.784314)
 corner_radius_top_left = 10
@@ -76,17 +69,20 @@ script = ExtResource("1_drlro")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6245k")
 
+[node name="BuildingAction" parent="." instance=ExtResource("8_lduu6")]
+position = Vector2(-17, -3)
+
 [node name="PanelStat" parent="." instance=ExtResource("4_t3hyp")]
 z_index = 11
 
 [node name="Next" type="Button" parent="PanelStat"]
-offset_left = 1093.0
-offset_top = 38.0
-offset_right = 1125.0
+offset_left = 1097.0
+offset_top = 35.0
+offset_right = 1126.0
 offset_bottom = 65.0
 mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_xxkxi")
 icon = ExtResource("3_bqdem")
+flat = true
 icon_alignment = 2
 expand_icon = true
 
@@ -443,9 +439,6 @@ layout_mode = 2
 
 [node name="OuvrirPanel" type="Button" parent="menu/PopupPanel/VBoxContainer"]
 layout_mode = 2
-
-[node name="BuildingAction" parent="." instance=ExtResource("8_lduu6")]
-position = Vector2(-17, -3)
 
 [connection signal="pressed" from="PanelStat/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="notif_button" to="." method="open_notif"]
