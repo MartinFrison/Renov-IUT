@@ -30,8 +30,8 @@ func create_question_button(text : String, id : int, n) -> void:
 	var button = Button.new()
 	buttons.append(button)
 	button.text = text
-	button.size = Vector2(250, 42)
-	button.position = Vector2(15, n * 60 + 10)
+	button.size = Vector2(230, 17)
+	button.position = Vector2(15, n * 35 + 10)
 	
 
 	var panel = get_node("PanelNotif")

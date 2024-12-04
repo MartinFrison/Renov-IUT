@@ -55,7 +55,7 @@ func game_loaded() -> void:
 # Passer au trimestre suivant à la demande du joueur
 func _on_next_pressed() -> void:
 	illkirch._time.next_Trimestre()
-
+	
 
 # Ferme l'appli
 func close_app() -> void:

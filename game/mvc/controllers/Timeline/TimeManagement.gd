@@ -24,6 +24,7 @@ func _ready() -> void:
 
 # Execute toutes les actions d'un trimestre
 func next_Trimestre():
+	
 	GlobalData.incrementTrimestre()
 
 	# Appelle des évenements
