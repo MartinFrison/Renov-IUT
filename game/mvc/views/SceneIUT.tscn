@@ -76,10 +76,10 @@ position = Vector2(-17, -3)
 z_index = 11
 
 [node name="Next" type="Button" parent="PanelStat"]
-offset_left = 1097.0
+offset_left = 1096.0
 offset_top = 35.0
 offset_right = 1126.0
-offset_bottom = 65.0
+offset_bottom = 69.0
 mouse_default_cursor_shape = 2
 icon = ExtResource("3_bqdem")
 flat = true

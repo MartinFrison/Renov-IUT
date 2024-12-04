@@ -15,7 +15,10 @@ func _process(delta: float) -> void:
 func init(message : String) -> void:
 	_message = message
 	var ques = get_node("Message")
+	ques.visible = true
 	ques.text = _message
+	await get_tree().create_timer(15.0).timeout
+	ques.visible = false
 
 func _input(event):
 	if event is InputEventKey:
