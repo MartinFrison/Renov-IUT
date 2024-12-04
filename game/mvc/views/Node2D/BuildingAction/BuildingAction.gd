@@ -37,8 +37,8 @@ func show_data() -> void:
 	node = get_node("PanelGlobal/PanelStat/GridContainer/entry_exam")
 	node.text = "Difficulté des examens d'entrée : %s" % [int(build.get_exam_entry()*100)]
 	
-	node = get_node("PanelGlobal/PanelStat/GridContainer/pay")
-	node.text = "Salaire des enseigants : %s$" % [build.get_pay_teacher()]
+	#node = get_node("PanelGlobal/PanelStat/GridContainer/pay")
+	#node.text = "Salaire des enseigants : %s$" % [build.get_pay_teacher()]
 	
 	node = get_node("PanelGlobal/PanelStat/GridContainer/mood_student")
 	node.text = "Satisfaction étudiante : %s%%" % [int(Student.avg_mood_per_dept(code)*100)]
@@ -49,14 +49,14 @@ func show_data() -> void:
 	node = get_node("PanelGlobal/PanelStat/GridContainer/level")
 	node.text = "Niveau étudiant moyen : %s%%" % [int(Student.avg_level_per_dept(code)*100)]
 	
-	node = get_node("PanelGlobal/PanelStat/GridContainer/nb_student")
-	node.text = "Nombre d'étudiants : %s" % [Student.compute_nb_per_dept(code)]
+	#node = get_node("PanelGlobal/PanelStat/GridContainer/nb_student")
+	#node.text = "Nombre d'étudiants : %s" % [Student.compute_nb_per_dept(code)]
 	
-	node = get_node("PanelGlobal/PanelStat/GridContainer/nb_teacher")
-	node.text = "Nombre d'enseignants : %s" % [Teacher.compute_nb_per_dept(code)]
+	#node = get_node("PanelGlobal/PanelStat/GridContainer/nb_teacher")
+	#node.text = "Nombre d'enseignants : %s" % [Teacher.compute_nb_per_dept(code)]
 	
-	node = get_node("PanelGlobal/PanelStat/GridContainer/nb_worker")
-	node.text = "Nombre d'ouvriers : %s" % [build.get_ouvriers()]
+	#node = get_node("PanelGlobal/PanelStat/GridContainer/nb_worker")
+	#node.text = "Nombre d'ouvriers : %s" % [build.get_ouvriers()]
 	
 
 	
@@ -80,17 +80,17 @@ func show_data() -> void:
 	node = get_node("PanelGlobal/PanelStat/GridContainer/budget")
 	node.text = "Budget : %s €" % [GlobalData.formatBudget(build.get_budget())]
 
-	node = get_node("PanelGlobal/PanelAction/GridContainer/lock")
-	if build.isDoorLocked():	
-		node.text = "débloquer les portes"
-	else:
-		node.text = "bloquer les portes"
-		
-	node = get_node("PanelGlobal/PanelAction/GridContainer/heat")
-	if build.is_heating():	
-		node.text = "éteindre le chauffage"
-	else:
-		node.text = "allumer le chauffage"
+	#node = get_node("PanelGlobal/PanelAction/GridContainer/lock")
+	#if build.isDoorLocked():	
+	#	node.text = "débloquer les portes"
+	#else:
+	#	node.text = "bloquer les portes"
+	#	
+	#node = get_node("PanelGlobal/PanelAction/GridContainer/heat")
+	#if build.is_heating():	
+	#	node.text = "éteindre le chauffage"
+	#else:
+	#	node.text = "allumer le chauffage"
 	
 
 
