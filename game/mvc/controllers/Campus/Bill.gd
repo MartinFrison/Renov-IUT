@@ -34,7 +34,8 @@ func add_daily_expense(day : int) -> void:
 		# Facture de chauffage (cout en fonction de l'isolation)
 		if b.is_heating():
 			var heat_cost = Building.MonthlySquareMetersHeatingCost * b.get_surface() / 30
-			heat_cost = heat_cost*(1 + b.get_isolation()/25) # Entre 20% et 100% du prix selon l'isolation
+			# heat_cost = heat_cost*(1 + b.get_isolation()/25) # Entre 20% et 100% du prix selon l'isolation
+			# Ça bogue : soit supprimer l'isolation partout, soit, au contraire, l'implémenter.
 			pay_heating[i+1] += heat_cost * day
 	
 	nb_pay_teacher = max(nb_pay_teacher, Teacher.compute_nb())
