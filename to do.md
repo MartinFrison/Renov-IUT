@@ -28,6 +28,7 @@ Code:
 - Ajout d'un tutoriel si la difficulté est facile : Martin
 - Ajout complet d'un troisième scénario sur l'élitisme : Martin
 
+
 - Gestion de l'attractivité
 
 
@@ -36,17 +37,13 @@ Code:
 Détail:
 - Ajout de tout les messages et notifs manquant dans le code et definition de leur type (chauffage ect..)
 - Affichage du cout quand le joueur s'apprête a allumer le chauffage ou embaucher quelqu'un
-- Ajustement de la taille de l'interface en grand écrans
-- Ajouter des conditions au licensiment (soit un dédommagement soit une limite mensuels)
-
+- Ajouter des conditions au licensiment et à l'embauche (soit un dédommagement soit une limite mensuels)
 
 
 
 Bonus:
 - Ajout d'un historique de toutes les stats consultable notament en fin de partie
 - Rapport intelligent au joueur sur sa prestation
-- Ajout d'un filtre de recherche des notifications
-
 
 
 
@@ -56,5 +53,7 @@ Fin de projet:
 de la simulation (ajustement de la satisfaction, de la réussite , des fonds, de la frequence des events ect...)
 - Test pour rechercher les abus du système (pas des bugs) possible par le joueur pour les corrigés 
 - Test du jeu pour détécter et corriger tout les bugs
+
+- Commenter tous le code et corriger les fautes de francais
 - Compilation et mise en ligne du jeu
 - Test de la version compiler sur différentes machines pour s'assurer que celle ci ne pose aucun problème
