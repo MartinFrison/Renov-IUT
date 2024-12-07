@@ -31,14 +31,14 @@ func show_data() -> void:
 	else:
 		print("Erreur lors du chargement de la texture :", texture_path)
 	
-	node = get_node("PanelGlobal/PanelStat/GridContainer/end_exam")
-	node.text = "Difficulté des examens finaux : %s" % [int(build.get_exam_end()*100)]
+	node = get_node("PanelGlobal/PanelAction/end_exam")
+	node.text = "Séléction des examens finaux (%s)" % [int(build.get_exam_end()*100)]
 	
-	node = get_node("PanelGlobal/PanelStat/GridContainer/entry_exam")
-	node.text = "Difficulté des examens d'entrée : %s" % [int(build.get_exam_entry()*100)]
+	node = get_node("PanelGlobal/PanelAction/exam_entry")
+	node.text = "Séléction à l'entrée (%s)" % [int(build.get_exam_entry()*100)]
 	
-	#node = get_node("PanelGlobal/PanelStat/GridContainer/pay")
-	#node.text = "Salaire des enseigants : %s$" % [build.get_pay_teacher()]
+	node = get_node("PanelGlobal/PanelAction/pay")
+	node.text = "Salaire des enseigants : %s$" % [build.get_pay_teacher()]
 	
 	node = get_node("PanelGlobal/PanelStat/GridContainer/mood_student")
 	node.text = "Satisfaction étudiante : %s%%" % [int(Student.avg_mood_per_dept(code)*100)]
@@ -49,14 +49,14 @@ func show_data() -> void:
 	node = get_node("PanelGlobal/PanelStat/GridContainer/level")
 	node.text = "Niveau étudiant moyen : %s%%" % [int(Student.avg_level_per_dept(code)*100)]
 	
-	#node = get_node("PanelGlobal/PanelStat/GridContainer/nb_student")
-	#node.text = "Nombre d'étudiants : %s" % [Student.compute_nb_per_dept(code)]
+	node = get_node("PanelGlobal/PanelStat/GridContainer/nb_student")
+	node.text = "Nombre d'étudiants : %s" % [Student.compute_nb_per_dept(code)]
 	
-	#node = get_node("PanelGlobal/PanelStat/GridContainer/nb_teacher")
-	#node.text = "Nombre d'enseignants : %s" % [Teacher.compute_nb_per_dept(code)]
+	node = get_node("PanelGlobal/PanelAction/teacher")
+	node.text = "Enseignants (%s)" % [Teacher.compute_nb_per_dept(code)]
 	
-	#node = get_node("PanelGlobal/PanelStat/GridContainer/nb_worker")
-	#node.text = "Nombre d'ouvriers : %s" % [build.get_ouvriers()]
+	node = get_node("PanelGlobal/PanelAction/worker")
+	node.text = "Ouvriers (%s)" % [build.get_ouvriers()]
 	
 
 	
@@ -153,4 +153,9 @@ func _on_add_exem_entry_pressed() -> void:
 
 func _on_sub_exam_entry_pressed() -> void:
 	BuildingManagement.decrease_entry_exam_difficulty(code)
+	show_data()
+
+
+func _on_decrease_pay_pressed() -> void:
+	Teaching.decrease_salary(code)
 	show_data()

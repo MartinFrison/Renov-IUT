@@ -62,6 +62,13 @@ static func increase_salary(dept : String) -> void:
 	else:
 		b.add_pay_teacher(800)
 
+static func decrease_salary(dept : String) -> void:
+	var b = Building.get_building(dept)
+	if b.get_pay_teacher() <=2800:
+		await BulleGestion.send_message("Le salaire des enseigants ne peut pas être inférieur à 2800 €", false)
+	else:
+		b.add_pay_teacher(-800)
+
 static func teacher_resign() -> void:
 	Teacher.rm_teacher_by_mood(0.2);
 

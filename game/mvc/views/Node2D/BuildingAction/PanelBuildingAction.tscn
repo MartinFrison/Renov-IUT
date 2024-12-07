@@ -58,7 +58,7 @@ texture = ExtResource("2_061kg")
 [node name="PanelAction" type="Panel" parent="PanelGlobal"]
 layout_mode = 1
 offset_left = 1365.0
-offset_top = 565.0
+offset_top = 550.0
 offset_right = 1755.0
 offset_bottom = 980.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_5ec2k")
@@ -74,22 +74,22 @@ mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
 text = "faire des travaux"
 
-[node name="add_teacher" type="Button" parent="PanelGlobal/PanelAction"]
+[node name="add_worker" type="Button" parent="PanelGlobal/PanelAction"]
 layout_mode = 2
 offset_left = 327.0
-offset_top = 110.0
+offset_top = 70.0
 offset_right = 370.0
-offset_bottom = 153.0
+offset_bottom = 113.0
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
 text = "+"
 
-[node name="add_worker" type="Button" parent="PanelGlobal/PanelAction"]
+[node name="add_teacher" type="Button" parent="PanelGlobal/PanelAction"]
 layout_mode = 2
 offset_left = 327.0
-offset_top = 65.0
+offset_top = 120.0
 offset_right = 370.0
-offset_bottom = 108.0
+offset_bottom = 163.0
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
 text = "+"
@@ -97,40 +97,19 @@ text = "+"
 [node name="add_pay" type="Button" parent="PanelGlobal/PanelAction"]
 layout_mode = 2
 offset_left = 327.0
-offset_top = 155.0
+offset_top = 170.0
 offset_right = 370.0
-offset_bottom = 198.0
+offset_bottom = 213.0
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
 text = "+"
 
-[node name="lock" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 2
-offset_left = 20.0
-offset_top = 350.385
-offset_right = 370.0
-offset_bottom = 393.385
-mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 25
-text = "verrouillage
-"
-
-[node name="heat" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 2
-offset_left = 20.0
-offset_top = 299.615
-offset_right = 370.0
-offset_bottom = 342.615
-mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 25
-text = "off chauffage on"
-
 [node name="add_exem_entry" type="Button" parent="PanelGlobal/PanelAction"]
 layout_mode = 2
 offset_left = 327.0
-offset_top = 200.0
+offset_top = 220.0
 offset_right = 370.0
-offset_bottom = 243.0
+offset_bottom = 263.0
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
 text = "+
@@ -139,31 +118,31 @@ text = "+
 [node name="add_exem_end" type="Button" parent="PanelGlobal/PanelAction"]
 layout_mode = 2
 offset_left = 327.0
-offset_top = 245.0
+offset_top = 270.0
 offset_right = 370.0
-offset_bottom = 288.0
+offset_bottom = 313.0
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
 text = "+
 "
 
-[node name="sub_teacher" type="Button" parent="PanelGlobal/PanelAction"]
+[node name="sub_worker" type="Button" parent="PanelGlobal/PanelAction"]
 layout_mode = 2
 offset_left = 20.0
-offset_top = 110.0
+offset_top = 70.0
 offset_right = 63.0
-offset_bottom = 153.0
+offset_bottom = 113.0
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
 text = "-
 "
 
-[node name="sub_worker" type="Button" parent="PanelGlobal/PanelAction"]
+[node name="sub_teacher" type="Button" parent="PanelGlobal/PanelAction"]
 layout_mode = 2
 offset_left = 20.0
-offset_top = 65.0
+offset_top = 120.0
 offset_right = 63.0
-offset_bottom = 108.0
+offset_bottom = 163.0
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
 text = "-
@@ -172,9 +151,9 @@ text = "-
 [node name="sub_pay" type="Button" parent="PanelGlobal/PanelAction"]
 layout_mode = 2
 offset_left = 20.0
-offset_top = 155.0
+offset_top = 170.0
 offset_right = 63.0
-offset_bottom = 198.0
+offset_bottom = 213.0
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
 text = "-
@@ -183,9 +162,9 @@ text = "-
 [node name="sub_exem_entry" type="Button" parent="PanelGlobal/PanelAction"]
 layout_mode = 2
 offset_left = 20.0
-offset_top = 200.0
+offset_top = 220.0
 offset_right = 63.0
-offset_bottom = 243.0
+offset_bottom = 263.0
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
 text = "-
@@ -194,19 +173,31 @@ text = "-
 [node name="sub_exem_end" type="Button" parent="PanelGlobal/PanelAction"]
 layout_mode = 2
 offset_left = 20.0
-offset_top = 245.0
+offset_top = 270.0
 offset_right = 63.0
-offset_bottom = 288.0
+offset_bottom = 313.0
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
 text = "-
 "
 
+[node name="worker" type="Label" parent="PanelGlobal/PanelAction"]
+layout_mode = 2
+offset_left = 68.0
+offset_top = 70.0
+offset_right = 322.0
+offset_bottom = 112.0
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = SubResource("StyleBoxFlat_7v0vf")
+text = "Ouvrier
+"
+horizontal_alignment = 1
+
 [node name="teacher" type="Label" parent="PanelGlobal/PanelAction"]
 offset_left = 68.0
-offset_top = 110.0
+offset_top = 120.0
 offset_right = 322.0
-offset_bottom = 152.0
+offset_bottom = 162.0
 theme_override_font_sizes/font_size = 23
 theme_override_styles/normal = SubResource("StyleBoxFlat_7v0vf")
 text = "Enseignant
@@ -215,9 +206,9 @@ horizontal_alignment = 1
 
 [node name="pay" type="Label" parent="PanelGlobal/PanelAction"]
 offset_left = 68.0
-offset_top = 155.0
+offset_top = 170.0
 offset_right = 322.0
-offset_bottom = 197.0
+offset_bottom = 212.0
 theme_override_font_sizes/font_size = 23
 theme_override_styles/normal = SubResource("StyleBoxFlat_7v0vf")
 text = "Salaire enseignant
@@ -226,9 +217,9 @@ horizontal_alignment = 1
 
 [node name="end_exam" type="Label" parent="PanelGlobal/PanelAction"]
 offset_left = 68.0
-offset_top = 245.0
+offset_top = 270.0
 offset_right = 322.0
-offset_bottom = 287.0
+offset_bottom = 312.0
 theme_override_font_sizes/font_size = 23
 theme_override_styles/normal = SubResource("StyleBoxFlat_7v0vf")
 text = "Séléction à l'entrée
@@ -237,33 +228,42 @@ horizontal_alignment = 1
 
 [node name="exam_entry" type="Label" parent="PanelGlobal/PanelAction"]
 offset_left = 68.0
-offset_top = 200.0
+offset_top = 220.0
 offset_right = 322.0
-offset_bottom = 242.0
+offset_bottom = 262.0
 theme_override_font_sizes/font_size = 23
 theme_override_styles/normal = SubResource("StyleBoxFlat_7v0vf")
 text = "Séléction des examens
 "
 horizontal_alignment = 1
 
-[node name="worker" type="Label" parent="PanelGlobal/PanelAction"]
+[node name="heat" type="Button" parent="PanelGlobal/PanelAction"]
 layout_mode = 2
-offset_left = 68.0
-offset_top = 65.0
-offset_right = 322.0
-offset_bottom = 107.0
-theme_override_font_sizes/font_size = 23
-theme_override_styles/normal = SubResource("StyleBoxFlat_7v0vf")
-text = "Ouvrier
+offset_left = 20.0
+offset_top = 320.0
+offset_right = 370.0
+offset_bottom = 363.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 25
+text = "off chauffage on"
+
+[node name="lock" type="Button" parent="PanelGlobal/PanelAction"]
+layout_mode = 2
+offset_left = 20.0
+offset_top = 370.0
+offset_right = 370.0
+offset_bottom = 413.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 25
+text = "verrouillage
 "
-horizontal_alignment = 1
 
 [node name="PanelStat" type="Panel" parent="PanelGlobal"]
 layout_mode = 0
 offset_left = 1365.0
 offset_top = 335.0
 offset_right = 1755.0
-offset_bottom = 550.0
+offset_bottom = 535.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_5ec2k")
 metadata/_edit_use_anchors_ = true
 
@@ -300,15 +300,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "- satisfaction enseignante"
 
-[node name="end_exam" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
+[node name="nb_student" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "- end exam"
-
-[node name="entry_exam" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-text = "- entry exam"
 
 [node name="icon" type="Sprite2D" parent="PanelGlobal"]
 position = Vector2(1430, 246.951)
@@ -318,15 +313,15 @@ texture = ExtResource("3_g0kju")
 [node name="Sprite2D" type="Sprite2D" parent="PanelGlobal"]
 
 [connection signal="pressed" from="PanelGlobal/PanelAction/renove" to="." method="_on_renove_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/add_teacher" to="." method="_on_hire_teacher_pressed"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/add_worker" to="." method="_on_hire_worker_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/add_teacher" to="." method="_on_hire_teacher_pressed"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/add_pay" to="." method="_on_increase_pay_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/lock" to="." method="_on_lock_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/heat" to="." method="_on_heat_pressed"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/add_exem_entry" to="." method="_on_add_exem_entry_pressed"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/add_exem_end" to="." method="_on_add_exem_end_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/sub_teacher" to="." method="_on_hire_teacher_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/sub_worker" to="." method="_on_hire_worker_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/sub_pay" to="." method="_on_increase_pay_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/sub_exem_entry" to="." method="_on_add_exem_entry_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/sub_exem_end" to="." method="_on_add_exem_end_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/sub_worker" to="." method="_on_fire_worker_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/sub_teacher" to="." method="_on_fire_teacher_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/sub_pay" to="." method="_on_decrease_pay_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/sub_exem_entry" to="." method="_on_sub_exam_entry_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/sub_exem_end" to="." method="_on_sub_exam_end_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/heat" to="." method="_on_heat_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/lock" to="." method="_on_lock_pressed"]
