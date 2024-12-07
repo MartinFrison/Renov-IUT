@@ -32,10 +32,10 @@ func show_data() -> void:
 		print("Erreur lors du chargement de la texture :", texture_path)
 	
 	node = get_node("PanelGlobal/PanelAction/GridContainer/end_exam")
-	node.text = "taux de réussite (%s%%)" % [int(build.get_exam_end()*100)]
+	node.text = "examens (difficulté %s/10)" % [int(build.get_exam_end()*10)]
 	
 	node = get_node("PanelGlobal/PanelAction/GridContainer/exam_entry")
-	node.text = "taux d'admission (%s%%)" % [int(build.get_exam_entry()*100)]
+	node.text = "admission (difficulté %s/10)" % [int(build.get_exam_entry()*10)]
 	
 	node = get_node("PanelGlobal/PanelAction/GridContainer/pay")
 	node.text = "salaires (%s €)" % [build.get_pay_teacher()]

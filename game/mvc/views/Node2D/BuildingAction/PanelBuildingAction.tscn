@@ -150,7 +150,7 @@ anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1331.0
+offset_left = 1338.0
 offset_top = -3.0
 offset_right = 1802.0
 offset_bottom = 1006.0
@@ -367,9 +367,9 @@ metadata/_edit_use_anchors_ = true
 [node name="GridContainer" type="GridContainer" parent="PanelGlobal/PanelStat"]
 layout_mode = 0
 offset_left = 22.0
-offset_top = 6.84634
+offset_top = 8.53845
 offset_right = 339.0
-offset_bottom = 205.846
+offset_bottom = 184.538
 theme_override_constants/v_separation = 4
 
 [node name="budget" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]

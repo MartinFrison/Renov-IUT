@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b4cp1gj8gn1ro"]
+[gd_scene load_steps=30 format=3 uid="uid://b4cp1gj8gn1ro"]
 
 [ext_resource type="Script" path="res://mvc/views/RenovIUTApp.gd" id="1_drlro"]
 [ext_resource type="Texture2D" uid="uid://b8bjiydhyyapq" path="res://mvc/views/images/buttons/notification_button.png" id="3_4oyj6"]
@@ -35,6 +35,11 @@ sky_custom_fov = 48.2
 tonemap_mode = 2
 ssao_enabled = true
 glow_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcx70"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_color = Color(0.8, 0.8, 0.8, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6rpc"]
 bg_color = Color(0.294118, 0.329412, 0.278431, 0.784314)
@@ -87,14 +92,24 @@ icon_alignment = 2
 expand_icon = true
 
 [node name="notif_button" type="Button" parent="."]
-offset_left = 20.0
-offset_top = 105.0
-offset_right = 101.0
-offset_bottom = 187.0
-size_flags_horizontal = 4
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = 99.0
+offset_right = 109.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_vcx70")
+toggle_mode = true
 icon = ExtResource("3_4oyj6")
 flat = true
+icon_alignment = 1
 expand_icon = true
 
 [node name="Quitter" type="Button" parent="."]

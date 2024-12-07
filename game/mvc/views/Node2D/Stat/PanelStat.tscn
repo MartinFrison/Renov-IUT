@@ -21,10 +21,11 @@ expand_mode = 3
 stretch_mode = 6
 
 [node name="date" type="Label" parent="."]
-offset_left = 982.0
+offset_left = 977.0
 offset_top = 36.0
-offset_right = 1090.0
+offset_right = 1091.0
 offset_bottom = 80.0
+theme_override_constants/line_spacing = 1
 text = "Date"
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -46,9 +47,9 @@ text = "Satisfaction"
 horizontal_alignment = 1
 
 [node name="level" type="Label" parent="."]
-offset_left = 747.0
+offset_left = 745.0
 offset_top = 34.0
-offset_right = 917.0
+offset_right = 919.0
 offset_bottom = 59.0
 text = "Level
 "

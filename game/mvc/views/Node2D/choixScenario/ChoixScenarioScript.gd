@@ -12,7 +12,7 @@ func init(iut : IUTFacade, app : RenovIUTApp) -> void:
 	_app = app
 	_on_switch_tuto_option_toggled(false)
 	var desc = get_node("menu/Description")
-	desc.text = "Bienvenue, Monsieur le Directeur ! Quels sont vos projets ?"
+	desc.text = "Bonjour et bienvenue parmi nous ! Quels sont vos projets ?"
 
 
 
