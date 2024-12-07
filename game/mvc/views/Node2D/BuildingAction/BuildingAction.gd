@@ -58,41 +58,42 @@ func show_data() -> void:
 	node = get_node("PanelGlobal/PanelAction/GridContainer/worker")
 	node.text = "ouvriers (%s)" % [build.get_ouvriers()]
 	
-
-	
-	
 	node = get_node("PanelGlobal/PanelStat/GridContainer/renovation")
 	var n = build.get_inventory()
 	if n < 25:
-		n = "Déplorable"
+		n = "déplorable"
 	elif n < 50:
-		n = "Mauvais"
+		n = "mauvais"
 	elif n < 75:
-		n = "Bon"
+		n = "bon"
 	else:
-		n = "Très bon"
+		n = "très bon"
 	
 	var w = ""
 	if build.is_renovation_underway():
 		w = "(en travaux)"
 	node.text = "État du bâtiment : %s %s" % [n, w]
+	
+	node = get_node("PanelGlobal/PanelAction/renove")
+	if build.is_renovation_underway():	
+		node.set_disabled(true)
+	else:
+		node.text = "faire des travaux"
 
 	node = get_node("PanelGlobal/PanelStat/GridContainer/budget")
 	node.text = "Budget : %s €" % [GlobalData.formatBudget(build.get_budget())]
 
-	#node = get_node("PanelGlobal/PanelAction/GridContainer/lock")
-	#if build.isDoorLocked():	
-	#	node.text = "débloquer les portes"
-	#else:
-	#	node.text = "bloquer les portes"
-	#	
-	#node = get_node("PanelGlobal/PanelAction/GridContainer/heat")
-	#if build.is_heating():	
-	#	node.text = "éteindre le chauffage"
-	#else:
-	#	node.text = "allumer le chauffage"
-	
-
+	node = get_node("PanelGlobal/PanelAction/lock")
+	if build.isDoorLocked():	
+		node.text = "débloquer les portes"
+	else:
+		node.text = "bloquer les portes"
+		
+	node = get_node("PanelGlobal/PanelAction/heat")
+	if build.is_heating():	
+		node.text = "éteindre le chauffage"
+	else:
+		node.text = "allumer le chauffage"
 
 func _on_hire_teacher_pressed() -> void:
 	Teaching.hire_teachers(code)
