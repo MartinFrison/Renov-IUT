@@ -29,7 +29,8 @@ func content():
 	animation_player.play("Armature|marche_content")
 	animation_player.get_animation("Armature|marche_content").loop = true
 	setVisible()
-	
+
+
 func facher():
 	animation_player.play("Armature|marche_facher")
 	animation_player.get_animation("Armature|marche_facher").loop = true
