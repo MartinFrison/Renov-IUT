@@ -436,7 +436,7 @@ transform = Transform3D(0.55505, 0, 0.426521, 0, 0.7, 0, -0.426521, 0, 0.55505, 
 script = ExtResource("12_vnvx5")
 
 [node name="bonhomme15" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
-transform = Transform3D(-0.441208, 0, 0.543448, 0, 0.7, 0, -0.543448, 0, -0.441208, 15.5488, -6.61137, -52.6595)
+transform = Transform3D(-0.37717, 0, 0.589697, 0, 0.7, 0, -0.589697, 0, -0.37717, 15.5488, -6.61137, -52.6595)
 script = ExtResource("12_vnvx5")
 
 [node name="bonhomme16" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
@@ -452,7 +452,7 @@ transform = Transform3D(0.0853085, 0, 0.694782, 0, 0.7, 0, -0.694782, 0, 0.08530
 script = ExtResource("12_vnvx5")
 
 [node name="bonhomme19" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]
-transform = Transform3D(-0.542237, 0, 0.442695, 0, 0.7, 0, -0.442695, 0, -0.542237, 14.9257, -5.19329, -73.5399)
+transform = Transform3D(-0.384939, 0, 0.584656, 0, 0.7, 0, -0.584656, 0, -0.384939, 14.9257, -5.19329, -73.5399)
 script = ExtResource("12_vnvx5")
 
 [node name="bonhomme20" parent="Vue3D/Bonhommes" instance=ExtResource("11_mah3o")]

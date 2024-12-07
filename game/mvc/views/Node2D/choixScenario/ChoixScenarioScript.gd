@@ -4,16 +4,17 @@ extends Node2D
 
 var _IUT : IUTFacade
 var _app : RenovIUTApp
-var scenario
+var scenario = -1
 var difficulty = 2
 
 func init(iut : IUTFacade, app : RenovIUTApp) -> void:
 	_IUT = iut
 	_app = app
 	_on_switch_tuto_option_toggled(false)
-	_on_button_election_pressed()
 	var desc = get_node("menu/Description")
 	desc.text = "Bienvenue, Monsieur le Directeur ! Quels sont vos projets ?"
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,13 +32,17 @@ func _on_button_renovation_pressed() -> void:
 	var desc = get_node("menu/Description")
 	desc.text = ScenarioRenovation.get_description()
 
+
+
 func _on_suivant_pressed() -> void:
-	if scenario == 0:
+	if scenario == -1:
 		var desc = get_node("menu/Description")
 		desc.text = "Décidez-vous."
 	else:
 		_IUT.chooseMode(scenario, difficulty) # Par défaut, c'est le mode standard / défi qui est lancé
 		_app.startGame()
+
+
 
 func _on_switch_tuto_option_toggled(toggled_on: bool) -> void:
 	difficulty = 1 # Choisir le mode de jeu simplifié, avec tuto
