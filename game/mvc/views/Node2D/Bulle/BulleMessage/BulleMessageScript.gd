@@ -20,12 +20,16 @@ func init(message : String) -> void:
 	await get_tree().create_timer(15.0).timeout
 	ques.visible = false
 
+
+# Gère les entrée pour passer le message
 func _input(event):
-	if event is InputEventKey:
+	if event is InputEventKey: # test de la touche entrée
 		if event.pressed and (event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER):
 			print("La touche Entrée a été pressée")
 			enter()
-
+	elif event is InputEventMouseButton:
+		if event.pressed and event.button_index == 1: # bouton gauche clické
+			enter()
 
 func enter() -> void:
 	queue_free()

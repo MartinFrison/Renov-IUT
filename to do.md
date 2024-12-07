@@ -20,11 +20,14 @@ Graphique 2D:
 Code:
 
 - Gestion des fonds : Elena
-- Création du menu (bouton quitter, option) : Yasmine
+
+
+- Mise à jours du panel d'action
 - Gestion des grandes vacances : Martin
-- Ajout d'un panel récapitulatif de stat détaillé : Martin
-- Ajout de quelque évenements aléatoire simple
-- Ajout d'un tutoriel si la difficulté est facile
+- Ajout de quelque évenements aléatoire simple : Martin
+- Ajout d'un tutoriel si la difficulté est facile : Martin
+- Ajout complet d'un troisième scénario sur l'élitisme : Martin
+
 - Gestion de l'attractivité
 
 
@@ -40,7 +43,6 @@ Détail:
 
 
 Bonus:
-- Ajout complet d'un troisième scénario sur l'élitisme
 - Ajout d'un historique de toutes les stats consultable notament en fin de partie
 - Rapport intelligent au joueur sur sa prestation
 - Ajout d'un filtre de recherche des notifications

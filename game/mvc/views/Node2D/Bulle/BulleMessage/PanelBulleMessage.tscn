@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bte0n114pu03p"]
+[gd_scene load_steps=4 format=3 uid="uid://bte0n114pu03p"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/Bulle/BulleMessage/BulleMessageScript.gd" id="1_gu0nf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vblvs"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2r81c"]
 bg_color = Color(0.294118, 0.317647, 0.301961, 0.780392)
@@ -20,7 +23,16 @@ position = Vector2(291, 438)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_gu0nf")
 
+[node name="Panel" type="Panel" parent="."]
+z_index = -1
+offset_left = -760.0
+offset_top = -1020.0
+offset_right = 2034.0
+offset_bottom = 818.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vblvs")
+
 [node name="Message" type="Label" parent="."]
+z_index = 3
 offset_left = -388.0
 offset_top = 270.0
 offset_right = 1158.0
