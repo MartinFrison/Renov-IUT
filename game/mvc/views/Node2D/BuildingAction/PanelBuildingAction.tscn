@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsy32b2by7jp6"]
+[gd_scene load_steps=22 format=3 uid="uid://dsy32b2by7jp6"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/BuildingAction/BuildingAction.gd" id="1_rgwm8"]
 [ext_resource type="Texture2D" uid="uid://2m7kvd7nwoe1" path="res://mvc/views/images/interface/layers/buildingInfoPanel.png" id="2_061kg"]
 [ext_resource type="Texture2D" uid="uid://chu5wfl6tehla" path="res://mvc/views/images/icons/chemistry.png" id="3_g0kju"]
+[ext_resource type="Texture2D" uid="uid://584vab6lde7a" path="res://mvc/views/images/buttons/plus.png" id="3_t70jo"]
+[ext_resource type="Texture2D" uid="uid://1gj4dpy6pg0j" path="res://mvc/views/images/buttons/minus.png" id="4_0au1m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2tdad"]
 bg_color = Color(0.360784, 0.486275, 0.568627, 0)
@@ -12,12 +14,109 @@ bg_color = Color(0.360784, 0.486275, 0.568627, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ec2k"]
 bg_color = Color(0.294118, 0.329412, 0.278431, 0.815686)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7v0vf"]
-bg_color = Color(0.176, 0.176, 0.176, 0.8)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s88xv"]
+bg_color = Color(0.278431, 0.298039, 0.282353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vag6d"]
+bg_color = Color(0.278431, 0.298039, 0.282353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eh76s"]
+bg_color = Color(0.278431, 0.298039, 0.282353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rs8mp"]
+bg_color = Color(0.278431, 0.298039, 0.282353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e35cg"]
+bg_color = Color(0.278431, 0.298039, 0.282353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ynjkv"]
+bg_color = Color(0.278431, 0.298039, 0.282353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vk2i4"]
+bg_color = Color(0.278431, 0.298039, 0.282353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ros4i"]
+bg_color = Color(0.278431, 0.298039, 0.282353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opag6"]
+bg_color = Color(0.278431, 0.298039, 0.282353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eon3a"]
+bg_color = Color(0.278431, 0.298039, 0.282353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5l6m"]
+bg_color = Color(0.278431, 0.298039, 0.282353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujaya"]
+bg_color = Color(0.278431, 0.298039, 0.282353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1jdy"]
+bg_color = Color(0.278431, 0.298039, 0.282353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 1
 
 [node name="PanelBuildingAction" type="Node2D"]
 z_index = 10
@@ -31,12 +130,15 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_2tdad")
 [node name="name" type="Label" parent="PanelGlobal"]
 z_index = 10
 layout_mode = 0
-offset_left = 1450.0
-offset_top = 210.0
-offset_right = 1757.0
-offset_bottom = 309.0
+offset_left = 1445.0
+offset_top = 232.538
+offset_right = 1752.0
+offset_bottom = 315.538
+theme_override_colors/font_shadow_color = Color(0.278431, 0.298039, 0.282353, 1)
 theme_override_constants/line_spacing = -7
-theme_override_font_sizes/font_size = 24
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 26
 text = "Nom"
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -66,186 +168,181 @@ metadata/_edit_use_anchors_ = true
 
 [node name="renove" type="Button" parent="PanelGlobal/PanelAction"]
 layout_mode = 2
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 370.0
-offset_bottom = 63.0
+offset_left = 21.154
+offset_top = 19.2308
+offset_right = 371.154
+offset_bottom = 62.2308
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_s88xv")
 text = "faire des travaux"
 
-[node name="add_worker" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 2
-offset_left = 327.0
-offset_top = 70.0
-offset_right = 370.0
-offset_bottom = 113.0
-mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 25
-text = "+"
-
-[node name="add_teacher" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 2
-offset_left = 327.0
-offset_top = 120.0
-offset_right = 370.0
-offset_bottom = 163.0
-mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 25
-text = "+"
-
-[node name="add_pay" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 2
-offset_left = 327.0
-offset_top = 170.0
-offset_right = 370.0
-offset_bottom = 213.0
-mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 25
-text = "+"
-
-[node name="add_exem_entry" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 2
-offset_left = 327.0
-offset_top = 220.0
-offset_right = 370.0
-offset_bottom = 263.0
-mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 25
-text = "+
-"
-
-[node name="add_exem_end" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 2
-offset_left = 327.0
-offset_top = 270.0
-offset_right = 370.0
-offset_bottom = 313.0
-mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 25
-text = "+
-"
-
-[node name="sub_worker" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 2
+[node name="GridContainer" type="GridContainer" parent="PanelGlobal/PanelAction"]
+layout_mode = 0
 offset_left = 20.0
-offset_top = 70.0
-offset_right = 63.0
-offset_bottom = 113.0
+offset_top = 73.0
+offset_right = 370.0
+offset_bottom = 305.0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 8
+columns = 3
+
+[node name="sub_worker" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
-text = "-
+theme_override_styles/normal = SubResource("StyleBoxFlat_vag6d")
+text = "
 "
+icon = ExtResource("4_0au1m")
+icon_alignment = 1
+expand_icon = true
 
-[node name="sub_teacher" type="Button" parent="PanelGlobal/PanelAction"]
+[node name="worker" type="Label" parent="PanelGlobal/PanelAction/GridContainer"]
 layout_mode = 2
-offset_left = 20.0
-offset_top = 120.0
-offset_right = 63.0
-offset_bottom = 163.0
-mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 25
-text = "-
-"
-
-[node name="sub_pay" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 2
-offset_left = 20.0
-offset_top = 170.0
-offset_right = 63.0
-offset_bottom = 213.0
-mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 25
-text = "-
-"
-
-[node name="sub_exem_entry" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 2
-offset_left = 20.0
-offset_top = 220.0
-offset_right = 63.0
-offset_bottom = 263.0
-mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 25
-text = "-
-"
-
-[node name="sub_exem_end" type="Button" parent="PanelGlobal/PanelAction"]
-layout_mode = 2
-offset_left = 20.0
-offset_top = 270.0
-offset_right = 63.0
-offset_bottom = 313.0
-mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 25
-text = "-
-"
-
-[node name="worker" type="Label" parent="PanelGlobal/PanelAction"]
-layout_mode = 2
-offset_left = 68.0
-offset_top = 70.0
-offset_right = 322.0
-offset_bottom = 112.0
-theme_override_font_sizes/font_size = 23
-theme_override_styles/normal = SubResource("StyleBoxFlat_7v0vf")
-text = "Ouvrier
+theme_override_font_sizes/font_size = 20
+text = "ouvriers
 "
 horizontal_alignment = 1
 
-[node name="teacher" type="Label" parent="PanelGlobal/PanelAction"]
-offset_left = 68.0
-offset_top = 120.0
-offset_right = 322.0
-offset_bottom = 162.0
-theme_override_font_sizes/font_size = 23
-theme_override_styles/normal = SubResource("StyleBoxFlat_7v0vf")
-text = "Enseignant
+[node name="add_worker" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_eh76s")
+icon = ExtResource("3_t70jo")
+icon_alignment = 1
+expand_icon = true
+
+[node name="sub_teacher" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_rs8mp")
+text = "
+"
+icon = ExtResource("4_0au1m")
+icon_alignment = 1
+expand_icon = true
+
+[node name="teacher" type="Label" parent="PanelGlobal/PanelAction/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "enseignants"
+horizontal_alignment = 1
+
+[node name="add_teacher" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_e35cg")
+icon = ExtResource("3_t70jo")
+icon_alignment = 1
+expand_icon = true
+
+[node name="sub_pay" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_ynjkv")
+text = "
+"
+icon = ExtResource("4_0au1m")
+icon_alignment = 1
+expand_icon = true
+
+[node name="pay" type="Label" parent="PanelGlobal/PanelAction/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "salaires"
+horizontal_alignment = 1
+
+[node name="add_pay" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_vk2i4")
+icon = ExtResource("3_t70jo")
+icon_alignment = 1
+expand_icon = true
+
+[node name="sub_exem_entry" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_ros4i")
+text = "
+"
+icon = ExtResource("4_0au1m")
+icon_alignment = 1
+expand_icon = true
+
+[node name="exam_entry" type="Label" parent="PanelGlobal/PanelAction/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 20
+text = "admission
 "
 horizontal_alignment = 1
 
-[node name="pay" type="Label" parent="PanelGlobal/PanelAction"]
-offset_left = 68.0
-offset_top = 170.0
-offset_right = 322.0
-offset_bottom = 212.0
-theme_override_font_sizes/font_size = 23
-theme_override_styles/normal = SubResource("StyleBoxFlat_7v0vf")
-text = "Salaire enseignant
+[node name="add_exem_entry" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_opag6")
+text = "
+"
+icon = ExtResource("3_t70jo")
+icon_alignment = 1
+expand_icon = true
+
+[node name="sub_exem_end" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_eon3a")
+icon = ExtResource("4_0au1m")
+icon_alignment = 1
+expand_icon = true
+
+[node name="end_exam" type="Label" parent="PanelGlobal/PanelAction/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "exams
 "
 horizontal_alignment = 1
 
-[node name="end_exam" type="Label" parent="PanelGlobal/PanelAction"]
-offset_left = 68.0
-offset_top = 270.0
-offset_right = 322.0
-offset_bottom = 312.0
-theme_override_font_sizes/font_size = 23
-theme_override_styles/normal = SubResource("StyleBoxFlat_7v0vf")
-text = "Séléction à l'entrée
+[node name="add_exem_end" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_n5l6m")
+text = "
 "
-horizontal_alignment = 1
-
-[node name="exam_entry" type="Label" parent="PanelGlobal/PanelAction"]
-offset_left = 68.0
-offset_top = 220.0
-offset_right = 322.0
-offset_bottom = 262.0
-theme_override_font_sizes/font_size = 23
-theme_override_styles/normal = SubResource("StyleBoxFlat_7v0vf")
-text = "Séléction des examens
-"
-horizontal_alignment = 1
+icon = ExtResource("3_t70jo")
+icon_alignment = 1
+expand_icon = true
 
 [node name="heat" type="Button" parent="PanelGlobal/PanelAction"]
 layout_mode = 2
 offset_left = 20.0
-offset_top = 320.0
+offset_top = 315.385
 offset_right = 370.0
-offset_bottom = 363.0
+offset_bottom = 358.385
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 25
-text = "off chauffage on"
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_ujaya")
+text = "chauffage"
 
 [node name="lock" type="Button" parent="PanelGlobal/PanelAction"]
 layout_mode = 2
@@ -254,9 +351,9 @@ offset_top = 370.0
 offset_right = 370.0
 offset_bottom = 413.0
 mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 25
-text = "verrouillage
-"
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_o1jdy")
+text = "verrouillage des portes"
 
 [node name="PanelStat" type="Panel" parent="PanelGlobal"]
 layout_mode = 0
@@ -306,22 +403,22 @@ theme_override_font_sizes/font_size = 18
 text = "- end exam"
 
 [node name="icon" type="Sprite2D" parent="PanelGlobal"]
-position = Vector2(1430, 246.951)
-scale = Vector2(1.89125, 1.85981)
+position = Vector2(1430.89, 244.702)
+scale = Vector2(2.01534, 1.98184)
 texture = ExtResource("3_g0kju")
 
 [node name="Sprite2D" type="Sprite2D" parent="PanelGlobal"]
 
 [connection signal="pressed" from="PanelGlobal/PanelAction/renove" to="." method="_on_renove_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/add_worker" to="." method="_on_hire_worker_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/add_teacher" to="." method="_on_hire_teacher_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/add_pay" to="." method="_on_increase_pay_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/add_exem_entry" to="." method="_on_add_exem_entry_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/add_exem_end" to="." method="_on_add_exem_end_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/sub_worker" to="." method="_on_fire_worker_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/sub_teacher" to="." method="_on_fire_teacher_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/sub_pay" to="." method="_on_decrease_pay_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/sub_exem_entry" to="." method="_on_sub_exam_entry_pressed"]
-[connection signal="pressed" from="PanelGlobal/PanelAction/sub_exem_end" to="." method="_on_sub_exam_end_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/sub_worker" to="." method="_on_fire_worker_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/add_worker" to="." method="_on_hire_worker_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/sub_teacher" to="." method="_on_fire_teacher_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/add_teacher" to="." method="_on_hire_teacher_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/sub_pay" to="." method="_on_decrease_pay_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/add_pay" to="." method="_on_increase_pay_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/sub_exem_entry" to="." method="_on_sub_exam_entry_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/add_exem_entry" to="." method="_on_add_exem_entry_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/sub_exem_end" to="." method="_on_sub_exam_end_pressed"]
+[connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/add_exem_end" to="." method="_on_add_exem_end_pressed"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/heat" to="." method="_on_heat_pressed"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/lock" to="." method="_on_lock_pressed"]

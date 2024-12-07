@@ -31,14 +31,14 @@ func show_data() -> void:
 	else:
 		print("Erreur lors du chargement de la texture :", texture_path)
 	
-	node = get_node("PanelGlobal/PanelAction/end_exam")
-	node.text = "Séléction des examens finaux (%s)" % [int(build.get_exam_end()*100)]
+	node = get_node("PanelGlobal/PanelAction/GridContainer/end_exam")
+	node.text = "taux de réussite (%s%%)" % [int(build.get_exam_end()*100)]
 	
-	node = get_node("PanelGlobal/PanelAction/exam_entry")
-	node.text = "Séléction à l'entrée (%s)" % [int(build.get_exam_entry()*100)]
+	node = get_node("PanelGlobal/PanelAction/GridContainer/exam_entry")
+	node.text = "taux d'admission (%s%%)" % [int(build.get_exam_entry()*100)]
 	
-	node = get_node("PanelGlobal/PanelAction/pay")
-	node.text = "Salaire des enseigants : %s$" % [build.get_pay_teacher()]
+	node = get_node("PanelGlobal/PanelAction/GridContainer/pay")
+	node.text = "salaires (%s €)" % [build.get_pay_teacher()]
 	
 	node = get_node("PanelGlobal/PanelStat/GridContainer/mood_student")
 	node.text = "Satisfaction étudiante : %s%%" % [int(Student.avg_mood_per_dept(code)*100)]
@@ -52,11 +52,11 @@ func show_data() -> void:
 	node = get_node("PanelGlobal/PanelStat/GridContainer/nb_student")
 	node.text = "Nombre d'étudiants : %s" % [Student.compute_nb_per_dept(code)]
 	
-	node = get_node("PanelGlobal/PanelAction/teacher")
-	node.text = "Enseignants (%s)" % [Teacher.compute_nb_per_dept(code)]
+	node = get_node("PanelGlobal/PanelAction/GridContainer/teacher")
+	node.text = "enseignants (%s)" % [Teacher.compute_nb_per_dept(code)]
 	
-	node = get_node("PanelGlobal/PanelAction/worker")
-	node.text = "Ouvriers (%s)" % [build.get_ouvriers()]
+	node = get_node("PanelGlobal/PanelAction/GridContainer/worker")
+	node.text = "ouvriers (%s)" % [build.get_ouvriers()]
 	
 
 	
