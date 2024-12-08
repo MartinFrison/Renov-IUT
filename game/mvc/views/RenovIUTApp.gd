@@ -56,8 +56,10 @@ func game_loaded() -> void:
 func _on_next_pressed() -> void:
 	var band = get_node("PanelStat/friseAttente")
 	var sablier = get_node("PanelStat/sablier")
+	var dept = get_node("BuildingAction/PanelGlobal/name")
 	band.visible = true
 	sablier.visible = true
+	dept.visible = false
 	await get_tree().create_timer(1.0).timeout
 	illkirch._time.next_Trimestre()
 	band.visible = false
