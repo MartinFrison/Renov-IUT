@@ -58,9 +58,11 @@ func handle_hover(event : InputEventMouseMotion):
 		for i in range(1, 6):
 			if "colision" + str(i) == result.collider.name:
 				big_build(i)
+				Input.set_default_cursor_shape(2)
 				return
 	if big == true:
 		big_build(-1)
+		Input.set_default_cursor_shape(0)
 
 
 func big_build(build : int) -> void:
