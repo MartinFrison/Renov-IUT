@@ -54,18 +54,17 @@ func game_loaded() -> void:
 
 # Passer au trimestre suivant à la demande du joueur
 func _on_next_pressed() -> void:
+	var band = get_node("PanelStat/friseAttente")
+	band.visible = true
+	await get_tree().create_timer(1.0).timeout
 	illkirch._time.next_Trimestre()
+	band.visible = false
 	
 
 # Ferme l'appli
 func close_app() -> void:
 	Utils.db.clear_tables()
 	Utils.db.close_db()
-
-
-
-
-
 
 
 # Affiche une notification
