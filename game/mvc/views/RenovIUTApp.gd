@@ -98,7 +98,7 @@ func building_work(id : int, visible : bool) -> void:
 	work_build.visible = visible
 
 
-#Réagir quand la date change pour mettre de la neige en hivert
+#Réagir quand la date change pour mettre de la neige en hiver
 func notifyDateChanged() -> void:
 	var herbe = load("res://mvc/views/Node3D/IUT_V4/material/herbe.tres") as StandardMaterial3D
 	var snow = load("res://mvc/views/Node3D/IUT_V4/material/snow.tres") as StandardMaterial3D
@@ -111,7 +111,7 @@ func notifyDateChanged() -> void:
 
 
 
-#Réagir au changement détat des batiments
+#Réagir au changement d'état des batiments
 func notifyStateChanged() -> void:
 	var _building : Array[MeshInstance3D] = [null, null, null, null, null, null]
 	_building[1] = get_tree().current_scene.get_node("Vue3D/IUT_V4/batiment_chimie") as MeshInstance3D

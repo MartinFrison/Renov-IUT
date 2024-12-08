@@ -2,7 +2,7 @@
 
 ### Incohérences, questions, informations manquantes...
 
-- Le jeu a l'air trop facile - et ce, étant donné que le niveau par défaut n'est pas celui débutant, a priori.
+- Le jeu a l'air trop facile, surtout le scénario de rénovation - et ce, étant donné que le niveau par défaut n'est pas celui débutant, a priori. Réduire le budget, peut-être ?
 - (Lié à la remarque précédente :) Peu d'enjeux stratégiques, où alors on ne s'en rend pas compte... alors que l'objectif du jeu, c'est de montrer combien l'administration d'un IUT est difficile !
 ---
 - Peut-on visualiser combien coûtent les travaux ? On voit le budget, mais pas ce qu'on dépense, cela ne permet pas d'imaginer une bonne stratégie.
