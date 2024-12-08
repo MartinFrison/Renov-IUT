@@ -12,17 +12,16 @@ Vous incarnez le directeur de l'IUT Robert Schuman qui intervient sur le campus 
 ### Captures d'écran
 
 Toutes les images utilisées sont libres de droits :
-- Images satellite Google Maps ;
 - [Banque de photos de l'IUT Robert Schuman](https://seafile.unistra.fr/d/03767a1835b7493b83a6/?p=%2FBelles%20photos%20(libre%20de%20droits&mode=list) ;
 - Dessinées par nous-mêmes, à base d'images libres trouvées sur Internet.
 
-<p style="text-align: center;">![Campus](visuels/captures/main_window.png)</p>
+<p style="text-align: center;">![Lancement](screenshots/game_start.png)</p>
 
-<p style="text-align: center;"><small>Fig.1. Fenêtre principale</small></p>
+<p style="text-align: center;"><small>Fig.1. Début du jeu</small></p>
 
-<p style="text-align: center;">![Bâtiment X](visuels/captures/building_info.png)</p>
+<p style="text-align: center;">![Campus](screenshots/main_screen.png)</p>
 
-<p style="text-align: center;"><small>Fig.2. Informations liées à un bâtiment</small></p>
+<p style="text-align: center;"><small>Fig.2. Fenêtre principale</small></p>
 
 <p style="text-align: center;">![Mission](visuels/captures/mission.png)
 ![Urgence](visuels/captures/urgent.png)
