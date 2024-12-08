@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://b4cp1gj8gn1ro"]
+[gd_scene load_steps=31 format=3 uid="uid://b4cp1gj8gn1ro"]
 
 [ext_resource type="Script" path="res://mvc/views/RenovIUTApp.gd" id="1_drlro"]
 [ext_resource type="Texture2D" uid="uid://b8bjiydhyyapq" path="res://mvc/views/images/buttons/notification_button.png" id="3_4oyj6"]
 [ext_resource type="Texture2D" uid="uid://djjecyhdmbwp8" path="res://mvc/views/images/buttons/start_button.png" id="3_bqdem"]
 [ext_resource type="Script" path="res://mvc/views/Node3D/camera_root.gd" id="3_et11y"]
 [ext_resource type="PackedScene" uid="uid://lrmgb23vrj1e" path="res://mvc/views/Node2D/Stat/PanelStat.tscn" id="4_t3hyp"]
+[ext_resource type="Texture2D" uid="uid://dp648p2m2plvw" path="res://mvc/views/images/interface/objects/hourglass.png" id="5_5lmpc"]
 [ext_resource type="Script" path="res://mvc/views/Node3D/camera_3d.gd" id="5_h3jqx"]
 [ext_resource type="Texture2D" uid="uid://d15chp85138su" path="res://mvc/views/images/buttons/exit_button.png" id="5_t216u"]
 [ext_resource type="PackedScene" uid="uid://dxufw4uqxthik" path="res://mvc/views/Node3D/tree/Tree1.fbx" id="6_l4lhr"]
@@ -38,7 +39,7 @@ glow_enabled = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtulg"]
 content_margin_left = 34.0
-bg_color = Color(0.486275, 0.741176, 0.980392, 0.792157)
+bg_color = Color(0, 0.141176, 0.27451, 0.866667)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6rpc"]
 bg_color = Color(0.294118, 0.329412, 0.278431, 0.784314)
@@ -94,12 +95,21 @@ expand_icon = true
 visible = false
 offset_top = 216.0
 offset_right = 1170.0
-offset_bottom = 255.0
+offset_bottom = 303.0
 size_flags_vertical = 4
+theme_override_constants/shadow_offset_y = 5
 theme_override_font_sizes/italics_font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_jtulg")
 bbcode_enabled = true
-text = "[i][color=4b514d]On attend le bilan avant de passer au trimestre suivant....[/color][/i]"
+text = "
+[i][color=white
+]On attend le bilan avant de passer au trimestre suivant....[/color][/i]"
+
+[node name="sablier" type="Sprite2D" parent="PanelStat"]
+visible = false
+position = Vector2(753, 260)
+scale = Vector2(0.0500001, 0.0566667)
+texture = ExtResource("5_5lmpc")
 
 [node name="notif_button" type="Button" parent="."]
 clip_contents = true

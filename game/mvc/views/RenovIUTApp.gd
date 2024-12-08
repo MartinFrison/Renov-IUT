@@ -55,10 +55,13 @@ func game_loaded() -> void:
 # Passer au trimestre suivant à la demande du joueur
 func _on_next_pressed() -> void:
 	var band = get_node("PanelStat/friseAttente")
+	var sablier = get_node("PanelStat/sablier")
 	band.visible = true
+	sablier.visible = true
 	await get_tree().create_timer(1.0).timeout
 	illkirch._time.next_Trimestre()
 	band.visible = false
+	sablier.visible = false
 	
 
 # Ferme l'appli
