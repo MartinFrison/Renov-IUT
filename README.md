@@ -21,7 +21,7 @@ Toutes les images utilisées sont libres de droits :
 
 <p style="text-align: center;">![Campus](screenshots/main_screen.png)</p>
 
-<p style="text-align: center;"><small>Fig.2. Fenêtre principale</small></p>
+<p style="text-align: center;"><small>Fig.2. Fenêtre principale : le campus au printemps</small></p>
 
 <p style="text-align: center;">![Mission](visuels/captures/mission.png)
 ![Urgence](visuels/captures/urgent.png)
