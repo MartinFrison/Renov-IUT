@@ -374,32 +374,32 @@ theme_override_constants/v_separation = 4
 
 [node name="budget" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 17
 text = "- budget"
 
 [node name="renovation" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 17
 text = "- état des lieux"
 
 [node name="mood_student" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 17
 text = "- satisfaction etudiante"
 
 [node name="level" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 17
 text = "- niveau moyen"
 
 [node name="mood_teacher" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 17
 text = "- satisfaction enseignante"
 
 [node name="nb_student" type="Label" parent="PanelGlobal/PanelStat/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 17
 text = "- end exam"
 
 [node name="icon" type="Sprite2D" parent="PanelGlobal"]

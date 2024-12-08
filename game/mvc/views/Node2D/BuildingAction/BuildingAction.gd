@@ -78,6 +78,7 @@ func show_data() -> void:
 	if build.is_renovation_underway():	
 		node.set_disabled(true)
 	else:
+		node.set_disabled(false)
 		node.text = "faire des travaux"
 
 	node = get_node("PanelGlobal/PanelStat/GridContainer/budget")
