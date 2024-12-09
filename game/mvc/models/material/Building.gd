@@ -114,6 +114,7 @@ func set_renovation_underway(underway: bool) -> void:
 #definir le budget
 func set_budget(value : int) -> void:
 	_budget = value
+	ObserverGlobalData.notifyBudgetChanged()
 
 # Méthode pour définir l'état de verrouillage de la porte
 func setDoorLocked(locked: bool) -> void:
@@ -147,6 +148,7 @@ func addInventory(value: int) -> void:
 
 func add_budget(amount: int) -> void:
 	_budget = max(_budget + amount, 0) 
+	ObserverGlobalData.notifyBudgetChanged()
 
 
 
