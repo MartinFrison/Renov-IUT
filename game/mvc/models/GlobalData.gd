@@ -6,9 +6,10 @@ static var _year: int
 static var _month: int
 static var _day: int
 static var _budget: int
-static var _difficulty: int = 1
+static var _difficulty: int = 1 # Ajuste la difficulté si c'est le mode tutoriel
 static var _pay_agent: int = 1800
 static var _pay_worker: int = 2300
+
 
 # Fonction pour définir le budget
 static func setBudget(montant : int) -> void:

@@ -19,10 +19,6 @@ Graphique 2D:
 
 Code:
 
-- Gestion des fonds : Elena
-
-
-- Mise à jours du panel d'action
 - Gestion des grandes vacances : Martin
 - Ajout de quelque évenements aléatoire simple : Martin
 - Ajout d'un tutoriel si la difficulté est facile : Martin

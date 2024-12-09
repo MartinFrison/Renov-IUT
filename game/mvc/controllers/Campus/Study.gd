@@ -108,12 +108,12 @@ static func pass_dept_exam(dept : String) -> Array:
 			Student.rm_student_by_id(student)
 
 	return [count, success, repeater, graduate]
-	
+
 
 # Simule un passage à l'année suivante, en promouvant ceux qui restent et en excluant ceux qui n'ont pas le niveau et/ou l'envie
 # Renvoie un rapport des examens par notification
 static func pass_next_year() -> void:
-	#evaluate() 
+	#evaluate()
 	# Calcule le passage à l'année suivante des étudiants de chaque batiment
 	var obj = "Examen de fin d'année"
 	var msg = ""

@@ -62,6 +62,7 @@ static func increase_salary(dept : String) -> void:
 	else:
 		b.add_pay_teacher(800)
 
+
 static func decrease_salary(dept : String) -> void:
 	var b = Building.get_building(dept)
 	if b.get_pay_teacher() <=2800:

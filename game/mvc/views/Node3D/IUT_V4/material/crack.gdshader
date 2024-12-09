@@ -10,7 +10,7 @@ uniform float crack_intensity : hint_range(0.0, 1.0) = 1.0; // Intensité des fi
 
 uniform vec3 color; // Couleur multiplicative
 
-void fragment() 
+void fragment()
 {
     // Récupération des couleurs des textures
     vec4 texColor = texture(texture, UV);      // Couleur de la texture principale (Albedo)
