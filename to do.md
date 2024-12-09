@@ -34,7 +34,7 @@ Détail:
 - Ajout de tout les messages et notifs manquant dans le code et definition de leur type (chauffage ect..)
 - Affichage du cout quand le joueur s'apprête a allumer le chauffage ou embaucher quelqu'un
 - Ajouter des conditions au licensiment et à l'embauche (soit un dédommagement soit une limite mensuels)
-
+- Gestion du switch tuto 
 
 
 Bonus:

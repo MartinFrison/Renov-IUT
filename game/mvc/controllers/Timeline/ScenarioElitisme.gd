@@ -1,4 +1,4 @@
-class_name ScenarioRenovation
+class_name ScenarioElitisme
 extends Scenario
 
 # Liste des building à rénover

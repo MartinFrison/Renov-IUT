@@ -43,6 +43,11 @@ func _on_suivant_pressed() -> void:
 		_app.startGame()
 
 
+func _on_button_elitism_pressed() -> void:
+	scenario = 2
+	var desc = get_node("menu/Description")
+	desc.text = ScenarioElitisme.get_description()
+
 
 func _on_switch_tuto_option_toggled(toggled_on: bool) -> void:
 	difficulty = 1 # Choisir le mode de jeu simplifié, avec tuto
