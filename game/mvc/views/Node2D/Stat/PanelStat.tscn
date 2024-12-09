@@ -62,3 +62,11 @@ offset_right = 218.0
 offset_bottom = 65.0
 text = "Budget"
 horizontal_alignment = 1
+
+[node name="budget_total" type="Label" parent="budget"]
+offset_top = 25.0
+offset_right = 198.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 11
+text = "Budget"
+horizontal_alignment = 1

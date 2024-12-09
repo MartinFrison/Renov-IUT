@@ -47,7 +47,7 @@ func mid_game() -> void:
 		msg = "Le nombre d'étudiant ayant rejoins une école d'ingénieur sous votre 
 		manda s'élève jusqu'à présent à %s" % [Student.get_engineering()]
 		await BulleGestion.send_message(msg, true)
-	
+
 
 # Génère un événement aléatoire avec des probabilités dépendant du scénario et d'autre condition
 func random_event() -> void:
