@@ -41,9 +41,13 @@ func end_game() -> void:
 
 # Les actions du scénario qui ont lieu au cour de la partie
 func mid_game() -> void:
-	var b = false
-	var msg
-
+	# A la fin de l'année on informe le joueur du succès cumulé de ses étudiants depuis son éléction
+	if GlobalData.isEndofYear():
+		var msg
+		msg = "Le nombre d'étudiant ayant rejoins une école d'ingénieur sous votre 
+		manda s'élève jusqu'à présent à %s" % [Student.get_engineering()]
+		await BulleGestion.send_message(msg, true)
+	
 
 # Génère un événement aléatoire avec des probabilités dépendant du scénario et d'autre condition
 func random_event() -> void:
