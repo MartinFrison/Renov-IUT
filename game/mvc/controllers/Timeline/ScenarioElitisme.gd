@@ -18,7 +18,7 @@ func _init() -> void:
 
 
 static func get_description() -> String:
-	return "Votre objectif est de rénover un ou plusieurs bâtiments."
+	return "Votre objectif est de préparer autant d'étudiants que possible à devenir ingénieur"
 
 
 # Test si le jeu est fini

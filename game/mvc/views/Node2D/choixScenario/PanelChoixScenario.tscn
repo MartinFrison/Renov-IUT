@@ -46,20 +46,20 @@ metadata/_edit_lock_ = true
 [node name="button_elitism" type="Button" parent="menu"]
 z_index = 1
 offset_left = 462.0
-offset_top = 220.0
+offset_top = 230.0
 offset_right = 727.0
-offset_bottom = 309.0
+offset_bottom = 319.0
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_nk24h")
-text = "Rénover le campus"
+text = "Viser l'excellence"
 
 [node name="button_election" type="Button" parent="menu"]
 z_index = 1
 offset_left = 462.0
-offset_top = 20.0
+offset_top = 30.0
 offset_right = 728.0
-offset_bottom = 106.0
+offset_bottom = 116.0
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
 theme_override_icons/icon = SubResource("Texture2DRD_71p1g")
@@ -69,9 +69,9 @@ text = "Me faire réélire"
 [node name="button_renovation" type="Button" parent="menu"]
 z_index = 1
 offset_left = 463.0
-offset_top = 120.0
+offset_top = 130.0
 offset_right = 728.0
-offset_bottom = 209.0
+offset_bottom = 219.0
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_nk24h")
@@ -93,9 +93,9 @@ expand_icon = true
 [node name="Description" type="Label" parent="menu"]
 z_index = 1
 offset_left = -13.0
-offset_top = 330.0
+offset_top = 350.0
 offset_right = 1213.0
-offset_bottom = 372.0
+offset_bottom = 392.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_ujemv")

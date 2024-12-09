@@ -49,5 +49,6 @@ func _on_button_elitism_pressed() -> void:
 	desc.text = ScenarioElitisme.get_description()
 
 
+
 func _on_switch_tuto_option_toggled(toggled_on: bool) -> void:
 	difficulty = 1 # Choisir le mode de jeu simplifié, avec tuto
