@@ -2,6 +2,26 @@
 class_name Student
 extends Node 
 
+static var _graduate : int = 0 # Nombre de diplomé total sous votre manda
+static var _engineering : int = 0 # Nombre d'étudiant admis en école d'ingénieur après leur formation
+
+
+# Retourne le nombre total de diplômés sous votre mandat
+static func get_graduate() -> int:
+	return _graduate
+
+# Incrémente de 1 le nombre total de diplômés
+static func add_graduate() -> void:
+	_graduate += 1
+
+# Retourne le nombre total d'étudiants admis en école d'ingénieur
+static func get_engineering() -> int:
+	return _engineering
+
+# Incrémente de 1 le nombre total d'étudiants admis en école d'ingénieur
+static func add_engineering() -> void:
+	_engineering += 1
+
 
 # Fonction pour obtenir tous les IDs de la table StudentSQLTable
 static func get_all_ids() -> Array:
