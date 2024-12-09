@@ -4,19 +4,15 @@ extends Scenario
 # Liste des building à rénover
 var old_builds : Array[Building] = []
 
-var _progression : Array[bool]
+var _progression : int
 
 func _init() -> void:
-	for i in 8:
-		_progression.append(false)
+	_progression = 0
 	_name = "Elitiste"
 	super._init()
 	
-	var msg
-	if old_builds.size() > 1:
-		msg = "Votre objectif est de rénover les bâtiments %s et %s." % [old_builds[0].get_code(),old_builds[1].get_code()]
-	else:
-		msg = "Votre objectif est de rénover le bâtiment %s." % [old_builds[0].get_code()]
+	var msg = "Votre objectif est de formé l'élite de ce
+	 pays en permettant à un maximum d'étudiants de rentrer en école d'ingénieur après leur BUT"
 	await BulleGestion.send_message(msg, true)
 	
 
@@ -54,21 +50,7 @@ func end_game() -> void:
 func mid_game() -> void:
 	var b = false
 	var msg
-	for i in old_builds.size():
-		if old_builds[i].get_inventory() >= 100:
-			if !_progression[3+i*4]:
-				_progression[3+i*4] = true
-				msg = "La rénovation du bâtiment %s est terminée !" % [old_builds[i].get_code()]
-				b = true
-				break
-		if old_builds[i].get_inventory() >= 50:
-			if !_progression[2+i*4]:
-				_progression[2+i*4] = true
-				msg = "La rénovation du bâtiment %s avance bien ! Continuez ainsi." % [old_builds[i].get_code()]
-				b = true
-				break
-	if b:
-		await BulleGestion.send_message(msg, true)
+
 
 # Génère un événement aléatoire avec des probabilités dépendant du scénario et d'autre condition
 func random_event() -> void:
