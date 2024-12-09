@@ -26,7 +26,7 @@ Code:
 
 
 - Gestion de l'attractivité
-
+- Ajustement des valeur dans les fonctions des scénarios
 
 
 

@@ -8,6 +8,7 @@ func _init() -> void:
 	init_building()
 	init_data()
 
+
 # Obtenir le scénario actuel
 func get_scenario() -> String:
 	return _name

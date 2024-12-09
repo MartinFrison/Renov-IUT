@@ -1,10 +1,9 @@
 class_name ScenarioElitisme
 extends Scenario
 
-# Liste des building à rénover
-var old_builds : Array[Building] = []
 
 var _progression : int
+
 
 func _init() -> void:
 	_progression = 0
@@ -18,29 +17,23 @@ func _init() -> void:
 
 
 static func get_description() -> String:
-	return "Votre objectif est de préparer autant d'étudiants que possible à devenir ingénieur"
+	return "Vous avez 5 ans pour préparer autant d'étudiants que possible à devenir ingénieur"
 
 
 # Test si le jeu est fini
-# Ce scenario finit si les batiments à rénover sont terminer
+# Dans ce scénario il finit simplement au bout de 5 ans
 func test_end_game_condition() -> bool:
-	# On demande au moins un taux de 95% pour l'état des lieu et l'isolation de chaque batiment
-	for b in old_builds:
-		if b.get_inventory() < 95:
-			return false
-	return true
+	return (GlobalData._year == 2030 and GlobalData._month == 9 and  GlobalData._day == 1)
+
 
 
 # Déclencher la fin du jeu
 func end_game() -> void:
 	print("fin du jeu")
-	if old_builds.size()>1:
-		await BulleGestion.send_message("Vous avez fini de rénover les bâtiments qui étaient en mauvais état.", false)
-	else:
-		await BulleGestion.send_message("Vous avez fini de rénover le bâtiment en mauvais état.", false)
+	await BulleGestion.send_message("Votre manda de 5 ans est arrivé à son therme, 
+	il est temps de faire le bilan", false)
 
-
-	var scene = load("res://mvc/views/Node2D/FinJeu/PanelFinRenovation.tscn")
+	var scene = load("res://mvc/views/Node2D/FinJeu/PanelFinElitisme.tscn")
 	var bulle = scene.instantiate()
 	RenovIUTApp.app.add_child(bulle)
 	await bulle.tree_exited
@@ -59,30 +52,6 @@ func random_event() -> void:
 	events_proba.append(1)  # Proba de 1 pour l'event 1
 	super.random_event_call(events_proba) # appeler l'event dans la class parente
 
-
-# Initialise le modèle en fonction du scénario et de la difficulté
-func init_data() -> void:
-	super.init_data()
-	# On choisis le/les batiments à rénover
-	var build1 = Utils.randint_in_range(1,5)
-	old_builds.append(Building.get_building(Utils.dept_index_to_string(build1)))
-	# Si la difficulté est élevé on rénove 2 batiment
-	if GlobalData.get_difficulty() == 3:
-		var build2 = Utils.randint_in_range(1,5)
-		if build2 == build1:
-			build2 += 1	
-			if build2 >= 6:
-				build2 = 1
-		old_builds.append(Building.get_building(Utils.dept_index_to_string(build1)))
-	
-	# Dans ce scenario, en plus de l'initialisation classique
-	# on redefini les variable des batiments à renover
-	for b in old_builds:
-		# on reset les valeur
-		b.addInventory(-100)
-		# l'isolation et l'état est aléatoire et dépend de la difficulté
-		var inventory = int(Utils.randint_in_range(5,30) * GlobalData.adjust_dept_state())
-		b.addInventory(inventory)
 
 
 

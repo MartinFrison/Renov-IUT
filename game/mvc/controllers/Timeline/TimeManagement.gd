@@ -59,7 +59,8 @@ func next_Trimestre():
 	# Les professeurs et étudiant insatisfait démissionnent
 	Teaching.teacher_resign()
 	Study.student_resign()
-		
+	
+
 	# Appeler les actions de début et fin d'année
 	if GlobalData.isEndofYear():
 		end_of_year()

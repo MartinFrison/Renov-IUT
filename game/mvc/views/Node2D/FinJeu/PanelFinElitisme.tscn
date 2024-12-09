@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://7l2pvki7bpwx"]
+[gd_scene load_steps=4 format=3 uid="uid://p54ud3m2dcdw"]
 
-[ext_resource type="Script" path="res://mvc/views/Node2D/FinJeu/FinElitismeScript.gd" id="1_oljuh"]
-[ext_resource type="Texture2D" uid="uid://bpdfvn1j0iyl8" path="res://mvc/views/images/backgrounds/menu.png" id="2_1b1r5"]
+[ext_resource type="Script" path="res://mvc/views/Node2D/FinJeu/FinRenovationScript.gd" id="1_pkpsi"]
+[ext_resource type="Texture2D" uid="uid://bpdfvn1j0iyl8" path="res://mvc/views/images/backgrounds/menu.png" id="2_8ex0e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgcxq"]
 content_margin_left = 20.0
@@ -16,12 +16,12 @@ corner_radius_bottom_left = 10
 
 [node name="PanelFinRenovation" type="Node2D"]
 z_index = 13
-script = ExtResource("1_oljuh")
+script = ExtResource("1_pkpsi")
 
 [node name="Menu" type="Sprite2D" parent="."]
 position = Vector2(585, 323)
 scale = Vector2(1.16699, 1)
-texture = ExtResource("2_1b1r5")
+texture = ExtResource("2_8ex0e")
 
 [node name="Message" type="Label" parent="."]
 z_index = 3
