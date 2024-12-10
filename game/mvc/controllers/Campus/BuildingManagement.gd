@@ -59,23 +59,27 @@ static func advance_work(building: Building, day : int) -> void:
 # Lancer des travaux de rénovation
 static func start_renovation(building: Building) -> bool:
 	if building.get_ouvriers() <= 0:
-		print("Impossible de commencer les travaux : pas d'ouvriers disponibles.")
+		await BulleGestion.send_message("Impossible de commencer les travaux : pas 
+		d'ouvriers disponibles",false)
 		return false  # Pas d'ouvriers, pas de travaux
 	
 	if building._is_renovation_underway:
-		print("Travaux de rénovation déjà en cours pour le bâtiment " , building.get_code(), ".")
+		await BulleGestion.send_message("Travaux de rénovation déjà en cours 
+		dans ce bâtiment",false)
 		return false  # Travaux déjà en cours
 	
 	# Vérification des bâtiments libres
 	var free_buildings = Building._buildingsDictionary.size() - Building._total_buildings_under_renovation
 	if free_buildings * 450 < Student.compute_nb():
-		print("Pas assez de bâtiments libres pour commencer les travaux.")
+		await BulleGestion.send_message("Pas assez de bâtiments libres pour 
+		commencer les travaux",false)
 		return false
 	
 	# Démarrer les travaux de rénovation
 	building.set_renovation_underway(true)
 	RenovIUTApp.app.building_work(Utils.dept_string_to_index(building.get_code()), true)
-	print("Travaux de rénovation lancés pour le bâtiment ", building.get_code(), ".")
+	await BulleGestion.send_message("Travaux de rénovation lancés pour le 
+	bâtiment " + building.get_code(),false)
 	return true
 
 
