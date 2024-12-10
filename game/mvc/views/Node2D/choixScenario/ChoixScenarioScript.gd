@@ -39,7 +39,6 @@ func _on_suivant_pressed() -> void:
 		var desc = get_node("menu/Description")
 		desc.text = "Décidez-vous."
 	else:
-		print(difficulty)
 		_IUT.chooseMode(scenario, difficulty) # Par défaut, c'est le mode standard / défi qui est lancé
 		_app.startGame()
 
@@ -52,5 +51,7 @@ func _on_button_elitism_pressed() -> void:
 
 
 func _on_switch_tuto_option_toggled(toggled_on: bool) -> void:
-	print("")
-	difficulty = 1 # Choisir le mode de jeu simplifié, avec tuto
+	if toggled_on:
+		difficulty = 1 # Choisir le mode de jeu simplifié, avec tuto
+	else:
+		difficulty = 2

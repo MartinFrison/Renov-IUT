@@ -22,7 +22,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [node name="PanelFinElection" type="Node2D"]
-z_index = 13
+z_index = 40
 script = ExtResource("1_oysjo")
 
 [node name="Menu" type="Sprite2D" parent="."]
