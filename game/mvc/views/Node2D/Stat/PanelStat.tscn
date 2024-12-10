@@ -64,6 +64,7 @@ text = "Budget"
 horizontal_alignment = 1
 
 [node name="budget_total" type="Label" parent="budget"]
+layout_mode = 0
 offset_top = 25.0
 offset_right = 198.0
 offset_bottom = 50.0

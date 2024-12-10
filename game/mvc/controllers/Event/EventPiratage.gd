@@ -6,7 +6,7 @@ static var secure : bool = false
 
 func _init() -> void:
 	_name = "Piratage"
-	_description = "Un piratage massif des comptes étudiants a eu lieu, les étudiants sont mécontents !"
+	_description = "Un piratage massif de comptes étudiants a eu lieu, les étudiants sont mécontents !"
 	_question_script = "Voulez-vous sécuriser les données ? (coût : " + str(cout) + " €)"
 	_question_answer = ["NON", "OUI"]
 	_question = true
@@ -22,11 +22,11 @@ func start_event() -> void:
 
 
 func react_to_answer(answer : String) -> void:
-	print("reponse au piratage")
+	print("réponse au piratage")
 	if answer == _question_answer[1]:
 		if await Expense.try_expense_global(cout):
 				secure = true
-				await BulleGestion.send_message("Les données ont été sécurisées", true)
+				await BulleGestion.send_message("Les données ont été sécurisées.", true)
 		else:
 			react_to_answer(_question_answer[0])
 	elif answer == _question_answer[0]:

@@ -17,5 +17,5 @@ func start_event() -> void:
 
 
 func react_to_answer(answer : String) -> void:
-	print("reponse au changement legislatif")
+	print("réponse au changement législatif")
 	_effetActif += 1

@@ -10,14 +10,14 @@ func _init() -> void:
 	_name = "Elitiste"
 	super._init()
 	
-	var msg = "Votre objectif est de formé l'élite de ce
-	 pays en permettant à un maximum d'étudiants de rentrer en école d'ingénieur après leur BUT"
+	var msg = "Votre objectif est de former l'élite de ce
+	 pays en permettant à un maximum d'étudiants de rentrer en école d'ingénieur après leur BUT."
 	await BulleGestion.send_message(msg, true)
 	
 
 
 static func get_description() -> String:
-	return "Vous avez 5 ans pour préparer autant d'étudiants que possible à devenir ingénieur"
+	return "Vous avez cinq ans pour préparer autant d'étudiants que possible à devenir ingénieurs."
 
 
 # Test si le jeu est fini
@@ -30,8 +30,8 @@ func test_end_game_condition() -> bool:
 # Déclencher la fin du jeu
 func end_game() -> void:
 	print("fin du jeu")
-	await BulleGestion.send_message("Votre manda de 5 ans est arrivé à son therme, 
-	il est temps de faire le bilan", false)
+	await BulleGestion.send_message("Votre mandat de 5 ans est arrivé à son terme, 
+	il est temps de faire le bilan.", false)
 
 	var scene = load("res://mvc/views/Node2D/FinJeu/PanelFinElitisme.tscn")
 	var bulle = scene.instantiate()
@@ -44,8 +44,8 @@ func mid_game() -> void:
 	# A la fin de l'année on informe le joueur du succès cumulé de ses étudiants depuis son éléction
 	if GlobalData.isEndofYear():
 		var msg
-		msg = "Le nombre d'étudiant ayant rejoins une école d'ingénieur sous votre 
-		manda s'élève jusqu'à présent à %s" % [Student.get_engineering()]
+		msg = "À l'heure qu'il est, le nombre d'étudiants ayant rejoint une école d'ingénieurs sous votre 
+		mandat s'élève à %s" % [Student.get_engineering()]
 		await BulleGestion.send_message(msg, true)
 
 
