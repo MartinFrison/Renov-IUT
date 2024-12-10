@@ -16,7 +16,10 @@ static func hire_teachers(dept: String):
 		await BulleGestion.send_message("Aucun professeur n'est volontaire pour enseigner 
 		dans ce bâtiment.",false)
 	else:
-		Teacher.add_teacher(dept,true)
+		# Si oui on l'ajoute et défnie aléatoirement sa satisfaction
+		var id = Teacher.add_teacher(dept,true)
+		var mood =  Utils.randfloat_in_square_range(GlobalData.adjust_satisfaction()*0.4, GlobalData.adjust_satisfaction()*0.65)
+		Teacher.set_mood(id,mood)
 		print("Embauche d'un enseignant pour le département %s." % dept)
 
 

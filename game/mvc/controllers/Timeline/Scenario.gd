@@ -62,11 +62,10 @@ func init_data() -> void:
 	
 	print("set mood & level")
 	var students = Student.get_all_ids()
-	var teachers = Teacher.get_all_ids()
-	
+
+
 	init_student_satisfaction(students)
 	init_student_level(students)
-	init_teacher_satisfaction(teachers)
 	adjust_budget()
 	
 
@@ -117,13 +116,6 @@ func init_student_satisfaction(liste) -> void:
 	for i in liste:
 		var mood = Utils.randfloat_in_square_range(GlobalData.adjust_satisfaction()*0.4,GlobalData.adjust_satisfaction()*1)
 		Student.set_mood(i,mood)
-
-# Ajuster la satisfaction des enseignants en appliquant un coefficient
-func init_teacher_satisfaction(liste) -> void:
-	for i in liste:
-		var mood =  Utils.randfloat_in_square_range(GlobalData.adjust_satisfaction()*0.4, GlobalData.adjust_satisfaction()*1)
-		Teacher.set_mood(i,mood)
-
 
 
 # Ajuster l'état d'un département en appliquant un coefficient
