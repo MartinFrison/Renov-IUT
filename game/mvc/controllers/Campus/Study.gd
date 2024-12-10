@@ -44,10 +44,10 @@ static func populate_promo(dept : int, year : int) -> int:
 	for i in range(0, nb_students):
 		# On ajoute un étudiant et lui donne une satisfaction aléatoire selon la difficulté du jeu
 		var id = Student.add_student(code, year)
-		var mood = Utils.randfloat_in_square_range(GlobalData.adjust_satisfaction()*0.45,GlobalData.adjust_satisfaction()*0.8)
+		var mood = Utils.randfloat_in_range(GlobalData.adjust_satisfaction()*0.45,GlobalData.adjust_satisfaction()*0.8)
 		Student.set_mood(id,mood)
 		# On initialise le level selon la séléctivité des exams d'entrée et la difficulté du jeu 
-		var level =  Utils.randfloat_in_square_range(GlobalData.adjust_level()*0.2,GlobalData.adjust_level()*0.9)
+		var level =  Utils.randfloat_in_range(GlobalData.adjust_level()*0.2,GlobalData.adjust_level()*0.9)
 		# Recupere une partie des point manquant à l'élève pour arriver à 20/20 en fonction des examens d'entrées
 		level += (1-level) * coeff_exam * GlobalData.adjust_level()
 		Student.set_level(id,level)

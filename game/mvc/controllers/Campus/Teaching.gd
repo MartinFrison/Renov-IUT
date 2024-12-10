@@ -19,7 +19,7 @@ static func hire_teachers(dept: String, force : bool):
 	else:
 		# Si oui on l'ajoute et défnie aléatoirement sa satisfaction
 		var id = Teacher.add_teacher(dept,true)
-		var mood =  Utils.randfloat_in_square_range(GlobalData.adjust_satisfaction()*0.4, GlobalData.adjust_satisfaction()*0.65)
+		var mood =  Utils.randfloat_in_range(GlobalData.adjust_satisfaction()*0.4, GlobalData.adjust_satisfaction()*0.65)
 		Teacher.set_mood(id,mood)
 
 

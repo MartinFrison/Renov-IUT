@@ -51,7 +51,8 @@ static func get_dept_ids(dept : String) -> Array:
 static func add_student(dept: String, year: int) -> int:
 	student_id_counter += 1
 	var query = "INSERT INTO Students (id, year, dept, mood, level) VALUES (?, ?, ?, ?, ?)"
-	if !Utils.db.execute(query, [student_id_counter, year, dept, 0, 0]):
+	var dt = Utils.dept_string_to_index(dept)
+	if !Utils.db.execute(query, [student_id_counter, year, dt, 0, 0]):
 		print("Erreur d'ajout.")
 		student_id_counter -= 1
 		return -1
@@ -99,7 +100,7 @@ static func get_dept(id : int) -> String:
 	var result = Utils.db.get_entries(query, [id])
 	if result.size() > 0:
 		var dept = result[0]["dept"]
-		return Utils.dept_index_to_string(int(dept))
+		return dept
 	return ""
 
 static func get_mood(id : int) -> float:

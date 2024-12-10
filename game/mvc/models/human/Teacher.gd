@@ -4,7 +4,6 @@ extends Node
 
 static var teacher_id_counter: int = 0  # Compteur d'ID pour les enseignants
 
-
 # Fonction pour obtenir tous les IDs de la table TeacherSQLTable
 static func get_all_ids() -> Array:
 	var ids = []
