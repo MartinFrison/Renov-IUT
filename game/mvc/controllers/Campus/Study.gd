@@ -190,6 +190,13 @@ static func door_adjust_mood(day : int) -> void:
 
 # Ajustement des stats des étudiants 
 
+static func mood_fluctuation(dept : String, mood : float, coeff : float) -> void:
+	pass
+
+
+static func level_fluctuation(dept : String, level : float, coeff : float) -> void:
+	pass
+
 static func drop_mood_student(dept : String, value : float) -> void:
 	value = max(0, value)
 	var id = Student.get_dept_ids(dept)

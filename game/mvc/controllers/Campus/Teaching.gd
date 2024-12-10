@@ -48,6 +48,14 @@ static func populate():
 
 
 
+
+# Fluctuation de la satisfaction des enseignants
+
+static func mood_fluctuation(dept : String, mood : float, coeff : float) -> void:
+	pass
+
+
+
 static func drop_mood_teacher(dept : String, value : float) -> void:
 	value = max(0, value)
 	var id = Teacher.get_dept_ids(dept)
