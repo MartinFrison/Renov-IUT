@@ -97,7 +97,7 @@ func show_data() -> void:
 		node.text = "allumer le chauffage"
 
 func _on_hire_teacher_pressed() -> void:
-	Teaching.hire_teachers(code)
+	Teaching.hire_teachers(code, false)
 	show_data()
 
 

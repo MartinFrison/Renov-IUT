@@ -64,7 +64,6 @@ func init_data() -> void:
 	var students = Student.get_all_ids()
 
 
-	init_student_satisfaction(students)
 	init_student_level(students)
 	adjust_budget()
 	
@@ -110,12 +109,6 @@ func init_student_level(liste) -> void:
 		level += (1-level) * ((1-coeff_exam[Utils.dept_string_to_index(dept)-1])*0.4)
 		Student.set_level(i,level)
 
-
-# Ajuster la satisfaction des étudiants en appliquant un coefficient
-func init_student_satisfaction(liste) -> void:
-	for i in liste:
-		var mood = Utils.randfloat_in_square_range(GlobalData.adjust_satisfaction()*0.4,GlobalData.adjust_satisfaction()*1)
-		Student.set_mood(i,mood)
 
 
 # Ajuster l'état d'un département en appliquant un coefficient

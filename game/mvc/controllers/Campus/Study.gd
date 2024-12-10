@@ -37,7 +37,11 @@ static func populate_promo(dept : int, year : int) -> int:
 	# Calcule du nombre d'étudiant dans la promo tenant compte de la difficulté des examens d'entrée
 	var nb_students = ceil(students_base_nb[dept-1] * coeff* (1-coeff_exam))
 	for i in range(0, nb_students):
+		# On ajoute l'étudiant et lui donne une valeur aléatoire selon la difficulté du jeu
 		var id = Student.add_student(code, year)
+		var mood = Utils.randfloat_in_square_range(GlobalData.adjust_satisfaction()*0.4,GlobalData.adjust_satisfaction()*0.7)
+		Student.set_mood(id,mood)
+
 		# On initialise le level selon la difficulté des exams d'entré
 		#Student.set_level(id, Utils.randfloat_in_range(GlobalData.adjust_level())
 	return nb_students

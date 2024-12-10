@@ -2,6 +2,8 @@
 class_name Teacher
 extends Node
 
+static var teacher_id_counter: int = 0  # Compteur d'ID pour les enseignants
+
 
 # Fonction pour obtenir tous les IDs de la table TeacherSQLTable
 static func get_all_ids() -> Array:
@@ -29,20 +31,18 @@ static func get_dept_ids(dept : String) -> Array:
 # Ajout et suppression
 # Retourne l'id du prof ajouter
 static func add_teacher(dept: String, full_time: bool) -> int:
-	var query = "INSERT INTO Teachers (dept, mood, full_time) VALUES (?, ?, ?)"
+	# Incrémente le compteur pour générer un nouvel ID
+	teacher_id_counter += 1
+
+	var query = "INSERT INTO Teachers (id, dept, mood, full_time) VALUES (?, ?, ?, ?)"
 	var dt = Utils.dept_string_to_index(dept)
-	if !Utils.db.execute(query, [dt, randf_range(0.4, 0.6), full_time]): # Les enseignants sont moins emballés que les élèves !
+	if !Utils.db.execute(query, [teacher_id_counter, dt, randf_range(0.4, 0.6), full_time]): # Les enseignants sont moins emballés que les élèves !
 		print("Erreur d'ajout.")
+		teacher_id_counter -= 1  # Réinitialise le compteur si l'insertion échoue
 		return -1  # Retourne -1 en cas d'échec
 
-	# Récupère l'ID du dernier enseignant ajouté
-	var id_query = "SELECT last_insert_rowid()"
-	var result = Utils.db.query(id_query)
-	if result.size() > 0:
-		return result[0][0]  # Retourne l'ID de l'enseignant
-	else:
-		print("Erreur lors de la récupération de l'ID.")
-		return -1  # Retourne -1 si la récupération échoue
+	# Retourne le nouvel ID
+	return teacher_id_counter
 
 
 static func rm_teacher_by_id(id : int) -> void:

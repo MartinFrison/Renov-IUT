@@ -4,6 +4,7 @@ extends Node
 
 static var _graduate : int = 0 # Nombre de diplomé total sous votre manda
 static var _engineering : int = 0 # Nombre d'étudiant admis en école d'ingénieur après leur formation
+static var student_id_counter: int = 0
 
 
 # Retourne le nombre total de diplômés sous votre mandat
@@ -46,23 +47,15 @@ static func get_dept_ids(dept : String) -> Array:
 
 
 # Ajout et suppression
-# Renvoie l'id de l'étudiant ajouter
+# Retourne l'id du student ajouter
 static func add_student(dept: String, year: int) -> int:
-	var query = "INSERT INTO Students (year, dept, mood, level) VALUES (?, ?, ?, ?)"
-	var dt = Utils.dept_string_to_index(dept)
-	if !Utils.db.execute(query, [year, dt, randf_range(0.7, 1.0), randf_range(0.5, 1.0)]):
+	student_id_counter += 1
+	var query = "INSERT INTO Students (id, year, dept, mood, level) VALUES (?, ?, ?, ?, ?)"
+	if !Utils.db.execute(query, [student_id_counter, year, dept, 0, 0]):
 		print("Erreur d'ajout.")
-		return -1  # Retourne -1 en cas d'échec
-
-	# Récupère l'ID du dernier étudiant ajouté
-	var id_query = "SELECT last_insert_rowid()"
-	var result = Utils.db.query(id_query)
-	if result.size() > 0:
-		return result[0][0]  # Retourne l'ID de l'étudiant
-	else:
-		print("Erreur lors de la récupération de l'ID.")
-		return -1  # Retourne -1 si la récupération échoue
-
+		student_id_counter -= 1
+		return -1
+	return student_id_counter
 
 
 static func rm_student_by_id(id : int) -> void:
