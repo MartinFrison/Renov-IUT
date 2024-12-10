@@ -64,9 +64,9 @@ func init_data() -> void:
 	var students = Student.get_all_ids()
 	var teachers = Teacher.get_all_ids()
 	
-	adjust_student_satisfaction(students)
-	adjust_student_level(students)
-	adjust_teacher_satisfaction(teachers)
+	init_student_satisfaction(students)
+	init_student_level(students)
+	init_teacher_satisfaction(teachers)
 	adjust_budget()
 	
 
@@ -97,18 +97,34 @@ func adjust_budget_building(build : Building) -> void:
 func adjust_budget() -> void:
 	print("adjust_budget() doit être implémentée.")
 
-# Ajuster la satisfaction des enseignants en appliquant un coefficient
-# Le niveau initial des étudiants dépendra aussi du coeff d'examen d'entrée (plus il est dur plus le niveau est élevé
-func adjust_student_level(liste) -> void:
-	print("adjust_student_level() doit être implémentée.")
+# Ajuster le level des étudiants en appliquant un coefficient
+# Celui ci dépend également du coeff de l'examen d'entrée
+func init_student_level(liste) -> void:
+	var coeff_exam = []
+	for i in range(1,6):
+		coeff_exam.append(Building.get_building(Utils.dept_index_to_string(i)).get_exam_entry())
+	for i in liste:
+		var dept = Student.get_dept(i)
+		var level =  Utils.randfloat_in_square_range(GlobalData.adjust_level()*0.4,GlobalData.adjust_level()*1)
+		# Ajuste le level selon la difficulté des exams d'entrée de son département
+		# Recupere une partie des point manquant à l'élève pour arriver à 20/20
+		level += (1-level) * ((1-coeff_exam[Utils.dept_string_to_index(dept)-1])*0.4)
+		Student.set_level(i,level)
+
 
 # Ajuster la satisfaction des étudiants en appliquant un coefficient
-func adjust_student_satisfaction(liste) -> void:
-	print("adjust_student_satisfaction() doit être implémentée.")
+func init_student_satisfaction(liste) -> void:
+	for i in liste:
+		var mood = Utils.randfloat_in_square_range(GlobalData.adjust_satisfaction()*0.4,GlobalData.adjust_satisfaction()*1)
+		Student.set_mood(i,mood)
 
 # Ajuster la satisfaction des enseignants en appliquant un coefficient
-func adjust_teacher_satisfaction(liste) -> void:
-	print("adjust_teacher_satisfaction() doit être implémentée.")
+func init_teacher_satisfaction(liste) -> void:
+	for i in liste:
+		var mood =  Utils.randfloat_in_square_range(GlobalData.adjust_satisfaction()*0.4, GlobalData.adjust_satisfaction()*1)
+		Teacher.set_mood(i,mood)
+
+
 
 # Ajuster l'état d'un département en appliquant un coefficient
 func adjust_dept_state() -> void:

@@ -46,12 +46,24 @@ static func get_dept_ids(dept : String) -> Array:
 
 
 # Ajout et suppression
-static func add_student(dept : String, year : int) -> void:
+# Renvoie l'id de l'étudiant ajouter
+static func add_student(dept: String, year: int) -> int:
 	var query = "INSERT INTO Students (year, dept, mood, level) VALUES (?, ?, ?, ?)"
 	var dt = Utils.dept_string_to_index(dept)
 	if !Utils.db.execute(query, [year, dt, randf_range(0.7, 1.0), randf_range(0.5, 1.0)]):
 		print("Erreur d'ajout.")
-		return
+		return -1  # Retourne -1 en cas d'échec
+
+	# Récupère l'ID du dernier étudiant ajouté
+	var id_query = "SELECT last_insert_rowid()"
+	var result = Utils.db.query(id_query)
+	if result.size() > 0:
+		return result[0][0]  # Retourne l'ID de l'étudiant
+	else:
+		print("Erreur lors de la récupération de l'ID.")
+		return -1  # Retourne -1 si la récupération échoue
+
+
 
 static func rm_student_by_id(id : int) -> void:
 	var query = "DELETE FROM Students WHERE id=?"

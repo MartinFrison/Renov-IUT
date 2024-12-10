@@ -15,25 +15,31 @@ const exam_base_result = 0.8 # On estime qu'à l'examen, on est sur de récupér
 static func populate_promo(dept : int, year : int) -> int:
 	var coeff = 0.0
 	var code = Utils.dept_index_to_string(dept)
-	var build = Building.get_building(code) 
-	var coeff_exam = build.get_exam_entry() # l'exam d'entrée influ sur le nombre de recru
+	var build = Building.get_building(code)
+	# l'exam d'entrée influ sur le nombre de recru en première année uniquement 
+	var coeff_exam = build.get_exam_entry() 
 	match year:
 		1:
 			coeff = randf_range(1-fluct, 1+fluct) # 1ère année : juste la fluctuation à appliquer
 		2:
 			var coeff_1 = randf_range(1-fluct, 1+fluct) # 2e année : fluctuation et pourcentage entre 45% et 75%
 			coeff = randf_range(0.45*coeff_1, 0.75*coeff_1)
+			coeff_exam = 0
 		3:
 			var coeff_1 = randf_range(1-fluct, 1+fluct) # 3e année : fluctuation et pourcentage entre 75% et 100%
 			# On triche un peu, comme si la 3e année dépendait de la 2e année actuelle, et non pas précédente
 			var coeff_2 = randf_range(0.45*coeff_1, 0.75*coeff_1)
 			coeff = randf_range(0.75*coeff_2, 1.0*coeff_2)
+			coeff_exam = 0
 		_:
 			return 0
 	
+	# Calcule du nombre d'étudiant dans la promo tenant compte de la difficulté des examens d'entrée
 	var nb_students = ceil(students_base_nb[dept-1] * coeff* (1-coeff_exam))
 	for i in range(0, nb_students):
-		Student.add_student(code, year)
+		var id = Student.add_student(code, year)
+		# On initialise le level selon la difficulté des exams d'entré
+		#Student.set_level(id, Utils.randfloat_in_range(GlobalData.adjust_level())
 	return nb_students
 
 
@@ -198,7 +204,7 @@ static func boost_mood_student(dept : String, value : float) -> void:
 
 
 static func drop_level_student(dept : String, value : float) -> void:
-	value = value#max(0, value)
+	value = max(0, value)
 	var id = Student.get_dept_ids(dept)
 	for i in id:
 		value = Utils.randfloat_in_range(value * 0.65 / GlobalData.adjust_level(), value * 1.35 / GlobalData.adjust_level())
