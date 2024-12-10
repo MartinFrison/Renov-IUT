@@ -194,28 +194,33 @@ static func drop_mood_student(dept : String, value : float) -> void:
 	value = max(0, value)
 	var id = Student.get_dept_ids(dept)
 	for i in id:
-		Student.set_mood(i, Student.get_mood(i) - Utils.randfloat_in_range(value * 0.65 / GlobalData.adjust_satisfaction(), value * 1.35 / GlobalData.adjust_satisfaction()))
+		var mood = Student.get_mood(i) - Utils.randfloat_in_range(value * 0.65 / GlobalData.adjust_satisfaction(), value * 1.35 / GlobalData.adjust_satisfaction())
+		Student.set_mood(i, mood)
 
 static func boost_mood_student(dept : String, value : float) -> void:
 	value = max(0, value)
 	var id = Student.get_dept_ids(dept)
 	for i in id:
-		Student.set_mood(i, Student.get_mood(i) + Utils.randfloat_in_range(value * 0.65 * GlobalData.adjust_satisfaction(), value * 1.35 * GlobalData.adjust_satisfaction()))
+		var mood = Student.get_mood(i) + Utils.randfloat_in_range(value * 0.65 * GlobalData.adjust_satisfaction(), value * 1.35 * GlobalData.adjust_satisfaction())
+		Student.set_mood(i, mood)
 
 
 static func drop_level_student(dept : String, value : float) -> void:
 	value = max(0, value)
 	var id = Student.get_dept_ids(dept)
 	for i in id:
-		value = Utils.randfloat_in_range(value * 0.65 / GlobalData.adjust_level(), value * 1.35 / GlobalData.adjust_level())
-		Student.set_level(i, Student.get_level(i) - value)
+		var level = Student.get_level(i) - Utils.randfloat_in_range(value * 0.65 / GlobalData.adjust_level(), value * 1.35 / GlobalData.adjust_level())
+		Student.set_level(i, level)
 
 
 static func boost_level_student(dept : String, value : float) -> void:
 	value = max(0, value)
 	var id = Student.get_dept_ids(dept)
 	for i in id:
-		Student.set_level(i, Student.get_level(i) + Utils.randfloat_in_range(value * 0.65 * GlobalData.adjust_level(), value * 1.35 * GlobalData.adjust_level()))
+		var level = Student.get_level(i) + Utils.randfloat_in_range(value * 0.65 * GlobalData.adjust_level(), value * 1.35 * GlobalData.adjust_level())
+		Student.set_level(i, level)
+
+
 
 static func student_resign() -> void:
 	Student.rm_student_by_mood(0.2)

@@ -117,6 +117,7 @@ func mood_update(day : int) -> void:
 func level_update(day) -> void:
 	# Ajustement selon le nombre de prof et leur moods
 	Study.teacher_adjust_level(day)
+	pass
 	
 
 
