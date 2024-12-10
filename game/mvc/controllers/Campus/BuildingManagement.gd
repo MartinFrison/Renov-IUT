@@ -56,7 +56,8 @@ static func advance_work(building: Building, day : int) -> void:
 
 
 
-# Lancer des travaux de rénovation
+# Demande à lancer des travaux de rénovation
+# Retourne vrai si les travaux on bien été lancer
 static func start_renovation(building: Building) -> bool:
 	if building.get_ouvriers() <= 0:
 		await BulleGestion.send_message("Impossible de commencer les travaux : pas 
@@ -67,12 +68,15 @@ static func start_renovation(building: Building) -> bool:
 		await BulleGestion.send_message("Travaux de rénovation déjà en cours 
 		dans ce bâtiment",false)
 		return false  # Travaux déjà en cours
+
 	
 	# Vérification des bâtiments libres
-	var free_buildings = Building._buildingsDictionary.size() - Building._total_buildings_under_renovation
-	if free_buildings * 450 < Student.compute_nb():
+	# Chaque batiment peut acueillir 300 étudiant, les batiments en travaux ne peuvent pas en accueillir
+	# Il faut qu'il reste suffisament de place pour tout les étudiants de l'iut si on lance des travaux
+	var free_buildings = Building._buildingsDictionary.size() - Building._total_buildings_under_renovation -1
+	if free_buildings * 300 < Student.compute_nb():
 		await BulleGestion.send_message("Pas assez de bâtiments libres pour 
-		commencer les travaux",false)
+		commencer les travaux",false) 
 		return false
 	
 	# Démarrer les travaux de rénovation
