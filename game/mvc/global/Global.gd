@@ -27,7 +27,8 @@ func create_iut_db():
 		year INTEGER CHECK(year BETWEEN 1 AND 3),
 		dept TEXT,
 		mood REAL CHECK(mood >= 0 AND mood <= 1),
-		level REAL CHECK(level >= 0 AND level <= 1)
+		level REAL CHECK(level >= 0 AND level <= 1),
+		base_level REAL CHECK(level >= -1 AND level <= 1)
 	);
 	"""
 

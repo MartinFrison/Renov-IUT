@@ -117,6 +117,15 @@ static func get_level(id : int) -> float:
 		return result[0]["level"]
 	return -1.0
 
+static func get_base_level(id : int) -> float:
+	var query = "SELECT base_level FROM Students WHERE id=?"
+	var result = Utils.db.get_entries(query, [id])
+	if result.size() > 0:
+		return result[0]["level"]
+	return -1.0
+
+
+
 # Setters
 static func set_year(id : int, new_year: int) -> void:
 	var query = "UPDATE Students SET year=? WHERE id=?"
@@ -134,6 +143,14 @@ static func set_level(id : int, coeff: float) -> void:
 	var query = "UPDATE Students SET level=? WHERE id=?"
 	if !Utils.db.execute(query, [coeff, id]):
 		return
+
+# defini base level entre -1 et 1
+static func set_base_level(id : int, coeff: float) -> void:
+	coeff = max(min(1,coeff),-1)
+	var query = "UPDATE Students SET base_level=? WHERE id=?"
+	if !Utils.db.execute(query, [coeff, id]):
+		return
+
 
 # Stats
 static func compute_nb_per_dept(dept : String) -> float:
