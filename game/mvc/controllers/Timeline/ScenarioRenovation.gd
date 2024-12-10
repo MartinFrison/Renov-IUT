@@ -84,14 +84,14 @@ func init_data() -> void:
 	# On choisis le/les batiments à rénover
 	var build1 = Utils.randint_in_range(1,5)
 	old_builds.append(Building.get_building(Utils.dept_index_to_string(build1)))
-	# Si la difficulté est élevé on rénove 2 batiment
-	if GlobalData.get_difficulty() == 3:
+	# Si la difficulté n'est pas en facile on rénove 2 batiment
+	if GlobalData.get_difficulty() >= 2:
 		var build2 = Utils.randint_in_range(1,5)
 		if build2 == build1:
 			build2 += 1	
 			if build2 >= 6:
 				build2 = 1
-		old_builds.append(Building.get_building(Utils.dept_index_to_string(build1)))
+		old_builds.append(Building.get_building(Utils.dept_index_to_string(build2)))
 	
 	# Dans ce scenario, en plus de l'initialisation classique
 	# on redefini les variable des batiments à renover
