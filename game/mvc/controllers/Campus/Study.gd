@@ -16,7 +16,8 @@ static func populate_promo(dept : int, year : int) -> int:
 	var coeff = 0.0
 	var code = Utils.dept_index_to_string(dept)
 	var build = Building.get_building(code)
-	# l'exam d'entrée influ sur le nombre de recru en première année uniquement 
+	# l'examen d'entrée influ sur le nombre de recru en première année uniquement 
+	# (On considère que pour les A2 et A3 à l'initialisation les examens avait pour difficulté 0 par défaut)
 	var coeff_exam = build.get_exam_entry() 
 	match year:
 		1:
@@ -34,16 +35,22 @@ static func populate_promo(dept : int, year : int) -> int:
 		_:
 			return 0
 	
-	# Calcule du nombre d'étudiant dans la promo tenant compte de la difficulté des examens d'entrée
+	# Calcule du nombre d'étudiant dans la promo tenant compte de la séléctivité des examens d'entrée
+	# Au maximum le nb de recru peut être diviser par 2, il ne peut pas être augmenter car les examens d'entrée 
+	# sont par défaut au plus facile
 	var nb_students = ceil(students_base_nb[dept-1] * coeff* (1-coeff_exam))
+	
+	# On rajoute tout les étudiant de la promo
 	for i in range(0, nb_students):
-		# On ajoute l'étudiant et lui donne une valeur aléatoire selon la difficulté du jeu
+		# On ajoute un étudiant et lui donne une satisfaction aléatoire selon la difficulté du jeu
 		var id = Student.add_student(code, year)
-		var mood = Utils.randfloat_in_square_range(GlobalData.adjust_satisfaction()*0.4,GlobalData.adjust_satisfaction()*0.7)
+		var mood = Utils.randfloat_in_square_range(GlobalData.adjust_satisfaction()*0.45,GlobalData.adjust_satisfaction()*0.8)
 		Student.set_mood(id,mood)
-
-		# On initialise le level selon la difficulté des exams d'entré
-		#Student.set_level(id, Utils.randfloat_in_range(GlobalData.adjust_level())
+		# On initialise le level selon la séléctivité des exams d'entrée et la difficulté du jeu 
+		var level =  Utils.randfloat_in_square_range(GlobalData.adjust_level()*0.2,GlobalData.adjust_level()*0.9)
+		# Recupere une partie des point manquant à l'élève pour arriver à 20/20 en fonction des examens d'entrées
+		level += (1-level) * coeff_exam * GlobalData.adjust_level()
+		Student.set_level(id,level)
 	return nb_students
 
 
@@ -68,22 +75,12 @@ static func populate_new_year(scenario : Scenario) -> void:
 			sum += n
 			message_2 += "- %s étudiants dans le département %s.\n" % [n,Utils.dept_index_to_string(i)]
 	
-	# Initialiser le level et le mood des nouveaux étudiant
-	var id = Student.get_all_ids()
-	scenario.adjust_student_level(id)
-	scenario.adjust_student_satisfaction(id)
-	
+
 	message += str(sum) + "\n" + message_2
 	await BulleGestion.send_notif("Début d'année " + str(GlobalData._year), message, 0)
 
 
-# Simule les examens basé uniquement sur la chance (certains scénarios peuvent appliquer des coefficients supplémentaires)
-static func evaluate() -> void:
-	var luck = randf_range(0.0, (1-exam_base_result)) # la chance peut soit se détourner de l'élève, soit lui permettre d'obtenir jusqu'à 20% (ici) de plus
-	var exam: float = randf_range(exam_base_result, exam_base_result + luck)
-	var id = Student.get_all_ids()
-	for student in id:
-		Student.set_level(student, exam)
+
 
 
 
@@ -127,7 +124,6 @@ static func pass_dept_exam(dept : String) -> Array:
 # Simule un passage à l'année suivante, en promouvant ceux qui restent et en excluant ceux qui n'ont pas le niveau et/ou l'envie
 # Renvoie un rapport des examens par notification
 static func pass_next_year() -> void:
-	#evaluate()
 	# Calcule le passage à l'année suivante des étudiants de chaque batiment
 	var obj = "Examen de fin d'année"
 	var msg = ""
