@@ -5,6 +5,7 @@ extends Node
 static var liste_notif_count : Array = []
 
 
+
 static func ask_question(question : String, reponse : Array[String] ,fonction : String, node : Node) -> void:
 	var objet = question.substr(0,15)+".."
 	Notification.add_notification(question,objet,GlobalData.get_date(), 0 )
@@ -21,13 +22,26 @@ static func send_message(message : String, notif : bool) -> void:
 	if notif:
 		Notification.add_notification(message,message.substr(0,30)+"..",GlobalData.get_date(), 0 )
 	
+	#stocker le message dans la file d'attente
+	var count
+	if liste_notif_count.size() > 0:
+		count = liste_notif_count[liste_notif_count.size()-1]+1
+	else:
+		count = 1
+	liste_notif_count.append(count)
+	
+	# tant que la file est prise on attend
+	while liste_notif_count[0] != count:
+		await RenovIUTApp.app.get_tree().create_timer(0.5).timeout
+	
+	# quand la file est libre on affiche le message
 	var scene = load("res://mvc/views/Node2D/Bulle/BulleMessage/PanelBulleMessage.tscn")
 	var bulle = scene.instantiate()
 	RenovIUTApp.app.add_child(bulle)
 	if bulle.has_method("init"):
 		bulle.init(message)
 	await bulle.tree_exited
-
+	liste_notif_count.erase(count)
 
 
 

@@ -23,7 +23,7 @@ static func get_description() -> String:
 # Test si le jeu est fini
 # Dans ce scénario il finit simplement au bout de 5 ans
 func test_end_game_condition() -> bool:
-	return (GlobalData._year == 2030 and GlobalData._month == 9 and  GlobalData._day == 1)
+	return (GlobalData._year == 2030 and GlobalData._month == 6 and  GlobalData._day == 1)
 
 
 

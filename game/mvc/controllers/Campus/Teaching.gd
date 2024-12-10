@@ -8,12 +8,13 @@ const teachers_base_nb: Array = [21, 24, 18, 27, 18] # chiffres réels tirés du
 static func hire_teachers(dept: String):
 	#vérifie si il y a moins de 30 profs dans le batiment
 	if Teacher.compute_nb_per_dept(dept) >= 30:
-		print("Deja maximum d'enseignants dans ce bâtiment.")
+		await BulleGestion.send_message("Deja maximum d'enseignants dans ce bâtiment.",false)
 		return
 
 	#vérifie si un prof est prêt à être recruté
-	if Teacher.avg_mood_per_dept(dept) < 0.6:
-		print("Pas d'ensignant disponible.")
+	if Teacher.avg_mood_per_dept(dept) < 0.6 and Teacher.compute_nb_per_dept(dept)!=0:
+		await BulleGestion.send_message("Aucun professeur n'est volontaire pour enseigner 
+		dans ce bâtiment.",false)
 	else:
 		Teacher.add_teacher(dept,true)
 		print("Embauche d'un enseignant pour le département %s." % dept)
@@ -24,7 +25,7 @@ static func hire_teachers(dept: String):
 static func fire_teachers(dept: String):
 	#vérifie si il y a moins de 20 profs dans le batiments
 	if Teacher.compute_nb_per_dept(dept) <= 0:
-		print("Déja plus aucun enseignant dans le batiment (catastrophe !)")
+		await BulleGestion.send_message("Il n'y a déja plus aucun enseignant dans le batiment, catastrophe !",false)
 		return
 	
 	Teacher.rm_teachers_by_dept(dept,1)

@@ -3,7 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	show_result()
+	show_bilan()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 
 
 # On affiche le bilan de la partie au joueur
-func show_result() -> void:
+func show_bilan() -> void:
 	# Sur le nombre de d'étudiant ayant rejoins une école d'ingénieur
 	var node = get_node("Message")
 	node.text = "Sous votre manda, %s étudiant on pu intégrer une école 
