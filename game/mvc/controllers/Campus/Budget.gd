@@ -95,7 +95,7 @@ static func find_new_amount() -> float:
 static func less_public_money() -> void:
 	var fund_id = find_public_source()
 	Fund.rm_fund_by_id(fund_id)
-	# éventullement ajouter un 'setter' à Fund, pour pouvoir modifier le code trop facilement
+	# éventullement ajouter un 'setter' à Fund, pour pouvoir modifier le code plus facilement
 	
 # Ajouter une source de revenu publique, sans allouer à un bâtiment
 static func more_public_money() -> void:

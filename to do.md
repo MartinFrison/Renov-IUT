@@ -1,19 +1,16 @@
 
 Autre:
 - Mise à jours de l'UML : Elena, Yasmine 
-- Mettre à jours le cahier des charges
-- Ajout des son
-- Ne pas oublier d'ajouter la grille d'évaluation à la fin !
+- Mettre à jours le cahier des charges : Yasmine
+- Ajout des sons
+- Ne pas oublier d'ajouter la grille d'évaluation à la fin : Yasmine
 
 
 
 Graphique 2D:
 
-- Style des bulle (message et notif selon leur type) : Elena
-- Style des panels de fin de chaque scénario (vote,renovation, faillite..)
+- Style des panels de fin de chaque scénario (vote à améliorer, élitisme à faire)
 - Ajout d'effet spéciaux 2D
-
-
 
 
 
@@ -22,7 +19,7 @@ Code:
 - Gestion des grandes vacances : Martin
 - Ajout de quelque évenements aléatoire simple : Martin
 - Ajout d'un tutoriel si la difficulté est facile : Martin
-
+- Financement, à terminer : Elena
 
 - Gestion de l'attractivité
 
@@ -32,7 +29,6 @@ Détail:
 - Ajout de tout les messages et notifs manquant dans le code et definition de leur type (chauffage ect..)
 - Affichage du cout quand le joueur s'apprête a allumer le chauffage ou embaucher quelqu'un
 - Ajouter des conditions au licensiment et à l'embauche (soit un dédommagement soit une limite mensuels)
-- Gestion du switch tuto 
 
 
 Bonus:
