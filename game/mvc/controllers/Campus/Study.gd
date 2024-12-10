@@ -51,6 +51,7 @@ static func populate_promo(dept : int, year : int) -> int:
 		# Recupere une partie des point manquant à l'élève pour arriver à 20/20 en fonction des examens d'entrées
 		level += (1-level) * coeff_exam * GlobalData.adjust_level()
 		Student.set_level(id,level)
+		Student.set_base_level(id, Utils.randfloat_in_range(-0.2,0.2))
 	return nb_students
 
 

@@ -121,7 +121,7 @@ static func get_base_level(id : int) -> float:
 	var query = "SELECT base_level FROM Students WHERE id=?"
 	var result = Utils.db.get_entries(query, [id])
 	if result.size() > 0:
-		return result[0]["level"]
+		return result[0]["base_level"]
 	return -1.0
 
 
