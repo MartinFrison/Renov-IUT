@@ -51,7 +51,7 @@ static func populate_promo(dept : int, year : int) -> int:
 		# Recupere une partie des point manquant à l'élève pour arriver à 20/20 en fonction des examens d'entrées
 		level += (1-level) * coeff_exam * GlobalData.adjust_level()
 		Student.set_level(id,level)
-		Student.set_base_level(id, Utils.randfloat_in_range(-0.2,0.2))
+		Student.set_base_level(id, Utils.randfloat_in_square_range(0,0.8)-0.4) # valeur entre -0.4 et 0.4
 	return nb_students
 
 
@@ -189,12 +189,21 @@ static func door_adjust_mood(day : int) -> void:
 
 
 
-# Ajustement des stats des étudiants 
-
+# Fluctuation de la satisfaction des étudiants 
+# Fait tendre la satisfaction de chaque etudiant d'un batiment vers une certaine
+# valeur comprise entre 0 et 1 avec un certain coeff compris entre 0 et 1
+# Par exemple si on prend la valeur 0.7 et le coeff 0.5
+# pour un etudiant dont la satisfaction est 0.5 la nouvelle valeur sera 0.6
+# pour un etudiant dont la satisfaction est 0.9 la nouvelle valeur sera 0.8
 static func mood_fluctuation(dept : String, mood : float, coeff : float) -> void:
-	pass
+	mood = clamp(mood,0,1)
+	var id = Student.get_dept_ids(dept)
+	for i in id:
+		# On applique la valeur avec son coefficient
+		var new_mood = Student.get_mood(i) * (1-coeff) + mood * coeff
+		Student.set_mood(i, new_mood)
 
-
+# Fluctuation du niveau scolaire des étudiants 
 static func level_fluctuation(dept : String, level : float, coeff : float) -> void:
 	pass
 

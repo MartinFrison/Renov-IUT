@@ -49,10 +49,19 @@ static func populate():
 
 
 
-# Fluctuation de la satisfaction des enseignants
-
+# Fluctuation de la satisfaction enseignante
+# Fait tendre la satisfaction de chaque prof d'un batiment vers une certaine
+# valeur comprise entre 0 et 1 avec un certain coeff compris entre 0 et 1
+# Par exemple si on prend la valeur 0.7 et le coeff 0.5
+# pour un prof dont la satisfaction est 0.5 la nouvelle valeur sera 0.6
+# pour un prof dont la satisfaction est 0.9 la nouvelle valeur sera 0.8
 static func mood_fluctuation(dept : String, mood : float, coeff : float) -> void:
-	pass
+	mood = clamp(mood,0,1)
+	var id = Student.get_dept_ids(dept)
+	for i in id:
+		# On applique la valeur avec son coefficient
+		var new_mood = Student.get_mood(i) * (1-coeff) + mood * coeff
+		Student.set_mood(i, new_mood)
 
 
 
