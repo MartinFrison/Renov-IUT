@@ -18,3 +18,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func tuto_start() -> void:
+	if _tutorial:
+		var msg
+		
+		msg = "Bienvenu dans Renov'IUT un jeu de gestion ou vous incarnez "
+		msg += "le directeur de l'IUT Robert Schuman"
+		await BulleGestion.send_message(msg, false)

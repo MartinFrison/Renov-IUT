@@ -18,15 +18,14 @@ func _init(scenario: Scenario, tuto : Tutorial) -> void:
 	ObserverBuilding.notifyStateChanged()
 
 
-
-func _ready() -> void:
-	pass
-
+func start():
+	print("aa")
+	await _tuto.tuto_start()
+	print("bb")
 
 
 # Execute toutes les actions d'un trimestre
 func next_Trimestre():
-	
 	GlobalData.incrementTrimestre()
 
 	# Appelle des évenements
