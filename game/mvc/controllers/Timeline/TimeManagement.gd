@@ -107,7 +107,7 @@ func Event() -> bool:
 func mood_update(day : int) -> void:
 	# chauffage
 	heat_adjust_mood()
-	inventory_adjust_mood(day)
+	inventory_adjust_mood()
 	# porte bloquer
 	Study.door_adjust_mood()
 	#Selon le salaire des profs
@@ -142,16 +142,15 @@ static func heat_adjust_mood() -> void:
 
 
 # Ajuster le mood selon l'état des lieux des batiments
-static func inventory_adjust_mood(day : int) -> void:
+# Fait converger la satisfaction vers une valeur qui dépend de l'état des lieux
+static func inventory_adjust_mood() -> void:
 	for i in range(1,6):
 		var code = Utils.dept_index_to_string(i)
 		var build = Building.get_building(code)
-		# Formule
-		var value = ((build.get_inventory()-50)/50)*0.08/360
 		
-		if value > 0:
-			Study.drop_mood_student(code, value*day)
-			Teaching.boost_mood_teacher(code, value*day)
-		else:
-			Study.boost_mood_student(code, value*day)
-			Teaching.boost_mood_teacher(code, value*day)
+		# Formule qui dépend de l'état des lieux et la difficulté
+		var value = build.get_inventory() * GlobalData.adjust_satisfaction()
+		
+		# On applique les fluctuations pour les profs et les étudiant
+		Study.mood_fluctuation(code, value, 0.1)
+		Teaching.mood_fluctuation(code, value, 0.1)

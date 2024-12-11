@@ -59,6 +59,14 @@ static func mood_fluctuation(dept : String, value : float, coeff : float) -> voi
 	value = clamp(value,0,1)
 	var id = Student.get_dept_ids(dept)
 	for i in id:
+		# On rajoute un peu d'aléa
+		var random = Utils.randfloat_in_range(0.8,1.2)
+		var final_value = value
+		if random > 1:
+			final_value += (1-value) * (random-1)
+		else:
+			final_value *= random
+		
 		# On applique la valeur avec son coefficient
 		var new_mood = Student.get_mood(i) * (1-coeff) + value * coeff
 		Student.set_mood(i, new_mood)
@@ -119,9 +127,6 @@ static func pay_adjust_mood() -> void:
 		
 		# La difficulté influ sur la valeur vers laquelle on tend
 		value *= GlobalData.adjust_satisfaction()
-		# On rajoute un peu d'aléa 
-		# Si la valeur depasse eventuellement 1 elle sera de toute facon majoré ensuite
-		value *= Utils.randfloat_in_range(0.8,1.2)
 		
 		# On applique la valeur avec un coeff de 30%
 		Teaching.mood_fluctuation(code, 0, 0.3)

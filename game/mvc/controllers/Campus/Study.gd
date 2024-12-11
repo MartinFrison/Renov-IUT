@@ -211,8 +211,17 @@ static func door_adjust_mood() -> void:
 # pour un etudiant dont la satisfaction est 0.9 la nouvelle valeur sera 0.8
 static func mood_fluctuation(dept : String, value : float, coeff : float) -> void:
 	value = clamp(value,0,1)
+
 	var id = Student.get_dept_ids(dept)
 	for i in id:
+		# On rajoute un peu d'aléa
+		var random = Utils.randfloat_in_range(0.8,1.2)
+		var final_value = value
+		if random > 1:
+			final_value += (1-value) * (random-1)
+		else:
+			final_value *= random
+		
 		# On applique la valeur avec son coefficient
 		var new_mood = Student.get_mood(i) * (1-coeff) + value * coeff
 		Student.set_mood(i, new_mood)
