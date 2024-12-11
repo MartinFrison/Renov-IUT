@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b4cp1gj8gn1ro"]
+[gd_scene load_steps=32 format=3 uid="uid://b4cp1gj8gn1ro"]
 
 [ext_resource type="Script" path="res://mvc/views/RenovIUTApp.gd" id="1_drlro"]
 [ext_resource type="Texture2D" uid="uid://b8bjiydhyyapq" path="res://mvc/views/images/buttons/notification_button.png" id="3_4oyj6"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://uo855peg7ssy" path="res://mvc/views/Node3D/character/bonhomme.fbx" id="11_mah3o"]
 [ext_resource type="Script" path="res://mvc/views/Node3D/character/bonhomme.gd" id="12_vnvx5"]
 [ext_resource type="Script" path="res://mvc/views/Node2D/Menu/Menu.gd" id="13_hhh64"]
+[ext_resource type="PackedScene" uid="uid://c58xq3mpsn4kc" path="res://mvc/views/Node2D/Bulle/BulleTuto/BulleTutorial.tscn" id="19_erxnb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1hwps"]
 sky_top_color = Color(0.719709, 0.848666, 1, 1)
@@ -514,6 +515,9 @@ layout_mode = 2
 
 [node name="OuvrirPanel" type="Button" parent="menu/PopupPanel/VBoxContainer"]
 layout_mode = 2
+
+[node name="BulleTutorial" parent="." instance=ExtResource("19_erxnb")]
+position = Vector2(82, -113)
 
 [connection signal="pressed" from="PanelStat/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="notif_button" to="." method="open_notif"]

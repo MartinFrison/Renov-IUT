@@ -20,7 +20,7 @@ func _init(scenario: Scenario, tuto : Tutorial) -> void:
 
 
 func start():
-	await _tuto.tuto_start()
+	await _tuto.tuto_next()
 	await _scenario.game_start()
 
 
@@ -47,6 +47,9 @@ func next_Trimestre():
 	ObserverPopulation.notifyLevelChanged()
 	ObserverPopulation.notifySatisfactionChanged()
 	
+	# Appelle de la suite du tutoriel si besoin
+	await _tuto.tuto_next()
+	
 	#Test des étapes intermediare du scenario
 	_scenario.mid_game()
 
@@ -67,6 +70,7 @@ func next_Trimestre():
 		end_of_year()
 	if GlobalData.isStartofYear():
 		year_begin()
+	
 	
 	# A la fin du trimestre on test si le jeu se finit
 	if _scenario.test_end_game_condition():
