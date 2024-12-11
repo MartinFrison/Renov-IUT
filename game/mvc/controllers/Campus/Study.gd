@@ -152,26 +152,37 @@ static func pass_next_year() -> void:
 
 
 # Ajuster le niveau etudiant d'un departement selon le nb de profs et leur mood
-static func teacher_adjust_level(day: int) -> void:
+# On calcule une valeur qui correspond au niveau vers lequel devrait tendre le niveau
+# des étudiant si le contexte actuelle (nb de prof et satisfaction des prof)
+# s'éternisait dans le temps
+static func teacher_adjust_level() -> void:
 	const coeff = 1
-	var ratioStudentTeacher = 0
+	var value
 	for i in range(1,6):
 		var code = Utils.dept_index_to_string(i)
-		# s'il n'y a pas de prof on prend une valeur arbitraire
-		if Teacher.compute_nb_per_dept(code) <= 0:
-			ratioStudentTeacher = Student.compute_nb_per_dept(code)*3
+		var mood_teacher = Teacher.avg_mood_per_dept(code)
+		var nb_teacher = Teacher.compute_nb_per_dept(code)
+		var nb_student = Student.compute_nb_per_dept(code)
+		var ratio = nb_teacher / nb_student
+		
+		# s'il n'y a pas de prof le niveau tend vers 0
+		if nb_teacher <= 0:
+			value = 0
 		else:
-			ratioStudentTeacher = Student.compute_nb_per_dept(code)/Teacher.compute_nb_per_dept(code)
-		# Formule de l'ajustement selon le ratio prof-etudiant et le mood des profs
-		var value : float = ((Teacher.avg_mood_per_dept(code)-0.5)+((1/ratioStudentTeacher)-0.1)*5)/360 
-		if value > 0:
-			print(Utils.dept_index_to_string(i))
-			print(value)
-			Study.boost_level_student(code, value * day)
-		else:
-			print(Utils.dept_index_to_string(i))
-			print(value)
-			Study.drop_level_student(code, -value * day)
+			# le ratio nb_prof/nb_etudiant nécéssaire pour avoir une valeur élevé dépend aussi de la difficulté
+			# On utilise une fonction sigmoide pour calculer une valeur a partir du ratio
+			# valeur de la sigmoide: x=0 -> 0, x=0.2 -> 0.42, x=0.4 -> 0.85, x=1 -> 0.98
+			var ratioValue = ratio*GlobalData.adjust_level()
+			var k = 10
+			var x0 = 0.2
+			ratioValue = 1 / (1 + exp(-k * (ratioValue - x0))) - (1 / (1 + exp(k * x0)))
+			ratioValue /= 0.89
+			# La valeur vers laquel tend le niveau etudiant dépend à 30% de la satisfaction 
+			# enseigante et à 70% du ratio nb_prof/nb_etudiant
+			value = mood_teacher * 0.3 + clamp(ratioValue, 0,1) * 0.7
+		
+		# On fait tendre le niveau étudiant vers la valeur définie
+		Study.level_fluctuation(code, value, 0.2)
 
 
 # Ajuster le mood etudiant selon si les portes des salles sont ouverte ou fermez
