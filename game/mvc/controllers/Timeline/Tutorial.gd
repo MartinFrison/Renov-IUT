@@ -119,7 +119,7 @@ func tuto_trimester2() -> void:
 	# Explication des notification
 	_tuto_buble.show_buble(100,100,5,102)
 	msg = "Vous pouvez consulter le bilan de vos dépense ce semestre en cliquant sur "
-	msg += "l'historique des notifications à droite de l'écran"
+	msg += "le menu des notifications à droite de l'écran"
 	await BulleGestion.send_message(msg, false)
 	_tuto_buble.hide()
 	
@@ -161,7 +161,7 @@ func tuto_trimester4() -> void:
 	await BulleGestion.send_message(msg, false)
 	msg = "Les examens on eu lieu et les étudiants n'ayant pas le niveau ont été renvoyé"
 	await BulleGestion.send_message(msg, false)
-	msg = "Vous pourrez consulté le rapport du résultat de ces examens dans l'historique de vos notifications"
+	msg = "Vous pouvez consulté le rapport du résultat de ces examens dans le menu des notifications"
 	await BulleGestion.send_message(msg, false)
 
 	# Explication des examens d'entrée
@@ -181,7 +181,6 @@ func tuto_trimester4() -> void:
 func tuto_trimester5() -> void:
 	var msg
 	
-	msg = "Le premier trimestre est passé, "
-	msg += "vous pouvez désormais consulté l'impact qu'à eu votre gestion "
-	msg += "sur l'IUT"
+	msg = "Une nouvelle année commence, les nouvelles recrues sont arrivées, vous pouvez consulté "
+	msg += "le rapport des nouvelles inscriptions dans le menu des notifications"
 	await BulleGestion.send_message(msg, false)
