@@ -16,10 +16,14 @@ Graphique 2D:
 
 Code:
 
+- Ajout d'un tutoriel si la difficulté est facile : Martin
 - Gestion des grandes vacances : Martin
 - Ajout de quelque évenements aléatoire simple : Martin
-- Ajout d'un tutoriel si la difficulté est facile : Martin
+
+
+
 - Financement, à terminer : Elena
+
 
 - Gestion de l'attractivité
 

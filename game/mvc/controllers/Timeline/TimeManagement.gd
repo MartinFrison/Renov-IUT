@@ -1,16 +1,18 @@
 class_name TimeManagement
 extends Node
 
+var _tuto : Tutorial
 var _scenario: Scenario
 var _bill : Bill
 
 
 
 # Le jeu commence le 1 septembre 2025
-func _init(scenario: Scenario) -> void:
+func _init(scenario: Scenario, tuto : Tutorial) -> void:
 	_bill = Bill.new()
 	GlobalData.setDate(1,9,2025) # date de départ
-	self._scenario = scenario  # Initialiser le scénario
+	_scenario = scenario  # Initialiser le scénario
+	_tuto = tuto # Initialiser le tuto
 	ObserverPopulation.notifySatisfactionChanged()
 	ObserverPopulation.notifyLevelChanged()
 	ObserverBuilding.notifyStateChanged()
