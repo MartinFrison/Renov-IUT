@@ -106,12 +106,12 @@ func Event() -> bool:
 # Ajuste la satisfaction selon divers critères
 func mood_update(day : int) -> void:
 	# chauffage
-	heat_adjust_mood(day)
+	heat_adjust_mood()
 	inventory_adjust_mood(day)
 	# porte bloquer
-	Study.door_adjust_mood(day)
+	Study.door_adjust_mood()
 	#Selon le salaire des profs
-	Teaching.pay_adjust_mood(day)
+	Teaching.pay_adjust_mood()
 
 # Ajuste le niveau etudiant selon divers critères
 func level_update(day) -> void:
@@ -123,20 +123,21 @@ func level_update(day) -> void:
 
 
 # Ajuster le mood selon si les etudiants on trop chaud ou trop froid
-static func heat_adjust_mood(day : int) -> void:
+static func heat_adjust_mood() -> void:
 	for i in range(1,6):
 		var code = Utils.dept_index_to_string(i)
 		var build = Building.get_building(code)
-		var value = (0.08 / 360)
+
 		#trop chaud
 		if build.is_heating() and GlobalData._month >= 7 and GlobalData._month<=9:
-			Study.drop_mood_student(code, value*day)
+			# s'il fait trop chaud la satisfaction tend vers 0 et la difficulté empire le coeff
+			Study.mood_fluctuation(code, 0, 0.05 / GlobalData.adjust_satisfaction())	
 		#trop froid
 		elif !build.is_heating() and (GlobalData._month >= 1 or GlobalData._month<=4):
-			Study.drop_mood_student(code, value*day)
-		else:
-			value = (0.03 / 360)
-			Study.boost_mood_student(code, value*day)
+			# s'il fait trop froid la satisfaction tend vers 0 et la difficulté empire le coeff
+			Study.mood_fluctuation(code, 0, 0.08 / GlobalData.adjust_satisfaction())
+		
+		# s'il ne fait ni trop chaud ni trop froid on ne fait rien
 
 
 
