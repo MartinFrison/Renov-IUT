@@ -195,17 +195,47 @@ static func door_adjust_mood(day : int) -> void:
 # Par exemple si on prend la valeur 0.7 et le coeff 0.5
 # pour un etudiant dont la satisfaction est 0.5 la nouvelle valeur sera 0.6
 # pour un etudiant dont la satisfaction est 0.9 la nouvelle valeur sera 0.8
-static func mood_fluctuation(dept : String, mood : float, coeff : float) -> void:
-	mood = clamp(mood,0,1)
+static func mood_fluctuation(dept : String, value : float, coeff : float) -> void:
+	value = clamp(value,0,1)
 	var id = Student.get_dept_ids(dept)
 	for i in id:
 		# On applique la valeur avec son coefficient
-		var new_mood = Student.get_mood(i) * (1-coeff) + mood * coeff
+		var new_mood = Student.get_mood(i) * (1-coeff) + value * coeff
 		Student.set_mood(i, new_mood)
 
+
 # Fluctuation du niveau scolaire des étudiants 
-static func level_fluctuation(dept : String, level : float, coeff : float) -> void:
-	pass
+# Fait tendre le niveau de chaque etudiant d'un batiment vers une certaine
+# valeur comprise entre 0 et 1 avec un certain coeff compris entre 0 et 1
+# Cette valeur est prise en entrée par la fonction mais est ajusté pour chaque étudiant
+# en fonction de sa valeur base_level qui permet de garder des valeur plus hétérogène
+# Par exemple si on prend la valeur 0.7 et le coeff 0.5
+# pour un etudiant dont la niveau est 0.5 la nouvelle valeur sera 0.6
+# pour un etudiant dont la niveau est 0.9 la nouvelle valeur sera 0.8
+static func level_fluctuation(dept : String, value : float, coeff : float) -> void:
+	value = clamp(value,0,1)
+	var id = Student.get_dept_ids(dept)
+	for i in id:
+		# On redéfini la valeur ver laquel doit tendre le niveau de chaque etudiant
+		# selon son niveau de base
+		var final_value = value
+		var base_level = Student.get_base_level(i)
+		# si le niveau de base est negatif on soustrait un pourcentage de la valeur correspondant
+		if base_level<0:
+			final_value += value * base_level
+		else:
+			# si il est positif on ajoute à la valeur un pourcentage de ce qui 
+			# lui manque pour atteindre 1
+			# par exemple: si la valeur est 0.7 et que le niveau de base est 0.5
+			# comme il manque 0.3 à la valeur 0.7 pour atteindre 1, on ajoute 0.3 * 0.5 soit 0.15
+			final_value += (1-value) * base_level
+		
+		# On applique la valeur calculé précédement avec son coefficient
+		var new_level = Student.get_level(i) * (1-coeff) + final_value * coeff
+		Student.set_mood(i, new_level)
+
+
+
 
 static func drop_mood_student(dept : String, value : float) -> void:
 	value = max(0, value)
