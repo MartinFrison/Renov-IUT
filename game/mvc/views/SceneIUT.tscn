@@ -517,7 +517,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="BulleTutorial" parent="." instance=ExtResource("19_erxnb")]
-position = Vector2(82, -113)
+position = Vector2(1203, 39)
 
 [connection signal="pressed" from="PanelStat/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="notif_button" to="." method="open_notif"]
