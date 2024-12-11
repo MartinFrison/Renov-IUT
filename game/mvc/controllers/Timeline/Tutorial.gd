@@ -34,6 +34,8 @@ func tuto_next():
 				await tuto_trimester1()
 			2:
 				await tuto_trimester2()
+			3:
+				await tuto_trimester3()
 			4:
 				await tuto_trimester4()
 			5:
@@ -133,16 +135,32 @@ func tuto_trimester2() -> void:
 	await BulleGestion.send_message(msg, false)
 	_tuto_buble.hide()
 
+# Tutoriel avant le trimestre des examens
+func tuto_trimester3() -> void:
+	var msg
+	
+	# Explication des examens finaux
+	msg = "Le printemps est là et les examens de fin d'année auront bientôt lieu"
+	await BulleGestion.send_message(msg, false)
+	_tuto_buble.show_buble(270,47,875,520)
+	msg = "Vous pouvez ajuster la difficulté de ces examens dans le menu d'action de chaque "
+	msg += "batiment"
+	await BulleGestion.send_message(msg, false)
+	msg = "Cela vous permettra de d'exclure les étudiants que vous jugez trop mauvais,"
+	msg += "mais attention cela peut aussi avoir des concéquences"
+	await BulleGestion.send_message(msg, false)
+	_tuto_buble.hide()
+
 
 # Tutoriel à la fin de la première année de service du directeur
 func tuto_trimester4() -> void:
 	var msg
 	
-	msg = "Le premier trimestre est passé, "
-	msg += "vous pouvez désormais consulté l'impact qu'à eu votre gestion "
-	msg += "sur l'IUT"
+	msg = "Vous avez atteint la fin de votre première année d'exercice"
 	await BulleGestion.send_message(msg, false)
-
+	msg = "Les examens on eu lieu et les examens on eu lieu"
+	msg += "l'historique des notifications à droite de l'écran"
+	await BulleGestion.send_message(msg, false)
 
 
 # Tutoriel au début de la deuxième année de service du directeur
