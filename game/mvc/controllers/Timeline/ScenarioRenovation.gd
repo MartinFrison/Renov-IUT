@@ -12,13 +12,16 @@ func _init() -> void:
 	_name = "Rénovation"
 	super._init()
 	
+
+# Appelle les messages sur l'explication du scénario et de ces objectifs en début de jeu
+func game_start():
 	var msg
 	if old_builds.size() > 1:
 		msg = "Votre objectif est de rénover les bâtiments %s et %s." % [old_builds[0].get_code(),old_builds[1].get_code()]
 	else:
 		msg = "Votre objectif est de rénover le bâtiment %s." % [old_builds[0].get_code()]
 	await BulleGestion.send_message(msg, true)
-	
+
 
 
 static func get_description() -> String:

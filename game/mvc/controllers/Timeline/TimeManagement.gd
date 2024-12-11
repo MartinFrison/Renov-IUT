@@ -18,10 +18,10 @@ func _init(scenario: Scenario, tuto : Tutorial) -> void:
 	ObserverBuilding.notifyStateChanged()
 
 
+
 func start():
-	print("aa")
 	await _tuto.tuto_start()
-	print("bb")
+	await _scenario.game_start()
 
 
 # Execute toutes les actions d'un trimestre

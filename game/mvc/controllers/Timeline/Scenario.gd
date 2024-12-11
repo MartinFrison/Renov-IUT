@@ -4,20 +4,27 @@ extends Node
 
 var _name : String
 
+
 func _init() -> void:
 	init_building()
 	init_data()
 
 
-# Obtenir le scénario actuel
+# Obtenir le nom du scénario actuel
 func get_scenario() -> String:
 	return _name
 
+
+# Retourne la description du scénario
 static func get_description() -> String:
 	push_error("get_description() doit être implémentée.")
 	return ""
 
 
+
+# Appelle les messages sur l'explication du scénario et de ces objectifs en début de jeu
+func game_start():
+	push_error("game_start() doit être implémentée.")
 
 
 # Test si le jeu est fini
@@ -51,9 +58,6 @@ func random_event_call(events_proba) -> void:
 
 
 # Initialise le modèle en fonction du scénario
-	# satisfaction etudiante par batiment
-	# satisfaction prof par batiment
-	# reussite par batiment
 	# budget de base
 func init_data() -> void:
 	print("populate")

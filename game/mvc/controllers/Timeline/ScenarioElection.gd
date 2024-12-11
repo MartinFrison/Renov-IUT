@@ -7,6 +7,11 @@ func _init() -> void:
 	_progression = 0
 	_name = "Élection"
 	super._init()
+
+
+
+# Appelle les messages sur l'explication du scénario et de ces objectifs en début de jeu
+func game_start():
 	var msg = "Votre objectif est d'être réélu dans 5 ans !"
 	await BulleGestion.send_message(msg, true)
 

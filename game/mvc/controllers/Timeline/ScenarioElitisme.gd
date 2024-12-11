@@ -9,11 +9,15 @@ func _init() -> void:
 	_progression = 0
 	_name = "Elitiste"
 	super._init()
-	
+
+
+
+# Appelle les messages sur l'explication du scénario et de ces objectifs en début de jeu
+func game_start():
 	var msg = "Votre objectif est de former l'élite de ce
 	 pays en permettant à un maximum d'étudiants de rentrer en école d'ingénieur après leur BUT."
 	await BulleGestion.send_message(msg, true)
-	
+
 
 
 static func get_description() -> String:
