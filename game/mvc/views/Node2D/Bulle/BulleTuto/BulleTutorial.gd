@@ -36,6 +36,11 @@ func set_border_width(width : int):
 	style.border_width_top = width
 	style.border_width_left = width
 	style.border_width_right = width
+	style.corner_radius_bottom_left = width*2
+	style.corner_radius_bottom_right = width*2
+	style.corner_radius_top_left = width*2
+	style.corner_radius_top_right = width*2	
+
 
 
 func special_effect():
