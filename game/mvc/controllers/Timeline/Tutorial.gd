@@ -156,11 +156,25 @@ func tuto_trimester3() -> void:
 func tuto_trimester4() -> void:
 	var msg
 	
+	# Rapport sur les examens finaux
 	msg = "Vous avez atteint la fin de votre première année d'exercice"
 	await BulleGestion.send_message(msg, false)
-	msg = "Les examens on eu lieu et les examens on eu lieu"
-	msg += "l'historique des notifications à droite de l'écran"
+	msg = "Les examens on eu lieu et les étudiants n'ayant pas le niveau ont été renvoyé"
 	await BulleGestion.send_message(msg, false)
+	msg = "Vous pourrez consulté le rapport du résultat de ces examens dans l'historique de vos notifications"
+	await BulleGestion.send_message(msg, false)
+
+	# Explication des examens d'entrée
+	msg = "La nouvelle année arrive donc et les nouvelle recru avec"
+	await BulleGestion.send_message(msg, false)
+	_tuto_buble.show_buble(270,47,875,485)
+	msg = "Afin d'avoir des nouvelles recrus avec un meilleur niveau vous pouvez ajuster "
+	msg += "la dureté de la séléction à l'entrée dans le menu des batiments"
+	await BulleGestion.send_message(msg, false)
+	msg = "A noter que cela aura cependant un impact direct sur le nombre d'étudiant recruté"
+	await BulleGestion.send_message(msg, false)
+	_tuto_buble.hide()
+
 
 
 # Tutoriel au début de la deuxième année de service du directeur
