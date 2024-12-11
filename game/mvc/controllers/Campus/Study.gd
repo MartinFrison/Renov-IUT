@@ -190,12 +190,14 @@ static func door_adjust_mood(day : int) -> void:
 	for i in range(1,6):
 		var code = Utils.dept_index_to_string(i)
 		var build = Building.get_building(code)
-		var value = 0.05/360
 		
 		if build.isDoorLocked():
-			Study.boost_level_student(code, value * day)
+			# si la porte est bloquer, les étudiants ne sont pas content
+			# leur satisfaction tends vers 0
+			Study.mood_fluctuation(code, 0, 0.05)
 		else:
-			Study.drop_level_student(code, value * day)
+			# sinon il sont content et leur satisfaction tend vers 1
+			Study.mood_fluctuation(code, 1, 0.05)
 
 
 
