@@ -173,6 +173,7 @@ static func teacher_adjust_level() -> void:
 			# On utilise une fonction sigmoide pour calculer une valeur a partir du ratio
 			# valeur de la sigmoide: x=0 -> 0, x=0.2 -> 0.42, x=0.4 -> 0.85, x=1 -> 0.98
 			var ratioValue = ratio*GlobalData.adjust_level()
+			ratioValue *=2 # reduit simplement par 2 le nombre de prof nécéssaire à niveau egale
 			var k = 10
 			var x0 = 0.2
 			ratioValue = 1 / (1 + exp(-k * (ratioValue - x0))) - (1 / (1 + exp(k * x0)))
@@ -195,10 +196,10 @@ static func door_adjust_mood() -> void:
 		if build.isDoorLocked():
 			# si la porte est bloquer, les étudiants ne sont pas content
 			# leur satisfaction tends vers 0
-			Study.mood_fluctuation(code, 0, 0.05 / GlobalData.adjust_satisfaction())
+			Study.mood_fluctuation(code, 0, 0.06 / GlobalData.adjust_satisfaction())
 		else:
 			# sinon il sont content et leur satisfaction tend vers 1
-			Study.mood_fluctuation(code, 1, 0.05 * GlobalData.adjust_satisfaction())
+			Study.mood_fluctuation(code, 1, 0.04 * GlobalData.adjust_satisfaction())
 
 
 
@@ -255,42 +256,48 @@ static func level_fluctuation(dept : String, value : float, coeff : float) -> vo
 		
 		# On applique la valeur calculé précédement avec son coefficient
 		var new_level = Student.get_level(i) * (1-coeff) + final_value * coeff
-		Student.set_mood(i, new_level)
+		Student.set_level(i, new_level)
 
-
-
-
-static func drop_mood_student(dept : String, value : float) -> void:
-	value = max(0, value)
-	var id = Student.get_dept_ids(dept)
-	for i in id:
-		var mood = Student.get_mood(i) - Utils.randfloat_in_range(value * 0.65 / GlobalData.adjust_satisfaction(), value * 1.35 / GlobalData.adjust_satisfaction())
-		Student.set_mood(i, mood)
-
-static func boost_mood_student(dept : String, value : float) -> void:
-	value = max(0, value)
-	var id = Student.get_dept_ids(dept)
-	for i in id:
-		var mood = Student.get_mood(i) + Utils.randfloat_in_range(value * 0.65 * GlobalData.adjust_satisfaction(), value * 1.35 * GlobalData.adjust_satisfaction())
-		Student.set_mood(i, mood)
-
-
-static func drop_level_student(dept : String, value : float) -> void:
-	value = max(0, value)
-	var id = Student.get_dept_ids(dept)
-	for i in id:
-		var level = Student.get_level(i) - Utils.randfloat_in_range(value * 0.65 / GlobalData.adjust_level(), value * 1.35 / GlobalData.adjust_level())
-		Student.set_level(i, level)
-
-
-static func boost_level_student(dept : String, value : float) -> void:
-	value = max(0, value)
-	var id = Student.get_dept_ids(dept)
-	for i in id:
-		var level = Student.get_level(i) + Utils.randfloat_in_range(value * 0.65 * GlobalData.adjust_level(), value * 1.35 * GlobalData.adjust_level())
-		Student.set_level(i, level)
 
 
 
 static func student_resign() -> void:
 	Student.rm_student_by_mood(0.2)
+
+
+
+
+
+
+
+
+#
+#static func drop_mood_student(dept : String, value : float) -> void:
+	#value = max(0, value)
+	#var id = Student.get_dept_ids(dept)
+	#for i in id:
+		#var mood = Student.get_mood(i) - Utils.randfloat_in_range(value * 0.65 / GlobalData.adjust_satisfaction(), value * 1.35 / GlobalData.adjust_satisfaction())
+		#Student.set_mood(i, mood)
+#
+#static func boost_mood_student(dept : String, value : float) -> void:
+	#value = max(0, value)
+	#var id = Student.get_dept_ids(dept)
+	#for i in id:
+		#var mood = Student.get_mood(i) + Utils.randfloat_in_range(value * 0.65 * GlobalData.adjust_satisfaction(), value * 1.35 * GlobalData.adjust_satisfaction())
+		#Student.set_mood(i, mood)
+#
+#
+#static func drop_level_student(dept : String, value : float) -> void:
+	#value = max(0, value)
+	#var id = Student.get_dept_ids(dept)
+	#for i in id:
+		#var level = Student.get_level(i) - Utils.randfloat_in_range(value * 0.65 / GlobalData.adjust_level(), value * 1.35 / GlobalData.adjust_level())
+		#Student.set_level(i, level)
+#
+#
+#static func boost_level_student(dept : String, value : float) -> void:
+	#value = max(0, value)
+	#var id = Student.get_dept_ids(dept)
+	#for i in id:
+		#var level = Student.get_level(i) + Utils.randfloat_in_range(value * 0.65 * GlobalData.adjust_level(), value * 1.35 * GlobalData.adjust_level())
+		#Student.set_level(i, level)

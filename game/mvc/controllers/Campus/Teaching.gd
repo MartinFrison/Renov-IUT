@@ -73,21 +73,6 @@ static func mood_fluctuation(dept : String, value : float, coeff : float) -> voi
 
 
 
-static func drop_mood_teacher(dept : String, value : float) -> void:
-	value = max(0, value)
-	var id = Teacher.get_dept_ids(dept)
-	for i in id:
-		var mood = Teacher.get_mood(i) - Utils.randfloat_in_range(value * 0.65 / GlobalData.adjust_satisfaction(), value * 1.35 / GlobalData.adjust_satisfaction())
-		Teacher.set_mood(i, mood)
-
-static func boost_mood_teacher(dept : String, value : float) -> void:
-	value = max(0, value)
-	var id = Teacher.get_dept_ids(dept)
-	for i in id:
-		var mood = Teacher.get_mood(i) + Utils.randfloat_in_range(value * 0.65 * GlobalData.adjust_satisfaction(), value * 1.35 * GlobalData.adjust_satisfaction())
-		Teacher.set_mood(i, mood)
-
-
 
 static func increase_salary(dept : String) -> void:
 	var b = Building.get_building(dept)
@@ -130,3 +115,21 @@ static func pay_adjust_mood() -> void:
 		
 		# On applique la valeur avec un coeff de 30%
 		Teaching.mood_fluctuation(code, 0, 0.3)
+
+
+
+
+#
+#static func drop_mood_teacher(dept : String, value : float) -> void:
+	#value = max(0, value)
+	#var id = Teacher.get_dept_ids(dept)
+	#for i in id:
+		#var mood = Teacher.get_mood(i) - Utils.randfloat_in_range(value * 0.65 / GlobalData.adjust_satisfaction(), value * 1.35 / GlobalData.adjust_satisfaction())
+		#Teacher.set_mood(i, mood)
+#
+#static func boost_mood_teacher(dept : String, value : float) -> void:
+	#value = max(0, value)
+	#var id = Teacher.get_dept_ids(dept)
+	#for i in id:
+		#var mood = Teacher.get_mood(i) + Utils.randfloat_in_range(value * 0.65 * GlobalData.adjust_satisfaction(), value * 1.35 * GlobalData.adjust_satisfaction())
+		#Teacher.set_mood(i, mood)
