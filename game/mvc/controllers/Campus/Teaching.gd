@@ -106,15 +106,22 @@ static func teacher_resign() -> void:
 
 
 # Ajuster la satisfaction selon le salaire
-static func pay_adjust_mood(day: int) -> void:
+# la satisfaction de chaque profs tend vers une valeur qui dépend du salaire
+static func pay_adjust_mood() -> void:
 	for i in range(1,6):
-		var value = 0
+		# valeur pour le salaire minimal:
+		var value = 0.6
 		var code = Utils.dept_index_to_string(i)
 		if Building.get_building(code).get_pay_teacher() >= 4400:
-			value = 0.2
+			value = 1
 		elif Building.get_building(code).get_pay_teacher() >= 3600:
-			value = 0.1
+			value = 0.85
 		
-		value = value /360 
-		if value > 0:
-			Teaching.boost_mood_teacher(code, value * day)
+		# La difficulté influ sur la valeur vers laquelle on tend
+		value *= GlobalData.adjust_satisfaction()
+		# On rajoute un peu d'aléa 
+		# Si la valeur depasse eventuellement 1 elle sera de toute facon majoré ensuite
+		value *= Utils.randfloat_in_range(0.8,1.2)
+		
+		# On applique la valeur avec un coeff de 30%
+		Teaching.mood_fluctuation(code, 0, 0.3)

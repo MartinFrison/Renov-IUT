@@ -186,18 +186,19 @@ static func teacher_adjust_level() -> void:
 
 
 # Ajuster le mood etudiant selon si les portes des salles sont ouverte ou fermez
-static func door_adjust_mood(day : int) -> void:
+static func door_adjust_mood() -> void:
 	for i in range(1,6):
 		var code = Utils.dept_index_to_string(i)
 		var build = Building.get_building(code)
 		
+		# la difficulté ajuste les coefficients de maniere plus ou moins avantageuse
 		if build.isDoorLocked():
 			# si la porte est bloquer, les étudiants ne sont pas content
 			# leur satisfaction tends vers 0
-			Study.mood_fluctuation(code, 0, 0.05)
+			Study.mood_fluctuation(code, 0, 0.05 / GlobalData.adjust_satisfaction())
 		else:
 			# sinon il sont content et leur satisfaction tend vers 1
-			Study.mood_fluctuation(code, 1, 0.05)
+			Study.mood_fluctuation(code, 1, 0.05 * GlobalData.adjust_satisfaction())
 
 
 
