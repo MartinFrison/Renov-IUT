@@ -112,7 +112,7 @@ static func pay_adjust_mood() -> void:
 		
 		
 		# On applique la valeur avec un coeff de 30%
-		Teaching.mood_fluctuation(code, 0, 0.3)
+		Teaching.mood_fluctuation(code, value, 0.3)
 
 
 

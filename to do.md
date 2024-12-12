@@ -11,7 +11,7 @@ Graphique 2D:
 
 - Style des panels de fin de chaque scénario (vote à améliorer, élitisme à faire)
 - Ajout d'effet spéciaux 2D
-
+- ameliorer le style des notif pop-up et les faire descendre moins bas
 
 
 Code:
@@ -21,19 +21,18 @@ Code:
 - Ajout de quelque évenements aléatoire simple : Martin
 
 
-
+- revoir le temps et le cout de renovation + son affichage : Martin
 - Financement, à terminer : Elena
-
-
 - Gestion de l'attractivité
 
+- Mettre a jour la gestion de la satisfaction
 
 
-Détail:
 - Résoudre les problème d'affichage dans l'historique des notifs
 - Ajout de tout les messages et notifs manquant dans le code et definition de leur type (chauffage ect..)
 - Affichage du cout quand le joueur s'apprête a allumer le chauffage ou embaucher quelqu'un
 - Ajouter des conditions au licensiment et à l'embauche (soit un dédommagement soit une limite mensuels)
+
 
 
 Bonus:
