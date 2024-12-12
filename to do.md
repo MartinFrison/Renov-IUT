@@ -25,7 +25,8 @@ Code:
 - Financement, à terminer : Elena
 - Gestion de l'attractivité
 
-- Mettre a jour la gestion de la satisfaction
+- Mettre a jour la gestion de la satisfaction : Martin
+- Prendre en compte le nombre de diplomé pour l'éléction : Martin
 
 
 - Résoudre les problème d'affichage dans l'historique des notifs

@@ -69,7 +69,7 @@ static func mood_fluctuation(dept : String, value : float, coeff : float) -> voi
 		
 		# On applique la valeur avec son coefficient
 		var new_mood = Student.get_mood(i) * (1-coeff) + value * coeff
-		Student.set_mood(i, new_mood)
+		Teacher.set_mood(i, new_mood)
 
 
 

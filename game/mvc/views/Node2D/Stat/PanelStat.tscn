@@ -30,7 +30,7 @@ text = "Date"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="mood_teach" type="Label" parent="."]
+[node name="mood_stud" type="Label" parent="."]
 offset_left = 470.0
 offset_top = 56.0
 offset_right = 577.0
@@ -38,7 +38,7 @@ offset_bottom = 81.0
 text = "Satisfaction"
 horizontal_alignment = 1
 
-[node name="mood_stud" type="Label" parent="."]
+[node name="mood_teach" type="Label" parent="."]
 offset_left = 614.0
 offset_top = 57.0
 offset_right = 722.0
