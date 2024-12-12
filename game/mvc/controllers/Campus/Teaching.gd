@@ -103,15 +103,13 @@ static func teacher_resign() -> void:
 static func pay_adjust_mood() -> void:
 	for i in range(1,6):
 		# valeur pour le salaire minimal:
-		var value = 0.6
+		var value = 0.65
 		var code = Utils.dept_index_to_string(i)
 		if Building.get_building(code).get_pay_teacher() >= 4400:
 			value = 1
 		elif Building.get_building(code).get_pay_teacher() >= 3600:
 			value = 0.85
 		
-		# La difficulté influ sur la valeur vers laquelle on tend
-		value *= GlobalData.adjust_satisfaction()
 		
 		# On applique la valeur avec un coeff de 30%
 		Teaching.mood_fluctuation(code, 0, 0.3)

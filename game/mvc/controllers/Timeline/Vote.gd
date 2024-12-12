@@ -24,6 +24,8 @@ static func nb_voix_student_per_dept(dept: String) -> int:
 
 static func nb_voix_per_dept(dept: String) -> int:
 	var n = nb_voix_teacher_per_dept(dept) + nb_voix_student_per_dept(dept)
+	if n == 0:
+		return 1
 	return n
 
 static func nb_voix_teacher() -> int:
@@ -31,6 +33,8 @@ static func nb_voix_teacher() -> int:
 	for i in 5:
 		var c = Utils.dept_index_to_string(i+1)
 		n += nb_voix_teacher_per_dept(c)
+	if n == 0:
+		return 1
 	return n
 
 static func nb_voix_student() -> int:
@@ -38,6 +42,8 @@ static func nb_voix_student() -> int:
 	for i in 5:
 		var c = Utils.dept_index_to_string(i+1)
 		n += nb_voix_student_per_dept(c)
+	if n == 0:
+		return 1
 	return n
 
 static func nb_voix_total() -> int:

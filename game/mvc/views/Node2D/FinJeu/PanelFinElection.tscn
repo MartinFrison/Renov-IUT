@@ -66,7 +66,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="GridContainerVoix" type="GridContainer" parent="Vote"]
+[node name="GridVoix" type="GridContainer" parent="Vote"]
 layout_mode = 0
 offset_left = 37.0
 offset_top = 129.0
@@ -76,7 +76,7 @@ theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 7
 columns = 4
 
-[node name="dept1" type="Label" parent="Vote/GridContainerVoix"]
+[node name="dept1" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -84,103 +84,103 @@ theme_override_font_sizes/font_size = 13
 text = "nom"
 autowrap_mode = 3
 
-[node name="teach_dept1" type="Label" parent="Vote/GridContainerVoix"]
+[node name="teach_dept1" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 text = "voix"
 
-[node name="stud_dept1" type="Label" parent="Vote/GridContainerVoix"]
+[node name="stud_dept1" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 text = "voix"
 
-[node name="total_dept1" type="Label" parent="Vote/GridContainerVoix"]
+[node name="total_dept1" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 text = "voix"
 
-[node name="dept2" type="Label" parent="Vote/GridContainerVoix"]
+[node name="dept2" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "nom"
 autowrap_mode = 3
 
-[node name="teach_dept2" type="Label" parent="Vote/GridContainerVoix"]
+[node name="teach_dept2" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 text = "voix"
 
-[node name="stud_dept2" type="Label" parent="Vote/GridContainerVoix"]
+[node name="stud_dept2" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 text = "voix"
 
-[node name="total_dept2" type="Label" parent="Vote/GridContainerVoix"]
+[node name="total_dept2" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 text = "voix"
 
-[node name="dept3" type="Label" parent="Vote/GridContainerVoix"]
+[node name="dept3" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "nom"
 autowrap_mode = 3
 
-[node name="teach_dept3" type="Label" parent="Vote/GridContainerVoix"]
+[node name="teach_dept3" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 text = "voix"
 
-[node name="stud_dept3" type="Label" parent="Vote/GridContainerVoix"]
+[node name="stud_dept3" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 text = "voix"
 
-[node name="total_dept3" type="Label" parent="Vote/GridContainerVoix"]
+[node name="total_dept3" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 text = "voix"
 
-[node name="dept4" type="Label" parent="Vote/GridContainerVoix"]
+[node name="dept4" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "nom"
 autowrap_mode = 3
 
-[node name="teach_dept4" type="Label" parent="Vote/GridContainerVoix"]
+[node name="teach_dept4" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 text = "voix"
 
-[node name="stud_dept4" type="Label" parent="Vote/GridContainerVoix"]
+[node name="stud_dept4" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 text = "voix"
 
-[node name="total_dept4" type="Label" parent="Vote/GridContainerVoix"]
+[node name="total_dept4" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 text = "voix"
 
-[node name="dept5" type="Label" parent="Vote/GridContainerVoix"]
+[node name="dept5" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "nom"
 autowrap_mode = 3
 
-[node name="teach_dept5" type="Label" parent="Vote/GridContainerVoix"]
+[node name="teach_dept5" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 text = "voix"
 
-[node name="stud_dept5" type="Label" parent="Vote/GridContainerVoix"]
+[node name="stud_dept5" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 text = "voix"
 
-[node name="total_dept5" type="Label" parent="Vote/GridContainerVoix"]
+[node name="total_dept5" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 text = "voix"
 
-[node name="emptyTail" type="Label" parent="Vote/GridContainerVoix"]
+[node name="emptyTail" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 
-[node name="total_teach" type="Label" parent="Vote/GridContainerVoix"]
+[node name="total_teach" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 text = "teach"
 
-[node name="total_stud" type="Label" parent="Vote/GridContainerVoix"]
+[node name="total_stud" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 text = "stud
 "
 
-[node name="total" type="Label" parent="Vote/GridContainerVoix"]
+[node name="total" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "total"

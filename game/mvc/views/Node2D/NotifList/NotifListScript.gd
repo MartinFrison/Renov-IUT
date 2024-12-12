@@ -6,8 +6,11 @@ var page_size : int = 8
 var buttons : Array[Button]
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var message = get_node("Text")
+	message.visible = false
 	z_index = 2
 	notif = Notification.get_all_ids()
 	page = 0	
@@ -52,11 +55,10 @@ func _on_last_pressed() -> void:
 		open_page()
 
 func notif_pressed(id : int) -> void:
-	var message = get_node("Text")
+	var message = get_node("Text") as Label
 	message.visible = true
 	message.text = "%s: \n\n%s" % [Notification.get_object(id), Notification.get_message(id)]
-	await get_tree().create_timer(5.0).timeout
-	message.visible = false
+
 
 
 func _on_close_pressed() -> void:

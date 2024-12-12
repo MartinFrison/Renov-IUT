@@ -16,11 +16,11 @@ func chooseMode(scenario : int, difficulty) -> void:
 func startGame() -> void:
 		_tuto = Tutorial.new(GlobalData.get_difficulty()==1)
 		match _id:
-			1:
+			0:
 				_scenario = await ScenarioElection.new()
-			2:
+			1:
 				_scenario = await ScenarioRenovation.new()
-			3: 
+			2: 
 				_scenario = await ScenarioElitisme.new()
 		
 		add_child(_scenario)
