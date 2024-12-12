@@ -52,55 +52,54 @@ func tuto_trimester1() -> void:
 	var msg
 	
 	# ¨résentation générale du jeu
-	msg = "Bienvenu dans Renov'IUT un jeu de gestion dans lequel vous incarnez "
-	msg += "le directeur de l'IUT Robert Schuman"
+	msg = "Bienvenue dans Renov'IUT, un jeu de gestion dans lequel vous incarnez "
+	msg += "le directeur de l'IUT Robert Schuman."
 	await BulleGestion.send_message(msg, false)
-	msg = "Votre objectif est de prendre des décisions dans le but de maximiser "
-	msg += "la satisfaction des étudiants et des enseignants ainsi que la réussite scolaire"
+	msg = "Votre objectif est de prendre des décisions ajustées dans le but de maximiser "
+	msg += "la satisfaction des étudiants et des enseignants ainsi que la réussite scolaire."
 	await BulleGestion.send_message(msg, false)
 
 	# Explication des donnée générale
 	_tuto_buble.show_buble(1148,100,3,1)
-	msg = "En haut de l'écran sont afficher les données générale de l'IUT"
+	msg = "En haut de l'écran sont affichéees les données générales de l'IUT..."
 	await BulleGestion.send_message(msg, false)
-	msg = "Cela comprend la satisfaction, le niveau des étudiants, l'attractivité de l'IUT "
-	msg += "ainsi que la date"
+	msg = "...dont la satisfaction, le niveau des étudiants, l'attractivité de l'établissement, "
+	msg += "ainsi que la date."
 	await BulleGestion.send_message(msg, false)
 	
 	# Explication du budget
 	_tuto_buble.show_buble(230,100,3,1)
-	msg = "Vous y trouverez également le budget de l'IUT"
+	msg = "Vous y trouverez également le budget de l'IUT."
 	await BulleGestion.send_message(msg, false)
-	msg = "Celui ci comprend une partie générale pouvant être aloué pour n'importe quel dépense "
-	msg += "et une partie aloué pour chaque batiment qui ne peut être utilisés que pour "
-	msg += "financer le batiment auquel il appartient "
+	msg = "Celui-ci comprend une partie générale pouvant être allouée pour toutes dépenses "
+	msg += "et une partie allouée par bâtiment, qui ne peut être utilisés que pour "
+	msg += "financer le bâtiment dont elle relève. "
 	await BulleGestion.send_message(msg, false)
-	msg = "Le budget total correspond donc à votre budget générale et au budget de tout "
-	msg += "les batiments cumulé"
+	msg = "Le budget total est donc constitué par votre budget général et le budget de tous "
+	msg += "les bâtiments cumulés."
 	await BulleGestion.send_message(msg, false)
 	
 	# Explication des donnée et infos sur les batiments
 	_tuto_buble.show_buble(270,140,875,210)
-	msg = "A droite de l'écran vous trouverez les mêmes donnée relative à chaque "
-	msg += "batiment spécifique"
+	msg = "A droite de l'écran, vous trouverez les mêmes données relatives à chaque "
+	msg += "bâtiment spécifique que vous sélectionnez."
 	await BulleGestion.send_message(msg, false)
-	msg = "Vous trouvez en plus des informations en plus tels que l'état du batiment ou "
-	msg += "la difficulté des examens"
+	msg = "En outre, y sont affichées des informations supplémentaires que l'état du bâtiment ou "
+	msg += "la difficulté des examens, ceux d'entrée ou de passage à l'année suivante."
 	await BulleGestion.send_message(msg, false)
-	msg = "Vous pouvez accèder aux informations d'un batiment en cliquant dessus dans la "
-	msg += "scène 3D"
+	msg = "Pour accéder aux informations d'un bâtiment, cliquez simplement sur celui qui vous intéresse."
 	await BulleGestion.send_message(msg, false)
 	
 	# Explication des actions sur les batiments
 	_tuto_buble.show_buble(270,300,875,350)
-	msg = "Enfin vous pouvez prendre des décisions relative à chaque batiments dans le "
-	msg += "menu à droite"
+	msg = "Plus important encore, vous pouvez prendre des décisions relatives à chaque bâtiment dans le "
+	msg += "menu à droite."
 	await BulleGestion.send_message(msg, false)
 	
 	# Comment passer au trimestre suivant
 	_tuto_buble.show_buble(60,60,1080,23)
-	msg = "Une fois que vous avez prit les décisions qui vous semble juste vous pouvez "
-	msg += "avancer jusqu'au trimestre suivant en cliquant sur le bouton en haut à droite"
+	msg = "Une fois que vous avez pris les décisions qui vous sembles appropriées, vous pouvez "
+	msg += "avancer jusqu'au trimestre suivant en cliquant sur le bouton rond avec une flèche, en haut à droite."
 	await BulleGestion.send_message(msg, false)
 	_tuto_buble.hide()
 
@@ -112,26 +111,28 @@ func tuto_trimester2() -> void:
 	
 	# Bilan du premier trimestre
 	msg = "Le premier trimestre est passé, "
-	msg += "vous pouvez désormais consulté l'impact qu'à eu votre gestion "
-	msg += "sur l'IUT"
+	msg += "vous pouvez désormais consulter l'impact qu'à eu votre gestion "
+	msg += "sur l'IUT. Tadam !"
 	await BulleGestion.send_message(msg, false)
 
 	# Explication des notification
 	_tuto_buble.show_buble(100,100,5,102)
-	msg = "Vous pouvez consulter le bilan de vos dépense ce semestre en cliquant sur "
-	msg += "le menu des notifications à droite de l'écran"
+	msg = "Vous pouvez consulter le bilan de vos dépenses courantes en cliquant sur "
+	msg += "le menu des notifications à gauche de l'écran."
 	await BulleGestion.send_message(msg, false)
 	_tuto_buble.hide()
 	
 	# Explication de la renovation
-	msg = "Par ailleur vous avez sans doute remarqué que certains batiments sont en "
-	msg += "mauvais état.."
+	msg = "Vous avez sans doute remarqué, par ailleurs, que certains bâtiments sont en "
+	msg += "mauvais état..."
 	await BulleGestion.send_message(msg, false)
 	_tuto_buble.show_buble(270,90,875,355)
-	msg = "Vous pouvez y remédier en lancant des travaux de rénovations "
+	msg = "Vous pouvez y remédier en lancant des travaux de rénovation."
 	await BulleGestion.send_message(msg, false)
-	msg = "Pour cela vous devez simplement embaucher des ouvriers que vous "
-	msg += "devrez rémunérer mensuellement "
+	msg = "Pour ce faire, pensez à embaucher des ouvriers que vous "
+	msg += "devrez rémunérer mensuellement. "
+	msg += "(Heureusement d'ailleurs, vous ne voudriez pas "
+	msg += "aller sur les échafaudages, j'imagine !)"
 	await BulleGestion.send_message(msg, false)
 	_tuto_buble.hide()
 
@@ -140,14 +141,15 @@ func tuto_trimester3() -> void:
 	var msg
 	
 	# Explication des examens finaux
-	msg = "Le printemps est là et les examens de fin d'année auront bientôt lieu"
+	msg = "Une petite rose pour vous @)--`- Le printemps est là et "
+	msg += " les examens de fin d'année auront bientôt lieu."
 	await BulleGestion.send_message(msg, false)
 	_tuto_buble.show_buble(270,47,875,520)
 	msg = "Vous pouvez ajuster la difficulté de ces examens dans le menu d'action de chaque "
-	msg += "batiment"
+	msg += "bâtiment (chaque département a le droit d'en décider indépendamment des autres)."
 	await BulleGestion.send_message(msg, false)
-	msg = "Cela vous permettra de d'exclure les étudiants que vous jugez trop mauvais,"
-	msg += "mais attention cela peut aussi avoir des concéquences"
+	msg = "Cela vous permettra d'exclure les étudiants que vous jugez trop mauvais,"
+	msg += "mais attention ! Ceci n'est pas sans conséquences."
 	await BulleGestion.send_message(msg, false)
 	_tuto_buble.hide()
 
@@ -157,21 +159,23 @@ func tuto_trimester4() -> void:
 	var msg
 	
 	# Rapport sur les examens finaux
-	msg = "Vous avez atteint la fin de votre première année d'exercice"
+	msg = "Première étape révolu : vous avez atteint la fin de votre première année d'exercice."
 	await BulleGestion.send_message(msg, false)
-	msg = "Les examens on eu lieu et les étudiants n'ayant pas le niveau ont été renvoyé"
+	msg = "Les examens ont bien eu lieu et les étudiants n'ayant pas le niveau ont été renvoyés. "
+	msg += "(Espérons qu'ils s'étaient inscrits ailleurs sur Parcoursup.)"
 	await BulleGestion.send_message(msg, false)
-	msg = "Vous pouvez consulté le rapport du résultat de ces examens dans le menu des notifications"
+	msg = "Vous pouvez consulter le rapport du résultat de ces examens dans le menu des notifications."
 	await BulleGestion.send_message(msg, false)
 
 	# Explication des examens d'entrée
-	msg = "La nouvelle année arrive donc et les nouvelle recru avec"
+	msg = "La nouvelle année arrive et les nouveaux venus avec !"
 	await BulleGestion.send_message(msg, false)
 	_tuto_buble.show_buble(270,47,875,485)
-	msg = "Afin d'avoir des nouvelles recrus avec un meilleur niveau vous pouvez ajuster "
-	msg += "la dureté de la séléction à l'entrée dans le menu des batiments"
+	msg = "Afin d'avoir des nouvelles recrues avec un meilleur niveau scolaire, vous pouvez ajuster"
+	msg += "la séléction à l'entrée dans le menu des bâtiments."
 	await BulleGestion.send_message(msg, false)
-	msg = "A noter que cela aura cependant un impact direct sur le nombre d'étudiant recruté"
+	msg = "À noter, cependant, que cela aura un impact direct sur le nombre d'étudiants admis, "
+	msg += "ainsi que sur la réputation de l'établissement."
 	await BulleGestion.send_message(msg, false)
 	_tuto_buble.hide()
 
@@ -181,6 +185,6 @@ func tuto_trimester4() -> void:
 func tuto_trimester5() -> void:
 	var msg
 	
-	msg = "Une nouvelle année commence, les nouvelles recrues sont arrivées, vous pouvez consulté "
-	msg += "le rapport des nouvelles inscriptions dans le menu des notifications"
+	msg = "Une nouvelle année commence, les newbies sont arrivés, vous pouvez consulter "
+	msg += "le rapport des nouvelles inscriptions dans le menu des notifications."
 	await BulleGestion.send_message(msg, false)
