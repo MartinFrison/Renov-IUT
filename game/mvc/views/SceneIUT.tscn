@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://mvc/views/RenovIUTApp.gd" id="1_drlro"]
 [ext_resource type="Texture2D" uid="uid://b8bjiydhyyapq" path="res://mvc/views/images/buttons/notification_button.png" id="3_4oyj6"]
 [ext_resource type="Texture2D" uid="uid://djjecyhdmbwp8" path="res://mvc/views/images/buttons/start_button.png" id="3_bqdem"]
-[ext_resource type="Script" path="res://mvc/views/Node3D/camera_root.gd" id="3_et11y"]
+[ext_resource type="Script" path="res://mvc/views/Node3D/CameraRoot.gd" id="3_et11y"]
 [ext_resource type="PackedScene" uid="uid://lrmgb23vrj1e" path="res://mvc/views/Node2D/Stat/PanelStat.tscn" id="4_t3hyp"]
 [ext_resource type="Texture2D" uid="uid://dp648p2m2plvw" path="res://mvc/views/images/interface/objects/hourglass.png" id="5_5lmpc"]
 [ext_resource type="Script" path="res://mvc/views/Node3D/camera_3d.gd" id="5_h3jqx"]

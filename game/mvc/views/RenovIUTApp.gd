@@ -163,5 +163,3 @@ func notifyStateChanged() -> void:
 						
 						# Remplace le matériau sur la surface
 						mesh.surface_set_material(material_index, new_material)
-
-		

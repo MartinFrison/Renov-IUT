@@ -52,6 +52,9 @@ func tuto_next():
 func tuto_trimester1() -> void:
 	var msg
 	
+	var cam = RenovIUTApp.app.get_node("Vue3D/Camera_root") as CameraRoot
+	cam.rotate_tutorial(3.5)
+	
 	# Présentation générale du jeu
 	msg = "Bienvenue dans Renov'IUT, un jeu de gestion dans lequel vous incarnez "
 	msg += "le directeur de l'IUT Robert Schuman."

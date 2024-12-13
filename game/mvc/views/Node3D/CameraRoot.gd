@@ -1,3 +1,4 @@
+class_name CameraRoot
 extends Node3D
 
 var _default_scale
@@ -37,3 +38,10 @@ func _input(event: InputEvent) -> void:
 			rotate_root(1.5)
 		elif event.keycode == KEY_LEFT:
 			rotate_root(-1.5)
+
+
+func rotate_tutorial(time : float):
+	var delay = time/180
+	for i in 180:
+		rotate_root(2)
+		await get_tree().create_timer(delay).timeout

@@ -16,23 +16,25 @@ Graphique 2D:
 
 Code:
 
+- Financement, à terminer : Elena
+- Gestion de l'attractivité : Elena
+
+
 - Ajout d'un tutoriel si la difficulté est facile : Martin
 - Gestion des grandes vacances : Martin
 - Ajout de quelque évenements aléatoire simple : Martin
 
 
 - revoir le temps et le cout de renovation + son affichage : Martin
-- Financement, à terminer : Elena
-- Gestion de l'attractivité
-
 - Mettre a jour la gestion de la satisfaction : Martin
 - Prendre en compte le nombre de diplomé pour l'éléction : Martin
 
 
-- Résoudre les problème d'affichage dans l'historique des notifs
-- Ajout de tout les messages et notifs manquant dans le code et definition de leur type (chauffage ect..)
 - Affichage du cout quand le joueur s'apprête a allumer le chauffage ou embaucher quelqu'un
 - Ajouter des conditions au licensiment et à l'embauche (soit un dédommagement soit une limite mensuels)
+
+- Résoudre les problème d'affichage dans l'historique des notifs
+- Ajout de tout les messages et notifs manquant dans le code et definition de leur type (chauffage ect..)
 
 
 
