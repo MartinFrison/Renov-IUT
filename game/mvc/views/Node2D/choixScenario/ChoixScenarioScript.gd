@@ -18,7 +18,8 @@ func init(iut : IUTFacade, app : RenovIUTApp) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#$audioSonore.play()
+	var audio_player = get_node("sound")
+	audio_player.play()
 	pass
 
 
