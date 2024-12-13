@@ -62,6 +62,7 @@ func _on_next_pressed() -> void:
 	dept.visible = false
 	await get_tree().create_timer(1.0).timeout
 	illkirch._time.next_Trimestre()
+	dept.visible = true
 	band.visible = false
 	sablier.visible = false
 	
