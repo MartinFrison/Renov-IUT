@@ -52,9 +52,6 @@ func tuto_next():
 func tuto_trimester1() -> void:
 	var msg
 	
-	var cam = RenovIUTApp.app.get_node("Vue3D/Camera_root") as CameraRoot
-	cam.rotate_tutorial(3.5)
-	
 	# Présentation générale du jeu
 	msg = "Bienvenue dans Renov'IUT, un jeu de gestion dans lequel vous incarnez "
 	msg += "le directeur de l'IUT Robert Schuman."
@@ -64,10 +61,11 @@ func tuto_trimester1() -> void:
 	await BulleGestion.send_message(msg, false)
 	
 	# Explication des contrôles
+	var cam = RenovIUTApp.app.get_node("Vue3D/Camera_root") as CameraRoot
+	cam.rotate_tutorial(3.5)
 	msg = "Vous pouvez regarder le campus du point d'observation d'origine "
 	msg += "ou en faire un peu le tour, en utilisant les touches de direction de votre clavier. "
 	await BulleGestion.send_message(msg, false)
-	rotation_degrees.y += _rotation_speed * get_process_delta_time()
 
 	# Explication des donnée générale
 	_tuto_buble.show_buble(1148,100,3,1)
