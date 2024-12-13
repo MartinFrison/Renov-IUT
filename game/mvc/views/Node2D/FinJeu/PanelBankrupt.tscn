@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcy8wq8dtdyxa"]
+[gd_scene load_steps=8 format=3 uid="uid://dcy8wq8dtdyxa"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/FinJeu/BankruptScript.gd" id="1_2muus"]
 [ext_resource type="Texture2D" uid="uid://bpdfvn1j0iyl8" path="res://mvc/views/images/backgrounds/menu.png" id="2_fcolp"]
+[ext_resource type="AudioStream" uid="uid://u0tjt8rm28x8" path="res://sounds/crying-male-103153.mp3" id="2_hwtcj"]
 [ext_resource type="Texture2D" uid="uid://d15chp85138su" path="res://mvc/views/images/buttons/exit_button.png" id="3_biant"]
 [ext_resource type="Script" path="res://mvc/views/Node2D/Menu/Menu.gd" id="4_0d678"]
 
@@ -26,6 +27,9 @@ corner_radius_bottom_left = 10
 [node name="PanelBankrupt" type="Node2D"]
 z_index = 40
 script = ExtResource("1_2muus")
+
+[node name="lost" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hwtcj")
 
 [node name="Menu" type="Sprite2D" parent="."]
 position = Vector2(585, 323)

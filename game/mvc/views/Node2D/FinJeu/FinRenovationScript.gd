@@ -11,6 +11,9 @@ func _process(delta: float) -> void:
 
 
 func show_result() -> void:
+	var audio_player = get_node("win")
+	audio_player.play()
+	
 	var node
 	var dept = null
 	

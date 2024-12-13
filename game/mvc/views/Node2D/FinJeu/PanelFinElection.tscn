@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://df14ay6p0nv3j"]
+[gd_scene load_steps=9 format=3 uid="uid://df14ay6p0nv3j"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/FinJeu/FinElectionScript.gd" id="1_oysjo"]
+[ext_resource type="AudioStream" uid="uid://cb8w70ricq6l3" path="res://sounds/winning-218995.mp3" id="2_aqmeq"]
 [ext_resource type="Texture2D" uid="uid://bpdfvn1j0iyl8" path="res://mvc/views/images/backgrounds/menu.png" id="2_kmj36"]
 [ext_resource type="Texture2D" uid="uid://d15chp85138su" path="res://mvc/views/images/buttons/exit_button.png" id="3_j466x"]
 [ext_resource type="Script" path="res://mvc/views/Node2D/Menu/Menu.gd" id="4_cuacc"]
@@ -33,6 +34,9 @@ corner_radius_bottom_left = 10
 [node name="PanelFinElection" type="Node2D"]
 z_index = 40
 script = ExtResource("1_oysjo")
+
+[node name="win" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_aqmeq")
 
 [node name="Menu" type="Sprite2D" parent="."]
 position = Vector2(585, 323)

@@ -13,6 +13,9 @@ func _process(delta: float) -> void:
 # On affiche le bilan de la partie au joueur
 func show_bilan() -> void:
 	# Sur le nombre de d'étudiant ayant rejoins une école d'ingénieur
+	var audio_player = get_node("win")
+	audio_player.play()
+	
 	var node = get_node("Message")
 	node.text = "Sous votre mandat, %s étudiants ont pu intégrer une école 
 	d'ingénieurs à l'issue de leur formation." % [Student.get_engineering()]
