@@ -14,13 +14,13 @@ func _process(delta: float) -> void:
 func show_bilan() -> void:
 	# Sur le nombre de d'étudiant ayant rejoins une école d'ingénieur
 	var node = get_node("Message")
-	node.text = "Sous votre manda, %s étudiant on pu intégrer une école 
-	d'ingénieur à l'issu de leur formation" % [Student.get_engineering()]
+	node.text = "Sous votre mandat, %s étudiants ont pu intégrer une école 
+	d'ingénieurs à l'issue de leur formation." % [Student.get_engineering()]
 	
 	# Sur le nombre de diplomé
 	node = get_node("Message2")
-	node.text = "D'autre part, %s étudiant on pu obtenir 
-	leur diplome soit %s par an.
+	node.text = "D'autre part, %s étudiants ont pu obtenir 
+	leur diplôme, soit %s par an.
 	" % [Student.get_graduate(), round(Student.get_graduate()/5)]
 
 

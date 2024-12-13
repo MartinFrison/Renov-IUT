@@ -43,10 +43,10 @@ func mid_game() -> void:
 	if _progression < 2:
 		var year = 2028 if _progression == 0 else 2029
 		if (GlobalData._year == year and GlobalData._month == 6 and  GlobalData._day == 1):
-			var msg = "Il vous reste %s de mandat à servir, les sondages vous donnent actuellement à " % ["deux années" if _progression == 0 else "une année"]
+			var msg = "Il vous reste %s du mandat à servir, les sondages vous donnent actuellement " % ["deux années" if _progression == 0 else "une année"]
 			var sondage_etu = int(Vote.popularity_among_students()*100/Vote.nb_voix_student())
 			var sondage_prof = int(Vote.popularity_among_teachers()*100/Vote.nb_voix_teacher())
-			msg = "%s%s%% dans les intentions de vote des étudiants et %s%% de celles des enseignants" % [msg, sondage_etu, sondage_prof]
+			msg = "%s%s%% dans les intentions de vote des étudiants et %s%% de celles des enseignants." % [msg, sondage_etu, sondage_prof]
 			await BulleGestion.send_message(msg, true)
 			_progression +=1
 

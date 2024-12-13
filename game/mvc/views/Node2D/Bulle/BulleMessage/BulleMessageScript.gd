@@ -25,7 +25,7 @@ func init(message : String) -> void:
 func _input(event):
 	if event is InputEventKey: # test de la touche entrée
 		if event.pressed and (event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER):
-			print("La touche Entrée a été pressée")
+			print("La touche Entrée a été appuyée.")
 			enter()
 	elif event is InputEventMouseButton:
 		if event.pressed and event.button_index == 1: # bouton gauche clické

@@ -70,7 +70,7 @@ static func populate_new_year(scenario : Scenario) -> void:
 	var sum = 0
 	var n
 	var message_2 = ""
-	var message = "Les première année sont arrivée ! \n
+	var message = "Les première année sont arrivés ! \n
 	Ils sont au nombre de "
 	
 	for i in range(1,6): # le département
@@ -81,12 +81,6 @@ static func populate_new_year(scenario : Scenario) -> void:
 
 	message += str(sum) + "\n" + message_2
 	await BulleGestion.send_notif("Début d'année " + str(GlobalData._year), message, 0)
-
-
-
-
-
-
 
 # Calcule le passage à l'année suivante d'un batiment en utilisant le coeff de difficulté des exams finaux
 # Renvoie la [nb_total, nb réussite, nb de redoublement, nb diplomés]
@@ -128,7 +122,7 @@ static func pass_dept_exam(dept : String) -> Array:
 # Renvoie un rapport des examens par notification
 static func pass_next_year() -> void:
 	# Calcule le passage à l'année suivante des étudiants de chaque batiment
-	var obj = "Examen de fin d'année"
+	var obj = "Examens de fin d'année"
 	var msg = ""
 	var global_result = [0,0,0,0]
 	var result = [0,0,0,0]
@@ -141,13 +135,13 @@ static func pass_next_year() -> void:
 		global_result[2] += result[2]
 		global_result[3] += result[3]
 		msg += "\nDans le département %s sur %s étudiants :\n" % [code, result[0]]
-		msg += "%s année réussie, %s diplomés, " % [result[1],result[3]]
+		msg += "%s année réussie, %s diplômés, " % [result[1],result[3]]
 		msg += "%s redoublants et %s exclusions\n" % [result[2], result[0]-result[1]-result[2]]
 	
 	
-	var msg2 = "C'est la fin d'année. Les étudiants ont passée leur examens.\n"
+	var msg2 = "C'est la fin d'année. Les étudiants ont passé leur examens.\n"
 	msg2 += "\nAu sein de l'IUT, sur %s étudiants :\n" % [global_result[0]]
-	msg2 += "   %s ont réussi leur année, dont %s ont eu leur diplome.\n" % [global_result[1],global_result[3]]
+	msg2 += "   %s ont réussi leur année, dont %s ont eu leur diplôme.\n" % [global_result[1],global_result[3]]
 	msg2 += "   %s ont redoublé et %s ont été exclus.\n" % [global_result[2], global_result[0]-global_result[1]-global_result[2]]
 	msg = msg2 + msg
 	BulleGestion.send_notif(obj,msg,0)

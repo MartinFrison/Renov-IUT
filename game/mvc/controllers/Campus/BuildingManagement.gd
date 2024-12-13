@@ -61,12 +61,12 @@ static func advance_work(building: Building, day : int) -> void:
 static func start_renovation(building: Building) -> bool:
 	if building.get_ouvriers() <= 0:
 		await BulleGestion.send_message("Impossible de commencer les travaux : pas 
-		d'ouvriers disponibles",false)
+		d'ouvriers disponibles.",false)
 		return false  # Pas d'ouvriers, pas de travaux
 	
 	if building._is_renovation_underway:
 		await BulleGestion.send_message("Travaux de rénovation déjà en cours 
-		dans ce bâtiment",false)
+		dans ce bâtiment.",false)
 		return false  # Travaux déjà en cours
 
 	
@@ -76,14 +76,14 @@ static func start_renovation(building: Building) -> bool:
 	var free_buildings = Building._buildingsDictionary.size() - Building._total_buildings_under_renovation -1
 	if free_buildings * 300 < Student.compute_nb():
 		await BulleGestion.send_message("Pas assez de bâtiments libres pour 
-		commencer les travaux",false) 
+		commencer les travaux.",false) 
 		return false
 	
 	# Démarrer les travaux de rénovation
 	building.set_renovation_underway(true)
 	RenovIUTApp.app.building_work(Utils.dept_string_to_index(building.get_code()), true)
 	await BulleGestion.send_message("Travaux de rénovation lancés pour le 
-	bâtiment " + building.get_code(),false)
+	bâtiment " + building.get_code() + ".",false)
 	return true
 
 
@@ -95,7 +95,7 @@ static func fireWorker(dept: String) -> void:
 			building.remove_ouvrier()
 			print("Ouvrier renvoyé pour le département ", dept, ". Nombre d'ouvriers restants : ", building.get_ouvriers(), ".")
 		else:
-			print("Aucun ouvrier disponible à renvoyer pour le département ", dept, ".")
+			print("Plus d'ouvriers pour le département ", dept, ".")
 	else:
 		print("Aucun bâtiment trouvé pour le département ", dept, ".")
 
@@ -106,9 +106,9 @@ static func hireWorker(dept: String) -> void:
 	if Building.get_building(dept) != null:
 		var building = Building.get_building(dept)
 		building.add_ouvrier()
-		print("Nouvel ouvrier embauché pour le département", dept, ". Nombre total d'ouvriers :", building.get_ouvriers())
+		print("Nouvel ouvrier embauché pour le département", dept, ". Nombre total d'ouvriers : ", building.get_ouvriers(), ".")
 	else:
-		print("Aucun bâtiment trouvé pour le département", dept)
+		print("Aucun bâtiment trouvé pour le département ", dept, ".")
 
 
 
@@ -120,9 +120,9 @@ static func switchHeat(dept: String) -> void:
 	if Building.get_building(dept) != null:
 		var building = Building.get_building(dept)
 		building.setHeat(!building.is_heating())  # Inverse l'état de chauffage
-		print("Chauffage du département", dept, ":", building.is_heating())
+		print("Chauffage du département ", dept, " :", building.is_heating(), ".")
 	else:
-		print("Aucun bâtiment trouvé pour le département", dept)
+		print("Aucun bâtiment trouvé pour le département ", dept, ".")
 
 
 # Renvoyer un agent de maintenance pour le département donné
@@ -130,9 +130,9 @@ static func fireAgent(dept: String) -> void:
 	if Building.get_building(dept) != null:
 		var building = Building.get_building(dept)
 		building.rm_agent()
-		print("Agent de maintenance renvoyé pour le département", dept, ". Nombre d'agents restants :", building.get_agents_nb())
+		print("Agent de maintenance renvoyé pour le département ", dept, ". Nombre d'agents restants : ", building.get_agents_nb(), ".")
 	else:
-		print("Aucun bâtiment trouvé pour le département", dept)
+		print("Aucun bâtiment trouvé pour le département ", dept, ".")
 
 
 # Embaucher un agent de maintenance pour le département donné
@@ -140,9 +140,9 @@ static func hireAgent(dept: String) -> void:
 	if Building.get_building(dept) != null:
 		var building = Building.get_building(dept)
 		building.add_agent()
-		print("Nouvel agent de maintenance embauché pour le département", dept, ". Nombre total d'agents :", building.get_agents_nb())
+		print("Nouvel agent de maintenance embauché pour le département ", dept, ". Nombre total d'agents :", building.get_agents_nb(), ".")
 	else:
-		print("Aucun bâtiment trouvé pour le département", dept)
+		print("Aucun bâtiment trouvé pour le département ", dept, ".")
 
 
 # Verrouiller la porte du bâtiment pour le département donné
@@ -150,9 +150,9 @@ static func lockDoor(dept: String) -> void:
 	if Building.get_building(dept) != null:
 		var building = Building.get_building(dept)
 		building.setDoorLocked(!building.isDoorLocked())
-		print("Porte verrouillée pour le département", dept)
+		print("Porte verrouillée pour le département ", dept, ".")
 	else:
-		print("Aucun bâtiment trouvé pour le département", dept)
+		print("Aucun bâtiment trouvé pour le département ", dept, ".")
 
 # Détérioration trimestriel des batiments
 static func wear(day : int) -> void:

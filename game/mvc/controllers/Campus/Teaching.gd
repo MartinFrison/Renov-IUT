@@ -9,13 +9,13 @@ const teachers_base_nb: Array = [21, 24, 18, 27, 18] # chiffres réels tirés du
 static func hire_teachers(dept: String, force : bool):
 	#vérifie si il y a moins de 30 profs dans le batiment
 	if !force and Teacher.compute_nb_per_dept(dept) >= 30:
-		await BulleGestion.send_message("Deja maximum d'enseignants dans ce bâtiment.",false)
+		await BulleGestion.send_message("Maximum d'enseignants atteint pour ce département, on n'embauche plus personne.",false)
 		return
 
 	#vérifie si un prof est prêt à être recruté
 	if !force and Teacher.avg_mood_per_dept(dept) < 0.6 and Teacher.compute_nb_per_dept(dept)!=0:
 		await BulleGestion.send_message("Aucun professeur n'est volontaire pour enseigner 
-		dans ce bâtiment.",false)
+		à ce département.",false)
 	else:
 		# Si oui on l'ajoute et défnie aléatoirement sa satisfaction
 		var id = Teacher.add_teacher(dept,true)
@@ -28,17 +28,17 @@ static func hire_teachers(dept: String, force : bool):
 static func fire_teachers(dept: String):
 	#vérifie si il y a moins de 20 profs dans le batiments
 	if Teacher.compute_nb_per_dept(dept) <= 0:
-		await BulleGestion.send_message("Il n'y a déja plus aucun enseignant dans le batiment, catastrophe !",false)
+		await BulleGestion.send_message("Plus aucun enseignant à ce département, catastrophe !",false)
 		return
 	
 	Teacher.rm_teachers_by_dept(dept,1)
-	print("Licenciement d'un enseignant pour le département %s." % dept)
+	print("Licenciement d'un enseignant du département %s." % dept)
 
 
 
 # Fonction pour embaucher des enseignants au départ
 static func populate():
-	print("Recrutement des profs de départ...")
+	print("Recrutement initial des enseignants...")
 	var nb_teachers = 0
 	for i in range(1,6): # par département
 		nb_teachers = teachers_base_nb[i-1]
@@ -77,7 +77,7 @@ static func mood_fluctuation(dept : String, value : float, coeff : float) -> voi
 static func increase_salary(dept : String) -> void:
 	var b = Building.get_building(dept)
 	if b.get_pay_teacher() >= 4400:
-		await BulleGestion.send_message("Le salaire des enseigants ne peut pas dépasser 4400 €", false)
+		await BulleGestion.send_message("Le salaire des enseigants ne peut pas dépasser 4400 €.", false)
 	else:
 		b.add_pay_teacher(800)
 
@@ -85,7 +85,7 @@ static func increase_salary(dept : String) -> void:
 static func decrease_salary(dept : String) -> void:
 	var b = Building.get_building(dept)
 	if b.get_pay_teacher() <=2800:
-		await BulleGestion.send_message("Le salaire des enseigants ne peut pas être inférieur à 2800 €", false)
+		await BulleGestion.send_message("Les enseignants ne sont pas au SMIC, leur salaire ne peut pas être inférieur à 2800 €.", false)
 	else:
 		b.add_pay_teacher(-800)
 

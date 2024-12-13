@@ -61,7 +61,7 @@ func mid_game() -> void:
 		if old_builds[i].get_inventory() >= 100:
 			if !_progression[3+i*4]:
 				_progression[3+i*4] = true
-				msg = "La rénovation du bâtiment %s est terminée !" % [old_builds[i].get_code()]
+				msg = "La rénovation du bâtiment %s est terminée, bien joué." % [old_builds[i].get_code()]
 				b = true
 				break
 		if old_builds[i].get_inventory() >= 50:

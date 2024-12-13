@@ -49,7 +49,7 @@ func mid_game() -> void:
 	if GlobalData.isEndofYear():
 		var msg
 		msg = "À l'heure qu'il est, le nombre d'étudiants ayant rejoint une école d'ingénieurs sous votre 
-		mandat s'élève à %s" % [Student.get_engineering()]
+		mandat s'élève à %s." % [Student.get_engineering()]
 		await BulleGestion.send_message(msg, true)
 
 
