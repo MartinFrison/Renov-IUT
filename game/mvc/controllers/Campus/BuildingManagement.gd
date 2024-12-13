@@ -105,16 +105,11 @@ static func fireWorker(dept: String) -> void:
 static func hireWorker(dept: String) -> void:
 	if Building.get_building(dept) != null:
 		var building = Building.get_building(dept)
-<<<<<<< HEAD
-		building.add_ouvrier()
-		print("Nouvel ouvrier embauché pour le département", dept, ". Nombre total d'ouvriers : ", building.get_ouvriers(), ".")
-=======
 		if building.get_ouvriers()<10:
 			building.add_ouvrier()
 			print("Nouvel ouvrier embauché pour le département", dept, ". Nombre total d'ouvriers :", building.get_ouvriers())
 		else:
 			await BulleGestion.send_message("Vous avez atteint la limite d'ouvriers",false)
->>>>>>> 2d05b98 (changement de la duré de rénovation et limite d'ouvrier embaucher)
 	else:
 		print("Aucun bâtiment trouvé pour le département ", dept, ".")
 
