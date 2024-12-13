@@ -35,7 +35,7 @@ func next_Trimestre():
 	for i in 5:
 		var c = Utils.dept_index_to_string(i+1)
 		var build = Building.get_building(Utils.dept_index_to_string(i+1))
-		BuildingManagement.advance_work(build, 90)
+		BuildingManagement.advance_work(build)
 	#Détérioration trimestriels des batiments
 	BuildingManagement.wear(90)
 	ObserverBuilding.notifyStateChanged()

@@ -1,8 +1,7 @@
 class_name Building
 extends RefCounted
 
-const coeffTempsRenovation = 0.2 # Valeur d'une journée de travail ouvrière
-const coeffTempsInsulation = 0.3 # Valeur d'une journée de travail ouvrière
+const coeffTempsRenovation = 10 # Valeur d'un trimestre de travail ouvrier
 const MonthlySquareMetersHeatingCost = 12 #12$ par metre carré par mois en cas d'isolation 
 #complètement inexsistante
 

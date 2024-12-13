@@ -20,7 +20,6 @@ Code:
 - Gestion de l'attractivité : Elena
 
 
-- Ajout d'un tutoriel si la difficulté est facile : Martin
 - Gestion des grandes vacances : Martin
 - Ajout de quelque évenements aléatoire simple : Martin
 
@@ -46,6 +45,8 @@ Bonus:
 
 
 Fin de projet:
+
+- Revoir toute la hiérachie et les noms de classe (la cohérence est noté)
 - Test du jeu pour ajuster toutes les constantes du code qui influe sur la difficulté et la cohérence 
 de la simulation (ajustement de la satisfaction, de la réussite , des fonds, de la frequence des events ect...)
 - Test pour rechercher les abus du système (pas des bugs) possible par le joueur pour les corrigés 

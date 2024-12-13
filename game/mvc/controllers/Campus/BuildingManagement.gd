@@ -34,8 +34,8 @@ static func decrease_entry_exam_difficulty(dept : String) -> void:
 
 
 
-# Avance les travaux d'un bâtiment donné pour un nb de jours donnée
-static func advance_work(building: Building, day : int) -> void:
+# Avance les travaux d'un bâtiment donné d'un trimestre
+static func advance_work(building: Building) -> void:
 	var workers = building.get_ouvriers()
 	if workers <= 0:
 		return  # Pas d'ouvriers, pas d'avancement possible
@@ -49,7 +49,7 @@ static func advance_work(building: Building, day : int) -> void:
 	
 	# Mise à jour de l'inventaire
 	if building._is_renovation_underway:
-		building.addInventory(renovation_increment* Building.coeffTempsRenovation* day)
+		building.addInventory(renovation_increment* Building.coeffTempsRenovation)
 		if building.get_inventory() >= 100:
 			building.set_renovation_underway(false)
 			RenovIUTApp.app.building_work(Utils.dept_string_to_index(building.get_code()), false)
@@ -105,8 +105,16 @@ static func fireWorker(dept: String) -> void:
 static func hireWorker(dept: String) -> void:
 	if Building.get_building(dept) != null:
 		var building = Building.get_building(dept)
+<<<<<<< HEAD
 		building.add_ouvrier()
 		print("Nouvel ouvrier embauché pour le département", dept, ". Nombre total d'ouvriers : ", building.get_ouvriers(), ".")
+=======
+		if building.get_ouvriers()<10:
+			building.add_ouvrier()
+			print("Nouvel ouvrier embauché pour le département", dept, ". Nombre total d'ouvriers :", building.get_ouvriers())
+		else:
+			await BulleGestion.send_message("Vous avez atteint la limite d'ouvriers",false)
+>>>>>>> 2d05b98 (changement de la duré de rénovation et limite d'ouvrier embaucher)
 	else:
 		print("Aucun bâtiment trouvé pour le département ", dept, ".")
 
