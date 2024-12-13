@@ -3,6 +3,10 @@
 [ext_resource type="Script" path="res://mvc/views/Node2D/NotifList/NotifListScript.gd" id="1_dpasn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_swfnh"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
 bg_color = Color(0.345098, 0.431373, 0.301961, 0.835294)
 border_width_left = 2
 border_width_top = 2
@@ -15,13 +19,17 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6v6w"]
+content_margin_left = 20.0
+content_margin_top = 15.0
+content_margin_right = 20.0
+content_margin_bottom = 15.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ccrxv"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
 bg_color = Color(0.345098, 0.431373, 0.301961, 0.835294)
 border_width_left = 2
 border_width_top = 2
@@ -38,16 +46,18 @@ z_index = 10
 script = ExtResource("1_dpasn")
 
 [node name="Text" type="Label" parent="."]
-offset_left = 562.0
+offset_left = 543.0
 offset_top = 255.0
-offset_right = 787.0
-offset_bottom = 445.0
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 12
+offset_right = 768.0
+offset_bottom = 384.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 11
 theme_override_styles/normal = SubResource("StyleBoxFlat_swfnh")
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 3
+autowrap_mode = 2
+justification_flags = 162
 
 [node name="Close" type="Button" parent="."]
 z_index = 1
@@ -56,12 +66,16 @@ offset_right = 1154.0
 offset_bottom = 647.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_e6v6w")
 flat = true
+alignment = 0
+autowrap_mode = 3
 
 [node name="PanelNotif" type="Panel" parent="."]
-offset_left = 242.0
+offset_left = 223.0
 offset_top = 254.0
-offset_right = 549.0
-offset_bottom = 556.0
+offset_right = 530.0
+offset_bottom = 526.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_ccrxv")
 
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]

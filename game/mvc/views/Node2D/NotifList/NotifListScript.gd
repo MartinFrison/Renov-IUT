@@ -32,10 +32,10 @@ func create_question_button(text : String, id : int, n) -> void:
 	# Créer un bouton
 	var button = Button.new()
 	buttons.append(button)
-	button.text = text
-	button.size = Vector2(230, 17)
-	button.position = Vector2(15, n * 35 + 10)
 	
+	button.text = text
+	button.size = Vector2(278, 25)
+	button.position = Vector2(15, n * 35 + 15)
 
 	var panel = get_node("PanelNotif")
 	panel.add_child(button)
@@ -57,7 +57,7 @@ func _on_last_pressed() -> void:
 func notif_pressed(id : int) -> void:
 	var message = get_node("Text") as Label
 	message.visible = true
-	message.text = "%s: \n\n%s" % [Notification.get_object(id), Notification.get_message(id)]
+	message.text = "%s" % [Notification.get_message(id)]
 
 
 
