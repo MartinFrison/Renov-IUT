@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/FinJeu/BankruptScript.gd" id="1_2muus"]
 [ext_resource type="Texture2D" uid="uid://bpdfvn1j0iyl8" path="res://mvc/views/images/backgrounds/menu.png" id="2_fcolp"]
-[ext_resource type="AudioStream" uid="uid://u0tjt8rm28x8" path="res://sounds/crying-male-103153.mp3" id="2_hwtcj"]
+[ext_resource type="AudioStream" uid="uid://u0tjt8rm28x8" path="res://mvc/views/sounds/crying-male-103153.mp3" id="2_hwtcj"]
 [ext_resource type="Texture2D" uid="uid://d15chp85138su" path="res://mvc/views/images/buttons/exit_button.png" id="3_biant"]
 [ext_resource type="Script" path="res://mvc/views/Node2D/Menu/Menu.gd" id="4_0d678"]
 

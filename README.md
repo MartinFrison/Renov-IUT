@@ -15,17 +15,16 @@ Toutes les images utilisées sont libres de droits :
 - [Banque de photos de l'IUT Robert Schuman](https://seafile.unistra.fr/d/03767a1835b7493b83a6/?p=%2FBelles%20photos%20(libre%20de%20droits&mode=list) ;
 - Dessinées par nous-mêmes, à base d'images libres trouvées sur Internet.
 
-<p style="text-align: center;">![Lancement](screenshots/game_start.png)</p>
+<p style="text-align: center;">![Lancement](visuals/screenshots/game_start.png)</p>
 
 <p style="text-align: center;"><small>Fig.1. Début du jeu</small></p>
 
-<p style="text-align: center;">![Campus](screenshots/main_screen.png)</p>
+<p style="text-align: center;">![Campus](visuals/screenshots/main_screen.png)</p>
 
 <p style="text-align: center;"><small>Fig.2. Fenêtre principale : le campus au printemps</small></p>
 
-<p style="text-align: center;">![Mission](visuels/captures/mission.png)
-![Urgence](visuels/captures/urgent.png)
-![Bilan](visuels/captures/result.png)</p>
+<p style="text-align: center;">![Mission](visuals/screenshots/mission.png)
+![Bilan](visuals/screenshots/result.png)</p>
 
 <p style="text-align: center;"><small>Fig.3-5. Notifications</small></p>
 

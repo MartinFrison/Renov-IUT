@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://crx1f60onch8t"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/choixScenario/ChoixScenarioScript.gd" id="1_m1i0s"]
-[ext_resource type="AudioStream" uid="uid://o6x2qacwky5a" path="res://sounds/paginas-259977.mp3" id="2_24im8"]
+[ext_resource type="AudioStream" uid="uid://o6x2qacwky5a" path="res://mvc/views/sounds/paginas-259977.mp3" id="2_24im8"]
 [ext_resource type="Texture2D" uid="uid://dw3prma6xre2g" path="res://mvc/views/images/backgrounds/menu_v2.png" id="2_ibg5x"]
 [ext_resource type="Texture2D" uid="uid://djjecyhdmbwp8" path="res://mvc/views/images/buttons/start_button.png" id="3_cfp4q"]
 
