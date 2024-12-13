@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://7l2pvki7bpwx"]
+[gd_scene load_steps=7 format=3 uid="uid://7l2pvki7bpwx"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/FinJeu/FinElitismeScript.gd" id="1_oljuh"]
 [ext_resource type="Texture2D" uid="uid://bpdfvn1j0iyl8" path="res://mvc/views/images/backgrounds/menu.png" id="2_1b1r5"]
 [ext_resource type="Texture2D" uid="uid://d15chp85138su" path="res://mvc/views/images/buttons/exit_button.png" id="3_ytiw7"]
+[ext_resource type="Script" path="res://mvc/views/Node2D/Menu/Menu.gd" id="4_5if3a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgcxq"]
 content_margin_left = 20.0
@@ -15,7 +16,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3myga"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jd85v"]
 bg_color = Color(0.294118, 0.329412, 0.278431, 0.784314)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -52,6 +53,7 @@ offset_bottom = 628.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_3myga")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jd85v")
 icon = ExtResource("3_ytiw7")
 expand_icon = true
+script = ExtResource("4_5if3a")

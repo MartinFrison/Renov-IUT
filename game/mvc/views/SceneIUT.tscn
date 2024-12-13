@@ -496,10 +496,10 @@ script = ExtResource("12_vnvx5")
 [node name="menu" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 354.0
-offset_top = 532.0
-offset_right = 394.0
-offset_bottom = 572.0
+offset_left = 928.0
+offset_top = 13.0
+offset_right = 928.0
+offset_bottom = 17.0
 script = ExtResource("13_hhh64")
 
 [node name="PopupPanel" type="PopupPanel" parent="menu"]
