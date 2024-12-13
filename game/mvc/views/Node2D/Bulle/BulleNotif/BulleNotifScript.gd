@@ -22,8 +22,8 @@ func delete() -> void:
 func init(objet : String, message : String, type : int) -> void:
 	_message = message
 	var msg = get_node("Message")
-	if _message.length() > 75:
-		msg.text = _message.substr(0,75) + ".."
+	if _message.length() > 200:
+		msg.text = _message.substr(0,200) + ".."
 	else:
 		msg.text = _message
 	
