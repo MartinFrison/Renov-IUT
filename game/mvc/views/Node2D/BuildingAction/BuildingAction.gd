@@ -5,15 +5,12 @@ var build : Building
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	get_node("PanelGlobal/PanelAction/GridContainer/add_exem_end").set_disabled(true)
-	get_node("PanelGlobal/PanelAction/GridContainer/sub_exem_end").set_disabled(true)
-	get_node("PanelGlobal/PanelAction/GridContainer/add_exem_entry").set_disabled(true)
-	get_node("PanelGlobal/PanelAction/GridContainer/sub_exem_entry").set_disabled(true)
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	check_and_update_buttons()
 
 func init(id : int) -> void:
 	code = Utils.dept_index_to_string(id)
@@ -23,6 +20,7 @@ func init(id : int) -> void:
 
 func show_data() -> void:
 	var node
+	
 	node = get_node("PanelGlobal/name")
 	node.text = code
 	
@@ -33,8 +31,6 @@ func show_data() -> void:
 		image.texture = texture
 	else:
 		print("Erreur lors du chargement de la texture :", texture_path)
-	
-	check_and_update_buttons()
 	
 	node = get_node("PanelGlobal/PanelAction/GridContainer/end_exam")
 	node.text = "examens (difficulté %s/10)" % [int(build.get_exam_end()*10)]
@@ -101,6 +97,7 @@ func show_data() -> void:
 	else:
 		node.text = "allumer le chauffage"
 		
+	
 		
 func check_and_update_buttons() -> void:
 	if GlobalData.get_season() == 0:
