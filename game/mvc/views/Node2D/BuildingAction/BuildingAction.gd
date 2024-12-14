@@ -5,7 +5,10 @@ var build : Building
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	get_node("PanelGlobal/PanelAction/GridContainer/add_exem_end").set_disabled(true)
+	get_node("PanelGlobal/PanelAction/GridContainer/sub_exem_end").set_disabled(true)
+	get_node("PanelGlobal/PanelAction/GridContainer/add_exem_entry").set_disabled(true)
+	get_node("PanelGlobal/PanelAction/GridContainer/sub_exem_entry").set_disabled(true)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,6 +33,8 @@ func show_data() -> void:
 		image.texture = texture
 	else:
 		print("Erreur lors du chargement de la texture :", texture_path)
+	
+	check_and_update_buttons()
 	
 	node = get_node("PanelGlobal/PanelAction/GridContainer/end_exam")
 	node.text = "examens (difficulté %s/10)" % [int(build.get_exam_end()*10)]
@@ -95,6 +100,19 @@ func show_data() -> void:
 		node.text = "éteindre le chauffage"
 	else:
 		node.text = "allumer le chauffage"
+		
+		
+func check_and_update_buttons() -> void:
+	if GlobalData.get_season() == 0:
+		get_node("PanelGlobal/PanelAction/GridContainer/add_exem_end").set_disabled(false)
+		get_node("PanelGlobal/PanelAction/GridContainer/sub_exem_end").set_disabled(false)
+		get_node("PanelGlobal/PanelAction/GridContainer/add_exem_entry").set_disabled(false)
+		get_node("PanelGlobal/PanelAction/GridContainer/sub_exem_entry").set_disabled(false)
+	else:
+		get_node("PanelGlobal/PanelAction/GridContainer/add_exem_end").set_disabled(true)
+		get_node("PanelGlobal/PanelAction/GridContainer/sub_exem_end").set_disabled(true)
+		get_node("PanelGlobal/PanelAction/GridContainer/add_exem_entry").set_disabled(true)
+		get_node("PanelGlobal/PanelAction/GridContainer/sub_exem_entry").set_disabled(true)
 
 func _on_hire_teacher_pressed() -> void:
 	Teaching.hire_teachers(code, false)

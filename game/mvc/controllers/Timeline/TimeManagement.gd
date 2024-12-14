@@ -27,7 +27,7 @@ func start():
 # Execute toutes les actions d'un trimestre
 func next_Trimestre():
 	GlobalData.incrementTrimestre()
-
+	
 	# Appelle des évenements
 	Event()
 	
@@ -75,12 +75,6 @@ func next_Trimestre():
 	# A la fin du trimestre on test si le jeu se finit
 	if _scenario.test_end_game_condition():
 		_scenario.end_game()
-
-
-
-
-
-
 
 # Fin de l'année
 func end_of_year() -> void:

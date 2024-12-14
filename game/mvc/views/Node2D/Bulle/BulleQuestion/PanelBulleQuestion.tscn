@@ -55,5 +55,5 @@ autowrap_mode = 3
 offset_left = 73.0
 offset_top = 112.0
 offset_right = 1024.0
-offset_bottom = 552.0
+offset_bottom = 336.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_bnmi0")
