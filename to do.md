@@ -9,9 +9,7 @@ Autre:
 
 Graphique 2D:
 
-- Style des panels de fin de chaque scénario (vote à améliorer, élitisme à faire)
 - Ajout d'effet spéciaux 2D
-- ameliorer le style des notif pop-up et les faire descendre moins bas
 
 
 Code:

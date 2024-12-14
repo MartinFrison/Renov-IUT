@@ -134,15 +134,15 @@ static func pass_next_year() -> void:
 		global_result[1] += result[1]
 		global_result[2] += result[2]
 		global_result[3] += result[3]
-		msg += "\nDans le département %s sur %s étudiants :\n" % [code, result[0]]
+		msg += "\nDans le département %s sur %s étudiants : " % [code, result[0]]
 		msg += "%s année réussie, %s diplômés, " % [result[1],result[3]]
-		msg += "%s redoublants et %s exclusions\n" % [result[2], result[0]-result[1]-result[2]]
+		msg += "%s redoublants et %s exclusions.\n" % [result[2], result[0]-result[1]-result[2]]
 	
 	
 	var msg2 = "C'est la fin d'année. Les étudiants ont passé leur examens.\n"
 	msg2 += "\nAu sein de l'IUT, sur %s étudiants :\n" % [global_result[0]]
-	msg2 += "   %s ont réussi leur année, dont %s ont eu leur diplôme.\n" % [global_result[1],global_result[3]]
-	msg2 += "   %s ont redoublé et %s ont été exclus.\n" % [global_result[2], global_result[0]-global_result[1]-global_result[2]]
+	msg2 += "%s ont réussi leur année, dont %s ont eu leur diplôme ; " % [global_result[1],global_result[3]]
+	msg2 += " %s ont redoublé et %s ont été exclus.\n" % [global_result[2], global_result[0]-global_result[1]-global_result[2]]
 	msg = msg2 + msg
 	BulleGestion.send_notif(obj,msg,0)
 
