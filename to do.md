@@ -26,11 +26,8 @@ Code:
 - Mettre a jour la gestion de la satisfaction : Martin
 - Prendre en compte le nombre de diplomé pour l'éléction : Martin
 
-
-- Affichage du cout quand le joueur s'apprête a allumer le chauffage ou embaucher quelqu'un
 - Ajouter des conditions au licensiment et à l'embauche (soit un dédommagement soit une limite mensuels)
 
-- Résoudre les problème d'affichage dans l'historique des notifs
 - Ajout de tout les messages et notifs manquant dans le code et definition de leur type (chauffage ect..)
 
 
@@ -44,12 +41,10 @@ Bonus:
 
 Fin de projet:
 
-- Revoir toute la hiérachie et les noms de classe (la cohérence est noté)
-- Test du jeu pour ajuster toutes les constantes du code qui influe sur la difficulté et la cohérence 
-de la simulation (ajustement de la satisfaction, de la réussite , des fonds, de la frequence des events ect...)
+- Revoir toute la hiérachie et les noms de classe (la cohérence est noté ; mettre les noms des classes et des méthodes en anglais)
+- Test du jeu pour ajuster toutes les constantes du code qui influe sur la difficulté et la cohérence  de la simulation (ajustement de la satisfaction, de la réussite , des fonds, de la frequence des events ect...)
 - Test pour rechercher les abus du système (pas des bugs) possible par le joueur pour les corrigés 
 - Test du jeu pour détécter et corriger tout les bugs
-
 - Commenter tous le code et corriger les fautes de francais
 - Compilation et mise en ligne du jeu
 - Test de la version compiler sur différentes machines pour s'assurer que celle ci ne pose aucun problème

@@ -176,3 +176,28 @@ func _on_sub_exam_entry_pressed() -> void:
 func _on_decrease_pay_pressed() -> void:
 	Teaching.decrease_salary(code)
 	show_data()
+
+
+func _on_sub_teacher_mouse_entered() -> void:
+	var msg = "En faisant partir un enseignant, vous gagnez %s €." % [int(build.get_pay_teacher())]
+	await BulleGestion.send_message(msg, false)
+
+
+func _on_sub_worker_mouse_entered() -> void:
+	var msg = "En licenciant un ouvrier, vous gagnez %s €." % [int(GlobalData._pay_worker)]
+	await BulleGestion.send_message(msg, false)
+
+
+func _on_add_teacher_mouse_entered() -> void:
+	var msg = "En embauchant un enseignant, vous dépensez (au moins) %s € de plus par mois." % [int(build.get_pay_teacher())]
+	await BulleGestion.send_message(msg, false)
+
+
+func _on_add_worker_mouse_entered() -> void:
+	var msg = "En embauchant un ouvrier, vous dépensez (au moins) %s € de plus par mois." % [int(GlobalData._pay_worker)]
+	await BulleGestion.send_message(msg, false)
+
+
+func _on_heat_mouse_entered() -> void:
+	var msg = "L'énergie est chère ! Allumer le chauffage coûte 1100 € par mois." #à corriger, je ne retrouve pas le chiffre du jeu
+	await BulleGestion.send_message(msg, false)
