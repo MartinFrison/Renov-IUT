@@ -40,8 +40,6 @@ func handle_3d_click(event: InputEventMouseButton):
 			if "colision" + str(i) == result.collider.name:
 				RenovIUTApp.app.open_building(i)
 
-
-
 func handle_hover(event : InputEventMouseMotion):
 	# Génère un rayon basé sur la position de la souris
 	var ray_origin = project_ray_origin(event.position)
@@ -63,7 +61,6 @@ func handle_hover(event : InputEventMouseMotion):
 	if big == true:
 		big_build(-1)
 		Input.set_default_cursor_shape(0)
-
 
 func big_build(build : int) -> void:
 	for i in range(1,6):

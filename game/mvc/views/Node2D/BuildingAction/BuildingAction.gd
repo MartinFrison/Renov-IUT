@@ -2,15 +2,15 @@ extends Node2D
 
 var code : String
 var build : Building
-var click : AudioStreamPlayer2D 
+var click : AudioStreamPlayer2D
+var under_construction : AudioStreamPlayer2D 
 
 var is_message_active: bool # concerne le message pop-up au survol des +/-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	click = get_node("PanelGlobal/button")
-	pass
-
+	under_construction = get_node("PanelGlobal/PanelAction/construction_site")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -81,8 +81,9 @@ func show_data() -> void:
 	node.text = "État du bâtiment : %s %s" % [n, w]
 	
 	node = get_node("PanelGlobal/PanelAction/renove")
-	if build.is_renovation_underway():	
+	if build.is_renovation_underway():
 		node.set_disabled(true)
+		under_construction.play()
 	else:
 		node.set_disabled(false)
 		node.text = "faire des travaux"
@@ -101,8 +102,6 @@ func show_data() -> void:
 		node.text = "éteindre le chauffage"
 	else:
 		node.text = "allumer le chauffage"
-		
-	
 		
 func check_and_update_buttons() -> void:
 	if GlobalData.get_season() == 0:
