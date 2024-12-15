@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://7l2pvki7bpwx"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/FinJeu/FinElitismeScript.gd" id="1_oljuh"]
+[ext_resource type="AudioStream" uid="uid://dppr3us07yjbs" path="res://mvc/views/sounds/renovated.wav" id="2_0bygu"]
 [ext_resource type="Texture2D" uid="uid://bpdfvn1j0iyl8" path="res://mvc/views/images/backgrounds/menu.png" id="2_1b1r5"]
-[ext_resource type="AudioStream" uid="uid://cupgaboyvq8gf" path="res://mvc/views/sounds/renovated_AMBPubl_Large Office Entry Interior, Few People, Foitsteps, Indistinct Chatter 2_Ocular Sounds_Public Places_The Complete Ambiences Collection.wav" id="2_uc2wl"]
 [ext_resource type="Texture2D" uid="uid://d15chp85138su" path="res://mvc/views/images/buttons/exit_button.png" id="3_ytiw7"]
 [ext_resource type="Script" path="res://mvc/views/Node2D/Menu/Menu.gd" id="4_5if3a"]
 
@@ -29,7 +29,7 @@ z_index = 40
 script = ExtResource("1_oljuh")
 
 [node name="win" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_uc2wl")
+stream = ExtResource("2_0bygu")
 
 [node name="Menu" type="Sprite2D" parent="."]
 position = Vector2(585, 323)

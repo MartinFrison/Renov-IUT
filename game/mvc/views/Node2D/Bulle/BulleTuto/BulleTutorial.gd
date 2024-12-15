@@ -4,6 +4,7 @@ extends Node2D
 var buble : Panel
 var style : StyleBoxFlat
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	buble = get_node("Panel")
@@ -28,6 +29,9 @@ func show_buble(sx:int, sy:int, px:int, py:int):
 	buble.size.y = sy
 	buble.position.x = px
 	buble.position.y = py
+	# Effet sonore
+	var zoom = get_node("Panel/zoom")
+	zoom.play()
 	special_effect()
 
 	
@@ -46,7 +50,6 @@ func set_border_width(width : int):
 func special_effect():
 	var c : Color = Color(1, 1, 0)
 	style.border_color = c
-	
 	# On fait clignoter la couleur de la bulle
 	for k in 3:
 		for i in 10:

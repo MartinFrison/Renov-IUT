@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c58xq3mpsn4kc"]
+[gd_scene load_steps=4 format=3 uid="uid://c58xq3mpsn4kc"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/Bulle/BulleTuto/BulleTutorial.gd" id="1_30s0e"]
+[ext_resource type="AudioStream" uid="uid://d1ixweu7o7ylj" path="res://mvc/views/sounds/tuto.wav" id="2_ab2k7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqlp2"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -22,3 +23,6 @@ z_index = 17
 offset_right = 100.0
 offset_bottom = 100.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_lqlp2")
+
+[node name="zoom" type="AudioStreamPlayer2D" parent="Panel"]
+stream = ExtResource("2_ab2k7")
