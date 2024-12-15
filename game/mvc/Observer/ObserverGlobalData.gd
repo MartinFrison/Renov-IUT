@@ -17,3 +17,9 @@ static func notifyDateChanged() -> void:
 		if o.has_method("notifyDateChanged"):
 			var c : Callable = Callable(o, "notifyDateChanged")
 			c.call()
+
+static func notifyAttractivityChanged() -> void:
+	for o in Observer:
+		if o.has_method("notifyAttractivityChanged"):
+			var c : Callable = Callable(o, "notifyAttractivityChanged")
+			c.call()

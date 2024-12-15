@@ -20,15 +20,31 @@ texture = ExtResource("2_uuv2q")
 expand_mode = 3
 stretch_mode = 6
 
-[node name="date" type="Label" parent="."]
-offset_left = 977.0
-offset_top = 36.0
-offset_right = 1091.0
-offset_bottom = 80.0
-theme_override_constants/line_spacing = 1
-text = "Date"
+[node name="budget" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 40.0
+offset_right = 218.0
+offset_bottom = 65.0
+text = "Budget"
 horizontal_alignment = 1
-autowrap_mode = 3
+
+[node name="budget_total" type="Label" parent="budget"]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 198.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 11
+text = "Budget"
+horizontal_alignment = 1
+
+[node name="attractivity" type="Label" parent="."]
+offset_left = 236.0
+offset_top = 35.0
+offset_right = 446.0
+offset_bottom = 58.0
+text = "Level
+"
+horizontal_alignment = 1
 
 [node name="mood_stud" type="Label" parent="."]
 offset_left = 470.0
@@ -55,19 +71,12 @@ text = "Level
 "
 horizontal_alignment = 1
 
-[node name="budget" type="Label" parent="."]
-offset_left = 20.0
-offset_top = 40.0
-offset_right = 218.0
-offset_bottom = 65.0
-text = "Budget"
+[node name="date" type="Label" parent="."]
+offset_left = 977.0
+offset_top = 36.0
+offset_right = 1091.0
+offset_bottom = 80.0
+theme_override_constants/line_spacing = 1
+text = "Date"
 horizontal_alignment = 1
-
-[node name="budget_total" type="Label" parent="budget"]
-layout_mode = 0
-offset_top = 25.0
-offset_right = 198.0
-offset_bottom = 50.0
-theme_override_font_sizes/font_size = 11
-text = "Budget"
-horizontal_alignment = 1
+autowrap_mode = 3

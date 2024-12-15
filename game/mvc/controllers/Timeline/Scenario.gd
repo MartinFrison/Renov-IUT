@@ -8,7 +8,7 @@ var _name : String
 func _init() -> void:
 	init_building()
 	init_data()
-
+	init_attractivity()
 
 # Obtenir le nom du scénario actuel
 func get_scenario() -> String:
@@ -64,7 +64,6 @@ func init_data() -> void:
 	Study.populate()
 	Teaching.populate()
 	adjust_budget()
-	
 
 
 
@@ -80,9 +79,8 @@ func init_building() -> void:
 		adjust_budget_building(b)
 		b.set_pay_teacher(2800)
 
-
-
-
+func init_attractivity() -> void:
+	GlobalData.set_attractivity()
 
 # Ajuster le budget des batiment en appliquant un coefficient
 func adjust_budget_building(build : Building) -> void:
