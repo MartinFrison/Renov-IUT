@@ -2,9 +2,13 @@ extends Node2D
 
 var code : String
 var build : Building
+var click : AudioStreamPlayer2D 
+
+var is_message_active: bool # concerne le message pop-up au survol des +/-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	click = get_node("PanelGlobal/button")
 	pass
 
 
@@ -19,6 +23,7 @@ func init(id : int) -> void:
 
 
 func show_data() -> void:
+	is_message_active = false
 	var node
 	
 	node = get_node("PanelGlobal/name")
@@ -112,92 +117,112 @@ func check_and_update_buttons() -> void:
 		get_node("PanelGlobal/PanelAction/GridContainer/sub_exem_entry").set_disabled(true)
 
 func _on_hire_teacher_pressed() -> void:
+	click.play()
 	Teaching.hire_teachers(code, false)
 	show_data()
 
 
 func _on_fire_teacher_pressed() -> void:
+	click.play()
 	Teaching.fire_teachers(code)
 	show_data()
 
 
 func _on_renove_pressed() -> void:
+	click.play()
 	BuildingManagement.start_renovation(build)
 	show_data()
 
 
 func _on_lock_pressed() -> void:
+	click.play()
 	BuildingManagement.lockDoor(code)
 	show_data()
 
 
 func _on_fire_worker_pressed() -> void:
+	click.play()
 	BuildingManagement.fireWorker(code)
 	show_data()
 
 
 func _on_hire_worker_pressed() -> void:
+	click.play()
 	BuildingManagement.hireWorker(code)
 	show_data()
 
 
 func _on_heat_pressed() -> void:
+	click.play()
 	BuildingManagement.switchHeat(code)
 	show_data()
 
 
 
 func _on_close_pressed() -> void:
+	click.play()
 	queue_free()
 
 
 func _on_increase_pay_pressed() -> void:
+	click.play()
 	Teaching.increase_salary(code)
 	show_data()
 
 
 func _on_add_exem_end_pressed() -> void:
+	click.play()
 	BuildingManagement.rise_end_exam_difficulty(code)
 	show_data()
 
 func _on_sub_exam_end_pressed() -> void:
+	click.play()
 	BuildingManagement.decrease_end_exam_difficulty(code)
 	show_data()
 
 func _on_add_exem_entry_pressed() -> void:
+	click.play()
 	BuildingManagement.rise_entry_exam_difficulty(code)
 	show_data()
 
 func _on_sub_exam_entry_pressed() -> void:
+	click.play()
 	BuildingManagement.decrease_entry_exam_difficulty(code)
 	show_data()
 
 
 func _on_decrease_pay_pressed() -> void:
+	click.play()
 	Teaching.decrease_salary(code)
 	show_data()
 
 
 func _on_sub_teacher_mouse_entered() -> void:
-	var msg = "En faisant partir un enseignant, vous gagnez %s €." % [int(build.get_pay_teacher())]
-	await BulleGestion.send_message(msg, false)
-
+	if !is_message_active:
+		var msg = "En faisant partir un enseignant, vous gagnez %s €." % [int(build.get_pay_teacher())]
+		await BulleGestion.send_message(msg, false)
+		is_message_active = true
 
 func _on_sub_worker_mouse_entered() -> void:
-	var msg = "En licenciant un ouvrier, vous gagnez %s €." % [int(GlobalData._pay_worker)]
-	await BulleGestion.send_message(msg, false)
-
+	if !is_message_active:
+		var msg = "En licenciant un ouvrier, vous gagnez %s €." % [int(GlobalData._pay_worker)]
+		await BulleGestion.send_message(msg, false)
+		is_message_active = true
 
 func _on_add_teacher_mouse_entered() -> void:
-	var msg = "En embauchant un enseignant, vous dépensez (au moins) %s € de plus par mois." % [int(build.get_pay_teacher())]
-	await BulleGestion.send_message(msg, false)
-
+	if !is_message_active:
+		var msg = "En embauchant un enseignant, vous dépensez (au moins) %s € de plus par mois." % [int(build.get_pay_teacher())]
+		await BulleGestion.send_message(msg, false)
+		is_message_active = true
 
 func _on_add_worker_mouse_entered() -> void:
-	var msg = "En embauchant un ouvrier, vous dépensez (au moins) %s € de plus par mois." % [int(GlobalData._pay_worker)]
-	await BulleGestion.send_message(msg, false)
-
+	if !is_message_active:
+		var msg = "En embauchant un ouvrier, vous dépensez (au moins) %s € de plus par mois." % [int(GlobalData._pay_worker)]
+		await BulleGestion.send_message(msg, false)
+		is_message_active = true
 
 func _on_heat_mouse_entered() -> void:
-	var msg = "L'énergie est chère ! Allumer le chauffage coûte 1100 € par mois." #à corriger, je ne retrouve pas le chiffre du jeu
-	await BulleGestion.send_message(msg, false)
+	if !is_message_active:
+		var msg = "L'énergie est chère ! Allumer le chauffage coûte 1100 € par mois." #à corriger, je ne retrouve pas le chiffre du jeu
+		await BulleGestion.send_message(msg, false)
+		is_message_active = true

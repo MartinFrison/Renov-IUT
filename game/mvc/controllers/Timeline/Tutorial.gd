@@ -60,8 +60,7 @@ func tuto_trimester1() -> void:
 	await BulleGestion.send_message(msg, false)
 	
 	# Explication des contrôles
-	#var cam_sound = RenovIUTApp.app.get_node("Vue3D/sound")
-	#cam_sound.play()
+	# Effet sonore
 	var cam = RenovIUTApp.app.get_node("Vue3D/Camera_root") as CameraRoot
 	cam.rotate_tutorial(3.5)
 	msg = "Vous pouvez regarder le campus du point d'observation d'origine "

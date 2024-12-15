@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://dsy32b2by7jp6"]
+[gd_scene load_steps=23 format=3 uid="uid://dsy32b2by7jp6"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/BuildingAction/BuildingAction.gd" id="1_rgwm8"]
 [ext_resource type="Texture2D" uid="uid://2m7kvd7nwoe1" path="res://mvc/views/images/interface/layers/buildingInfoPanel.png" id="2_061kg"]
 [ext_resource type="Texture2D" uid="uid://chu5wfl6tehla" path="res://mvc/views/images/icons/chemistry.png" id="3_g0kju"]
 [ext_resource type="Texture2D" uid="uid://584vab6lde7a" path="res://mvc/views/images/buttons/plus.png" id="3_t70jo"]
 [ext_resource type="Texture2D" uid="uid://1gj4dpy6pg0j" path="res://mvc/views/images/buttons/minus.png" id="4_0au1m"]
+[ext_resource type="AudioStream" uid="uid://cindyulkg2sm1" path="res://mvc/views/sounds/button.wav" id="6_5rk63"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2tdad"]
 bg_color = Color(0.360784, 0.486275, 0.568627, 0)
@@ -126,6 +127,9 @@ script = ExtResource("1_rgwm8")
 
 [node name="PanelGlobal" type="Panel" parent="."]
 theme_override_styles/panel = SubResource("StyleBoxFlat_2tdad")
+
+[node name="button" type="AudioStreamPlayer2D" parent="PanelGlobal"]
+stream = ExtResource("6_5rk63")
 
 [node name="name" type="Label" parent="PanelGlobal"]
 z_index = 10
@@ -406,8 +410,6 @@ text = "- end exam"
 position = Vector2(1430.89, 244.702)
 scale = Vector2(2.01534, 1.98184)
 texture = ExtResource("3_g0kju")
-
-[node name="Sprite2D" type="Sprite2D" parent="PanelGlobal"]
 
 [connection signal="pressed" from="PanelGlobal/PanelAction/renove" to="." method="_on_renove_pressed"]
 [connection signal="mouse_entered" from="PanelGlobal/PanelAction/GridContainer/sub_worker" to="." method="_on_sub_worker_mouse_entered"]
