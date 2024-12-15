@@ -2,9 +2,6 @@
 Autre:
 - Mise à jours de l'UML : Elena, Yasmine 
 - Mettre à jours le cahier des charges : Yasmine
-- Ajout des sons
-- Ne pas oublier d'ajouter la grille d'évaluation à la fin : Yasmine
-
 
 
 Graphique 2D:
@@ -17,10 +14,8 @@ Code:
 - Financement, à terminer : Elena
 - Gestion de l'attractivité : Elena
 
-
 - Gestion des grandes vacances : Martin
 - Ajout de quelque évenements aléatoire simple : Martin
-
 
 - revoir le temps et le cout de renovation + son affichage : Martin
 - Mettre a jour la gestion de la satisfaction : Martin
@@ -35,8 +30,6 @@ Code:
 Bonus:
 - Ajout d'un historique de toutes les stats consultable notament en fin de partie
 - Rapport intelligent au joueur sur sa prestation
-
-
 
 
 Fin de projet:
