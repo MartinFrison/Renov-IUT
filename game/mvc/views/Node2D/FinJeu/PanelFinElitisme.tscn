@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/FinJeu/FinElitismeScript.gd" id="1_64ani"]
 [ext_resource type="Texture2D" uid="uid://bpdfvn1j0iyl8" path="res://mvc/views/images/backgrounds/menu.png" id="2_8ex0e"]
-[ext_resource type="AudioStream" uid="uid://cb8w70ricq6l3" path="res://mvc/views/sounds/winning-218995.mp3" id="2_jetwg"]
+[ext_resource type="AudioStream" uid="uid://d0enu6cvvn564" path="res://mvc/views/sounds/elitist_AMBOffc_Office Interior, Mouse Clicking, Indistint Chatter_Ocular Sounds_Public Places_The Complete Ambiences Collection.wav" id="2_g6x4o"]
 [ext_resource type="Texture2D" uid="uid://d15chp85138su" path="res://mvc/views/images/buttons/exit_button.png" id="3_he5ve"]
 [ext_resource type="Script" path="res://mvc/views/Node2D/Menu/Menu.gd" id="4_b0cd6"]
 
@@ -29,7 +29,7 @@ z_index = 40
 script = ExtResource("1_64ani")
 
 [node name="win" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_jetwg")
+stream = ExtResource("2_g6x4o")
 
 [node name="Menu" type="Sprite2D" parent="."]
 position = Vector2(585, 323)

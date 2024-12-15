@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ludivfcbhfq8"
+path="res://.godot/imported/construction_MECHGear_Metal Scrap And Gears Shaking, Heavy Creaks_Ocular Sounds_Cinematic Mechanics_The Cinematic Elements Collection.wav-966df902173b23191abac39e9d9dc9a4.sample"
+
+[deps]
+
+source_file="res://mvc/views/sounds/construction_MECHGear_Metal Scrap And Gears Shaking, Heavy Creaks_Ocular Sounds_Cinematic Mechanics_The Cinematic Elements Collection.wav"
+dest_files=["res://.godot/imported/construction_MECHGear_Metal Scrap And Gears Shaking, Heavy Creaks_Ocular Sounds_Cinematic Mechanics_The Cinematic Elements Collection.wav-966df902173b23191abac39e9d9dc9a4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

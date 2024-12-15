@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bhxkcpdbunsve"
+path="res://.godot/imported/elected_AMBTran_Tram Station, Many People_Ocular Sounds_Public Places_The Complete Ambiences Collection.wav-5080e5c9ceedd789feacde759198704b.sample"
+
+[deps]
+
+source_file="res://mvc/views/sounds/elected_AMBTran_Tram Station, Many People_Ocular Sounds_Public Places_The Complete Ambiences Collection.wav"
+dest_files=["res://.godot/imported/elected_AMBTran_Tram Station, Many People_Ocular Sounds_Public Places_The Complete Ambiences Collection.wav-5080e5c9ceedd789feacde759198704b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

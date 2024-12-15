@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://db8os1mcqoph8"
+path="res://.godot/imported/button_CLOCKMech_Slow Click Clock, Low Whoosh, Echo_Ocular Sounds_Cinematic Mechanics_The Cinematic Elements Collection.wav-7c10b03598b96fa839aded821dc89116.sample"
+
+[deps]
+
+source_file="res://mvc/views/sounds/button_CLOCKMech_Slow Click Clock, Low Whoosh, Echo_Ocular Sounds_Cinematic Mechanics_The Cinematic Elements Collection.wav"
+dest_files=["res://.godot/imported/button_CLOCKMech_Slow Click Clock, Low Whoosh, Echo_Ocular Sounds_Cinematic Mechanics_The Cinematic Elements Collection.wav-7c10b03598b96fa839aded821dc89116.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

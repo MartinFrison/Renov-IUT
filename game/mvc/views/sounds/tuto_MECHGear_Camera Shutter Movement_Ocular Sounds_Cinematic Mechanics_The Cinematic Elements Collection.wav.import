@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b443xkefx7iv5"
+path="res://.godot/imported/tuto_MECHGear_Camera Shutter Movement_Ocular Sounds_Cinematic Mechanics_The Cinematic Elements Collection.wav-d6bf04aa237d9dcea7d0531a6dfe42a8.sample"
+
+[deps]
+
+source_file="res://mvc/views/sounds/tuto_MECHGear_Camera Shutter Movement_Ocular Sounds_Cinematic Mechanics_The Cinematic Elements Collection.wav"
+dest_files=["res://.godot/imported/tuto_MECHGear_Camera Shutter Movement_Ocular Sounds_Cinematic Mechanics_The Cinematic Elements Collection.wav-d6bf04aa237d9dcea7d0531a6dfe42a8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
