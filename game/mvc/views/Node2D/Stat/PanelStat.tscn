@@ -64,9 +64,9 @@ horizontal_alignment = 1
 
 [node name="level" type="Label" parent="."]
 offset_left = 745.0
-offset_top = 34.0
+offset_top = 37.0
 offset_right = 919.0
-offset_bottom = 59.0
+offset_bottom = 62.0
 text = "Level
 "
 horizontal_alignment = 1

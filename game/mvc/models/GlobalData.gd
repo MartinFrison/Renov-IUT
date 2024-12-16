@@ -73,9 +73,7 @@ static func set_attractivity() -> void:
 		sum += Building.get_building(code).get_inventory() / 100
 	campus = sum / 5
 	
-	_attractivity = (success + mood + campus + attention) / 4
-	#_attractivity = (success + mood + attention) / 3 # dans les premiers temps ; corriger la valeur du wear
-	
+	_attractivity = round((success + mood + campus + attention) / 4 * 100) / 100  # Arrondir à 2 décimales
 	ObserverGlobalData.notifyAttractivityChanged()
 
 #Passe au jour suivant

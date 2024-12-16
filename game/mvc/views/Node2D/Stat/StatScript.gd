@@ -16,8 +16,7 @@ func notifyBudgetChanged() -> void:
 	var label = get_node("budget")
 	label.text = GlobalData.formatBudget(GlobalData.getBudget()) + " €"
 	label = get_node("budget/budget_total")
-	label.text = "(total: " + GlobalData.formatBudget(GlobalData.getTotalBudget()) + " €)"
-
+	label.text = "(total : " + GlobalData.formatBudget(GlobalData.getTotalBudget()) + " €)"
 
 func notifyLevelChanged() -> void: 
 	var label = get_node("level")
@@ -32,7 +31,6 @@ func notifySatisfactionChanged() -> void:
 	label.text = str(Student.avg_mood()*100) + " %"
 	label = get_node("mood_teach")
 	label.text = str(Teacher.avg_mood()*100) + " %"
-
 
 func notifyDateChanged() -> void: 
 	var label = get_node("date")
