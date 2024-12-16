@@ -16,7 +16,10 @@ Code:
 
 - Gestion des grandes vacances : Martin
 - Ajout de quelque évenements aléatoire simple : Martin
+<<<<<<< HEAD
 
+=======
+>>>>>>> f96a10f (merge)
 - revoir le temps et le cout de renovation + son affichage : Martin
 - Mettre a jour la gestion de la satisfaction : Martin
 - Prendre en compte le nombre de diplomé pour l'éléction : Martin
