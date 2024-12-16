@@ -6,13 +6,12 @@ Autre:
 
 Graphique 2D:
 
-- Ajout d'effet spéciaux 2D
+- Eventuellement ajouter un _easter egg_, à un endroit susceptible d'être exploré (mais pas trop évident non plus)
 
 
 Code:
 
-- Financement, à terminer : Elena
-- Gestion de l'attractivité : Elena
+- ! Financement, à terminer : Elena
 
 - Gestion des grandes vacances : Martin
 - Ajout de quelque évenements aléatoire simple : Martin
