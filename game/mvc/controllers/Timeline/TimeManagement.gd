@@ -16,7 +16,7 @@ func _init(scenario: Scenario, tuto : Tutorial) -> void:
 	ObserverPopulation.notifySatisfactionChanged()
 	ObserverPopulation.notifyLevelChanged()
 	ObserverBuilding.notifyStateChanged()
-
+	
 
 
 func start():

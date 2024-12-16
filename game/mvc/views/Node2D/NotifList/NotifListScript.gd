@@ -39,6 +39,8 @@ func create_question_button(text : String, id : int, n) -> void:
 
 	var panel = get_node("PanelNotif")
 	panel.add_child(button)
+	
+	button.mouse_default_cursor_shape = Input.CURSOR_POINTING_HAND
 	button.pressed.connect(Callable(notif_pressed).bind(id))
 
 

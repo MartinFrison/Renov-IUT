@@ -23,10 +23,17 @@ Toutes les images utilisées sont libres de droits :
 
 <p style="text-align: center;"><small>Fig.2. Fenêtre principale : le campus au printemps</small></p>
 
-<p style="text-align: center;">![Mission](visuals/screenshots/mission.png)
-![Bilan](visuals/screenshots/result.png)</p>
+<p style="text-align: center;">![Popup](visuals/screenshots/shift_view.png)</p>
 
-<p style="text-align: center;"><small>Fig.3-5. Notifications</small></p>
+<p style="text-align: center;"><small>Fig.3. Vue de devant</small></p>
+
+<p style="text-align: center;">![Popup](visuals/screenshots/popup.png)</p>
+
+<p style="text-align: center;"><small>Fig.4. Notification volante</small></p>
+
+<p style="text-align: center;">![History](visuals/screenshots/history.png)</p>
+
+<p style="text-align: center;"><small>Fig.5. L'historique</small></p>
 
 ### Installation et exécution
 
