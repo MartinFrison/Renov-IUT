@@ -81,6 +81,7 @@ func init_building() -> void:
 
 func init_attractivity() -> void:
 	GlobalData.set_attractivity()
+	
 
 # Ajuster le budget des batiment en appliquant un coefficient
 func adjust_budget_building(build : Building) -> void:

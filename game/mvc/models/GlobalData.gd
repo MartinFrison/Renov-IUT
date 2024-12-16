@@ -74,7 +74,26 @@ static func set_attractivity() -> void:
 	campus = sum / 5
 	
 	_attractivity = round((success + mood + campus + attention) / 4 * 100) / 100  # Arrondir à 2 décimales
+	
 	ObserverGlobalData.notifyAttractivityChanged()
+
+static func adjust_attractivity() -> void:
+	var fluctuation : float
+	var performance : float = Student.avg_level() # on ajuste en fonction du niveau des étudiants
+	# idéalement, il faudrait trouver une modélisation mathématique un minimum correcte ;
+	# pour l'instant, cela ne fait que donner une priorité aléatoire à un critère.
+	# Et que cela ne soit pas au pif.
+	if performance > 0.7: # i.e. 14/20 de moyenne globale
+		fluctuation = Utils.randfloat_in_range(1.2, 1.4)
+	elif performance > 0.5: # i.e. 10/20 de moyenne globale
+		fluctuation = Utils.randfloat_in_range(1.01, 1.2)
+	else:
+		fluctuation = Utils.randfloat_in_range(0.6, 0.9)
+	_attractivity *= fluctuation
+	if _attractivity > 1:
+		_attractivity = .99
+	
+	_attractivity = round(_attractivity * 100) / 100
 
 #Passe au jour suivant
 static func incrementDay() -> void:
@@ -93,6 +112,10 @@ static func incrementTrimestre() -> void:
 	if _month > 12:
 		_month = _month-12
 		_year += 1
+	# moduler l'attractivité à la fin de l'année
+	if isEndofYear():
+		adjust_attractivity()
+	ObserverGlobalData.notifyAttractivityChanged()
 	ObserverGlobalData.notifyDateChanged()
 
 #Renvoie vrai si c'est le premier du mois

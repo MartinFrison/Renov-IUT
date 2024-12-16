@@ -58,7 +58,7 @@ func next_Trimestre():
 	_bill.pay_bill()
 	# On prévient le joueur s'il risque la faillite
 	if _bill.get_previous_bill() >= GlobalData.getBudget():
-		BulleGestion.send_notif("Risque de faillite.", "Attention : les caisses sont presque vides, vous risquez la faillite !", 0)
+		BulleGestion.send_notif("Risque de faillite", "Attention : les caisses sont presque vides, vous risquez la faillite !", 0)
 	
 	# Les professeurs et étudiant insatisfait démissionnent
 	Teaching.teacher_resign()
