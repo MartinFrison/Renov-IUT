@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://df14ay6p0nv3j"]
+[gd_scene load_steps=8 format=3 uid="uid://df14ay6p0nv3j"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/FinJeu/FinElectionScript.gd" id="1_oysjo"]
 [ext_resource type="AudioStream" uid="uid://cyyax38hta05r" path="res://mvc/views/sounds/elected.wav" id="2_4ha0f"]
 [ext_resource type="Texture2D" uid="uid://bpdfvn1j0iyl8" path="res://mvc/views/images/backgrounds/menu.png" id="2_kmj36"]
 [ext_resource type="Texture2D" uid="uid://d15chp85138su" path="res://mvc/views/images/buttons/exit_button.png" id="3_j466x"]
-[ext_resource type="Script" path="res://mvc/views/Node2D/Menu/Menu.gd" id="4_cuacc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qc8m"]
 bg_color = Color(0, 0.141176, 0.27451, 0.866667)
@@ -218,4 +217,5 @@ mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_v6v84")
 icon = ExtResource("3_j466x")
 expand_icon = true
-script = ExtResource("4_cuacc")
+
+[connection signal="pressed" from="Quitter" to="." method="_on_quitter_pressed"]

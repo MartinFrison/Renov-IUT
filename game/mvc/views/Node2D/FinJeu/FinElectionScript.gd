@@ -54,3 +54,7 @@ func show_result() -> void:
 		node = get_node(node)
 		node.text = "%s / %s" % [Vote.popularity_per_dept(dept), Vote.nb_voix_per_dept(dept)]
 		
+
+
+func _on_quitter_pressed() -> void:
+	get_tree().quit() 

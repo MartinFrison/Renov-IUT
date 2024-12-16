@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1s44vnk5p8wf"]
+[gd_scene load_steps=7 format=3 uid="uid://b1s44vnk5p8wf"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/FinJeu/FinElitismeScript.gd" id="1_64ani"]
 [ext_resource type="Texture2D" uid="uid://bpdfvn1j0iyl8" path="res://mvc/views/images/backgrounds/menu.png" id="2_8ex0e"]
 [ext_resource type="AudioStream" uid="uid://bglofck3g4ysg" path="res://mvc/views/sounds/elitist.wav" id="2_h5ehp"]
 [ext_resource type="Texture2D" uid="uid://d15chp85138su" path="res://mvc/views/images/buttons/exit_button.png" id="3_he5ve"]
-[ext_resource type="Script" path="res://mvc/views/Node2D/Menu/Menu.gd" id="4_b0cd6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgcxq"]
 content_margin_left = 20.0
@@ -73,6 +72,5 @@ mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_vq1ak")
 icon = ExtResource("3_he5ve")
 expand_icon = true
-script = ExtResource("4_b0cd6")
 
-[connection signal="toggled" from="Quitter" to="." method="_on_QuitterButton_pressed"]
+[connection signal="pressed" from="Quitter" to="." method="_on_quitter_pressed"]

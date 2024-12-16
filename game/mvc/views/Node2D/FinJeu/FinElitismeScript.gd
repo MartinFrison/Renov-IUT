@@ -26,6 +26,5 @@ func show_bilan() -> void:
 	leur diplôme, soit %s par an.
 	" % [Student.get_graduate(), round(Student.get_graduate()/5)]
 
-
-func _on_QuitterButton_pressed(toggled_on: bool) -> void:
-	pass # Replace with function body.
+func _on_quitter_pressed() -> void:
+	get_tree().quit() 
