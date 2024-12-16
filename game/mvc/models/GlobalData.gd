@@ -70,11 +70,11 @@ static func set_attractivity() -> void:
 	var sum : float = 0.0
 	for i in range(1,6):
 		var code = Utils.dept_index_to_string(i)
-		sum += Building.get_building(code).get_inventory()
+		sum += Building.get_building(code).get_inventory() / 100
 	campus = sum / 5
 	
-	#_attractivity = (success + mood + campus + attention) / 4
-	_attractivity = (success + mood + attention) / 3 # dans les premiers temps ; corriger la valeur du wear
+	_attractivity = (success + mood + campus + attention) / 4
+	#_attractivity = (success + mood + attention) / 3 # dans les premiers temps ; corriger la valeur du wear
 	
 	ObserverGlobalData.notifyAttractivityChanged()
 
