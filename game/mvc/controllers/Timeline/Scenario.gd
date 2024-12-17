@@ -61,8 +61,8 @@ func random_event_call(events_proba) -> void:
 	# budget de base
 func init_data() -> void:
 	print("populate")
-	Study.populate()
 	Teaching.populate()
+	Study.populate()
 	adjust_budget()
 
 

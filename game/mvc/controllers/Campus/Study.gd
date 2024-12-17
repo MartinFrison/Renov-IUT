@@ -16,7 +16,8 @@ static func populate_promo(dept : int, year : int) -> int:
 	var coeff = 0.0
 	var code = Utils.dept_index_to_string(dept)
 	var build = Building.get_building(code)
-	# l'examen d'entrée influ sur le nombre de recru en première année uniquement 
+	# l'examen d'entrée influe sur le nombre de recru en première année uniquement.
+	# Un autre facteur qui module ce nombre est l'attractivité de l'établissement.
 	# (On considère que pour les A2 et A3 à l'initialisation les examens avait pour difficulté 0 par défaut)
 	var coeff_exam = build.get_exam_entry() 
 	match year:
@@ -36,10 +37,21 @@ static func populate_promo(dept : int, year : int) -> int:
 			return 0
 	
 	# Calcule du nombre d'étudiant dans la promo tenant compte de la séléctivité des examens d'entrée
-	# Au maximum le nb de recru peut être diviser par 2, il ne peut pas être augmenter car les examens d'entrée 
+	# Au maximum le nb de recrus peut être divisé par 2, il ne peut pas être augmenter car les examens d'entrée 
 	# sont par défaut au plus facile
 	var nb_students = ceil(students_base_nb[dept-1] * coeff* (1-coeff_exam))
 	
+	# Le nombre de nouveaux inscrits dépend aussi de l'attractivité
+	var k = 0.25
+	var attr = GlobalData.get_attractivity()
+	if attr > 0.5:
+		nb_students = nb_students * (1 + k * attr) # augmente le nombre d'étudiants en 1ère année
+	else:
+		nb_students = nb_students * (1 - k * attr) # baisse le nombre d'étudiants en 1ère année
+	
+	if nb_students > 600:
+		nb_students = 599
+		
 	# On rajoute tout les étudiant de la promo
 	for i in range(0, nb_students):
 		# On ajoute un étudiant et lui donne une satisfaction aléatoire selon la difficulté du jeu
