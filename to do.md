@@ -11,16 +11,17 @@ Graphique 2D:
 
 Code:
 
-- ! Financement, à terminer : Elena
+- Financement, à terminer : Elena
 
 - Gestion des grandes vacances : Martin
-- Ajout de quelque évenements aléatoire simple : Martin
-
 - revoir le temps et le cout de renovation + son affichage : Martin
 - Mettre a jour la gestion de la satisfaction : Martin
 - Prendre en compte le nombre de diplomé pour l'éléction : Martin
+- Ajouter les surfaces des batiments et leur influence sur le chauffage : Martin
 
-- Ajouter des conditions au licensiment et à l'embauche (soit un dédommagement soit une limite mensuels)
+
+- Ajouter des conditions au licenciment (soit un dédommagement soit une limite mensuels)
+
 
 - Ajout de tout les messages et notifs manquant dans le code et definition de leur type (chauffage ect..)
 

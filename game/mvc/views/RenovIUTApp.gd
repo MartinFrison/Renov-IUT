@@ -65,7 +65,7 @@ func game_loaded() -> void:
 func _on_next_pressed() -> void:
 	var band = get_node("PanelStat/friseAttente")
 	var sablier = get_node("PanelStat/sablier")
-	var dept = get_node("BuildingAction/PanelGlobal/name")
+	var dept = get_node("Action_Control/BuildingAction/PanelGlobal/name")
 	band.visible = true
 	sablier.visible = true
 	dept.visible = false
@@ -74,7 +74,7 @@ func _on_next_pressed() -> void:
 	dept.visible = true
 	band.visible = false
 	sablier.visible = false
-	
+
 
 # Ferme l'appli
 func close_app() -> void:
