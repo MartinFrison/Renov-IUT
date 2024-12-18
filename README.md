@@ -77,7 +77,7 @@ La problématique du jeu se construit autour de 4 éléments :
 	- Mettre en place des mécanismes d'amélioration continue
 	- Savoir trancher si les intérêts des uns et des autres sont en conflit
     - Améliorer le niveau scolaire des étudiants de l' IUT 
-'. *L' attractivité*, 
+4. *L' attractivité*, la capacité de l'IUT à attirer de nouveaux étudiants et partenaires
 
 	- Développer des initiatives pour renforcer l'image du campus
 	- Promouvoir les réussites et les atouts de l'institution
