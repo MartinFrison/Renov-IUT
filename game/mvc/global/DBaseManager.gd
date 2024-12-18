@@ -18,6 +18,9 @@ func open_db() -> bool:
 	if !db.open_db():
 		print("Erreur lors de l'ouverture de la base de données.")
 		return false
+	else:
+		db.query("PRAGMA synchronous = NORMAL;")
+		db.query("PRAGMA journal_mode = WAL;")
 	return true
 
 # Fermer la base de données

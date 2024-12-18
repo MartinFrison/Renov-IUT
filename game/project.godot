@@ -40,6 +40,10 @@ animation_library={
 "animation/trimming": true
 }
 
+[input_devices]
+
+buffering/agile_event_flushing=true
+
 [physics]
 
 2d/run_on_separate_thread=true
