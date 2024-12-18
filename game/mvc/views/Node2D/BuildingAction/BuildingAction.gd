@@ -1,10 +1,11 @@
+class_name BuildingAction
 extends Node2D
 
 var code : String
 var build : Building
 var click : AudioStreamPlayer2D
 var under_construction : AudioStreamPlayer2D 
-
+var _loaded : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,10 +24,15 @@ func init(id : int) -> void:
 	build = Building.get_building(code)
 	show_data()
 
+func load():
+	_loaded = true
+	show_data()
 
 
 # Met à jours l'affichage de toute les texte et donnée du panel d'action
 func show_data() -> void:
+	if !_loaded:
+		return
 	var node
 	
 	node = get_node("PanelGlobal/name")
@@ -134,7 +140,7 @@ func is_button_hovered(button : Button) -> bool:
 
 # Affiche des infos sur les actions quand la souris passe sur le bouton correspondant
 func update_message_action() -> void:
-	if !visible:
+	if !_loaded:
 		return
 	var button
 	
@@ -159,6 +165,7 @@ func update_message_action() -> void:
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un ouvrier
 		var msg = "En embauchant un ouvrier, vous dépensez %s € de plus par mois." % [int(GlobalData._pay_worker)]
+		msg += "Ils servent à entretenir le bâtiment et à le rénover en cas de travaux."
 		show_message_action(msg, button.get_global_position().y)
 		return
 	
@@ -175,8 +182,8 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/GridContainer/add_pay")
 	if is_button_hovered(button):
 		# Si oui on affiche une bulle d'info
-		var msg = "Le salaire d'un enseignant est compris entre 2100 € et 
-		4400 €.\nIl peut être modifié par paliers de 575 €."
+		var msg = "Le salaire d'un enseignant est compris entre 4000 € et 
+		7000 €.\nIl peut être modifié par paliers de 500 €."
 		show_message_action(msg, button.get_global_position().y)
 		return
 		
@@ -184,8 +191,8 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/GridContainer/sub_pay")
 	if is_button_hovered(button):
 		# Si oui on affiche une bulle d'info
-		var msg = "Le salaire d'un enseignant est compris entre 2100 € et 
-		4400 €.\nIl peut être modifié par paliers de 575 €."
+		var msg = "Le salaire d'un enseignant est compris entre 4000 € et 
+		7000 €.\nIl peut être modifié par paliers de 500 €."
 		show_message_action(msg, button.get_global_position().y)
 		return
 			
@@ -216,7 +223,6 @@ func update_message_action() -> void:
 		d'éviter des dégradations !"
 		show_message_action(msg, button.get_global_position().y)
 		return
-	
 	
 	#Si la souris n'est sur aucun bouton on cache le message
 	hide_message_action()

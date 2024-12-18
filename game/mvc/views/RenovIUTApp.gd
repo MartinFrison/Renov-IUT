@@ -58,7 +58,8 @@ func game_loaded() -> void:
 	# Afficher les boutons d'action
 	var node = get_node("Action_Control")
 	node.visible = true
-	
+	node = get_node("Action_Control/BuildingAction") as BuildingAction
+	node.load()
 	
 	print("Game loaded")
 
