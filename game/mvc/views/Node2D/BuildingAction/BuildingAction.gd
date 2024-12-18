@@ -105,7 +105,9 @@ func show_data() -> void:
 		node.text = "éteindre le chauffage"
 	else:
 		node.text = "allumer le chauffage"
-		
+
+
+
 func check_and_update_buttons() -> void:
 	if GlobalData.get_season() == 0:
 		get_node("PanelGlobal/PanelAction/GridContainer/add_exem_end").set_disabled(false)
@@ -139,7 +141,7 @@ func update_message_action() -> void:
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un ouvrier
 		var msg = "En licenciant un ouvrier, vous gagnez %s €." % [int(GlobalData._pay_worker)]
-		show_message_action(msg)
+		show_message_action(msg, button.get_global_position().y)
 		return
 	
 	# On test si le bouton pour ajouter un ouvrier est en focus
@@ -147,7 +149,7 @@ func update_message_action() -> void:
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un ouvrier
 		var msg = "En embauchant un ouvrier, vous dépensez %s € de plus par mois." % [int(GlobalData._pay_worker)]
-		show_message_action(msg)
+		show_message_action(msg, button.get_global_position().y)
 		return
 	
 	# On test si le bouton pour enlever un prof est en focus
@@ -155,7 +157,7 @@ func update_message_action() -> void:
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un prof
 		var msg = "En faisant partir un enseignant, vous gagnez %s €." % [int(build.get_pay_teacher())]
-		show_message_action(msg)
+		show_message_action(msg, button.get_global_position().y)
 		return
 	
 	# On test si le bouton pour ajouter un prof est en focus
@@ -163,7 +165,7 @@ func update_message_action() -> void:
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un prof
 		var msg = "En embauchant un enseignant, vous dépensez %s € de plus par mois." % [int(build.get_pay_teacher())]
-		show_message_action(msg)
+		show_message_action(msg, button.get_global_position().y)
 		return
 	
 	# On test si le bouton pour allumer/eteindre le chauffage est en focus
@@ -171,7 +173,7 @@ func update_message_action() -> void:
 	if is_button_hovered(button):
 		# Si oui on affiche le cout du chauffage
 		var msg = "L'énergie est chère ! Allumer le chauffage coûte 1100 € par mois." #à corriger, je ne retrouve pas le chiffre du jeu
-		show_message_action(msg)
+		show_message_action(msg, button.get_global_position().y)
 		return
 	
 	
@@ -181,11 +183,21 @@ func update_message_action() -> void:
 
 
 # Montre le message d'information pour un bouton d'action avec un texte en paramètre
-# un message qui contient les info nécéssaire
-func show_message_action(msg : String) -> void:
+# un message qui contient les info nécéssaire ainsi que la hauteur du bouton concerner
+func show_message_action(msg : String, posY : int) -> void:
 	var node = get_node("message_action") as Label
+
+	# On définie la position du message en fonction de celle du bouton
+	var global_position = node.get_global_position()
+	# Modifier la composante Y en fonction de posY - 50
+	global_position.y = posY - 50
+	# Convertir la position globale en position locale par rapport au parent
+	node.position = node.get_parent().to_local(global_position)
+
+	# Rendre le node visible et mettre à jour le texte
 	node.visible = true
 	node.text = msg
+
 
 
 # cache le message d'information pour un bouton d'action
