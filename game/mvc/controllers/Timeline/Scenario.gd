@@ -7,8 +7,9 @@ var _name : String
 
 func _init() -> void:
 	init_building()
-	init_data()
 	init_attractivity()
+	init_data()
+	
 
 # Obtenir le nom du scénario actuel
 func get_scenario() -> String:
@@ -61,8 +62,8 @@ func random_event_call(events_proba) -> void:
 	# budget de base
 func init_data() -> void:
 	print("populate")
-	Teaching.populate()
 	Study.populate()
+	Teaching.populate()
 	adjust_budget()
 
 

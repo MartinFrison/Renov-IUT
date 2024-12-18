@@ -11,7 +11,7 @@ Graphique 2D:
 
 Code:
 
-- ! Financement, à terminer : Elena
+- affiner l'attractivité : Elena
 
 - Gestion des grandes vacances : Martin
 - Ajout de quelque évenements aléatoire simple : Martin

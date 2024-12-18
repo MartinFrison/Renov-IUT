@@ -7,8 +7,10 @@ const teachers_base_nb: Array = [21, 24, 18, 27, 18] # chiffres réels tirés du
 # Fonction pour embaucher un professeur dans un département spécifique
 # Si force est vrai le prof est embaucher sans conditions
 static func hire_teachers(dept: String, force : bool):
-	#vérifie si il y a moins de 30 profs dans le batiment
-	if !force and Teacher.compute_nb_per_dept(dept) >= 30:
+	# vérifie le nombre d'enseignants
+	# celui-ci dépend de l'attractivité de l'établissement
+	var limit = (GlobalData.get_attractivity() / 2)
+	if !force and Teacher.compute_nb_per_dept(dept) >= 30 * limit:
 		await BulleGestion.send_message("Maximum d'enseignants atteint pour ce département, on n'embauche plus personne.",false)
 		return
 
@@ -40,8 +42,19 @@ static func fire_teachers(dept: String):
 static func populate():
 	print("Recrutement initial des enseignants...")
 	var nb_teachers = 0
-	for i in range(1,6): # par département
+	var limit = (GlobalData.get_attractivity() / 2)
+	var k = 0.25
+	var attr = GlobalData.get_attractivity()
+	 #print("attr = %s" % attr)
+	
+	for i in range(1,6): # par département, compte tenu de l'attractivité
 		nb_teachers = teachers_base_nb[i-1]
+	
+		if attr > 0.5:
+			nb_teachers = nb_teachers * (1 + k * attr) # augmente le nombre d'enseignants qui veulent travailler à l'IUT
+		elif attr <= 0.5 :
+			nb_teachers = nb_teachers * (1 - k * attr) # baisse le nombre d'enseignants qui sont partants
+		
 		for j in range (0, nb_teachers):
 			# On l'embauche des prof est forcer au début du jeu
 			hire_teachers(Utils.dept_index_to_string(i), true)
