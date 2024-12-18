@@ -1,13 +1,16 @@
 class_name Building
 extends RefCounted
 
-const coeffTempsRenovation = 10 # Valeur d'un trimestre de travail ouvrier
+
+const fixed_cost_renovation = 500000 # Cout fixe en € lié à la rénovation d'un batiment
+const coeffTempsRenovation = 4 # Valeur d'un trimestre de travail ouvrier sur la renovation
 const MonthlySquareMetersHeatingCost = 8 #8$ par metre carré par mois dans le cas ou
 # l'état du batiment est déplorable
 
 
 static var _buildingsDictionary = {}
 static var _total_buildings_under_renovation : int = 0  # Nombre total de bâtiments en travaux
+
 
 # Attributs privés
 var _age : int

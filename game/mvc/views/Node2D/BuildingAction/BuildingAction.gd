@@ -156,7 +156,7 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/GridContainer/sub_worker")
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un ouvrier
-		var msg = "En licenciant un personnel, vous gagnez %s €... mais pensez à l'entretien du bâtiment." % [int(GlobalData._pay_worker)]
+		var msg = "En licenciant un personnel, vous gagnez %s €... mais pensez à l'entretien du bâtiment." % [int(GlobalData.get_pay_worker())]
 		show_message_action(msg, button.get_global_position().y)
 		return
 	
@@ -164,7 +164,7 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/GridContainer/add_worker")
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un ouvrier
-		var msg = "En embauchant un personnel, vous dépensez %s € de plus par mois.\n" % [int(GlobalData._pay_worker)]
+		var msg = "En embauchant un personnel, vous dépensez %s € de plus par mois.\n" % [int(GlobalData.get_pay_worker())]
 		msg += "Ils servent à entretenir le bâtiment et à le rénover au cas où des travaux sont nécessaires."
 		show_message_action(msg, button.get_global_position().y)
 		return

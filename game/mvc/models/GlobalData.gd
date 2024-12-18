@@ -8,8 +8,7 @@ static var _day: int
 static var _budget: int
 static var _difficulty: int = 1 # Ajuste la difficulté si c'est le mode tutoriel
 static var _attractivity: float # Attractivité de l'établissement, en pourcentage
-static var _pay_agent: int = 1800
-static var _pay_worker: int = 2300
+static var _pay_worker: int = 3500 # Salaire 3500 € pour le personelles
 
 
 # Fonction pour définir le budget
@@ -33,9 +32,6 @@ static func getTotalBudget() -> int:
 	for b in builds:
 		result += builds[b].get_budget()
 	return result;
-
-static func get_pay_agent() -> int:
-	return _pay_agent
 
 static func get_pay_worker() -> int:
 	return _pay_worker

@@ -40,16 +40,13 @@ static func advance_work(building: Building) -> void:
 	if workers <= 0:
 		return  # Pas de personnel, pas d'avancement possible
 	
-	# Calcul de l'avancement par type de travaux
-	var progress_per_worker = workers
-	var renovation_increment = 0
-	
-	if building._is_renovation_underway:
-		renovation_increment = progress_per_worker
-	
 	# Mise à jour de l'inventaire
 	if building._is_renovation_underway:
-		building.addInventory(renovation_increment* Building.coeffTempsRenovation)
+		# Calcul de l'avancement des travaux
+		var progress_per_worker = workers
+		var renovation_increment = progress_per_worker * Building.coeffTempsRenovation
+		building.addInventory(renovation_increment)
+		# Si le batiment est rénover on signe la fin des travaux
 		if building.get_inventory() >= 100:
 			building.set_renovation_underway(false)
 			RenovIUTApp.app.building_work(Utils.dept_string_to_index(building.get_code()), false)
@@ -79,6 +76,10 @@ static func start_renovation(building: Building) -> bool:
 		commencer les travaux.",false) 
 		return false
 	
+	# On payent les cout fixe de la renovation et on anule les travaux si le budget est insuffisant
+	if !await Expense.try_expense_dept(Building.fixed_cost_renovation, building.get_code()):
+		return false
+	
 	# Démarrer les travaux de rénovation
 	building.set_renovation_underway(true)
 	RenovIUTApp.app.building_work(Utils.dept_string_to_index(building.get_code()), true)
@@ -93,9 +94,9 @@ static func fireWorker(dept: String) -> void:
 		var building = Building.get_building(dept)
 		if building.get_ouvriers() > 0:
 			building.remove_ouvrier()
-			print("Administratif renvoyé pour le département ", dept, ". Nombre d'administratifs restants : ", building.get_ouvriers(), ".")
+			print("Personnel renvoyé pour le département ", dept, ". Nombre de personnels restants : ", building.get_ouvriers(), ".")
 		else:
-			print("Plus d'administratifs pour le département ", dept, ".")
+			print("Plus de personnels pour le département ", dept, ".")
 	else:
 		print("Aucun bâtiment trouvé pour le département ", dept, ".")
 
@@ -109,7 +110,7 @@ static func hireWorker(dept: String) -> void:
 			building.add_ouvrier()
 			print("Nouvel administratif embauché pour le département", dept, ". Nombre total d'administratifs :", building.get_ouvriers())
 		else:
-			await BulleGestion.send_message("Vous avez atteint la limite d'administratifs.",false)
+			await BulleGestion.send_message("Vous avez atteint la limite de personnels.",false)
 	else:
 		print("Aucun bâtiment trouvé pour le département ", dept, ".")
 

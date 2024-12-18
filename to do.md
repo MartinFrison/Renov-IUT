@@ -24,8 +24,14 @@ Code:
 - Mettre a jour la gestion de la satisfaction + celle en rapport avec les salaires : Martin
 - Prendre en compte le nombre de diplomé pour l'éléction : Martin
 
-- Ajouter des conditions au licenciment (soit un dédommagement soit une limite mensuels)
-- Ajout de tout les messages et notifs manquant dans le code et definition de leur type : chauffage, info sur les portes bloquer, ect..
+
+
+- Ajouter des conditions au licenciment (soit un dédommagement soit une limite mensuels) pour éviter les abus
+- Ajout de tout les messages et notifs manquant dans le code 
+    - chauffage
+    - info sur les portes bloquer
+    - sur la rénovation
+    - ect..
 
 
 
