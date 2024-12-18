@@ -2,7 +2,8 @@ class_name Teaching
 extends RefCounted
 
 const teachers_base_nb: Array = [21, 24, 18, 27, 18] # chiffres réels tirés du site officiel de l'IUT Robert Schuman
-
+const minimum_wage : int = 4000
+const maximum_wage : int = 7000
 
 # Fonction pour embaucher un professeur dans un département spécifique
 # Si force est vrai le prof est embaucher sans conditions
@@ -90,16 +91,16 @@ static func mood_fluctuation(dept : String, value : float, coeff : float) -> voi
 
 static func increase_salary(dept : String) -> void:
 	var b = Building.get_building(dept)
-	if b.get_pay_teacher() >= 7000:
-		await BulleGestion.send_message("Le salaire des enseigants ne peut pas dépasser 4400 €.", false)
+	if b.get_pay_teacher() >= maximum_wage:
+		await BulleGestion.send_message("Le salaire des enseigants ne peut pas dépasser 7000€.", false)
 	else:
 		b.add_pay_teacher(500)
 
 
 static func decrease_salary(dept : String) -> void:
 	var b = Building.get_building(dept)
-	if b.get_pay_teacher() <=4000:
-		await BulleGestion.send_message("Les enseignants ne sont pas au SMIC, leur salaire ne peut pas être inférieur à 2100 €.", false)
+	if b.get_pay_teacher() <= minimum_wage:
+		await BulleGestion.send_message("Les enseignants ne sont pas au SMIC, leur salaire ne peut pas être inférieur à 4000€.", false)
 	else:
 		b.add_pay_teacher(-(500))
 
@@ -116,17 +117,15 @@ static func teacher_resign() -> void:
 # la satisfaction de chaque profs tend vers une valeur qui dépend du salaire
 static func pay_adjust_mood() -> void:
 	for i in range(1,6):
-		# valeur pour le salaire minimal:
-		var value = 0.65
 		var code = Utils.dept_index_to_string(i)
-		if Building.get_building(code).get_pay_teacher() >= 4400:
-			value = 1
-		elif Building.get_building(code).get_pay_teacher() >= 3600:
-			value = 0.85
+		var build = Building.get_building(code)
+		# Definition de la valeur avec un minimum de 0.4 pour le salaire minimal
+		var value = 0.4
+		value += (build.get_pay_teacher()-minimum_wage) / (maximum_wage-minimum_wage)
 		
 		
-		# On applique la valeur avec un coeff de 30%
-		Teaching.mood_fluctuation(code, value, 0.3)
+		# On applique la valeur avec un coeff de 35%
+		Teaching.mood_fluctuation(code, value, 0.35)
 
 
 
