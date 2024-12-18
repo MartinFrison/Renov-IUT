@@ -134,6 +134,8 @@ func is_button_hovered(button : Button) -> bool:
 
 # Affiche des infos sur les actions quand la souris passe sur le bouton correspondant
 func update_message_action() -> void:
+	if !visible:
+		return
 	var button
 	
 	# On teste si le bouton pour lancer des travaux est en focus
@@ -164,7 +166,8 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/GridContainer/sub_teacher")
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un prof
-		var msg = "En faisant partir un enseignant, vous gagnez %s €." % [int(build.get_pay_teacher())]
+		var msg = "En faisant partir un enseignant, vous gagnez %s €.
+		" % [int(build.get_pay_teacher())]
 		show_message_action(msg, button.get_global_position().y)
 		return
 		
@@ -172,7 +175,8 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/GridContainer/add_pay")
 	if is_button_hovered(button):
 		# Si oui on affiche une bulle d'info
-		var msg = "Le salaire d'un enseignant est compris entre 2100 € et 4400 €.\nIl peut être modifié par paliers de 575 €."
+		var msg = "Le salaire d'un enseignant est compris entre 2100 € et 
+		4400 €.\nIl peut être modifié par paliers de 575 €."
 		show_message_action(msg, button.get_global_position().y)
 		return
 		
@@ -180,7 +184,8 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/GridContainer/sub_pay")
 	if is_button_hovered(button):
 		# Si oui on affiche une bulle d'info
-		var msg = "Le salaire d'un enseignant est compris entre 2100 € et 4400 €.\nIl peut être modifié par paliers de 575 €."
+		var msg = "Le salaire d'un enseignant est compris entre 2100 € et 
+		4400 €.\nIl peut être modifié par paliers de 575 €."
 		show_message_action(msg, button.get_global_position().y)
 		return
 			
@@ -188,7 +193,8 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/GridContainer/add_teacher")
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un prof
-		var msg = "En embauchant un enseignant, vous dépensez %s € de plus par mois." % [int(build.get_pay_teacher())]
+		var msg = "En embauchant un enseignant, vous dépensez %s € 
+		de plus par mois." % [int(build.get_pay_teacher())]
 		show_message_action(msg, button.get_global_position().y)
 		return
 	
@@ -196,7 +202,9 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/heat")
 	if is_button_hovered(button):
 		# Si oui on affiche le cout du chauffage
-		var msg = "L'énergie est chère ! Allumer le chauffage coûte 1100 € par mois." #à corriger, je ne retrouve pas le chiffre du jeu
+		var msg = "L'énergie est chère ! Allumer le chauffage coûte %s € par 
+		mois. " % [build.get_surface() * Building.MonthlySquareMetersHeatingCost]
+		msg += "Attention ! Ce coût peut augmenter si le bâtiment est dégradé !"
 		show_message_action(msg, button.get_global_position().y)
 		return
 		
@@ -204,7 +212,8 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/lock")
 	if is_button_hovered(button):
 		# Si oui on affiche une bulle d'info
-		var msg = "Les portes fermées agacent les étudiants, mais cela permet d'améliorer le bilan énergétique !"
+		var msg = "Les portes fermées agacent les étudiants, mais cela permet 
+		d'éviter des dégradations !"
 		show_message_action(msg, button.get_global_position().y)
 		return
 	
