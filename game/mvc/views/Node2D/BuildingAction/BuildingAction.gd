@@ -182,7 +182,7 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/GridContainer/add_pay")
 	if is_button_hovered(button):
 		# Si oui on affiche une bulle d'info
-		var msg = "Le salaire d'un enseignant est compris entre 4000 € et 
+		var msg = "Le salaire (brut) d'un enseignant est compris entre 4000 € et 
 		7000 €.\nIl peut être modifié par paliers de 500 €."
 		show_message_action(msg, button.get_global_position().y)
 		return
@@ -191,7 +191,7 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/GridContainer/sub_pay")
 	if is_button_hovered(button):
 		# Si oui on affiche une bulle d'info
-		var msg = "Le salaire d'un enseignant est compris entre 4000 € et 
+		var msg = "Le salaire (brut) d'un enseignant est compris entre 4000 € et 
 		7000 €.\nIl peut être modifié par paliers de 500 €."
 		show_message_action(msg, button.get_global_position().y)
 		return
