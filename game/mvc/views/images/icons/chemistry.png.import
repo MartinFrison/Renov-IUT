@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck6y01uxal4ra"
-path="res://.godot/imported/globalInfoBar.png-90fd7ce66e8b62140e1b8f1100725928.ctex"
+uid="uid://chu5wfl6tehla"
+path="res://.godot/imported/chemistry.png-b8054bab28b81618d399b57950ab4164.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mvc/views/images/interface/layers/globalInfoBar.png"
-dest_files=["res://.godot/imported/globalInfoBar.png-90fd7ce66e8b62140e1b8f1100725928.ctex"]
+source_file="res://mvc/views/images/icons/chemistry.png"
+dest_files=["res://.godot/imported/chemistry.png-b8054bab28b81618d399b57950ab4164.ctex"]
 
 [params]
 
