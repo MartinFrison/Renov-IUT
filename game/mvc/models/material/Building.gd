@@ -2,8 +2,9 @@ class_name Building
 extends RefCounted
 
 const coeffTempsRenovation = 10 # Valeur d'un trimestre de travail ouvrier
-const MonthlySquareMetersHeatingCost = 12 #12$ par metre carré par mois en cas d'isolation 
-#complètement inexsistante
+const MonthlySquareMetersHeatingCost = 12 #12$ par metre carré par mois dans le cas ou
+# l'état du batiment est déplorable
+
 
 static var _buildingsDictionary = {}
 static var _total_buildings_under_renovation : int = 0  # Nombre total de bâtiments en travaux
@@ -31,9 +32,10 @@ func _init(age: int, surface: int, heating: bool, code: String, inventory: int) 
 	_code = code
 	_inventory = clamp(inventory, 0, 100)  # Limite l'inventaire entre 0 et 100
 	_buildingsDictionary[code] = self
+	
 	_budget = 0
 	_ouvriers = 0
-	_pay_teacher = 0  # Initialisation à 0
+	_pay_teacher = 0 
 
 static func get_building(code: String) -> Building:
 	if _buildingsDictionary.has(code):
@@ -50,8 +52,7 @@ func get_code() -> String:
 
 func get_pay_teacher() -> int:
 	return _pay_teacher
-	
-# Méthodes de gestion du budget
+
 func get_budget() -> int:
 	return _budget
 

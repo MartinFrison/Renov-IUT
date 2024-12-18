@@ -54,7 +54,7 @@ func next_Trimestre():
 	_scenario.mid_game()
 
 	# Reglement des factures trimestrielle
-	_bill.add_daily_expense(90)
+	_bill.add_daily_expense()
 	_bill.pay_bill()
 	# On prévient le joueur s'il risque la faillite
 	if _bill.get_previous_bill() >= GlobalData.getBudget():
