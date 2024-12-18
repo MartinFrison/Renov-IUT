@@ -90,18 +90,18 @@ static func mood_fluctuation(dept : String, value : float, coeff : float) -> voi
 
 static func increase_salary(dept : String) -> void:
 	var b = Building.get_building(dept)
-	if b.get_pay_teacher() >= 4400:
+	if b.get_pay_teacher() >= 7000:
 		await BulleGestion.send_message("Le salaire des enseigants ne peut pas dépasser 4400 €.", false)
 	else:
-		b.add_pay_teacher(575)
+		b.add_pay_teacher(500)
 
 
 static func decrease_salary(dept : String) -> void:
 	var b = Building.get_building(dept)
-	if b.get_pay_teacher() <=2100:
+	if b.get_pay_teacher() <=4000:
 		await BulleGestion.send_message("Les enseignants ne sont pas au SMIC, leur salaire ne peut pas être inférieur à 2100 €.", false)
 	else:
-		b.add_pay_teacher(-(575))
+		b.add_pay_teacher(-(500))
 
 
 
