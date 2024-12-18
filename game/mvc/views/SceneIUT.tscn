@@ -116,10 +116,10 @@ expand_icon = true
 z_index = 11
 
 [node name="Next" type="Button" parent="PanelStat"]
-offset_left = 1088.0
-offset_top = 29.0
-offset_right = 1133.0
-offset_bottom = 72.0
+offset_left = 1096.0
+offset_top = 34.0
+offset_right = 1129.0
+offset_bottom = 67.0
 mouse_default_cursor_shape = 2
 icon = ExtResource("3_bqdem")
 flat = true
