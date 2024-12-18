@@ -12,6 +12,10 @@ var loaded = false
 func _ready() -> void:
 	print("start")
 	
+	# Masquer les controls d'actions pour éviter les bugs
+	var node = get_node("Action_Control")
+	node.visible = false
+	
 	#Masquer tout les travaux au début
 	for i in range (1,6):
 		building_work(i, false)
@@ -49,6 +53,11 @@ func startGame() -> void:
 func game_loaded() -> void:
 	loaded = true
 	open_building(1)
+	
+	# Afficher les boutons d'action
+	var node = get_node("Action_Control")
+	node.visible = true
+	
 	print("Game loaded")
 
 
@@ -88,7 +97,7 @@ func open_bankrupt() -> void:
 # Afficher les info et action d'un batiment
 func open_building(id) -> void:
 	if loaded:
-		var panelAction = get_tree().get_current_scene().get_node("BuildingAction")
+		var panelAction = get_tree().get_current_scene().get_node("Action_Control/BuildingAction")
 		panelAction.init(id)
 
 

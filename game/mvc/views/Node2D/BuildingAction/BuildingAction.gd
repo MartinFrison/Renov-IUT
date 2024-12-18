@@ -9,12 +9,14 @@ var is_message_active: bool # concerne le message pop-up au survol des +/-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#is_message_active = false
 	click = get_node("PanelGlobal/button")
 	under_construction = get_node("PanelGlobal/PanelAction/construction_site")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	check_and_update_buttons()
+
 
 func init(id : int) -> void:
 	code = Utils.dept_index_to_string(id)
@@ -23,7 +25,7 @@ func init(id : int) -> void:
 
 
 func show_data() -> void:
-	is_message_active = false
+	#is_message_active = false
 	var node
 	
 	node = get_node("PanelGlobal/name")

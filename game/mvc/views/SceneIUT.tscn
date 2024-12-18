@@ -42,13 +42,6 @@ glow_enabled = true
 content_margin_left = 34.0
 bg_color = Color(0, 0.141176, 0.27451, 0.866667)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6rpc"]
-bg_color = Color(0.294118, 0.329412, 0.278431, 0.784314)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_nrmeu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_rck6k"]
@@ -69,14 +62,18 @@ size = Vector3(0.653564, 1, 1.77466)
 [sub_resource type="BoxShape3D" id="BoxShape3D_26cy1"]
 size = Vector3(1.1521, 1, 1.92261)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6rpc"]
+bg_color = Color(0.294118, 0.329412, 0.278431, 0.784314)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="IUT" type="Node2D"]
 script = ExtResource("1_drlro")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6245k")
-
-[node name="BuildingAction" parent="." instance=ExtResource("8_lduu6")]
-position = Vector2(-1, -9.53674e-07)
 
 [node name="PanelStat" parent="." instance=ExtResource("4_t3hyp")]
 z_index = 11
@@ -111,37 +108,6 @@ visible = false
 position = Vector2(753, 260)
 scale = Vector2(0.0500001, 0.0566667)
 texture = ExtResource("5_5lmpc")
-
-[node name="notif_button" type="Button" parent="."]
-clip_contents = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 1.0
-offset_top = 99.0
-offset_right = 109.0
-offset_bottom = 208.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_default_cursor_shape = 2
-icon = ExtResource("3_4oyj6")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="Quitter" type="Button" parent="."]
-offset_left = 26.0
-offset_top = 571.0
-offset_right = 78.0
-offset_bottom = 628.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_q6rpc")
-icon = ExtResource("5_t216u")
-expand_icon = true
 
 [node name="Vue3D" type="Node3D" parent="."]
 
@@ -519,8 +485,44 @@ layout_mode = 2
 [node name="BulleTutorial" parent="." instance=ExtResource("19_erxnb")]
 position = Vector2(1324, 307)
 
+[node name="Action_Control" type="Node2D" parent="."]
+
+[node name="BuildingAction" parent="Action_Control" instance=ExtResource("8_lduu6")]
+position = Vector2(-1, -9.53674e-07)
+
+[node name="notif_button" type="Button" parent="Action_Control"]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = 99.0
+offset_right = 109.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+icon = ExtResource("3_4oyj6")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Quitter" type="Button" parent="Action_Control"]
+offset_left = 26.0
+offset_top = 571.0
+offset_right = 78.0
+offset_bottom = 628.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_q6rpc")
+icon = ExtResource("5_t216u")
+expand_icon = true
+
 [connection signal="pressed" from="PanelStat/Next" to="." method="_on_next_pressed"]
-[connection signal="pressed" from="notif_button" to="." method="open_notif"]
-[connection signal="pressed" from="Quitter" to="menu" method="_on_QuitterButton_pressed"]
 [connection signal="pressed" from="menu/PopupPanel/VBoxContainer/FermerMenu" to="menu" method="_on_FermerMenuButton_pressed"]
 [connection signal="pressed" from="menu/PopupPanel/VBoxContainer/OuvrirPanel" to="menu" method="_on_OuvrirPanelButton_pressed"]
+[connection signal="pressed" from="Action_Control/notif_button" to="." method="open_notif"]
+[connection signal="pressed" from="Action_Control/Quitter" to="menu" method="_on_QuitterButton_pressed"]
