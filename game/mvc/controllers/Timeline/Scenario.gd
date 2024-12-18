@@ -86,15 +86,13 @@ func init_building() -> void:
 		
 		# Initialisation du salaire des profs et du budget
 		adjust_budget_building(b)
-<<<<<<< HEAD
-		b.set_pay_teacher(2100)
-=======
-		b.set_pay_teacher(5500)
->>>>>>> 97c6c39 (mise à jours du salaire des profs)
+		b.set_pay_teacher(4000)
+		b.set_pay_teacher(7000)
+
 
 func init_attractivity() -> void:
 	GlobalData.set_attractivity()
-	
+
 
 # Ajuster le budget des batiment en appliquant un coefficient
 func adjust_budget_building(build : Building) -> void:
