@@ -7,8 +7,8 @@ var _name : String
 
 func _init() -> void:
 	init_building()
-	init_attractivity()
 	init_data()
+	init_attractivity()
 	
 
 # Obtenir le nom du scénario actuel
@@ -67,22 +67,32 @@ func init_data() -> void:
 	adjust_budget()
 
 
-
+# Instancis les batiments et leur valeur de départ
 func init_building() -> void:
-	for i in 5:
+	for i in range(1,6):
 		var age = Utils.randint_in_range(5,50)
 		# l'isolation et l'état est aléatoire et dépend de la difficulté
-		var isolation = int(Utils.randint_in_range(20,80) * GlobalData.adjust_dept_state())
-		var inventory = int(Utils.randint_in_range(20,100) * GlobalData.adjust_dept_state())
+		var inventory = int(Utils.randfloat_in_square_range(30,100) * GlobalData.adjust_dept_state())
 		
-		var code = Utils.dept_index_to_string(i+1)
-		var b = Building.new(age,1000, false, code, inventory)	
+		# Surface des batiments:
+		# chimie 5000m2, genie_civil 9000m2, info_com 2000m2
+		# informatique 2500m2, technique_de_co 7000m2
+		var surfaces = [5000,9000,2000,2500,7000]
+		var surface = surfaces[i-1] # Selectionner la bonne surface
+		
+		# Instanciation du batiment
+		var code = Utils.dept_index_to_string(i)
+		var b = Building.new(age,surface, false, code, inventory)
+		
+		# Initialisation du salaire des profs et du budget
 		adjust_budget_building(b)
-		b.set_pay_teacher(2800)
+		b.set_pay_teacher(4000)
+		b.set_pay_teacher(7000)
+
 
 func init_attractivity() -> void:
 	GlobalData.set_attractivity()
-	
+
 
 # Ajuster le budget des batiment en appliquant un coefficient
 func adjust_budget_building(build : Building) -> void:

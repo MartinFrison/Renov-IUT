@@ -18,6 +18,9 @@ func open_db() -> bool:
 	if !db.open_db():
 		print("Erreur lors de l'ouverture de la base de données.")
 		return false
+	else:
+		db.query("PRAGMA synchronous = NORMAL;")
+		db.query("PRAGMA journal_mode = WAL;")
 	return true
 
 # Fermer la base de données
@@ -97,7 +100,7 @@ func print_entries(query: String, params: Array = []) -> void:
 
 # Vider toutes les tables
 func clear_tables() -> void:
-	var tables = ["Students", "Teachers", "Funds", "Notifications"]
+	var tables = ["Students", "Teachers", "Notifications"]
 	for table in tables:
 		var query = "DELETE FROM " + table
 		if !execute(query):

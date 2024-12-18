@@ -9,7 +9,7 @@ var ok = db.open_db()
 # Variables globales
 var normal_inflation_rate = 0.057
 var indexation_rate = normal_inflation_rate - 0.01
-var csv_path : String = "res://data/urgencies.csv"
+#var csv_path : String = "res://data/urgencies.csv"
 
 func create_iut_db():
 	var delete
@@ -41,16 +41,6 @@ func create_iut_db():
 	);
 	"""
 
-	var create_funds_table_query = """
-	CREATE TABLE IF NOT EXISTS Funds (
-		id INTEGER PRIMARY KEY AUTOINCREMENT,
-		amount REAL,
-		source TEXT,
-		area INTEGER,
-		time INTEGER
-	);
-	"""
-
 	var create_notifications_table_query = """
 	CREATE TABLE IF NOT EXISTS Notifications (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -66,7 +56,6 @@ func create_iut_db():
 	var queries = [
 		create_students_table_query,
 		create_teachers_table_query,
-		create_funds_table_query,
 		create_notifications_table_query,
 	]
 
@@ -76,42 +65,42 @@ func create_iut_db():
 		else:
 			print("Table créée avec succès.")
 
-	fill_notifications_from_csv(csv_path)
+	#fill_notifications_from_csv(csv_path)
 	
 	# db.clear_tables()
 	
 # Remplit la table Notifications avec des événements contenus dans un fichier CSV
-func fill_notifications_from_csv(file_path : String):
-	return
-	var file = FileAccess.open(file_path, FileAccess.READ)
-	
-	if !file:
-		print("Erreur lors de l'ouverture du fichier CSV.")
-		return
-	
-	# Lire la première ligne pour ignorer les en-têtes
-	file.get_line()
-
-	# Lire le contenu du fichier et insérer dans la base de données
-	while !file.eof_reached():
-		var line = file.get_line()
-		if line.begins_with("#"):
-			continue
-		var data = line.split(";")
-
-		if data.size() < 4:
-			#print("Ligne incomplète : ", line)
-			continue
-
-		var message = data[0].strip_edges()
-		var duration = int(data[1].strip_edges())
-		var is_reproductible = data[2].strip_edges() == "1"
-		var needs_action = data[3].strip_edges() == "1"
-
-		var query = "INSERT INTO Notifications (message, duration, is_reproductible, needs_action) VALUES (?, ?, ?, ?)"
-		if !db.execute(query, [message, duration, is_reproductible, needs_action]):
-			print("Erreur lors de l'ajout de la notification.")
-	file.close()
+#func fill_notifications_from_csv(file_path : String):
+#	return
+#	var file = FileAccess.open(file_path, FileAccess.READ)
+#	
+#	if !file:
+#		print("Erreur lors de l'ouverture du fichier CSV.")
+#		return
+#	
+#	# Lire la première ligne pour ignorer les en-têtes
+#	file.get_line()
+#
+#	# Lire le contenu du fichier et insérer dans la base de données
+#	while !file.eof_reached():
+#		var line = file.get_line()
+#		if line.begins_with("#"):
+#			continue
+#		var data = line.split(";")
+#
+#		if data.size() < 4:
+#			#print("Ligne incomplète : ", line)
+#			continue
+#
+#		var message = data[0].strip_edges()
+#		var duration = int(data[1].strip_edges())
+#		var is_reproductible = data[2].strip_edges() == "1"
+#		var needs_action = data[3].strip_edges() == "1"
+#
+#		var query = "INSERT INTO Notifications (message, duration, is_reproductible, needs_action) VALUES (?, ?, ?, ?)"
+#		if !db.execute(query, [message, duration, is_reproductible, needs_action]):
+#			print("Erreur lors de l'ajout de la notification.")
+#	file.close()
 
 
 # Indexation : fonctions utilitaires
@@ -155,27 +144,6 @@ static func dept_string_to_index(source: String) -> int:
 			return -1  # Gestion des cas non définis
 
 
-	
-	
-	
-	
-	
-	
-	
-func source_index_to_string(index : int) -> String:
-	var query = "SELECT name FROM Sources WHERE id=?"
-	var result = db.get_entries(query, [index])
-	if result.size() > 0:
-		return result[0]["name"]
-	return ""
-
-
-func source_string_to_index(code : String) -> int:
-	var query = "SELECT id FROM Sources WHERE name=?"
-	var result = db.get_entries(query, [code])
-	if result.size() > 0:
-		return result[0]["id"]
-	return -1
 
 static func get_month_name(month: int) -> String:
 	# Tableau des mois

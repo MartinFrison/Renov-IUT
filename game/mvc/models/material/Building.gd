@@ -2,7 +2,7 @@ class_name Building
 extends RefCounted
 
 const coeffTempsRenovation = 10 # Valeur d'un trimestre de travail ouvrier
-const MonthlySquareMetersHeatingCost = 12 #12$ par metre carré par mois dans le cas ou
+const MonthlySquareMetersHeatingCost = 8 #8$ par metre carré par mois dans le cas ou
 # l'état du batiment est déplorable
 
 

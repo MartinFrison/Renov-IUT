@@ -48,8 +48,13 @@ func mid_game() -> void:
 	# A la fin de l'année on informe le joueur du succès cumulé de ses étudiants depuis son éléction
 	if GlobalData.isEndofYear():
 		var msg
-		msg = "À l'heure qu'il est, le nombre d'étudiants ayant rejoint une école d'ingénieurs sous votre 
-		mandat s'élève à %s." % [Student.get_engineering()]
+		var nb_eng = Student.get_engineering()
+		if nb_eng != 0:
+			msg = "À l'heure qu'il est, le nombre d'étudiants ayant rejoint une école d'ingénieurs sous votre 
+		mandat s'élève à %s." % [nb_eng]
+		else:
+			msg += "À l'heure qu'il est, aucun étudiant n'a rejoint une école d'ingénieurs. "
+			msg += "Il paraît qu'ils n'en avaient pas le niveau..."
 		await BulleGestion.send_message(msg, true)
 
 

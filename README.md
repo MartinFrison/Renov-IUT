@@ -37,52 +37,53 @@ Toutes les images utilisées sont libres de droits :
 
 ### Installation et exécution
 
-Pour lancer le jeu, il suffit de ... _SECTION À REMPLIR_
+Pour lancer le jeu, il suffit de ... SECTION À REMPLIR
 
 ## Cahier des charges
 
 ### Objectifs pédagogiques généraux
-En tant que _[serious game](#jeux-sérieux)_, RenovIUT ne se limite pas à vous divertir, mais a également des objectifs pédagogiques, à savoir :
+En tant que [serious game](#jeux-sérieux), RenovIUT ne se limite pas à vous divertir, mais a également des objectifs pédagogiques, à savoir :
 
-- **_Comprendre_** le rôle du directeur de l'IUT, établissement à une administration relativement autonome, dans l'entretien et la rénovation de ses locaux, en adéquation avec ses engagements sociaux ;
-- **_Découvrir_** les bonnes pratiques de gestion du budget d'un IUT, alimenté de sources de financement certes multiples mais limitées, afin d'assurer les meilleurs conditions de travail possibles pour ses étudiants et son corps enseignant ;
-- **_Expérimenter_** la prise de décision en situation d'urgence, nécessitant une remise en question des priorités de l'établissement.
+- *Comprendre* le rôle du directeur de l'IUT, établissement à une administration relativement autonome, dans l'entretien et la rénovation de ses locaux, en adéquation avec ses engagements sociaux ;
+- *Découvrir* les bonnes pratiques de gestion du budget d'un IUT, alimenté de sources de financement certes multiples mais limitées, afin d'assurer les meilleurs conditions de travail possibles pour ses étudiants et son corps enseignant ;
+- *Expérimenter* la prise de décision en situation d'urgence, nécessitant une remise en question des priorités de l'établissement.
 
 ### Objectifs pédagogiques avancés
 
-Sur un mandat de 5 ans ou sur un temps illimité selon le scénario, vous devez rénover les bâtiments et les infrastructures, [en gérant votre budget partagé entre les dépenses d'énergie, les salaires et les rénovations](#missions) et [en répondant aux aléas qui se présentent](#aléas). Comme [le budget](#budget) n'est pas extensible à l'infini, que le temps passe vite et que les intérêts de tout le monde ne sont pas forcément conciliables, il va falloir faire des [choix](#actions-du-joueur) !
+Sur un mandat de 5 ans ou sur un temps illimité selon le scénario, vous devez rénover les bâtiments et les infrastructures, [en gérant votre budget partagé entre les dépenses d'énergie, les salaires et les rénovations](#missions) et [en répondant aux aléas qui se présentent]. Comme [le budget](#budget) n'est pas extensible à l'infini, que le temps passe vite et que les intérêts de tout le monde ne sont pas forcément conciliables, il va falloir faire des [choix](#actions-du-joueur) !
 
 Votre objectif ultime est [soit](#scénarios) de gérer au mieux les ressources qui vous sont confiées, soit de vous faire réélire à la fin du mandat. Normalement, vous devrez maintenir de bonnes conditions de travail et veiller à la satisfaction des étudiants et des enseignants - sauf si vous trouvez une meilleure stratégie pour écraser les concurrents ! (En revanche, ce serait dommage si vous deviez faire sombrer l'établissement pour assouvir vos rêves de grandeur...)
 
-La problématique du jeu se construit autour de quatre éléments :
+La problématique du jeu se construit autour de 4 éléments :
 
-1. **_Les infrastructures existantes_** qui doivent être entretenues voire, à moment donné, réparées.
+1. *Les infrastructures existantes* qui doivent être entretenues voire, à moment donné, réparées.
 
 	- Évaluer l'état actuel des bâtiments et des installations
 	- Concevoir un plan de rénovation
 	- Assurer la coordination des parties prenantes
 	- Choisir les prestataires
 
-2. **_Le budget_**, le pivot des activités, car aucune intervention sur le campus n'est possible sans financement.
+2. *Le budget*, le pivot des activités, car aucune intervention sur le campus n'est possible sans financement.
 
 	- Élaborer un bugdet réaliste
 	- Rechercher des sources de financement multiples
 	- Assurer le suivi financier des projets
 	- Faire des choix quand les moyens sont réduits
 
-3. **_Les parties prenantes_**, qui sont avant tout les étudiants, mais aussi les enseignants, les personnels, l'Eurométropole...
+3. *Les parties prenantes*, qui sont avant tout les étudiants, mais aussi les enseignants, les personnels, l'Eurométropole...
 
 	- Assurer une communication transparente avec tous les acteurs et parties prenantes
 	- Veiller à la satisfaction des étudiants et des enseignants
 	- Mettre en place des mécanismes d'amélioration continue
 	- Savoir trancher si les intérêts des uns et des autres sont en conflit
+    - Améliorer le niveau scolaire des étudiants de l' IUT 
+4. *L' attractivité*, la capacité de l'IUT à attirer de nouveaux étudiants et partenaires
 
-4. **_Les aléas_**, imprévus ou, au contraire, ordinaires (tel un prof en arrêt maladie...) mais extrêmement gênants.
+	- Développer des initiatives pour renforcer l'image du campus
+	- Promouvoir les réussites et les atouts de l'institution
+	- Améliorer les services et les infrastructures pour attirer de nouveaux étudiants
+	- Améliorer le niveau scolaire des étudiant.
 
-	- Anticiper au maximum
-	- Identifier les problèmes prioritaires
-	- Apporter des réponses rapides et adéquates
-	- Faire face aux cas de force majeure
 
 ####  Références
 ##### Rénovations réalisées dans différents IUT :
@@ -103,114 +104,42 @@ La problématique du jeu se construit autour de quatre éléments :
 
 #### Simulation
 
-**_Le pas de la simulation est d'une année._**
+*Le pas de la simulation est d'un trimestre.*
 
-- Bien que l'IUT fonctionne avec le contrôle continu, la décision du jury concernant le passage de l'étudiant à l'année suivante ne se fait qu'à la fin de l'année.
-- Pour rappeler que la gestion d'un établissement éducatif se fait souvent dans l'urgence, le _gameplay_ est extrêmement rapide : en une minute, le directeur de l'IUT incarné par le joueur est censé réagir à toutes les sollicitations d'une année.
+- Le déroulement de la simulation est structuré par trimestres, permettant au joueur d'interagir régulièrement avec les événements et les problématiques qui surviennent. Chaque trimestre, le directeur de l'IUT incarné par le joueur doit réagir rapidement aux différentes sollicitations, qu'il s'agisse de la gestion des infrastructures, du suivi budgétaire ou des relations avec les parties prenantes.
+- Pour rappeler que la gestion d'un établissement éducatif se fait souvent dans l'urgence, le gameplay est extrêmement rapide : en une minute, le directeur de l'IUT incarné par le joueur est censé réagir à toutes les sollicitations d'une année.
 - Comme dans la vraie vie, il n'arrivera sans doute pas à répondre à toutes, les problèmes non résolus aggravant la situation.
 - Également comme dans la vraie vie, on est bien obligé de choisir entre le mal et le pire, dans certaines situations.
+- Mais pour refléter la réalité de la gestion d'un établissement éducatif, certains paramètres majeurs ne sont mis à jour qu'à la fin de l'année :
+    L'attractivité : Elle est recalculée en fonction des actions menées tout au long des quatre trimestres, comme la gestion des infrastructures, et le niveau de satisfaction des étudiants et des enseignants.
+    Le taux de réussite : Il est déterminé en fin d'année sur la base des efforts réalisés pour améliorer le niveau des étudiants, leur satisfaction, et une part d'aléatoire pour refléter les imprévus de la vie.
 
-**_À la fin de chaque année, le nombre d'étudiants et, par conséquent, celui d'enseignants est susceptible de changer._**
+*À la fin de chaque trimestre, le nombre d'enseignants est susceptible de changer.*
+- *Le nombre d'enseignants :*.Il est susceptible de changer à la fin de chaque trimestre en fonction des effectifs étudiants. Une baisse importante du nombre d'étudiants peut contraindre à réduire le nombre d'enseignants, tandis qu'une surpopulation étudiante exige le recrutement de nouveaux enseignants. Cependant, le nombre d'enseignants ne varie pas de manière continue mais par paliers, selon des valeurs seuils spécifiques.
+- *Le nombre d'administratifs*. Contrairement aux enseignants, le joueur peut décider d'embaucher un nombre illimité d'administratifs pour renforcer la gestion des tâches administratives. Cependant, cela a un coût direct sur le budget et peut influencer indirectement la satisfaction des parties prenantes, en optimisant ou alourdissant les processus internes. Le joueur doit trouver un équilibre entre les besoins de gestion et les contraintes financières.
+- *L'état des bâtiments*. Il dépend de leur âge, de leur état initial au début de l'année, et des éventuelles réparations réalisées au cours des trimestres. Ces réparations sont directement liées au budget alloué.
+- *Le budget octroyé*.Il est mis à jour à la fin de chaque trimestre en fonction des dépenses réalisées, des financements obtenus (subventions, partenariats, autres sources). Le joueur peut choisir d’ajuster ses priorités budgétaires en fonction des besoins.
+- *La satisfaction*.Calculé séparément pour les étudiants et les enseignants, il reflète leur perception de la qualité des services, des infrastructures et de la gestion globale. Pour les étudiants, cette satisfaction est également visualisée directement dans le jeu : les étudiants qui se déplacent autour du campus changent de couleur en fonction de leur niveau de satisfaction.
 
-- Des étudiants peuvent être exclus à cause de leurs mauvais résultats - qui sont fonction de leur niveau de départ, de leur sérieux et d'un peu de chance.
-- D'autres étudiants encore partiront de leur propre gré, parce qu'ils ne sont pas satisfaits de l'établissement (y compris des conditions de travail qu'il propose) ou pour des raisons personnelles (aléatoires).
-- Le nombre d'enseignants suit le nombre d'élèves : si les effectifs étudiants connaissent une baisse trop importante, quelques enseignants seront obligés de partir, et inversement, une surpopulation des étudiants entraîne des recrutements d'enseignants. À noter toutefois que, contrairement aux fluctuations annuelles du nombre d'étudiants, le nombre d'enseignants change par paliers, en fonction de quelques valeurs de seuil.
 
-**_À la fin de chaque année, différents calculs sont réalisés._**
+*À la fin de chaque année, différents calculs sont réalisés.*
 
 Plusieurs paramètres décrivant le campus changent d'une année à l'autre :
 
-- **_L'état des bâtiments_**. Résulte de leur âge, de leur état au début de l'année, ainsi que, bien entendu, des réparations qui auront été réalisées (moyennant un budget, et donc fonction de ce budget - mais aussi de la qualité de prestation fournie par l'entreprise qui réalise les travaux).
-- **_Le bugdet octroyé_**. Il dépend des financements obtenus (de différentes catégories), des besoins de l'Institut, des revendications syndicales, éventuellement des cas de force majeure... Il est demandé par le directeur, mais c'est le Conseil d'administration qui a le dernier mot.
-- **_Le taux de satisfaction_**. Il est calculé séparément parmi les étudiants et les enseignants, par bâtiment mais aussi pour l'ensemble des départements de l'IUT Robert Schuman ;
-- **_Le taux de réussite_**. Ne concerne que les étudiants et dépend de la satisfaction de ces derniers, mais aussi de leur niveau (partie déterministe) et de la chance qu'ils auront eu, à l'Institut ou en dehors (partie aléatoire).
+- *Le taux de réussite*. Ne concerne que les étudiants et dépend de la satisfaction de ces derniers, mais aussi de leur niveau (partie déterministe) et de la chance qu'ils auront eu, à l'Institut ou en dehors (partie aléatoire).
+- *L'attractivité*. Elle évolue en fonction des efforts fournis au cours de l'année pour promouvoir l'image de l'institution, de la satisfaction des parties prenantes surtout le niveau scolaire des étudiants, ainsi que de la qualité des services et infrastructures disponibles. Une attractivité accrue peut avoir un impact positif sur le budget de l'année suivante grâce à un meilleur financement et un recrutement d'étudiants en hausse.
+- *Le nombre d'étudiants*. Il varie en fonction de l'attractivité de l'institution. Une attractivité élevée attire davantage de nouveaux étudiants et réduit les départs en cours d'année, tandis qu'une attractivité faible peut entraîner une baisse du recrutement et une augmentation des abandons.
 
-##### Budget
-
-L'IUT Robert Schuman étant un établissement public, ses principales sources de financement sont des **_subventions publiques_**, provenant notamment de :
-- l'État ;
-- la région Grand Est ;
-- l'Eurométropole de Strasbourg ;
-- l'Université de Strasbourg (l'IUT en fait certes partie administrativement, mais cela reste deux entités distinctes).
-
-Des **_financements privés_** peuvent être tout aussi importants, à savoir des fonds :
-- issus de partenariats avec des entreprises ;
-- faisant objet de dons de particuliers, d'anciens élèves ou d'organisations qui souhaitent contribuer au développement de l'IUT.
-
-Viennent s'y rajouter quelques sources moins importantes, qui ne peuvent être que **_complémentaires_** :
-- frais de scolarité des étudiants (bien qu'ils soient faibles dans un État social qu'est la France) ;
-- utilisation d'infrastructures de l'IUT par d'autres organismes (par exemple, une école privée dont les élèves viennent manger au Resto U et utiliser l'aire de remise en forme, aménagée sur le campus).
-
-##### Missions
-
-Il est essentiel de prévoir un entretien régulier ainsi que des réparations et rénovations des bâtiments et des infrastructures de l'IUT pour garantir des conditions de travail et d'apprentissage optimales. À travers les _missions_ affichées sous forme de notifications, RenovIUT vous permet de découvrir différents types de travaux de routine :
-
-Un **_entretien préventif_** permet de détecter et de résoudre rapidement les problèmes, évitant ainsi des pannes majeures et des coûts de réparation plus élevés :
-
-- maintenance des systèmes de chauffage, ventilation et climatisation (CVC)
-- inspection des installations électriques
-- inspection de plomberie
-
-Les **_réparations_** peuvent concerner :
-
-- revêtements de sol
-- fenêtres et portes
-- équipements endommagés
-
-Quant aux **_rénovations_**, elles peuvent impliquer la modernisation de :
-
-- salles de classe
-- laboratoires
-- espaces communs, pour répondre aux besoins pédagogiques contemporains et améliorer l'accessibilité.
-
-Comme les missions sont planifiées, elles sont affichées en anticipation, à la fin de l'année précédant celle des travaux.
-
-##### Aléas
-
-Opposés aux interventions planifiées, qui sont justifiées par l'usure des bâtiments, d'une part, et le besoin de modernisation, d'autre part, les _aléas_ sont des événements extraordinaires pouvant affecter le fonctionnement de l'IUT, notamment - dans notre modèle simplifié - la satisfaction des étudiants aussi bien que des enseignants.
-
-Les aléas sont affichés sous forme d'alertes, à un moment fortuit pendant le jeu.
-
-En voici quelques-uns, implémentés dans ce jeu :
-
-- D’ordre **_social_** :
-
-	- Le nombre d’étudiants arrivant chaque année à l’IUT est aléatoire, bien que compris dans une fourchette raisonnable ;
-	- Il est également fonction de l’évolution démographique ;
-	- Le nombre de départs fluctue autour de 50%, en fonction du niveau des étudiants ;
-	- Une grève d'étudiants et/ou d'enseignants peut avoir des conséquences importantes.
-
-- D’ordre **_financier_** :
-
-	- Une ou plusieurs sources du budget peuvent se trouver réduites, surtout celles non-institutionnelles ;
-	- Les coûts dépendent de l’inflation, dont on a des prévisions officielles mais qui peut aussi être volatile ;
-	- Le choix de privilégier les enseignants, les étudiants ou le matériel dans une situation où les moyens sont réduits aura des conséquences différentes.
-
-- D’ordre **_juridique_** :
-
-	- Des changements dans la législation ou les normes de sécurité peuvent obliger les IUT à adapter leurs infrastructures ;
-	- Un élève se fait harceler à l'IUT, l'établissement réagit (ou pas !)
-
-- D’ordre **_personnel_** :
-
-	- De temps en temps, un enseignant peut tomber malade ;
-	- De temps en temps, un enseignant tout comme un élève peut faire un burn-out ;
-	- De temps en temps, des étudiants mal intentionnés peuvent endommager voire détruire des équipements.
-
-Certains aléas sont poncluels, d'autres peuvent se reproduire, au grand dam du directeur - et de toutes les personnes travaillant ou étudiant sur le campus, évidemment.
-
-Si on les classe dans une logique non thématique, mais événementielle, les aléas peuvent être divisés en deux catégories :
-
-- Événements qui ne vont probablement pas se reproduire ;
-- Événements reproductibles.
-
-Le nombre total d'aléas au cours d'une partie est défini en fonction du niveau de difficullté de la partie, mais aussi du [scénario](#scénarios)
+##### Tutoriel
+Dès le début du jeu, un mode tutoriel en 2D est proposé pour guider les nouveaux joueurs dans la prise en main des mécanismes principaux. Ce tutoriel interactif présente l’interface, explique les différentes statistiques du jeu (budget, attractivité, satisfaction, etc.), et décrit les premières actions à effectuer pour progresser dans la gestion de l’IUT. Une fois le tutoriel terminé, le joueur accède au jeu principal et faire ses missions selon le scénario choisi. 
 
 #### Interface
 
-L'interface est constituée des éléments suivants :
+Au début, le menu pour choisir le scénario et activer le mode tutoriel est en 2D . Ensuite, l'interface de jeu passe en 3D mais intègre des éléments 2D tels que les panneaux et les boutons. 
 
 - Plan du campus d'Illkirch, vue du dessus
+- Représentation visuelle de la satisfaction des étudiants dans le jeu : 
+     des personnages en 3D se déplacent sur le campus, leur couleur variant en fonction de leur niveau de satisfaction.
 
 - Affichage des informations complètes sur un bâtiment sélectionné avec un clic :
 	- nom du département qui l'occupe ;
@@ -219,11 +148,12 @@ L'interface est constituée des éléments suivants :
 	- effectifs du corps enseignant et des étudiants ;
 	- le niveau de satisfaction des uns et des autres ;
 	- état des infrastructures :
-		- isolation
 		- chauffage
 		- nombre d'agents d'entretien qui y interviennent
 
-- Affichage du budget, simple montant (par bâtiment) ou composition détaillée (total du campus)
+- Affichage du budget, simple montant (par bâtiment), montant du bloc cental ,ou composition détaillée (total du campus)
+- Affichage de l'attractivité de l' IUT
+- Affichage de la satisfaction des enseignants et des étudiants
 
 - Notifications :
 	- missions courantes
@@ -231,7 +161,7 @@ L'interface est constituée des éléments suivants :
 		- soit en prenant une décision via une fenêtre pop-up (choix multiple)
 		- soit en en assumant la conséquence inévitable
 
-- Affichage du bilan de l'année pour l'ensemble de l'IUT :
+- Affichage du bilan de chaque trimestre et de l'année pour l'ensemble de l'IUT :
 	- satisfaction étudiante et professorale ;
 	- évolution du nombre d'étudiants et d'enseignants ;
 	- financements prévus pour l'année prochaine ;
@@ -239,7 +169,7 @@ L'interface est constituée des éléments suivants :
 
 - Bouton pour passer à l'année suivante
 
-- _Timeline_ pour désigner la progression dans le temps
+- Timeline pour désigner la progression dans le temps
 
 - Écran de fin de jeu affichant le score et une explication de la fin suivant le scénario choisi :
 	- Quel(s) problème(s) a-t-on réussi à régler ? Le(s)quel(s) rest(ent) à résoudre ?
@@ -250,15 +180,14 @@ L'interface est constituée des éléments suivants :
 
 Le jeu consiste à répondre aux défis qui surgissent, attendus ou imprévus, en faisant des choix avisés quand on peut (il est à noter que dans certains cas, aucune action n'est possible).
 
-Pour ce faire, le directeur _aka_ joueur peut, concrètement :
+Pour ce faire, le directeur aka joueur peut, concrètement :
 
 - Valider toutes des rénovations planifiées ou seulement quelques-unes ;
-- Choisir l'entreprise qui effectuera les travaux ;
-- Essayer d'obtenir des financements supplémentaires ;
 - Redistribuer les allocations du budget ;
-- Proposer au Conseil d'administration d'agrandir la surface utile - ou, au contraire, de fermer certains locaux ;
 - Ajuster le calendrier de chauffage ;
-- Décider d'une action spécifique ponctuelle, en choisissant dans une liste de choix proposés, généralement face à un aléa.
+- Licencier ou recruter des enseignants ou des administratifs pour réduire les dépenses, en tenant compte des impacts sur la satisfaction et la qualité pédagogique.
+- Recruter ou licencier des administratifs pour répondre aux besoins de rénovation et réduire la durée des travaux .
+
 
 #### Scénarios
 
@@ -269,34 +198,40 @@ Deux facteurs déterminent les choix d'un directeur :
 
 Nous proposons trois scénarios qui varient ses deux données.
 
-##### Scénario 1 : Renaissance de l'IUT
+##### Scénario 1 : Rénover l'IUT
 
-Au départ, tous les paramètres sont entre moyens et bas. Le directeur va essayer de redresser la situation générale, tout en veillant à préserver la qualité de l'enseignement.
+votre objectif est de moderniser et d'améliorer les infrastructures de l'IUT afin d'offrir un environnement d'apprentissage optimal. Au départ, tous les paramètres sont situés entre des niveaux moyens et bas, et en tant que directeur, vous devez redresser la situation générale tout en préservant la qualité de l'enseignement. Ce scénario se concentre principalement sur la rénovation des bâtiments existants, tels que les salles de classe, les laboratoires et les bibliothèques, ainsi que sur la construction de nouvelles installations. L'amélioration des infrastructures vise à augmenter la satisfaction des étudiants et du personnel, mais nécessite une gestion budgétaire rigoureuse en raison des investissements financiers conséquents. Vous devrez également relever des défis tels que la gestion des délais et des retards pour éviter les dépassements de coûts, ainsi que le maintien d'un équilibre financier entre les dépenses de rénovation et les revenus de l'institut.  
 
-La partie a une durée illimitée : vous pouvez sortir à tout moment, le résultat sera calculé en fonction de vos acquis actuels.
+La partie a une durée illimitée, vous permettant de sortir à tout moment, avec les résultats calculés en fonction de vos acquis actuels. 
+- Vous gagnez si vous parvenez à atteindre au moins 51 % pour tous les paramètres, avec des bonus supplémentaires si certaines statistiques dépassent 65 % voire 80 %. 
+- En revanche, vous perdez si même un seul paramètre tombe en dessous du seuil requis, compromettant ainsi le succès global de votre. 
 
-- Vous gagnez si vous atteignez 51% pour tous ces paramètres, avec un bonus pour ceux qui dépassent 65% voire 80% ;
-- Vous perdez si ne serait-ce qu'un est trop bas.
+##### Scénario 2 :Me faire réelir
 
-##### Scénario 2 : Un département en détresse
+Votre objectif est de gagner la confiance des membres du Conseil d'administration de l'IUT, composé des enseignants et des étudiants, afin d’être réélu en tant que directeur. Pour cela, vous devez améliorer les performances globales de l’IUT tout en maintenant un équilibre entre la satisfaction des parties prenantes, la gestion des budgets, et l’attractivité de l’établissement.
 
-Au départ, les bâtiments sur le campus vont bien et n'ont besoin que d'un entretien de routine, sauf un qui est dans un sale état (avec des étudiants mécontents mais avec un bon niveau, en tout cas pour l'instant). Attention, les moyens du directeur sont limités !
-
-La partie dure 5 ans.
-
-- Vous gagnez si le département à problèmes se porte mieux (le score dépendra du combien, mais il suffit, pour remporter la partie, que la situation ne se dégrade pas davantage);
-- Vous perdez si le département péréclite.
-
-##### Scénario 3 : Conquérir le Conseil
-
-Au départ, tous les paramètres sont à une valeur moyenne : l'IUT va bien, sans plus.
-
-La partie dure 5 ans.
-
-Il faut remporter la majorité des voix d'enseignants et d'étudiants faisant partie du Conseil d'administration de l'IUT, pondérées par le nombre des uns et des autres. Les votes sont calculés par bâtiment. À noter que dans RenovIUT, il n'y a pas de second tour, pourtant possible dans la vraie vie dans certaines situations.
-
+Au départ, tous les paramètres sont à une valeur moyenne, indiquant que l'IUT fonctionne correctement sans exceller dans aucun domaine. La partie dure 5 ans, et votre réélection dépendra des votes calculés par bâtiment, sans possibilité de second tour.
 - Vous gagnez si vous être réélu, avec un score qui correspond au nombre de voix portées pour ;
 - Vous perdez si vous devez quitter votre poste de directeur. Mais ne désespérez pas, vous avez probablement tout fait pour le bien de l'établissement !
+
+##### Scénario 3 : Viser l'excellence
+
+Votre objectif est de transformer l'IUT en une référence nationale et internationale en matière d'éducation, de recherche et de gestion. Pour ce faire, vous devez exceller dans plusieurs domaines stratégiques, tels que la satisfaction des parties prenantes, l’état des infrastructures, la qualité de l’enseignement et l’attractivité de l’établissement.
+
+La partie dure 5 ans
+
+- Vous gagnez si vous atteignez un bon niveau global des élèves (moyenne de 16/20) et des diplômés qui intègrent des écoles prestigieuses ou obtiennent une insertion professionnelle de qualité.
+- Vous perdez si vous échouez à atteindre ces deux objectifs dans le délai imparti. Mais votre gestion aura sans doute permis à l’IUT de progresser pour de futures tentatives.
+
+####  Musique et sons: 
+Dans Renov IUT, la musique et les effets sonores jouent un rôle essentiel pour créer une atmosphère immersive et renforcer l'expérience de jeu. Une conception audio bien pensée contribue non seulement à l'immersion du joueur mais aussi à la compréhension des événements et des actions au sein de l'institut. Voici une description détaillée des éléments audio intégrés dans le jeu. 
+
+    Clics et Sélections : Sons subtils pour les interactions avec les menus et les boutons, améliorant la réactivité de l'interface. 
+
+    Notifications : Sons distinctifs pour les alertes importantes, telles que les mises à jour budgétaires ou les événements critiques. 
+
+    Bruit de Fond : Sons ambiants typiques d'un campus universitaire, tels que les discussions d'étudiants, les bruits de pas, et les activités quotidiennes, pour renforcer l'immersion. 
+
 
 ### Contraintes de développement
 
@@ -304,22 +239,24 @@ Ce jeu a été développé avec le moteur [Godot Engine 4](https://godotengine.o
 
 Le code est modularisé suivant le patron de conception [MVC](https://www.geeksforgeeks.org/mvc-design-pattern/), tout en respectant l'organisation d'un projet Godot :
 
-- Les vues, les contrôleurs et les modèles se trouvent dans les répertoires dédiés `views/`, `controllers/` et `models/`, respectivement.
-- Les **_vues_** sont scindées en `scenes/` et `nodes/`.
-- Les **_contrôleurs_** assurent le traitement des données et le déroulement du jeu.
-- Les **_modèles_** sont indépendants et ne sont que consultés par les vues (i.e. l'interface utilisateur) et modifiés par les contrôleurs (i.e. la logique du jeu).
-- Les **_données_** sont stockées dans des tables SQL (_TeacherSQLTable_, _StudentSQLTable_, _FundSQLTable_ et _NotificationSQLTable_).
+- Les vues, les contrôleurs et les modèles se trouvent dans les répertoires dédiés views/, controllers/ et models/, respectivement.
+- Les *vues* sont scindées en scenes/ et nodes/.
+- Les *contrôleurs* assurent le traitement des données et le déroulement du jeu.
+- Les *modèles* sont indépendants et ne sont que consultés par les vues (i.e. l'interface utilisateur) et modifiés par les contrôleurs (i.e. la logique du jeu).
+- Les *données* sont stockées dans des tables SQL (TeacherSQLTable, StudentSQLTable, FundSQLTable et NotificationSQLTable).
 
-### Fonctionnalités et scénarios avancés
-
-Fonctionnalités implémentées :
-
-- a
-- b
-- c
+### Amélioraton possibles 
 
 Fonctionnalités à implémenter :
+- Différentes sources de financement : Ajouter des options variées de ressources financières, comme des subventions de l'État, des partenariats avec des entreprises, des campagnes de financement participatif, ou des revenus générés par des événements organisés par l'IUT. Chaque source pourrait avoir ses propres avantages et contraintes.
 
-- a
-- b
-- c
+- Choix des entreprises pour les rénovations : Permettre au joueur de sélectionner parmi plusieurs entreprises de rénovation, chacune ayant des caractéristiques différentes (coût, rapidité, qualité des travaux). Les choix influenceraient directement l'état des bâtiments et le budget disponible.
+
+- Choix du niveau de difficulté au début du jeu : Ajouter différents niveaux de difficulté pour personnaliser l’expérience de jeu :
+
+    Facile : Ressources abondantes, tolérance élevée aux erreurs.
+    Intermédiaire : Budget limité, attentes des parties prenantes plus strictes.
+    Difficile : Ressources rares, crises fréquentes, exigences élevées.
+
+- Gestion des crises aléatoires : Implémenter des événements imprévus tels qu’une grève du personnel, des dégradations majeures dans un bâtiment, ou une baisse soudaine des financements. Le joueur devra adapter sa stratégie pour faire face à ces situations.
+- Entretien régulier du campus : En plus des rénovations majeures, proposer des tâches d’entretien récurrent (nettoyage, petits travaux de réparation, maintenance technique).

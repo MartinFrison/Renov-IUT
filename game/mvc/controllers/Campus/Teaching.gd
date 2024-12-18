@@ -2,25 +2,27 @@ class_name Teaching
 extends RefCounted
 
 const teachers_base_nb: Array = [21, 24, 18, 27, 18] # chiffres réels tirés du site officiel de l'IUT Robert Schuman
-
+const minimum_wage : int = 4000
+const maximum_wage : int = 7000
 
 # Fonction pour embaucher un professeur dans un département spécifique
 # Si force est vrai le prof est embaucher sans conditions
 static func hire_teachers(dept: String, force : bool):
+	var nb_teacher = Teacher.compute_nb_per_dept(dept)
 	# vérifie le nombre d'enseignants
 	# celui-ci dépend de l'attractivité de l'établissement
-	var limit = (GlobalData.get_attractivity() / 2)
-	if !force and Teacher.compute_nb_per_dept(dept) >= 30 * limit:
+	var limit = GlobalData.get_attractivity() * 50
+	if !force and nb_teacher >= 50:
 		await BulleGestion.send_message("Maximum d'enseignants atteint pour ce département, on n'embauche plus personne.",false)
 		return
 
 	#vérifie si un prof est prêt à être recruté
-	if !force and Teacher.avg_mood_per_dept(dept) < 0.6 and Teacher.compute_nb_per_dept(dept)!=0:
+	if !force and (Teacher.avg_mood_per_dept(dept) < 0.3 and nb_teacher>=limit and nb_teacher!=0):
 		await BulleGestion.send_message("Aucun professeur n'est volontaire pour enseigner 
 		à ce département.",false)
 	else:
-		# Si oui on l'ajoute et défnie aléatoirement sa satisfaction
-		var id = Teacher.add_teacher(dept,true)
+		# Si oui on l'ajoute et définie aléatoirement sa satisfaction
+		var id = Teacher.add_teacher(dept)
 		var mood =  Utils.randfloat_in_range(GlobalData.adjust_satisfaction()*0.4, GlobalData.adjust_satisfaction()*0.65)
 		Teacher.set_mood(id,mood)
 
@@ -89,18 +91,18 @@ static func mood_fluctuation(dept : String, value : float, coeff : float) -> voi
 
 static func increase_salary(dept : String) -> void:
 	var b = Building.get_building(dept)
-	if b.get_pay_teacher() >= 4400:
-		await BulleGestion.send_message("Le salaire des enseigants ne peut pas dépasser 4400 €.", false)
+	if b.get_pay_teacher() >= maximum_wage:
+		await BulleGestion.send_message("Le salaire des enseigants ne peut pas dépasser 7000€.", false)
 	else:
-		b.add_pay_teacher(800)
+		b.add_pay_teacher(500)
 
 
 static func decrease_salary(dept : String) -> void:
 	var b = Building.get_building(dept)
-	if b.get_pay_teacher() <=2800:
-		await BulleGestion.send_message("Les enseignants ne sont pas au SMIC, leur salaire ne peut pas être inférieur à 2800 €.", false)
+	if b.get_pay_teacher() <= minimum_wage:
+		await BulleGestion.send_message("Les enseignants ne sont pas au SMIC, leur salaire ne peut pas être inférieur à 4000€.", false)
 	else:
-		b.add_pay_teacher(-800)
+		b.add_pay_teacher(-(500))
 
 
 
@@ -115,17 +117,15 @@ static func teacher_resign() -> void:
 # la satisfaction de chaque profs tend vers une valeur qui dépend du salaire
 static func pay_adjust_mood() -> void:
 	for i in range(1,6):
-		# valeur pour le salaire minimal:
-		var value = 0.65
 		var code = Utils.dept_index_to_string(i)
-		if Building.get_building(code).get_pay_teacher() >= 4400:
-			value = 1
-		elif Building.get_building(code).get_pay_teacher() >= 3600:
-			value = 0.85
+		var build = Building.get_building(code)
+		# Definition de la valeur avec un minimum de 0.4 pour le salaire minimal
+		var value = 0.4
+		value += (build.get_pay_teacher()-minimum_wage) / (maximum_wage-minimum_wage)
 		
 		
-		# On applique la valeur avec un coeff de 30%
-		Teaching.mood_fluctuation(code, value, 0.3)
+		# On applique la valeur avec un coeff de 35%
+		Teaching.mood_fluctuation(code, value, 0.35)
 
 
 

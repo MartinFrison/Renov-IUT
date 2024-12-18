@@ -159,8 +159,26 @@ static func lockDoor(dept: String) -> void:
 
 # Détérioration trimestriel des batiments
 static func wear() -> void:
+	var wear : float
 	for i in range(1,6):
 		var code = Utils.dept_index_to_string(i)
-		var b = Building.get_building(code)
+		var build = Building.get_building(code)
 		
-		b.addInventory(-0.1) #soit environs 2/3 ans pour une détérioration total  
+		# On calcule le nombre de travailleur nécéssaire pour éviter la détérioration
+		# Cela dépend de la surface et du type d'activité des batiments
+		# chimie 7, genie_civil 9, info_com 2
+		# informatique 2, technique_de_co 6
+		var numbers = [7,9,2,2,6]
+		var nb = numbers[i-1]
+		
+		# On définie la vitesse de détérioration selon le nombre de travailleur 
+		# d'un batiment par rapport à celui attendu
+		if build.get_ouvriers()==0: 
+			# Cas spécial: s'il n'y a plus de travailleur, la dégradation est
+			# catastrophique
+			wear = 30
+		else:
+			wear = 10 * (max (1 - (build.get_ouvriers() / nb), 0))
+		
+		#Appliquer la détérioration
+		build.addInventory(-wear)

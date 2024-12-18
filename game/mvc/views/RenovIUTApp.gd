@@ -54,9 +54,12 @@ func game_loaded() -> void:
 	loaded = true
 	open_building(1)
 	
+	await get_tree().create_timer(0.1).timeout
 	# Afficher les boutons d'action
 	var node = get_node("Action_Control")
 	node.visible = true
+	node = get_node("Action_Control/BuildingAction") as BuildingAction
+	node.load()
 	
 	print("Game loaded")
 

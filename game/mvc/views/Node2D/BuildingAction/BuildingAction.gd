@@ -1,10 +1,11 @@
+class_name BuildingAction
 extends Node2D
 
 var code : String
 var build : Building
 var click : AudioStreamPlayer2D
 var under_construction : AudioStreamPlayer2D 
-
+var _loaded : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,10 +24,15 @@ func init(id : int) -> void:
 	build = Building.get_building(code)
 	show_data()
 
+func load():
+	_loaded = true
+	show_data()
 
 
 # Met à jours l'affichage de toute les texte et donnée du panel d'action
 func show_data() -> void:
+	if !_loaded:
+		return
 	var node
 	
 	node = get_node("PanelGlobal/name")
@@ -65,7 +71,7 @@ func show_data() -> void:
 	node.text = "enseignants (%s)" % [Teacher.compute_nb_per_dept(code)]
 	
 	node = get_node("PanelGlobal/PanelAction/GridContainer/worker")
-	node.text = "administratifs (%s)" % [build.get_ouvriers()]
+	node.text = "ouvriers (%s)" % [build.get_ouvriers()]
 	
 	node = get_node("PanelGlobal/PanelStat/GridContainer/renovation")
 	var n = build.get_inventory()
@@ -134,6 +140,8 @@ func is_button_hovered(button : Button) -> bool:
 
 # Affiche des infos sur les actions quand la souris passe sur le bouton correspondant
 func update_message_action() -> void:
+	if !_loaded:
+		return
 	var button
 	
 	# On teste si le bouton pour lancer des travaux est en focus
@@ -148,7 +156,7 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/GridContainer/sub_worker")
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un ouvrier
-		var msg = "En licenciant un ouvrier, vous gagnez %s €." % [int(GlobalData._pay_worker)]
+		var msg = "En licenciant un personnel, vous gagnez %s €... mais pensez à l'entretien du bâtiment." % [int(GlobalData._pay_worker)]
 		show_message_action(msg, button.get_global_position().y)
 		return
 	
@@ -156,7 +164,8 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/GridContainer/add_worker")
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un ouvrier
-		var msg = "En embauchant un ouvrier, vous dépensez %s € de plus par mois." % [int(GlobalData._pay_worker)]
+		var msg = "En embauchant un personnel, vous dépensez %s € de plus par mois.\n" % [int(GlobalData._pay_worker)]
+		msg += "Ils servent à entretenir le bâtiment et à le rénover au cas où des travaux sont nécessaires."
 		show_message_action(msg, button.get_global_position().y)
 		return
 	
@@ -164,10 +173,26 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/GridContainer/sub_teacher")
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un prof
-		var msg = "En faisant partir un enseignant, vous gagnez %s €." % [int(build.get_pay_teacher())]
+		var msg = "En faisant partir un enseignant, vous gagnez %s €. Mais comment apprendre sans profs ?" % [int(build.get_pay_teacher())]
 		show_message_action(msg, button.get_global_position().y)
 		return
-	
+		
+	# On teste si le bouton pour augmenter le salaire des profs est en focus
+	button = get_node("PanelGlobal/PanelAction/GridContainer/add_pay")
+	if is_button_hovered(button):
+		# Si oui on affiche une bulle d'info
+		var msg = "Un enseignant coûte entre 4000 € et 7000 € à l'IUT.\nCe salaire brut peut être modifié par paliers de 500 €."
+		show_message_action(msg, button.get_global_position().y)
+		return
+		
+	# On teste si le bouton pour baisser le salaire des profs est en focus
+	button = get_node("PanelGlobal/PanelAction/GridContainer/sub_pay")
+	if is_button_hovered(button):
+		# Si oui on affiche une bulle d'info
+		var msg = "Un enseignant coûte entre 4000 € et 7000 € à l'IUT.\nCe salaire brut peut être modifié par paliers de 500 €."
+		show_message_action(msg, button.get_global_position().y)
+		return
+			
 	# On teste si le bouton pour ajouter un prof est en focus
 	button = get_node("PanelGlobal/PanelAction/GridContainer/add_teacher")
 	if is_button_hovered(button):
@@ -180,7 +205,8 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/heat")
 	if is_button_hovered(button):
 		# Si oui on affiche le cout du chauffage
-		var msg = "L'énergie est chère ! Allumer le chauffage coûte 1100 € par mois." #à corriger, je ne retrouve pas le chiffre du jeu
+		var msg = "L'énergie est chère ! Allumer le chauffage coûte %s € par mois. " % [build.get_surface() * Building.MonthlySquareMetersHeatingCost]
+		msg += "Attention, ce coût peut augmenter encore si le bâtiment est dégradé !"
 		show_message_action(msg, button.get_global_position().y)
 		return
 		
@@ -188,10 +214,9 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/lock")
 	if is_button_hovered(button):
 		# Si oui on affiche une bulle d'info
-		var msg = "Les portes fermées agacent les étudiants, mais cela permet d'améliorer le bilan énergétique !"
+		var msg = "Les portes fermées agacent les étudiants, mais cela permet de minimiser les dégradations !"
 		show_message_action(msg, button.get_global_position().y)
 		return
-	
 	
 	#Si la souris n'est sur aucun bouton on cache le message
 	hide_message_action()
