@@ -167,7 +167,23 @@ func update_message_action() -> void:
 		var msg = "En faisant partir un enseignant, vous gagnez %s €." % [int(build.get_pay_teacher())]
 		show_message_action(msg, button.get_global_position().y)
 		return
-	
+		
+	# On teste si le bouton pour augmenter le salaire des profs est en focus
+	button = get_node("PanelGlobal/PanelAction/GridContainer/add_pay")
+	if is_button_hovered(button):
+		# Si oui on affiche une bulle d'info
+		var msg = "Le salaire d'un enseignant est compris entre 2100 € et 4400 €.\nIl peut être modifié par paliers de 575 €."
+		show_message_action(msg, button.get_global_position().y)
+		return
+		
+	# On teste si le bouton pour baisser le salaire des profs est en focus
+	button = get_node("PanelGlobal/PanelAction/GridContainer/sub_pay")
+	if is_button_hovered(button):
+		# Si oui on affiche une bulle d'info
+		var msg = "Le salaire d'un enseignant est compris entre 2100 € et 4400 €.\nIl peut être modifié par paliers de 575 €."
+		show_message_action(msg, button.get_global_position().y)
+		return
+			
 	# On teste si le bouton pour ajouter un prof est en focus
 	button = get_node("PanelGlobal/PanelAction/GridContainer/add_teacher")
 	if is_button_hovered(button):

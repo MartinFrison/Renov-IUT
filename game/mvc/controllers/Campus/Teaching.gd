@@ -92,15 +92,15 @@ static func increase_salary(dept : String) -> void:
 	if b.get_pay_teacher() >= 4400:
 		await BulleGestion.send_message("Le salaire des enseigants ne peut pas dépasser 4400 €.", false)
 	else:
-		b.add_pay_teacher(800)
+		b.add_pay_teacher(575)
 
 
 static func decrease_salary(dept : String) -> void:
 	var b = Building.get_building(dept)
-	if b.get_pay_teacher() <=2800:
-		await BulleGestion.send_message("Les enseignants ne sont pas au SMIC, leur salaire ne peut pas être inférieur à 2800 €.", false)
+	if b.get_pay_teacher() <=2100:
+		await BulleGestion.send_message("Les enseignants ne sont pas au SMIC, leur salaire ne peut pas être inférieur à 2100 €.", false)
 	else:
-		b.add_pay_teacher(-800)
+		b.add_pay_teacher(-(575))
 
 
 
