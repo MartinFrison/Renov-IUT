@@ -29,13 +29,13 @@ static func get_dept_ids(dept : String) -> Array:
 
 # Ajout et suppression
 # Retourne l'id du prof ajouter
-static func add_teacher(dept: String, full_time: bool) -> int:
+static func add_teacher(dept: String) -> int:
 	# Incrémente le compteur pour générer un nouvel ID
 	teacher_id_counter += 1
 
-	var query = "INSERT INTO Teachers (id, dept, mood, full_time) VALUES (?, ?, ?, ?)"
+	var query = "INSERT INTO Teachers (id, dept, mood) VALUES (?, ?, ?)"
 	var dt = Utils.dept_string_to_index(dept)
-	if !Utils.db.execute(query, [teacher_id_counter, dt, randf_range(0.4, 0.6), full_time]): # Les enseignants sont moins emballés que les élèves !
+	if !Utils.db.execute(query, [teacher_id_counter, dt, randf_range(0.4, 0.6)]): # Les enseignants sont moins emballés que les élèves !
 		print("Erreur d'ajout.")
 		teacher_id_counter -= 1  # Réinitialise le compteur si l'insertion échoue
 		return -1  # Retourne -1 en cas d'échec
@@ -85,24 +85,11 @@ static func get_mood(id : int) -> float:
 		return result[0]["mood"]
 	return -1.0
 
-static func get_if_fulltime(id : int) -> bool:
-	var query = "SELECT full_time FROM Teachers WHERE id=?"
-	var result = Utils.db.get_entries(query, [id])
-	if result.size() > 0:
-		return result[0]["full_time"]
-	return false
-
 # Setters
 static func set_mood(id : int, coeff: float) -> void:
 	coeff = max(min(1,coeff),0)
 	var query = "UPDATE Teachers SET mood=? WHERE id=?"
 	if !Utils.db.execute(query, [coeff, id]):
-		return
-
-
-static func set_fulltime(id : int, fulltime: bool) -> void:
-	var query = "UPDATE Teachers SET full_time=? WHERE id=?"
-	if !Utils.db.execute(query, [fulltime, id]):
 		return
 
 # Stats

@@ -97,7 +97,7 @@ func print_entries(query: String, params: Array = []) -> void:
 
 # Vider toutes les tables
 func clear_tables() -> void:
-	var tables = ["Students", "Teachers", "Funds", "Notifications"]
+	var tables = ["Students", "Teachers", "Notifications"]
 	for table in tables:
 		var query = "DELETE FROM " + table
 		if !execute(query):
