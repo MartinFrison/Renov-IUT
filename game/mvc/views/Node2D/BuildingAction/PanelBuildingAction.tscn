@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://mvc/views/Node2D/BuildingAction/BuildingAction.gd" id="1_rgwm8"]
 [ext_resource type="Texture2D" uid="uid://2m7kvd7nwoe1" path="res://mvc/views/images/interface/layers/buildingInfoPanel.png" id="2_061kg"]
 [ext_resource type="AudioStream" uid="uid://csx445ckp6aar" path="res://mvc/views/sounds/button.mp3" id="2_evqd7"]
-[ext_resource type="Texture2D" uid="uid://chu5wfl6tehla" path="res://mvc/views/images/icons/chemistry.png" id="3_g0kju"]
+[ext_resource type="Texture2D" uid="uid://bb38r6prsqikc" path="res://mvc/views/images/icons/Chimie.png" id="3_g0kju"]
 [ext_resource type="Texture2D" uid="uid://584vab6lde7a" path="res://mvc/views/images/buttons/plus.png" id="3_t70jo"]
 [ext_resource type="Texture2D" uid="uid://1gj4dpy6pg0j" path="res://mvc/views/images/buttons/minus.png" id="4_0au1m"]
 [ext_resource type="AudioStream" uid="uid://cxe6ncbjcp3hk" path="res://mvc/views/sounds/construction.wav" id="4_v3xax"]
