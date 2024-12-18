@@ -162,5 +162,4 @@ static func wear() -> void:
 	for i in range(1,6):
 		var code = Utils.dept_index_to_string(i)
 		var b = Building.get_building(code)
-		
 		b.addInventory(-0.1) #soit environs 2/3 ans pour une détérioration total  
