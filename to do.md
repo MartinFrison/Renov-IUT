@@ -1,8 +1,6 @@
 
 Autre:
 - Mise à jours de l'UML : Elena, Yasmine 
-- Mettre à jours le cahier des charges : Yasmine
-
 
 
 
@@ -12,9 +10,7 @@ Graphique 2D:
 
 
 
-
 Code:
-- affiner l'attractivité : Elena
 
 - Ajouter les surfaces des batiments et leur influence sur le chauffage : Martin
 - revoir le temps et le cout de renovation + son affichage : Martin

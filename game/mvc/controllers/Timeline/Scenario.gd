@@ -78,7 +78,7 @@ func init_building() -> void:
 		var code = Utils.dept_index_to_string(i+1)
 		var b = Building.new(age,1000, false, code, inventory)	
 		adjust_budget_building(b)
-		b.set_pay_teacher(2800)
+		b.set_pay_teacher(2100)
 
 func init_attractivity() -> void:
 	GlobalData.set_attractivity()
