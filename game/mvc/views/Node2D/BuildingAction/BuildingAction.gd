@@ -156,7 +156,7 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/GridContainer/sub_worker")
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un ouvrier
-		var msg = "En licenciant un ouvrier, vous gagnez %s €." % [int(GlobalData._pay_worker)]
+		var msg = "En licenciant un personnel, vous gagnez %s €... mais pensez à l'entretien du bâtiment." % [int(GlobalData._pay_worker)]
 		show_message_action(msg, button.get_global_position().y)
 		return
 	
@@ -164,8 +164,8 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/GridContainer/add_worker")
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un ouvrier
-		var msg = "En embauchant un ouvrier, vous dépensez %s € de plus par mois." % [int(GlobalData._pay_worker)]
-		msg += "Ils servent à entretenir le bâtiment et à le rénover en cas de travaux."
+		var msg = "En embauchant un personnel, vous dépensez %s € de plus par mois.\n" % [int(GlobalData._pay_worker)]
+		msg += "Ils servent à entretenir le bâtiment et à le rénover au cas où des travaux sont nécessaires."
 		show_message_action(msg, button.get_global_position().y)
 		return
 	
@@ -173,8 +173,7 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/GridContainer/sub_teacher")
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un prof
-		var msg = "En faisant partir un enseignant, vous gagnez %s €.
-		" % [int(build.get_pay_teacher())]
+		var msg = "En faisant partir un enseignant, vous gagnez %s €. Mais comment apprendre sans profs ?" % [int(build.get_pay_teacher())]
 		show_message_action(msg, button.get_global_position().y)
 		return
 		
@@ -182,8 +181,7 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/GridContainer/add_pay")
 	if is_button_hovered(button):
 		# Si oui on affiche une bulle d'info
-		var msg = "Le salaire (brut) d'un enseignant est compris entre 4000 € et 
-		7000 €.\nIl peut être modifié par paliers de 500 €."
+		var msg = "Un enseignant coûte entre 4000 € et 7000 € à l'IUT.\nCe salaire brut peut être modifié par paliers de 500 €."
 		show_message_action(msg, button.get_global_position().y)
 		return
 		
@@ -191,8 +189,7 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/GridContainer/sub_pay")
 	if is_button_hovered(button):
 		# Si oui on affiche une bulle d'info
-		var msg = "Le salaire (brut) d'un enseignant est compris entre 4000 € et 
-		7000 €.\nIl peut être modifié par paliers de 500 €."
+		var msg = "Un enseignant coûte entre 4000 € et 7000 € à l'IUT.\nCe salaire brut peut être modifié par paliers de 500 €."
 		show_message_action(msg, button.get_global_position().y)
 		return
 			
@@ -200,8 +197,7 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/GridContainer/add_teacher")
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un prof
-		var msg = "En embauchant un enseignant, vous dépensez %s € 
-		de plus par mois." % [int(build.get_pay_teacher())]
+		var msg = "En embauchant un enseignant, vous dépensez %s € de plus par mois." % [int(build.get_pay_teacher())]
 		show_message_action(msg, button.get_global_position().y)
 		return
 	
@@ -209,9 +205,8 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/heat")
 	if is_button_hovered(button):
 		# Si oui on affiche le cout du chauffage
-		var msg = "L'énergie est chère ! Allumer le chauffage coûte %s € par 
-		mois. " % [build.get_surface() * Building.MonthlySquareMetersHeatingCost]
-		msg += "Attention ! Ce coût peut augmenter si le bâtiment est dégradé !"
+		var msg = "L'énergie est chère ! Allumer le chauffage coûte %s € par mois. " % [build.get_surface() * Building.MonthlySquareMetersHeatingCost]
+		msg += "Attention, ce coût peut augmenter encore si le bâtiment est dégradé !"
 		show_message_action(msg, button.get_global_position().y)
 		return
 		
@@ -219,8 +214,7 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/lock")
 	if is_button_hovered(button):
 		# Si oui on affiche une bulle d'info
-		var msg = "Les portes fermées agacent les étudiants, mais cela permet 
-		d'éviter des dégradations !"
+		var msg = "Les portes fermées agacent les étudiants, mais cela permet de minimiser les dégradations !"
 		show_message_action(msg, button.get_global_position().y)
 		return
 	
