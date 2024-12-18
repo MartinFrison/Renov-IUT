@@ -12,12 +12,11 @@ Graphique 2D:
 
 Code:
 
-- Ajouter les surfaces des batiments et leur influence sur le chauffage : Martin
 - revoir le temps et le cout de renovation + son affichage : Martin
 - Influence des ouvriers sur la détérioration : Martin
 
 - Gestion des grandes vacances : Martin
-- Mettre a jour la gestion de la satisfaction : Martin
+- Mettre a jour la gestion de la satisfaction + celle en rapport avec les salaires : Martin
 - Prendre en compte le nombre de diplomé pour l'éléction : Martin
 
 - Ajouter des conditions au licenciment (soit un dédommagement soit une limite mensuels)

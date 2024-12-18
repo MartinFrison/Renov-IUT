@@ -26,7 +26,7 @@ func startGame() -> void:
 		add_child(_scenario)
 		add_child(_tuto)
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		RenovIUTApp.app.game_loaded()
 		_time = TimeManagement.new(_scenario, _tuto)
 		add_child(_time)
+		RenovIUTApp.app.game_loaded()
 		await _time.start()
