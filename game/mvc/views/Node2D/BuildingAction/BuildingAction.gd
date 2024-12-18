@@ -62,7 +62,7 @@ func show_data() -> void:
 	node.text = "enseignants (%s)" % [Teacher.compute_nb_per_dept(code)]
 	
 	node = get_node("PanelGlobal/PanelAction/GridContainer/worker")
-	node.text = "ouvriers (%s)" % [build.get_ouvriers()]
+	node.text = "administratifs (%s)" % [build.get_ouvriers()]
 	
 	node = get_node("PanelGlobal/PanelStat/GridContainer/renovation")
 	var n = build.get_inventory()
