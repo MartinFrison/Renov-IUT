@@ -7,19 +7,20 @@ const teachers_base_nb: Array = [21, 24, 18, 27, 18] # chiffres réels tirés du
 # Fonction pour embaucher un professeur dans un département spécifique
 # Si force est vrai le prof est embaucher sans conditions
 static func hire_teachers(dept: String, force : bool):
+	var nb_teacher = Teacher.compute_nb_per_dept(dept)
 	# vérifie le nombre d'enseignants
 	# celui-ci dépend de l'attractivité de l'établissement
-	var limit = (GlobalData.get_attractivity() / 2)
-	if !force and Teacher.compute_nb_per_dept(dept) >= 30 * limit:
+	var limit = GlobalData.get_attractivity() * 50
+	if !force and nb_teacher >= 50:
 		await BulleGestion.send_message("Maximum d'enseignants atteint pour ce département, on n'embauche plus personne.",false)
 		return
 
 	#vérifie si un prof est prêt à être recruté
-	if !force and Teacher.avg_mood_per_dept(dept) < 0.6 and Teacher.compute_nb_per_dept(dept)!=0:
+	if !force and (Teacher.avg_mood_per_dept(dept) < 0.3 and nb_teacher>=limit and nb_teacher!=0):
 		await BulleGestion.send_message("Aucun professeur n'est volontaire pour enseigner 
 		à ce département.",false)
 	else:
-		# Si oui on l'ajoute et défnie aléatoirement sa satisfaction
+		# Si oui on l'ajoute et définie aléatoirement sa satisfaction
 		var id = Teacher.add_teacher(dept)
 		var mood =  Utils.randfloat_in_range(GlobalData.adjust_satisfaction()*0.4, GlobalData.adjust_satisfaction()*0.65)
 		Teacher.set_mood(id,mood)
