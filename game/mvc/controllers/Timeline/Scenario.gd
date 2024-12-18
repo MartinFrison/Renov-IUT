@@ -7,8 +7,8 @@ var _name : String
 
 func _init() -> void:
 	init_building()
-	init_attractivity()
 	init_data()
+	init_attractivity()
 	
 
 # Obtenir le nom du scénario actuel
