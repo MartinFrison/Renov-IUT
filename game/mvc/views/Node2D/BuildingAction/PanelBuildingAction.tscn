@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dsy32b2by7jp6"]
+[gd_scene load_steps=25 format=3 uid="uid://dsy32b2by7jp6"]
 
 [ext_resource type="Script" path="res://mvc/views/Node2D/BuildingAction/BuildingAction.gd" id="1_rgwm8"]
 [ext_resource type="Texture2D" uid="uid://2m7kvd7nwoe1" path="res://mvc/views/images/interface/layers/buildingInfoPanel.png" id="2_061kg"]
@@ -120,6 +120,18 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 shadow_size = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydoig"]
+bg_color = Color(0.294118, 0.317647, 0.301961, 0.780392)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
 [node name="PanelBuildingAction" type="Node2D"]
 z_index = 10
 position = Vector2(-5.99997, 2.00002)
@@ -156,7 +168,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 1338.0
-offset_top = -3.0
+offset_top = -25.0
 offset_right = 1802.0
 offset_bottom = 1006.0
 theme = SubResource("Theme_h8q8o")
@@ -199,6 +211,7 @@ columns = 3
 [node name="sub_worker" type="Button" parent="PanelGlobal/PanelAction/GridContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+focus_mode = 0
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_vag6d")
@@ -416,14 +429,24 @@ position = Vector2(1430.89, 244.702)
 scale = Vector2(2.01534, 1.98184)
 texture = ExtResource("3_g0kju")
 
+[node name="message_action" type="Label" parent="."]
+z_index = 3
+offset_left = 1045.0
+offset_top = 535.0
+offset_right = 1326.0
+offset_bottom = 617.0
+theme_override_colors/font_color = Color(0.486275, 0.741176, 0.980392, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_ydoig")
+text = "Question"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
 [connection signal="pressed" from="PanelGlobal/PanelAction/renove" to="." method="_on_renove_pressed"]
-[connection signal="mouse_entered" from="PanelGlobal/PanelAction/GridContainer/sub_worker" to="." method="_on_sub_worker_mouse_entered"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/sub_worker" to="." method="_on_fire_worker_pressed"]
-[connection signal="mouse_entered" from="PanelGlobal/PanelAction/GridContainer/add_worker" to="." method="_on_add_worker_mouse_entered"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/add_worker" to="." method="_on_hire_worker_pressed"]
-[connection signal="mouse_entered" from="PanelGlobal/PanelAction/GridContainer/sub_teacher" to="." method="_on_sub_teacher_mouse_entered"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/sub_teacher" to="." method="_on_fire_teacher_pressed"]
-[connection signal="mouse_entered" from="PanelGlobal/PanelAction/GridContainer/add_teacher" to="." method="_on_add_teacher_mouse_entered"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/add_teacher" to="." method="_on_hire_teacher_pressed"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/sub_pay" to="." method="_on_decrease_pay_pressed"]
 [connection signal="pressed" from="PanelGlobal/PanelAction/GridContainer/add_pay" to="." method="_on_increase_pay_pressed"]

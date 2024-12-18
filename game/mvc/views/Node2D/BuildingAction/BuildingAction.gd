@@ -5,7 +5,6 @@ var build : Building
 var click : AudioStreamPlayer2D
 var under_construction : AudioStreamPlayer2D 
 
-var is_message_active: bool # concerne le message pop-up au survol des +/-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,6 +14,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	check_and_update_buttons()
+	update_message_action()
+
+
 
 func init(id : int) -> void:
 	code = Utils.dept_index_to_string(id)
@@ -22,8 +24,9 @@ func init(id : int) -> void:
 	show_data()
 
 
+
+# Met à jours l'affichage de toute les texte et donnée du panel d'action
 func show_data() -> void:
-	is_message_active = false
 	var node
 	
 	node = get_node("PanelGlobal/name")
@@ -62,7 +65,7 @@ func show_data() -> void:
 	node.text = "enseignants (%s)" % [Teacher.compute_nb_per_dept(code)]
 	
 	node = get_node("PanelGlobal/PanelAction/GridContainer/worker")
-	node.text = "ouvriers (%s)" % [build.get_ouvriers()]
+	node.text = "administratifs (%s)" % [build.get_ouvriers()]
 	
 	node = get_node("PanelGlobal/PanelStat/GridContainer/renovation")
 	var n = build.get_inventory()
@@ -102,7 +105,9 @@ func show_data() -> void:
 		node.text = "éteindre le chauffage"
 	else:
 		node.text = "allumer le chauffage"
-		
+
+
+
 func check_and_update_buttons() -> void:
 	if GlobalData.get_season() == 0:
 		get_node("PanelGlobal/PanelAction/GridContainer/add_exem_end").set_disabled(false)
@@ -114,6 +119,100 @@ func check_and_update_buttons() -> void:
 		get_node("PanelGlobal/PanelAction/GridContainer/sub_exem_end").set_disabled(true)
 		get_node("PanelGlobal/PanelAction/GridContainer/add_exem_entry").set_disabled(true)
 		get_node("PanelGlobal/PanelAction/GridContainer/sub_exem_entry").set_disabled(true)
+
+
+
+
+# Renvoie si la souris se trouve sur un bouton
+func is_button_hovered(button : Button) -> bool:
+	# Position de la souris dans le viewport
+	var mouse_position = get_viewport().get_mouse_position()
+	# Rectangle global du bouton (pour encadrer la position de la souris)
+	var global_rect = Rect2(button.global_position, button.get_size())
+	return global_rect.has_point(mouse_position)
+
+
+# Affiche des infos sur les actions quand la souris passe sur le bouton correspondant
+func update_message_action() -> void:
+	var button
+	
+	# On test si le bouton pour enlever un ouvrier est en focus
+	button = get_node("PanelGlobal/PanelAction/GridContainer/sub_worker")
+	if is_button_hovered(button):
+		# Si oui on affiche le cout d'un ouvrier
+		var msg = "En licenciant un ouvrier, vous gagnez %s €." % [int(GlobalData._pay_worker)]
+		show_message_action(msg, button.get_global_position().y)
+		return
+	
+	# On test si le bouton pour ajouter un ouvrier est en focus
+	button = get_node("PanelGlobal/PanelAction/GridContainer/add_worker")
+	if is_button_hovered(button):
+		# Si oui on affiche le cout d'un ouvrier
+		var msg = "En embauchant un ouvrier, vous dépensez %s € de plus par mois." % [int(GlobalData._pay_worker)]
+		show_message_action(msg, button.get_global_position().y)
+		return
+	
+	# On test si le bouton pour enlever un prof est en focus
+	button = get_node("PanelGlobal/PanelAction/GridContainer/sub_teacher")
+	if is_button_hovered(button):
+		# Si oui on affiche le cout d'un prof
+		var msg = "En faisant partir un enseignant, vous gagnez %s €." % [int(build.get_pay_teacher())]
+		show_message_action(msg, button.get_global_position().y)
+		return
+	
+	# On test si le bouton pour ajouter un prof est en focus
+	button = get_node("PanelGlobal/PanelAction/GridContainer/add_teacher")
+	if is_button_hovered(button):
+		# Si oui on affiche le cout d'un prof
+		var msg = "En embauchant un enseignant, vous dépensez %s € de plus par mois." % [int(build.get_pay_teacher())]
+		show_message_action(msg, button.get_global_position().y)
+		return
+	
+	# On test si le bouton pour allumer/eteindre le chauffage est en focus
+	button = get_node("PanelGlobal/PanelAction/heat")
+	if is_button_hovered(button):
+		# Si oui on affiche le cout du chauffage
+		var msg = "L'énergie est chère ! Allumer le chauffage coûte 1100 € par mois." #à corriger, je ne retrouve pas le chiffre du jeu
+		show_message_action(msg, button.get_global_position().y)
+		return
+	
+	
+	#Si la souris n'est sur aucun bouton on cache le message
+	hide_message_action()
+
+
+
+# Montre le message d'information pour un bouton d'action avec un texte en paramètre
+# un message qui contient les info nécéssaire ainsi que la hauteur du bouton concerner
+func show_message_action(msg : String, posY : int) -> void:
+	var node = get_node("message_action") as Label
+
+	# On définie la position du message en fonction de celle du bouton
+	var global_position = node.get_global_position()
+	# Modifier la composante Y en fonction de posY - 50
+	global_position.y = posY - 50
+	# Convertir la position globale en position locale par rapport au parent
+	node.position = node.get_parent().to_local(global_position)
+
+	# Rendre le node visible et mettre à jour le texte
+	node.visible = true
+	node.text = msg
+
+
+
+# cache le message d'information pour un bouton d'action
+func hide_message_action() -> void:
+	var node = get_node("message_action") as Label
+	node.visible = false
+
+
+
+
+
+
+
+
+# BOUTON D'ACTION
 
 func _on_hire_teacher_pressed() -> void:
 	click.play()
@@ -189,39 +288,7 @@ func _on_sub_exam_entry_pressed() -> void:
 	BuildingManagement.decrease_entry_exam_difficulty(code)
 	show_data()
 
-
 func _on_decrease_pay_pressed() -> void:
 	click.play()
 	Teaching.decrease_salary(code)
 	show_data()
-
-
-func _on_sub_teacher_mouse_entered() -> void:
-	if !is_message_active:
-		var msg = "En faisant partir un enseignant, vous gagnez %s €." % [int(build.get_pay_teacher())]
-		await BulleGestion.send_message(msg, false)
-		is_message_active = true
-
-func _on_sub_worker_mouse_entered() -> void:
-	if !is_message_active:
-		var msg = "En licenciant un ouvrier, vous gagnez %s €." % [int(GlobalData._pay_worker)]
-		await BulleGestion.send_message(msg, false)
-		is_message_active = true
-
-func _on_add_teacher_mouse_entered() -> void:
-	if !is_message_active:
-		var msg = "En embauchant un enseignant, vous dépensez (au moins) %s € de plus par mois." % [int(build.get_pay_teacher())]
-		await BulleGestion.send_message(msg, false)
-		is_message_active = true
-
-func _on_add_worker_mouse_entered() -> void:
-	if !is_message_active:
-		var msg = "En embauchant un ouvrier, vous dépensez (au moins) %s € de plus par mois." % [int(GlobalData._pay_worker)]
-		await BulleGestion.send_message(msg, false)
-		is_message_active = true
-
-func _on_heat_mouse_entered() -> void:
-	if !is_message_active:
-		var msg = "L'énergie est chère ! Allumer le chauffage coûte 1100 € par mois." #à corriger, je ne retrouve pas le chiffre du jeu
-		await BulleGestion.send_message(msg, false)
-		is_message_active = true
