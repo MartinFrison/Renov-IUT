@@ -38,7 +38,7 @@ static func decrease_entry_exam_difficulty(dept : String) -> void:
 static func advance_work(building: Building) -> void:
 	var workers = building.get_ouvriers()
 	if workers <= 0:
-		return  # Pas d'ouvriers, pas d'avancement possible
+		return  # Pas de personnel, pas d'avancement possible
 	
 	# Calcul de l'avancement par type de travaux
 	var progress_per_worker = workers
@@ -93,23 +93,23 @@ static func fireWorker(dept: String) -> void:
 		var building = Building.get_building(dept)
 		if building.get_ouvriers() > 0:
 			building.remove_ouvrier()
-			print("Ouvrier renvoyé pour le département ", dept, ". Nombre d'ouvriers restants : ", building.get_ouvriers(), ".")
+			print("Administratif renvoyé pour le département ", dept, ". Nombre d'administratifs restants : ", building.get_ouvriers(), ".")
 		else:
-			print("Plus d'ouvriers pour le département ", dept, ".")
+			print("Plus d'administratifs pour le département ", dept, ".")
 	else:
 		print("Aucun bâtiment trouvé pour le département ", dept, ".")
 
 
 
-# Embaucher un ouvrier pour le département donné
+# Embaucher un administratif pour le département donné
 static func hireWorker(dept: String) -> void:
 	if Building.get_building(dept) != null:
 		var building = Building.get_building(dept)
 		if building.get_ouvriers()<10:
 			building.add_ouvrier()
-			print("Nouvel ouvrier embauché pour le département", dept, ". Nombre total d'ouvriers :", building.get_ouvriers())
+			print("Nouvel administratif embauché pour le département", dept, ". Nombre total d'administratifs :", building.get_ouvriers())
 		else:
-			await BulleGestion.send_message("Vous avez atteint la limite d'ouvriers",false)
+			await BulleGestion.send_message("Vous avez atteint la limite d'administratifs.",false)
 	else:
 		print("Aucun bâtiment trouvé pour le département ", dept, ".")
 

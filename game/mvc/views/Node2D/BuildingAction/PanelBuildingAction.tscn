@@ -224,7 +224,7 @@ expand_icon = true
 [node name="worker" type="Label" parent="PanelGlobal/PanelAction/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "ouvriers
+text = "administratifs
 "
 horizontal_alignment = 1
 

@@ -135,10 +135,10 @@ func tuto_trimester2() -> void:
 	_tuto_buble.show_buble(270,90,875,355)
 	msg = "Vous pouvez y remédier en lancant des travaux de rénovation."
 	await BulleGestion.send_message(msg, false)
-	msg = "Pour ce faire, pensez à embaucher des ouvriers que vous "
-	msg += "devrez rémunérer mensuellement. "
+	msg = "Pour ce faire, pensez à embaucher des ouvriers / administratifs "
+	msg += "que vous devrez rémunérer mensuellement. "
 	msg += "(Heureusement d'ailleurs, vous ne voudriez pas "
-	msg += "aller sur les échafaudages, j'imagine !)"
+	msg += "aller sur les échafaudages vous-mêmes, j'imagine !)"
 	await BulleGestion.send_message(msg, false)
 	_tuto_buble.hide()
 
