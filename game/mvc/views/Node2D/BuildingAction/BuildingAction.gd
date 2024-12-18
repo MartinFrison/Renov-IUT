@@ -136,7 +136,15 @@ func is_button_hovered(button : Button) -> bool:
 func update_message_action() -> void:
 	var button
 	
-	# On test si le bouton pour enlever un ouvrier est en focus
+	# On teste si le bouton pour lancer des travaux est en focus
+	button = get_node("PanelGlobal/PanelAction/renove")
+	if is_button_hovered(button):
+		# Si oui on affiche une bulle d'info
+		var msg = "Rénover les bâtiments est essentiel. Mais cela coûte cher et cela fait déménager un département."
+		show_message_action(msg, button.get_global_position().y)
+		return
+	
+	# On teste si le bouton pour enlever un ouvrier est en focus
 	button = get_node("PanelGlobal/PanelAction/GridContainer/sub_worker")
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un ouvrier
@@ -144,7 +152,7 @@ func update_message_action() -> void:
 		show_message_action(msg, button.get_global_position().y)
 		return
 	
-	# On test si le bouton pour ajouter un ouvrier est en focus
+	# On teste si le bouton pour ajouter un ouvrier est en focus
 	button = get_node("PanelGlobal/PanelAction/GridContainer/add_worker")
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un ouvrier
@@ -152,7 +160,7 @@ func update_message_action() -> void:
 		show_message_action(msg, button.get_global_position().y)
 		return
 	
-	# On test si le bouton pour enlever un prof est en focus
+	# On teste si le bouton pour enlever un prof est en focus
 	button = get_node("PanelGlobal/PanelAction/GridContainer/sub_teacher")
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un prof
@@ -160,7 +168,7 @@ func update_message_action() -> void:
 		show_message_action(msg, button.get_global_position().y)
 		return
 	
-	# On test si le bouton pour ajouter un prof est en focus
+	# On teste si le bouton pour ajouter un prof est en focus
 	button = get_node("PanelGlobal/PanelAction/GridContainer/add_teacher")
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un prof
@@ -168,11 +176,19 @@ func update_message_action() -> void:
 		show_message_action(msg, button.get_global_position().y)
 		return
 	
-	# On test si le bouton pour allumer/eteindre le chauffage est en focus
+	# On teste si le bouton pour allumer/eteindre le chauffage est en focus
 	button = get_node("PanelGlobal/PanelAction/heat")
 	if is_button_hovered(button):
 		# Si oui on affiche le cout du chauffage
 		var msg = "L'énergie est chère ! Allumer le chauffage coûte 1100 € par mois." #à corriger, je ne retrouve pas le chiffre du jeu
+		show_message_action(msg, button.get_global_position().y)
+		return
+		
+	# On teste si le bouton pour fermer les portes
+	button = get_node("PanelGlobal/PanelAction/lock")
+	if is_button_hovered(button):
+		# Si oui on affiche une bulle d'info
+		var msg = "Les portes fermées agacent les étudiants, mais cela permet d'améliorer le bilan énergétique !"
 		show_message_action(msg, button.get_global_position().y)
 		return
 	
