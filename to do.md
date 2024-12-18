@@ -6,7 +6,6 @@ Autre:
 
 Graphique 2D:
 
-- Revoir le design de la bulle d'info, pour les boutons : Elena
 - Eventuellement ajouter un _easter egg_, à un endroit susceptible d'être exploré (mais pas trop évident non plus) : Elena
 
 
