@@ -8,21 +8,15 @@ Autre:
 
 
 Graphique 2D:
-
 - Eventuellement ajouter un _easter egg_, à un endroit susceptible d'être exploré (mais pas trop évident non plus) : Elena
 
 
-
-<<<<<<< HEAD
-- Gestion des grandes vacances : Martin
-=======
 
 
 Code:
 - affiner l'attractivité : Elena
 
 - Ajouter les surfaces des batiments et leur influence sur le chauffage : Martin
->>>>>>> ec3db27 (mise à jours de la to do list)
 - revoir le temps et le cout de renovation + son affichage : Martin
 - Influence des ouvriers sur la détérioration : Martin
 
