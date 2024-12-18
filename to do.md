@@ -11,8 +11,6 @@ Graphique 2D:
 
 Code:
 
-- affiner l'attractivité : Elena
-
 - Gestion des grandes vacances : Martin
 - revoir le temps et le cout de renovation + son affichage : Martin
 - Mettre a jour la gestion de la satisfaction : Martin
