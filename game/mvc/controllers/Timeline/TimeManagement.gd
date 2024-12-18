@@ -18,8 +18,9 @@ func _init(scenario: Scenario, tuto : Tutorial) -> void:
 	ObserverBuilding.notifyStateChanged()
 	
 
-
+# S'execute au commencement du jeu
 func start():
+	# Lance le tuto et le scénario
 	await _tuto.tuto_next()
 	await _scenario.game_start()
 
@@ -37,13 +38,13 @@ func next_Trimestre():
 		var build = Building.get_building(Utils.dept_index_to_string(i+1))
 		BuildingManagement.advance_work(build)
 	#Détérioration trimestriels des batiments
-	BuildingManagement.wear(90)
+	BuildingManagement.wear()
 	ObserverBuilding.notifyStateChanged()
 	
 	#Traitement de la satisfaction
-	mood_update(90)
+	mood_update()
 	#Traitement du niveau etudiant
-	level_update(90)
+	level_update()
 	ObserverPopulation.notifyLevelChanged()
 	ObserverPopulation.notifySatisfactionChanged()
 	
@@ -103,7 +104,7 @@ func Event() -> bool:
 
 
 # Ajuste la satisfaction selon divers critères
-func mood_update(day : int) -> void:
+func mood_update() -> void:
 	# chauffage
 	heat_adjust_mood()
 	inventory_adjust_mood()
@@ -113,7 +114,7 @@ func mood_update(day : int) -> void:
 	Teaching.pay_adjust_mood()
 
 # Ajuste le niveau etudiant selon divers critères
-func level_update(day) -> void:
+func level_update() -> void:
 	# Ajustement selon le nombre de prof et leur moods
 	Study.teacher_adjust_level()
 	pass
