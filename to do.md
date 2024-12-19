@@ -4,11 +4,8 @@ Autre:
 
 
 
-
 Graphique 2D:
 - Eventuellement ajouter un _easter egg_, à un endroit susceptible d'être exploré (mais pas trop évident non plus) : Elena
-
-
 
 
 
@@ -18,12 +15,10 @@ Code:
     (par exemple un dédommagement, une limite mensuels, l'interdire avant les grande vacances ect -> demander à gossa)
 - Pour le scénario rénovation gérer le problème lié au fait que l'on peut le finir en un trimestre en embauchant 150 ouvrier d'un coup
 
-
 - Rapport intelligent au joueur sur sa prestation : Martin
-    - pour le scénario élitisme
     - Pour le scénario éléction
+    - pour le scénario élitisme
     - Pour le scénario rénovation
-
 
 
 
@@ -31,8 +26,6 @@ Mise en forme:
 - Déplacer le calcul de l'attractivité (car GlobalData fait partie du model)
 - Revoir toute la hiérachie et les noms de classe (la cohérence est noté ; mettre les noms des classes et des méthodes en anglais)
 - Commenter tous le code et corriger les fautes de francais
-
-
 
 
 
