@@ -5,9 +5,6 @@ Autre:
 
 
 
-
-
-
 Graphique 2D:
 - Eventuellement ajouter un _easter egg_, à un endroit susceptible d'être exploré (mais pas trop évident non plus) : Elena
 
@@ -16,14 +13,9 @@ Graphique 2D:
 
 
 Code:
-
-- revoir le temps et le cout de renovation + son affichage : Martin
-- Influence des ouvriers sur la détérioration : Martin
-
-- Gestion des grandes vacances : Martin
-- Mettre a jour la gestion de la satisfaction + celle en rapport avec les salaires : Martin
 - Prendre en compte le nombre de diplomé pour l'éléction : Martin
-
+- Gestion des grandes vacances : Martin
+- Mettre a jour la gestion de la satisfaction : Martin
 
 
 - Ajouter des conditions au licenciment (soit un dédommagement soit une limite mensuels) pour éviter les abus

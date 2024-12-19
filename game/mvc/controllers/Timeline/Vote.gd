@@ -85,10 +85,14 @@ static func popularity_per_dept(dept: String) -> int:
 
 # Voix gagnée parmi les enseignants d'un département spécifique
 static func popularity_among_teachers_per_dept(dept: String) -> int:
-	#l'opinion d'un prof dépend de sa satisfaction, un peu de celle des étudiants et du budget restant
-	var coeff = Teacher.avg_mood_per_dept(dept)*0.7
+	# l'opinion d'un prof dépend principalement de sa satisfaction, 
+	# un peu de celle des étudiants et de leur réussite ainsi que du budget restant
+	var coeff = Teacher.avg_mood_per_dept(dept)*0.6
 	coeff += Student.avg_mood_per_dept(dept)*0.1
-	coeff += (min(1,GlobalData.getTotalBudget()/3000000))*0.2 # Plafond de l'influence à 3 million de $
+	# Le nombre de diplomé a un impact de 20% sur le vote et on en attend 1500 au total
+	coeff += min(1,(Student.get_graduate()/1500)) * 0.2
+	# Calcule de l'impact du budget restant sur la base du budget initial avec un coeff de 10%
+	coeff += 0.1 * (min(1,GlobalData.getTotalBudget() / (GlobalData.adjust_budget_initial()*3)))
 	#calcule du taux de voix avec une fonction logistique
 	coeff = logistic_function(coeff)
 	#calcule du nombre de voix recu selon le coeff et le nb de votant
@@ -99,8 +103,8 @@ static func popularity_among_teachers_per_dept(dept: String) -> int:
 # Voix gagnée  parmi les étudiants d'un département spécifique
 static func popularity_among_students_per_dept(dept: String) -> int:
 	#l'opinion des etudiants dépend de leurs satisfactions et de leur réussite
-	var coeff = Student.avg_mood_per_dept(dept)*0.7
-	coeff += Student.avg_level_per_dept(dept)*0.3
+	var coeff = Student.avg_mood_per_dept(dept)*0.65
+	coeff += Student.avg_level_per_dept(dept)*0.35
 	#calcule du taux de voix avec une fonction logistique
 	coeff = logistic_function(coeff)
 	#calcule du nombre de voix recu selon le coeff et le nb de votant
@@ -109,5 +113,5 @@ static func popularity_among_students_per_dept(dept: String) -> int:
 
 
 #Fonction logistique pour calculer le nombre de voie
-static func logistic_function(x: float, k: float = 10.0) -> float:
+static func logistic_function(x: float, k: float = 5.0) -> float:
 	return exp(k * (x - 0.5)) / (1 + exp(k * (x - 0.5)))

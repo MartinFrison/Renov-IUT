@@ -73,7 +73,7 @@ func send_bill_detail() -> void:
 	var m = GlobalData._month
 	var msg = "Récapitulatif de vos factures du mois de " + Utils.get_month_name(m) + " "  + str(GlobalData._year)
 	msg += "\nSalaire des enseignants : %s$ (%s personnes payées) ; " % [sum_pay(pay_teacher), nb_pay_teacher]
-	msg += "salaire des administratifs : %s$ (%s personnes payées)" % [sum_pay(pay_worker), nb_pay_worker]
+	msg += "salaire du personelle : %s$ (%s personnes payées)" % [sum_pay(pay_worker), nb_pay_worker]
 	msg += "\nFacture de chauffage : %s$" % [sum_pay(pay_heating)]
 	var objet = "Facture du mois de " + Utils.get_month_name(m) + " "  + str(GlobalData._year)
 	
