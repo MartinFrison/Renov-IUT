@@ -1,30 +1,28 @@
 extends Node2D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	show_bilan()
+func init(scenario : Scenario):
+	show_result(scenario)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 
-# On affiche le bilan de la partie au joueur
-func show_bilan() -> void:
+func show_result(scenario : Scenario) -> void:
 	# Sur le nombre de d'étudiant ayant rejoins une école d'ingénieur
 	var audio_player = get_node("win")
 	audio_player.play()
 	
 	var node = get_node("Message")
-	node.text = "Sous votre mandat, %s étudiants ont pu intégrer une école 
-	d'ingénieurs à l'issue de leur formation." % [Student.get_engineering()]
+	node.text = "Voici le bilan de votre quête à l'élitisme"
 	
 	# Sur le nombre de diplomé
 	node = get_node("Message2")
-	node.text = "D'autre part, %s étudiants ont pu obtenir 
-	leur diplôme, soit %s par an.
-	" % [Student.get_graduate(), round(Student.get_graduate()/5)]
+	node.text = scenario.player_report() 
+
+
 
 func _on_quitter_pressed() -> void:
 	get_tree().quit() 

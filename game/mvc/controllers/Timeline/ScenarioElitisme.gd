@@ -37,10 +37,13 @@ func end_game() -> void:
 	await BulleGestion.send_message("Votre mandat de 5 ans est arrivé à son terme, 
 	il est temps de faire le bilan.", false)
 
+	# On afficher le panel de fin de jeu
 	var scene = load("res://mvc/views/Node2D/FinJeu/PanelFinElitisme.tscn")
-	var bulle = scene.instantiate()
-	RenovIUTApp.app.add_child(bulle)
-	await bulle.tree_exited
+	var end = scene.instantiate()
+	RenovIUTApp.app.add_child(end)
+	if end.has_method("init"):
+		end.init(self)
+	await end.tree_exited
 
 
 # Les actions du scénario qui ont lieu au cour de la partie
@@ -56,3 +59,47 @@ func mid_game() -> void:
 			msg += "À l'heure qu'il est, aucun étudiant n'a rejoint une école d'ingénieurs. "
 			msg += "Il paraît qu'ils n'en avaient pas le niveau..."
 		await BulleGestion.send_message(msg, true)
+
+
+# Renvoie au joueur un rapport sur sa gestion de l'IUT
+# avec ce qui lui a permis ou non d'avoir une forte réussite ainsi que les conséquences
+# que ses décisions ont pu avoir
+func player_report() -> String:
+	var report = ""
+	var enginer = Student.get_engineering()
+	var grade = Student.get_graduate()
+	
+	# Évaluation du bilan sur l'élitisme
+	report += "Votre bilan concernant l'élitisme est "
+	var bilan
+	if enginer > 100:
+		bilan = "excellent"
+	elif enginer > 80:
+		bilan = "globalement très bon"
+	elif enginer > 60:
+		bilan = "globalement bon"
+	elif enginer > 40:
+		bilan = "correct"
+	elif enginer > 20:
+		bilan = "plutôt mauvais"
+	else:
+		bilan = "nul"
+	report += bilan + ". "
+	
+	# Précisions sur le nombre d'intégrations en école d'ingénieur
+	report += "Sous votre mandat, %s " % [enginer]
+	if enginer <= 40:
+		report += "seuls "
+	report += "étudiants ont pu intégrer une école d'ingénieurs à l'issue de leur formation. "
+	
+	# Note sur la réussite générale (nombre de diplômés)
+	report += "D'autre part, %s étudiants ont pu obtenir leur diplôme, soit %s par an. " % [grade, round(grade / 5)]
+	
+	# Quelles ont été les conséquences sur l'IUT ?
+	var side_effect = side_effect()
+	if enginer > 60 and side_effect != "":
+		report += "\nCependant, bien que votre bilan concernant la réussite soit " + bilan + ", "
+		report += "votre gestion a également eu des effets néfastes :\n"
+		report += side_effect
+
+	return report

@@ -32,10 +32,13 @@ func end_game() -> void:
 	await BulleGestion.send_message("C'est la fin de votre mandat !", false)
 	await BulleGestion.send_message("Les représentants du conseil vont voter pour - ou contre vous !", false)
 	
+	# On afficher le panel de fin de jeu
 	var scene = load("res://mvc/views/Node2D/FinJeu/PanelFinElection.tscn")
-	var bulle = scene.instantiate()
-	RenovIUTApp.app.add_child(bulle)
-	await bulle.tree_exited
+	var end = scene.instantiate()
+	RenovIUTApp.app.add_child(end)
+	if end.has_method("init"):
+		end.init(self)
+	await end.tree_exited
 
 
 # Les actions du scénario qui ont lieu au cour de la partie
@@ -84,8 +87,9 @@ func player_report() -> String:
 		report += "Mais ce choix n'était peut-être pas le plus judicieux étant donné le faible nombre de représentants étudiants."
 
 	# Quelles ont été les conséquences sur l'IUT ?
-	if Vote.election_gagnee():
+	var side_effect = side_effect()
+	if Vote.election_gagnee() and side_effect!="":
 		report += "\nBien que vous ayez remporté ces élections, votre politique a eu des effets indésirables."
-		report += side_effect()
+		report += side_effect
 
 	return report
