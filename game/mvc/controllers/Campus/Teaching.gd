@@ -35,6 +35,12 @@ static func fire_teachers(dept: String):
 		await BulleGestion.send_message("Plus aucun enseignant à ce département, catastrophe !",false)
 		return
 	
+	# Le cout d'un licenciment est de 4 mois de salaire minimum
+	var fire_cost = 4000 * 4
+	if !await Expense.try_expense_dept(fire_cost, dept):
+		return # Si on n'a pas d'argent pour payer le dédommagement on renvoie faux
+	
+	# Si le prof est bien renvoyer on le supprime de la base de donnée
 	Teacher.rm_teachers_by_dept(dept,1)
 	print("Licenciement d'un enseignant du département %s." % dept)
 
@@ -90,24 +96,24 @@ static func mood_fluctuation(dept : String, value : float, coeff : float) -> voi
 
 
 static func increase_salary(dept : String) -> void:
-	var b = Building.get_building(dept)
-	if b.get_pay_teacher() >= maximum_wage:
+	var build = Building.get_building(dept)
+	if build.get_pay_teacher() >= maximum_wage:
 		await BulleGestion.send_message("Le salaire des enseigants ne peut pas dépasser 7000€.", false)
 	else:
-		b.add_pay_teacher(500)
+		build.add_pay_teacher(500)
 
 
 static func decrease_salary(dept : String) -> void:
-	var b = Building.get_building(dept)
-	if b.get_pay_teacher() <= minimum_wage:
+	var build = Building.get_building(dept)
+	if build.get_pay_teacher() <= minimum_wage:
 		await BulleGestion.send_message("Les enseignants ne sont pas au SMIC, leur salaire ne peut pas être inférieur à 4000€.", false)
 	else:
-		b.add_pay_teacher(-(500))
+		build.add_pay_teacher(-(500))
 
 
-
+# Les profs très mécontent quitte l'IUT
 static func teacher_resign() -> void:
-	Teacher.rm_teacher_by_mood(0.2);
+	Teacher.rm_teacher_by_mood(0.15);
 
 
 
@@ -121,11 +127,13 @@ static func pay_adjust_mood() -> void:
 		var build = Building.get_building(code)
 		# Definition de la valeur avec un minimum de 0.4 pour le salaire minimal
 		var value = 0.4
-		value += (build.get_pay_teacher()-minimum_wage) / (maximum_wage-minimum_wage)
-		
+		value += (build.get_pay_teacher()-minimum_wage) / (maximum_wage-minimum_wage) * 0.6
+		# Le coeff de base est 0.2, plus le salaire est élevé plus le coeff l'est aussi
+		var coeff = 0.25
+		coeff = (build.get_pay_teacher()-minimum_wage) / (maximum_wage-minimum_wage) * 0.2 # Le max est donc 0.45
 		
 		# On applique la valeur avec un coeff de 35%
-		Teaching.mood_fluctuation(code, value, 0.35)
+		Teaching.mood_fluctuation(code, value, coeff)
 
 
 

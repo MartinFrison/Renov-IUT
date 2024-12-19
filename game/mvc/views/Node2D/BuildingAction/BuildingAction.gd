@@ -180,7 +180,8 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/GridContainer/sub_teacher")
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un prof
-		var msg = "En faisant partir un enseignant, vous gagnez %s €. Mais comment apprendre sans profs ?" % [int(build.get_pay_teacher())]
+		var msg = "En faisant partir un enseignant, vous gagnez %s €. \nAttention, le coût d'un licenciement 
+		est de 4 mois de salaire minimum soit 16000 € !" % [int(build.get_pay_teacher())]
 		show_message_action(msg, button.get_global_position().y)
 		return
 		
