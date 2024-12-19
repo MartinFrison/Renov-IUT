@@ -130,25 +130,26 @@ static func heat_adjust_mood() -> void:
 		# si trop froid
 		if !build.is_heating() and (GlobalData._month >= 1 or GlobalData._month<=4):
 			# s'il fait trop froid la satisfaction tend vers 0 et la difficulté empire le coeff
-			Study.mood_fluctuation(code, 0, 0.08 / GlobalData.adjust_satisfaction())
-		
+			Study.mood_fluctuation(code, 0, 0.08 / GlobalData.adjust_satisfaction())	
 		# sinon on ne fait rien
 
 
 
 # Ajuster le mood selon l'état des lieux des batiments
 # Fait converger la satisfaction vers une valeur qui dépend de l'état des lieux (en dehors de l'été)
-static func inventory_adjust_mood() -> void: 
-	for i in range(1,6):
-		var code = Utils.dept_index_to_string(i)
-		var build = Building.get_building(code)
-		
-		# Formule qui dépend de l'état des lieux et la difficulté
-		var value = build.get_inventory() * GlobalData.adjust_satisfaction()
-		
-		# On applique les fluctuations pour les profs et les étudiant
-		Study.mood_fluctuation(code, value, 0.1)
-		Teaching.mood_fluctuation(code, value, 0.1)
+static func inventory_adjust_mood() -> void:
+	# Si on est pas en été
+	if GlobalData.get_season()!=1: 
+		for i in range(1,6):
+			var code = Utils.dept_index_to_string(i)
+			var build = Building.get_building(code)
+			
+			# Formule qui dépend de l'état des lieux et la difficulté
+			var value = build.get_inventory() * GlobalData.adjust_satisfaction()
+			
+			# On applique les fluctuations pour les profs et les étudiant
+			Study.mood_fluctuation(code, value, 0.1)
+			Teaching.mood_fluctuation(code, value, 0.1)
 
 
 # Ajuster le mood si des travaux on lieu dans le batiment

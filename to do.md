@@ -17,16 +17,16 @@ Code:
     - impact de la rénovation sur la satisfaction selon la période
     - plus d'impact sur le niveau et sur les etudiant a par la paye des profs
 - Mettre a jour la gestion de la satisfaction : Martin
+- Impact des portes fermer sur la degradation : Martin
 
 
-- Ajouter des conditions au licenciment (soit un dédommagement soit une limite mensuels) pour éviter les abus
 - Ajout de tout les messages et notifs manquant dans le code 
     - chauffage
     - info sur les portes bloquer
     - sur la rénovation
     - ect..
 - Mise à jours du tutoriel sur l'attractivité et les examens
-
+- Ajouter des conditions au licenciment (par exemple un dédommagement soit une limite mensuels -> demander à gossa) pour éviter les abus
 
 
 
