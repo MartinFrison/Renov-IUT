@@ -214,6 +214,6 @@ static func wear() -> void:
 			if build.isDoorLocked():
 				# La vitesse de dégradation est divisé par 2
 				wear /= 2
-			
+		
 		#Appliquer la détérioration
 		build.addInventory(-wear)
