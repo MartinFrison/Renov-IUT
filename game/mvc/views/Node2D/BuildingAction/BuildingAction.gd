@@ -6,6 +6,7 @@ var build : Building
 var click : AudioStreamPlayer2D
 var under_construction : AudioStreamPlayer2D 
 var _loaded : bool = false
+@onready var easter_egg = get_node("geek")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,8 +17,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	check_and_update_buttons()
 	update_message_action()
-
-
 
 func init(id : int) -> void:
 	code = Utils.dept_index_to_string(id)
@@ -126,6 +125,11 @@ func check_and_update_buttons() -> void:
 		get_node("PanelGlobal/PanelAction/GridContainer/add_exem_entry").set_disabled(true)
 		get_node("PanelGlobal/PanelAction/GridContainer/sub_exem_entry").set_disabled(true)
 
+	if is_button_hovered(easter_egg):
+		easter_egg.set_visible(true)
+		
+	else:
+		easter_egg.set_visible(false)
 
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b4cp1gj8gn1ro"]
+[gd_scene load_steps=33 format=3 uid="uid://b4cp1gj8gn1ro"]
 
 [ext_resource type="Script" path="res://mvc/views/RenovIUTApp.gd" id="1_drlro"]
 [ext_resource type="Texture2D" uid="uid://b8bjiydhyyapq" path="res://mvc/views/images/buttons/notification_button.png" id="3_4oyj6"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://mvc/views/Node3D/character/bonhomme.gd" id="12_vnvx5"]
 [ext_resource type="Script" path="res://mvc/views/Node2D/Menu/Menu.gd" id="13_hhh64"]
 [ext_resource type="PackedScene" uid="uid://c58xq3mpsn4kc" path="res://mvc/views/Node2D/Bulle/BulleTuto/BulleTutorial.tscn" id="19_erxnb"]
+[ext_resource type="Texture2D" uid="uid://cksm3kp34mbvc" path="res://mvc/views/images/icons/geek.png" id="20_6oanc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1hwps"]
 sky_top_color = Color(0.719709, 0.848666, 1, 1)
@@ -80,6 +81,17 @@ z_index = -1
 
 [node name="BuildingAction" parent="Action_Control" instance=ExtResource("8_lduu6")]
 position = Vector2(-1, -9.53674e-07)
+
+[node name="geek" type="Button" parent="Action_Control/BuildingAction"]
+top_level = true
+offset_left = 454.0
+offset_top = 279.0
+offset_right = 502.0
+offset_bottom = 331.0
+mouse_default_cursor_shape = 16
+icon = ExtResource("20_6oanc")
+flat = true
+expand_icon = true
 
 [node name="notif_button" type="Button" parent="Action_Control"]
 clip_contents = true
