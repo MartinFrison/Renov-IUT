@@ -6,15 +6,16 @@ var old_builds : Array[Building] = []
 
 var _progression : Array[bool]
 
-func _init() -> void:
+func init() -> void:
 	for i in 8:
 		_progression.append(false)
 	_name = "Rénovation"
-	super._init()
+	super.init()
 	
 
 # Appelle les messages sur l'explication du scénario et de ces objectifs en début de jeu
 func game_start():
+	building_to_renov_wear()
 	var msg
 	if old_builds.size() > 1:
 		msg = "Votre objectif est de rénover les bâtiments %s et %s." % [old_builds[0].get_code(),old_builds[1].get_code()]
@@ -73,17 +74,10 @@ func mid_game() -> void:
 	if b:
 		await BulleGestion.send_message(msg, true)
 
-# Génère un événement aléatoire avec des probabilités dépendant du scénario et d'autre condition
-func random_event() -> void:
-	var events_proba = []
-	events_proba.append(1)  # Proba de 1 pour l'event 0
-	events_proba.append(1)  # Proba de 1 pour l'event 1
-	super.random_event_call(events_proba) # appeler l'event dans la class parente
 
 
-# Initialise le modèle en fonction du scénario et de la difficulté
-func init_data() -> void:
-	super.init_data()
+# Définie un état mauvais pour les batiments à rénover
+func building_to_renov_wear() -> void:
 	# On choisis le/les batiments à rénover
 	var build1 = Utils.randint_in_range(1,5)
 	old_builds.append(Building.get_building(Utils.dept_index_to_string(build1)))
@@ -104,22 +98,3 @@ func init_data() -> void:
 		# l'isolation et l'état est aléatoire et dépend de la difficulté
 		var inventory = int(Utils.randint_in_range(5,30) * GlobalData.adjust_dept_state())
 		b.addInventory(inventory)
-
-
-
-# Ajuster le budget des batiment en appliquant un coefficient
-func adjust_budget_building(build : Building) -> void:
-		# Definition d'un budget aléatoire qui dépend de la difficulté
-		build.add_budget(GlobalData.adjust_budget_initial()*0.2 * Utils.randfloat_in_square_range(0.5, 1.5))
-
-
-# Ajuster le budget en appliquant un coefficient
-func adjust_budget() -> void:
-	var budget = GlobalData.adjust_budget_initial() * Utils.randfloat_in_square_range(0.8, 1.2)
-	GlobalData.setBudget(budget)
-
-
-
-# Ajuster l'état d'un département en appliquant un coefficient
-func adjust_dept_state() -> void:
-	print("à compléter")

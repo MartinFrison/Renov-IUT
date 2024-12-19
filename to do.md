@@ -13,32 +13,24 @@ Graphique 2D:
 
 
 Code:
-- Mise à jours du tutoriel sur l'attractivité et les examens
+- Mise à jours du tutoriel sur l'attractivité et les examens (et d'autre mécanique de jeu eventuellement)
+- Ajouter des conditions au licenciment pour éviter les abus
+    (par exemple un dédommagement, une limite mensuels, l'interdire avant les grande vacances ect -> demander à gossa)
+- Pour le scénario rénovation gérer le problème lié au fait que l'on peut le finir en un trimestre en embauchant 150 ouvrier d'un coup
 
 
-
-- Mettre a jour la gestion de la satisfaction : Martin
-- Ajout de tout les messages et notifs manquant dans le code 
-    - chauffage
-    - info sur les portes bloquer
-    - sur la rénovation
-    - ect..
-
-
-- Ajouter des conditions au licenciment (par exemple un dédommagement soit une limite mensuels -> demander à gossa) pour éviter les abus
-
-
-
-Bonus:
 - Rapport intelligent au joueur sur sa prestation : Martin
-- Ajout d'un historique de toutes les stats consultable notament en fin de partie
-
+    - pour le scénario élitisme
+    - Pour le scénario éléction
+    - Pour le scénario rénovation
 
 
 
 
 Mise en forme:
+- Déplacer le calcul de l'attractivité (car GlobalData fait partie du model)
 - Supprimer le code lié au évènement
+- Déplacer les fonction d'initialisation de scénario vers timeManagement
 - Revoir toute la hiérachie et les noms de classe (la cohérence est noté ; mettre les noms des classes et des méthodes en anglais)
 - Commenter tous le code et corriger les fautes de francais
 
@@ -52,4 +44,5 @@ Fin de projet:
 - Test pour rechercher les abus du système et des mechanique de jeu (stratégie antijeu) possible par le joueur pour les corrigés 
 - Test du jeu pour détécter et corriger tout les bugs
 - Compilation et mise en ligne du jeu
+- Système d'installation avec lien dans le git
 - Test de la version compiler sur différentes machines pour s'assurer que celle ci ne pose aucun problème

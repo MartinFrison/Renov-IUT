@@ -5,10 +5,10 @@ extends Scenario
 var _progression : int
 
 
-func _init() -> void:
+func init() -> void:
 	_progression = 0
 	_name = "Elitiste"
-	super._init()
+	super.init()
 
 
 
@@ -56,30 +56,3 @@ func mid_game() -> void:
 			msg += "À l'heure qu'il est, aucun étudiant n'a rejoint une école d'ingénieurs. "
 			msg += "Il paraît qu'ils n'en avaient pas le niveau..."
 		await BulleGestion.send_message(msg, true)
-
-
-# Génère un événement aléatoire avec des probabilités dépendant du scénario et d'autre condition
-func random_event() -> void:
-	var events_proba = []
-	events_proba.append(1)  # Proba de 1 pour l'event 0
-	events_proba.append(1)  # Proba de 1 pour l'event 1
-	super.random_event_call(events_proba) # appeler l'event dans la class parente
-
-
-
-
-# Ajuster le budget des batiment en appliquant un coefficient
-func adjust_budget_building(build : Building) -> void:
-		# Definition d'un budget aléatoire qui dépend de la difficulté
-		build.add_budget(GlobalData.adjust_budget_initial()*0.2 * Utils.randfloat_in_square_range(0.5, 1.5))
-
-
-# Ajuster le budget en appliquant un coefficient
-func adjust_budget() -> void:
-	var budget = GlobalData.adjust_budget_initial() * Utils.randfloat_in_square_range(0.8, 1.2)
-	GlobalData.setBudget(budget)
-
-
-# Ajuster l'état d'un département en appliquant un coefficient
-func adjust_dept_state() -> void:
-	print("à compléter")

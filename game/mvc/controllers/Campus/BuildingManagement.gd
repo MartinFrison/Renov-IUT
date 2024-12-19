@@ -2,6 +2,36 @@
 class_name BuildingManagement
 extends RefCounted
 
+# Instancis les batiments et leur valeur de départ
+static func init_building() -> void:
+	for i in range(1,6):
+		var age = Utils.randint_in_range(5,50)
+		# l'isolation et l'état est aléatoire et dépend de la difficulté
+		var inventory = int(Utils.randfloat_in_square_range(30,100) * GlobalData.adjust_dept_state())
+		
+		# Surface des batiments:
+		# chimie 5000m2, genie_civil 9000m2, info_com 2000m2
+		# informatique 2500m2, technique_de_co 7000m2
+		var surfaces = [5000,9000,2000,2500,7000]
+		var surface = surfaces[i-1] # Selectionner la bonne surface
+		
+		# Instanciation du batiment
+		var code = Utils.dept_index_to_string(i)
+		var b = Building.new(age,surface, false, code, inventory)
+		
+		# Initialisation du salaire des profs et du budget
+		adjust_budget_building(b)
+		b.set_pay_teacher(4000)
+		b.set_pay_teacher(7000)
+
+
+# Ajuster le budget des batiment en appliquant un coefficient
+static func adjust_budget_building(build : Building) -> void:
+		# Definition d'un budget aléatoire qui dépend de la difficulté
+		build.add_budget(GlobalData.adjust_budget_initial()*0.2 * Utils.randfloat_in_square_range(0.6, 1.4))
+
+
+
 
 
 # Jongle entre les valeur 0.3, 0.4, 0.5, 0.6 et 0.7 pour la difficulté des exams

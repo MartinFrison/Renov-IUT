@@ -62,8 +62,7 @@ func create_iut_db():
 	for query in queries:
 		if !db.execute(query):
 			print("Erreur lors de la création de la table.")
-		else:
-			print("Table créée avec succès.")
+	print("Les bases de données on été créer")
 
 	#fill_notifications_from_csv(csv_path)
 	

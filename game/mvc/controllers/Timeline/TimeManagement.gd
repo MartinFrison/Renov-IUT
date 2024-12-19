@@ -9,14 +9,28 @@ var _bill : Bill
 
 # Le jeu commence le 1 septembre 2025
 func _init(scenario: Scenario, tuto : Tutorial) -> void:
-	_bill = Bill.new()
+	print("Initialisation du jeu")
+	
+	_bill = Bill.new() # Instancier la classe pour gérer les factures
 	GlobalData.setDate(1,9,2025) # date de départ
 	_scenario = scenario  # Initialiser le scénario
 	_tuto = tuto # Initialiser le tuto
+	
+	# Initialisation des valeurs par défaut du jeu et des base de données
+	BuildingManagement.init_building()
+	Study.populate()
+	Teaching.populate()
+	adjust_budget()
+	_scenario.init()
+	
+	# Notifier la vue pour afficher les données
 	ObserverPopulation.notifySatisfactionChanged()
 	ObserverPopulation.notifyLevelChanged()
 	ObserverBuilding.notifyStateChanged()
 	
+
+
+
 
 # S'execute au commencement du jeu
 func start():
@@ -168,3 +182,10 @@ static func renovation_adjust_mood() -> void:
 				# Les étudiant et professeurs sont mécontent (surtout les élèves)
 				Study.mood_fluctuation(code, 0, 0.18)
 				Teaching.mood_fluctuation(code, 0, 0.12)
+
+
+# Ajuster le budget en appliquant un coefficient
+func adjust_budget() -> void:
+	# Initialisation aléatoire selon la difficulté
+	var budget = GlobalData.adjust_budget_initial() * Utils.randfloat_in_square_range(0.8, 1.2)
+	GlobalData.setBudget(budget)

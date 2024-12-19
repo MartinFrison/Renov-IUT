@@ -46,6 +46,7 @@ static func setDate(day : int, month : int, year : int) -> void:
 static func get_attractivity() -> float:
 	return _attractivity
 
+
 # Calcule l'attractivité à base des paramètres suivants :
 # 	les résultats académiques
 #   la satisfaction de tout le monde
@@ -241,6 +242,8 @@ static func adjust_event_proba() -> float:
 		3:
 			return 1
 	return -1
+
+
 
 # Permet d'afficher le budget dans un joli format
 static func formatBudget(number: int) -> String:

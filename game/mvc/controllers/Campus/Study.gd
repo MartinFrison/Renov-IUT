@@ -39,7 +39,7 @@ static func populate_promo(dept : int, year : int) -> int:
 	# Calcule du nombre d'étudiant dans la promo tenant compte de la séléctivité des examens d'entrée
 	# Au maximum le nb de recrus peut être divisé par 2, il ne peut pas être augmenter car les examens d'entrée 
 	# sont par défaut au plus facile
-	var nb_students = ceil(students_base_nb[dept-1] * coeff* (1-coeff_exam))
+	var nb_students : int = ceil(students_base_nb[dept-1] * coeff* (1-coeff_exam))
 	
 	# Le nombre de nouveaux inscrits dépend aussi de l'attractivité
 	var k = 0.25
