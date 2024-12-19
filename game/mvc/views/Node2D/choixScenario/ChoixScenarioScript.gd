@@ -7,6 +7,8 @@ var _app : RenovIUTApp
 var scenario = -1
 var difficulty = 2
 
+# Fonction d'initialisation pour passer la référence vers l'appli et le 
+# générateur d'iut
 func init(iut : IUTFacade, app : RenovIUTApp) -> void:
 	_IUT = iut
 	_app = app

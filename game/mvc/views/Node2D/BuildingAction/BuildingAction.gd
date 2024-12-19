@@ -34,9 +34,11 @@ func show_data() -> void:
 		return
 	var node
 	
+	# Affichage du nom du département
 	node = get_node("PanelGlobal/name")
 	node.text = code
 	
+	# Affichage de l'icon du batiment
 	var image = get_node("PanelGlobal/icon")
 	var texture_path = "res://mvc/views/images/icons/" + code + ".png"
 	var texture = load(texture_path)
@@ -45,6 +47,8 @@ func show_data() -> void:
 	else:
 		print("Erreur lors du chargement de la texture :", texture_path)
 	
+	
+	# Affichage de toutes les données sur le batiment
 	node = get_node("PanelGlobal/PanelAction/GridContainer/end_exam")
 	node.text = "examens (difficulté %s/10)" % [int(build.get_exam_end()*10)]
 	
@@ -72,6 +76,10 @@ func show_data() -> void:
 	node = get_node("PanelGlobal/PanelAction/GridContainer/worker")
 	node.text = "ouvriers (%s)" % [build.get_ouvriers()]
 	
+	node = get_node("PanelGlobal/PanelStat/GridContainer/budget")
+	node.text = "Budget : %s €" % [GlobalData.formatBudget(build.get_budget())]
+
+	# Affichage de l'état du batiment selon sa valeur
 	node = get_node("PanelGlobal/PanelStat/GridContainer/renovation")
 	var n = build.get_inventory()
 	if n < 25:
@@ -83,11 +91,13 @@ func show_data() -> void:
 	else:
 		n = "très bon"
 	
+	# Précise si le batiment est en travaux
 	var w = ""
 	if build.is_renovation_underway():
 		w = "(en travaux)"
 	node.text = "État du bâtiment : %s %s" % [n, w]
 	
+	# Désactive le bouton de rénovation s'il est déjà en travaux
 	node = get_node("PanelGlobal/PanelAction/renove")
 	if build.is_renovation_underway():
 		node.set_disabled(true)
@@ -96,9 +106,8 @@ func show_data() -> void:
 		node.set_disabled(false)
 		node.text = "faire des travaux"
 
-	node = get_node("PanelGlobal/PanelStat/GridContainer/budget")
-	node.text = "Budget : %s €" % [GlobalData.formatBudget(build.get_budget())]
-
+	# Affichage de l'action des boutons de bloquage des portes et de chauffage
+	# selon leur état d'activation actuelle
 	node = get_node("PanelGlobal/PanelAction/lock")
 	if build.isDoorLocked():	
 		node.text = "débloquer les portes"
@@ -113,6 +122,8 @@ func show_data() -> void:
 
 
 
+# Si on n'est pas dans le trimestre qui précède un examen
+# On désactive les bouton pour en changer la difficulté (car inutile)
 func check_and_update_buttons() -> void:
 	if GlobalData.get_season() == 0:
 		get_node("PanelGlobal/PanelAction/GridContainer/add_exem_end").set_disabled(false)
@@ -125,9 +136,9 @@ func check_and_update_buttons() -> void:
 		get_node("PanelGlobal/PanelAction/GridContainer/add_exem_entry").set_disabled(true)
 		get_node("PanelGlobal/PanelAction/GridContainer/sub_exem_entry").set_disabled(true)
 
+	# Affichage d'un easter egg caché visible au passage de la souris dessus
 	if is_button_hovered(easter_egg):
-		easter_egg.set_visible(true)
-		
+		easter_egg.set_visible(true)	
 	else:
 		easter_egg.set_visible(false)
 
@@ -254,83 +265,101 @@ func show_message_action(msg : String, posY : int) -> void:
 func hide_message_action() -> void:
 	var node = get_node("message_action") as Label
 	node.visible = false
-	
+
+
+
+
+
+
+
 # BOUTON D'ACTION
 
+# Quand le bouton pour embaucher un prof est cliqué
+# On embauche un prof on met à jours l'affichage
 func _on_hire_teacher_pressed() -> void:
 	click.play()
 	Teaching.hire_teachers(code, false)
 	show_data()
 
-
+# Quand le bouton pour renvoyer un prof est cliqué
+# On renvoie un prof on met à jours l'affichage
 func _on_fire_teacher_pressed() -> void:
 	click.play()
 	Teaching.fire_teachers(code)
 	show_data()
 
-
-func _on_renove_pressed() -> void:
-	click.play()
-	BuildingManagement.start_renovation(build)
-	show_data()
-
-
-func _on_lock_pressed() -> void:
-	click.play()
-	BuildingManagement.lockDoor(code)
-	show_data()
-
-
-func _on_fire_worker_pressed() -> void:
-	click.play()
-	BuildingManagement.fireWorker(code)
-	show_data()
-
-
+# Quand le bouton pour embaucher du personel est cliqué
+# On embauche un travailleur on met à jours l'affichage
 func _on_hire_worker_pressed() -> void:
 	click.play()
 	BuildingManagement.hireWorker(code)
 	show_data()
 
+# Quand le bouton pour renvoyer du personel est cliqué
+# On renvoie un travailleur on met à jours l'affichage
+func _on_fire_worker_pressed() -> void:
+	click.play()
+	BuildingManagement.fireWorker(code)
+	show_data()
 
+# Quand le bouton pour commencer des travaux est cliqué
+# On lance les travaux et on met à jours l'affichage
+func _on_renove_pressed() -> void:
+	click.play()
+	BuildingManagement.start_renovation(build)
+	show_data()
+
+# Quand le bouton pour ouvrir/fermer les portes est cliqué
+# On ouvre/ferme les portes du batiment et on met à jours l'affichage
+func _on_lock_pressed() -> void:
+	click.play()
+	BuildingManagement.lockDoor(code)
+	show_data()
+
+# Quand le bouton pour allumer/eteindre le chauffage est cliqué
+# On allume/éteind le chauffage et on met à jours l'affichage
 func _on_heat_pressed() -> void:
 	click.play()
 	BuildingManagement.switchHeat(code)
 	show_data()
 
-
-
-func _on_close_pressed() -> void:
-	click.play()
-	queue_free()
-
-
-func _on_increase_pay_pressed() -> void:
-	click.play()
-	Teaching.increase_salary(code)
-	show_data()
-
-
+# Quand le bouton pour augmenter la difficulté des examens finaux est cliqué
+# On augmente la difficulté et on met à jours l'affichage
 func _on_add_exem_end_pressed() -> void:
 	click.play()
 	BuildingManagement.rise_end_exam_difficulty(code)
 	show_data()
 
+# Quand le bouton pour baisser la difficulté des examens finaux est cliqué
+# On baisse la difficulté et on met à jours l'affichage
 func _on_sub_exam_end_pressed() -> void:
 	click.play()
 	BuildingManagement.decrease_end_exam_difficulty(code)
 	show_data()
 
+# Quand le bouton pour augmenter la difficulté des examens d'entrée est cliqué
+# On augmente la difficulté et on met à jours l'affichage
 func _on_add_exem_entry_pressed() -> void:
 	click.play()
 	BuildingManagement.rise_entry_exam_difficulty(code)
 	show_data()
 
+# Quand le bouton pour baisser la difficulté des examens d'entrée est cliqué
+# On baisse la difficulté et on met à jours l'affichage
 func _on_sub_exam_entry_pressed() -> void:
 	click.play()
 	BuildingManagement.decrease_entry_exam_difficulty(code)
 	show_data()
 
+# Quand le bouton pour augmenter le salaire des profs est cliqué
+# On augmente le salaire et on met à jours l'affichage
+func _on_increase_pay_pressed() -> void:
+	click.play()
+	Teaching.increase_salary(code)
+	show_data()
+	
+# Quand le bouton pour baisser le salaire des profs est cliqué
+# On baisse le salaire et on met à jours l'affichage
 func _on_decrease_pay_pressed() -> void:
 	click.play()
 	Teaching.decrease_salary(code)

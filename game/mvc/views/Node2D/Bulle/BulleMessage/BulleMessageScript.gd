@@ -11,14 +11,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
+# Initialisation de la bulle avec le message en paramètre
 func init(message : String) -> void:
 	_message = message
 	var ques = get_node("Message")
 	ques.visible = true
 	ques.text = _message
-	await get_tree().create_timer(15.0).timeout
-	ques.visible = false
 
 
 # Gère les entrée pour passer le message

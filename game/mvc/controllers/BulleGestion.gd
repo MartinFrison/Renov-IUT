@@ -5,19 +5,6 @@ extends Node
 static var liste_notif_count : Array = []
 
 
-# Fonction pour poser une question au joueur 
-# Elle n'est finalement pas utilisé
-static func ask_question(question : String, reponse : Array[String] ,fonction : String, node : Node) -> void:
-	var objet = question.substr(0,15)+".."
-	Notification.add_notification(question,objet,GlobalData.get_date(), 0 )
-	
-	var scene = load("res://mvc/views/Node2D/Bulle/BulleQuestion/PanelBulleQuestion.tscn")
-	var bulle = scene.instantiate()
-	RenovIUTApp.app.add_child(bulle)
-	if bulle.has_method("init"):
-		bulle.init(question, reponse, fonction, node)
-	await bulle.tree_exited
-
 
 # Fonction pour afficher un message en bas de l'écran
 # Le joueur doit cliquer avec la souris pour le passer
