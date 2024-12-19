@@ -97,34 +97,40 @@ func get_previous_bill() -> int:
 
 
 
-# Envoie des financement pour l'IUT qui dépend du nombre d'étudiant inscrit
-func sendFund():
+# Envoie des financements pour l'IUT qui dépendent du nombre d'étudiants inscrits
+func send_fund():
+	# On prépare une notification pour informer le joueur
+	var objet = "Encaissement des financements annuels"
+	var msg = "Récapitulatif des financements annuels\n\n"
+	
 	# Une partie pour le bloc central
 	# La valeur est aléatoire et dépend de la difficulté
-	var budget = GlobalData.adjust_budget_initial() * Utils.randfloat_in_square_range(0.8, 1.2) * 0.8
+	var budget : int = GlobalData.adjust_budget_initial() * Utils.randfloat_in_square_range(0.8, 1.2) * 0.8
 	GlobalData.addBudget(budget)
+	msg += "%s € reçus pour le bloc central\n" % [budget]
 	
-	# Une petite partie pour chaque batiments
-	# Definition d'un budget aléatoire qui dépend de la difficulté
-	for i in range(1,6):
-		var build = Building.get_building(Utils.dept_index_to_string(i))
-		budget = GlobalData.adjust_budget_initial()*0.2 * Utils.randfloat_in_square_range(0.6, 1.4) *0.8
+	# Une petite partie pour chaque bâtiment
+	# Définition d'un budget aléatoire qui dépend de la difficulté
+	for i in range(1, 6):
+		var code = Utils.dept_index_to_string(i)
+		var build = Building.get_building(code)
+		budget = GlobalData.adjust_budget_initial() * 0.2 * Utils.randfloat_in_square_range(0.6, 1.4) * 0.8
 		build.add_budget(budget)
-
-
-
+		msg += "%s € reçus pour le département %s\n" % [budget, code]
+	
+	BulleGestion.send_notif(objet, msg, 1)
 
 
 
 # Initialiser le budget du bloc central en appliquant un coefficient
 static func init_budget() -> void:
 	# Initialisation aléatoire selon la difficulté
-	var budget = GlobalData.adjust_budget_initial() * Utils.randfloat_in_square_range(0.8, 1.2)
+	var budget : int = GlobalData.adjust_budget_initial() * Utils.randfloat_in_square_range(0.8, 1.2)
 	GlobalData.setBudget(budget)
 
 
 # Initialiser le budget des batiment en appliquant un coefficient
 static func init_budget_building(build : Building) -> void:
 		# Definition d'un budget aléatoire qui dépend de la difficulté
-		var budget = GlobalData.adjust_budget_initial()*0.2 * Utils.randfloat_in_square_range(0.6, 1.4)
+		var budget : int = GlobalData.adjust_budget_initial()*0.2 * Utils.randfloat_in_square_range(0.6, 1.4)
 		build.add_budget(budget)

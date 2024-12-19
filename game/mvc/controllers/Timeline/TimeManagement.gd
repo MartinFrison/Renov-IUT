@@ -79,31 +79,26 @@ func next_Trimestre():
 	Study.student_resign()
 	
 
-	# Appeler les actions de début et fin d'année
+	# Appeler les actions de fin d'année
 	if GlobalData.isEndofYear():
-		end_of_year()
+		print("C'est la fin de l'année. ", GlobalData._year)
+		Study.pass_next_year()
+		
+	# Appeler les actions de début d'année
 	if GlobalData.isStartofYear():
-		year_begin()
+		print("C'est la rentrée. ", GlobalData._year)
+		# Arriver des premières années
+		Study.populate_new_year(_scenario)
+		# Une fois que l'iut est repeuplé on envoie des financement au joueur
+		_budget.send_fund()
 	
 	
 	# A la fin du trimestre on test si le jeu se finit
 	if _scenario.test_end_game_condition():
 		_scenario.end_game()
 
-# Fin de l'année
-func end_of_year() -> void:
-	print("Fin de l'année. ", GlobalData._year)
-	Study.pass_next_year()
 
 
-#rentrée qui signe le début de la nouvelle année
-func year_begin() -> void:
-	print("C'est la rentrée. ", GlobalData._year)
-	# Arriver des premières années
-	Study.populate_new_year(_scenario)
-	
-	# Une fois que l'iut est repeuplé on envoie des financement au joueur
-	
 
 
 
