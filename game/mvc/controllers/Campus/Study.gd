@@ -166,7 +166,6 @@ static func pass_next_year() -> void:
 static func teacher_adjust_level() -> void:
 	# Si on est pas en été
 	if GlobalData.get_season()!=1: 
-		const coeff = 1
 		var value
 		for i in range(1,6):
 			var code = Utils.dept_index_to_string(i)
@@ -194,6 +193,27 @@ static func teacher_adjust_level() -> void:
 			
 			# On fait tendre le niveau étudiant vers la valeur définie
 			Study.level_fluctuation(code, value, 0.3)
+
+
+# Ajuster la satisfaction des etudiants d'un departement selon celle des profs
+static func teacher_adjust_mood() -> void:
+	# Si on est pas en été
+	if GlobalData.get_season()!=1: 
+		var value
+		for i in range(1,6):
+			var code = Utils.dept_index_to_string(i)
+			var mood_teacher = Teacher.avg_mood_per_dept(code)
+			var nb_teacher = Teacher.compute_nb_per_dept(code)
+			
+			# s'il n'y a pas de prof le niveau tend vers 0
+			if nb_teacher <= 0:
+				value = 0
+			else:
+				# Sinon la satisfaction étudiante est directement influencé par celle des profs
+				value = mood_teacher
+			
+			# On fait tendre le niveau étudiant vers la valeur définie
+			Study.mood_fluctuation(code, value, 0.1)
 
 
 # Ajuster le mood etudiant selon si les portes des salles sont ouverte ou fermez

@@ -13,19 +13,18 @@ Graphique 2D:
 
 
 Code:
-- Gestion des grandes vacances : Martin
-    - impact de la rénovation sur la satisfaction selon la période
-    - plus d'impact sur le niveau et sur les etudiant a par la paye des profs
+- Mise à jours du tutoriel sur l'attractivité et les examens
+
+
+
 - Mettre a jour la gestion de la satisfaction : Martin
-- Impact des portes fermer sur la degradation : Martin
-
-
 - Ajout de tout les messages et notifs manquant dans le code 
     - chauffage
     - info sur les portes bloquer
     - sur la rénovation
     - ect..
-- Mise à jours du tutoriel sur l'attractivité et les examens
+
+
 - Ajouter des conditions au licenciment (par exemple un dédommagement soit une limite mensuels -> demander à gossa) pour éviter les abus
 
 

@@ -115,6 +115,8 @@ func mood_and_level_update() -> void:
 	Teaching.pay_adjust_mood()
 	# Si les batiments sont en travaux
 	renovation_adjust_mood()
+	# Satisfaction etudiante selon celle des profs
+	Study.teacher_adjust_mood()
 	
 	# Le niveau selon le nombre de prof et leur moods
 	Study.teacher_adjust_level()
@@ -147,8 +149,8 @@ static func inventory_adjust_mood() -> void:
 			# Formule qui dépend de l'état des lieux et la difficulté
 			var value = build.get_inventory() * GlobalData.adjust_satisfaction()
 			
-			# On applique les fluctuations pour les profs et les étudiant
-			Study.mood_fluctuation(code, value, 0.1)
+			# On applique les fluctuations pour les profs et les étudiant (surtout les étudiants)
+			Study.mood_fluctuation(code, value, 0.2)
 			Teaching.mood_fluctuation(code, value, 0.1)
 
 
