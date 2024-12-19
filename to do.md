@@ -13,8 +13,9 @@ Graphique 2D:
 
 
 Code:
-- Prendre en compte le nombre de diplomé pour l'éléction : Martin
 - Gestion des grandes vacances : Martin
+    - impact de la rénovation sur la satisfaction selon la période
+    - plus d'impact sur le niveau et sur les etudiant a par la paye des profs
 - Mettre a jour la gestion de la satisfaction : Martin
 
 
@@ -24,7 +25,7 @@ Code:
     - info sur les portes bloquer
     - sur la rénovation
     - ect..
-
+- Mise à jours du tutoriel sur l'attractivité et les examens
 
 
 

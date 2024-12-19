@@ -41,10 +41,9 @@ func next_Trimestre():
 	BuildingManagement.wear()
 	ObserverBuilding.notifyStateChanged()
 	
-	#Traitement de la satisfaction
-	mood_update()
-	#Traitement du niveau etudiant
-	level_update()
+	#Traitement de la satisfaction et du niveau
+	mood_and_level_update()
+
 	ObserverPopulation.notifyLevelChanged()
 	ObserverPopulation.notifySatisfactionChanged()
 	
@@ -103,47 +102,43 @@ func Event() -> bool:
 	return false
 
 
-# Ajuste la satisfaction selon divers critères
-func mood_update() -> void:
-	# chauffage
+
+# Ajuste la satisfaction et le niveau selon divers critères
+func mood_and_level_update() -> void:
+	# selon le chauffage en hivert
 	heat_adjust_mood()
-	inventory_adjust_mood()
-	# porte bloquer
+	# si les portes sont bloqué
 	Study.door_adjust_mood()
+	# Selon l'état des batiments
+	inventory_adjust_mood()
 	#Selon le salaire des profs
 	Teaching.pay_adjust_mood()
-
-# Ajuste le niveau etudiant selon divers critères
-func level_update() -> void:
-	# Ajustement selon le nombre de prof et leur moods
-	Study.teacher_adjust_level()
-	pass
+	# Si les batiments sont en travaux
+	renovation_adjust_mood()
 	
+	# Le niveau selon le nombre de prof et leur moods
+	Study.teacher_adjust_level()
 
 
 
-# Ajuster le mood selon si les etudiants on trop chaud ou trop froid
+# Ajuster le mood selon si les etudiants ont trop froid
 static func heat_adjust_mood() -> void:
 	for i in range(1,6):
 		var code = Utils.dept_index_to_string(i)
 		var build = Building.get_building(code)
-
-		#trop chaud
-		if build.is_heating() and GlobalData._month >= 7 and GlobalData._month<=9:
-			# s'il fait trop chaud la satisfaction tend vers 0 et la difficulté empire le coeff
-			Study.mood_fluctuation(code, 0, 0.05 / GlobalData.adjust_satisfaction())	
-		#trop froid
-		elif !build.is_heating() and (GlobalData._month >= 1 or GlobalData._month<=4):
+	
+		# si trop froid
+		if !build.is_heating() and (GlobalData._month >= 1 or GlobalData._month<=4):
 			# s'il fait trop froid la satisfaction tend vers 0 et la difficulté empire le coeff
 			Study.mood_fluctuation(code, 0, 0.08 / GlobalData.adjust_satisfaction())
 		
-		# s'il ne fait ni trop chaud ni trop froid on ne fait rien
+		# sinon on ne fait rien
 
 
 
 # Ajuster le mood selon l'état des lieux des batiments
-# Fait converger la satisfaction vers une valeur qui dépend de l'état des lieux
-static func inventory_adjust_mood() -> void:
+# Fait converger la satisfaction vers une valeur qui dépend de l'état des lieux (en dehors de l'été)
+static func inventory_adjust_mood() -> void: 
 	for i in range(1,6):
 		var code = Utils.dept_index_to_string(i)
 		var build = Building.get_building(code)
@@ -154,3 +149,19 @@ static func inventory_adjust_mood() -> void:
 		# On applique les fluctuations pour les profs et les étudiant
 		Study.mood_fluctuation(code, value, 0.1)
 		Teaching.mood_fluctuation(code, value, 0.1)
+
+
+# Ajuster le mood si des travaux on lieu dans le batiment
+# Fait converger la satisfaction vers 0 si les travaux on lieu (en dehors de l'été)
+static func renovation_adjust_mood() -> void:
+	# Si on est pas en été
+	if GlobalData.get_season()!=1:
+		for i in range(1,6):
+			var code = Utils.dept_index_to_string(i)
+			var build = Building.get_building(code)
+			
+			# Si des travaux sont en cours dans le batiment
+			if build.is_renovation_underway():
+				# Les étudiant et professeurs sont mécontent (surtout les élèves)
+				Study.mood_fluctuation(code, 0, 0.18)
+				Teaching.mood_fluctuation(code, 0, 0.12)
