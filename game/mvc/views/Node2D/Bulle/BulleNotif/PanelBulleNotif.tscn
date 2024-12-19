@@ -8,10 +8,10 @@ content_margin_top = 15.0
 content_margin_right = 20.0
 content_margin_bottom = 15.0
 bg_color = Color(0.486275, 0.741176, 0.980392, 0.466667)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_meqfk"]
 content_margin_left = 20.0
@@ -19,22 +19,22 @@ content_margin_top = 15.0
 content_margin_right = 20.0
 content_margin_bottom = 15.0
 bg_color = Color(0.486275, 0.741176, 0.980392, 0.458824)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="BulleNotif" type="Node2D"]
-z_index = 20
-position = Vector2(450, -100)
+z_index = 5
+position = Vector2(450, 100)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_18qjn")
 
 [node name="Message" type="Label" parent="."]
-offset_left = -26.0
-offset_top = 684.0
-offset_right = 580.0
-offset_bottom = 836.0
+offset_left = 2.0
+offset_top = 82.0
+offset_right = 608.0
+offset_bottom = 234.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -45,10 +45,10 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Objet" type="Label" parent="."]
-offset_left = -24.0
-offset_top = 596.0
-offset_right = 576.0
-offset_bottom = 664.0
+offset_left = 4.0
+offset_top = 8.0
+offset_right = 604.0
+offset_bottom = 76.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_meqfk")

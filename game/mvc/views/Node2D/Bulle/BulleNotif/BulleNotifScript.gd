@@ -5,10 +5,10 @@ var _objet : String
 var tick = 0
 
 func _ready() -> void:
-	self.position = Vector2(450, 0)
+	self.position = Vector2(350, 100)
 	delete()
 	while true:
-		var y_vector = -(abs(tick-50)) * (tick-50)/550
+		var y_vector = -(abs(tick-60)) * (tick-60)/800
 		self.position += Vector2(0, y_vector)
 		tick += 1
 		await get_tree().create_timer(0.02).timeout
