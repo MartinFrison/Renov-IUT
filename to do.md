@@ -6,7 +6,8 @@ Autre:
 Code:
 - Mise à jours du tutoriel sur l'attractivité et les examens (et d'autre mécanique de jeu eventuellement) 
 
-- Ajouter un cout au licenciment pour éviter les abus
+
+
 - Pour le scénario rénovation gérer le problème lié au fait que l'on peut le finir en un trimestre en embauchant 150 ouvrier d'un coup
 
 

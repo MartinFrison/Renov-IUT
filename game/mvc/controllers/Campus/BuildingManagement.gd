@@ -15,14 +15,25 @@ static func init_building() -> void:
 		var surfaces = [5000,9000,2000,2500,7000]
 		var surface = surfaces[i-1] # Selectionner la bonne surface
 		
+		
+		
 		# Instanciation du batiment
 		var code = Utils.dept_index_to_string(i)
-		var b = Building.new(age,surface, false, code, inventory)
+		var build = Building.new(age,surface, false, code, inventory)
 		
 		# Initialisation du salaire des profs et du budget
-		adjust_budget_building(b)
-		b.set_pay_teacher(4000)
-		b.set_pay_teacher(7000)
+		adjust_budget_building(build)
+		build.set_pay_teacher(4000)
+		
+		# On calcule le nombre de travailleur nécéssaire pour éviter la détérioration
+		# Cela dépend de la surface et du type d'activité des batiments
+		# chimie 7, genie_civil 9, info_com 2
+		# informatique 2, technique_de_co 6
+		var numbers = [7,9,2,2,6]
+		var nb = numbers[i-1]
+		for k in nb:
+			build.add_ouvrier()
+
 
 
 # Ajuster le budget des batiment en appliquant un coefficient
