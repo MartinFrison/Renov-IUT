@@ -29,8 +29,6 @@ Code:
 
 Mise en forme:
 - Déplacer le calcul de l'attractivité (car GlobalData fait partie du model)
-- Supprimer le code lié au évènement
-- Déplacer les fonction d'initialisation de scénario vers timeManagement
 - Revoir toute la hiérachie et les noms de classe (la cohérence est noté ; mettre les noms des classes et des méthodes en anglais)
 - Commenter tous le code et corriger les fautes de francais
 
