@@ -154,8 +154,8 @@ static func heat_adjust_mood() -> void:
 # Ajuster le mood selon l'état des lieux des batiments
 # Fait converger la satisfaction vers une valeur qui dépend de l'état des lieux (en dehors de l'été)
 static func inventory_adjust_mood() -> void:
-	# Si on est pas en été
-	if GlobalData.get_season()!=1: 
+	# Si on était pas en été
+	if GlobalData.get_season()!=2:
 		for i in range(1,6):
 			var code = Utils.dept_index_to_string(i)
 			var build = Building.get_building(code)
@@ -171,8 +171,8 @@ static func inventory_adjust_mood() -> void:
 # Ajuster le mood si des travaux on lieu dans le batiment
 # Fait converger la satisfaction vers 0 si les travaux on lieu (en dehors de l'été)
 static func renovation_adjust_mood() -> void:
-	# Si on est pas en été
-	if GlobalData.get_season()!=1:
+	# Si on était pas en été
+	if GlobalData.get_season()!=2:
 		for i in range(1,6):
 			var code = Utils.dept_index_to_string(i)
 			var build = Building.get_building(code)

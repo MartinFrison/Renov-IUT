@@ -107,7 +107,8 @@ static func start_renovation(building: Building) -> bool:
 		return false
 	
 	# On payent les cout fixe de la renovation et on anule les travaux si le budget est insuffisant
-	if !await Expense.try_expense_dept(Building.fixed_cost_renovation, building.get_code()):
+	var fixed_cost = Building.fixed_cost_renovation * (100-building.get_inventory()) / 100
+	if !await Expense.try_expense_dept(fixed_cost, building.get_code()):
 		return false
 	
 	# Démarrer les travaux de rénovation

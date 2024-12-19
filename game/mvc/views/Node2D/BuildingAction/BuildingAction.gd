@@ -152,9 +152,10 @@ func update_message_action() -> void:
 	button = get_node("PanelGlobal/PanelAction/renove")
 	if is_button_hovered(button):
 		# Si oui on affiche une bulle d'info
+		var fixed_cost = Building.fixed_cost_renovation * (100-build.get_inventory()) / 100
 		var msg = "Rénover les bâtiments est essentiel. Mais cela coûte cher et cela fait déménager un département,
 		. Les étudiants et le personnel seront mécontents si ce n'est pas fait durant les grandes vacances."
-		msg += "En plus du personnel requis, un coût fixe initial de %s est à débourser." % [Building.fixed_cost_renovation]
+		msg += "En plus du personnel requis, un coût fixe initial de %s € est à débourser." % [fixed_cost]
 		show_message_action(msg, button.get_global_position().y)
 		return
 	

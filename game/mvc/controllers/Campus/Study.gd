@@ -164,8 +164,8 @@ static func pass_next_year() -> void:
 # des étudiant si le contexte actuelle (nb de prof et satisfaction des prof)
 # s'éternisait dans le temps
 static func teacher_adjust_level() -> void:
-	# Si on est pas en été
-	if GlobalData.get_season()!=1: 
+	# Si on était pas en été
+	if GlobalData.get_season()!=2:
 		var value
 		for i in range(1,6):
 			var code = Utils.dept_index_to_string(i)
@@ -197,8 +197,8 @@ static func teacher_adjust_level() -> void:
 
 # Ajuster la satisfaction des etudiants d'un departement selon celle des profs
 static func teacher_adjust_mood() -> void:
-	# Si on est pas en été
-	if GlobalData.get_season()!=1: 
+	# Si on était pas en été
+	if GlobalData.get_season()!=2:
 		var value
 		for i in range(1,6):
 			var code = Utils.dept_index_to_string(i)
@@ -218,8 +218,8 @@ static func teacher_adjust_mood() -> void:
 
 # Ajuster le mood etudiant selon si les portes des salles sont ouverte ou fermez
 static func door_adjust_mood() -> void:
-	# Si on est pas en été
-	if GlobalData.get_season()!=1: 
+	# Si on était pas en été
+	if GlobalData.get_season()!=2: 
 		for i in range(1,6):
 			var code = Utils.dept_index_to_string(i)
 			var build = Building.get_building(code)
