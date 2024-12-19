@@ -101,3 +101,33 @@ func building_to_renov_wear() -> void:
 		# l'isolation et l'état est aléatoire et dépend de la difficulté
 		var inventory = int(Utils.randint_in_range(5,30) * GlobalData.adjust_dept_state())
 		b.addInventory(inventory)
+
+
+
+# Renvoie au joueur un rapport sur sa gestion de l'IUT
+# avec temps qu'il lui a fallu pour finir les rénovations et les conséquences
+# de celle ci
+func player_report() -> String:
+	var report = ""
+
+	# Durée de la rénovation
+	var years = (GlobalData._year-2025)
+	var months = GlobalData._month
+	if years == 0 and months >= 9:        # on est toujours en 2025, après septembre
+		report += "Vous avez fini la rénovation des bâtiments, félicitations ! \nCela vous a pris %s mois." % [months - 8]  # compte les mois après septembre
+	elif years == 1 and months == 0:       # en septembre 2026
+		report += "Vous avez fini la rénovation des bâtiments, félicitations ! \nCela vous a pris une année."
+	elif years == 1:                        # Pour l'année 2026
+		report += "Vous avez fini la rénovation des bâtiments, félicitations ! \nCela vous a pris %s mois." % [months + 3]  # Ajustement pour les mois restants de 2026
+	elif months == 0:                       # Cas particulier pour septembre d'une année suivante
+		report += "Vous avez fini la rénovation des bâtiments, félicitations ! \nCela vous a pris %s années." % years
+	else:                                   # Cas général pour plusieurs années et mois
+		report += "Vous avez fini la rénovation des bâtiments, félicitations ! \nCela vous a pris %s années et %s mois." % [years, months+3]
+
+	# Quelles ont été les conséquences sur l'IUT ?
+	var side_effect = side_effect()
+	if side_effect != "":
+		report += "\nCependant, votre gestion des travaux à eu des concéquences:\n"
+		report += side_effect
+
+	return report

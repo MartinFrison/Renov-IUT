@@ -14,10 +14,6 @@ Code:
 - Ajouter un cout au licenciment pour éviter les abus
 - Pour le scénario rénovation gérer le problème lié au fait que l'on peut le finir en un trimestre en embauchant 150 ouvrier d'un coup
 
-- Rapport intelligent au joueur sur sa prestation : Martin
-    - pour le scénario élitisme
-    - Pour le scénario rénovation
-
 
 
 Mise en forme:
