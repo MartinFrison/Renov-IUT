@@ -56,15 +56,36 @@ func mid_game() -> void:
 # que ses décisions ont pu avoir
 func player_report() -> String:
 	var report = ""
-	# Est ce qu'il à privilégier les profs ou les étudiant ?
-	
-	
-	# Comment les à t'il privilégier
-	
-	
-	# Etait ce judicieux ?
-	
-	
-	# Quelle ont été les concéquences sur l'iut
-	
+	# Est-ce qu'il a privilégié les profs ou les étudiants ?
+	# On calcule le taux de voix reçues pour les profs et pour les étudiants
+	var rateTeacher : float = float(Vote.popularity_among_teachers()) / Vote.nb_voix_teacher()
+	var rateStudent : float = float(Vote.popularity_among_students()) / Vote.nb_voix_student()
+
+	# On regarde lesquels ont été les plus favorisés
+	var teacher_favoritisme : float = rateTeacher / rateStudent
+	if teacher_favoritisme > 1.5:
+		report += "Vous avez largement favorisé les enseignants avec votre gestion "
+	elif teacher_favoritisme > 1:
+		report += "Vous avez légèrement favorisé les enseignants avec votre gestion "
+	elif teacher_favoritisme > 0.67:
+		report += "Vous avez légèrement favorisé les étudiants avec votre gestion "
+	else:
+		report += "Vous avez largement favorisé les étudiants avec votre gestion "
+
+	# Comment les a-t-il privilégiés ?
+	if teacher_favoritisme > 1:
+		report += "en augmentant leurs salaires et en veillant à leur satisfaction. "
+		report += "Votre gestion raisonnable du budget et votre capacité à accompagner de nombreux étudiants vers l'obtention de leur diplôme ont également aidé à les convaincre. "
+		# Était-ce judicieux ?
+		report += "Ce choix était pertinent étant donné la forte proportion d'enseignants au conseil."
+	else:
+		report += "en veillant à leur réussite mais surtout à leur satisfaction générale. "
+		# Était-ce judicieux ?
+		report += "Mais ce choix n'était peut-être pas le plus judicieux étant donné le faible nombre de représentants étudiants."
+
+	# Quelles ont été les conséquences sur l'IUT ?
+	if Vote.election_gagnee():
+		report += "\nBien que vous ayez remporté ces élections, votre politique a eu des effets indésirables."
+		report += side_effect()
+
 	return report

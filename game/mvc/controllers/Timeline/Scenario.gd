@@ -44,6 +44,24 @@ func player_report() -> String:
 	push_error("player_report() doit être implémentée.")
 	return ""
 
+# Renvoie un string contenant le résultat des effets indésirable du manda
+# On consulte les stats de fin de partie pour savoir lesquelles sont décevantes
+func side_effect() -> String:
+	var side_effect = ""
+	# L'état des batiments
+	#for i in range(1,6):
+		
+	
+	# La satisfaction des étudiants / des profs
+	
+	# La chute du nombre de diplomé 
+	
+	# Des caisses proche de la faillite
+
+	return side_effect()
+
+
+
 
 func init_attractivity() -> void:
 	GlobalData.set_attractivity()
