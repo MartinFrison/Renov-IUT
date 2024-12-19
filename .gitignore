@@ -4,6 +4,10 @@
 ### Godot ###
 # Godot 4+ specific ignores
 .godot/
+game/data/iut_tables.db
+game/data/iut_tables.db-shm
+game/data/iut_tables.db-wal
+
 
 # Godot-specific ignores
 .import/
