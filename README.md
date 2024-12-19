@@ -260,6 +260,7 @@ L'optimisation du traitement des données stockées est assurée par l'utilisati
 ### Amélioratons possibles 
 
 - **Différentes sources de financement** : Ajouter des options variées de ressources financières, comme des subventions de l'État, des partenariats avec des entreprises, des campagnes de financement participatif, ou encore des revenus générés par des événements organisés par l'IUT ou provenant de la location des équipements. Chaque source pourrait avoir ses propres avantages et contraintes.
+	- cf. commit [49dc827b](https://git.unistra.fr/coruscant/renov-iut/-/tree/49dc827b38c754ac47654917b0907d8aa579b27f) pour une ébauche de conception (classes `Fund` et `Budget`)
 - **Choix des entreprises pour les rénovations** : Permettre au joueur de sélectionner parmi plusieurs entreprises de rénovation, chacune ayant des caractéristiques différentes (coût, rapidité, qualité des travaux). Les choix influenceraient directement l'état des bâtiments et le budget disponible.
 - **Choix du niveau de difficulté au début du jeu** (actuellement intégrée en dur, mais aisément refactorisable - nous vous invitons à voir le code) :
 	- Facile = ressources abondantes, tolérance élevée aux erreurs ;
