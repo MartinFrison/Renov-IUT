@@ -236,6 +236,7 @@ func show_message_action(msg : String, posY : int) -> void:
 	global_position.y = posY - 50
 	# Convertir la position globale en position locale par rapport au parent
 	node.position = node.get_parent().to_local(global_position)
+	node.reset_size()
 
 	# Rendre le node visible et mettre à jour le texte
 	node.visible = true
@@ -247,14 +248,7 @@ func show_message_action(msg : String, posY : int) -> void:
 func hide_message_action() -> void:
 	var node = get_node("message_action") as Label
 	node.visible = false
-
-
-
-
-
-
-
-
+	
 # BOUTON D'ACTION
 
 func _on_hire_teacher_pressed() -> void:
