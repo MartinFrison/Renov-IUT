@@ -43,10 +43,10 @@ scale = Vector2(1.16699, 1)
 texture = ExtResource("2_kmj36")
 
 [node name="Vote" type="Panel" parent="."]
-offset_left = 160.0
-offset_top = 133.0
-offset_right = 871.0
-offset_bottom = 490.0
+offset_left = 51.0
+offset_top = 139.0
+offset_right = 693.0
+offset_bottom = 558.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0qc8m")
 
 [node name="GridContainerHeader" type="GridContainer" parent="Vote"]
@@ -62,13 +62,26 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
-[node name="teach" type="Label" parent="Vote/GridContainerHeader"]
+[node name="GridVoix" type="GridContainer" parent="Vote"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 41.0
+offset_right = 581.0
+offset_bottom = 333.0
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 7
+columns = 4
+
+[node name="vide1" type="Label" parent="Vote/GridVoix"]
+layout_mode = 2
+
+[node name="teach" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 text = "Vote des enseignants"
 horizontal_alignment = 1
 
-[node name="stud" type="Label" parent="Vote/GridContainerHeader"]
+[node name="stud" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -78,15 +91,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="GridVoix" type="GridContainer" parent="Vote"]
-layout_mode = 0
-offset_left = 37.0
-offset_top = 129.0
-offset_right = 667.0
-offset_bottom = 323.0
-theme_override_constants/h_separation = 15
-theme_override_constants/v_separation = 7
-columns = 4
+[node name="vide2" type="Label" parent="Vote/GridVoix"]
+layout_mode = 2
 
 [node name="dept1" type="Label" parent="Vote/GridVoix"]
 layout_mode = 2
@@ -198,13 +204,24 @@ theme_override_font_sizes/font_size = 20
 text = "total"
 
 [node name="Resultat" type="Label" parent="."]
-offset_left = 162.0
-offset_top = 24.0
-offset_right = 872.0
-offset_bottom = 116.0
+offset_left = 53.0
+offset_top = 30.0
+offset_right = 1130.0
+offset_bottom = 122.0
 theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_t1bqy")
 text = "Resultat"
+
+[node name="report" type="Label" parent="."]
+offset_left = 710.0
+offset_top = 139.0
+offset_right = 1130.0
+offset_bottom = 558.0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_t1bqy")
+text = "rapport:
+
+"
 
 [node name="Quitter" type="Button" parent="."]
 offset_left = 26.0

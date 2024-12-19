@@ -1,16 +1,15 @@
 extends Node2D
 
+func init(scenario : Scenario):
+	show_result(scenario)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	show_result()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 
-func show_result() -> void:
+func show_result(scenario : Scenario) -> void:
 	var node
 	var dept
 	
@@ -19,11 +18,22 @@ func show_result() -> void:
 	if Vote.election_gagnee():
 		var audio_player = get_node("win")
 		audio_player.play()
-		node.text = "Vous avez remporté les éléctions ! Félicitations (ou pas)!"
+		node.text = "Vous avez remporté les éléctions ! Félicitations !"
 	else:
 		node.text = "Vous avez perdu les éléctions. Dommage.."
 	
 	
+	# Définir le texte du rapport au joueur
+	var rate : float = float(int(float(Vote.popularity_total()*1000) / Vote.nb_voix_total()))/10
+	node = "Vote/GridVoix/total_teach"
+	node = get_node(node)
+	node.text = "Vous avez récolté %s%% des votes.\n" % [rate]
+	node.text += scenario.player_report()
+	
+	
+	
+	
+	# Remplir la grille des résultats des votes:
 	node = "Vote/GridVoix/total_teach"
 	node = get_node(node)
 	node.text = "%s / %s" % [Vote.popularity_among_teachers(), Vote.nb_voix_teacher()]
@@ -53,7 +63,7 @@ func show_result() -> void:
 		node = "Vote/GridVoix/total_dept%s" % [i+1]
 		node = get_node(node)
 		node.text = "%s / %s" % [Vote.popularity_per_dept(dept), Vote.nb_voix_per_dept(dept)]
-		
+
 
 
 func _on_quitter_pressed() -> void:

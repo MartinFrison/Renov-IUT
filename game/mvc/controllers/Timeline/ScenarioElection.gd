@@ -49,3 +49,22 @@ func mid_game() -> void:
 			msg = "%s%s%% dans les intentions de vote des étudiants et %s%% de celles des enseignants." % [msg, sondage_etu, sondage_prof]
 			await BulleGestion.send_message(msg, true)
 			_progression +=1
+
+
+# Renvoie au joueur un rapport sur sa gestion de l'IUT
+# avec ce qui lui à permis ou non d'être réélu et les concéquences
+# que ses décisions ont pu avoir
+func player_report() -> String:
+	var report = ""
+	# Est ce qu'il à privilégier les profs ou les étudiant ?
+	
+	
+	# Comment les à t'il privilégier
+	
+	
+	# Etait ce judicieux ?
+	
+	
+	# Quelle ont été les concéquences sur l'iut
+	
+	return report

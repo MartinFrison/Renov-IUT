@@ -37,6 +37,13 @@ func end_game() -> void:
 func mid_game() -> void:
 	push_error("mid_game() doit être implémentée.")
 
+# Renvoie au joueur selon le scénario un rapport sur sa gestion de l'IUT
+# avec ce qui lui à permis ou non de complèter sont objectifs et les concéquences
+# que ses décisions ont pu avoir
+func player_report() -> String:
+	push_error("player_report() doit être implémentée.")
+	return ""
+
 
 func init_attractivity() -> void:
 	GlobalData.set_attractivity()
