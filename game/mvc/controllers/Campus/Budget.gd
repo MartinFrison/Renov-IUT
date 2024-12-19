@@ -1,4 +1,4 @@
-class_name Bill
+class_name Budget
 extends Node
 
 # Cette classe enregistre toute les sommes du par l'iut à la fin du trimestre
@@ -91,3 +91,40 @@ func sum_pay(table : Array[int]) -> int:
 # Renvoie la somme des factures payé le trimestre précédant
 func get_previous_bill() -> int:
 	return previous_bill
+
+
+
+
+
+
+# Envoie des financement pour l'IUT qui dépend du nombre d'étudiant inscrit
+func sendFund():
+	# Une partie pour le bloc central
+	# La valeur est aléatoire et dépend de la difficulté
+	var budget = GlobalData.adjust_budget_initial() * Utils.randfloat_in_square_range(0.8, 1.2) * 0.8
+	GlobalData.addBudget(budget)
+	
+	# Une petite partie pour chaque batiments
+	# Definition d'un budget aléatoire qui dépend de la difficulté
+	for i in range(1,6):
+		var build = Building.get_building(Utils.dept_index_to_string(i))
+		budget = GlobalData.adjust_budget_initial()*0.2 * Utils.randfloat_in_square_range(0.6, 1.4) *0.8
+		build.add_budget(budget)
+
+
+
+
+
+
+# Initialiser le budget du bloc central en appliquant un coefficient
+static func init_budget() -> void:
+	# Initialisation aléatoire selon la difficulté
+	var budget = GlobalData.adjust_budget_initial() * Utils.randfloat_in_square_range(0.8, 1.2)
+	GlobalData.setBudget(budget)
+
+
+# Initialiser le budget des batiment en appliquant un coefficient
+static func init_budget_building(build : Building) -> void:
+		# Definition d'un budget aléatoire qui dépend de la difficulté
+		var budget = GlobalData.adjust_budget_initial()*0.2 * Utils.randfloat_in_square_range(0.6, 1.4)
+		build.add_budget(budget)

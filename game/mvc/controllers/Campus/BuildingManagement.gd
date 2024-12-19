@@ -22,7 +22,7 @@ static func init_building() -> void:
 		var build = Building.new(age,surface, false, code, inventory)
 		
 		# Initialisation du salaire des profs et du budget
-		adjust_budget_building(build)
+		Budget.init_budget_building(build)
 		build.set_pay_teacher(4000)
 		
 		# On calcule le nombre de travailleur nécéssaire pour éviter la détérioration
@@ -33,13 +33,6 @@ static func init_building() -> void:
 		var nb = numbers[i-1]
 		for k in nb:
 			build.add_ouvrier()
-
-
-
-# Ajuster le budget des batiment en appliquant un coefficient
-static func adjust_budget_building(build : Building) -> void:
-		# Definition d'un budget aléatoire qui dépend de la difficulté
-		build.add_budget(GlobalData.adjust_budget_initial()*0.2 * Utils.randfloat_in_square_range(0.6, 1.4))
 
 
 

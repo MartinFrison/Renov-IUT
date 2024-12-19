@@ -3,7 +3,7 @@ extends Node
 
 var _tuto : Tutorial
 var _scenario: Scenario
-var _bill : Bill
+var _budget : Budget
 
 
 
@@ -11,7 +11,7 @@ var _bill : Bill
 func _init(scenario: Scenario, tuto : Tutorial) -> void:
 	print("Initialisation du jeu")
 	
-	_bill = Bill.new() # Instancier la classe pour gérer les factures
+	_budget = Budget.new() # Instancier la classe pour gérer les factures
 	GlobalData.setDate(1,9,2025) # date de départ
 	_scenario = scenario  # Initialiser le scénario
 	_tuto = tuto # Initialiser le tuto
@@ -20,7 +20,7 @@ func _init(scenario: Scenario, tuto : Tutorial) -> void:
 	BuildingManagement.init_building()
 	Study.populate()
 	Teaching.populate()
-	adjust_budget()
+	Budget.init_budget()
 	_scenario.init()
 	
 	# Notifier la vue pour afficher les données
@@ -68,10 +68,10 @@ func next_Trimestre():
 	_scenario.mid_game()
 
 	# Reglement des factures trimestrielle
-	_bill.add_daily_expense()
-	_bill.pay_bill()
+	_budget.add_daily_expense()
+	_budget.pay_bill()
 	# On prévient le joueur s'il risque la faillite
-	if _bill.get_previous_bill() >= GlobalData.getBudget():
+	if _budget.get_previous_bill() >= GlobalData.getBudget():
 		BulleGestion.send_notif("Risque de faillite", "Attention : les caisses sont presque vides, vous risquez la faillite !", 0)
 	
 	# Les professeurs et étudiant insatisfait démissionnent
@@ -101,6 +101,9 @@ func year_begin() -> void:
 	print("C'est la rentrée. ", GlobalData._year)
 	# Arriver des premières années
 	Study.populate_new_year(_scenario)
+	
+	# Une fois que l'iut est repeuplé on envoie des financement au joueur
+	
 
 
 
@@ -182,10 +185,3 @@ static func renovation_adjust_mood() -> void:
 				# Les étudiant et professeurs sont mécontent (surtout les élèves)
 				Study.mood_fluctuation(code, 0, 0.18)
 				Teaching.mood_fluctuation(code, 0, 0.12)
-
-
-# Ajuster le budget en appliquant un coefficient
-func adjust_budget() -> void:
-	# Initialisation aléatoire selon la difficulté
-	var budget = GlobalData.adjust_budget_initial() * Utils.randfloat_in_square_range(0.8, 1.2)
-	GlobalData.setBudget(budget)
