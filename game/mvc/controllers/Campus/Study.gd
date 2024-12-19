@@ -158,7 +158,7 @@ static func pass_next_year() -> void:
 	msg = msg2 + msg
 	BulleGestion.send_notif(obj,msg,0)
 
-
+ 
 # Ajuster le niveau etudiant d'un departement selon le nb de profs et leur mood
 # On calcule une valeur qui correspond au niveau vers lequel devrait tendre le niveau
 # des étudiant si le contexte actuelle (nb de prof et satisfaction des prof)
