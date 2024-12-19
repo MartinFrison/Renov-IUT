@@ -171,20 +171,3 @@ func randfloat_in_square_range(min : float, max : float) -> float:
 	var randfloat = (rng.randf()*rng.randf())**0.5  # Un nombre flottant entre 0.0 et 1.0
 	var res = randfloat * (max-min) + min
 	return res
-
-
-
-# Indexation : fonctions utilitaires
-func dept_string_to_index2(dept: String) -> int:
-	var query = "SELECT id FROM Depts WHERE lower(name) = lower(?)"
-	var result = db.get_entries(query, [dept])
-	if result.size() > 0:
-		return result[0]["id"] 
-	return -1
-
-func dept_index_to_string2(index: int) -> String:
-	var query = "SELECT name FROM Depts WHERE id=?"
-	var result = db.get_entries(query, [index])
-	if result.size() > 0:
-		return result[0]["name"]
-	return ""

@@ -11,12 +11,10 @@ Graphique 2D:
 
 Code:
 - Mise à jours du tutoriel sur l'attractivité et les examens (et d'autre mécanique de jeu eventuellement)
-- Ajouter des conditions au licenciment pour éviter les abus
-    (par exemple un dédommagement, une limite mensuels, l'interdire avant les grande vacances ect -> demander à gossa)
+- Ajouter un cout au licenciment pour éviter les abus
 - Pour le scénario rénovation gérer le problème lié au fait que l'on peut le finir en un trimestre en embauchant 150 ouvrier d'un coup
 
 - Rapport intelligent au joueur sur sa prestation : Martin
-    - Pour le scénario éléction
     - pour le scénario élitisme
     - Pour le scénario rénovation
 

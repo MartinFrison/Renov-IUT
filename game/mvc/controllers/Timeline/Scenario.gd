@@ -44,21 +44,62 @@ func player_report() -> String:
 	push_error("player_report() doit être implémentée.")
 	return ""
 
-# Renvoie un string contenant le résultat des effets indésirable du manda
+
+
+# Renvoie un string contenant le résultat des effets indésirables du mandat
 # On consulte les stats de fin de partie pour savoir lesquelles sont décevantes
 func side_effect() -> String:
 	var side_effect = ""
-	# L'état des batiments
-	#for i in range(1,6):
-		
+	
+	# L'état des bâtiments
+	var state = 0
+	# On calcule leur état moyen
+	for i in range(1, 6):
+		state += Building.get_building(Utils.dept_index_to_string(i)).get_inventory()
+	state /= 5
+	# On regarde s'ils sont mauvais
+	if state < 25:
+		side_effect += " L'état des bâtiments est devenu déplorable. "
+	elif state < 50:
+		side_effect += " L'état des bâtiments s'est dégradé. "
 	
 	# La satisfaction des étudiants / des profs
+	var stud_mood = Student.avg_mood()
+	var teach_mood = Teacher.avg_mood()
+	if stud_mood < 25:
+		side_effect += "Les étudiants sont furieux. "
+	elif stud_mood < 50:
+		side_effect += "Les étudiants sont mécontents. "
+	if teach_mood < 25:
+		side_effect += "Les enseignants sont furieux. "
+	elif teach_mood < 50:
+		side_effect += "Les enseignants sont mécontents. "
 	
-	# La chute du nombre de diplomé 
+	# La chute du nombre de diplômés (seulement si le jeu dure plus d'un an)
+	var year = GlobalData._year - 2026
+	if GlobalData.get_season() >= 1:
+		year += 1
+	if year >= 1:
+		# Ratio de diplômés par année écoulée
+		var grad = Student.get_graduate()
+		var ratio = grad / year
+		
+		if grad < 100:
+			side_effect += "Le nombre de diplômes distribués s'est effondré : "
+			side_effect += "seulement %s en %s ans. " % [grad, year]
+		elif grad < 200:
+			side_effect += "Le nombre de diplômes distribués a baissé : "
+			side_effect += "seulement %s en %s ans. " % [grad, year]
 	
-	# Des caisses proche de la faillite
+	# Des caisses proches de la faillite
+	var budget_init = GlobalData.adjust_budget_initial()
+	var total = GlobalData.getTotalBudget()
+	if total < budget_init * 0.5:
+		side_effect += "Les caisses sont proches de la faillite. "
+	elif total < budget_init:
+		side_effect += "L'argent disponible dans les caisses a diminué. "
 
-	return side_effect()
+	return side_effect
 
 
 
