@@ -180,6 +180,10 @@ static func wear() -> void:
 			wear = 30
 		else:
 			wear = 10 * (max (1 - (build.get_ouvriers() / nb), 0))
-		
+			# Si les portes sont bloquée
+			if build.isDoorLocked():
+				# La vitesse de dégradation est divisé par 2
+				wear /= 2
+			
 		#Appliquer la détérioration
 		build.addInventory(-wear)
