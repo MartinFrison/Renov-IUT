@@ -19,8 +19,9 @@ func open_db() -> bool:
 		print("Erreur lors de l'ouverture de la base de données.")
 		return false
 	else:
-		db.query("PRAGMA synchronous = NORMAL;")
-		db.query("PRAGMA journal_mode = WAL;")
+		# optimisations spécifiques à SQLite
+		db.query("PRAGMA synchronous = NORMAL;") # ajuste le niveau de synchronisation des transactions
+		db.query("PRAGMA journal_mode = WAL;") # Write-Ahead Logging
 	return true
 
 # Fermer la base de données
