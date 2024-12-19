@@ -106,7 +106,7 @@ func tuto_trimester1() -> void:
 	
 	# Comment passer au trimestre suivant
 	_tuto_buble.show_buble(60,60,1080,23)
-	msg = "Une fois que vous avez pris les décisions qui vous sembles appropriées, vous pouvez "
+	msg = "Une fois que vous avez pris les décisions qui vous semblent appropriées, vous pouvez "
 	msg += "avancer jusqu'au trimestre suivant en cliquant sur le bouton rond avec une flèche, en haut à droite."
 	await BulleGestion.send_message(msg, false)
 	_tuto_buble.hide()
@@ -165,7 +165,7 @@ func tuto_trimester4() -> void:
 	var msg
 	
 	# Rapport sur les examens finaux
-	msg = "Première étape révolu : vous avez atteint la fin de votre première année d'exercice."
+	msg = "Première étape révolue : vous avez atteint la fin de votre première année d'exercice."
 	await BulleGestion.send_message(msg, false)
 	msg = "Les examens ont bien eu lieu et les étudiants n'ayant pas le niveau ont été renvoyés. "
 	msg += "(Espérons qu'ils s'étaient inscrits ailleurs sur Parcoursup.)"
@@ -177,7 +177,7 @@ func tuto_trimester4() -> void:
 	msg = "La nouvelle année arrive et les nouveaux venus avec !"
 	await BulleGestion.send_message(msg, false)
 	_tuto_buble.show_buble(270,47,875,485)
-	msg = "Afin d'avoir des nouvelles recrues avec un meilleur niveau scolaire, vous pouvez ajuster"
+	msg = "Afin d'avoir des nouvelles recrues avec un meilleur niveau scolaire, vous pouvez ajuster "
 	msg += "la séléction à l'entrée dans le menu des bâtiments."
 	await BulleGestion.send_message(msg, false)
 	msg = "À noter, cependant, que cela aura un impact direct sur le nombre d'étudiants admis, "

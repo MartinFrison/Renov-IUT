@@ -16,7 +16,7 @@ func show_result(scenario : Scenario) -> void:
 	audio_player.play()
 	
 	var node = get_node("Message")
-	node.text = "Voici le bilan de votre quête à l'élitisme"
+	node.text = "Voici le bilan de votre quête à l'élitisme."
 	
 	# Sur le nombre de diplomé
 	node = get_node("Message2")

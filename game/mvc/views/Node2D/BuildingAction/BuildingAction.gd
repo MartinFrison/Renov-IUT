@@ -167,7 +167,7 @@ func update_message_action() -> void:
 	if is_button_hovered(button):
 		# Si oui on affiche le cout d'un ouvrier
 		var msg = "En embauchant un personnel, vous dépensez %s € de plus par mois.\n" % [int(GlobalData.get_pay_worker())]
-		msg += "Ils servent à entretenir le bâtiment et à le rénover au cas où des travaux sont nécessaires."
+		msg += "Ils servent à entretenir le bâtiment et à le rénover au cas où des travaux seraient nécessaires."
 		show_message_action(msg, button.get_global_position().y)
 		return
 	
@@ -217,6 +217,7 @@ func update_message_action() -> void:
 	if is_button_hovered(button):
 		# Si oui on affiche une bulle d'info
 		var msg = "Les portes fermées agacent les étudiants, mais cela permet de minimiser les dégradations !"
+		msg += "(Et d'éviter de trop chauffer, en hiver.)"
 		show_message_action(msg, button.get_global_position().y)
 		return
 	

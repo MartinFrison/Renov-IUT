@@ -70,7 +70,7 @@ func player_report() -> String:
 	var grade = Student.get_graduate()
 	
 	# Évaluation du bilan sur l'élitisme
-	report += "Votre bilan concernant l'élitisme est "
+	report += "Votre bilan en tant que directeur d'un établissement qui se veut élitiste est "
 	var bilan
 	if enginer > 100:
 		bilan = "excellent"

@@ -12,7 +12,7 @@ func init() -> void:
 
 # Appelle les messages sur l'explication du scénario et de ces objectifs en début de jeu
 func game_start():
-	var msg = "Votre objectif est d'être réélu dans 5 ans !"
+	var msg = "Votre objectif est d'être réélu(e) dans 5 ans !"
 	await BulleGestion.send_message(msg, true)
 
 
@@ -30,7 +30,7 @@ func test_end_game_condition() -> bool:
 func end_game() -> void:
 	print("fin du jeu")
 	await BulleGestion.send_message("C'est la fin de votre mandat !", false)
-	await BulleGestion.send_message("Les représentants du conseil vont voter pour - ou contre vous !", false)
+	await BulleGestion.send_message("Les représentants du Conseil vont voter pour - ou contre vous !", false)
 	
 	# On afficher le panel de fin de jeu
 	var scene = load("res://mvc/views/Node2D/FinJeu/PanelFinElection.tscn")
@@ -77,12 +77,12 @@ func player_report() -> String:
 
 	# Comment les a-t-il privilégiés ?
 	if teacher_favoritisme > 1:
-		report += "en augmentant leurs salaires et en veillant à leur satisfaction. "
+		report += "en augmentant leurs salaires et en veillant à ce qu'ils soient satisfaits. "
 		report += "Votre gestion raisonnable du budget et votre capacité à accompagner de nombreux étudiants vers l'obtention de leur diplôme ont également aidé à les convaincre. "
 		# Était-ce judicieux ?
-		report += "Ce choix était pertinent étant donné la forte proportion d'enseignants au conseil."
+		report += "Ce choix était pertinent étant donné la forte proportion d'enseignants au Conseil."
 	else:
-		report += "en veillant à leur réussite mais surtout à leur satisfaction générale. "
+		report += "en veillant à leur réussite, mais surtout à leur satisfaction générale. "
 		# Était-ce judicieux ?
 		report += "Mais ce choix n'était peut-être pas le plus judicieux étant donné le faible nombre de représentants étudiants."
 
