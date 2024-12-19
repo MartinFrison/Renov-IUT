@@ -89,6 +89,7 @@ offset_top = 279.0
 offset_right = 502.0
 offset_bottom = 331.0
 mouse_default_cursor_shape = 16
+disabled = true
 icon = ExtResource("20_6oanc")
 flat = true
 expand_icon = true
