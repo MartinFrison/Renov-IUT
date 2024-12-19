@@ -47,7 +47,7 @@ func end_game() -> void:
 	else:
 		await BulleGestion.send_message("Vous avez fini de rénover le bâtiment en mauvais état.", false)
 
-	# On afficher le panel de fin de jeu
+	# On affiche le panel de fin de jeu
 	var scene = load("res://mvc/views/Node2D/FinJeu/PanelFinRenovation.tscn")
 	var end = scene.instantiate()
 	RenovIUTApp.app.add_child(end)

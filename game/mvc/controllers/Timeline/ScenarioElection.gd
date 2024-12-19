@@ -32,7 +32,7 @@ func end_game() -> void:
 	await BulleGestion.send_message("C'est la fin de votre mandat !", false)
 	await BulleGestion.send_message("Les représentants du Conseil vont voter pour - ou contre vous !", false)
 	
-	# On afficher le panel de fin de jeu
+	# On affiche le panel de fin de jeu
 	var scene = load("res://mvc/views/Node2D/FinJeu/PanelFinElection.tscn")
 	var end = scene.instantiate()
 	RenovIUTApp.app.add_child(end)

@@ -37,7 +37,7 @@ func end_game() -> void:
 	await BulleGestion.send_message("Votre mandat de 5 ans est arrivé à son terme, 
 	il est temps de faire le bilan.", false)
 
-	# On afficher le panel de fin de jeu
+	# On affiche le panel de fin de jeu
 	var scene = load("res://mvc/views/Node2D/FinJeu/PanelFinElitisme.tscn")
 	var end = scene.instantiate()
 	RenovIUTApp.app.add_child(end)

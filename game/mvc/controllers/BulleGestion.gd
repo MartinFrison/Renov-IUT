@@ -5,7 +5,8 @@ extends Node
 static var liste_notif_count : Array = []
 
 
-
+# Fonction pour poser une question au joueur 
+# Elle n'est finalement pas utilisé
 static func ask_question(question : String, reponse : Array[String] ,fonction : String, node : Node) -> void:
 	var objet = question.substr(0,15)+".."
 	Notification.add_notification(question,objet,GlobalData.get_date(), 0 )
@@ -18,6 +19,9 @@ static func ask_question(question : String, reponse : Array[String] ,fonction : 
 	await bulle.tree_exited
 
 
+# Fonction pour afficher un message en bas de l'écran
+# Le joueur doit cliquer avec la souris pour le passer
+# Un booléen spécifie si ce message doit être stoqué dans l'historique des notifications
 static func send_message(message : String, notif : bool) -> void:
 	if notif:
 		Notification.add_notification(message,message.substr(0,30)+"..",GlobalData.get_date(), 0 )
@@ -44,7 +48,8 @@ static func send_message(message : String, notif : bool) -> void:
 	liste_notif_count.erase(count)
 
 
-
+# Fonction pour envoyer une notification au joueur avec:
+# Un objet, un message et un type représenté par un int
 static func send_notif(objet : String, message : String, type : int) -> void:
 	Notification.add_notification(message,objet,GlobalData.get_date(), type )
 	
@@ -68,5 +73,6 @@ static func send_notif(objet : String, message : String, type : int) -> void:
 	if bulle.has_method("init"):
 		bulle.init(objet, message, type)
 	
+	# Une fois la notif passé on l'enlève de la liste pour permettre à la suivante de s'afficher
 	await RenovIUTApp.app.get_tree().create_timer(2.8).timeout
 	liste_notif_count.erase(count)

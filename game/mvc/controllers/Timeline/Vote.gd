@@ -14,18 +14,24 @@ static func election_gagnee() -> bool:
 
 
 #Voix totales qu'il est possible de récolter par catégorie
+
+# Calcule le nombre d'enseignant pouvant voter dans un département
 # Un peu plus de 1 prof sur 2.8 peut voter
 static func nb_voix_teacher_per_dept(dept: String) -> int:
 	return int(Teacher.compute_nb_per_dept(dept) / 2.8 + 1)
 
+# Calcule le nombre d'étudiant pouvant voter dans un département
 # Un peu plus de 1 etudiant sur 200 peut voter
 static func nb_voix_student_per_dept(dept: String) -> int:
 	return int(Student.compute_nb_per_dept(dept) / 200 + 1)
 
+# Nombre de votant dans un batiment lors de l'éléction (étudiant et élève)
 static func nb_voix_per_dept(dept: String) -> int:
 	var n = nb_voix_teacher_per_dept(dept) + nb_voix_student_per_dept(dept)
 	return n
 
+# Nombre d'enseignant votant lors de l'éléction
+# Correspond à la somme des représentant enseignant par département
 static func nb_voix_teacher() -> int:
 	var n 	= 0
 	for i in 5:
@@ -33,6 +39,8 @@ static func nb_voix_teacher() -> int:
 		n += nb_voix_teacher_per_dept(c)
 	return n
 
+# Nombre d'étudiant votant lors de l'éléction
+# Correspond à la somme des représentant étudiant par département
 static func nb_voix_student() -> int:
 	var n 	= 0
 	for i in 5:
@@ -40,6 +48,7 @@ static func nb_voix_student() -> int:
 		n += nb_voix_student_per_dept(c)
 	return n
 
+# Nombre de votant lors de l'éléction
 static func nb_voix_total() -> int:
 	return nb_voix_student() + nb_voix_teacher()
 
@@ -49,6 +58,9 @@ static func nb_voix_total() -> int:
 
 
 # Voix gagnée effectivement gagner par catégorie
+# Ces voix ce calcule en pourcentage du nombre de voix récupérable qui est lui même 
+# calculer ci dessus
+
 
 # Voix gagnée Total
 static func popularity_total() -> float:

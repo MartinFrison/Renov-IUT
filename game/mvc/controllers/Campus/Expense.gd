@@ -53,5 +53,6 @@ static func try_expense_dept(amount : int, dept : String) -> bool:
 
 
 # Fonction appeler si on est en faillite 
+# Le jeu se termine alors avec l'ouverture d'une nouvelle fenetre 
 static func bankrupt() -> void:
 	RenovIUTApp.app.open_bankrupt()

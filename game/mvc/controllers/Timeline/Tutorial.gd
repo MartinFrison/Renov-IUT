@@ -3,12 +3,14 @@ extends Node3D
 
 
 var _tutorial : bool # Défini si le tutoriel est activé ou non
-var _tuto_buble : BulleTutorial
-var _trimester : int = 1
-var _rotation_speed : float = 90.0
+var _tuto_buble : BulleTutorial # Bulle clignotante pour montrer des choses au joueur
+var _trimester : int = 1 # Compteur de trimestre
 
+# Initialisation ou l'on spécifie si le tuto est activée ou pas
 func _init(tuto : bool) -> void:
 	_tutorial = tuto
+
+
 
 
 
@@ -28,7 +30,9 @@ func _process(delta: float) -> void:
 
 # Appelle le tuto correspondant au nouveau trimestre s'il y en a un de prévus
 func tuto_next():
+	# Si le tuto est activée
 	if _tutorial:
+		# On appelle le tutorielle correspondant au trimestre en cours
 		match _trimester:
 			1:
 				await tuto_trimester1()

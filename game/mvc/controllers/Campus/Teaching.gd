@@ -94,7 +94,8 @@ static func mood_fluctuation(dept : String, value : float, coeff : float) -> voi
 
 
 
-
+# Fonction pour augmenter le salaire des enseignants
+# Encadrer par un salaire minimal et maximal
 static func increase_salary(dept : String) -> void:
 	var build = Building.get_building(dept)
 	if build.get_pay_teacher() >= maximum_wage:
@@ -103,6 +104,8 @@ static func increase_salary(dept : String) -> void:
 		build.add_pay_teacher(500)
 
 
+# Fonction pour réduire le salaire des enseignants
+# Encadrer par un salaire minimal et maximal
 static func decrease_salary(dept : String) -> void:
 	var build = Building.get_building(dept)
 	if build.get_pay_teacher() <= minimum_wage:

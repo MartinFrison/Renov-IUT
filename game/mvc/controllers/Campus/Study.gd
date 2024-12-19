@@ -301,9 +301,9 @@ static func student_resign() -> void:
 
 
 
+# Encienne fonction pour gerer la satisfaction / niveau
+# Avec un système incrementale
 
-
-#
 #static func drop_mood_student(dept : String, value : float) -> void:
 	#value = max(0, value)
 	#var id = Student.get_dept_ids(dept)
