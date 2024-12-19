@@ -1,12 +1,12 @@
 
 Autre:
-- Mise à jours de l'UML : Elena, Yasmine 
+- Mise à jour de l'UML : Elena, Yasmine 
 
 
 
 Graphique 2D:
 - Eventuellement ajouter un _easter egg_, à un endroit susceptible d'être exploré (mais pas trop évident non plus) : Elena
-
+- Si on a le temps, remplacer le rendu des paramètres dans le panel à droite par des diagrammes : Elena
 
 
 Code:
