@@ -122,7 +122,7 @@ static func pass_dept_exam(dept : String) -> Array:
 				# Si le niveau d'un etudiant est supérieur à 0.8 il peut 
 				# rejoindre une école d'ingénieur
 				Student.add_engineering()
-		elif level> coeff_exam*0.7: # si l'étudiant a 70% du niveau requis il peut redoubler
+		elif level> coeff_exam*0.85: # si l'étudiant a 85% du niveau requis il peut redoubler
 			repeater += 1 # Ne rien faire, l'étudiant redouble simplement sont année
 		else: #exclusion si pas le niveau
 			Student.rm_student_by_id(student)
