@@ -38,7 +38,21 @@ Toutes les images utilisées sont libres de droits :
 
 ### Installation et exécution
 
-!!! SECTION À COMPLÉTER !!!
+Plusieurs options sont possibles.
+
+Vous pouvez toujours forker notre dépôt : appuyez sur le bouton "Fork/Créer une bifurcation" à droite. Une copie indépendante sera créée sur votre compte GitLab, que vous pourrez ensuite cloner sur votre machine :
+
+```
+git clone <url_de_votre_fork>
+```
+
+Si vous optez pour cette solution, assurez-vous d'avoir `git` (même s'il y a de fortes chances qu'il soit déjà installé). 
+
+Une fois l'ensemble des fichiers est téléchargé sur votre machine, vous pourrez ouvrir `project.godot` et lancer le jeu.
+
+Si vous n'avez pas Godot Engine, sachez qu'il s'installe très facilement depuis son [site officiel](https://godotengine.org/download/linux/).
+
+Vous pouvez également télécharger l'exécutable, en version Windows ou Linux, comme expliqué ci-dessous.
 
 #### Windows
 
