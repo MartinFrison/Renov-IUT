@@ -5,6 +5,10 @@ extends Node
 static var liste_notif_count : Array = []
 
 
+# Permet de vider la file d'attente d'apparition des notifs
+static func clear_notif_list():
+	liste_notif_count = []
+
 
 # Fonction pour afficher un message en bas de l'écran
 # Le joueur doit cliquer avec la souris pour le passer
@@ -49,9 +53,12 @@ static func send_notif(objet : String, message : String, type : int) -> void:
 	liste_notif_count.append(count)
 	
 	# tant que la file est prise on attend
-	while liste_notif_count[0] != count:
+	while  !liste_notif_count.is_empty() and  liste_notif_count[0] != count:
 		await RenovIUTApp.app.get_tree().create_timer(0.5).timeout
 	
+	# Si la liste à été vider entre temps on ne l'affiche pas
+	if liste_notif_count.is_empty():
+		return 
 	
 	# quand la file est libre on affiche la notif
 	var scene = load("res://mvc/views/Node2D/Bulle/BulleNotif/PanelBulleNotif.tscn")

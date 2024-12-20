@@ -48,6 +48,7 @@ func next_Trimestre():
 		return
 	
 	GlobalData.incrementTrimestre()
+	BulleGestion.clear_notif_list()
 	# moduler l'attractivité à la fin de l'année
 	if GlobalData.isEndofYear():
 		BuildingManagement.compute_attractivity()
