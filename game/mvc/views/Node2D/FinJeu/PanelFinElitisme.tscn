@@ -35,7 +35,7 @@ position = Vector2(585, 323)
 scale = Vector2(1.16699, 1)
 texture = ExtResource("2_8ex0e")
 
-[node name="Message" type="Label" parent="."]
+[node name="MessageTitre" type="Label" parent="."]
 z_index = 3
 offset_left = 180.0
 offset_top = 145.0
@@ -48,7 +48,7 @@ text = "message"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Message2" type="Label" parent="."]
+[node name="Message" type="Label" parent="."]
 z_index = 3
 offset_left = 180.0
 offset_top = 310.0

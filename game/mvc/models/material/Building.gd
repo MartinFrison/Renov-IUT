@@ -2,7 +2,7 @@ class_name Building
 extends RefCounted
 
 
-const fixed_cost_renovation = 500000 # Cout fixe en € lié à la rénovation d'un batiment
+const fixed_cost_renovation = 1000000 # Cout fixe en € lié à la rénovation d'un batiment
 const coeffTempsRenovation = 4 # Valeur d'un trimestre de travail ouvrier sur la renovation
 const MonthlySquareMetersHeatingCost = 8 #8$ par metre carré par mois dans le cas ou
 # l'état du batiment est déplorable
