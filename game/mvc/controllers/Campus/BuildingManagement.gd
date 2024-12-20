@@ -241,8 +241,8 @@ static func wear() -> void:
 #   le ratio enseignants/étudiants (pour mesurer l'attention accordée aux étudiants ; ici, 1:20 est considéré comme idéal)
 #   l'état des infrastructures
 static func compute_attractivity() -> void:
-	var target = 1.0 / 20.0  # 1 professeur pour 20 étudiants
-	var attention = Teacher.compute_nb() / Student.compute_nb()
+	var target = 1.0 / 5.0  # 1 professeur pour 5 étudiants
+	var attention : float = Teacher.compute_nb() / Student.compute_nb()
 	# transformer en pourcentage si le ratio initial n'est pas atteint, sinon 100% si les profs sont encore plus nombreux
 	if attention <= target:
 		attention = attention/target
@@ -255,10 +255,10 @@ static func compute_attractivity() -> void:
 	var sum : float = 0.0
 	for i in range(1,6):
 		var code = Utils.dept_index_to_string(i)
-		sum += Building.get_building(code).get_inventory() / 100
-	campus = sum / 5
+		sum += Building.get_building(code).get_inventory() / 100.0
+	campus = sum / 5.0
 	
-	var new_value = round((mood + campus + attention) / 3 * 100) / 100  # Arrondir à 2 décimales
+	var new_value = round((mood  + campus + attention) / 3.0 * 100.0) / 100.0  # Arrondir à 2 décimales
 	GlobalData.set_attractivity(new_value)
 
 
@@ -274,7 +274,7 @@ static func adjust_attractivity() -> void:
 	elif performance >= 0.5: # i.e. 10/20 de moyenne globale
 		fluctuation = Utils.randfloat_in_range(1.0, 1.2)
 	else: # donner une chance, même
-		fluctuation = Utils.randfloat_in_range(0.9, 1.1)
+		fluctuation = Utils.randfloat_in_range(0.8, 1)
 	new_value = GlobalData.get_attractivity()
 	new_value *= fluctuation
 	if new_value > 1:

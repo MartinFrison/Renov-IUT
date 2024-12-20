@@ -155,6 +155,7 @@ static func heat_adjust_mood() -> void:
 		if !build.is_heating() and (GlobalData._month >= 1 or GlobalData._month<=4):
 			# s'il fait trop froid la satisfaction tend vers 0 et la difficulté empire le coeff
 			Study.mood_fluctuation(code, 0, 0.08 / GlobalData.adjust_satisfaction())	
+			Teaching.mood_fluctuation(code, 0, 0.03)
 		# sinon on ne fait rien
 
 
@@ -169,7 +170,7 @@ static func inventory_adjust_mood() -> void:
 			var build = Building.get_building(code)
 			
 			# Formule qui dépend de l'état des lieux et la difficulté
-			var value = build.get_inventory() * GlobalData.adjust_satisfaction()
+			var value = build.get_inventory() * GlobalData.adjust_satisfaction() / 100
 			
 			# On applique les fluctuations pour les profs et les étudiant (surtout les étudiants)
 			Study.mood_fluctuation(code, value, 0.2)

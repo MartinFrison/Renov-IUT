@@ -231,7 +231,7 @@ static func door_adjust_mood() -> void:
 				Study.mood_fluctuation(code, 0, 0.08 / GlobalData.adjust_satisfaction())
 			else:
 				# sinon il sont content et leur satisfaction tend vers 1
-				Study.mood_fluctuation(code, 1, 0.06 * GlobalData.adjust_satisfaction())
+				Study.mood_fluctuation(code, 1, 0.03 * GlobalData.adjust_satisfaction())
 
 
 
