@@ -74,8 +74,8 @@ package Controllers{
 
        class Study {
            - students_base_nb : Integer[*]
-           - fluct : Float
-           - exam_base_result : Float
+           - fluct : Real
+           - exam_base_result : Real
 
            + {static} populate_promo(dept : Integer, year : Integer) : Integer
            + {static} populate()
@@ -85,8 +85,8 @@ package Controllers{
            + {static} teacher_adjust_level()
            + {static} teacher_adjust_mood()
            + {static} door_adjust_mood()
-           + {static} mood_fluctuation(dept : String, value : Float, coeff : Float)
-           + {static} level_fluctuation(dept : String, value : Float, coeff : Float)
+           + {static} mood_fluctuation(dept : String, value : Real, coeff : Real)
+           + {static} level_fluctuation(dept : String, value :Real, coeff : Real)
            + {static} student_resign()
        }
 
@@ -98,7 +98,7 @@ package Controllers{
            + static hire_teachers(dept : String, force : Boolean)
            + static fire_teachers(dept : String)
            + static populate()
-           + static mood_fluctuation(dept : String, value : Float, coeff : Float)
+           + static mood_fluctuation(dept : String, value : Real, coeff : Real)
            + static increase_salary(dept : String)
            + static decrease_salary(dept : String)
            + static teacher_resign()
@@ -180,7 +180,7 @@ package Controllers{
 
            + _init(tuto : Boolean)
            + _ready()
-           + _process(delta : float)
+           + _process(delta : Real)
            + tuto_next()
            + tuto_trimester1()
            + tuto_trimester2()
@@ -200,7 +200,7 @@ package Controllers{
            +{static} nb_voix_student() : Integer
            +{static} nb_voix_total() : Integer
 
-           +{static} popularity_total() : Float
+           +{static} popularity_total() : Real
            +{static} popularity_among_students() : Integer
            +{static} popularity_among_teachers() : Integer
            +{static} popularity_per_dept(dept: String) : Integer
@@ -208,7 +208,7 @@ package Controllers{
            +{static} popularity_among_teachers_per_dept(dept: String) : Integer
            +{static} popularity_among_students_per_dept(dept: String) : Integer
 
-           +{static} logistic_function(x: Float, k: Float ) : Float
+           +{static} logistic_function(x: Real, k: Real ) : Real
        }
 
     }
@@ -239,23 +239,23 @@ package global{
        + open_db() : Boolean
        + close_db()
        + execute(query: String, params: [*]) : Boolean
-       + get_entries(query: String, params: [*]) : [*]
+       + get_entries(query: String, params: []) : []
        + print_entries(query: String, params: [*])
        + clear_tables()
    }
    class Global {
        '- db : DBManager
        - ok : Boolean
-       - normal_inflation_rate : Float
-       - indexation_rate : Float
+       - normal_inflation_rate :Real
+       - indexation_rate : Real
 
        + create_iut_db()
        +{static} dept_index_to_string(index : Integer) : String
        +{static} dept_string_to_index(source : String) : Integer
        +{static} get_month_name(month : Integer) : String
        + randint_in_range(min : Integer, max : Integer) : Integer
-       + randfloat_in_range(min : Float, max : Float) : Float
-       + randfloat_in_square_range(min : Float, max : Float) : Float
+       + randfloat_in_range(min :Real, max : Real) : Real
+       + randfloat_in_square_range(min :Real, max : Real) : Real
    }
 
 
@@ -278,8 +278,8 @@ package Models{
        +{static} get_pay_worker() : Integer
 
        +{static} setDate(day : Integer, month : Integer, year : Integer)
-       +{static} get_attractivity() : Float
-      + {static} set_attractivity(value : Float)
+       +{static} get_attractivity() : Real
+      + {static} set_attractivity(value : Real)
        +{static} incrementDay()
        +{static} incrementTrimestre()
       + {static} isNewMonth() : Boolean
@@ -293,11 +293,11 @@ package Models{
       + {static} set_difficulty(value : Integer)
 
       + {static} adjust_budget_initial() : Integer
-       +{static} adjust_fund() : Float
-      + {static} adjust_satisfaction() : Float
-       +{static} adjust_level() : Float
-      + {static} adjust_dept_state() : Float
-      + {static} adjust_event_proba() : Float
+       +{static} adjust_fund() : Real
+      + {static} adjust_satisfaction() : Real
+       +{static} adjust_level() : Real
+      + {static} adjust_dept_state() : Real
+      + {static} adjust_event_proba() : Real
       + {static} formatBudget(number : Integer) : String
    }
    class Notification {
@@ -324,27 +324,27 @@ package Models{
          +{static} add_student(dept: String, year: Integer): Integer
         + {static} rm_student_by_id(id: Integer)
         + {static} rm_students_by_dept(dept: String, nb: Integer)
-         +{static} rm_student_by_mood(mood: Float)
+         +{static} rm_student_by_mood(mood: Real)
 
          +{static} get_year(id: Integer): Integer
          +{static} get_dept(id: Integer): String
-        + {static} get_mood(id: Integer): Float
-        + {static} get_level(id: Integer): Float
-         +{static} get_base_level(id: Integer): Float
+        + {static} get_mood(id: Integer): Real
+        + {static} get_level(id: Integer): Real
+         +{static} get_base_level(id: Integer): Real
 
         + {static} set_year(id: Integer, new_year: Integer)
-         +{static} set_mood(id: Integer, coeff: Float)
-         +{static} set_level(id: Integer, coeff: Float)
-        + {static} set_base_level(id: Integer, coeff: Float)
+         +{static} set_mood(id: Integer, coeff: Real)
+         +{static} set_level(id: Integer, coeff: Real)
+        + {static} set_base_level(id: Integer, coeff: Real)
 
-         +{static} compute_nb_per_dept(dept: String): Float
-        + {static} avg_mood_per_dept(dept: String): Float
-        + {static} avg_level_per_dept(dept: String): Float
-        + {static} compute_nb(): Float
-         +{static} avg_mood(): Float
-         +{static} avg_level(): Float
-         +{static} success_rate_per_dept(dept: String): Float
-         +{static} success_rate(): Float
+         +{static} compute_nb_per_dept(dept: String): Real
+        + {static} avg_mood_per_dept(dept: String): Real
+        + {static} avg_level_per_dept(dept: String): Real
+        + {static} compute_nb(): Real
+         +{static} avg_mood(): Real
+         +{static} avg_level(): Real
+         +{static} success_rate_per_dept(dept: String):Real
+         +{static} success_rate(): Real
        }
 
        class Teacher {
@@ -355,19 +355,48 @@ package Models{
          +{static} add_teacher(dept: String): Integer
          +{static} rm_teacher_by_id(id: Integer)
          +{static} rm_teachers_by_dept(dept: String, nb: Integer)
-         +{static} rm_teacher_by_mood(mood: Float)
+         +{static} rm_teacher_by_mood(mood: Real)
 
          +{static} get_dept(id: Integer): String
-         +{static} get_mood(id: Integer): Float
-         +{static} set_mood(id: Integer, coeff: Float)
+         +{static} get_mood(id: Integer): Real
+         +{static} set_mood(id: Integer, coeff: Real)
 
          +{static} compute_nb_per_dept(dept: String): Integer
-         +{static} avg_mood_per_dept(dept: String): Float
-         +{static} compute_nb(): Float
-         +{static} avg_mood(): Float
+         +{static} avg_mood_per_dept(dept: String): Real
+         +{static} compute_nb(): Real
+         +{static} avg_mood(): Real
        }
+	   class StudentSQLTable
+        {
+            + id : Integer <<PK>>
+            + year : Integer [1..3]
+            + dept : String
+            + mood : Real [0, 1]
+            + level : Real [0, 1]
+            +base_level : Real
+        }
+        class TeacherSQLTable
+        {
+            + id : Integer <<PK>>
+            + dept : String
+            + mood : Real [0, 1]
+            + full-time : Boolean
+        }
    }
    package material{
+	  class NotificationSQLTable
+        {
+            + id : Integer <<PK>>
+            + message : String
+            + objet : String
+            + date : Date
+            + type : Integer
+        }
+		class DeptSQLTable
+        {
+            + id : Integer <<PK>>
+            + name : String
+        }
        class Building {
          +{static} fixed_cost_renovation: Integer
          +{static} coeffTempsRenovation: Integer
@@ -380,37 +409,36 @@ package Models{
          -_surface: Integer
          -_heating: Boolean
          -_code: String
-         -_inventory: Float
+         -_inventory: Real
          -_ouvriers: Integer
          -_is_renovation_underway: Boolean
          -_budget: Integer
          -_pay_teacher: Integer
-         -_entry_exam: Float
-         -_end_exam: Float
+         -_entry_exam: Real
+         -_end_exam: Real
 
          +{static} get_building(code: String): Building
          +get_code(): String
          +get_pay_teacher(): Integer
          +get_budget(): Integer
          +get_age(): Integer
-         +get_inventory(): Float
+         +get_inventory(): Real
          +get_surface(): Integer
          +is_heating(): Boolean
          +get_ouvriers(): Integer
          +is_renovation_underway(): Boolean
          +{static} get_total_buildings_under_renovation(): Integer
          +isDoorLocked(): Boolean
-         +get_exam_entry(): Float
-         +get_exam_end(): Float
-
+         +get_exam_entry(): Real
+         +get_exam_end(): Real
          +set_pay_teacher(amount: Integer)
          +setHeat(heat: Boolean)
-         +setInventory(value: Float)
+         +setInventory(value: Real)
          +set_renovation_underway(underway: Boolean)
          +set_budget(value: Integer)
          +setDoorLocked(locked: Boolean)
-         +set_exam_entry(value: Float)
-         +set_exam_end(value: Float)
+         +set_exam_entry(value:Real)
+         +set_exam_end(value: Real)
 
          +add_pay_teacher(amount: Integer)
          +add_ouvrier()
@@ -453,7 +481,7 @@ package views{
   	    package Character
   	    {
   	       class Bonhomme {
-                 + distance: float
+                 + distance: Real
                  + animation_player: AnimationPlayer
                  - visible_summer: Boolean
 
@@ -469,7 +497,7 @@ package views{
                  - buttons: Button[*]
 
                  + _ready()
-                 + _process(delta: float)
+                 + _process(delta: Real)
                  + open_page()
                  + create_question_button(text: String, id: Integer, n: Integer)
                  + _on_next_pressed()
@@ -486,7 +514,7 @@ package views{
              		+ {static} texture_path : String
              		+ {static} mask_path : String
               	+ _ready()
-                  + _process(delta: float)
+                  + _process(delta: Real)
                   + apply_material_to_mesh_instances(node: Node3D, material: Material, trunc: Material)
                   + notifyDateChanged()
                   + summer()
@@ -497,14 +525,14 @@ package views{
   	    }
   	    class CameraRoot {
               - _default_scale:  Vector3
-              - _rot_Y:float
+              - _rot_Y:Real
 
               + _ready()
-              + _process(delta: float)
-              + curve_scale(degrees: float): float
-              + rotate_root(coeff: float)
+              + _process(delta:Real)
+              + curve_scale(degrees: Real): Real
+              + rotate_root(coeff: Real)
               + _input(event: InputEvent)
-              + rotate_tutorial(time: float)
+              + rotate_tutorial(time: Real)
           }
           class Camera3D {
               - _default_scale: Vector3[*]
@@ -530,7 +558,7 @@ package views{
                   - is_message_active: Boolean
 
                   + _ready()
-                  + _process(delta: float)
+                  + _process(delta: Real)
                   + init(id: integer)
                   + show_data()
                   + check_and_update_buttons()
@@ -582,7 +610,7 @@ package views{
   				- _object : String
   				+ tick : Integer
   		        + _ready()
-                  + _process(delta: float)
+                  + _process(delta: Real)
                   + delete()
                   + init(objet: String, message: String, type: integer)
                   + _input(event : InputEvent)
@@ -597,7 +625,7 @@ package views{
                   - tick: Integer
 
                   + _ready()
-                  + _process(delta: float)
+                  + _process(delta: Real)
                   + init(question: String, reponse: String[*], fonction: String, node: Node)
                   + create_question_button(id: Integer)
                   + _on_answer_pressed(id: Integer)
@@ -611,7 +639,7 @@ package views{
                   - tick: Integer
 
                   + _ready()
-                  + _process(delta: float)
+                  + _process(delta: Real)
                   + hide_buble()
                   + show_buble(sx: Integer, sy: Integer, px: Integer, py: Integer)
                   + set_border_width(width: Integer)
@@ -622,14 +650,14 @@ package views{
 
   		package choixScenario {
 
-  			class ChoixScenarioScript_ {
+  			class ChoixScenarioScript {
                   '- _IUT: IUTFacade
                   '- _app: RenovIUTApp
                   - scenario: Integer
                   - difficulty: Integer
 
                   + _ready()
-                  + _process(delta: float)
+                  + _process(delta: Real)
                   + init(iut: IUTFacade, app: RenovIUTApp)
                   + _on_button_election_pressed()
                   + _on_button_renovation_pressed()
@@ -643,23 +671,23 @@ package views{
   		package finJeu {
           		class BankruptScript {
           			 + _ready()
-                       + _process(delta: float)
+                       + _process(delta: Real)
           		}
 
           		class FinElectionScript {
           			- _ready()
-          			- _process(delta : float)
+          			- _process(delta : Real)
           			+ show_result()
           		}
 
           		class FinRenovationScript {
           			- _ready()
-          			- _process(delta : float)
+          			- _process(delta : Real)
           			+ show_result()
           		}
           		class FinEletismeScript {
                        + _ready()
-                       + _process(delta: float)
+                       + _process(delta: Real)
                        + show_bilan()
                        + _on_QuitterButton_pressed(toggled_on: Boolean)
                   }
@@ -680,7 +708,7 @@ package views{
                       - buttons: Button[*]
 
                       + _ready()
-                      + _process(delta: float)
+                      + _process(delta: Real)
                       + open_page()
                       + create_question_button(text: String, id: Integer, n: Integer)
                       + _on_next_pressed()
@@ -717,10 +745,25 @@ package views{
 Student ..> StudentSQLTable
 Teacher ..> TeacherSQLTable
 
+      Building..> DeptSQLTable
+         Notification  ..>NotificationSQLTable
+		 TeacherSQLTable ..> DeptSQLTable
+StudentSQLTable ..> DeptSQLTable
+
+'Controller manipule le modèle'
+Study ..> Student : modifie
+Teaching ..> Teacher
+
+BuildingManagement ..> Building
+TimeManagement ..> GlobalData
 
 
 
-RenovIUTApp *-- IUTFacade : compose
+
+
+
+
+
 
         RenovIUTApp --> ObserverBuilding : observe
         RenovIUTApp --> ObserverGlobalData : observe
@@ -743,6 +786,18 @@ RenovIUTApp *-- IUTFacade : compose
 
 
 
+'Vue utilise controller'
+FinElectionScript ..> Vote
+BulleMessageScript..>BulleGestion
+BulleNotifScript..>BulleGestion
+BulleTutorial ..>BulleGestion
+
+
+  BuildingAction..>BuildingManagement
+
+ChoixScenarioScript ..> Scenario
+
+
 
  ChoixScenarioScript  *--> "1\n - build" BuildingAction
 
@@ -761,7 +816,7 @@ DBManager --|> Node
  Node <|-- IUTFacade
     IUTFacade o--> "1\n - _tuto" Tutorial
     IUTFacade o--> "1\n - _scenario" Scenario
-    IUTFacadeo--> "1\n - _time" TimeManagement
+    IUTFacade--> "1\n - _time" TimeManagement
     IUTFacade ..> GlobalData
 
 
