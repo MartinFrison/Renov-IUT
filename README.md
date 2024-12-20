@@ -47,16 +47,16 @@ Toutes les images utilisées sont libres de droits :
 
 Vous pouvez télécharger directement l'exécutable du jeu sur ce dépôt Git :
 
-[RenovIUT.zip](dfdq)
+[RenovIUT.zip](https://git.unistra.fr/coruscant/renov-iut/-/raw/main/game/RenovIUT.zip?ref_type=heads&inline=false)
 
 Si vous rencontrez des problèmes liés à l'intégration de la base de données dans le jeu, il est possible de créer un exécutable depuis une archive complète du projet :
 
 1. Inclure `data/*` comme répertoires hors-ressources :
 
-[Menu](visuals/screenshots/menu_export.png) [Ecran1](visuals/screenshots/export1.png) [Ecran2](visuals/screenshots/export2.png)
+![Menu](visuals/screenshots/menu_export.png) ![Ecran1](visuals/screenshots/export1.png) ![Ecran2](visuals/screenshots/export2.png)
 
 2. Installer `godot` si ce n'est déjà fait.
-3. Télécharger le packaging [ici](dfd).
+3. Télécharger le packaging [ici](https://git.unistra.fr/coruscant/renov-iut/-/raw/main/compilation_config/linux/renoviut.pck?ref_type=heads&inline=false).
 4. Exécuter dans la ligne de commande :
 
 ```
