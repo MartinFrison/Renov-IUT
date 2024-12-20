@@ -65,11 +65,16 @@ Vous pouvez télécharger directement l'exécutable du jeu sur ce dépôt Git :
 
 Si vous rencontrez des problèmes liés à l'intégration de la base de données dans le jeu, il est possible de créer un exécutable vous-mêmes :
 
-1. Inclure `data/*` comme répertoires hors-ressources :
+1. Lancer l'exportation du projet :
 
-![Menu](visuals/screenshots/menu_export.png) ![Ecran1](visuals/screenshots/export1.png) ![Ecran2](visuals/screenshots/export2.png)
+![Menu](visuals/screenshots/menu_export.png) 
 
-2. Créer l'archive contenant l'exécutable, un script de lancement et la bibliothèque dynamique nécessaire pour utiliser les bases de données SQLite : [ici](https://git.unistra.fr/coruscant/renov-iut/-/raw/main/compilation_config/linux/renoviut.pck?ref_type=heads&inline=false)
+2. Inclure `data/*` comme répertoires hors-ressources :
+
+![Ecran1](visuals/screenshots/export1.png) 
+
+3. Créer l'archive contenant l'exécutable, un script de lancement et la bibliothèque dynamique nécessaire pour utiliser les bases de données SQLite : 
+![Ecran2](visuals/screenshots/export2.png)
 
 **Enjoy !**
 
