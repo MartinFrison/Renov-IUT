@@ -270,11 +270,11 @@ static func adjust_attractivity() -> void:
 	# pour l'instant, cela ne fait que donner une priorité aléatoire à un critère.
 	# Et que cela ne soit pas au pif.
 	if performance >= 0.7: # i.e. 14/20 de moyenne globale
-		fluctuation = Utils.randfloat_in_range(1.2, 1.4)
+		fluctuation = Utils.randfloat_in_range(1.15, 1.35)
 	elif performance >= 0.5: # i.e. 10/20 de moyenne globale
-		fluctuation = Utils.randfloat_in_range(1.0, 1.2)
+		fluctuation = Utils.randfloat_in_range(0.95, 1.15)
 	else: # donner une chance, même
-		fluctuation = Utils.randfloat_in_range(0.8, 1)
+		fluctuation = Utils.randfloat_in_range(0.75, 0.95)
 	new_value = GlobalData.get_attractivity()
 	new_value *= fluctuation
 	if new_value > 1:

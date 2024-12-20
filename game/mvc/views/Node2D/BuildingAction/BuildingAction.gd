@@ -128,6 +128,11 @@ func check_and_update_buttons() -> void:
 	if GlobalData.get_season() == 0:
 		get_node("PanelGlobal/PanelAction/GridContainer/add_exem_end").set_disabled(false)
 		get_node("PanelGlobal/PanelAction/GridContainer/sub_exem_end").set_disabled(false)
+		get_node("PanelGlobal/PanelAction/GridContainer/add_exem_entry").set_disabled(true)
+		get_node("PanelGlobal/PanelAction/GridContainer/sub_exem_entry").set_disabled(true)
+	elif GlobalData.get_season() == 1:
+		get_node("PanelGlobal/PanelAction/GridContainer/add_exem_end").set_disabled(true)
+		get_node("PanelGlobal/PanelAction/GridContainer/sub_exem_end").set_disabled(true)
 		get_node("PanelGlobal/PanelAction/GridContainer/add_exem_entry").set_disabled(false)
 		get_node("PanelGlobal/PanelAction/GridContainer/sub_exem_entry").set_disabled(false)
 	else:
