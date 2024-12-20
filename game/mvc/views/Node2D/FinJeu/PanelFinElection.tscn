@@ -217,11 +217,12 @@ offset_left = 710.0
 offset_top = 139.0
 offset_right = 1130.0
 offset_bottom = 558.0
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_t1bqy")
 text = "rapport:
 
 "
+autowrap_mode = 3
 
 [node name="Quitter" type="Button" parent="."]
 offset_left = 26.0

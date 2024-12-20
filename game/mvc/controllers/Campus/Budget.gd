@@ -112,7 +112,7 @@ func send_fund():
 	
 	# Une partie pour le bloc central
 	# La valeur est aléatoire et dépend de la difficulté
-	var budget : int = GlobalData.adjust_budget_initial() * Utils.randfloat_in_square_range(0.8, 1.2) * 0.8	
+	var budget : int = GlobalData.adjust_budget_initial() * Utils.randfloat_in_square_range(0.8, 1.2) * 0.6
 	# Pondération du budget selon le nombre d'étudiant
 	var nb_stud = Student.compute_nb()
 	budget *= nb_stud / 1000
@@ -124,7 +124,7 @@ func send_fund():
 	for i in range(1, 6):
 		var code = Utils.dept_index_to_string(i)
 		var build = Building.get_building(code)
-		budget = GlobalData.adjust_budget_initial() * 0.2 * Utils.randfloat_in_square_range(0.6, 1.4) * 0.8
+		budget = GlobalData.adjust_budget_initial() * Utils.randfloat_in_square_range(0.6, 1.4) * 0.65
 		# Pondération du budget selon le nombre d'étudiant
 		nb_stud = Student.compute_nb_per_dept(code)
 		budget *= nb_stud / 1000

@@ -5,22 +5,18 @@ Autre:
 
 Code:
 - Mise à jours du tutoriel sur l'attractivité et les examens (et d'autre mécanique de jeu eventuellement) 
-
-
-
 - Pour le scénario rénovation gérer le problème lié au fait que l'on peut le finir en un trimestre en embauchant 150 ouvrier d'un coup
 
-
-Mise en forme:
-- Déplacer le calcul de l'attractivité (car GlobalData fait partie du model)
-- Revoir toute la hiérachie et les noms de classe (la cohérence est noté ; mettre les noms des classes et des méthodes en anglais)
-- Commenter tous le code et corriger les fautes de francais
 
 
 
 Fin de projet:
 - Test du jeu pour ajuster toutes les constantes du code qui influe sur la difficulté et la cohérence  de la simulation 
-(ajustement de la satisfaction, de la réussite , des fonds, de la frequence des events ect...)
+    - la satisfaction,
+    - la réussite
+    - le budget
+
+
 - Test pour rechercher les abus du système et des mechanique de jeu (stratégie antijeu) possible par le joueur pour les corrigés 
 - Test du jeu pour détécter et corriger tout les bugs
 - Compilation et mise en ligne du jeu

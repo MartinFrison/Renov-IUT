@@ -66,13 +66,13 @@ func side_effect() -> String:
 	# La satisfaction des étudiants / des profs
 	var stud_mood = Student.avg_mood()
 	var teach_mood = Teacher.avg_mood()
-	if stud_mood < 25:
+	if stud_mood < 0.25:
 		side_effect += "Les étudiants sont furieux. "
-	elif stud_mood < 50:
+	elif stud_mood < 0.50:
 		side_effect += "Les étudiants sont mécontents. "
-	if teach_mood < 25:
+	if teach_mood < 0.25:
 		side_effect += "Les enseignants sont furieux. "
-	elif teach_mood < 50:
+	elif teach_mood < 0.50:
 		side_effect += "Les enseignants sont mécontents. "
 	
 	# La chute du nombre de diplômés (seulement si le jeu dure plus d'un an)

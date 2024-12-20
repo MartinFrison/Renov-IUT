@@ -19,10 +19,10 @@ func show_result(scenario : Scenario) -> void:
 	else:
 		node.text = "Vous avez perdu les éléctions. Dommage.."
 	
+
 	# Définir le texte du rapport au joueur
 	var rate : float = float(int(float(Vote.popularity_total()*1000) / Vote.nb_voix_total()))/10
-	node = "Vote/GridVoix/total_teach"
-	node = get_node(node)
+	node = get_node("report")
 	node.text = "Vous avez récolté %s%% des votes.\n" % [rate]
 	node.text += scenario.player_report()	
 	

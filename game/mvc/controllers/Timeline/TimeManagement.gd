@@ -42,6 +42,11 @@ func start():
 
 # Execute toutes les actions d'un trimestre
 func next_Trimestre():
+	# Si on est en attente de la fin du jeu
+	# il est impossible de passer au trimestre suivant
+	if _scenario.test_end_game_condition():
+		return
+	
 	GlobalData.incrementTrimestre()
 	# moduler l'attractivité à la fin de l'année
 	if GlobalData.isEndofYear():
