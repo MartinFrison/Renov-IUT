@@ -38,7 +38,35 @@ Toutes les images utilisées sont libres de droits :
 
 ### Installation et exécution
 
-!!! SECTION À REMPLIR !!!
+!!! SECTION À COMPLÉTER !!!
+
+#### Windows
+
+
+#### Linux
+
+Vous pouvez télécharger directement l'exécutable du jeu sur ce dépôt Git :
+
+[RenovIUT.zip](dfdq)
+
+Si vous rencontrez des problèmes liés à l'intégration de la base de données dans le jeu, il est possible de créer un exécutable depuis une archive complète du projet :
+
+1. Inclure `data/*` comme répertoires hors-ressources :
+
+[Menu](visuals/screenshots/menu_export.png) [Ecran1](visuals/screenshots/export1.png) [Ecran2](visuals/screenshots/export2.png)
+
+2. Installer `godot` si ce n'est déjà fait.
+3. Télécharger le packaging [ici](dfd).
+4. Exécuter dans la ligne de commande :
+
+```
+godot --export-release "<préréglage>" RenovIUT renoviut.pck
+```
+5. Lancer l'exécutable résultant ; au besoin, donnez-vous les droits d'exécution :
+```
+chmod u+x RenovIUT
+./RenovIUT
+```
 
 ## Cahier des charges
 
