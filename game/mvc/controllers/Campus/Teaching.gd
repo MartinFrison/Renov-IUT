@@ -114,7 +114,8 @@ static func decrease_salary(dept : String) -> void:
 
 # Les profs très mécontent quitte l'IUT
 static func teacher_resign() -> void:
-	Teacher.rm_teacher_by_mood(0.15);
+	pass
+	#Teacher.rm_teacher_by_mood(0.15);
 
 
 

@@ -21,7 +21,8 @@ func reset_bill() -> void:
 
 
 # Rajoute à la facture les sommes pour un trimestre
-func add_daily_expense() -> void:
+func add_trimestre_expense() -> void:
+	reset_bill()
 	var b
 	var code
 	var sumWorker = 0
@@ -36,11 +37,11 @@ func add_daily_expense() -> void:
 		# Facture de chauffage 
 		# cout en fonction de l'état des batiments et de leur taille
 		if b.is_heating():
-			var heat_cost = Building.MonthlySquareMetersHeatingCost * b.get_surface() * 3
+			var heat_cost : int = Building.MonthlySquareMetersHeatingCost * b.get_surface() * 3
 			heat_cost = heat_cost*(1 + b.get_inventory()/50) # Prix multiplier jusqu'a X2 selon
 			# l'état du batiment
-			pay_heating[i+1] += heat_cost
-	
+			pay_heating[i+1] = heat_cost
+
 	nb_pay_teacher = max(nb_pay_teacher, Teacher.compute_nb())
 	nb_pay_worker = max(nb_pay_worker, sumWorker)
 
@@ -78,9 +79,9 @@ func send_bill_detail() -> void:
 	
 	# Construction du détail de la facture
 	var msg = "Récapitulatif de vos factures du mois de " + Utils.get_month_name(m) + " "  + str(GlobalData._year)
-	msg += "\nSalaire des enseignants : %s$ (%s personnes payées) ; " % [sum_pay(pay_teacher), nb_pay_teacher]
-	msg += "salaire du personelle : %s$ (%s personnes payées)" % [sum_pay(pay_worker), nb_pay_worker]
-	msg += "\nFacture de chauffage : %s$" % [sum_pay(pay_heating)]
+	msg += "\nSalaire des enseignants : %s € (%s personnes payées) ; " % [sum_pay(pay_teacher), nb_pay_teacher]
+	msg += "salaire du personelle : %s € (%s personnes payées)" % [sum_pay(pay_worker), nb_pay_worker]
+	msg += "\nFacture de chauffage : %s €" % [sum_pay(pay_heating)]
 	var objet = "Facture du mois de " + Utils.get_month_name(m) + " "  + str(GlobalData._year)
 	
 	# Envoie du détail sous forme de notif
@@ -90,7 +91,7 @@ func send_bill_detail() -> void:
 
 # sert juste a faire la somme d'une depense sur tout les dept confonu
 func sum_pay(table : Array[int]) -> int:
-	var sum = 0
+	var sum : int = 0
 	for i in table.size():
 		sum+= table[i]
 	return sum
