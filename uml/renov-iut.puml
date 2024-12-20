@@ -1,5 +1,8 @@
 @startuml
 'https://plantuml.com/class-diagram
+'Ceci est le diagramme de classes d'un vrai-faux orienté-objet :
+'Godot n'en est pas un à proprement parler, mais nous nous sommes efforcés
+'à mettre en pratique les principes du POO.
 package application {
      class RenovIUTApp {
     + static app: RenovIUTApp
@@ -7,7 +10,6 @@ package application {
     '- illkirch: IUTFacade
     - panelChoixScenario: Node2D
     - loaded: Boolean
-
     + _ready()
     + startGame()
     + game_loaded()
@@ -22,10 +24,8 @@ package application {
      }
 
 }
-package Controllers{
+package controllers{
     package campus{
-
-
        class Budget {
            - pay_teacher : Integer [*]
            - nb_pay_teacher : Integer
@@ -33,7 +33,6 @@ package Controllers{
            - nb_pay_worker : Integer
            - pay_heating : Integer[*]
            - previous_bill : Integer
-
            + reset_bill()
            + add_daily_expense()
            + pay_bill()
@@ -76,7 +75,6 @@ package Controllers{
            - students_base_nb : Integer[*]
            - fluct : Real
            - exam_base_result : Real
-
            + {static} populate_promo(dept : Integer, year : Integer) : Integer
            + {static} populate()
            + {static} populate_new_year(scenario : Scenario)
@@ -94,7 +92,6 @@ package Controllers{
            - teachers_base_nb : Integer[*]
            - minimum_wage : Integer
            - maximum_wage : Integer
-
            + static hire_teachers(dept : String, force : Boolean)
            + static fire_teachers(dept : String)
            + static populate()
@@ -110,7 +107,6 @@ package Controllers{
     {
        Abstract class Scenario {
            - _name : String
-
            + init()
            + get_scenario() : String
            + {static} get_description() : String
@@ -123,7 +119,6 @@ package Controllers{
        }
        class ScenarioElection extends Scenario {
            - _progression : Integer
-
            + init()
            + game_start()
            + {static} get_description() : String
@@ -134,7 +129,6 @@ package Controllers{
        }
        class ScenarioElitisme extends Scenario {
            - _progression : Integer
-
            + init()
            + game_start()
            + {static} get_description() : String
@@ -148,7 +142,6 @@ package Controllers{
        class ScenarioRenovation extends Scenario {
            '- old_builds : Building[*]
            - _progression : Boolean[*]
-
            + init()
            + game_start()
            + static get_description() : String
@@ -162,7 +155,6 @@ package Controllers{
           ' - _tuto : Tutorial
           ' - _scenario : Scenario
           ' - _budget : Budget
-
            + _init(scenario : Scenario, tuto : Tutorial)
            + start()
            + next_Trimestre()
@@ -177,7 +169,6 @@ package Controllers{
            - _tutorial : Boolean
            '- _tuto_buble : BulleTutorial
            - _trimester : Integer
-
            + _init(tuto : Boolean)
            + _ready()
            + _process(delta : Real)
@@ -192,44 +183,29 @@ package Controllers{
 
        class Vote {
            +{static} election_gagnee() : Boolean
-
            +{static} nb_voix_teacher_per_dept(dept: String) : Integer
            {+static} nb_voix_student_per_dept(dept: String) : Integer
            +{static} nb_voix_per_dept(dept: String) : Integer
            +{static} nb_voix_teacher() : Integer
            +{static} nb_voix_student() : Integer
            +{static} nb_voix_total() : Integer
-
            +{static} popularity_total() : Real
            +{static} popularity_among_students() : Integer
            +{static} popularity_among_teachers() : Integer
            +{static} popularity_per_dept(dept: String) : Integer
-
            +{static} popularity_among_teachers_per_dept(dept: String) : Integer
            +{static} popularity_among_students_per_dept(dept: String) : Integer
-
            +{static} logistic_function(x: Real, k: Real ) : Real
        }
-
     }
-    class BulleGestion {
-        +{static} liste_notif_count : [*]
-
-        +{static} send_message(message : String, notif : Boolean)
-        +{static} send_notif(objet : String, message : String, type : Integer)
-    }
+    
     class IUTFacade {
-        - _tuto : Tutorial
-        - _scenario : Scenario
-        - _time : TimeManagement
         - _id : Integer
-
         chooseMode(scenario : Integer, difficulty:Integer)
         startGame()
     }
-
-
 }
+
 package global{
    class DBManager {
        - db: SQLite
@@ -261,7 +237,7 @@ package global{
 
 
 }
-package ùodels{
+package models{
    class GlobalData {
        -{static} _year : Integer
        -{static} _month : Integer
@@ -544,8 +520,6 @@ package views{
   }
 
   package node2D {
-
-  		package BuildingAction {
   		    class BuildingAction {
                   - code: String
                   - build: Building
@@ -577,11 +551,22 @@ package views{
                   + _on_add_teacher_mouse_entered()
                   + _on_add_worker_mouse_entered()
                   + _on_heat_mouse_entered()
-              }
   		}
 
   		package bulle {
-  			class BulleMessageScript {
+			abstract class Bulle {
+				- _message : String
+			}
+			
+			    
+			class BulleGestion implements Bulle {
+				- _message : String
+				+{static} liste_notif_count : [*]
+				+{static} send_message(message : String, notif : Boolean)
+				+{static} send_notif(objet : String, message : String, type : Integer)
+			}
+  		
+  			class BulleMessageScript implements Bulle {
   				- _message : String
   				- _ready()
   				- _process(delta : Real)
@@ -590,41 +575,37 @@ package views{
   				+ enter()
   			}
 
-  			class BulleNotifScript {
+  			class BulleNotifScript implements Bulle {
   				- _message : String
   				- _object : String
-  				+ tick : Integer
-  		        + _ready()
-                  + _process(delta: Real)
+  				- tick : Integer
+  		        - _ready()
+                  - _process(delta: Real)
                   + delete()
                   + init(objet: String, message: String, type: integer)
                   + _input(event : InputEvent)
                   + enter()
   			}
 
-  			class BulleQuestionScript {
-  				- _question: String
+  			class BulleQuestionScript implements Bulle {
+				  - _message: String
                   - _fonctionReponse: String
                   - _reponse: String[*]
                   - _node: Node
                   - tick: Integer
-
-                  + _ready()
-                  + _process(delta: Real)
+                  - _ready()
+                  - _process(delta: Real)
                   + init(question: String, reponse: String[*], fonction: String, node: Node)
                   + create_question_button(id: Integer)
                   + _on_answer_pressed(id: Integer)
                   + delete()
   			}
-  			class BulleTutorial {
-                  - buble: Panel
-                  - style: StyleBoxFlat
+  			class BulleTutorial implements Bulle {
                   - _message: String
                   - _objet: String
                   - tick: Integer
-
-                  + _ready()
-                  + _process(delta: Real)
+                  - _ready()
+                  - _process(delta: Real)
                   + hide_buble()
                   + show_buble(sx: Integer, sy: Integer, px: Integer, py: Integer)
                   + set_border_width(width: Integer)
@@ -728,25 +709,24 @@ Student ..> Students
 Teacher ..> Teachers
 Building ..> Depts
 Notification ..>Notifications
-Teacher "1" o--> "1\n - dept" Depts
-Student "1" o--> "1\n - dept" Depts
+Teacher ..> Depts
+Student ..> Depts
 
 'Controller manipule le modèle'
 Study ....> Student : modifie
 Teaching ....> Teacher : modifie
 
-BuildingManagement ..> Building
+
+BuildingManagement ..> Building : modifie
 TimeManagement ..> GlobalData
 
         RenovIUTApp -> ObserverBuilding : observe
         RenovIUTApp -> ObserverGlobalData : observe
         RenovIUTApp -> ObserverPopulation : observe
-        RenovIUTApp ..> ChoixScenarioScript : initialise scénario
-        RenovIUTApp ..> NotifListScript : affiche notifications
-        RenovIUTApp ..> BankruptScript : montre faillite
-        RenovIUTApp ..> FinElectionScript : affiche fin d'élection
-        RenovIUTApp ..> FinRenovationScript : affiche fin de rénovation
-        RenovIUTApp ..> FinEletismeScript : affiche fin d'élitisme
+        RenovIUTApp .> ChoixScenarioScript : initialise scénario
+        ''RenovIUTApp .> NotifListScript : affiche notifications
+        ''RenovIUTApp .> BankruptScript : montre faillite
+        RenovIUTApp .> FinJeu
 
         RenovIUTApp ..> Vote : utilise
         RenovIUTApp ..> GlobalData : utilise
@@ -754,9 +734,8 @@ TimeManagement ..> GlobalData
         RenovIUTApp ..> Tutorial : utilise
  RenovIUTApp  *-> "1\n - illkirch" IUTFacade
 
-
-
-
+Expense ..> Building
+Budget ..> Expense
 
 'Vue utilise controller'
 FinElectionScript ..> Vote
@@ -764,39 +743,32 @@ BulleMessageScript..>BulleGestion
 BulleNotifScript..>BulleGestion
 BulleTutorial ..>BulleGestion
 
-ChoixScenarioScript .> Scenario
+ChoixScenarioScript ..> Scenario
 
 
- ChoixScenarioScript  *-> "1\n - build" BuildingAction
- BuildingManagement ..> BuildingAction
-
- ChoixScenarioScript  o---> "1\n - _app" RenovIUTApp
-
- ChoixScenarioScript  o---> "1\n - _IUT" IUTFacade
+ChoixScenarioScript  *-> "1\n - build" BuildingAction
+BuildingManagement ..> BuildingAction
+ChoixScenarioScript  o--> "1\n - _app" RenovIUTApp
+ChoixScenarioScript  o--> "1\n - _IUT" IUTFacade
 Building ..> GlobalData
- Global o--> "1\n - _db" DBManager
-    IUTFacade o--> "1\n - _tuto" Tutorial
-    IUTFacade o--> "1\n - _scenario" Scenario
-    IUTFacade--> "1\n - _time" TimeManagement
-    IUTFacade ...> GlobalData
+Global o--> "1\n - _db" DBManager
+IUTFacade--> "1\n - _time" TimeManagement
+IUTFacade ...> GlobalData
 
 
 Vote ..> Teacher
-           Vote ..> Student
-           Vote ..> GlobalData
+Vote ..> Student
+Vote ..> GlobalData
+Tutorial"1" o--> "1\n - _tuto_buble" BulleTutorial
 
-BulleGestion ...> Notification
-BulleGestion ..> GlobalData
-BulleGestion ..> RenovIUTApp
-
-    Object<|--Vote
-           Tutorial"1" o--> "1\n - _tuto_buble" BulleTutorial
-
-    ScenarioRenovation "1" o-> "1\n - old_Builds" Building
-    TimeManagement "1" o--> "1\n - _tuto" Tutorial
-    TimeManagement "1" o--> "1\n - _scenario" Scenario
-    TimeManagement"1" o--> "1\n - _budget" Budget
-
-       Budget ..> Building : utilise
+ScenarioRenovation "1" o-> "1\n - old_Builds" Building
+ScenarioElection ..> Vote
+TimeManagement "1" o--> "1\n - _tuto" Tutorial
+TimeManagement "1" o--> "1\n - _scenario" Scenario
+TimeManagement"1" o--> "1\n - _budget" Budget
+    
+TimeManagement ..> BuildingManagement
+TimeManagement ..> Study
+TimeManagement ..> Teaching
 
 @enduml
