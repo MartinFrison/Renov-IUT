@@ -56,7 +56,7 @@ static func populate_promo(dept : int, year : int) -> int:
 	for i in range(0, nb_students):
 		# On ajoute un étudiant et lui donne une satisfaction aléatoire selon la difficulté du jeu
 		var id = Student.add_student(code, year)
-		var mood = Utils.randfloat_in_range(GlobalData.adjust_satisfaction()*0.3,GlobalData.adjust_satisfaction()*0.8)
+		var mood = Utils.randfloat_in_range(GlobalData.adjust_satisfaction()*0.25,GlobalData.adjust_satisfaction()*0.75)
 		mood = clamp(mood,0,1)
 		Student.set_mood(id,mood)
 		# On initialise le level selon la séléctivité des exams d'entrée et la difficulté du jeu 
@@ -183,7 +183,7 @@ static func teacher_adjust_level() -> void:
 				# On utilise une fonction sigmoide pour calculer une valeur a partir du ratio
 				# valeur de la sigmoide: x=0 -> 0, x=0.2 -> 0.42, x=0.4 -> 0.85, x=1 -> 0.98
 				var ratioValue = ratio*GlobalData.adjust_level()
-				ratioValue *=2 # reduit simplement par 2 le nombre de prof nécéssaire à niveau egale
+				ratioValue *=3 # reduit simplement par 2 le nombre de prof nécéssaire à niveau egale
 				var k = 10
 				var x0 = 0.2
 				ratioValue = 1 / (1 + exp(-k * (ratioValue - x0))) - (1 / (1 + exp(k * x0)))

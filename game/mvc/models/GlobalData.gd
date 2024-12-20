@@ -132,13 +132,13 @@ static func set_difficulty(value : int) -> void:
 static func adjust_budget_initial() -> int:
 	match get_difficulty():
 		1:
-			return 7000000
+			return 9000000
 			#return 0
 		2:
-			return 4400000
+			return 6000000
 			#return 0
 		3:
-			return 2000000
+			return 4500000
 			#return 0
 	return -1
 
@@ -160,9 +160,9 @@ static func adjust_satisfaction() -> float:
 		1:
 			return 1
 		2:
-			return 0.9
+			return 1
 		3:
-			return 0.8
+			return 0.9
 	return -1
 
 # Ajuste le niveau en fonction de la difficulté
@@ -171,9 +171,9 @@ static func adjust_level() -> float:
 		1:
 			return 1
 		2:
-			return 0.9
+			return 1
 		3:
-			return 0.8
+			return 0.9
 	return -1
 
 # Ajuste l'état du département en fonction d'un coefficient et de la difficulté

@@ -85,6 +85,9 @@ static func get_mood(id : int) -> float:
 		return result[0]["mood"]
 	return -1.0
 
+
+
+
 # Setters
 static func set_mood(id : int, coeff: float) -> void:
 	coeff = max(min(1,coeff),0)

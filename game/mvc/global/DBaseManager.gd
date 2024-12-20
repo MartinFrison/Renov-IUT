@@ -52,14 +52,21 @@ func execute(query: String, params: Array = []) -> bool:
 	return true
 
 
-# Exécuter une requete SELECT
+# Execute une requete SQL select
 func get_entries(query: String, params: Array = []) -> Array:
 	var results = []
-	if execute(query, params) and db.query_result != null:
-		for row in db.query_result:
-			results.append(row)
+	if execute(query, params):
+		if db.query_result != null:
+			for row in db.query_result:
+				results.append(row)
+		else:
+			print("Aucun résultat trouvé pour la requête : ", query)
+	else:
+		print("Échec de l'exécution de la requête : ", query, " avec params : ", params)
 	return results
-	
+
+
+
 # Imprimer le résultat d'une requete SELECT
 # Fonction de service, par ailleurs inutile
 func print_entries(query: String, params: Array = []) -> void:

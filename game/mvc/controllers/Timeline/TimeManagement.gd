@@ -140,10 +140,8 @@ func mood_and_level_update() -> void:
 	# Satisfaction etudiante selon celle des profs
 	Study.teacher_adjust_mood()
 	
-	# Le niveau selon le nombre de prof et leur moods
-	Study.teacher_adjust_level()
 
-
+	
 
 # Ajuster le mood selon si les etudiants ont trop froid
 static func heat_adjust_mood() -> void:

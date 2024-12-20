@@ -78,7 +78,7 @@ static func populate():
 # pour un prof dont la satisfaction est 0.9 la nouvelle valeur sera 0.8
 static func mood_fluctuation(dept : String, value : float, coeff : float) -> void:
 	value = clamp(value,0,1)
-	var id = Student.get_dept_ids(dept)
+	var id = Teacher.get_dept_ids(dept)
 	for i in id:
 		# On rajoute un peu d'aléa
 		var random = Utils.randfloat_in_range(0.8,1.2)
@@ -87,11 +87,9 @@ static func mood_fluctuation(dept : String, value : float, coeff : float) -> voi
 			final_value += (1-value) * (random-1)
 		else:
 			final_value *= random
-		
 		# On applique la valeur avec son coefficient
 		var new_mood = Student.get_mood(i) * (1-coeff) + value * coeff
 		Teacher.set_mood(i, new_mood)
-
 
 
 # Fonction pour augmenter le salaire des enseignants
@@ -130,14 +128,12 @@ static func pay_adjust_mood() -> void:
 		var build = Building.get_building(code)
 		# Definition de la valeur avec un minimum de 0.4 pour le salaire minimal
 		var value = 0.4
-		value += (build.get_pay_teacher()-minimum_wage) / (maximum_wage-minimum_wage) * 0.6
+		value += float((build.get_pay_teacher()-minimum_wage)) / float((maximum_wage-minimum_wage)) * 0.6
 		# Le coeff de base est 0.2, plus le salaire est élevé plus le coeff l'est aussi
 		var coeff = 0.25
-		coeff = (build.get_pay_teacher()-minimum_wage) / (maximum_wage-minimum_wage) * 0.2 # Le max est donc 0.45
-		
-		# On applique la valeur avec un coeff de 35%
+		coeff += float((build.get_pay_teacher()-minimum_wage)) / float((maximum_wage-minimum_wage)) * 0.2 # Le max est donc 0.45
+		# On applique la valeur avec un coeff entre 25 et 45%%
 		Teaching.mood_fluctuation(code, value, coeff)
-
 
 
 

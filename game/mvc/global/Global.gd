@@ -11,6 +11,7 @@ var normal_inflation_rate = 0.057
 var indexation_rate = normal_inflation_rate - 0.01
 #var csv_path : String = "res://data/urgencies.csv"
 
+
 func create_iut_db():
 	var delete
 	delete = "DROP TABLE IF EXISTS Students"
@@ -28,7 +29,7 @@ func create_iut_db():
 		dept TEXT,
 		mood REAL CHECK(mood >= 0 AND mood <= 1),
 		level REAL CHECK(level >= 0 AND level <= 1),
-		base_level REAL CHECK(level >= -1 AND level <= 1)
+		base_level REAL CHECK(base_level >= -1 AND base_level <= 1)
 	);
 	"""
 
@@ -36,8 +37,7 @@ func create_iut_db():
 	CREATE TABLE IF NOT EXISTS Teachers (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		dept TEXT,
-		mood REAL CHECK(mood >= 0 AND mood <= 1),
-		full_time BOOLEAN
+		mood REAL CHECK(mood >= 0 AND mood <= 1)
 	);
 	"""
 
@@ -51,7 +51,6 @@ func create_iut_db():
 	);
 	"""
 
-
 	# Exécuter les requêtes de création de tables
 	var queries = [
 		create_students_table_query,
@@ -61,54 +60,11 @@ func create_iut_db():
 
 	for query in queries:
 		if !db.execute(query):
-			print("Erreur lors de la création de la table.")
-	print("Les bases de données on été créer")
-
-	#fill_notifications_from_csv(csv_path)
-	
-	# db.clear_tables()
-	
-# Remplit la table Notifications avec des événements contenus dans un fichier CSV
-#func fill_notifications_from_csv(file_path : String):
-#	return
-#	var file = FileAccess.open(file_path, FileAccess.READ)
-#	
-#	if !file:
-#		print("Erreur lors de l'ouverture du fichier CSV.")
-#		return
-#	
-#	# Lire la première ligne pour ignorer les en-têtes
-#	file.get_line()
-#
-#	# Lire le contenu du fichier et insérer dans la base de données
-#	while !file.eof_reached():
-#		var line = file.get_line()
-#		if line.begins_with("#"):
-#			continue
-#		var data = line.split(";")
-#
-#		if data.size() < 4:
-#			#print("Ligne incomplète : ", line)
-#			continue
-#
-#		var message = data[0].strip_edges()
-#		var duration = int(data[1].strip_edges())
-#		var is_reproductible = data[2].strip_edges() == "1"
-#		var needs_action = data[3].strip_edges() == "1"
-#
-#		var query = "INSERT INTO Notifications (message, duration, is_reproductible, needs_action) VALUES (?, ?, ?, ?)"
-#		if !db.execute(query, [message, duration, is_reproductible, needs_action]):
-#			print("Erreur lors de l'ajout de la notification.")
-#	file.close()
+			print("Erreur lors de la création de la table : ", query)
+	print("Les bases de données ont été créées")
 
 
-# Indexation : fonctions utilitaires
-#func dept_string_to_index(dept: String) -> int:
-#	var query = "SELECT id FROM Depts WHERE lower(name) = lower(?)"
-#	var result = db.get_entries(query, [dept])
-#	if result.size() > 0:
-#		return result[0]["id"] 
-#	return -1
+
 
 
 static func dept_index_to_string(index: int) -> String:
