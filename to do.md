@@ -1,13 +1,13 @@
 
 Autre:
-- Mise à jour de l'UML : Elena, Yasmine 
+- Mise à jour de l'UML : Yasmine 
 
 
 Code:
-- Mise à jours du tutoriel sur l'attractivité et les examens (et d'autre mécanique de jeu eventuellement) 
 - Pour le scénario rénovation gérer le problème lié au fait que l'on peut le finir en un trimestre en embauchant 150 ouvrier d'un coup
 
-
+Mise en forme:
+- Revoir toute la hiérachie et les noms de classe (la cohérence est noté)
 
 
 Fin de projet:
