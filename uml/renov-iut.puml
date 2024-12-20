@@ -1,731 +1,815 @@
-@startuml RenovIUTApp
-
-skinparam style strictuml
-skinparam classAttributeIconSize 0
-skinparam classFontStyle Bold
-hide enum methods
-
+@startuml
+'https://plantuml.com/class-diagram
 package application {
-	class RenovIUTApp
-	{
-		- _ready()
-		+ choiceDifficulty()
-		+ startGame()
-		+ close_app()
-		+ open_notif()
-		+ open_bankrupt()
-		+ open_building(id : Integer)
-		- _on_info_pressed()
-		- _on_chimie_pressed()
-		- _on_info_com_pressed()
-		- _on_tech_co_pressed()
-		- _on_genie_civil_pressed()
-	}
-}
+     class RenovIUTApp {
+    + static app: RenovIUTApp
+    - scene: Resource
+    '- illkirch: IUTFacade
+    - panelChoixScenario: Node2D
+    - loaded: Boolean
 
-package global {
-    class DBManager
-    {
-    	+ db : SQLite
-    	+ db_path : String
-    	- _init DBManager(path : String)
-    	+ open_db() : Boolean
-    	+ close_db()
-    	+ execute(query : String, params : String[*]) : Boolean
-    	+ get_entries(query : String, params : String[*]) : [*]
-    	+ clear_tables()
-    }
-
-    class Glob
-    {
-		+ {static} db : DBManager
-    	+ {static} ok : Boolean
-    	+ {static} normal_inflation_rate : Real
-    	+ {static} indexation_rate : Real
-    	+ {static} csv_path : String
-    	+ create_iut_db()
-    	+ fill_notifications_from_csv(file_path : String)
-    	+ dept_string_to_index(dept : String) : Integer
-    	+ dept_index_to_string(index : Integer) : String
-    	+ source_string_to_index(dept : String) : Integer
-    	+ source_index_to_string(index : Integer) : String
-    	+ {static} get_month_name(month : Integer) : String
-		+ randint_in_range(min : Integer, max : Integer) : Integer
-		+ randfloat_in_range(min : Real, max : Real) : Real
-		+ randfloat_in_square_range(min : Real, max : Real) : Real
-    }
-}
-
-package observer {
-		class ObserverBuilding {
-			+ {static} observer : [*]
-			+ {static} addObserver(0)
-			+ {static} notifyStateChanged()
-		}
-
-		class ObserverGlobalData {
-			+ {static} observer : [*]
-			+ {static} addObserver(0)
-			+ {static} notifyBudgetChanged()
-		}
-
-		class ObserverPopulation {
-			+ {static} observer : [*]
-			+ {static} addObserver(0)
-			+ {static} notifyLevelChanged()
-			+ {static} notifySatisfactionChanged()
-		}
-}
-
-package views {
-	package node2D {
-		class BuildingAction {
-			+ code : String
-			+ build : Building
-			- _ready()
-			- _process(delta : Real)
-			+ init(id : Integer)
-			+ show_data()
-			- _on_hire_teacher_pressed()
-			- _on_fire_teacher_pressed()
-			- _on_insule_pressed()
-			- _on_renove_pressed()
-			- _on_lock_pressed()
-			- _on_fire_worker_pressed()
-			- _on_fire_agent_pressed()
-			- _on_hire_worker_pressed()
-			- _on_hire_agent_pressed()
-			- _on_heat_pressed()
-			- _on_close_pressed()
-			- _on_increase_pay_pressed()
-			- _on_add_exem_end_pressed()
-			- _on_sub_exam_end_pressed()
-			- _on_add_exem_entry_pressed()
-			- _on_sub_exam_entry_pressed()
-		}
-
-		package bulle {
-			class BulleMessageScript {
-				- _message : String
-				- _ready()
-				- _process(delta : Real)
-				+ init(message : String)
-				- _input(event : InputEvent)
-				+ enter()
-			}
-
-			class BulleNotifScript {
-				- _message : String
-				- _object : String
-				+ tick : Integer
-				- _ready()
-				- _process(delta : Real)
-				+ init(objet : String, message : String, type : Integer)
-			}
-
-			class BulleQuestionScript {
-				- _question : String
-				- _fonctionResponse : String
-				- _reponse : String [*]
-				- _node : Node
-				- _ready()
-				- _process(delta : Real)
-				+ init(question : String, reponse : String[*] ,fonction : String, node : Node)
-				+ create_question_button(id : Integer)
-				- _on_answer_pressed(id : Integer)
-			}
-		}
-
-		package choix {
-			class ChoixDifficultyScript {
-				- _IUT : IUTFacade
-				- _app : RenovIUTApp
-				+ difficulty : Integer
-				+ init(iut : IUTFacade, app : RenovIUTApp)
-				- _ready()
-				- _process(delta : Real)
-				- _on_easy_pressed()
-				- _on_medium_pressed()
-				- _on_hard_pressed()
-				- _on_suivant_pressed()
-			}
-
-			class ChoixScenarioScript {
-				- _IUT : IUTFacade
-				- _app : RenovIUTApp
-				+ scenario : Integer
-				+ init(iut : IUTFacade, app : RenovIUTApp)
-				- _ready()
-				- _process(delta : Real)
-				- _on_button_election_pressed()
-				- _on_button_renovation_pressed()
-				- _on_suivant_pressed()
-			}
-		}
-    }
-
-	package node3D {
-		class Tree {
-			+ {static} trunc_path : String
-			+ {static} material_path : String
-			+ {static} texture_path : String
-			+ {static} mask_path : String
-			+ _ready()
-			+ apply_material_to_mesh_instances(node: Node3D, material: Material, trunc: Material)
-		}
-	}
-
-	package fin_jeu {
-		class BankruptScript {
-			- _ready()
-			- _process(delta : Real)
-		}
-
-		class FinElectionScript {
-			- _ready()
-			- _process(delta : Real)
-			+ show_result()
-		}
-
-		class FinRenovationScript {
-			- _ready()
-			- _process(delta : Real)
-			+ show_result()
-		}
-	}
-
-	package notif_list {
-		class NotifListScript {
-			+ notif : [*]
-			+ page : Integer
-			+ {static} page_size : Integer
-			+ buttons : Button[*]
-			- _ready()
-			+ open_page()
-			+ create_question_button(text : String, id : Integer, n : Integer)
-			- _on_next_pressed()
-			- _on_last_pressed()
-			+ notif_pressed(id : Integer)
-			- _on_close_pressed()
-		}
-	}
-
-	package stat {
-		class StatScript {
-			- _ready()
-			- _process()
-			+ notifyBudgetChanged()
-			+ notifyLevelChanged()
-			+ notifySatisfactionChanged()
-			+ updateDate()
-		}
-	}
-
-	class Menu {
-		+ _on_QuitterButton_pressed()
-		+ _on_FermerMenuButton_pressed()
-		+ _on_OuvrirPanelButton_pressed()
-	}
-}
-
-package controllers
-{
-		package timeline
-        {
-			class TimeManagement
-			{
-				- _scenario : Scenario
-				- {static} _pause : Boolean
-				- _bill : Bill
-				- _init(scenario : Scenario)
-				- _ready()
-				+ tick()
-                + wait(seconds : Real)
-                + end_of_month()
-				+ end_of_year()
-                + year_begin()
-				+ pause(p : Boolean)
-				+ daily_event() : Boolean
-				+ daily_mood_update(day : Integer)
-				+ daily_level_update(day : Integer)
-			}
-
-            abstract class Scenario
-		    {
-                - _name : String
-                - _init()
-                + get_scenario() : String
-                + {static} {abstract} get_description() : String
-            	+ {abstract} test_end_game_condition() : Boolean
-                + {abstract} end_game()
-                + {abstract} mid_game()
-				+ random_event_call(events_proba : Real)
-                + init_data()
-                + init_building()
-				+ {abstract} adjust_budget()
-				+ {abstract} adjust_budget_building()
-				+ {abstract} adjust_student_level(list : [*])
-				+ {abstract} adjust_student_satisfaction(list : [*])
-				+ {abstract} adjust_teacher_satisfaction(list : [*])
-				+ {abstract} adjust_dept_state()
-		    }
-
-            class ScenarioElection extends Scenario
-            {
-				- _progression : Integer
-				- _init()
-				+ {static} get_description() : String {implements}
-				+ test_end_game_condition() : Boolean {implements}
-				+ end_game() {implements}
-				+ mid_game() {implements}
-				+ random_event()
-				+ init_data()
-				+ adjust_budget() {implements}
-				+ adjust_budget_building() {implements}
-				+ adjust_student_level(list : [*]) {implements}
-				+ adjust_student_satisfaction(list : [*]) {implements}
-				+ adjust_teacher_satisfaction(list : [*]) {implements}
-				+ {adjust_dept_state() {implements}
-            }
-
-            class ScenarioRenovation extends Scenario
-            {
-				+ old_builds : Building[*]
-				- _progression : Boolean[*]
-				- _init()
-				+ {static} get_description() : String {implements}
-				+ test_end_game_condition() : Boolean {implements}
-				+ end_game() {implements}
-				+ mid_game() {implements}
-				+ random_event()
-				+ init_data()
-				+ adjust_budget() {implements}
-				+ adjust_budget_building() {implements}
-				+ adjust_student_level(list : [*]) {implements}
-				+ adjust_student_satisfaction(list : [*]) {implements}
-				+ adjust_teacher_satisfaction(list : [*]) {implements}
-				+ adjust_dept_state() {implements}
-            }
-
-			class Vote
-			{
-				+ {static} election_gagnee() : Boolean
-                + {static} nb_voix_per_dept(dept : String) : Integer
-                + {static} nb_voix_teacher_per_dept(dept : String) : Integer
-                + {static} nb_voix_student_per_dept(dept : String) : Integer
-                + {static} nb_voix_teacher() : Integer
-                + {static} nb_voix_student() : Integer
-                + {static} nb_voix_total() : Integer
-				+ {static} popularity_total() : Real
-				+ {static} popularity_per_dept(dept : String) : Integer
-				+ {static} popularity_among_teachers() : Integer
-				+ {static} popularity_among_teachers_per_dept(dept : String) : Integer
-				+ {static} popularity_among_students() : Integer
-				+ {static} popularity_among_students_per_dept(dept : String) : Integer
-				+ {static} logistic_function(x : Real, {static} k : Real) : Real
-			}
-    }
-
-    package campus
-    {
-        class Teaching
-        {
-			+ {static} teachers_base_nb : Integer[*]
-            + {static} hire_teachers(dept : String)
-            + {static} fire_teachers(dept : String)
-            + {static} populate()
-            + {static} boost_mood_teacher(dept : String, value : Real)
-            + {static} drop_mood_teacher(dept : String, value : Real)
-            + {static} increase_salary(dept : String)
-            + {static} teacher_resign()
-        }
-
-        class Study
-        {
-			+ {static} students_base_nb : Integer[*]
-			+ {static} fluct : Real
-			+ {static} exam_base_result : Real
-            + {static} populate_promo(dept : String, year : Integer)
-            + {static} populate()
-            + {static} populate_new_year(scenario : Scenario)
-            + {static} evaluate()
-            + {static} pass_dept_exam(dept : String) : Integer[*]
-            + {static} pass_next_year()
-            + {static} teacher_adjust_level(day : Integer)
-            + {static} door_adjust_mood(day : Integer)
-            + {static} boost_mood_student(dept : String, value : Real)
-            + {static} drop_mood_student(dept : String, value : Real)
-            + {static} boost_level_student(dept : String, value : Real)
-            + {static} drop_level_student(dept : String, value : Real)
-            + {static} student_resign()
-        }
-
-        class BuildingManagement
-        {
-			+ {static} rise_end_exam_difficulty(dept : String)
-			+ {static} decrease_end_exam_difficulty(dept : String)
-			+ {static} rise_entry_exam_difficulty(dept : String)
-			+ {static} decrease_entry_exam_difficulty(dept : String)
-			+ {static} advance_work(building : Building)
-			+ {static} start_insultation(building : Building) : Boolean
-			+ {static} start_renovation(building: Building) : Boolean
-			+ {static} fireWorker(dept : String)
-			+ {static} hireWorker(dept : String)
-            + {static} switchHeat(dept : String)
-            + {static} fireAgent(dept : String)
-            + {static} hireAgent(dept : String)
-            + {static} lockDoor(dept : String)
-            + {static} wear()
-        }
-
-        class Expense
-        {
-			+ {static} expense_global(amount : Integer)
-			+ {static} expense_dept(amount : Integer, dept : String)
-			+ {static} try_expense_global(amount : Integer) : Boolean
-			+ {static} try_expense_dept(amount : Integer, dept : String) : Boolean
-			+ {static} bankrupt()
-        }
-
-        class Bill
-        {
-			+ pay_teacher : Integer[*]
-			+ nb_pay_teacher : Integer
-			+ pay_agent : Integer[*]
-			+ nb_pay_agent : Integer
-			+ pay_worker : Integer[*]
-			+ nb_pay_worker : Integer
-			+ pay_heating : Integer[*]
-			+ previous_bill : Integer
-			+ reset_bill()
-			+ add_daily_expense()
-			+ pay_bill()
-			+ send_bill_detail()
-			+ sum_pay(table : Integer[*]) : Integer
-			+ get_previous_bill() : Integer
-        }
-    }
-
-	package event {
-		abstract class Event
-		{
-			- _question : bool
-			- _name : String
-			- _description : String
-			- _question_script : String
-			- _question_answer : String[*]
-			+ {static} create_event(id : Integer) : Event
-			- _init()
-			+ event_precondition() : Boolean
-			+ start_event()
-			+ {abstract} react_to_answer(answer : String)
-			+ get_question() : Boolean
-			+ get_name() : String
-			+ get_description() : String
-			+ get_question_script() : String
-			+ get_question_answer() : String[*]
-		}
-
-		class EventLegislatif {
-			- {static} _effectActif : Integer
-			- _init()
-			+ start_event() {redefines}
-			+ react_to_answer(answer : String) {implements}
-		}
-
-		class EventPiratage {
-			+ {static} cout : Integer
-			+ {static} secure : Boolean
-			- _init()
-			+ event_precondition() : Boolean {redefines}
-			+ start_event() {redefines}
-			+ react_to_answer(answer : String) {implements}
-		}
-    }
-
-}
-
-package models
-{
-    class globalData
-    {
-        - {static} _year : Integer
-		- {static} _month : Integer
-		- {static} _day : Integer
-        - {static} _budget : Integer
-        - {static} _difficulty : Integer
-        - {static} _pay_agent : Integer
-        - {static} _pay_worker : Integer
-        + {static} setBudget(montant : Integer)
-        + {static} addBudget(montant : Integer)
-        + {static} getBudget() : Integer
-        + {static} getTotalBudget() : Integer
-        + {static} get_pay_agent() : Integer
-        + {static} get_pay_worker() : Integer
-        + {static} setDate(day,month,year)
-        + {static} incrementDay()
-        + {static} isNewMonth() : Boolean
-        + {static} isEndofYear() : Boolean
-        + {static} isStartofYear() : Boolean
-        + {static} get_season() : Integer
-		+ {static} get_date() : String
-        + {static} get_difficulty() : Integer
-        + {static} set_difficulty(value : Integer)
-        + {static} adjust_budget_initial() : Integer
-        + {static} adjust_fund() : Real
-		+ {static} adjust_satisfaction() : Real
-		+ {static} adjust_level() : Real
-		+ {static} adjust_dept_state() : Real
-        + {static} adjust_event_proba() : Real
-    }
-
-    class Notification
-    {
-        + get_all_ids() : Integer[*]
-        + get_message(id : Integer) : String
-        + get_object(id : Integer) : String
-        + get_date(id : Integer) : String
-        + get_type(id : Integer) : Integer
-        + add_notification(message : String, date : String, type : Integer)
+    + _ready()
+    + startGame()
+    + game_loaded()
+    + _on_next_pressed()
+    + close_app()
+    + open_notif()
+    + open_bankrupt()
+    + open_building(id: Integer)
+    + building_work(id: Integer, visible: Boolean)
+    + notifyDateChanged()
+    + notifyStateChanged()
      }
 
-	package human {
-		class Students
-		{
-                + {static} get_all_ids() : Integer[*]
-                + {static} get_dept_ids(dept : String) : Integer[*]
-				+ {static} add_student(dept : String, year : Integer)
-				+ {static} rm_student_by_id(id : Integer)
-				+ {static} rm_students_by_dept(dept : String, nb : Integer)
-				+ {static} rm_student_by_mood(mood : Real)
-				+ {static} get_year(id : Integer) : Integer
-				+ {static} get_dept(id : Integer) : String
-				+ {static} get_mood(id : Integer) : Real
-				+ {static} get_level(id : Integer) : Real
-				+ {static} set_year(id : Integer, year : Integer)
-				+ {static} set_mood(id : Integer, coeff : Real)
-				+ {static} set_level(id : Integer, coeff : Real)
-				+ {static} compute_nb_per_dept(dept : String) : Real
-				+ {static} avg_mood_per_dept(dept : String) : Real
-				+ {static} avg_level_per_dept(dept : String) : Real
-				+ {static} compute_nb() : Real
-				+ {static} avg_mood() : Real
-				+ {static} avg_level() : Real
-				+ {static} success_rate_per_dept(dept : String) : Real
-				+ {static} success_rate() : Real
-		}
-		class Teachers
-		{
-                + {static} get_all_ids() : Integer[*]
-                + {static} get_dept_ids(dept : String) : Integer[*]
-				+ {static} add_teacher(dept : String, full_time : Boolean)
-				+ {static} rm_teacher(id : Integer)
-				+ {static} rm_teachers_by_dept(dept : String, nb : Integer)
-				+ {static} rm_teachers_by_mood(mood : Real)
-				+ {static} get_dept(id : Integer) : String
-				+ {static} get_mood(id : Integer) : Real
-				+ {static} get_if_fulltime(id : Integer) : Boolean
-				+ {static} set_mood(id : Integer, coeff : Real)
-				+ {static} set_fulltime(id : Integer, status : Boolean)
-				+ {static} compute_nb_per_dept(dept : String) : Real
-				+ {static} avg_mood_per_dept(dept : String) : Real
-				+ {static} compute_nb() : Real
-				+ {static} avg_mood() : Real
-		}
-        class StudentSQLTable
-        {
-            + id : Integer <<PK>>
-            + year : Integer [1..3]
-            + dept : String
-            + mood : Real [0, 1]
-            + level : Real [0, 1]
-        }
-        class TeacherSQLTable
-        {
-            + id : Integer <<PK>>
-            + dept : String
-            + mood : Real [0, 1]
-            + full-time : Boolean
-        }
-    }
+}
+package Controllers{
+    package campus{
 
-	package material
-    {
-		class Building
-		{
-			+ {static} coeffTempsRenovation : Real
-			+ {static} coeffTempsInsulation: Real
-			+ {static} MonthlySquareMetersHeatingCost : Integer
-			- {static} _buildingDictionary : Dictionary
-			- {static} _total_buildings_under_renovation : Integer
-			- _age : Integer
-            - _doorLocked : Boolean
-		    - _surface : Integer
-			- _heating : Boolean
-			- _maintenance_agents_nb : Integer
-            - _code : String
-            - _isolation : Real
-            - _inventory : Real
-            - _ouvriers : Integer
-            - _grevistes : Integer
-            - _is_insulation_underway : Boolean
-            - _is_renovation_underway : Boolean
-            - _is_budget : Integer
-            - _pay_teacher : Integer
-            - _entry_exam : Real
-            - _end_exam : Real
 
-            - _init(age, isolation, surface, heating, maintenance_agents_nb, code, inventory)
-            + {static} get_building(code : String) : Building
-			+ get_code() : String
-			+ get_pay_teacher() : Integer
-			+ get_budget() : Integer
-            + get_age() : Integer
-            + get_isolation() : Real
-            + get_inventory() : Real
-            + get_surface() : Integer
-            + is_heating() : Boolean
-            + get_agents_nb() : Integer
-            + get_ouvriers() : Integer
-            + get_grevistes() : Integer
-            + is_insulation_underway() : Boolean
-            + is_renovation_underway() : Boolean
-            + get_total_buildings_under_renovation() : Integer
-			+ isDoorLocked() : Boolean
-			+ get_exam_entry() : Real
-			+ get_exam_end() : Real
-			+ set_pay_teacher(amount : Integer)
-			+ setHeat(heat : Boolean)
-			+ addIsolation(value : Real)
-			+ setInventory(value : Real)
-			+ set_insulation_underway(underway : Boolean)
-			+ set_renovation_underway(underway : Boolean)
-			+ set_budget(value : Integer)
-			+ setDoorLocked(locked : Boolean)
-			+ set_exam_entry(value : Real)
-			+ set_exam_end(value : Real)
-			+ add_pay_teacher(amount : Integer)
-			+ add_ouvriers()
-			+ remove_ouvrier()
-			+ add_agent()
-			+ rm_agent()
-			+ addIsolation(value : Integer)
-			+ addInventory(amount : Integer)
-			+ add_budget(amount : Integer)
-			+ start_insulation_work()
-			+ stop_insulation_work()
-			+ start_renovation_work()
-			+ stop_renovation_work()
-			+ convert_ouvriers_to_grevistes(n : Integer)
-			+ convert_grevistes_to_ouvriers(n : Integer)
-			+ estimated_insulation_worktime() : Integer
-			+ estimated_renovation_worktime() : Integer
-		}
+       class Budget {
+           - pay_teacher : Integer [*]
+           - nb_pay_teacher : Integer
+           - pay_worker : Integer[*]
+           - nb_pay_worker : Integer
+           - pay_heating : Integer[*]
+           - previous_bill : Integer
 
-	    class Fund
-		{
-			+ add_fund(source : String, amount : Real, destination : String?, time : Integer)
-			+ rm_fund_by_id(i : Integer)
-			+ rm_fund_by_source(source : String)
-		    + get_source(id : Integer) : String
-			+ get_amount(id : Integer) : Real
-			+ get_area(id : Integer) : String?
-			+ get time(id : Integer) : Integer
-			+ set_area(id : Integer, dest : String)
-			+ set_time(id : Integer, time : Integer)
-			+ total() : Real
-			+ total_per_dept(dept : String) : Real
-			+ inflation_adjusted(indexation_rate : Real)
-			+ normal_inflation_adjusted()
-			+ check_availability(amount : Real, dest : String) : Boolean
-			+ forecast() : Real
-		}
+           + reset_bill()
+           + add_daily_expense()
+           + pay_bill()
+           + send_bill_detail()
+           + sum_pay(table : Integer[*] ) : Integer
+           + get_previous_bill() : Integer
+           + send_fund()
+           + static init_budget()
+           + static init_budget_building(build : Building)
+       }
 
-        class FundSQLTable
-        {
-            + id : Integer <<PK>>
-            + amount : Real
-            + source : String
-            + area : String
-            + time : Integer
-        }
+       class BuildingManagement {
+           + {static} init_building()
+           + {static} rise_end_exam_difficulty(dept : String)
+           +{static}decrease_end_exam_difficulty(dept : String)
+           + {static} rise_entry_exam_difficulty(dept : String)
+           + {static} decrease_entry_exam_difficulty(dept : String)
+           + {static} advance_work(building : Building)
+           + {static}start_renovation(building : Building) : Boolean
+           +{static} fireWorker(dept : String)
+           + {static} hireWorker(dept : String)
+           + {static}switchHeat(dept : String)
+           + {static}fireAgent(dept : String)
+           + {static} hireAgent(dept : String)
+           +{static}lockDoor(dept : String)
+           + {static} wear()
+           + {static} compute_attractivity()
+           + {static} adjust_attractivity()
+       }
 
-        class NotificationSQLTable
-        {
-            + id : Integer <<PK>>
-            + message : String
-            + objet : String
-            + date : Date
-            + type : int
-        }
+       class Expense {
+           + {static} expense_global(amount : Integer)
+           + {static} expense_dept(amount : Integer, dept : String)
+           + {static} try_expense_global(amount : Integer) : Boolean
+           + {static} try_expense_dept(amount : Integer, dept : String) : Boolean
+           + {static} bankrupt()
+       }
 
-        class DeptSQLTable
-        {
-            + id : Integer <<PK>>
-            + name : String
-        }
+       class Study {
+           - students_base_nb : Integer[*]
+           - fluct : Float
+           - exam_base_result : Float
 
-        class SourceSQLTable
-        {
-            + id : Integer <<PK>>
-            + name : String
+           + {static} populate_promo(dept : Integer, year : Integer) : Integer
+           + {static} populate()
+           + {static} populate_new_year(scenario : Scenario)
+           + {static} pass_dept_exam(dept : String) : [*]
+           + {static} pass_next_year()
+           + {static} teacher_adjust_level()
+           + {static} teacher_adjust_mood()
+           + {static} door_adjust_mood()
+           + {static} mood_fluctuation(dept : String, value : Float, coeff : Float)
+           + {static} level_fluctuation(dept : String, value : Float, coeff : Float)
+           + {static} student_resign()
+       }
+
+       class Teaching {
+           - teachers_base_nb : Integer[*]
+           - minimum_wage : Integer
+           - maximum_wage : Integer
+
+           + static hire_teachers(dept : String, force : Boolean)
+           + static fire_teachers(dept : String)
+           + static populate()
+           + static mood_fluctuation(dept : String, value : Float, coeff : Float)
+           + static increase_salary(dept : String)
+           + static decrease_salary(dept : String)
+           + static teacher_resign()
+           + static pay_adjust_mood()
        }
     }
+
+    package Timeline
+    {
+       Abstract class Scenario {
+           - _name : String
+
+           + init()
+           + get_scenario() : String
+           + {static} get_description() : String
+           + game_start()
+           + test_end_game_condition() : Boolean
+           + end_game()
+           + mid_game()
+           + player_report() : String
+           + side_effect() : String
+       }
+       class ScenarioElection {
+           - _progression : Integer
+
+           + init()
+           + game_start()
+           + {static} get_description() : String
+           + test_end_game_condition() : Boolean
+           + end_game()
+           + mid_game()
+           + player_report() : String
+       }
+       class ScenarioElitisme {
+           - _progression : Integer
+
+           + init()
+           + game_start()
+           + {static} get_description() : String
+           + test_end_game_condition() : Boolean
+           + end_game()
+           + mid_game()
+           + player_report() : String
+       }
+
+
+       class ScenarioRenovation {
+           '- old_builds : Building[*]
+           - _progression : Boolean[*]
+
+           + init()
+           + game_start()
+           + static get_description() : String
+           + test_end_game_condition() : Boolean
+           + end_game()
+           + mid_game()
+           + building_to_renov_wear()
+           + player_report() : String
+       }
+       class TimeManagement {
+          ' - _tuto : Tutorial
+          ' - _scenario : Scenario
+          ' - _budget : Budget
+
+           + _init(scenario : Scenario, tuto : Tutorial)
+           + start()
+           + next_Trimestre()
+           + Event() : Boolean
+           + mood_and_level_update()
+           + {static} heat_adjust_mood()
+           + {static}  inventory_adjust_mood()
+           + {static}  renovation_adjust_mood()
+       }
+
+       class Tutorial {
+           - _tutorial : Boolean
+           '- _tuto_buble : BulleTutorial
+           - _trimester : Integer
+
+           + _init(tuto : Boolean)
+           + _ready()
+           + _process(delta : float)
+           + tuto_next()
+           + tuto_trimester1()
+           + tuto_trimester2()
+           + tuto_trimester3()
+           + tuto_trimester4()
+           + tuto_trimester5()
+       }
+
+
+       class Vote {
+           +{static} election_gagnee() : Boolean
+
+           +{static} nb_voix_teacher_per_dept(dept: String) : Integer
+           {+static} nb_voix_student_per_dept(dept: String) : Integer
+           +{static} nb_voix_per_dept(dept: String) : Integer
+           +{static} nb_voix_teacher() : Integer
+           +{static} nb_voix_student() : Integer
+           +{static} nb_voix_total() : Integer
+
+           +{static} popularity_total() : Float
+           +{static} popularity_among_students() : Integer
+           +{static} popularity_among_teachers() : Integer
+           +{static} popularity_per_dept(dept: String) : Integer
+
+           +{static} popularity_among_teachers_per_dept(dept: String) : Integer
+           +{static} popularity_among_students_per_dept(dept: String) : Integer
+
+           +{static} logistic_function(x: Float, k: Float ) : Float
+       }
+
+    }
+    class BulleGestion {
+        +{static} liste_notif_count : [*]
+
+        +{static} send_message(message : String, notif : Boolean)
+        +{static} send_notif(objet : String, message : String, type : Integer)
+    }
+    class IUTFacade {
+        - _tuto : Tutorial
+        - _scenario : Scenario
+        - _time : TimeManagement
+        - _id : Integer
+
+        chooseMode(scenario : Integer, difficulty:Integer)
+        startGame()
+    }
+
+
+}
+package global{
+   class DBManager {
+       - db: SQLite
+       - db_path: String
+
+       + _init(path: String)
+       + open_db() : Boolean
+       + close_db()
+       + execute(query: String, params: [*]) : Boolean
+       + get_entries(query: String, params: [*]) : [*]
+       + print_entries(query: String, params: [*])
+       + clear_tables()
+   }
+   class Global {
+       '- db : DBManager
+       - ok : Boolean
+       - normal_inflation_rate : Float
+       - indexation_rate : Float
+
+       + create_iut_db()
+       +{static} dept_index_to_string(index : Integer) : String
+       +{static} dept_string_to_index(source : String) : Integer
+       +{static} get_month_name(month : Integer) : String
+       + randint_in_range(min : Integer, max : Integer) : Integer
+       + randfloat_in_range(min : Float, max : Float) : Float
+       + randfloat_in_square_range(min : Float, max : Float) : Float
+   }
+
+
+
+}
+package Models{
+   class GlobalData {
+       +{static} _year : Integer
+       +{static} _month : Integer
+       +{static} _day : Integer
+       +{static} _budget : Integer
+      + {static} _difficulty : Integer
+      + {static} _attractivity : Float
+       +{static} _pay_worker : Integer
+
+       +{static} setBudget(montant : Integer)
+       +{static} addBudget(montant : Integer)
+       +{static} getBudget() : Integer
+       +{static} getTotalBudget() : Integer
+       +{static} get_pay_worker() : Integer
+
+       +{static} setDate(day : Integer, month : Integer, year : Integer)
+       +{static} get_attractivity() : Float
+      + {static} set_attractivity(value : Float)
+       +{static} incrementDay()
+       +{static} incrementTrimestre()
+      + {static} isNewMonth() : Boolean
+      + {static} isEndofYear() : Boolean
+       +{static} isStartofYear() : Boolean
+       +{static} get_season() : Integer
+      + {static} get_year_to_str() : String
+      + {static} get_season_text() : String
+      + {static} get_date() : String
+     +  {static} get_difficulty() : Integer
+      + {static} set_difficulty(value : Integer)
+
+      + {static} adjust_budget_initial() : Integer
+       +{static} adjust_fund() : Float
+      + {static} adjust_satisfaction() : Float
+       +{static} adjust_level() : Float
+      + {static} adjust_dept_state() : Float
+      + {static} adjust_event_proba() : Float
+      + {static} formatBudget(number : Integer) : String
+   }
+   class Notification {
+     + {static} get_all_ids():[*]
+     + {static} get_message(id: Integer): String
+     + {static} get_object(id: Integer): String
+     + {static} get_date(id: Integer): String
+     + {static} get_type(id: Integer): Integer
+     + {static} add_notification(message: String, object: String, date: String, type: Integer)
+   }
+
+   package humain{
+       class Student {
+         +{static} _graduate: Integer
+         +{static} _engineering: Integer
+         +{static} student_id_counter: Integer
+
+         +{static} get_graduate(): Integer
+         +{static} add_graduate()
+        + {static} get_engineering(): Integer
+         +{static} add_engineering()
+         +{static} get_all_ids(): [*]
+         +{static} get_dept_ids(dept: String):[*]
+         +{static} add_student(dept: String, year: Integer): Integer
+        + {static} rm_student_by_id(id: Integer)
+        + {static} rm_students_by_dept(dept: String, nb: Integer)
+         +{static} rm_student_by_mood(mood: Float)
+
+         +{static} get_year(id: Integer): Integer
+         +{static} get_dept(id: Integer): String
+        + {static} get_mood(id: Integer): Float
+        + {static} get_level(id: Integer): Float
+         +{static} get_base_level(id: Integer): Float
+
+        + {static} set_year(id: Integer, new_year: Integer)
+         +{static} set_mood(id: Integer, coeff: Float)
+         +{static} set_level(id: Integer, coeff: Float)
+        + {static} set_base_level(id: Integer, coeff: Float)
+
+         +{static} compute_nb_per_dept(dept: String): Float
+        + {static} avg_mood_per_dept(dept: String): Float
+        + {static} avg_level_per_dept(dept: String): Float
+        + {static} compute_nb(): Float
+         +{static} avg_mood(): Float
+         +{static} avg_level(): Float
+         +{static} success_rate_per_dept(dept: String): Float
+         +{static} success_rate(): Float
+       }
+
+       class Teacher {
+         +{static} teacher_id_counter: Integer
+
+         +{static} get_all_ids():[*]
+         +{static} get_dept_ids(dept: String): [*]
+         +{static} add_teacher(dept: String): Integer
+         +{static} rm_teacher_by_id(id: Integer)
+         +{static} rm_teachers_by_dept(dept: String, nb: Integer)
+         +{static} rm_teacher_by_mood(mood: Float)
+
+         +{static} get_dept(id: Integer): String
+         +{static} get_mood(id: Integer): Float
+         +{static} set_mood(id: Integer, coeff: Float)
+
+         +{static} compute_nb_per_dept(dept: String): Integer
+         +{static} avg_mood_per_dept(dept: String): Float
+         +{static} compute_nb(): Float
+         +{static} avg_mood(): Float
+       }
+   }
+   package material{
+       class Building {
+         +{static} fixed_cost_renovation: Integer
+         +{static} coeffTempsRenovation: Integer
+         +{static} MonthlySquareMetersHeatingCost: Integer
+         +{static} _buildingsDictionary: Dictionary
+         +{static} _total_buildings_under_renovation: Integer
+
+         -_age: Integer
+         -_doorLocked: Boolean
+         -_surface: Integer
+         -_heating: Boolean
+         -_code: String
+         -_inventory: Float
+         -_ouvriers: Integer
+         -_is_renovation_underway: Boolean
+         -_budget: Integer
+         -_pay_teacher: Integer
+         -_entry_exam: Float
+         -_end_exam: Float
+
+         +{static} get_building(code: String): Building
+         +get_code(): String
+         +get_pay_teacher(): Integer
+         +get_budget(): Integer
+         +get_age(): Integer
+         +get_inventory(): Float
+         +get_surface(): Integer
+         +is_heating(): Boolean
+         +get_ouvriers(): Integer
+         +is_renovation_underway(): Boolean
+         +{static} get_total_buildings_under_renovation(): Integer
+         +isDoorLocked(): Boolean
+         +get_exam_entry(): Float
+         +get_exam_end(): Float
+
+         +set_pay_teacher(amount: Integer)
+         +setHeat(heat: Boolean)
+         +setInventory(value: Float)
+         +set_renovation_underway(underway: Boolean)
+         +set_budget(value: Integer)
+         +setDoorLocked(locked: Boolean)
+         +set_exam_entry(value: Float)
+         +set_exam_end(value: Float)
+
+         +add_pay_teacher(amount: Integer)
+         +add_ouvrier()
+         +remove_ouvrier()
+         +addInventory(value: Integer)
+         +add_budget(amount: Integer)
+
+         +start_renovation_work()
+         +stop_renovation_work()
+         +estimated_renovation_worktime(): Integer
+       }
+
+   }
+
+
+}
+package observer{
+   class ObserverBuilding {
+       - {static} Observer : []
+       +{static} addObserver(O)
+       + {static} notifyStateChanged()
+   }
+   class ObserverGlobalData {
+       +{static} Observer: []
+       +{static} addObserver(O)
+       +{static} notifyBudgetChanged()
+       +{static} notifyDateChanged()
+       +{static} notifyAttractivityChanged()
+   }
+   class ObserverPopulation {
+       +{static} Observer: []
+       +{static} addObserver(O)
+       +{static} notifyLevelChanged()
+       +{static} notifySatisfactionChanged()
+   }
+}
+
+package views{
+  package node3D {
+  	    package Character
+  	    {
+  	       class Bonhomme {
+                 + distance: float
+                 + animation_player: AnimationPlayer
+                 - visible_summer: Boolean
+
+                 + _ready()
+                 + content()
+                 + facher()
+                 + setVisible()
+             }
+             class Bonhommes {
+                 - notif: [*]
+                 - page: Integer
+                 - page_size: Integer
+                 - buttons: Button[*]
+
+                 + _ready()
+                 + _process(delta: float)
+                 + open_page()
+                 + create_question_button(text: String, id: Integer, n: Integer)
+                 + _on_next_pressed()
+                 + _on_last_pressed()
+                 + notif_pressed(id: Integer)
+                 + _on_close_pressed()
+             }
+
+  	    }
+  	    package Tree{
+  	       class Tree{
+             		+ {static} trunc_path : String
+             		+ {static} material_path : String
+             		+ {static} texture_path : String
+             		+ {static} mask_path : String
+              	+ _ready()
+                  + _process(delta: float)
+                  + apply_material_to_mesh_instances(node: Node3D, material: Material, trunc: Material)
+                  + notifyDateChanged()
+                  + summer()
+                  + winter()
+                  + printer()
+                  + autumn()
+             }
+  	    }
+  	    class CameraRoot {
+              - _default_scale:  Vector3
+              - _rot_Y:float
+
+              + _ready()
+              + _process(delta: float)
+              + curve_scale(degrees: float): float
+              + rotate_root(coeff: float)
+              + _input(event: InputEvent)
+              + rotate_tutorial(time: float)
+          }
+          class Camera3D {
+              - _default_scale: Vector3[*]
+              - _building:MeshInstance3D[*]
+              - big: Boolean
+
+              + _ready()
+              + _input(event: InputEvent)
+              + handle_3d_click(event: InputEventMouseButton)
+              + handle_hover(event: InputEventMouseMotion)
+              + big_build(build: Integer)
+          }
+  }
+
+  package node2D {
+
+  		package BuildingAction {
+  		    class BuildingAction {
+                  - code: String
+                  - build: Building
+                  - click: AudioStreamPlayer2D
+                  - under_construction: AudioStreamPlayer2D
+                  - is_message_active: Boolean
+
+                  + _ready()
+                  + _process(delta: float)
+                  + init(id: integer)
+                  + show_data()
+                  + check_and_update_buttons()
+                  + _on_hire_teacher_pressed()
+                  + _on_fire_teacher_pressed()
+                  + _on_renove_pressed()
+                  + _on_lock_pressed()
+                  + _on_fire_worker_pressed()
+                  + _on_hire_worker_pressed()
+                  + _on_heat_pressed()
+                  + _on_close_pressed()
+                  + _on_increase_pay_pressed()
+                  + _on_add_exem_end_pressed()
+                  + _on_sub_exam_end_pressed()
+                  + _on_add_exem_entry_pressed()
+                  + _on_sub_exam_entry_pressed()
+                  + _on_decrease_pay_pressed()
+                  + _on_sub_teacher_mouse_entered()
+                  + _on_sub_worker_mouse_entered()
+                  + _on_add_teacher_mouse_entered()
+                  + _on_add_worker_mouse_entered()
+                  + _on_heat_mouse_entered()
+              }
+              class Icon {
+                  - image_dir: String
+                  - image_name: String
+
+                  + _ready()
+                  + load_image(path: String)
+                  + change_image(new_path: String)
+              }
+
+
+
+  		}
+
+  		package bulle {
+  			class BulleMessageScript {
+  				- _message : String
+  				- _ready()
+  				- _process(delta : Real)
+  				+ init(message : String)
+  				- _input(event : InputEvent)
+  				+ enter()
+  			}
+
+  			class BulleNotifScript {
+  				- _message : String
+  				- _object : String
+  				+ tick : Integer
+  		        + _ready()
+                  + _process(delta: float)
+                  + delete()
+                  + init(objet: String, message: String, type: integer)
+                  + _input(event : InputEvent)
+                  + enter()
+  			}
+
+  			class BulleQuestionScript {
+  				- _question: String
+                  - _fonctionReponse: String
+                  - _reponse: String[*]
+                  - _node: Node
+                  - tick: Integer
+
+                  + _ready()
+                  + _process(delta: float)
+                  + init(question: String, reponse: String[*], fonction: String, node: Node)
+                  + create_question_button(id: Integer)
+                  + _on_answer_pressed(id: Integer)
+                  + delete()
+  			}
+  			class BulleTutorial {
+                  - buble: Panel
+                  - style: StyleBoxFlat
+                  - _message: String
+                  - _objet: String
+                  - tick: Integer
+
+                  + _ready()
+                  + _process(delta: float)
+                  + hide_buble()
+                  + show_buble(sx: Integer, sy: Integer, px: Integer, py: Integer)
+                  + set_border_width(width: Integer)
+                  + special_effect()
+              }
+
+  		}
+
+  		package choixScenario {
+
+  			class ChoixScenarioScript_ {
+                  '- _IUT: IUTFacade
+                  '- _app: RenovIUTApp
+                  - scenario: Integer
+                  - difficulty: Integer
+
+                  + _ready()
+                  + _process(delta: float)
+                  + init(iut: IUTFacade, app: RenovIUTApp)
+                  + _on_button_election_pressed()
+                  + _on_button_renovation_pressed()
+                  + _on_suivant_pressed()
+                  + _on_button_elitism_pressed()
+                  + _on_switch_tuto_option_toggled(toggled_on: Boolean)
+              }
+
+
+  		}
+  		package finJeu {
+          		class BankruptScript {
+          			 + _ready()
+                       + _process(delta: float)
+          		}
+
+          		class FinElectionScript {
+          			- _ready()
+          			- _process(delta : float)
+          			+ show_result()
+          		}
+
+          		class FinRenovationScript {
+          			- _ready()
+          			- _process(delta : float)
+          			+ show_result()
+          		}
+          		class FinEletismeScript {
+                       + _ready()
+                       + _process(delta: float)
+                       + show_bilan()
+                       + _on_QuitterButton_pressed(toggled_on: Boolean)
+                  }
+          }
+          package Menu{
+                  class Menu {
+          	     	+ _on_QuitterButton_pressed()
+                      + _on_FermerMenuButton_pressed()
+                      + _on_OuvrirPanelButton_pressed()
+          	    }
+
+          }
+          package notif_list {
+          		class NotifListScript {
+          			- notif: [*]
+                      - page: integer
+                      - page_size: Integer
+                      - buttons: Button[*]
+
+                      + _ready()
+                      + _process(delta: float)
+                      + open_page()
+                      + create_question_button(text: String, id: Integer, n: Integer)
+                      + _on_next_pressed()
+                      + _on_last_pressed()
+                      + notif_pressed(id: Integer)
+                      + _on_close_pressed()
+          		}
+          }
+          package stat {
+          		class StatScript {
+          			- _ready()
+          			- _process()
+          			+ notifyBudgetChanged()
+          			+ notifyLevelChanged()
+          			+ notifySatisfactionChanged()
+          			+ updateDate()
+          		}
+          }
+
+
+
+      }
+
+
+
+
+
 }
 
 
 
 
-'Appli'
-RenovIUTApp ...> views
-RenovIUTApp .> Glob
-Glob *--> DBManager
-
-'Vue utilise modèle'
-BuildingView ...> Building
-Stats ....> models
-
-'Vue utilise controller'
-GameOver ..> Vote
-Reaction o--> Action
-Menu ..> Scenario
-
-'Controller utilse modèle'
-Study ..> Students
-Teaching ..> Teachers
-Financing ..> Fund
-Action *---> Building
-Action *--> Call
-Action *--> Event
-BuildingManagement ..> Building
-TimeManagement ..> global_data
-
 'Modèle utilise SQL'
-Students ..> StudentSQLTable
-Teachers ..> TeacherSQLTable
-Fund ....> FundSQLTable
-Call ....> NotificationSQLTable
-TeacherSQLTable ..> DeptSQLTable
-StudentSQLTable ..> DeptSQLTable
-FundSQLTable ..> DeptSQLTable
-NotificationSQLTable ..> DeptSQLTable
-FundSQLTable ..> SourceSQLTable
-Event ..> ChoiceSQLTable
-Event ..> EventSQLTable
-Event ..> ConsequencesSQLTable
-
-'Heritage'
-Action -|> Urgent
-Action -|> Planified
-Scenario --|> ScenarioElection
-Scenario --|> ScenarioRenovation
-
-'Autre'
-TimeManagement *--> Scenario
-Financing ..> Scenario
-Building o--> Building
+Student ..> StudentSQLTable
+Teacher ..> TeacherSQLTable
 
 
+
+
+RenovIUTApp *-- IUTFacade : compose
+
+        RenovIUTApp --> ObserverBuilding : observe
+        RenovIUTApp --> ObserverGlobalData : observe
+        RenovIUTApp --> ObserverPopulation : observe
+        RenovIUTApp ..>BuildingAction : affiche
+        RenovIUTApp ..> ChoixScenarioScript : initialise scénario
+        RenovIUTApp ..> NotifListScript : affiche notifications
+        RenovIUTApp ..> BankruptScript : montre faillite
+        RenovIUTApp ..> FinElectionScript : affiche fin d'élection
+        RenovIUTApp ..>FinRenovationScript : affiche fin de rénovation
+        RenovIUTApp ..> FinEletismeScript : affiche fin d'élitisme
+
+        RenovIUTApp ..> Vote : utilise
+        RenovIUTApp ..>GlobalData : utilise
+        RenovIUTApp ..> Notification : utilise
+        RenovIUTApp ..> Tutorial : utilise
+ RenovIUTApp  *--> "1\n - illkirch" IUTFacade
+
+
+
+
+
+
+ ChoixScenarioScript  *--> "1\n - build" BuildingAction
+
+ ChoixScenarioScript  o--> "1\n - _app" RenovIUTApp
+
+ ChoixScenarioScript  o--> "1\n - _IUT" IUTFacade
+ObserverBuilding --|>Node
+Building ..> GlobalData
+Teacher --|> Node
+Student --|> Node
+Notification --|> Node
+ Global o--> "1\n - _db" DBManager
+
+Global --|> Node
+DBManager --|> Node
+ Node <|-- IUTFacade
+    IUTFacade o--> "1\n - _tuto" Tutorial
+    IUTFacade o--> "1\n - _scenario" Scenario
+    IUTFacadeo--> "1\n - _time" TimeManagement
+    IUTFacade ..> GlobalData
+
+
+Vote ..> Teacher
+           Vote ..> Student
+           Vote ..> GlobalData
+
+BulleGestion ..> Notification
+BulleGestion ..> GlobalData
+BulleGestion ..> RenovIUTApp
+
+    Object<|--Vote
+           Tutorial--|>Node3D
+           Tutorial"1" o--> "1\n - _tuto_buble" BulleTutorial
+
+
+
+
+
+
+           Scenario <|-- ScenarioElitisme
+           Scenario <|-- ScenarioRenovation
+
+    ScenarioRenovation "1" o--> "1\n - old_Builds" Building
+    TimeManagement "1" o--> "1\n - _tuto" Tutorial
+    TimeManagement "1" o--> "1\n - _scenario" Scenario
+    TimeManagement"1" o--> "1\n - _budget" Budget
+           Scenario <|-- ScenarioElection
+           Scenario --|>Node
+
+       RefCounted <|-- Teaching
+
+
+
+       RefCounted <|-- Study
+
+
+
+       Node <|-- Expense
+
+
+
+
+       RefCounted  <|--  BuildingManagement
+
+
+
+       Node <|-- Budget
+       Budget ....> Building :"use"
 
 @enduml
-
