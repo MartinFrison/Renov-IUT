@@ -275,6 +275,7 @@ static func adjust_attractivity() -> void:
 		fluctuation = Utils.randfloat_in_range(1.0, 1.2)
 	else: # donner une chance, même
 		fluctuation = Utils.randfloat_in_range(0.9, 1.1)
+	new_value = GlobalData.get_attractivity()
 	new_value *= fluctuation
 	if new_value > 1:
 		new_value = .99
