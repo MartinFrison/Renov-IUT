@@ -53,7 +53,7 @@ package Controllers{
            + {static} decrease_entry_exam_difficulty(dept : String)
            + {static} advance_work(building : Building)
            + {static}start_renovation(building : Building) : Boolean
-           +{static} fireWorker(dept : String)
+           + {static} fireWorker(dept : String)
            + {static} hireWorker(dept : String)
            + {static}switchHeat(dept : String)
            + {static}fireAgent(dept : String)
@@ -121,7 +121,7 @@ package Controllers{
            + player_report() : String
            + side_effect() : String
        }
-       class ScenarioElection {
+       class ScenarioElection extends Scenario {
            - _progression : Integer
 
            + init()
@@ -132,7 +132,7 @@ package Controllers{
            + mid_game()
            + player_report() : String
        }
-       class ScenarioElitisme {
+       class ScenarioElitisme extends Scenario {
            - _progression : Integer
 
            + init()
@@ -145,7 +145,7 @@ package Controllers{
        }
 
 
-       class ScenarioRenovation {
+       class ScenarioRenovation extends Scenario {
            '- old_builds : Building[*]
            - _progression : Boolean[*]
 
@@ -261,45 +261,43 @@ package global{
 
 
 }
-package Models{
+package ùodels{
    class GlobalData {
-       +{static} _year : Integer
-       +{static} _month : Integer
-       +{static} _day : Integer
-       +{static} _budget : Integer
-      + {static} _difficulty : Integer
-      + {static} _attractivity : Float
-       +{static} _pay_worker : Integer
-
+       -{static} _year : Integer
+       -{static} _month : Integer
+       -{static} _day : Integer
+       -{static} _budget : Integer
+	   -{static} _difficulty : Integer
+       -{static} _attractivity : Float
+       -{static} _pay_worker : Integer
        +{static} setBudget(montant : Integer)
        +{static} addBudget(montant : Integer)
        +{static} getBudget() : Integer
        +{static} getTotalBudget() : Integer
        +{static} get_pay_worker() : Integer
-
        +{static} setDate(day : Integer, month : Integer, year : Integer)
        +{static} get_attractivity() : Real
-      + {static} set_attractivity(value : Real)
+	   +{static} set_attractivity(value : Real)
        +{static} incrementDay()
        +{static} incrementTrimestre()
-      + {static} isNewMonth() : Boolean
-      + {static} isEndofYear() : Boolean
+	   +{static} isNewMonth() : Boolean
+       +{static} isEndofYear() : Boolean
        +{static} isStartofYear() : Boolean
        +{static} get_season() : Integer
-      + {static} get_year_to_str() : String
-      + {static} get_season_text() : String
-      + {static} get_date() : String
-     +  {static} get_difficulty() : Integer
-      + {static} set_difficulty(value : Integer)
-
-      + {static} adjust_budget_initial() : Integer
+       +{static} get_year_to_str() : String
+       +{static} get_season_text() : String
+       +{static} get_date() : String
+       +{static} get_difficulty() : Integer
+       +{static} set_difficulty(value : Integer)
+	   +{static} adjust_budget_initial() : Integer
        +{static} adjust_fund() : Real
-      + {static} adjust_satisfaction() : Real
+       +{static} adjust_satisfaction() : Real
        +{static} adjust_level() : Real
-      + {static} adjust_dept_state() : Real
-      + {static} adjust_event_proba() : Real
-      + {static} formatBudget(number : Integer) : String
+       +{static} adjust_dept_state() : Real
+       +{static} adjust_event_proba() : Real
+       +{static} formatBudget(number : Integer) : String
    }
+   
    class Notification {
      + {static} get_all_ids():[*]
      + {static} get_message(id: Integer): String
@@ -311,10 +309,9 @@ package Models{
 
    package humain{
        class Student {
-         +{static} _graduate: Integer
-         +{static} _engineering: Integer
+         - {static} _graduate: Integer
+         - {static} _engineering: Integer
          +{static} student_id_counter: Integer
-
          +{static} get_graduate(): Integer
          +{static} add_graduate()
         + {static} get_engineering(): Integer
@@ -325,18 +322,15 @@ package Models{
         + {static} rm_student_by_id(id: Integer)
         + {static} rm_students_by_dept(dept: String, nb: Integer)
          +{static} rm_student_by_mood(mood: Real)
-
          +{static} get_year(id: Integer): Integer
          +{static} get_dept(id: Integer): String
         + {static} get_mood(id: Integer): Real
         + {static} get_level(id: Integer): Real
          +{static} get_base_level(id: Integer): Real
-
         + {static} set_year(id: Integer, new_year: Integer)
          +{static} set_mood(id: Integer, coeff: Real)
          +{static} set_level(id: Integer, coeff: Real)
         + {static} set_base_level(id: Integer, coeff: Real)
-
          +{static} compute_nb_per_dept(dept: String): Real
         + {static} avg_mood_per_dept(dept: String): Real
         + {static} avg_level_per_dept(dept: String): Real
@@ -349,42 +343,42 @@ package Models{
 
        class Teacher {
          +{static} teacher_id_counter: Integer
-
          +{static} get_all_ids():[*]
          +{static} get_dept_ids(dept: String): [*]
          +{static} add_teacher(dept: String): Integer
          +{static} rm_teacher_by_id(id: Integer)
          +{static} rm_teachers_by_dept(dept: String, nb: Integer)
          +{static} rm_teacher_by_mood(mood: Real)
-
          +{static} get_dept(id: Integer): String
          +{static} get_mood(id: Integer): Real
          +{static} set_mood(id: Integer, coeff: Real)
-
          +{static} compute_nb_per_dept(dept: String): Integer
          +{static} avg_mood_per_dept(dept: String): Real
          +{static} compute_nb(): Real
          +{static} avg_mood(): Real
        }
-	   class StudentSQLTable
+   }
+   
+   package data {
+		class Students
         {
             + id : Integer <<PK>>
             + year : Integer [1..3]
             + dept : String
             + mood : Real [0, 1]
             + level : Real [0, 1]
-            +base_level : Real
+            + base_level : Real
         }
-        class TeacherSQLTable
+        
+        class Teachers
         {
             + id : Integer <<PK>>
             + dept : String
             + mood : Real [0, 1]
             + full-time : Boolean
         }
-   }
-   package material{
-	  class NotificationSQLTable
+        
+		class Notifications
         {
             + id : Integer <<PK>>
             + message : String
@@ -392,17 +386,21 @@ package Models{
             + date : Date
             + type : Integer
         }
-		class DeptSQLTable
+        
+		class Depts
         {
             + id : Integer <<PK>>
             + name : String
         }
+   }
+   
+   package material{
        class Building {
-         +{static} fixed_cost_renovation: Integer
-         +{static} coeffTempsRenovation: Integer
-         +{static} MonthlySquareMetersHeatingCost: Integer
-         +{static} _buildingsDictionary: Dictionary
-         +{static} _total_buildings_under_renovation: Integer
+         + {static} fixed_cost_renovation: Integer
+         + {static} coeffTempsRenovation: Integer
+         + {static} MonthlySquareMetersHeatingCost: Integer
+         + {static} _buildingsDictionary: Dictionary
+         + {static} _total_buildings_under_renovation: Integer
 
          -_age: Integer
          -_doorLocked: Boolean
@@ -439,13 +437,11 @@ package Models{
          +setDoorLocked(locked: Boolean)
          +set_exam_entry(value:Real)
          +set_exam_end(value: Real)
-
          +add_pay_teacher(amount: Integer)
          +add_ouvrier()
          +remove_ouvrier()
          +addInventory(value: Integer)
          +add_budget(amount: Integer)
-
          +start_renovation_work()
          +stop_renovation_work()
          +estimated_renovation_worktime(): Integer
@@ -582,17 +578,6 @@ package views{
                   + _on_add_worker_mouse_entered()
                   + _on_heat_mouse_entered()
               }
-              class Icon {
-                  - image_dir: String
-                  - image_name: String
-
-                  + _ready()
-                  + load_image(path: String)
-                  + change_image(new_path: String)
-              }
-
-
-
   		}
 
   		package bulle {
@@ -669,37 +654,36 @@ package views{
 
   		}
   		package finJeu {
-          		class BankruptScript {
+				interface FinJeu {
+					# _process(delta : Real)
+					+ show_result()
+				}
+  		
+  		
+          		class BankruptScript implements FinJeu {
           			 + _ready()
-                       + _process(delta: Real)
+                     + _process(delta: Real)
           		}
 
-          		class FinElectionScript {
+          		class FinElectionScript implements FinJeu {
           			- _ready()
           			- _process(delta : Real)
           			+ show_result()
           		}
 
-          		class FinRenovationScript {
+          		class FinRenovationScript implements FinJeu {
           			- _ready()
           			- _process(delta : Real)
           			+ show_result()
           		}
-          		class FinEletismeScript {
+          		class FinEletismeScript implements FinJeu {
                        + _ready()
                        + _process(delta: Real)
-                       + show_bilan()
+                       + show_result()
                        + _on_QuitterButton_pressed(toggled_on: Boolean)
                   }
           }
-          package Menu{
-                  class Menu {
-          	     	+ _on_QuitterButton_pressed()
-                      + _on_FermerMenuButton_pressed()
-                      + _on_OuvrirPanelButton_pressed()
-          	    }
-
-          }
+          
           package notif_list {
           		class NotifListScript {
           			- notif: [*]
@@ -715,7 +699,7 @@ package views{
                       + _on_last_pressed()
                       + notif_pressed(id: Integer)
                       + _on_close_pressed()
-          		}
+          		}i
           }
           package stat {
           		class StatScript {
@@ -739,48 +723,36 @@ package views{
 }
 
 
-
-
-'Modèle utilise SQL'
-Student ..> StudentSQLTable
-Teacher ..> TeacherSQLTable
-
-      Building..> DeptSQLTable
-         Notification  ..>NotificationSQLTable
-		 TeacherSQLTable ..> DeptSQLTable
-StudentSQLTable ..> DeptSQLTable
+'Modèle utilise data'
+Student ..> Students
+Teacher ..> Teachers
+Building ..> Depts
+Notification ..>Notifications
+Teacher "1" o--> "1\n - dept" Depts
+Student "1" o--> "1\n - dept" Depts
 
 'Controller manipule le modèle'
-Study ..> Student : modifie
-Teaching ..> Teacher
+Study ....> Student : modifie
+Teaching ....> Teacher : modifie
 
 BuildingManagement ..> Building
 TimeManagement ..> GlobalData
 
-
-
-
-
-
-
-
-
-        RenovIUTApp --> ObserverBuilding : observe
-        RenovIUTApp --> ObserverGlobalData : observe
-        RenovIUTApp --> ObserverPopulation : observe
-        RenovIUTApp ..>BuildingAction : affiche
+        RenovIUTApp -> ObserverBuilding : observe
+        RenovIUTApp -> ObserverGlobalData : observe
+        RenovIUTApp -> ObserverPopulation : observe
         RenovIUTApp ..> ChoixScenarioScript : initialise scénario
         RenovIUTApp ..> NotifListScript : affiche notifications
         RenovIUTApp ..> BankruptScript : montre faillite
         RenovIUTApp ..> FinElectionScript : affiche fin d'élection
-        RenovIUTApp ..>FinRenovationScript : affiche fin de rénovation
+        RenovIUTApp ..> FinRenovationScript : affiche fin de rénovation
         RenovIUTApp ..> FinEletismeScript : affiche fin d'élitisme
 
         RenovIUTApp ..> Vote : utilise
-        RenovIUTApp ..>GlobalData : utilise
+        RenovIUTApp ..> GlobalData : utilise
         RenovIUTApp ..> Notification : utilise
         RenovIUTApp ..> Tutorial : utilise
- RenovIUTApp  *--> "1\n - illkirch" IUTFacade
+ RenovIUTApp  *-> "1\n - illkirch" IUTFacade
 
 
 
@@ -792,79 +764,39 @@ BulleMessageScript..>BulleGestion
 BulleNotifScript..>BulleGestion
 BulleTutorial ..>BulleGestion
 
-
-  BuildingAction..>BuildingManagement
-
-ChoixScenarioScript ..> Scenario
+ChoixScenarioScript .> Scenario
 
 
+ ChoixScenarioScript  *-> "1\n - build" BuildingAction
+ BuildingManagement ..> BuildingAction
 
- ChoixScenarioScript  *--> "1\n - build" BuildingAction
+ ChoixScenarioScript  o---> "1\n - _app" RenovIUTApp
 
- ChoixScenarioScript  o--> "1\n - _app" RenovIUTApp
-
- ChoixScenarioScript  o--> "1\n - _IUT" IUTFacade
-ObserverBuilding --|>Node
+ ChoixScenarioScript  o---> "1\n - _IUT" IUTFacade
 Building ..> GlobalData
-Teacher --|> Node
-Student --|> Node
-Notification --|> Node
  Global o--> "1\n - _db" DBManager
-
-Global --|> Node
-DBManager --|> Node
- Node <|-- IUTFacade
     IUTFacade o--> "1\n - _tuto" Tutorial
     IUTFacade o--> "1\n - _scenario" Scenario
     IUTFacade--> "1\n - _time" TimeManagement
-    IUTFacade ..> GlobalData
+    IUTFacade ...> GlobalData
 
 
 Vote ..> Teacher
            Vote ..> Student
            Vote ..> GlobalData
 
-BulleGestion ..> Notification
+BulleGestion ...> Notification
 BulleGestion ..> GlobalData
 BulleGestion ..> RenovIUTApp
 
     Object<|--Vote
-           Tutorial--|>Node3D
            Tutorial"1" o--> "1\n - _tuto_buble" BulleTutorial
 
-
-
-
-
-
-           Scenario <|-- ScenarioElitisme
-           Scenario <|-- ScenarioRenovation
-
-    ScenarioRenovation "1" o--> "1\n - old_Builds" Building
+    ScenarioRenovation "1" o-> "1\n - old_Builds" Building
     TimeManagement "1" o--> "1\n - _tuto" Tutorial
     TimeManagement "1" o--> "1\n - _scenario" Scenario
     TimeManagement"1" o--> "1\n - _budget" Budget
-           Scenario <|-- ScenarioElection
-           Scenario --|>Node
 
-       RefCounted <|-- Teaching
-
-
-
-       RefCounted <|-- Study
-
-
-
-       Node <|-- Expense
-
-
-
-
-       RefCounted  <|--  BuildingManagement
-
-
-
-       Node <|-- Budget
-       Budget ....> Building :"use"
+       Budget ..> Building : utilise
 
 @enduml
