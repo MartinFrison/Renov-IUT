@@ -1,13 +1,8 @@
 extends Node2D
 
-
+# Fonction d'initialisation avec en parametre la référence au scénario qui était joué
 func init(scenario : Scenario):
 	show_result(scenario)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func show_result(scenario : Scenario) -> void:
@@ -19,3 +14,8 @@ func show_result(scenario : Scenario) -> void:
 	
 	var msg = get_node("Message") as Label
 	msg.text = scenario.player_report()
+
+
+# Le joueur peut cliquer sur un bouton pour quitter le jeu
+func _on_quitter_pressed() -> void:
+	get_tree().quit() 

@@ -9,6 +9,5 @@ func _on_FermerMenuButton_pressed():
 	hide()  # Cache le menu
 
 
-
 func _on_OuvrirPanelButton_pressed() -> void:
-	print("Ouvrir les options...")  # Remplacer par le code pour afficher les options plus tard
+	print("Ouvrir les options...")
