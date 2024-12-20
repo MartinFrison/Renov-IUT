@@ -132,13 +132,13 @@ static func set_difficulty(value : int) -> void:
 static func adjust_budget_initial() -> int:
 	match get_difficulty():
 		1:
-			return 7500000
+			return 6500000
 			#return 0
 		2:
 			return 5200000
 			#return 0
 		3:
-			return 4000000
+			return 3000000
 			#return 0
 	return -1
 

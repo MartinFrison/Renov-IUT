@@ -87,10 +87,10 @@ func player_report() -> String:
 	report += bilan + ". "
 	
 	# Précisions sur le nombre d'intégrations en école d'ingénieur
-	report += "Sous votre mandat, %s " % [enginer]
+	report += "Sous votre mandat, "
 	if enginer <= 40:
 		report += "seuls "
-	report += "étudiants ont pu intégrer une école d'ingénieurs à l'issue de leur formation. "
+	report += "%s étudiants ont pu intégrer une école d'ingénieurs à l'issue de leur formation. " % [enginer]
 	
 	# Note sur la réussite générale (nombre de diplômés)
 	report += "D'autre part, %s étudiants ont pu obtenir leur diplôme, soit %s par an. " % [grade, round(grade / 5)]

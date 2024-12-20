@@ -119,8 +119,8 @@ static func pass_dept_exam(dept : String) -> Array:
 			success += 1
 			Student.rm_student_by_id(student)
 			Student.add_graduate() # On l'ajoute au nombre total de diplomé
-			if level> 0.8:
-				# Si le niveau d'un etudiant est supérieur à 0.8 il peut 
+			if level> 0.775:
+				# Si le niveau d'un etudiant est supérieur à 15.5 de moyenne il peut 
 				# rejoindre une école d'ingénieur
 				Student.add_engineering()
 		elif level> coeff_exam*0.85: # si l'étudiant a 85% du niveau requis il peut redoubler

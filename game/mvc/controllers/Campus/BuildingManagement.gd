@@ -241,7 +241,7 @@ static func wear() -> void:
 #   le ratio enseignants/étudiants (pour mesurer l'attention accordée aux étudiants ; ici, 1:20 est considéré comme idéal)
 #   l'état des infrastructures
 static func compute_attractivity() -> void:
-	var target = 1.0 / 5.0  # 1 professeur pour 5 étudiants
+	var target = 1.0 / 7.0  # 1 professeur pour 7 étudiants
 	var attention : float = Teacher.compute_nb() / Student.compute_nb()
 	# transformer en pourcentage si le ratio initial n'est pas atteint, sinon 100% si les profs sont encore plus nombreux
 	if attention <= target:
