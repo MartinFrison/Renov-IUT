@@ -11,7 +11,8 @@ func _ready() -> void:
 # de facon aléatoire
 func notifySatisfactionChanged() -> void:
 	var mood_global = Student.avg_mood() * 0.8 + Teacher.avg_mood() *0.2
-	
+	# Pour chaque bonhomme l'humeur est définie aléatoirement en prenant
+	# en compte la satisfaction
 	for child in get_children():
 		if child is Node3D:
 			if Utils.randfloat_in_range(0,1) <= mood_global:
@@ -20,10 +21,6 @@ func notifySatisfactionChanged() -> void:
 				facher(child)
 
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 # Rend un bonhomme facher
 func facher(bonhomme : Node3D) -> void:

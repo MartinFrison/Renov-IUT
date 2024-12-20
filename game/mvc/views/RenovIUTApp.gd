@@ -65,6 +65,7 @@ func game_loaded() -> void:
 
 
 # Passer au trimestre suivant à la demande du joueur
+# Affiche un message de chargement au joueur en attendant la fin des calculs
 func _on_next_pressed() -> void:
 	var band = get_node("PanelStat/friseAttente")
 	var sablier = get_node("PanelStat/sablier")
