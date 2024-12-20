@@ -22,6 +22,7 @@ func _init(scenario: Scenario, tuto : Tutorial) -> void:
 	Teaching.populate()
 	Budget.init_budget()
 	_scenario.init()
+	BuildingManagement.compute_attractivity()
 	
 	# Notifier la vue pour afficher les données
 	ObserverPopulation.notifySatisfactionChanged()
@@ -42,6 +43,10 @@ func start():
 # Execute toutes les actions d'un trimestre
 func next_Trimestre():
 	GlobalData.incrementTrimestre()
+	# moduler l'attractivité à la fin de l'année
+	if GlobalData.isEndofYear():
+		BuildingManagement.compute_attractivity()
+		BuildingManagement.adjust_attractivity()
 	
 	# Appelle des évenements
 	Event()

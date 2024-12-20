@@ -46,51 +46,11 @@ static func setDate(day : int, month : int, year : int) -> void:
 static func get_attractivity() -> float:
 	return _attractivity
 
-
-# Calcule l'attractivité à base des paramètres suivants :
-# 	les résultats académiques
-#   la satisfaction de tout le monde
-#   le ratio enseignants/étudiants (pour mesurer l'attention accordée aux étudiants ; ici, 1:20 est considéré comme idéal)
-#   l'état des infrastructures
-static func set_attractivity() -> void:
-	var target = 1.0 / 20.0  # 1 professeur pour 20 étudiants
-	var attention = Teacher.compute_nb() / Student.compute_nb()
-	# transformer en pourcentage si le ratio initial n'est pas atteint, sinon 100% si les profs sont encore plus nombreux
-	if attention <= target:
-		attention = attention/target
-	else:
-		attention = 1.0
-	
-	#var success = Student.success_rate() #déjà un pourcentage
-	var mood : float = (Teacher.avg_mood() + Student.avg_mood()) / 2
-	var campus : float # pour obtenir la moyenne de l'état des bâtiments
-	var sum : float = 0.0
-	for i in range(1,6):
-		var code = Utils.dept_index_to_string(i)
-		sum += Building.get_building(code).get_inventory() / 100
-	campus = sum / 5
-	
-	_attractivity = round((mood + campus + attention) / 3 * 100) / 100  # Arrondir à 2 décimales
-	
+static func set_attractivity(value : float):
+	_attractivity = value
 	ObserverGlobalData.notifyAttractivityChanged()
 
-static func adjust_attractivity() -> void:
-	var fluctuation : float
-	var performance : float = Student.avg_level() # on ajuste en fonction du niveau des étudiants
-	# idéalement, il faudrait trouver une modélisation mathématique un minimum correcte ;
-	# pour l'instant, cela ne fait que donner une priorité aléatoire à un critère.
-	# Et que cela ne soit pas au pif.
-	if performance >= 0.7: # i.e. 14/20 de moyenne globale
-		fluctuation = Utils.randfloat_in_range(1.2, 1.4)
-	elif performance >= 0.5: # i.e. 10/20 de moyenne globale
-		fluctuation = Utils.randfloat_in_range(1.0, 1.2)
-	else: # donner une chance, même
-		fluctuation = Utils.randfloat_in_range(0.9, 1.1)
-	_attractivity *= fluctuation
-	if _attractivity > 1:
-		_attractivity = .99
-	
-	_attractivity = round(_attractivity * 100) / 100
+
 
 #Passe au jour suivant
 static func incrementDay() -> void:
@@ -109,11 +69,6 @@ static func incrementTrimestre() -> void:
 	if _month > 12:
 		_month = _month-12
 		_year += 1
-	# moduler l'attractivité à la fin de l'année
-	if isEndofYear():
-		set_attractivity()
-		adjust_attractivity()
-	ObserverGlobalData.notifyAttractivityChanged()
 	ObserverGlobalData.notifyDateChanged()
 
 #Renvoie vrai si c'est le premier du mois

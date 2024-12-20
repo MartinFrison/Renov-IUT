@@ -6,8 +6,8 @@ var _name : String
 
 
 func init() -> void:
-	init_attractivity()
-	
+	push_error("init() doit être implémentée.")
+
 
 # Obtenir le nom du scénario actuel
 func get_scenario() -> String:
@@ -100,9 +100,3 @@ func side_effect() -> String:
 		side_effect += "L'argent disponible dans les caisses a diminué. "
 
 	return side_effect
-
-
-
-
-func init_attractivity() -> void:
-	GlobalData.set_attractivity()
