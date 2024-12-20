@@ -50,7 +50,7 @@ func end_game() -> void:
 func mid_game() -> void:
 	# A la fin de l'année on informe le joueur du succès cumulé de ses étudiants depuis son éléction
 	if GlobalData.isEndofYear():
-		var msg
+		var msg = ""
 		var nb_eng = Student.get_engineering()
 		if nb_eng != 0:
 			msg = "À l'heure qu'il est, le nombre d'étudiants ayant rejoint une école d'ingénieurs sous votre 

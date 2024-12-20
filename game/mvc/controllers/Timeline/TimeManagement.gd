@@ -153,7 +153,7 @@ static func heat_adjust_mood() -> void:
 		if !build.is_heating() and (GlobalData._month >= 1 or GlobalData._month<=4):
 			# s'il fait trop froid la satisfaction tend vers 0 et la difficulté empire le coeff
 			Study.mood_fluctuation(code, 0, 0.08 / GlobalData.adjust_satisfaction())	
-			Teaching.mood_fluctuation(code, 0, 0.03)
+			Teaching.mood_fluctuation(code, 0, 0.05)
 		# sinon on ne fait rien
 
 
@@ -187,5 +187,5 @@ static func renovation_adjust_mood() -> void:
 			# Si des travaux sont en cours dans le batiment
 			if build.is_renovation_underway():
 				# Les étudiant et professeurs sont mécontent (surtout les élèves)
-				Study.mood_fluctuation(code, 0, 0.18)
-				Teaching.mood_fluctuation(code, 0, 0.12)
+				Study.mood_fluctuation(code, 0, 0.2)
+				Teaching.mood_fluctuation(code, 0, 0.13)
