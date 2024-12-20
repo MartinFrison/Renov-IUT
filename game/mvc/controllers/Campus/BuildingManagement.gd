@@ -7,7 +7,7 @@ static func init_building() -> void:
 	for i in range(1,6):
 		var age = Utils.randint_in_range(5,50)
 		# l'isolation et l'état est aléatoire et dépend de la difficulté
-		var inventory = int(Utils.randfloat_in_square_range(30,100) * GlobalData.adjust_dept_state())
+		var inventory = int(Utils.randfloat_in_square_range(35,100) * GlobalData.adjust_dept_state())
 		
 		# Surface des batiments:
 		# chimie 5000m2, genie_civil 9000m2, info_com 2000m2

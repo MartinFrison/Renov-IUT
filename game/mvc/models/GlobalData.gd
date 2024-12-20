@@ -180,11 +180,11 @@ static func adjust_level() -> float:
 static func adjust_dept_state() -> float:
 	match get_difficulty():
 		1:
-			return 0.8
+			return 1.3
 		2:
-			return 0.6  
+			return 1 
 		3:
-			return 0.3
+			return 1
 	return -1
 
 # Ajuste la frequence d'evenement

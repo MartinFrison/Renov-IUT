@@ -173,8 +173,8 @@ static func inventory_adjust_mood() -> void:
 			var value = build.get_inventory() * GlobalData.adjust_satisfaction() / 100
 			
 			# On applique les fluctuations pour les profs et les étudiant (surtout les étudiants)
-			Study.mood_fluctuation(code, value, 0.2)
-			Teaching.mood_fluctuation(code, value, 0.1)
+			Study.mood_fluctuation(code, value, 0.35)
+			Teaching.mood_fluctuation(code, value, 0.2)
 
 
 # Ajuster le mood si des travaux on lieu dans le batiment
