@@ -1,5 +1,6 @@
 @startuml
-'https://plantuml.com/class-diagram
+'https://plantuml.com/class-diagram   
+scale 0.6
 'Ceci est le diagramme de classes d'un vrai-faux orienté-objet :
 'Godot n'en est pas un à proprement parler, mais nous nous sommes efforcés
 'à mettre en pratique les principes du POO.
@@ -103,7 +104,7 @@ package controllers{
        }
     }
 
-    package Timeline
+    package timeline
     {
        Abstract class Scenario {
            - _name : String
@@ -204,6 +205,27 @@ package controllers{
         chooseMode(scenario : Integer, difficulty:Integer)
         startGame()
     }
+    
+    package observer{
+	   class ObserverBuilding {
+		   - {static} Observer : []
+		   +{static} addObserver(O)
+		   -{static} notifyStateChanged()
+	   }
+	   class ObserverGlobalData {
+		   -{static} Observer: []
+		   +{static} addObserver(O)
+		   +{static} notifyBudgetChanged()
+		   -{static} notifyDateChanged()
+		   -{static} notifyAttractivityChanged()
+	   }
+	   class ObserverPopulation {
+		   -{static} Observer: []
+		   +{static} addObserver(O)
+		   -{static} notifyLevelChanged()
+		   -{static} notifySatisfactionChanged()
+	   }
+	}
 }
 
 package global{
@@ -427,26 +449,6 @@ package models{
 
 
 }
-package observer{
-   class ObserverBuilding {
-       - {static} Observer : []
-       +{static} addObserver(O)
-       + {static} notifyStateChanged()
-   }
-   class ObserverGlobalData {
-       +{static} Observer: []
-       +{static} addObserver(O)
-       +{static} notifyBudgetChanged()
-       +{static} notifyDateChanged()
-       +{static} notifyAttractivityChanged()
-   }
-   class ObserverPopulation {
-       +{static} Observer: []
-       +{static} addObserver(O)
-       +{static} notifyLevelChanged()
-       +{static} notifySatisfactionChanged()
-   }
-}
 
 package views{
   package node3D {
@@ -479,7 +481,7 @@ package views{
              }
 
   	    }
-  	    package Tree{
+
   	       class Tree{
              		+ {static} trunc_path : String
              		+ {static} material_path : String
@@ -494,7 +496,6 @@ package views{
                   + printer()
                   + autumn()
              }
-  	    }
   	    class CameraRoot {
               - _default_scale:  Vector3
               - _rot_Y:Real
@@ -522,7 +523,6 @@ package views{
   package node2D {
   		    class BuildingAction {
                   - code: String
-                  - build: Building
                   - click: AudioStreamPlayer2D
                   - under_construction: AudioStreamPlayer2D
                   - is_message_active: Boolean
@@ -559,7 +559,7 @@ package views{
 			}
 			
 			    
-			class BulleGestion implements Bulle {
+			class BulleGestion{
 				- _message : String
 				+{static} liste_notif_count : [*]
 				+{static} send_message(message : String, notif : Boolean)
@@ -585,20 +585,6 @@ package views{
                   + init(objet: String, message: String, type: integer)
                   + _input(event : InputEvent)
                   + enter()
-  			}
-
-  			class BulleQuestionScript implements Bulle {
-				  - _message: String
-                  - _fonctionReponse: String
-                  - _reponse: String[*]
-                  - _node: Node
-                  - tick: Integer
-                  - _ready()
-                  - _process(delta: Real)
-                  + init(question: String, reponse: String[*], fonction: String, node: Node)
-                  + create_question_button(id: Integer)
-                  + _on_answer_pressed(id: Integer)
-                  + delete()
   			}
   			class BulleTutorial implements Bulle {
                   - _message: String
@@ -664,25 +650,6 @@ package views{
                        + _on_QuitterButton_pressed(toggled_on: Boolean)
                   }
           }
-          
-          package notif_list {
-          		class NotifListScript {
-          			- notif: [*]
-                      - page: integer
-                      - page_size: Integer
-                      - buttons: Button[*]
-
-                      + _ready()
-                      + _process(delta: Real)
-                      + open_page()
-                      + create_question_button(text: String, id: Integer, n: Integer)
-                      + _on_next_pressed()
-                      + _on_last_pressed()
-                      + notif_pressed(id: Integer)
-                      + _on_close_pressed()
-          		}i
-          }
-          package stat {
           		class StatScript {
           			- _ready()
           			- _process()
@@ -691,7 +658,6 @@ package views{
           			+ notifySatisfactionChanged()
           			+ updateDate()
           		}
-          }
 
 
 
@@ -720,11 +686,20 @@ Teaching ....> Teacher : modifie
 BuildingManagement ..> Building : modifie
 TimeManagement ..> GlobalData
 
-        RenovIUTApp -> ObserverBuilding : observe
-        RenovIUTApp -> ObserverGlobalData : observe
-        RenovIUTApp -> ObserverPopulation : observe
-        RenovIUTApp .> ChoixScenarioScript : initialise scénario
-        ''RenovIUTApp .> NotifListScript : affiche notifications
+RenovIUTApp --> ObserverBuilding
+RenovIUTApp --> ObserverGlobalData
+RenovIUTApp --> ObserverPopulation
+RenovIUTApp ..> BuildingAction
+RenovIUTApp ..> CameraRoot
+
+ObserverBuilding ..> Building : observe
+ObserverGlobalData ..> GlobalData : observe
+ObserverPopulation ..> Teaching : observe
+ObserverPopulation ..> Study : observe
+
+BuildingAction ..> Bulle
+
+RenovIUTApp .> ChoixScenarioScript : initialise scénario
         ''RenovIUTApp .> BankruptScript : montre faillite
         RenovIUTApp .> FinJeu
 
@@ -732,7 +707,8 @@ TimeManagement ..> GlobalData
         RenovIUTApp ..> GlobalData : utilise
         RenovIUTApp ..> Notification : utilise
         RenovIUTApp ..> Tutorial : utilise
- RenovIUTApp  *-> "1\n - illkirch" IUTFacade
+RenovIUTApp  *-> "1\n - illkirch" IUTFacade
+RenovIUTApp ..> Global
 
 Expense ..> Building
 Budget ..> Expense
@@ -745,8 +721,10 @@ BulleTutorial ..>BulleGestion
 
 ChoixScenarioScript ..> Scenario
 
+BuildingAction ..> StatScript
+StatScript ..> GlobalData
 
-ChoixScenarioScript  *-> "1\n - build" BuildingAction
+ChoixScenarioScript  *--> "1\n - build" BuildingAction
 BuildingManagement ..> BuildingAction
 ChoixScenarioScript  o--> "1\n - _app" RenovIUTApp
 ChoixScenarioScript  o--> "1\n - _IUT" IUTFacade
@@ -754,21 +732,23 @@ Building ..> GlobalData
 Global o--> "1\n - _db" DBManager
 IUTFacade--> "1\n - _time" TimeManagement
 IUTFacade ...> GlobalData
-
-
 Vote ..> Teacher
 Vote ..> Student
 Vote ..> GlobalData
 Tutorial"1" o--> "1\n - _tuto_buble" BulleTutorial
-
 ScenarioRenovation "1" o-> "1\n - old_Builds" Building
 ScenarioElection ..> Vote
+
 TimeManagement "1" o--> "1\n - _tuto" Tutorial
 TimeManagement "1" o--> "1\n - _scenario" Scenario
 TimeManagement"1" o--> "1\n - _budget" Budget
-    
 TimeManagement ..> BuildingManagement
 TimeManagement ..> Study
 TimeManagement ..> Teaching
+
+CameraRoot ..> Camera3D
+Camera3D .> Tree
+Camera3D ..> Bonhommes
+Bonhommes "1" o-> "*" Bonhomme
 
 @enduml
