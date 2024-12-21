@@ -58,7 +58,7 @@ Vous pouvez également télécharger l'exécutable, en version Windows ou Linux,
 
 Vous pouvez télécharger directement l'exécutable du jeu sur ce dépôt Git :
 
-[RenovIUT_win.zip]()
+[RenovIUT_win.zip](https://git.unistra.fr/coruscant/renov-iut/-/blob/main/game/RenovIUT_win.zip?ref_type=heads)
 
 #### Linux
 
