@@ -1,314 +1,331 @@
 # T3 - RenovIUT
 
-- Nom du groupe : Coruscant
-- Membres du groupe : [Yasmine CHETTATI](https://git.unistra.fr/ychettati), [Elena FRISON](https://git.unistra.fr/e.frison), [Martin FRISON](https://git.unistra.fr/martin.frison).
-
-	[Adrien AKGUL](https://git.unistra.fr/aakgul) a également contribué au projet à ses débuts.
+* **Nom du groupe :** Coruscant
+* **Membres du groupe :** [Martin FRISON](https://git.unistra.fr/martin.frison), [Yasmine CHETTATI](https://git.unistra.fr/ychettati), [Elena FRISON](https://git.unistra.fr/e.frison).
 
 ## Présentation du projet
 
-Vous incarnez le directeur de l'IUT Robert Schuman qui intervient sur le campus d'Illkirch pour assurer l'entretien et les rénovations des bâtiments et des infrastructures, tout en faisant face aux aléas du quotidien.
+Vous incarnez le directeur de l'IUT Robert Schuman sur le campus d'Illkirch. Votre mission est d'assurer l'entretien et les rénovations des bâtiments et des infrastructures, tout en faisant face aux aléas du quotidien.
 
 ### Captures d'écran
 
 Toutes les images utilisées sont libres de droits :
 
-- [Banque de photos de l'IUT Robert Schuman](https://seafile.unistra.fr/d/03767a1835b7493b83a6/?p=%2FBelles%20photos%20(libre%20de%20droits)&mode=list);
-- Dessinées par nous-mêmes, à base d'images libres trouvées sur Internet.
+* [Banque de photos de l'IUT Robert Schuman](https://seafile.unistra.fr/d/03767a1835b7493b83a6/?p=%2FBelles%20photos%20%28libre%20de%20droits%29&mode=list)
+* Certaines ont été dessinées par nos soins, à partir d’images libres de droits trouvées sur Internet.
 
-<p style="text-align: center;">![Lancement](visuals/screenshots/game_start.png)</p>
+<p align="left">
+  <img src="visuals/screenshots/game_start.png" alt="Lancement" width="600"/>
+  <br/>
+  <small>Fig.1. Début du jeu</small>
+</p>
 
-<p style="text-align: center;"><small>Fig.1. Début du jeu</small></p>
+<p align="left">
+  <img src="visuals/screenshots/main_screen.png" alt="Campus" width="600"/>
+  <br/>
+  <small>Fig.2. Fenêtre principale : le campus au printemps</small>
+</p>
 
-<p style="text-align: center;">![Campus](visuals/screenshots/main_screen.png)</p>
+<p align="left">
+  <img src="visuals/screenshots/shift_view.png" alt="Vue de devant" width="600"/>
+  <br/>
+  <small>Fig.3. Vue de devant</small>
+</p>
 
-<p style="text-align: center;"><small>Fig.2. Fenêtre principale : le campus au printemps</small></p>
+<p align="left">
+  <img src="visuals/screenshots/popup.png" alt="Notification volante" width="600"/>
+  <br/>
+  <small>Fig.4. Notification volante</small>
+</p>
 
-<p style="text-align: center;">![Popup](visuals/screenshots/shift_view.png)</p>
-
-<p style="text-align: center;"><small>Fig.3. Vue de devant</small></p>
-
-<p style="text-align: center;">![Popup](visuals/screenshots/popup.png)</p>
-
-<p style="text-align: center;"><small>Fig.4. Notification volante</small></p>
-
-<p style="text-align: center;">![History](visuals/screenshots/history.png)</p>
-
-<p style="text-align: center;"><small>Fig.5. L'historique</small></p>
+<p align="left">
+  <img src="visuals/screenshots/history.png" alt="Historique" width="600"/>
+  <br/>
+  <small>Fig.5. L'historique</small>
+</p>
 
 ### Installation et exécution
 
 Plusieurs options sont possibles.
 
-Vous pouvez toujours forker notre dépôt : appuyez sur le bouton "Fork/Créer une bifurcation" à droite. Une copie indépendante sera créée sur votre compte GitLab, que vous pourrez ensuite cloner sur votre machine :
+Vous pouvez forker ce dépôt : cliquez sur le bouton "Fork" (ou "Créer une bifurcation") à droite. Une copie indépendante sera créée sur votre compte GitLab, que vous pourrez ensuite cloner sur votre machine :
 
-```
+```bash
 git clone <url_de_votre_fork>
 ```
 
-Si vous optez pour cette solution, assurez-vous d'avoir `git` (même s'il y a de fortes chances qu'il soit déjà installé). 
+Si vous choisissez cette méthode, assurez-vous d'avoir installé `git` (très probablement déjà présent).
 
-Une fois l'ensemble des fichiers est téléchargé sur votre machine, vous pourrez ouvrir `project.godot` et lancer le jeu.
+Une fois tous les fichiers téléchargés, ouvrez le fichier `project.godot` pour lancer le jeu.
 
-Si vous n'avez pas Godot Engine, sachez qu'il s'installe très facilement depuis son [site officiel](https://godotengine.org/download/linux/).
+Si vous n'avez pas Godot Engine, vous pouvez l'installer facilement depuis le [site officiel de Godot Engine](https://godotengine.org/download/linux/).
 
-Vous pouvez également télécharger l'exécutable, en version Windows ou Linux, comme expliqué ci-dessous.
+Vous pouvez aussi télécharger directement l'exécutable du jeu pour Windows ou Linux ci-dessous :
 
 #### Windows
 
-Vous pouvez télécharger directement l'exécutable du jeu sur ce dépôt Git :
+Téléchargez directement l'exécutable du jeu ici :
 
-[RenovIUT_win.zip](https://git.unistra.fr/coruscant/renov-iut/-/blob/main/game/RenovIUT_win.zip)
+[RenovIUT\_win.zip](https://git.unistra.fr/coruscant/renov-iut/-/raw/main/game/RenovIUT_win.zip)
 
 #### Linux
 
-Vous pouvez télécharger directement l'exécutable du jeu sur ce dépôt Git :
+Téléchargez directement l'exécutable du jeu ici :
 
-[RenovIUT_lin.zip](https://git.unistra.fr/coruscant/renov-iut/-/blob/main/game/RenovIUT_linux.zip)
+[RenovIUT\_lin.zip](https://git.unistra.fr/coruscant/renov-iut/-/raw/main/game/RenovIUT_linux.zip)
 
-Si vous rencontrez des problèmes liés à l'intégration de la base de données dans le jeu, il est possible de créer un exécutable vous-mêmes :
+Si vous rencontrez des problèmes liés à l'intégration de la base de données, vous pouvez créer vous-même un exécutable :
 
-1. Lancer l'exportation du projet :
+1. Lancez l'exportation du projet :
 
-![Menu](visuals/screenshots/menu_export.png) 
+![Menu](visuals/screenshots/menu_export.png)
 
-2. Inclure `data/*` comme répertoires hors-ressources :
+2. Incluez `data/*` comme répertoires hors ressources :
 
-![Ecran1](visuals/screenshots/export1.png) 
+![Ecran1](visuals/screenshots/export1.png)
 
-3. Créer l'archive contenant l'exécutable, un script de lancement et la bibliothèque dynamique nécessaire pour utiliser les bases de données SQLite : 
+3. Créez l'archive contenant l'exécutable, un script de lancement et la bibliothèque dynamique nécessaire pour utiliser SQLite :
+
 ![Ecran2](visuals/screenshots/export2.png)
 
 **Enjoy !**
 
+
+
+
 ## Cahier des charges
 
 ### Objectifs pédagogiques généraux
-En tant que [serious game](#jeux-sérieux), RenovIUT ne se limite pas à vous divertir, mais a également des objectifs pédagogiques, à savoir :
 
-- *Comprendre* le rôle du directeur de l'IUT, établissement à une administration relativement autonome, dans l'entretien et la rénovation de ses locaux, en adéquation avec ses engagements sociaux ;
-- *Découvrir* les bonnes pratiques de gestion du budget d'un IUT, alimenté de sources de financement certes multiples mais limitées, afin d'assurer les meilleurs conditions de travail possibles pour ses étudiants et son corps enseignant ;
-- *Expérimenter* la prise de décision en situation d'urgence, nécessitant une remise en question des priorités de l'établissement.
+RenovIUT est un **serious game** conçu non seulement pour divertir, mais aussi pour transmettre des connaissances concrètes et utiles. Ses objectifs pédagogiques principaux sont les suivants :
+
+* **Comprendre** le rôle du directeur d'un IUT, établissement doté d'une certaine autonomie administrative, dans la gestion et la rénovation de ses locaux en cohérence avec ses responsabilités sociales.
+* **Découvrir** les bonnes pratiques en matière de gestion budgétaire d'un IUT, caractérisé par des financements diversifiés mais limités, afin d'assurer des conditions de travail optimales pour les étudiants et le personnel enseignant.
+* **Expérimenter** la prise de décision en situation d'urgence, où il est essentiel de réévaluer rapidement les priorités de l'établissement.
 
 ### Objectifs pédagogiques avancés
 
-Sur un mandat de 5 ans ou sur un temps illimité selon le scénario, vous devez rénover les bâtiments et les infrastructures, [en gérant votre budget partagé entre les dépenses d'énergie, les salaires et les rénovations](#missions) et [en répondant aux aléas qui se présentent]. Comme [le budget](#budget) n'est pas extensible à l'infini, que le temps passe vite et que les intérêts de tout le monde ne sont pas forcément conciliables, il va falloir faire des [choix](#actions-du-joueur) !
+Selon le scénario choisi, durant un mandat de 5 ans ou sur une durée illimitée, le joueur doit prendre en charge la rénovation des bâtiments et infrastructures, en assurant une gestion efficace du budget entre dépenses d'énergie, salaires et travaux divers, tout en gérant les imprévus.
 
-Votre objectif ultime est [soit](#scénarios) de gérer au mieux les ressources qui vous sont confiées, soit de vous faire réélire à la fin du mandat. Normalement, vous devrez maintenir de bonnes conditions de travail et veiller à la satisfaction des étudiants et des enseignants - sauf si vous trouvez une meilleure stratégie pour écraser les concurrents ! (En revanche, ce serait dommage si vous deviez faire sombrer l'établissement pour assouvir vos rêves de grandeur...)
+Le budget n'étant pas illimité, le joueur devra nécessairement faire des choix stratégiques pour équilibrer les intérêts souvent divergents des différentes parties prenantes (étudiants, enseignants, administratifs).
 
-La problématique du jeu se construit autour de 4 éléments :
+L’objectif ultime du joueur dépend du scénario sélectionné : soit gérer efficacement les ressources disponibles, soit se faire réélire à la fin du mandat en ayant satisfait au mieux les attentes. L'objectif reste toujours d'assurer des conditions de travail adéquates et la satisfaction générale, tout en explorant différentes stratégies de gestion.
 
-1. *Les infrastructures existantes* qui doivent être entretenues voire, à moment donné, réparées.
+Le jeu se structure autour de quatre axes principaux :
 
-	- Évaluer l'état actuel des bâtiments et des installations
-	- Concevoir un plan de rénovation
-	- Assurer la coordination des parties prenantes
-	- Choisir les prestataires
+1. **Les infrastructures existantes**
 
-2. *Le budget*, le pivot des activités, car aucune intervention sur le campus n'est possible sans financement.
+   * Évaluer l'état actuel des bâtiments et installations
+   * Planifier des travaux de rénovation
+   * Coordonner les différents acteurs impliqués
+   * Sélectionner des prestataires de services
 
-	- Élaborer un bugdet réaliste
-	- Rechercher des sources de financement multiples
-	- Assurer le suivi financier des projets
-	- Faire des choix quand les moyens sont réduits
+2. **Le budget**
 
-3. *Les parties prenantes*, qui sont avant tout les étudiants, mais aussi les enseignants, les personnels, l'Eurométropole...
+   * Établir un budget réaliste et viable
+   * Diversifier les sources de financement
+   * Assurer un suivi précis des finances des projets
+   * Faire des choix éclairés lorsque les ressources sont limitées
 
-	- Assurer une communication transparente avec tous les acteurs et parties prenantes
-	- Veiller à la satisfaction des étudiants et des enseignants
-	- Mettre en place des mécanismes d'amélioration continue
-	- Savoir trancher si les intérêts des uns et des autres sont en conflit
-    - Améliorer le niveau scolaire des étudiants de l' IUT 
-    
-4. *L' attractivité*, la capacité de l'IUT à attirer de nouveaux étudiants et partenaires.
+3. **Les parties prenantes** (étudiants, enseignants, personnels, collectivités locales)
 
-	- Développer des initiatives pour renforcer l'image du campus
-	- Promouvoir les réussites et les atouts de l'institution
-	- Améliorer les services et les infrastructures pour attirer de nouveaux étudiants et des enseignants de haut niveau
-	- Améliorer les performances académiques
+   * Maintenir une communication transparente
+   * Veiller à la satisfaction des étudiants et enseignants
+   * Implémenter des mécanismes d'amélioration continue
+   * Arbitrer en cas de conflits d’intérêts
+   * Favoriser l’amélioration du niveau scolaire des étudiants
 
+4. **L'attractivité**
 
-####  Références
-##### Le fonctionnement des IUT :
+   * Développer des initiatives valorisant l'image du campus
+   * Mettre en avant les réussites et points forts de l’établissement
+   * Améliorer la qualité des services et infrastructures pour attirer de nouveaux étudiants et enseignants
+   * Accroître les performances académiques globales
 
-- [Le Gouvernement renforce le développement des IUT et améliore la reconnaissance des enseignants affectés dans le supérieur](https://www.enseignementsup-recherche.gouv.fr/fr/le-gouvernement-renforce-le-developpement-des-iut-et-ameliore-la-reconnaissance-des-enseignants-92382)
-- [La rémunération des enseignants](https://www.education.gouv.fr/la-remuneration-des-enseignants-7565)
-- [Relations entre les universités et les instituts universitaires de technologie](https://www.education.gouv.fr/bo/2009/14/esrs0900149c.htm)
-- [Les locaux du département Génie civil construction durable de l'IUT Robert Schuman inaugurés](https://savoirs.unistra.fr/campus/les-locaux-du-departement-genie-civil-construction-durable-de-liut-robert-schuman-inaugures)
-- [IUT Robert Schuman | Historique](https://iutrs.unistra.fr/iut/historique)
-- [IUT Nancy-Brabois | Rénovation énergétique](https://iut-nancy-brabois.univ-lorraine.fr/renovation-energetique/)
+### Références
 
-##### Jeux sérieux :
+#### Fonctionnement des IUT :
 
-- [Les Serious Games, un objet en construction](https://larevuedesmedias.ina.fr/les-serious-games-un-objet-en-construction)
-- [Wikipédia | Jeu sérieux](https://fr.wikipedia.org/wiki/Jeu_s%C3%A9rieux)
-- [Une classification collaborative du Serious Game](http://serious.gameclassification.com/FR/index.html)
+* [Le Gouvernement renforce le développement des IUT](https://www.enseignementsup-recherche.gouv.fr/fr/le-gouvernement-renforce-le-developpement-des-iut-et-ameliore-la-reconnaissance-des-enseignants-92382)
+* [La rémunération des enseignants](https://www.education.gouv.fr/la-remuneration-des-enseignants-7565)
+* [Relations Universités et IUT](https://www.education.gouv.fr/bo/2009/14/esrs0900149c.htm)
+* [Inauguration locaux Génie civil IUT Robert Schuman](https://savoirs.unistra.fr/campus/les-locaux-du-departement-genie-civil-construction-durable-de-liut-robert-schuman-inaugures)
+* [Historique IUT Robert Schuman](https://iutrs.unistra.fr/iut/historique)
+* [Rénovation énergétique IUT Nancy-Brabois](https://iut-nancy-brabois.univ-lorraine.fr/renovation-energetique/)
+
+#### Jeux sérieux :
+
+* [Les Serious Games, un objet en construction](https://larevuedesmedias.ina.fr/les-serious-games-un-objet-en-construction)
+* [Jeu sérieux — Wikipédia](https://fr.wikipedia.org/wiki/Jeu_s%C3%A9rieux)
+* [Classification collaborative du Serious Game](http://serious.gameclassification.com/FR/index.html)
 
 ### Description des fonctionnalités
 
 #### Simulation
 
-**_Le pas de la simulation est d'un trimestre._**
+**Le rythme de la simulation est trimestriel.**
 
-- Le déroulement de la simulation est structuré par trimestres, permettant au joueur d'interagir régulièrement avec les événements et les problématiques qui surviennent. Chaque trimestre, le directeur de l'IUT incarné par le joueur doit réagir aux différentes sollicitations, qu'il s'agisse de la gestion des infrastructures, du suivi budgétaire ou des relations avec les parties prenantes.
-- Pour rappeler que la gestion d'un établissement éducatif se fait souvent dans l'urgence, mais qu'intervenir tous les jours n'est pas possible non plus, le gameplay est à la fois rapide et lent. À moment donné, vous êtes amené(e) à réagir à plusieurs sollicitations à la fois, dont certaines critiques, mais il faudra ensuite attendre pour voir le résultat. Faire ressentir au joueur cet inconfort - sans pour autant lui donner envie d'abandonner - fait partie des objectifs du jeu.
-- Comme dans la vraie vie, il n'arrivera sans doute pas à répondre à toutes, les problèmes non résolus aggravant la situation. Également comme dans la vraie vie, on est parfois bien obligé de choisir entre le mal et le pire.
-- Mais pour refléter la réalité de la gestion d'un établissement éducatif, certains paramètres majeurs ne sont mis à jour qu'à la fin de l'année :
-	- _L'attractivité_ : Elle est recalculée en fonction des actions menées tout au long des quatre trimestres, comme la gestion des infrastructures, le nombre d'étudiants par enseignant, le niveau de satisfaction des étudiants aussi bien que celui du corps enseignant - et le niveau scolaire bien entendu, paramètre majeur de tous les classements nationaux et internationaux.
-	- _Le taux de réussite_ : Il est déterminé en fin d'année sur la base des efforts réalisés pour améliorer le niveau des étudiants, leur satisfaction, plus une part d'aléatoire pour refléter les imprévus de la vie.
+* Le jeu est structuré en trimestres, permettant au joueur de réagir régulièrement aux événements et défis rencontrés. Chaque trimestre, le directeur de l'IUT incarné par le joueur doit gérer différentes problématiques liées aux infrastructures, au budget et aux relations avec les parties prenantes.
+* Le gameplay cherche à reproduire le rythme réel de gestion d’un établissement éducatif, alternant phases actives et phases d’attente. Le joueur doit souvent réagir rapidement à plusieurs situations critiques simultanément, puis patienter avant d’observer les résultats de ses choix. Cette tension fait partie intégrante de l'expérience proposée.
+* Le joueur devra accepter qu'il est impossible de résoudre tous les problèmes. Les situations non traitées empirent et nécessitent des choix parfois difficiles.
+* Certains indicateurs majeurs ne sont actualisés qu’à la fin de l’année, reflétant la réalité de gestion d’un établissement éducatif :
 
-**_À la fin de chaque trimestre, le nombre de personnes sur le campus est susceptible de changer._**
+  * **Attractivité** : recalculée en fin d'année selon les actions menées durant les quatre trimestres (gestion des infrastructures, ratio étudiants/enseignants, satisfaction générale, niveau scolaire des étudiants).
+  * **Taux de réussite** : déterminé en fin d'année selon les efforts investis pour améliorer le niveau académique et la satisfaction étudiante, avec un facteur aléatoire pour représenter les imprévus de la vie réelle.
 
-- Il est à noter que les valeurs de base pour le nombre de toutes les personnes intervenant sur le campus, qu'il s'agisse d'enseignants, d'étudiants ou des personnels divers, sont celles de l'IUT Robert Schuman, à l'heure actuelle (mais elles sont modulées par des coefficients spécifiques dans le jeu).
-- *Le nombre d'enseignants :*. Il est fonction des effectifs étudiants. Une baisse importante du nombre d'étudiants peut vous contraindre à réduire le nombre d'enseignants, tandis qu'une surpopulation étudiante exige le recrutement de nouveaux enseignants. Celui-ci est toutefois soumis à certaines conditions, dont la plus évidente est la limite imposées par le budget, mais également l'attractivité de l'établissement. 
-- *Le nombre d'administratifs*. Contrairement aux enseignants, le joueur peut décider d'embaucher un nombre illimité d'administratifs pour renforcer la gestion des tâches administratives. Cependant, cela a un coût direct sur le budget et peut influencer indirectement la satisfaction des parties prenantes, en optimisant ou alourdissant les processus internes. Comme pour les enseignants, le joueur doit trouver un équilibre entre les besoins de gestion et les contraintes financières.
-- *L'état des bâtiments*. Il dépend de leur âge, de leur état initial au début de l'année et des éventuelles réparations réalisées au cours des trimestres. Ces réparations sont directement liées au budget alloué.
-- *Le budget octroyé*. Il est mis à jour à la fin de chaque trimestre en fonction des dépenses réalisées, des financements obtenus (subventions, partenariats, autres sources que nous aimerions bien détailler dans une version ultérieure du jeu - voir [« Amélioratons possibles »](#améliorations-possibles)). Le joueur peut choisir d’ajuster ses priorités budgétaires en fonction des besoins. Le budget total se compose du budget du bloc central addtionné aux budgets des départements.
-- *La satisfaction*. Calculée séparément pour les étudiants et les enseignants, elle reflète leur perception de la qualité des services, des infrastructures et de la gestion globale. Pour les étudiants, cette satisfaction est également visualisée directement dans le jeu : les étudiants qui se déplacent autour du campus changent de couleur en fonction de leur niveau de satisfaction.
+**À chaque fin de trimestre, la population du campus peut évoluer.**
 
-**_La durée et le déroulement du jeu dépendent du scénario choisi au départ._**
+* Les chiffres initiaux concernant enseignants, étudiants et personnels sont basés sur l'IUT Robert Schuman réel, mais ajustés par des coefficients internes au jeu.
 
-Voir [« Scénarios »](#scénarios) pour plus de détails.
+* **Nombre d'enseignants** : Dépend des effectifs étudiants. Une baisse notable du nombre d’étudiants peut entraîner des réductions d'effectifs enseignants, tandis qu'une hausse significative nécessitera des recrutements, limités par le budget disponible et l'attractivité du campus.
 
-**_Les données du campus sont réinitialisées au début du jeu._**
+* **Nombre d'administratifs** : Le joueur peut embaucher librement des administratifs pour renforcer la gestion interne, avec un impact direct sur le budget et indirect sur la satisfaction générale selon l’efficacité des processus administratifs.
 
-- Comme il s'agit d'un jeu sérieux, tous les nombres manipulés dans le jeu ont une composante aléatoire, mais leur valeur de base est toujours celle ou proche de la réalité.
-- Les données des étudiants et des enseignants sont conservées dans des bases de données, et les valeurs de base dans des tableaux.
+* **État des bâtiments** : Influencé par leur âge, leur état initial et les éventuelles rénovations réalisées durant l'année. Ces rénovations dépendent directement du budget attribué.
 
-**_Un rapport est généré à la fin de la partie, à l'attention du joueur._**
-	
-- Il récapitule sa situation et ses décisions.
-- Il vise à valider les bons choix et à expliquer les conséquences des mauvais.
+* **Budget** : Actualisé chaque trimestre en fonction des dépenses engagées et des financements obtenus (subventions, partenariats). Le joueur peut ajuster les priorités budgétaires selon les besoins du campus. Le budget global se compose du budget central et des budgets des départements spécifiques.
 
-##### Tutoriel
+* **Satisfaction** : Mesurée séparément pour étudiants et enseignants, elle représente leur perception de la qualité des services, des infrastructures et de la gestion générale. La satisfaction des étudiants est visuellement représentée dans le jeu par des personnages dont la couleur varie selon leur niveau de satisfaction.
 
-Dès le début du jeu, un mode tutoriel en 2D est proposé pour guider les nouveaux joueurs dans la prise en main des mécanismes principaux, à travers cinq semestres consécutifs. Ce tutoriel interactif présente l’interface, explique les différentes statistiques du jeu (budget, attractivité, satisfaction, etc.), et décrit les premières actions à effectuer pour progresser dans la gestion de l’IUT. Une fois le tutoriel terminé, le joueur accède au jeu principal et remplit des missions selon le scénario choisi.
+### Durée et déroulement du jeu
 
-#### Interface
+La durée et le déroulement de la partie dépendent du scénario choisi initialement. Voir la section [« Scénarios »](#scénarios) pour davantage de détails.
 
-La fenêtre s'ouvrant au lancement du jeu invite le joueur à choisir le scénario, avec ou sans tutoriel. Aucun scénario n'est imposé par défaut : on ne peut pas continuer le jeu sans en avoir sélectionné un. Ensuite, l'interface de jeu passe en 3D mais intègre des éléments 2D tels que les panneaux et les boutons. 
+### Gestion des données du campus
 
-Les actions du joueur sont accompagnés d'effets sonores, à commencer par la fenêtre de choix de scénario. En revanche, le contrôle audio reste matériel : pensez à mettre le son _on_ ou _off_ sur votre ordinateur, selon vos envies.
+* Toutes les données du campus sont réinitialisées au début de chaque partie.
+* Les valeurs initiales sont inspirées de celles de l'IUT Robert Schuman, avec une certaine composante aléatoire afin de refléter la réalité.
+* Les données relatives aux étudiants et enseignants sont stockées dans des bases de données et des tableaux, facilitant une gestion structurée et efficace.
 
-- Plan du **campus d'Illkirch, vue panoramique**. Une caméra contrôlée par les flèches de direction permet de **changer d'angle de vue**.
-- Représentation visuelle de la satisfaction des étudiants dans le jeu :
-	- Des **personnages en 3D** se déplacent sur le campus, leur couleur variant en fonction de leur niveau de satisfaction. 
-	- Ils sont beaucoup moins nombreux pendant l'été, quand tous le monde est en vacances.
-- Affichage des **informations globales dans le panneau fixe**, tout en haut de l'écran (actualisé en fin d'année) :
-	- Le budget du bloc central, suivi du budget total de l'établissement, en euros ;
-	- L'attractivité de l'IUT, en pour cent ;
-	- Les moyennes de la satisfaction des étudiants et des enseignants, en pour cent ;
-	- La moyenne des notes globale ;
-	- La saison et l'année ;
-	- Le bouton de passage au trimestre suivant.
-- Pendant l'attente du trimestre suviant (normalement très courte), l'écran est bloqué et un **avertissement sous forme d'une frise** est affiché au milieu.
-- Affichage des **informations complètes sur un bâtiment sélectionné** avec un clic zoomant, à droite de l'écran :
-	- sur le panneau statique :
-		- nom et logo du département qui l'occupe (à noter la liberté que nous nous sommes permise par rappport au campus d'Illkirch réel, Techniques de commercialisation et Information-Communication occupent deux bâtiments distincts dans le jeu, alors qu'en réalité, ils se partagent le bâtiment central) ;
-		- son budget ;
-		- le nombre, la satisfaction et le niveau moyen de ses étudiants ;
-		- la satisfaction enseignante.
-	- sur le panneau dynamique, muni de boutons de contrôle avec infobulle :
-		- le nombre d'administratifs / ouvriers / autres personnels, ajustable et actualisé en temps réel ;
-		- le nombre d'enseignants, ajustable et actualisé en temps réel ;
-		- le salaire des enseignants, ajustable par paliers de 500 € et actualisé en temps réel ;
-		- le niveau des compétences requis pour être admis au département, ainsi que celui requis pour réussir son année, ajustables au printemps uniquement et actualisés ;
-		- le bouton d'allumage / arrêt de chauffage (attention, il ne s'éteint pas tout seul après la saison froide, il faut intervenir !) ;
-		- le bouton d'ouverture / fermeture des portes.
-- **Les chantiers** :
-	- Chaque fois qu'une rénovation est lancée, une grue et d'autres équipements apparaissent à côté du bâtiment concerné, le tout accompagné de bruits impossible à ignorer. Le bruit se reproduit quand on re-clique sur le bâtiment.
-	- Les travaux empêchant d'utiliser le bâtiment sur toute leur durée, il n'est pas possible d'en réaliser sur plusieurs sites, sauf en fin d'année (tout le monde sera parti pendant l'été, on pourra donc en renover deux à la fois).
-- Notifications :
-	- **Recapitulatifs de la situation courante**, qui arrivent d'en haut en semi transparence puis disparaissent au bout de quelques secondes ;
-	- Ils sont repris et consultables à tout moment par le joueur, via l'**historique des notifications** auquel on accède en cliquant sur l'icône du message, en haut à gauche ;
-	- Une **zone de notification**, en bas de l'écran, affiche la mission courante, ainsi que les explications fournies par le tutoriel, le cas échéant.
-- Le **bouton de sortie**, facile à repérer grâce à sa couleur rouge (un bonhomme qui s'enfuit), est situé au même endroit sur tous les écrans, que ce soit celui principal ou ceux de fin de jeu.
-- **L'écran de fin de jeu** affiche le résultat et une explication de la fin suivant le scénario choisi :
-	- A-t-on réussi à assurer le bon fonctionnement de l'établissement dans la limite des moyens alloués ?
-	- Tous les bâtiments ont-ils été rénovés, et en combien de temps (en années/mois, pour un affichage plus lisible que le nombre de trimestres) ?
-	- Combien de personnes ont eu leur diplôme avec de bons résultats ?
-	- Le directeur a-t-il été reconduit à la fin de son mandat, et avec combien de voix (un tableau récapitulatif est affiché)?
-- Nous utilisons un jeu de curseurs standard, mais le curseur prend la forme d'un doigt qui pointe sur tous les éléments cliquables.
+### Rapport de fin de partie
+
+Un rapport détaillé est généré à la fin de chaque partie, récapitulant les décisions prises par le joueur ainsi que leurs conséquences. Ce rapport permet au joueur d’analyser ses choix, en valorisant ses succès et en identifiant clairement les axes d’amélioration.
+
+### Tutoriel
+
+Un tutoriel en 2D est proposé dès le lancement du jeu pour familiariser les nouveaux joueurs aux mécaniques principales sur une période de cinq trimestres. Ce guide interactif présente l’interface utilisateur, les statistiques importantes (budget, attractivité, satisfaction, etc.) et les premières actions à réaliser pour assurer une bonne gestion de l’IUT. Une fois terminé, le joueur accède au mode de jeu principal selon le scénario choisi.
+
+### Interface du jeu
+
+À son lancement, une fenêtre propose au joueur de choisir un scénario et d'activer ou non le tutoriel. Aucun scénario n'est pré-sélectionné, obligeant le joueur à faire explicitement son choix.
+
+* L'interface principale combine des éléments graphiques en 3D avec des panneaux et boutons en 2D.
+* Des effets sonores accompagnent les actions, à commencer par le choix du scénario (le volume sonore est géré directement sur l'appareil du joueur).
+* **Vue panoramique du campus d’Illkirch** : contrôlée par les touches directionnelles permettant des changements d’angle de vue.
+* **Représentation visuelle de la satisfaction étudiante** : les personnages en 3D sur le campus changent de couleur en fonction de leur niveau de satisfaction. Ils sont nettement moins nombreux durant la période estivale.
+* **Panneau supérieur d’informations globales** (actualisé annuellement) comprenant :
+
+  * Budget central et total de l’établissement (en euros)
+  * Attractivité de l’établissement (en pourcentage)
+  * Moyenne de satisfaction des étudiants et enseignants (en pourcentage)
+  * Moyenne globale des notes
+  * Saison et année en cours
+  * Bouton permettant de passer au trimestre suivant
+* **Période de transition trimestrielle** : un bref blocage de l'écran accompagné d'une notification visuelle centrale.
+* **Affichage détaillé des bâtiments sélectionnés** (par clic zoomant) à droite :
+
+  * **Panneau statique** : nom, logo du département, budget, nombre et satisfaction moyenne des étudiants, satisfaction enseignante.
+  * **Panneau dynamique** (boutons avec infobulles) : ajustement du nombre d’administratifs, d’enseignants, du salaire enseignant (par paliers de 500 €), des compétences requises à l'admission et pour la réussite, gestion manuelle du chauffage et des portes.
+* **Chantiers de rénovation** : visualisation par grues et équipements de chantier avec effets sonores notables.
+* **Notifications** :
+
+  * Résumés de la situation actuelle apparaissant temporairement en haut de l’écran.
+  * Consultables à tout moment via un historique accessible depuis une icône dédiée.
+  * Une zone inférieure affiche la mission actuelle et les instructions éventuelles du tutoriel.
+* **Bouton de sortie** facilement identifiable en rouge.
+* **Écran de fin de jeu** : affiche clairement les résultats selon le scénario choisi (gestion des ressources, rénovations réalisées, résultats académiques, réélection du directeur).
+* Le curseur standard prend la forme d'une main indiquant clairement les éléments interactifs.
 
 #### Actions du joueur
 
-Le jeu consiste à répondre aux défis qui surgissent, attendus ou imprévus, en faisant des choix avisés quand on peut (il est à noter que dans certains cas, aucune action n'est possible).
+Le joueur, incarnant le directeur de l'IUT, est amené à réagir à divers défis, qu'ils soient prévus ou imprévus, en prenant des décisions stratégiques adaptées à la situation. Certaines circonstances peuvent ne pas permettre d'actions immédiates.
 
-Pour ce faire, le directeur _aka_ joueur peut, concrètement :
+Concrètement, le joueur peut :
 
-- Valider toutes des rénovations planifiées ou seulement quelques-unes ;
-- Redistribuer les allocations du budget ;
-- Ajuster le calendrier de chauffage ;
-- Licencier ou recruter des enseignants ou des administratifs pour réduire les dépenses, en tenant compte des impacts sur la satisfaction et la qualité pédagogique (pas de profs, pas d'apprentissage ! mais on peut toujours essayer ):-D );
-- Recruter ou licencier des administratifs pour répondre aux besoins de rénovation et contrôler la durée des travaux.
+* Valider totalement ou partiellement les rénovations planifiées.
+* Répartir et ajuster les allocations budgétaires.
+* Régler le calendrier de chauffage des bâtiments.
+* Embaucher ou licencier des enseignants afin d'optimiser les dépenses tout en considérant l'impact sur la satisfaction globale et la qualité pédagogique.
+* Embaucher ou licencier des personnels administratifs pour mieux gérer les besoins logistiques et les délais liés aux travaux de rénovation.
 
-Les **contrôles** du jeu incluent :
+Les **contrôles** disponibles dans le jeu :
 
-- La souris :
-	- pour sélectionner un bâtiment en cliquant dessus ;
-	- pour modifier des paramètres en cliquant sur un bouton (accompagné d'un petit bruit sec); 
-	- pour faire disparaître une notification sans attendre qu'elle le fasse d'elle-même, en cliquant dans le vide autour.
-- Les touches de direction pour changer d'angle de vue.
+* **Souris** :
+
+  * Sélection d’un bâtiment par clic direct.
+  * Modification des paramètres via des boutons interactifs.
+  * Fermeture rapide des notifications par clic en dehors de celles-ci.
+* **Touches directionnelles** : pour ajuster l'angle de vue du campus.
 
 #### Scénarios
 
-Deux facteurs déterminent les choix d'un directeur :
+Les scénarios influencent fortement les décisions que doit prendre le directeur. Deux facteurs clés conditionnent chaque scénario :
 
-- La situation de départ à laquelle il est confronté et
-- L'objectif qu'il poursuit.
+* La situation initiale rencontrée par le directeur.
+* L'objectif précis à atteindre.
 
-Nous proposons trois scénarios qui varient ces deux données.
+Trois scénarios distincts sont proposés :
 
 ##### Scénario 1 : Me faire réélire
 
-Votre objectif est de gagner la confiance des membres du Conseil d'administration de l'IUT, composé des enseignants et des étudiants, afin d’être réélu en tant que directeur. Pour cela, vous devrez améliorer les performances globales de l’IUT, mais surtout maintenir un équilibre entre la satisfaction des parties prenantes, la gestion des budgets, et l’attractivité de l’établissement.
+L’objectif principal est d'obtenir la confiance du Conseil d'administration de l'IUT, composé d’enseignants et d’étudiants, afin de garantir votre réélection en tant que directeur. Cela implique d'améliorer globalement les performances de l’établissement tout en maintenant un équilibre précis entre satisfaction des acteurs, gestion budgétaire et attractivité.
 
-La partie dure 5 ans, le temps d'un mandat de directeur. 
+**Durée** : 5 ans (durée d’un mandat).
 
-Le résultat du vote est affiché à la fin : soit vous êtes réélu et donc gagnant, soit vous devez quitter votre poste. Mais ne désespérez pas, vous avez probablement tout fait pour le bien de l'établissement !
+Un vote final détermine votre succès ou votre échec en termes de réélection.
 
 ##### Scénario 2 : Rénover le campus
 
-Votre objectif est de moderniser et d'améliorer les infrastructures de l'IUT afin d'offrir un environnement d'apprentissage optimal. Cela augmentera la satisfaction des étudiants et du personnel, mais nécessitera des investissements conséquents et donc une gestion de budget rigoureuse.
+Le but principal est la modernisation complète des infrastructures pour offrir un environnement optimal à l'apprentissage, accroître la satisfaction générale et réaliser une gestion budgétaire rigoureuse.
 
-La partie a une durée illimitée, le temps qu'il faut pour rénover tous les bâtiments... ou de faire faillite !
+**Durée** : Illimitée (jusqu'à ce que tous les bâtiments soient rénovés ou que les ressources financières soient épuisées).
 
 ##### Scénario 3 : Viser l'excellence
 
-Votre objectif est de transformer l'IUT en une référence nationale et internationale en matière d'éducation, de recherche et de gestion. Pour ce faire, vous devez viser, avant tout, un excellent niveau de compétences - au-dessous d'un certain seuil, pour que les diplômés de l'IUT puissent intégrer une école d'ingénieurs.
+Votre ambition est d'établir l'IUT comme référence nationale et internationale dans les domaines de l’éducation, de la recherche et de la gestion. Pour cela, il faudra maintenir un très haut niveau de compétences afin de permettre aux diplômés d’intégrer des écoles d'ingénieurs prestigieuses.
 
-La partie dure 5 ans.
+**Durée** : 5 ans.
 
-Le nombre d'élèves ayant réussi leur concours d'entrée à une école d'ingé pendant votre mandat est affiché à la fin. Mais même s'il est à 0, votre gestion aura sans doute permis à l’IUT de progresser pour de futures tentatives.
+À la fin de cette période, le nombre d'étudiants admis dans les écoles d'ingénieurs sera révélé, illustrant ainsi le succès ou les progrès accomplis grâce à votre gestion.
 
 ### Contraintes de développement
 
-Ce jeu a été développé avec le moteur [Godot Engine 4](https://godotengine.org/). Certains membres de l'équipe ont travaillé sur une machine Linux, d'autres sur Windows. Nous confirmons que le jeu fonctionne parfaitement sur les deux.
+Le jeu a été développé avec le moteur [Godot Engine 4](https://godotengine.org/). L'équipe de développement a utilisé des environnements Linux et Windows, garantissant ainsi une compatibilité et un fonctionnement optimal sur les deux systèmes.
 
-On trouve le diagramme des classes, qui matérialise la conception logicielle du jeu, dans le répertoire `uml/` (fichiers code et image).
+La conception logicielle du jeu est détaillée dans un diagramme des classes disponible dans le répertoire `uml/` (fichiers code et images).
 
-Le code, contenu dans le répertoire `game/`, est modularisé suivant le patron de conception [MVC](https://www.geeksforgeeks.org/mvc-design-pattern/) conjugué avec [Observer](https://refactoring.guru/fr/design-patterns/observer), tout en respectant l'organisation d'un projet Godot :
+Le code source, situé dans le dossier `game/`, est structuré selon les principes des patrons de conception [MVC (Model-View-Controller)](https://www.geeksforgeeks.org/mvc-design-pattern/) et [Observer](https://refactoring.guru/fr/design-patterns/observer), adaptés à la logique de Godot Engine :
 
-- Les vues, les contrôleurs et les modèles se trouvent dans les répertoires dédiés views/, controllers/ et models/, respectivement.
-	- Les *vues* sont scindées en Nodes3D/ et Nodes2D/.
-	- Les *contrôleurs* ( `Campus/` ou  `Timeline`) assurent le traitement des données et le bon déroulement du jeu.
-	- Les *modèles*, `human/` ou `material/`, ou encore `GlobalData` sont indépendants et ne sont que consultés par les vues (i.e. l'interface utilisateur) et modifiés par les contrôleurs (i.e. la logique du jeu).
-- Les *données* sont stockées dans des tables SQLite (TeacherSQLTable, StudentSQLTable et NotificationSQLTable), dans `data/`.
-- L'extension permettant l'utilisation d'une base de données se trouve dans `addons/`.
+* Les **vues**, les **contrôleurs** et les **modèles** sont organisés respectivement dans les dossiers `views/`, `controllers/` et `models/` :
 
-L'optimisation du traitement des données stockées est assurée par l'utilisation de [PRAGMA](https://www.sqlite.org/pragma.html).
+  * Les **vues** sont divisées entre Nodes3D/ et Nodes2D/.
+  * Les **contrôleurs** (`Campus/` et `Timeline/`) gèrent le traitement des données et le déroulement de la partie.
+  * Les **modèles** (`human/`, `material/`, `GlobalData`) stockent les données essentielles, accessibles en lecture par les vues et modifiables uniquement par les contrôleurs.
+* Les **données** sont sauvegardées dans des tables SQLite (`TeacherSQLTable`, `StudentSQLTable`, `NotificationSQLTable`) situées dans le répertoire `data/`.
+* Une extension spécifique à l’utilisation de la base de données SQLite est intégrée dans le dossier `addons/`.
 
-### Amélioratons possibles 
+Pour optimiser l’accès et le traitement des données, la gestion des tables SQLite utilise les commandes [PRAGMA](https://www.sqlite.org/pragma.html).
 
-- **Différentes sources de financement** : Ajouter des options variées de ressources financières, comme des subventions de l'État, des partenariats avec des entreprises, des campagnes de financement participatif, ou encore des revenus générés par des événements organisés par l'IUT ou provenant de la location des équipements. Chaque source pourrait avoir ses propres avantages et contraintes.
-	- cf. commit [49dc827b](https://git.unistra.fr/coruscant/renov-iut/-/tree/49dc827b38c754ac47654917b0907d8aa579b27f) pour une ébauche de conception (classes `Fund` et `Budget`)
-- **Choix des entreprises pour les rénovations** : Permettre au joueur de sélectionner parmi plusieurs entreprises de rénovation, chacune ayant des caractéristiques différentes (coût, rapidité, qualité des travaux). Les choix influenceraient directement l'état des bâtiments et le budget disponible.
-- **Choix du niveau de difficulté au début du jeu** (actuellement intégrée en dur, mais aisément refactorisable - nous vous invitons à voir le code) :
-	- Facile = ressources abondantes, tolérance élevée aux erreurs ;
-	- Intermédiaire = budget limité, attentes des parties prenantes plus strictes ;
-	- Difficile = ressources rares, crises fréquentes, exigences élevées.
-- **Gestion des aléas** : Implémenter des événements imprévus tels qu’une grève du personnel, des dégradations majeures dans un bâtiment, ou une baisse soudaine des financements. Le joueur devra adapter sa stratégie pour faire face à ces situations.
-- **Gestion _in fine_ du corps enseignant** : Distinguer les profs titularisés et les vacataires, organiser leurs activités pendant l'année, à un ou plusieurs départements, leur (re)donner une liberté d'expression et une force de proposition...
-- **Entretien régulier du campus** : En plus des rénovations majeures, proposer des tâches d’entretien récurrentes (nettoyage, petits travaux de réparation, maintenance technique, etc.)
-- **Meilleure visualisation** (graphiques, schémas...) des différentes variables du jeu.
-- **Contrôles clavier**, éventuellement.
+### Améliorations possibles
+
+* **Diversification des sources de financement** : Implémenter plusieurs méthodes de financement comme les subventions publiques, partenariats avec des entreprises, campagnes participatives, revenus liés à l'organisation d’événements ou location d’espaces. Chaque méthode pourrait présenter des avantages et contraintes spécifiques.
+
+  * Voir le commit [49dc827b](https://git.unistra.fr/coruscant/renov-iut/-/tree/49dc827b38c754ac47654917b0907d8aa579b27f) pour les ébauches de classes (`Fund` et `Budget`).
+
+* **Sélection d’entreprises pour les rénovations** : Permettre le choix entre plusieurs prestataires aux caractéristiques variées (coût, rapidité, qualité), influençant directement l’état des bâtiments et le budget restant.
+
+* **Choix de niveaux de difficulté** (actuellement fixe mais facilement adaptable dans le code) :
+
+  * Facile : Ressources généreuses, grande tolérance aux erreurs.
+  * Intermédiaire : Ressources limitées, exigences modérées des parties prenantes.
+  * Difficile : Ressources rares, crises fréquentes, hautes exigences.
+
+* **Gestion des aléas** : Introduction d'événements imprévus (grèves, dégradations majeures, baisses soudaines de financements) auxquels le joueur devra réagir stratégiquement.
+
+* **Gestion approfondie du personnel enseignant** : Différencier titulaires et vacataires, organiser leurs emplois du temps sur l’année, leur accorder une autonomie de proposition et d’expression.
+
+* **Entretien régulier du campus** : Proposer des tâches d’entretien régulières (nettoyage, réparations mineures, maintenance technique) en complément des rénovations importantes.
+
+* **Visualisation améliorée** : Intégration de graphiques et de schémas pour mieux représenter et analyser les différentes variables de gestion.
+
+* **Contrôles clavier additionnels** pour enrichir les possibilités d'interaction avec le jeu.
